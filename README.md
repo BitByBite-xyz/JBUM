@@ -5,19 +5,19 @@ This is a boilerplate for JBUM that closely resembles [this](https://github.com/
 This includes re-writes to maximize code reuse and simplify the code as much as possible. There is still much to do but it's a good step in the right direction to the final app. 
 
 # TODO (for RNApp)
--fix login
--add more jbum components
--figure out survey route
--beautify login screen
--document code
+- fix login
+- add more jbum components
+- figure out survey route
+- beautify login screen
+- document code
 
 # USEFUL IMPORTS FOR CODE REUSE :)
 
 
+- styles 
+import { colors,DEVICE_WIDTH,DEVICE_HEIGHT } from '../../config/styles'; (the from will change depending on file location!)-  
 
-import { colors,DEVICE_WIDTH,DEVICE_HEIGHT } from '../../config/styles'; (the from will change depending on file location!)
-
-ALL IMAGES!!
+- ALL IMAGES!!
 
 import images from '../../config/images';
 
