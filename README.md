@@ -3,9 +3,24 @@
 This is a boilerplate for JBUM that closely resembles [this](https://github.com/spencercarli/react-native-meteor-boilerplate).
 
 This includes re-writes to maximize code reuse and simplify the code as much as possible. There is still much to do but it's a good step in the right direction to the final app. 
-vvv
-##TODO
-[]v
+
+##TODO (for RNApp)
+-fix login
+-add more jbum components
+-figure out survey route
+-beautify login screen
+-document code
+
+##USEFUL IMPORTS FOR CODE REUSE :)
+
+
+
+import { colors,DEVICE_WIDTH,DEVICE_HEIGHT } from '../../config/styles'; (the from will change depending on file location!)
+
+ALL IMAGES!!
+
+import images from '../../config/images';
+
 
 
 ## Getting Started
