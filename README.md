@@ -4,14 +4,14 @@ This is a boilerplate for JBUM that closely resembles [this](https://github.com/
 
 This includes re-writes to maximize code reuse and simplify the code as much as possible. There is still much to do but it's a good step in the right direction to the final app. 
 
-##TODO (for RNApp)
+# TODO (for RNApp)
 -fix login
 -add more jbum components
 -figure out survey route
 -beautify login screen
 -document code
 
-##USEFUL IMPORTS FOR CODE REUSE :)
+# USEFUL IMPORTS FOR CODE REUSE :)
 
 
 
@@ -22,6 +22,9 @@ ALL IMAGES!!
 import images from '../../config/images';
 
 
+## Project Structure
+
+Check out [this article](https://medium.com/@spencer_carli/organizing-a-react-native-project-9514dfadaa0#.361gf1awu) for an overview of the `RNApp` directory.
 
 ## Getting Started
 
@@ -71,7 +74,4 @@ On OSX you can get your IP address by running `ipconfig getifaddr en1` in a term
 
 For further information please reference the [official docs](https://facebook.github.io/react-native/docs/running-on-device-android.html#content).
 
-## Project Structure
-
-Check out [this article](https://medium.com/@spencer_carli/organizing-a-react-native-project-9514dfadaa0#.361gf1awu) for an overview of the `RNApp` directory.
 
