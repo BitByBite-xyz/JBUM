@@ -14,12 +14,12 @@ This includes re-writes to maximize code reuse and simplify the code as much as 
 # USEFUL IMPORTS FOR CODE REUSE :)
 
 
-- styles 
-import { colors,DEVICE_WIDTH,DEVICE_HEIGHT } from '../../config/styles'; (the from will change depending on file location!)-  
+styles 
+- import { colors,DEVICE_WIDTH,DEVICE_HEIGHT } from '../../config/styles'; (the from will change depending on file location!)-  
 
-- ALL IMAGES!!
+ALL IMAGES!!
 
-import images from '../../config/images';
+- import images from '../../config/images';
 
 
 ## Project Structure
