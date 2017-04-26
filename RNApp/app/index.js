@@ -1,22 +1,22 @@
 import React from 'react';
 import Meteor, { createContainer } from 'react-native-meteor';
 
-import LoggedOut from './layouts/LoggedOut';
-import LoggedIn from './layouts/LoggedIn';
-import Loading from './components/Loading';
+import { LoginStack } from './config/router';
 import settings from './config/settings';
 
 Meteor.connect(settings.METEOR_URL);
 
 const RNApp = (props) => {
   const { status, user, loggingIn } = props;
-
+/*
   if (status.connected === false || loggingIn) {
     return <Loading />;
   } else if (user !== null) {
     return <LoggedIn />;
   }
   return <LoggedOut />;
+  */
+  return <LoginStack />;
 };
 
 RNApp.propTypes = {

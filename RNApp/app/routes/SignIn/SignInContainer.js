@@ -67,7 +67,7 @@ class SignInContainer extends Component {
     const { email, password, confirmPasswordVisible } = this.state;
 
     var CustomLayoutSpring = {
-        duration: 60,
+        duration: 500,
         create: {
           type: LayoutAnimation.Types.spring,
           property: LayoutAnimation.Properties.scaleXY,

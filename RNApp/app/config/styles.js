@@ -8,7 +8,7 @@ export const colors = {
   buttonBackground: '#3DADFF',
   buttonText: '#FFFFFF',
   inputBackground: 'rgba(0, 0, 0, 0.34)',
-  inputWrapper : 'rgba(0, 0, 0, 0.2)'
+  inputWrapper : 'rgba(0, 0, 0, 0)'
 };
 export const DEVICE_WIDTH = Dimensions.get('window').width;
 export const DEVICE_HEIGHT = Dimensions.get('window').width;

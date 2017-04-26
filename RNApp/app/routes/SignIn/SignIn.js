@@ -1,7 +1,11 @@
 import React from 'react';
-import { Text, View, Image, StyleSheet, StatusBar } from 'react-native';
+import { Text, View, Image, StyleSheet, StatusBar, Linking } from 'react-native';
 import KeyboardSpacer from 'react-native-keyboard-spacer';
-import Button from '../../components/Button';
+import { Button, Icon } from 'react-native-elements'
+import { SocialIcon } from 'react-native-elements';
+import { colors } from '../../config/styles';
+
+
 import GenericTextInput, { InputWrapper } from '../../components/GenericTextInput';
 import images from '../../config/images';
 import styles from './styles';
@@ -53,10 +57,52 @@ const SignIn = (props) => {
       </View>
 
       <View style={styles.buttons}>
-        <Button text="Sign In" onPress={signIn} />
-        <Button text="Create Account" onPress={createAccount} />
+        <Button
+
+          icon={{name: 'fingerprint'}}
+          backgroundColor='transparent'
+          onPress={signIn}
+          title='Login' />
+
+          <Button
+
+            icon={{name:'add',borderRadius: 10}}
+            onPress={createAccount}
+            backgroundColor='transparent'
+            title='Create Account' />
 
       </View>
+
+      <View style={styles.buttons}>
+
+        <SocialIcon
+          type='twitter'
+          raised={false}
+        />
+        <SocialIcon
+          type='facebook'
+          raised={false}
+        />
+        <SocialIcon
+          raised={false}
+          type='instagram'
+        />
+
+      </View>
+
+
+      <View style={styles.contactUsContainer}>
+        <Text style={styles.contactUsText}>Don't have us at your school?</Text>
+        <View style={width=2}/>
+        <Text style={styles.contactUsText2} onPress={()=> {
+          let url = 'http://www.bitbybite.co';
+          if(Linking.canOpenURL(url)) {
+            Linking.openURL(url);
+          }
+        }}> Contact us</Text>
+      </View>
+
+
 
       <KeyboardSpacer />
     </View>

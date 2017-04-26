@@ -1,5 +1,5 @@
 import { StyleSheet, Dimensions } from 'react-native';
-import { colors } from '../../config/styles';
+import { colors,DEVICE_WIDTH,DEVICE_HEIGHT } from '../../config/styles';
 
 const window = Dimensions.get('window');
 export default StyleSheet.create({
@@ -13,6 +13,7 @@ export default StyleSheet.create({
   },
   buttons: {
     flexDirection: 'row',
+    marginBottom: 10,
   },
   backgroundImage: {
     flex: 1,
@@ -29,7 +30,7 @@ export default StyleSheet.create({
     fontSize: 14,
   },
   header: {
-    marginBottom: 25,
+    marginBottom: 70,
     alignItems: 'center',
   },
   text: {
@@ -42,6 +43,25 @@ export default StyleSheet.create({
     color: 'white',
 		fontFamily: 'Avenir-Heavy',
     fontSize: 26,
-		backgroundColor: 'transparent',
+		backgroundColor: 'transparent'
+  },
+  contactUsContainer: {
+    top: 130,
+    width: DEVICE_WIDTH,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginBottom: 30
+  },
+  contactUsText: {
+    color: '#000',
+    fontFamily: 'Avenir-Light',
+    backgroundColor: 'transparent',
+    letterSpacing: 1.6,
+  },
+  contactUsText2: {
+    color: 'white',
+    fontFamily: 'Avenir-Heavy',
+    backgroundColor: 'transparent',
+    letterSpacing: 1.6,
   }
 });
