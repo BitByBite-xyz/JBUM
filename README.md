@@ -4,32 +4,10 @@ This is a boilerplate for JBUM that closely resembles [this](https://github.com/
 
 This includes re-writes to maximize code reuse and simplify the code as much as possible. There is still much to do but it's a good step in the right direction to the final app. 
 
-# TODO (for RNApp)
-- fix login
-- add more jbum components (components and routes)
-- fully transfer to [react-navigation](https://reactnavigation.org)
-- document code more
-
-# USEFUL IMPORTS FOR CODE REUSE :)
-
-
-styles 
-- import { colors,DEVICE_WIDTH,DEVICE_HEIGHT } from '../../config/styles'; (the from will change depending on file location!)-
-
-then use DEVICE_WIDTH in the code like usual
-
-ALL IMAGES!!
-
-- import images from '../../config/images';
-
-
 ## Project Structure
 
 Check out [this article](https://medium.com/@spencer_carli/organizing-a-react-native-project-9514dfadaa0#.361gf1awu) for an overview of the `RNApp` directory.
 
-## Useful links
-
-[RN elements - has a lot of components ready to use](https://react-native-training.github.io/react-native-elements/)
 
 ## Getting Started
 
