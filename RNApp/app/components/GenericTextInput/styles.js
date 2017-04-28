@@ -6,7 +6,7 @@ export default StyleSheet.create({
   input: {
     height: 40,
     width: DEVICE_WIDTH - 40,
-    borderRadius: 5,
+    borderRadius: 20,
     backgroundColor: colors.inputBackground,
     marginLeft: 10,
     marginVertical: 5,
@@ -24,5 +24,13 @@ export default StyleSheet.create({
     backgroundColor: colors.inputWrapper,
 
     width: window.width,
+  },
+  image: {
+    position: 'absolute',
+    zIndex: 99,
+    width: 22,
+    height: 22,
+    left: 35,
+    top: 9,
   },
 });

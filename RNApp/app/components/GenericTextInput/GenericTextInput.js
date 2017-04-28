@@ -1,11 +1,12 @@
 import React from 'react';
-import { View, TextInput } from 'react-native';
+import { View, TextInput, Image } from 'react-native';
 import styles from './styles';
 
 const GenericTextInput = (props) => {
   return (
     <View>
       {props.borderTop ? <View style={styles.divider} /> : null}
+      <Image source={props.source} style={styles.image} />
       <TextInput
         style={styles.input}
         autoCapitalize="none"
@@ -20,6 +21,7 @@ const GenericTextInput = (props) => {
 
 GenericTextInput.propTypes = {
   borderTop: React.PropTypes.bool,
+  source: React.PropTypes.number,
 };
 
 export default GenericTextInput;

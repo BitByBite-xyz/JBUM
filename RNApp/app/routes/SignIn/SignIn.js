@@ -4,8 +4,8 @@ import KeyboardSpacer from 'react-native-keyboard-spacer';
 import { Button, Icon } from 'react-native-elements'
 import { SocialIcon } from 'react-native-elements';
 import { colors } from '../../config/styles';
-
-
+import usernameImg from '../../images/username.png';
+import passwordImg from '../../images/password.png';
 import GenericTextInput, { InputWrapper } from '../../components/GenericTextInput';
 import images from '../../config/images';
 import styles from './styles';
@@ -33,14 +33,25 @@ const SignIn = (props) => {
 
       <InputWrapper>
         <GenericTextInput
-          placeholder="email address"
+          source={usernameImg}
+          placeholder="Username"
           onChangeText={(email) => updateState({ email })}
         />
         <GenericTextInput
-          placeholder="password"
+          source={passwordImg}
+          placeholder="Password"
           onChangeText={(password) => updateState({ password })}
           secureTextEntry
           borderTop
+        />
+        <Button
+          title='Sign In'
+          backgroundColor='#00abff'
+          borderRadius={20}
+          onPress={signIn}
+          fontFamily= 'Avenir'
+          fontSize={17}
+          fontWeight='bold'
         />
         {confirmPasswordVisible ?
           <GenericTextInput
