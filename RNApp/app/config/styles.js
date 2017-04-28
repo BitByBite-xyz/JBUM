@@ -1,6 +1,5 @@
 import Dimensions from 'Dimensions';
 
-
 export const colors = {
   background: '#F5F2F9',
   errorText: '#FA3256',
@@ -10,5 +9,6 @@ export const colors = {
   inputBackground: 'rgba(0, 0, 0, 0.4)',
   inputWrapper : 'rgba(0, 0, 0, 0)'
 };
+
 export const DEVICE_WIDTH = Dimensions.get('window').width;
 export const DEVICE_HEIGHT = Dimensions.get('window').width;

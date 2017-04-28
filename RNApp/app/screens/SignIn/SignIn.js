@@ -3,13 +3,14 @@ import { Text, View, Image, StyleSheet, StatusBar, Linking } from 'react-native'
 import KeyboardSpacer from 'react-native-keyboard-spacer';
 import { Button, Icon } from 'react-native-elements'
 import { SocialIcon } from 'react-native-elements';
+
 import { colors } from '../../config/styles';
-import GenericTextInput, { InputWrapper } from '../../components/GenericTextInput';
 import images from '../../config/images';
-import styles from './styles';
+
+import GenericTextInput, { InputWrapper } from '../../components/GenericTextInput';
 import Wallpaper from '../../components/Wallpaper';
 
-
+import styles from './styles';
 
 const SignIn = (props) => {
   const { updateState, signIn, createAccount, error, confirmPasswordVisible } = props;
@@ -21,8 +22,6 @@ const SignIn = (props) => {
 
     <View style={styles.container}>
       <View style={styles.header}>
-
-
 
         <Text style={styles.text}>
 				      Just Between <B>You </B>and <B>Me</B>
@@ -89,7 +88,6 @@ const SignIn = (props) => {
 
       </View>
 
-
       <View style={styles.contactUsContainer}>
         <Text style={styles.contactUsText}>Don't have us at your school?</Text>
         <View style={width=2}/>
@@ -100,8 +98,6 @@ const SignIn = (props) => {
           }
         }}> Contact us</Text>
       </View>
-
-
 
       <KeyboardSpacer />
     </View>

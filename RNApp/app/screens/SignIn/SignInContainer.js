@@ -1,6 +1,8 @@
- import React, { Component } from 'react';
+import React, { Component } from 'react';
 import { LayoutAnimation } from 'react-native';
+
 import Meteor, { Accounts } from 'react-native-meteor';
+
 import SignIn from './SignIn';
 
 class SignInContainer extends Component {
@@ -54,7 +56,7 @@ class SignInContainer extends Component {
 
   handleSignIn() {
     this.props.navigation.navigate('Setup');
-    
+
     if (this.validInput(true)) {
       const { email, password } = this.state;
       Meteor.loginWithPassword(email, password, (err) => {
