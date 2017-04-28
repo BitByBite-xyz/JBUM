@@ -53,6 +53,8 @@ class SignInContainer extends Component {
   }
 
   handleSignIn() {
+    this.props.navigation.navigate('Setup');
+    
     if (this.validInput(true)) {
       const { email, password } = this.state;
       Meteor.loginWithPassword(email, password, (err) => {
@@ -64,6 +66,7 @@ class SignInContainer extends Component {
   }
 
   handleCreateAccount() {
+    this.props.navigation.navigate('Setup');
     const { email, password, confirmPasswordVisible } = this.state;
 
     var CustomLayoutSpring = {

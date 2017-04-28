@@ -4,8 +4,6 @@ import KeyboardSpacer from 'react-native-keyboard-spacer';
 import { Button, Icon } from 'react-native-elements'
 import { SocialIcon } from 'react-native-elements';
 import { colors } from '../../config/styles';
-import usernameImg from '../../images/username.png';
-import passwordImg from '../../images/password.png';
 import GenericTextInput, { InputWrapper } from '../../components/GenericTextInput';
 import images from '../../config/images';
 import styles from './styles';
@@ -33,25 +31,16 @@ const SignIn = (props) => {
 
       <InputWrapper>
         <GenericTextInput
-          source={usernameImg}
+          source={images.usernameImg}
           placeholder="Username"
           onChangeText={(email) => updateState({ email })}
         />
         <GenericTextInput
-          source={passwordImg}
+          source={images.passwordImg}
           placeholder="Password"
           onChangeText={(password) => updateState({ password })}
           secureTextEntry
           borderTop
-        />
-        <Button
-          title='Sign In'
-          backgroundColor='#00abff'
-          borderRadius={20}
-          onPress={signIn}
-          fontFamily= 'Avenir'
-          fontSize={17}
-          fontWeight='bold'
         />
         {confirmPasswordVisible ?
           <GenericTextInput
@@ -69,18 +58,17 @@ const SignIn = (props) => {
 
       <View style={styles.buttons}>
         <Button
-
+          title='Sign In'
           icon={{name: 'fingerprint'}}
-          backgroundColor='transparent'
+          backgroundColor={colors.buttonBackground}
+          borderRadius={20}
           onPress={signIn}
-          title='Login' />
-
-          <Button
-
-            icon={{name:'add',borderRadius: 10}}
-            onPress={createAccount}
-            backgroundColor='transparent'
-            title='Create Account' />
+          onLongPress={createAccount}
+          fontFamily= 'Avenir'
+          fontSize={17}
+          fontWeight='bold'
+        //  iconRight={true}
+        />
 
       </View>
 

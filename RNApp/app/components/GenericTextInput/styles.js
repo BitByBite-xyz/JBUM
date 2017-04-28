@@ -4,19 +4,18 @@ import { colors,DEVICE_WIDTH } from '../../config/styles';
 const window = Dimensions.get('window');
 export default StyleSheet.create({
   input: {
-    height: 40,
-    width: DEVICE_WIDTH - 40,
-    borderRadius: 20,
-    backgroundColor: colors.inputBackground,
-    marginLeft: 10,
-    marginVertical: 5,
-    color: 'white',
-    paddingVertical: 5,
-    paddingHorizontal: 15,
-
-  },
+		backgroundColor: colors.inputBackground,
+		width: DEVICE_WIDTH - 40,
+		height: 40,
+		marginHorizontal: 25,
+		paddingLeft: 45,
+		borderRadius: 20,
+		color: 'white',
+		fontFamily: 'Avenir-light',
+		fontSize: 14,
+	},
   divider: {
-    height: 1,
+    height: 2,
     backgroundColor: colors.inputDivider,
     marginLeft: 10,
   },

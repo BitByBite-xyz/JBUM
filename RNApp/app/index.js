@@ -1,7 +1,7 @@
 import React from 'react';
 import Meteor, { createContainer } from 'react-native-meteor';
 
-import { LoginStack } from './config/router';
+import { LoginDrawer } from './config/router';
 import settings from './config/settings';
 
 Meteor.connect(settings.METEOR_URL);
@@ -16,7 +16,7 @@ const RNApp = (props) => {
   }
   return <LoggedOut />;
   */
-  return <LoginStack />;
+  return <LoginDrawer />;
 };
 
 RNApp.propTypes = {
