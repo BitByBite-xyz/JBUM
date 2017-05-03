@@ -16,7 +16,7 @@ const RNApp = (props) => {
   }
   return <LoggedOut />;
   */
-  return <LoginDrawer />;
+  return <LoginDrawer />; //opens to login screen defined in ./config/router'
 };
 
 RNApp.propTypes = {

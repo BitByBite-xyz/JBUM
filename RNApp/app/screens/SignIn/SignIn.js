@@ -1,3 +1,11 @@
+/*
+This is where the login screen is put together. the .onPress methods are props
+from SignInContainer so when changing butten funcionality look there..
+
+
+ */
+
+
 import React from 'react';
 import { Text, View, Image, StyleSheet, StatusBar, Linking } from 'react-native';
 import KeyboardSpacer from 'react-native-keyboard-spacer';

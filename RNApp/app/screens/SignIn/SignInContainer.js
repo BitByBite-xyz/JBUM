@@ -1,3 +1,10 @@
+/*
+This container is what is acctually returned when you call this directory (look
+in index.js) and signin.js is implemented in the return statement but the func
+props (signin and stuff) are done from here because its better to separate the
+meteor stuff and app logic w RN stuff 
+ */
+
 import React, { Component } from 'react';
 import { LayoutAnimation } from 'react-native';
 

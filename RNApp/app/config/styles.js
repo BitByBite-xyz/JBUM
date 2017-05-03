@@ -1,5 +1,7 @@
 import Dimensions from 'Dimensions';
 
+//store any appwide variables and colors here 
+
 export const colors = {
   background: '#F5F2F9',
   errorText: '#FA3256',
