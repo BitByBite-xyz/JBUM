@@ -2,7 +2,7 @@
 This container is what is acctually returned when you call this directory (look
 in index.js) and signin.js is implemented in the return statement but the func
 props (signin and stuff) are done from here because its better to separate the
-meteor stuff and app logic w RN stuff 
+meteor stuff and app logic w RN stuff
  */
 
 import React, { Component } from 'react';
@@ -62,7 +62,7 @@ class SignInContainer extends Component {
   }
 
   handleSignIn() {
-    this.props.navigation.navigate('Setup');
+    this.props.navigation.navigate('AccountSetup');
 
     if (this.validInput(true)) {
       const { email, password } = this.state;
