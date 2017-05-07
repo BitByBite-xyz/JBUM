@@ -13,7 +13,6 @@ export default StyleSheet.create({
     width: DEVICE_WIDTH - 20,
 
     justifyContent: 'center',
-  //  alignItems: 'center',
     marginHorizontal: 10,
     paddingLeft: 45,
   },
