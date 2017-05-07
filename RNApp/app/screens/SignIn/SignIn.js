@@ -40,7 +40,7 @@ const SignIn = (props) => {
       </FadeInView>
 
     <FadeInView
-        duration={4000}
+        duration={2000}
     >
 
       <InputWrapper>
@@ -73,7 +73,6 @@ const SignIn = (props) => {
     </View>
 
     <FadeInView
-      duration={8000}
       style={styles.buttons}
     >
       <View style={styles.buttons}>
@@ -95,7 +94,6 @@ const SignIn = (props) => {
 
 
     <FadeInView
-      duration={13000}
       style={styles.buttons}
     >
       <View style={styles.buttons}>
@@ -117,7 +115,6 @@ const SignIn = (props) => {
     </FadeInView>
 
     <FadeInView
-      duration={12000}
       style={styles.buttons}
     >
 

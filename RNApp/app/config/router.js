@@ -16,15 +16,13 @@ This is the only navigation I have but every time a screen is added we add to th
    },
    AccountSetup: {
      screen: AccountSetup,
-     navigationOptions: {
-       title: 'Account Setup',
-     },
+     navigationOptions: {title: 'Account Setup', header: null},
    },}, {
    headerMode: 'screen',
    visible: false
  });
 
-
+/*
 const prevGetStateForActionProfileStack = ProfileStack.router.getStateForAction;
 ProfileStack.router = {
   ...ProfileStack.router,
@@ -41,3 +39,4 @@ ProfileStack.router = {
     return prevGetStateForActionProfileStack(action, state);
   },
 };
+*/
