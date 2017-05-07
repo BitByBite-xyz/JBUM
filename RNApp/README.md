@@ -1,7 +1,8 @@
 # TODO
-- fix login
-- add more jbum components (components and routes)
-- fully transfer to [react-navigation](https://reactnavigation.org)
+
+- add more jbum components 
+- add all to forms and verifyforms 
+- backend implementation to forms
 - document code more
 
 # USEFUL IMPORTS FOR CODE REUSE :) (LOOK IN WIKI)
