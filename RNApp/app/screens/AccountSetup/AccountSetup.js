@@ -56,6 +56,8 @@ stylesheet.textbox.error.marginBottom = 5;
 stylesheet.controlLabel.normal.color = '#FFFFFF';
 stylesheet.textboxView.normal.borderColor = '#FFFFFF';
 stylesheet.pickerContainer.normal.borderColor = '#FFFFFF';
+stylesheet.select.normal.backgroundColor = '#FFFFFF';
+stylesheet.pickerTouchable.active.borderColor = '#FFFFFF';
 
 
 t.Number.getValidationErrorMessage = function (value, path, context) {

@@ -10,6 +10,12 @@ export default StyleSheet.create({
     padding: 40,
     backgroundColor: colors.inputBackground,
     borderRadius: 20,
+    width: DEVICE_WIDTH - 20,
+
+    justifyContent: 'center',
+  //  alignItems: 'center',
+    marginHorizontal: 10,
+    paddingLeft: 45,
   },
   buttons: {
 
