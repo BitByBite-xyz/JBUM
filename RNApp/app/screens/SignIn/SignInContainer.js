@@ -62,7 +62,7 @@ class SignInContainer extends Component {
   }
 
   handleSignIn() {
-    this.props.navigation.navigate('AccountSetup');
+    this.props.navigation.navigate('Tabs');
 
     if (this.validInput(true)) {
       const { email, password } = this.state;

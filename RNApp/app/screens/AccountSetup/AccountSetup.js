@@ -95,6 +95,7 @@ var Form = t.form.Form; //docs :https://github.com/gcanti/tcomb-form-native#setu
 
       <View style={styles.buttons}>
         <Button
+          large
           icon={{name: 'chevron-right',buttonStyle: styles.buttons}}
           backgroundColor={'transparent'}
           onPress={this.next}

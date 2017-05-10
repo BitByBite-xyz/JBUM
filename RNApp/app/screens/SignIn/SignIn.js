@@ -78,6 +78,7 @@ const SignIn = (props) => {
     >
       <View style={styles.buttons}>
         <Button
+          large
           title='Sign In'
           icon={{name: 'fingerprint'}}
           backgroundColor={colors.buttonBackground}
