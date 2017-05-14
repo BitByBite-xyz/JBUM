@@ -20,7 +20,7 @@ class Debug extends Component {
 
   _onPress() {
 
-    this.props.navigation.navigate('AccountSetup');
+  //  this.props.navigation.navigate('AccountSetup');
 
 
   }
