@@ -7,7 +7,7 @@ const Settings = (props) => {
   return (
     <View style={styles.container}>
       <Text style={styles.main}>
-        Home
+        Settings
       </Text>
       <Button
         text="Details"

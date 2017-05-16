@@ -7,7 +7,7 @@ const Proflie = (props) => {
   return (
     <View style={styles.container}>
       <Text style={styles.main}>
-        Home
+        Profile
       </Text>
       <Button
         text="Details"

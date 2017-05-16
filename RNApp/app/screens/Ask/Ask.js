@@ -7,7 +7,7 @@ const Ask = (props) => {
   return (
     <View style={styles.container}>
       <Text style={styles.main}>
-        Home
+        Ask
       </Text>
       <Button
         text="Details"
