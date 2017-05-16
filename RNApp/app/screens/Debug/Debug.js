@@ -9,44 +9,64 @@ import {Button } from 'react-native-elements';
 
 import { LayoutAnimation } from 'react-native';
 
-class Debug extends Component {
-  constructor() {
-		super();
+const Debug = (props) => {
 
-
-		this._onPress = this._onPress.bind(this);
-	}
-
-
-  _onPress() {
-
-  //  this.props.navigation.navigate('AccountSetup');
-
-
-  }
+		const { toAccountSetup, toAsk, toSettings} = props;
 
 
 
- render() {
+
+
    return (
      <View style={styles.container}>
+
        <Button
          title='To AccountSetup Screen'
          large
          borderRadius={20}
-         icon={{name: 'assignment',buttonStyle: styles.buttons}}
+         icon={{name: 'poll',buttonStyle: styles.buttons}}
          backgroundColor={'red'}
-         onPress={this._onPress()}
+         onPress={toAccountSetup}
          fontFamily= 'Avenir'
          fontSize={25}
          fontWeight='bold'
          iconRight={true}
-
        />
+       <Button
+         title='To Ask Screen'
+         large
+         borderRadius={20}
+         icon={{name: 'pages',buttonStyle: styles.buttons}}
+         backgroundColor={'blue'}
+         onPress={toAsk}
+         fontFamily= 'Avenir'
+         fontSize={25}
+         fontWeight='bold'
+         iconRight={true}
+       />
+       <Button
+         title='To Settings Screen'
+         large
+         borderRadius={20}
+         icon={{name: 'pages',buttonStyle: styles.buttons}}
+         backgroundColor={'purple'}
+         onPress={toSettings}
+         fontFamily= 'Avenir'
+         fontSize={25}
+         fontWeight='bold'
+         iconRight={true}
+       />
+
      </View>
 
    );
- }
+
 }
+
+Debug.propTypes = {
+  toAccountSetup: React.PropTypes.func,
+  toAsk: React.PropTypes.func,
+  toSettings: React.PropTypes.func,
+};
 
 export default Debug;

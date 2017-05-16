@@ -75,7 +75,7 @@ class SignInContainer extends Component {
   }
 
   handleCreateAccount() {
-    this.props.navigation.navigate('Setup');
+    //this.props.navigation.navigate('Setup');
     const { email, password, confirmPasswordVisible } = this.state;
 
     var CustomLayoutSpring = {

@@ -1,3 +1,8 @@
 import Debug from './Debug';
+import DebugContainer from './DebugContainer';
 
-export default Debug;
+
+
+
+export { Debug };
+export default DebugContainer;

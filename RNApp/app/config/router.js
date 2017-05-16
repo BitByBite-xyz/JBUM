@@ -6,6 +6,10 @@ import SignIn from '../screens/SignIn';
 import Debug from '../screens/Debug';
 import AccountSetup from '../screens/AccountSetup';
 import Home from '../screens/Home';
+import Profile from '../screens/Profile';
+import Ask from '../screens/Ask';
+import Settings from '../screens/Settings';
+
 
 
 /*
@@ -27,13 +31,27 @@ This is the only navigation I have but every time a screen is added we add to th
        ),
      },
    },
-   Account: {
+   Debug: {
      screen: Debug,
      navigationOptions: {
        tabBarLabel: 'Hacks',
        tabBarIcon: ({ tintColor }) => (
          <Icon
            name="build"
+           color={tintColor}
+           size={28}
+         />
+
+       ),
+     },
+   },
+   Profile: {
+     screen: Profile,
+     navigationOptions: {
+       tabBarLabel: 'Profile',
+       tabBarIcon: ({ tintColor }) => (
+         <Icon
+           name="face"
            color={tintColor}
            size={28}
          />
@@ -50,13 +68,21 @@ This is the only navigation I have but every time a screen is added we add to th
      screen: SignIn,
      navigationOptions : { title: 'Login', header: null },
    },
+   Tabs: {
+     screen: Tabs,
+     navigationOptions: {title: 'Tabs', header: null},
+   },
    AccountSetup: {
      screen: AccountSetup,
      navigationOptions: {title: 'Account Setup', header: null},
    },
-   Tabs: {
-     screen: Tabs,
-     navigationOptions: {title: 'Tabs', header: null},
+   Ask: {
+     screen: Ask,
+     navigationOptions : { title: 'Ask', header: null },
+   },
+   Settings: {
+     screen: Settings,
+     navigationOptions: {title: 'Settings', header: null},
    },}, {
    headerMode: 'screen',
    visible: false
