@@ -8,6 +8,8 @@ const images = {
   usernameImg: require('../images/username.png'),
   passwordImg: require('../images/password.png'),
   genderImg: require('../images/Gender.png'),
+  profileBannerImg: require('../images/header-image.png'),
+
 }
 
 export default images;
