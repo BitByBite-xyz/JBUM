@@ -11,7 +11,7 @@ const Ask = (props) => {
     <View style={styles.container}>
       <ScrollableTabView style={styles.page}>
           <AskPage styles={styles.page} tabLabel={'Ask'} />
-          <AnswerPage style={styles.page} tabLabel={'Answer'} />
+           <AnswerPage style={styles.page} tabLabel={'Answer'} />
       </ScrollableTabView>
     </View>
   );
