@@ -6,7 +6,7 @@ meteor stuff and app logic w RN stuff
  */
 
 import React, { Component } from 'react';
-
+import { LayoutAnimation } from 'react-native';
 import Meteor, { Accounts } from 'react-native-meteor';
 
 import SignIn from './SignIn';
