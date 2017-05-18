@@ -37,7 +37,7 @@ export default StyleSheet.create({
     color: 'white',
     fontFamily: 'Avenir-Light',
     fontSize: 26,
-    backgroundColor: 'transparent',  
+    backgroundColor: 'transparent',
   },
   textBold: {
     color: 'white',

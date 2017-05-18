@@ -78,9 +78,7 @@ const SignIn = (props) => {
     >
       <View style={styles.buttons}>
         <Button
-          large
           title='LOGIN'
-          //icon={{name: 'fingerprint'}}
           backgroundColor={colors.buttonBackground}
           borderRadius={20}
           onPress={signIn}
@@ -88,8 +86,18 @@ const SignIn = (props) => {
           fontFamily= 'Avenir'
           fontSize={17}
           fontWeight='bold'
-        //  iconRight={true}
+          iconRight={true}
         />
+        <Button
+          title='CREATE ACCOUNT'
+          backgroundColor={colors.buttonBackground}
+          borderRadius={20}
+          onPress={createAccount}
+          fontFamily= 'Avenir'
+          fontSize={17}
+          fontWeight='bold'
+        />
+
 
       </View>
     </FadeInView>
