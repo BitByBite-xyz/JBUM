@@ -63,10 +63,10 @@ const options = {
 			label: 'What is your living relationship with parents?'
 		},
 		siblings: {
-			label: 'Do you have siblins?'
+			label: 'Do you have siblings?'
 		},
 		age: {
-			label: 'What is your age relationship with siblins?'
+			label: 'What is your age relationship with siblings?'
 		}
 	},
 };

@@ -12,15 +12,12 @@ class ProfileContainer extends Component {
 
   constructor(props) {
     super(props);
-
-		var ScrollableTabView = require('react-native-scrollable-tab-view');
-
     this.state = ({
         QuestionNumber: '21',
           AnsweredNumber: '12',
           Karma: '84',
           Level: '7',
-    Name: 'Christine Sanchez'
+    			Name: 'Christine Sanchez'
     });
   }
 
@@ -31,6 +28,7 @@ class ProfileContainer extends Component {
         updateState={this.setState.bind(this)}
         {...this.state}
       />
+
     );
   }
 }

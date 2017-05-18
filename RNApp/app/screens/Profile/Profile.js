@@ -4,15 +4,17 @@ import {
 	View,
 	Text,
 	Image,
+	ScrollView,
 } from 'react-native';
 import * as Progress from 'react-native-progress';
 
-import ParallaxScrollView from 'react-native-parallax-scroll-view';
+import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-view';
 
 import Button from '../../components/Button';
 import styles from './styles';
 import Wallpaper from '../../components/Wallpaper';
 import images from '../../config/images';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 
 
@@ -56,6 +58,15 @@ const Proflie = (props) => {
                   />
               </View>
         </Image>
+				<ScrollableTabView
+						renderTabBar={()=><DefaultTabBar backgroundColor='rgba(255, 255, 255, 0.7)' />}
+					tabBarPosition='overlayTop'
+						>
+							<Text tabLabel='Tab #1'>My</Text>
+							<Text tabLabel='Tab #2'>favorite</Text>
+							<Text tabLabel='Tab #3'>project</Text>
+
+						</ScrollableTabView>
     </View>
 
 

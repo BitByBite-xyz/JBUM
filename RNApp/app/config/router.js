@@ -53,7 +53,6 @@ This is the only navigation I have but every time a screen is added we add to th
    swipeEnabled: false,
    tabBarPosition: 'bottom',
    animationEnabled: true,
-
  });
  export const ProfileStack = StackNavigator({
    SignIn: {
