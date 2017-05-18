@@ -8,7 +8,7 @@ Meteor.connect(settings.METEOR_URL);
 
 const RNApp = (props) => {
   const { status, user, loggingIn } = props;
-/*
+  /*
   if (status.connected === false || loggingIn) {
     return <Loading />;
   } else if (user !== null) {

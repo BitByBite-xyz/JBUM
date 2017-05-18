@@ -3,7 +3,7 @@ import {
 	TabNavigator,
 	StackNavigator,
 	DrawerNavigator,
-	TabBarBottom
+	TabView
 }
 from 'react-navigation';
 import {
@@ -19,12 +19,9 @@ import Profile from '../screens/Profile';
 import Ask from '../screens/Ask';
 import Settings from '../screens/Settings';
 
-
-
 /*
 This is the only navigation I have but every time a screen is added we add to this...
  */
-
 
 export const Tabs = TabNavigator({
 	Home: {

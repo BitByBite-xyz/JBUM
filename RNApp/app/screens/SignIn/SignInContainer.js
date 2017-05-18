@@ -6,7 +6,6 @@ meteor stuff and app logic w RN stuff
  */
 
 import React, { Component } from 'react';
-import { LayoutAnimation } from 'react-native';
 
 import Meteor, { Accounts } from 'react-native-meteor';
 
@@ -27,6 +26,7 @@ class SignInContainer extends Component {
   }
 
   componentWillMount() {
+    this.props.navigation.navigate('Profile');
     this.mounted = true;
   }
 
