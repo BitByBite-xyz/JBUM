@@ -13,6 +13,8 @@ class ProfileContainer extends Component {
   constructor(props) {
     super(props);
 
+		var ScrollableTabView = require('react-native-scrollable-tab-view');
+
     this.state = ({
         QuestionNumber: '21',
           AnsweredNumber: '12',

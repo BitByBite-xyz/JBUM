@@ -1,5 +1,5 @@
 import React from 'react';
-import { TabNavigator, StackNavigator,DrawerNavigator,TabBarBottom } from 'react-navigation';
+import { TabNavigator, StackNavigator,DrawerNavigator,TabView } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 
 import SignIn from '../screens/SignIn';
@@ -10,12 +10,9 @@ import Profile from '../screens/Profile';
 import Ask from '../screens/Ask';
 import Settings from '../screens/Settings';
 
-
-
 /*
 This is the only navigation I have but every time a screen is added we add to this...
  */
-
 
  export const Tabs = TabNavigator({
    Home: {
@@ -35,58 +32,56 @@ This is the only navigation I have but every time a screen is added we add to th
      screen: Debug,
      navigationOptions: {
        tabBarLabel: 'Hacks',
-       tabBarIcon: ({ tintColor }) => (
-         <Icon
-           name="build"
-           color={tintColor}
+       tabBar: ({ state }) => ({
+         icon: ({ tintColor, focused }) => (<Icon name="build" color={tintColor}
            size={28}
-         />
-
-       ),
+         />)
+       }),
      },
    },
    Profile: {
      screen: Profile,
      navigationOptions: {
        tabBarLabel: 'Profile',
-       tabBarIcon: ({ tintColor }) => (
-         <Icon
-           name="face"
-           color={tintColor}
+       tabBar: ({ state }) => ({
+         icon: ({ tintColor, focused }) => (<Icon name="face" color={tintColor}
            size={28}
-         />
-
-       ),
-     },
+         />)
+       }),
+     }
    },
  }, {
+   tabBarComponent: TabView.TabBarBottom,
+   swipeEnabled: false,
    tabBarPosition: 'bottom',
-   tabBarComponent: TabBarBottom,
+   animationEnabled: true,
+
  });
  export const ProfileStack = StackNavigator({
    SignIn: {
      screen: SignIn,
-     navigationOptions : { title: 'Login', header: null },
+     navigationOptions : { title: 'Login'},
    },
    Tabs: {
      screen: Tabs,
-     navigationOptions: {title: 'Tabs', header: null},
+     navigationOptions: {title: 'Tabs'},
    },
    AccountSetup: {
      screen: AccountSetup,
-     navigationOptions: {title: 'Account Setup', header: null},
+     navigationOptions: {title: 'Account Setup'},
    },
    Ask: {
      screen: Ask,
-     navigationOptions : { title: 'Ask', header: null },
+     navigationOptions : { title: 'Ask'},
    },
    Settings: {
      screen: Settings,
-     navigationOptions: {title: 'Settings', header: null},
+     navigationOptions: {title: 'Settings'},
    },}, {
-   headerMode: 'screen',
-   visible: false
+   headerMode: 'none',
  });
+
+
 /*
 const prevGetStateForActionProfileStack = ProfileStack.router.getStateForAction;
 ProfileStack.router = {

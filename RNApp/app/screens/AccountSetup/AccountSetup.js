@@ -25,6 +25,7 @@ var Person = t.struct({ //add here to add to the form
   gender_identity: t.enums({
     M: 'Male',
     F: 'Female',
+    S: 'Non Bianary Apache Helicopter',
     O: 'Prefer not to answer',
   }),
   sexual_orientation: t.enums({

@@ -15,6 +15,9 @@ import Wallpaper from '../../components/Wallpaper';
 import images from '../../config/images';
 
 
+
+
+
 const Proflie = (props) => {
   const { QuestionNumber, AnsweredNumber, Karma, Level,Name } = props;
 
