@@ -78,7 +78,6 @@ const SignIn = (props) => {
     >
       <View style={styles.buttons}>
         <Button
-
           title='LOGIN'
           backgroundColor={colors.buttonBackground}
           borderRadius={20}
@@ -90,7 +89,6 @@ const SignIn = (props) => {
           iconRight={true}
         />
         <Button
-
           title='CREATE ACCOUNT'
           backgroundColor={colors.buttonBackground}
           borderRadius={20}

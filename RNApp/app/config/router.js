@@ -19,13 +19,11 @@ This is the only navigation I have but every time a screen is added we add to th
      screen: Home,
      navigationOptions: {
        tabBarLabel: 'Home',
-       tabBarIcon: ({ tintColor }) => (
-         <Icon
-           name="home"
-           color={tintColor}
+       tabBar: ({ state }) => ({
+         icon: ({ tintColor, focused }) => (<Icon name="home" color={tintColor}
            size={28}
-         />
-       ),
+         />)
+       }),
      },
    },
    Debug: {
