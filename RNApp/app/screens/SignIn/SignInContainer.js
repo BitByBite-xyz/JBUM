@@ -26,7 +26,7 @@ class SignInContainer extends Component {
   }
 
   componentWillMount() {
-    this.props.navigation.navigate('Settings');
+    this.props.navigation.navigate('Tabs');
     this.mounted = true;
   }
 

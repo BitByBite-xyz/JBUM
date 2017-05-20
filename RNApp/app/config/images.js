@@ -9,6 +9,9 @@ const images = {
   passwordImg: require('../images/password.png'),
   genderImg: require('../images/Gender.png'),
   profileBannerImg: require('../images/header-image.png'),
+  up: require('../images/ArrowUp.png'),
+  down: require('../images/ArrowDown.png'),
+  questionBox: require('../images/questionBox.png')
 
 }
 

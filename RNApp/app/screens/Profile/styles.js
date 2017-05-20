@@ -58,5 +58,16 @@ export default StyleSheet.create({
 	    justifyContent: 'center',
 	    alignItems: 'center',
 		paddingBottom: 23
-  	}
+  },
+    questions: {
+        flex: 1,
+        backgroundColor: '#e5e5e5',
+        paddingTop: 0,
+        paddingBottom: 50,
+        height: 370
+    },
+    bottomSpace:{
+        height: 15,
+        width: 1,
+    }
 });

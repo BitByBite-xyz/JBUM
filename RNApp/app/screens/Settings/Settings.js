@@ -4,7 +4,7 @@ import Button from '../../components/Button';
 import styles from './styles';
 
 import SettingsList from 'react-native-settings-list';
-
+//https://github.com/evetstech/react-native-settings-list?files=1#usage
 
 const Settings = (props) => {
   const { switchValue } = props;
