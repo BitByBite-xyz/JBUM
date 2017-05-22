@@ -18,45 +18,26 @@ export default class AnswerPage extends Component {
   }
   render() {
       return (
+
         <View style={styles.backdrop}>
           <View style={styles.dropdown}>
-            <View style={styles.selectors}>
-              <View style={styles.plsWork}>
-                <ModalDropdown textStyle={styles.selectorText} defaultValue={'Categories  ∨'} options={['Crippling Depression', 'Osteoperosis']} />
-              </View>
-            </View>
-          <View style={styles.selectors}>
-            <View style={styles.plsWork}>
-              <ModalDropdown textStyle={styles.selectorText} defaultValue={'Receiver  ∨'} options={['Edups', 'dade', 'kysFag', 'nigger', 'sandNigger']} />
-            </View>
-          </View>
-          <View>
-            <TouchableOpacity activeOpacity={0.4} onPress={this.onPressButton}>
-              <View style={styles.plsWork}>
-                <Text style={styles.addTags}>Add Tags</Text>
-              </View>
-            </TouchableOpacity>
-          </View>
+
+
         </View>
 
         <View style={styles.bottomBox}>
           <View style={styles.bottom}>
-            <View style={styles.views}>
-              <TextInput
-                  style={styles.smallText}
-                  placeholder='Question Title'
-                  returnKeyType='next'
-                  placeholderTextColor='#BABABA'
-                  underlineColorAndroid='transparent' />
-            </View>
+
             <View style={styles.views}>
               <TextInput
                   style={styles.largeText}
-                  placeholder='Description'
+                  placeholder='Answer Question Here...'
                   returnKeyType='next'
                   placeholderTextColor='#BABABA'
                   underlineColorAndroid='transparent'
-                  multiline={true} />
+                  multiline={true}
+                  autoCorrect={false}
+                   />
               </View>
             <View style={styles.button}>
               <Button color={'#BABABA'} title={'Ask Question'} onPress={this.onPressButton} />
@@ -100,10 +81,10 @@ const styles = {
     views: {
         paddingTop: 15,
         paddingLeft: 12,
-        paddingRight: 12,
+        paddingRight: 23,
         //Also padding-bottom can be added too
         // This can be changed to add a divider between the boxes; change to E5E5E5
-        borderBottomColor: 'white',
+        borderBottomColor: '#E5E5E5',
         borderBottomWidth: 1,
     },
     button: {
@@ -123,11 +104,12 @@ const styles = {
     },
     largeText: {
         height: 300,
-        backgroundColor: '#E5E5E5',
-        borderWidth: 2,
-        borderColor: '#E5E5E5',
-        borderRadius: 5,
-        paddingLeft: 25,
+        backgroundColor: 'white',
+        //borderWidth: 2,
+        //borderColor: '#E5E5E5',
+        //borderRadius: 5,
+        color: '#BABABA',
+        paddingLeft: 15,
         fontSize: 15
     },
     dropdown: {
