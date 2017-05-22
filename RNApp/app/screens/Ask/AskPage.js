@@ -46,7 +46,9 @@ export default class AskPage extends Component {
                   placeholder='Question Title'
                   returnKeyType='next'
                   placeholderTextColor='#BABABA'
-                  underlineColorAndroid='transparent' />
+                  underlineColorAndroid='transparent'
+                  autoCorrect={false}
+                  />
                   <View style={styles.line}/>
             </View>
             <View style={styles.views}>
@@ -56,7 +58,9 @@ export default class AskPage extends Component {
                   returnKeyType='next'
                   placeholderTextColor='#BABABA'
                   underlineColorAndroid='transparent'
-                  multiline={true} />
+                  multiline={true}
+                  autoCorrect={false}
+                  />
               </View>
             <View style={styles.button}>
               <Button color={'#BABABA'} title={'Ask Question'} onPress={this.onPressButton} />
@@ -120,6 +124,8 @@ const styles = {
     largeText: {
         height: 300,
         color: '#BABABA',
+        paddingLeft: 10,
+        paddingRight: 10,
         fontSize: 15
     },
     dropdown: {
