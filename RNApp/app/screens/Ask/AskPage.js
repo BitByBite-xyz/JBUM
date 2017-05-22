@@ -47,6 +47,7 @@ export default class AskPage extends Component {
                   returnKeyType='next'
                   placeholderTextColor='#BABABA'
                   underlineColorAndroid='transparent' />
+                  <View style={styles.line}/>
             </View>
             <View style={styles.views}>
               <TextInput
@@ -102,31 +103,23 @@ const styles = {
         paddingRight: 12,
         //Also padding-bottom can be added too
         // This can be changed to add a divider between the boxes; change to E5E5E5
-        borderBottomColor: 'white',
+        borderBottomColor: '#E5E5E5',
         borderBottomWidth: 1,
     },
+
     button: {
         paddingBottom: 10,
         paddingTop: 15
     },
     smallText: {
         height: 50,
-        backgroundColor: '#E5E5E5',
-        borderWidth: 2,
-        borderColor: '#E5E5E5',
-        borderRadius: 5,
-        paddingRight: 25,
-        paddingLeft: 25,
+        color: '#BABABA',
         textAlign: 'center',
 
     },
     largeText: {
         height: 300,
-        backgroundColor: '#E5E5E5',
-        borderWidth: 2,
-        borderColor: '#E5E5E5',
-        borderRadius: 5,
-        paddingLeft: 25,
+        color: '#BABABA',
         fontSize: 15
     },
     dropdown: {
