@@ -49,7 +49,7 @@ export default class AskPage extends Component {
                   underlineColorAndroid='transparent'
                   autoCorrect={false}
                   />
-                  <View style={styles.line}/>
+                  <View style={styles.lineDivider} />
             </View>
             <View style={styles.views}>
               <TextInput
@@ -63,6 +63,7 @@ export default class AskPage extends Component {
                   />
               </View>
             <View style={styles.button}>
+            <View style={styles.lineDivider}/>
               <Button color={'#BABABA'} title={'Ask Question'} onPress={this.onPressButton} />
             </View>
           </View>
@@ -107,13 +108,13 @@ const styles = {
         paddingRight: 12,
         //Also padding-bottom can be added too
         // This can be changed to add a divider between the boxes; change to E5E5E5
-        borderBottomColor: '#E5E5E5',
-        borderBottomWidth: 1,
+
     },
 
     button: {
         paddingBottom: 10,
-        paddingTop: 15
+        paddingTop: 15,
+        paddingLeft: 20
     },
     smallText: {
         height: 50,
@@ -127,6 +128,15 @@ const styles = {
         paddingLeft: 10,
         paddingRight: 10,
         fontSize: 15
+    },
+    lineDivider: {
+      width: 320,
+      color: '#BABABA',
+      borderTopColor: '#BABABA',
+      borderTopWidth: .5,
+      paddingLeft: 10,
+      paddingRight: 10,
+      fontSize: 15
     },
     dropdown: {
         justifyContent: 'center',
