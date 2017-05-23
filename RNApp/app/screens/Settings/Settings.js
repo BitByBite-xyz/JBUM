@@ -16,59 +16,64 @@ const Settings = (props) => {
           </View>
           <View style={{backgroundColor:'#EFEFF4',flex:1}}>
             <SettingsList borderColor='#c8c7cc' defaultItemSize={50}>
-              <SettingsList.Header headerStyle={{marginTop:15}}/>
+              <SettingsList.Header headerStyle={{marginTop:0}}/>
               <SettingsList.Item
                 hasSwitch={true}
                 switchState={switchValue}
                 switchOnValueChange={this.onValueChange}
                 hasNavArrow={false}
-                title='Airplane Mode'
-              />
-              <SettingsList.Item
-                title='Wi-Fi'
-                titleInfo='Bill Wi The Science Fi'
-                titleInfoStyle={styles.titleInfoStyle}
-                onPress={() => Alert.alert('Route to Wifi Page')}
-              />
-              <SettingsList.Item
-                title='Blutooth'
-                titleInfo='Off'
-                titleInfoStyle={styles.titleInfoStyle}
-                onPress={() => Alert.alert('Route to Blutooth Page')}
-              />
-              <SettingsList.Item
-                title='Cellular'
-                onPress={() => Alert.alert('Route To Cellular Page')}
-              />
-              <SettingsList.Item
-                title='Personal Hotspot'
-                titleInfo='Off'
-                titleInfoStyle={styles.titleInfoStyle}
-                onPress={() => Alert.alert('Route To Hotspot Page')}
-              />
-              <SettingsList.Header headerStyle={{marginTop:15}}/>
-              <SettingsList.Item
                 title='Notifications'
+              />
+              <SettingsList.Header headerStyle={{marginTop:10}}/>
+              <SettingsList.Item
+                title='Account Pin'
+                titleInfo='3245'
                 onPress={() => Alert.alert('Route To Notifications Page')}
               />
+
+              <SettingsList.Header headerText='SUPPORT' headerStyle={{color:'gray', marginTop:15}}/>
               <SettingsList.Item
-                title='Control Center'
-                onPress={() => Alert.alert('Route To Control Center Page')}
-              />
-              <SettingsList.Item
-                title='Do Not Disturb'
-                onPress={() => Alert.alert('Route To Do Not Disturb Page')}
-              />
-              <SettingsList.Header headerStyle={{marginTop:15}}/>
-              <SettingsList.Item
-                title='General'
+                title='Help Center'
                 onPress={() => Alert.alert('Route To General Page')}
               />
               <SettingsList.Item
-                title='Display & Brightness'
+                title='Report a Problem'
                 onPress={() => Alert.alert('Route To Display Page')}
               />
+
+              <SettingsList.Header headerText='ABOUT' headerStyle={{color:'gray', marginTop:15}}/>
+              <SettingsList.Item
+                title='Privacy Policy'
+                onPress={() => Alert.alert('Route To General Page')}
+              />
+              <SettingsList.Item
+                title='Terms'
+                onPress={() => Alert.alert('Route To Display Page')}
+              />
+              <SettingsList.Item
+                title='Website'
+                onPress={() => Alert.alert('Route To Display Page')}
+              />
+
+              <SettingsList.Header headerStyle={{marginTop:10}}/>
+              <SettingsList.Item
+                title='Change Password'
+                titleStyle={{color:'#000080', fontSize: 16}}
+                onPress={() => Alert.alert('Route To General Page')}
+              />
+              <SettingsList.Item
+                title='Delete Account'
+                titleStyle={{color:'#000080', fontSize: 16}}
+                onPress={() => Alert.alert('Route To Display Page')}
+              />
+              <SettingsList.Item
+                title='Log Out'
+                titleStyle={{color:'#000080', fontSize: 16}}
+                onPress={() => Alert.alert('Route To Display Page')}
+              />
+
             </SettingsList>
+
           </View>
         </View>
   );
