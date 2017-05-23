@@ -28,6 +28,7 @@ const Settings = (props) => {
               <SettingsList.Item
                 title='Account Pin'
                 titleInfo='3245'
+                hasNavArrow={false}
                 onPress={() => Alert.alert('Route To Notifications Page')}
               />
 
@@ -58,17 +59,17 @@ const Settings = (props) => {
               <SettingsList.Header headerStyle={{marginTop:10}}/>
               <SettingsList.Item
                 title='Change Password'
-                titleStyle={{color:'#000080', fontSize: 16}}
+                titleStyle={{color:'#020C7E', fontSize: 16}}
                 onPress={() => Alert.alert('Route To General Page')}
               />
               <SettingsList.Item
                 title='Delete Account'
-                titleStyle={{color:'#000080', fontSize: 16}}
+                titleStyle={{color:'#020C7E', fontSize: 16}}
                 onPress={() => Alert.alert('Route To Display Page')}
               />
               <SettingsList.Item
                 title='Log Out'
-                titleStyle={{color:'#000080', fontSize: 16}}
+                titleStyle={{color:'#020C7E', fontSize: 16}}
                 onPress={() => Alert.alert('Route To Display Page')}
               />
 
