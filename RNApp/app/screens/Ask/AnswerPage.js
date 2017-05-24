@@ -40,6 +40,7 @@ export default class AnswerPage extends Component {
                    />
               </View>
             <View style={styles.button}>
+            <View style={styles.lineDivider}/>
               <Button color={'#BABABA'} title={'Ask Question'} onPress={this.onPressButton} />
             </View>
           </View>
@@ -72,6 +73,7 @@ const styles = {
     bottom: {
         backgroundColor: 'white',
         borderRadius: 5,
+        paddingLeft: 20
     },
     bottomBox: {
         paddingLeft: 10,
@@ -84,12 +86,19 @@ const styles = {
         paddingRight: 23,
         //Also padding-bottom can be added too
         // This can be changed to add a divider between the boxes; change to E5E5E5
-        borderBottomColor: '#E5E5E5',
-        borderBottomWidth: 1,
     },
     button: {
         paddingBottom: 10,
         paddingTop: 15
+    },
+    lineDivider: {
+      width: 320,
+      color: '#BABABA',
+      borderTopColor: '#BABABA',
+      borderTopWidth: .5,
+      paddingLeft: 10,
+      paddingRight: 10,
+      fontSize: 15
     },
     smallText: {
         height: 50,
