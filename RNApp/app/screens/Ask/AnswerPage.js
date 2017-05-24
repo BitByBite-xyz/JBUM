@@ -33,7 +33,7 @@ export default class AnswerPage extends Component {
                   style={styles.largeText}
                   placeholder='Answer Question Here...'
                   returnKeyType='next'
-                  placeholderTextColor='#BABABA'
+                  placeholderTextColor='#DBD9D9'
                   underlineColorAndroid='transparent'
                   multiline={true}
                   autoCorrect={false}
@@ -41,7 +41,7 @@ export default class AnswerPage extends Component {
               </View>
             <View style={styles.button}>
             <View style={styles.lineDivider}/>
-              <Button color={'#BABABA'} title={'Ask Question'} onPress={this.onPressButton} />
+              <Button color={'#BABABA'} title={'Answer Question'} onPress={this.onPressButton} />
             </View>
           </View>
         </View>
@@ -82,7 +82,6 @@ const styles = {
     },
     views: {
         paddingTop: 15,
-        paddingLeft: 12,
         paddingRight: 23,
         //Also padding-bottom can be added too
         // This can be changed to add a divider between the boxes; change to E5E5E5
@@ -94,7 +93,7 @@ const styles = {
     lineDivider: {
       width: 320,
       color: '#BABABA',
-      borderTopColor: '#BABABA',
+      borderTopColor: '#DBD9D9',
       borderTopWidth: .5,
       paddingLeft: 10,
       paddingRight: 10,
@@ -118,7 +117,6 @@ const styles = {
         //borderColor: '#E5E5E5',
         //borderRadius: 5,
         color: '#BABABA',
-        paddingLeft: 15,
         fontSize: 15
     },
     dropdown: {
