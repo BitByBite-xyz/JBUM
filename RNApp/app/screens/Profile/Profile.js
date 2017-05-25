@@ -5,6 +5,7 @@ import {
 	Text,
 	Image,
 	ScrollView,
+		FlatList ,
 } from 'react-native';
 import * as Progress from 'react-native-progress';
 
@@ -62,7 +63,10 @@ const Proflie = (props) => {
 						renderTabBar={()=><DefaultTabBar backgroundColor='rgba(255, 255, 255, 0.7)' />}
 					tabBarPosition='overlayTop'
 						>
-							<Text tabLabel='Tab #1'>My</Text>
+							<FlatList
+  data={[{key: 'a'}, {key: 'b'}]}
+  renderItem={({item}) => <Text>{item.key}</Text>}
+/>
 							<Text tabLabel='Tab #2'>favorite</Text>
 							<Text tabLabel='Tab #3'>project</Text>
 
