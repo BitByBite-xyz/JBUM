@@ -45,7 +45,7 @@ export default class AskPage extends Component {
                   style={styles.smallText}
                   placeholder='Question Title'
                   returnKeyType='next'
-                  placeholderTextColor='#BABABA'
+                  placeholderTextColor='#DBD9D9'
                   underlineColorAndroid='transparent'
                   autoCorrect={false}
                   />
@@ -54,9 +54,9 @@ export default class AskPage extends Component {
             <View style={styles.views}>
               <TextInput
                   style={styles.largeText}
-                  placeholder='Description'
+                  placeholder='Tell us your question...'
                   returnKeyType='next'
-                  placeholderTextColor='#BABABA'
+                  placeholderTextColor='#DBD9D9'
                   underlineColorAndroid='transparent'
                   multiline={true}
                   autoCorrect={false}
@@ -89,7 +89,7 @@ const styles = {
     },
     textBold: {
         color: 'black',
-        fontFamily: 'Avenir-Heavy',
+        fontFamily: 'Avenir',
         fontSize: 17,
         fontWeight: 'bold'
     },
@@ -114,12 +114,14 @@ const styles = {
     button: {
         paddingBottom: 10,
         paddingTop: 15,
-        paddingLeft: 20
+        paddingLeft: 17
     },
     smallText: {
         height: 50,
         color: '#BABABA',
         textAlign: 'center',
+        fontSize: 24,
+        fontFamily: 'Avenir-Book'
 
     },
     largeText: {
@@ -127,12 +129,14 @@ const styles = {
         color: '#BABABA',
         paddingLeft: 10,
         paddingRight: 10,
-        fontSize: 15
+        fontSize: 15,
+        fontFamily: 'Avenir',
+
     },
     lineDivider: {
       width: 320,
       color: '#BABABA',
-      borderTopColor: '#BABABA',
+      borderTopColor: '#DBD9D9',
       borderTopWidth: .5,
       paddingLeft: 10,
       paddingRight: 10,
