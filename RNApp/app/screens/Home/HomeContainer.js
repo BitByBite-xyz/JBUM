@@ -8,7 +8,7 @@ class HomeContainer extends Component {
   };
 
   componentWillMount() {
-    this.props.navigation.navigate('Profile');
+    //this.props.navigation.navigate('Profile');
     this.mounted = true;
   }
 

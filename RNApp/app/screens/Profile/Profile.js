@@ -5,11 +5,13 @@ import {
 	Text,
 	Image,
 	ScrollView,
-		FlatList ,
+	FlatList ,
 } from 'react-native';
 import * as Progress from 'react-native-progress';
 
 import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-view';
+import Panel from 'react-native-panel';
+
 
 import Button from '../../components/Button';
 import styles from './styles';

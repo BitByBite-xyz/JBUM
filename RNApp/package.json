@@ -19,6 +19,7 @@
     "react-native-fade-in-view": "^1.0.4",
     "react-native-gifted-listview": "0.0.15",
     "react-native-modal-dropdown": "^0.4.2",
+    "react-native-panel": "^1.0.3",
     "react-native-parallax-scroll-view": "^0.19.0",
     "react-native-progress": "^3.2.1",
     "react-native-scrollable-tab-view": "0.7.4",

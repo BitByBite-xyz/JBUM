@@ -2,17 +2,49 @@ import { StyleSheet } from 'react-native';
 import { colors } from '../../config/styles';
 
 export default StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: colors.background,
-  },
-  main: {
-    fontSize: 20,
-    textAlign: 'center',
-    color: colors.headerText,
-    fontWeight: '400',
-    fontStyle: 'italic',
-  },
+  contentContainerStyle: {
+      paddingTop: 30,
+      paddingBottom: 20,
+    },
+    container: {
+      flex: 1,
+      backgroundColor: '#eee',
+    },
+    firstHeaderContainer: {
+      backgroundColor: '#ccc',
+    },
+    firstHeader: {
+      marginHorizontal: 10,
+      backgroundColor: 'gray',
+      alignItems: 'center',
+      justifyContent: 'center',
+      borderRadius: 15,
+      height: 50,
+    },
+    thirdHeaderContainer: {
+      margin: 15,
+      backgroundColor: 'yellow',
+    },
+    myDescription: {
+      padding: 10,
+      paddingTop: 0,
+    },
+    customContent: {
+      backgroundColor: '#bada55',
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      alignItems: 'center',
+      paddingVertical: 10,
+    },
+    square: {
+      backgroundColor: 'yellow',
+      width: 50,
+      height: 50,
+    },
+    circle: {
+      backgroundColor: 'blue',
+      width: 50,
+      height: 50,
+      borderRadius: 25,
+    },
 });
