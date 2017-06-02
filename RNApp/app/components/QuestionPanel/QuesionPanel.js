@@ -1,12 +1,12 @@
 import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
-import styles from './styles';
 
+//https://github.com/dwicao/react-native-panel
 import Panel from 'react-native-panel';
-
+//https://github.com/dancormier/react-native-swipeout
 import Swipeout from 'react-native-swipeout';
 
-// Buttons
+import styles from './styles';
 
 
 const QuesionPanel = (props) => {
