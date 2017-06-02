@@ -13,7 +13,7 @@ export default StyleSheet.create({
     paddingTop: 0,
   },
   headerContainer: {
-    margin: 15,
-    backgroundColor: 'yellow',
+    margin: 5,
+    backgroundColor: 'white',
   },
 });

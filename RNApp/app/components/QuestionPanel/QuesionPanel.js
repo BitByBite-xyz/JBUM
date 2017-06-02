@@ -4,10 +4,29 @@ import styles from './styles';
 
 import Panel from 'react-native-panel';
 
+import Swipeout from 'react-native-swipeout';
+
+// Buttons
+
 
 const QuesionPanel = (props) => {
-  const { title, body } = props;
+  const { title, body,onPress } = props;
+
+  var swipeoutBtns = [
+    {
+      text: 'Report',
+      backgroundColor: 'red',
+      onPress: onPress
+    }
+  ]
   return (
+
+
+<Swipeout
+  right={swipeoutBtns}
+  backgroundColor='transparent'
+
+  >
     <Panel
       style={styles.headerContainer}
       header={title}
@@ -17,7 +36,9 @@ const QuesionPanel = (props) => {
         {body}
       </Text>
 
+
     </Panel>
+    </Swipeout>
   );
 };
 
