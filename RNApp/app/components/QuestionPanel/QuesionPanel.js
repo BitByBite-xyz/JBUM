@@ -22,23 +22,21 @@ const QuesionPanel = (props) => {
   return (
 
 
-<Swipeout
-  right={swipeoutBtns}
-  backgroundColor='transparent'
-
-  >
-    <Panel
-      style={styles.headerContainer}
-      header={title}
+  <Swipeout
+    right={swipeoutBtns}
+    backgroundColor='transparent'
     >
-
-      <Text style={styles.myDescription}>
-        {body}
-      </Text>
+      <Panel
+        style={styles.headerContainer}
+        header={title}
+      >
+        <Text style={styles.myDescription}>
+          {body}
+        </Text>
 
 
     </Panel>
-    </Swipeout>
+  </Swipeout>
   );
 };
 

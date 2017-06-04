@@ -16,13 +16,32 @@ export default StyleSheet.create({
     marginHorizontal: 10,
     paddingLeft: 45,
   },
-  buttons: {
+  wrapper: {
+},
+slide1: {
+  flex: 1,
+  justifyContent: 'center',
+  alignItems: 'center',
 
-    marginTop: 80,
-    flexDirection: 'row',
-    alignSelf: 'flex-end',
-
-  },
+  backgroundColor: '#9DD6EB',
+},
+slide2: {
+  flex: 1,
+  justifyContent: 'center',
+  alignItems: 'center',
+  backgroundColor: '#97CAE5',
+},
+slide3: {
+  flex: 1,
+  justifyContent: 'center',
+  alignItems: 'center',
+  backgroundColor: '#92BBD9',
+},
+text: {
+  color: '#fff',
+  fontSize: 30,
+  fontWeight: 'bold',
+}
 
 
 });
