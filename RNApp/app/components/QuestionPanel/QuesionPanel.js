@@ -29,12 +29,11 @@ const QuesionPanel = (props) => {
       <Panel
         style={styles.headerContainer}
         header={title}
+        onPress={onPress}
       >
         <Text style={styles.myDescription}>
           {body}
         </Text>
-
-
     </Panel>
   </Swipeout>
   );

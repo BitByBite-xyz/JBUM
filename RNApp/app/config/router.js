@@ -48,6 +48,17 @@ This is the only navigation I have but every time a screen is added we add to th
        }),
      }
    },
+   Settings: {
+     screen: Settings,
+     navigationOptions: {
+       tabBarLabel: 'Settings',
+       tabBar: ({ state }) => ({
+         icon: ({ tintColor, focused }) => (<Icon name="settings" color={tintColor}
+           size={28}
+         />)
+       }),
+     },
+   },
  }, {
    tabBarComponent: TabView.TabBarBottom,
    swipeEnabled: false,

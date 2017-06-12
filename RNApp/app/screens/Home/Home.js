@@ -5,13 +5,19 @@ import {
   View,
   ScrollView,
 } from 'react-native';
-import Panel from 'react-native-panel';
+
+import Meteor, { MeteorListView } from 'react-native-meteor';
+
+
 import styles from './styles';
 
 import QuestionPanel from '../../components/QuestionPanel';
 
 
 const Home = (props) => {
+  const { getMeteorData, renderRow} = props;
+
+
   return (
     <ScrollView
             style={styles.container}
@@ -47,42 +53,8 @@ const Home = (props) => {
             cupidatat non proident, sunt in culpa qui
             officia deserunt mollit anim id est laborum.'
       />
-      <QuestionPanel
-        title="t dolore magna aliqua.
-        Ut enim adt dolore magna aliqua.
-        Ut enim ad"
-        body='Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit,
-            sed do eiusmod tempor incididunt ut
-            labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation
-            ullamco laboris nisi ut aliquip ex ea
-            commodo consequat. Duis aute irure dolor in reprehenderit
-            in voluptate velit esse cillum dolore eu
-            fugiat nulla pariatur. Excepteur sint occaecat
-            cupidatat non proident, sunt in culpa qui
-            officia deserunt mollit anim id est laborum.'
-      />
-      <QuestionPanel
-        title="Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit,
-            sed do eiusmod tempor incididunt ut
-            labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation
-            ullamco laboris nisi ut aliquip ex ea
-            commodo cons"
-        body='Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit,
-            sed do eiusmod tempor incididunt ut
-            labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation
-            ullamco laboris nisi ut aliquip ex ea
-            commodo consequat. Duis aute irure dolor in reprehenderit
-            in voluptate velit esse cillum dolore eu
-            fugiat nulla pariatur. Excepteur sint occaecat
-            cupidatat non proident, sunt in culpa qui
-            officia deserunt mollit anim id est laborum.'
-      />
+
+
 
     </ScrollView>
   );
@@ -90,6 +62,8 @@ const Home = (props) => {
 
 Home.propTypes = {
   onDetailsPress: React.PropTypes.func,
+  getMeteorData: React.PropTypes.func,
+  renderRow: React.PropTypes.func,
 };
 
 export default Home;
