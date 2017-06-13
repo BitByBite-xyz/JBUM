@@ -10,7 +10,11 @@ import {
 from 'react-native';
 
 import KeyboardSpacer from 'react-native-keyboard-spacer';
-import { Button, Icon} from 'react-native-elements'
+import {
+	Button,
+	Icon
+}
+from 'react-native-elements'
 import Swiper from 'react-native-swiper';
 
 import colors from '../../config/styles';
@@ -46,10 +50,10 @@ stylesheet.textbox.error.marginBottom = 5;
 stylesheet.formGroup.normal.flexDirection = 'column';
 stylesheet.formGroup.error.flexDirection = 'row';
 const options = {
-  stylesheet: stylesheet
+	stylesheet: stylesheet
 };
 
-var Person = t.struct({ //add here to add to the form
+let Person = t.struct({ //add here to add to the form
 	name: t.String,
 	age: Age,
 	gender_identity: t.enums({
@@ -66,26 +70,26 @@ var Person = t.struct({ //add here to add to the form
 	}),
 });
 
-var ethnicity = t.struct({
-    born: t.enums({
-        US: 'Born in the U.S.',
-        OUT: 'Born outisde the U.S.',
-        IMM: 'Migrated to the U.S'
-    }),
-    gen: t.enums({
-        first: 'Migrated to U.S.',
-        second: 'Born in U.S.',
-        third: 'Parents born in U.S.',
-        fourth: 'Grandparents+ born in U.S.'
-    }),
-    ethnic: t.enums({
-        same: 'Parents are same ethnicity',
-        mix: 'Mixed ethnicity',
-        dk: 'Don\t know'
-    })
+let Ethnicity = t.struct({
+	born: t.enums({
+		US: 'Born in the U.S.',
+		OUT: 'Born outisde the U.S.',
+		IMM: 'Migrated to the U.S'
+	}),
+	gen: t.enums({
+		first: 'Migrated to U.S.',
+		second: 'Born in U.S.',
+		third: 'Parents born in U.S.',
+		fourth: 'Grandparents+ born in U.S.'
+	}),
+	ethnic: t.enums({
+		same: 'Parents are same ethnicity',
+		mix: 'Mixed ethnicity',
+		dk: 'Don\t know'
+	})
 });
 
-var relationships = t.struct({
+let Relationships = t.struct({
 	parents: t.enums({
 		both: 'Live with both parents',
 		one: 'Live with one parents',
@@ -108,40 +112,61 @@ t.Number.getValidationErrorMessage = function(value, path, context) {
 	return 'bad number';
 };
 
+const options_p = {
+	fields: {
+		gender_identity: {
+			label: "Gender Identity"
+		},
+		sexual_orientation: {
+			label: "Sexual Orientation"
+		}
+	}
+};
+
+const options_e = {
+	fields: {
+		born: {
+			label: "Born"
+		},
+		gen: {
+			label: "Generation"
+		},
+		ethnic: {
+			label: "Ethnicity"
+		}
+	}
+};
+
 const AccountSetup = (props) => {
 	var Form = t.form.Form; //docs :https://github.com/gcanti/tcomb-form-native#setup
 	return (
-		<Swiper style={styles.wrapper} showsButtons={false}>
+		<View>
+			<Swiper style={styles.wrapper} showsButtons={false}>
 				<View style={styles.slide1}>
 					<Form
 						//ref="form"
 						type={Person}
-						options={options}
+						options={options_p}
 					/>
-        </View>
-
-        <View style={styles.slide2}>
-          <Text style={styles.text}>Beautiful</Text>
-        </View>
-        <View style={styles.slide3}>
-          <Text style={styles.text}>And simple</Text>
-        </View>
-      </Swiper>
+	        	</View>
+				<View style={styles.slide1}>
+					<Form
+						//ref="form"
+						type={Ethnicity}
+						options={options_e}
+					/>
+				</View>
+				<View style={styles.slide1}>
+					<Form
+						//ref="form"
+						type={Relationships}
+						//options={options_r}
+					/>
+	        	</View>
+			</Swiper>
+		</View>
 	);
 };
-
-const Ethnicity = (props) => {
-    return (
-        <Wallpaper>
-            <View style={styles.container}>
-                {}
-                <t.form.Form
-                    type={ethnicity}
-                />
-            </View>
-        </Wallpaper>
-    )
-}
 
 AccountSetup.propTypes = {
 	updateState: React.PropTypes.func,
