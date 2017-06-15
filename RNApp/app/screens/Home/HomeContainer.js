@@ -1,42 +1,26 @@
-import React, { Component } from 'react';
+import React, { PropTypes } from 'react';
 
-import Meteor from 'react-native-meteor';
+import Meteor, { createContainer } from 'react-native-meteor';
 
 
 import Home from './Home';
 
-class HomeContainer extends Component {
-  constructor(props) {
-    super(props);
-
-  };
-
-  componentWillMount() {
-    //this.props.navigation.navigate('Profile');
-    this.mounted = true;
-    Meteor.subscribe('postlist');
-  }
-
-  getMeteorData() {
-    return {
-      posts: Meteor.collection('postlist').findOne()
-    };
-  }
-
-  renderRow(postslist) {
-    return (
-      <Text>{posts-list.title}</Text>
-    );
-  }
-
-  render() {
-    return (
-      <Home
-        renderRow={this.renderRow.bind(this)}
-        getMeteorData={this.getMeteorData.bind(this)}
-        {...this.state}
-      />
+const HomeContainer = ({ posts }) => {
+  return (
+    <Home
+      posts={posts}
+    />
   );
-}};
+};
 
-export default HomeContainer;
+HomeContainer.propTypes = {
+  posts: PropTypes.array,
+};
+
+export default createContainer(() => {
+  const handle = Meteor.subscribe('posts-list');
+
+  return {
+    posts: Meteor.collection('posts').find(),
+  };
+}, HomeContainer);

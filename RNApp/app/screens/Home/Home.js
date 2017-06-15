@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PropTypes } from 'react';
 import {
   StyleSheet,
   Text,
@@ -15,7 +15,7 @@ import QuestionPanel from '../../components/QuestionPanel';
 
 
 const Home = (props) => {
-  const { getMeteorData, renderRow} = props;
+  const { posts } = props;
 
 
   return (
@@ -24,46 +24,23 @@ const Home = (props) => {
             contentContainerStyle={styles.contentContainerStyle}
     >
 
-      <QuestionPanel
-        title="Question title :)"
-        body='Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit,
-            sed do eiusmod tempor incididunt ut
-            labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation
-            ullamco laboris nisi ut aliquip ex ea
-            commodo consequat. Duis aute irure dolor in reprehenderit
-            in voluptate velit esse cillum dolore eu
-            fugiat nulla pariatur. Excepteur sint occaecat
-            cupidatat non proident, sunt in culpa qui
-            officia deserunt mollit anim id est laborum.'
-      />
-
-      <QuestionPanel
-        title="Question title :)"
-        body='Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit,
-            sed do eiusmod tempor incididunt ut
-            labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation
-            ullamco laboris nisi ut aliquip ex ea
-            commodo consequat. Duis aute irure dolor in reprehenderit
-            in voluptate velit esse cillum dolore eu
-            fugiat nulla pariatur. Excepteur sint occaecat
-            cupidatat non proident, sunt in culpa qui
-            officia deserunt mollit anim id est laborum.'
-      />
-
-
+      {posts.map((post) => (
+        <QuestionPanel
+          title={post.title}
+          body={post.body}
+        />
+      ))}
 
     </ScrollView>
   );
 };
 
 Home.propTypes = {
-  onDetailsPress: React.PropTypes.func,
-  getMeteorData: React.PropTypes.func,
-  renderRow: React.PropTypes.func,
+  posts: PropTypes.array,
+};
+
+Home.defaultProps = {
+  posts: [],
 };
 
 export default Home;
