@@ -12,7 +12,7 @@
     "gravatar-api": "^1.5.0",
     "moment": "^2.18.1",
     "react": "16.0.0-alpha.6",
-    "react-dom": "^15.5.4",
+    "react-dom": "^15.6.1",
     "react-native": "^0.44.3",
     "react-native-blur-image": "^1.0.6",
     "react-native-button-component": "^0.1.16",
