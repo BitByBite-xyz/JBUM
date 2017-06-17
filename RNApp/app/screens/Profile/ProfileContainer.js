@@ -12,13 +12,6 @@ class ProfileContainer extends Component {
 
   constructor(props) {
     super(props);
-    this.state = ({
-        QuestionNumber: '21',
-          AnsweredNumber: '12',
-          Karma: '84',
-          Level: '7',
-    			Name: 'Christine Sanchez'
-    });
   }
 
 

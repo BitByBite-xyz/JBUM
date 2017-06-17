@@ -8,7 +8,6 @@ import {
 
 import Meteor, { MeteorListView } from 'react-native-meteor';
 
-
 import styles from './styles';
 
 import QuestionPanel from '../../components/QuestionPanel';

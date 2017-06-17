@@ -9,18 +9,34 @@ import {
 } from 'react-native';
 import * as Progress from 'react-native-progress';
 
+import ParallaxScroll from '@monterosa/react-native-parallax-scroll';
+
 import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-view';
 import Panel from 'react-native-panel';
 
 
 import Button from '../../components/Button';
 import styles from './styles';
+import ProfileQuestions from './ProfileQuestions';
+
 import Wallpaper from '../../components/Wallpaper';
 import images from '../../config/images';
 import Icon from 'react-native-vector-icons/Ionicons';
 
+import Foreground, {Background, } from '../../components/ParallaxProfile';
 
-
+const bacground = (
+  <Background source={images.profileBannerImg} />
+);
+const bacddground = (
+  <Foreground
+		Name='Christine Sanchez'
+		QuestionNumber='21'
+		AnsweredNumber='12'
+		Karma='84'
+		Level='7'
+	/>
+);
 
 
 const Proflie = (props) => {
@@ -28,51 +44,23 @@ const Proflie = (props) => {
 
   return (
     <View style={styles.container}>
-      <Image style={{
-        flex: 1,
 
-        resizeMode: 'cover',
-        height: null,
-        width: null,
-        backgroundColor: ('rgba(52, 52, 52, 1)' : null) // needs to be fixed with gray overlay
-      }} source={images.profileBannerImg}>
+			<ParallaxScroll
+	      parallaxHeight={225}
+	      isBackgroundScalable={true}
+	      renderParallaxBackground={() => bacground}
+				renderParallaxForeground={() => bacddground}
 
+	      fadeOutParallaxBackground={true}
+				fadeOutParallaxForeground={true}
 
-          <Text style={styles.text}>{Name}</Text>
-              <View style={styles.info}>
-                <Text style={styles.text2}>{QuestionNumber}</Text>
-                <Text style={styles.text2}>{AnsweredNumber}</Text>
-                <Text style={styles.text2}>{Karma}</Text>
-              </View>
-              <View style={styles.info2}>
-                <Text style={styles.text3}>Questions</Text>
-                <Text style={styles.text3}>Answered  </Text>
-                <Text style={styles.text3}>Karma   </Text>
-            </View>
-              <View style={styles.levelView}>
-                <Text style={styles.text}>Level </Text>
-                <Text style={styles.text}>{Level}</Text>
-              </View>
-              <View style={styles.progressBar}>
-                <Progress.Bar
-                    progress={0.3}
-                    width={200}
-                    color={'white'}
-                  />
-              </View>
-        </Image>
-				<ScrollableTabView
-						renderTabBar={()=><DefaultTabBar backgroundColor='rgba(255, 255, 255, 0.7)' />}
-					tabBarPosition='overlayTop'
-						>
-							<FlatList
-  data={[{key: 'a'}, {key: 'b'}]}
-  renderItem={({item}) => <Text>{item.key}</Text>}
-/>
-							<Text tabLabel='Tab #2'>favorite</Text>
-							<Text tabLabel='Tab #3'>project</Text>
+	      parallaxBackgroundScrollSpeed={5}
+    >
 
-						</ScrollableTabView>
+			<ProfileQuestions/>
+
+		</ParallaxScroll>
+
     </View>
 
 

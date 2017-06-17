@@ -25,25 +25,26 @@ export default StyleSheet.create({
 		marginHorizontal: 10,
 		paddingLeft: 45,
 	},
-	wrapper: {},
+	wrapper: {
+    backgroundColor: '#009688',
+  },
 	slide1: {
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
-
-		backgroundColor: '#9DD6EB',
+		backgroundColor: '#e91e63',
 	},
 	slide2: {
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
-		backgroundColor: '#97CAE5',
+		backgroundColor: '#673ab7',
 	},
 	slide3: {
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
-		backgroundColor: '#92BBD9',
+		backgroundColor: '#3f51b5',
 	},
 	text: {
 		color: '#fff',

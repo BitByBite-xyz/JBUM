@@ -15,7 +15,7 @@ import {
 	Icon
 }
 from 'react-native-elements'
-import Swiper from 'react-native-swiper';
+import Swiper from 'react-native-swiper-animated';
 
 import colors from '../../config/styles';
 
@@ -85,7 +85,7 @@ let Ethnicity = t.struct({
 	ethnic: t.enums({
 		same: 'Parents are same ethnicity',
 		mix: 'Mixed ethnicity',
-		dk: 'Don\t know'
+		dk: 'Don\'t know'
 	})
 });
 
@@ -115,7 +115,7 @@ t.Number.getValidationErrorMessage = function(value, path, context) {
 const options_p = {
 	fields: {
 		gender_identity: {
-			label: "Gender Identity"
+			label: "Gender Identity                  "//a cancer way to fix this ik :/
 		},
 		sexual_orientation: {
 			label: "Sexual Orientation"
@@ -126,7 +126,7 @@ const options_p = {
 const options_e = {
 	fields: {
 		born: {
-			label: "Born"
+			label: "Born                                       "
 		},
 		gen: {
 			label: "Generation"
@@ -137,11 +137,32 @@ const options_e = {
 	}
 };
 
+const options_r = {
+	fields: {
+		parents: {
+			label: "Parents                                       "
+		},
+		siblings: {
+			label: "Siblings"
+		},
+		age: {
+			label: "Age"
+		}
+	}
+};
+
+
 const AccountSetup = (props) => {
 	var Form = t.form.Form; //docs :https://github.com/gcanti/tcomb-form-native#setup
 	return (
-		<View>
-			<Swiper style={styles.wrapper} showsButtons={false}>
+
+			<Swiper style={styles.wrapper}
+							showsButtons={false}
+							stack
+							paginationStyle={{ container: { backgroundColor: 'transparent' } }}
+							dragY
+							dragDownToBack>
+
 				<View style={styles.slide1}>
 					<Form
 						//ref="form"
@@ -149,22 +170,22 @@ const AccountSetup = (props) => {
 						options={options_p}
 					/>
 	        	</View>
-				<View style={styles.slide1}>
+				<View style={styles.slide2}>
 					<Form
 						//ref="form"
 						type={Ethnicity}
 						options={options_e}
 					/>
 				</View>
-				<View style={styles.slide1}>
+				<View style={styles.slide3}>
 					<Form
 						//ref="form"
 						type={Relationships}
-						//options={options_r}
+						options={options_r}
 					/>
 	        	</View>
 			</Swiper>
-		</View>
+
 	);
 };
 
