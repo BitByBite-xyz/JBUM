@@ -8,21 +8,19 @@ This is the backend for the RNApp as well as the admin panel. For the admin pane
 
 - [This](https://www.meteor.com/tutorials/angular/creating-an-app) is the tutorial for working with meteor+angular and is what I am basing this project on.
 
-- [A great post about what JS you need to know for meteor](https://www.discovermeteor.com/blog/javascript-for-meteor/)
+- [A JavaScript Primer For Meteor](https://www.discovermeteor.com/blog/javascript-for-meteor/)
 
 ## Getting Started
 
-- [Install Meteor](https://www.meteor.com/install)
-- [Install React Native](https://facebook.github.io/react-native/docs/getting-started.html#content)
-- Clone this repo
-- From the `RNApp` directory run `npm install`
+- get into directory 
+- 'meteor npm install'
+- meteor
 
-## Running on iOS Simulator
+## Looking through the database
 
-_Note_: You must be on a Mac for this.
+- Make sure meteor app is running in another terminal tab 
 
-- Be sure your Meteor app is running: In the ```MeteorApp``` directory, type ```meteor```
+- type 'meteor mongo' into the MeteorApp
 
-- From the `RNApp` directory run `react-native run-ios`
+- to find posts type db.posts.find()
 
-## Running on iOS Device
