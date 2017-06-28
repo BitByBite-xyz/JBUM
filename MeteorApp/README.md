@@ -4,10 +4,11 @@ This is the backend for the RNApp as well as the admin panel. For the admin pane
 
 ## What to look through 
 
-Check out [
-c
-](https://medium.com/@spencer_carli/organizing-a-react-native-project-9514dfadaa0#.361gf1awu) for an overview of the `RNApp` directory.
-cc
+- READ THE BOOK IN THE BACKEND CHANNEL ON SLACK (ESPECIALLY COLLECTIONS AND SUBSCRIPTIONS)
+
+- [This](https://www.meteor.com/tutorials/angular/creating-an-app) is the tutorial for working with meteor+angular and is what I am basing this project on.
+
+- [A great post about what JS you need to know for meteor](https://www.discovermeteor.com/blog/javascript-for-meteor/)
 
 ## Getting Started
 
