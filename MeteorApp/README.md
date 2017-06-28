@@ -8,6 +8,9 @@ This is the backend for the RNApp as well as the admin panel. For the admin pane
 
 - [This](https://www.meteor.com/tutorials/angular/creating-an-app) is the tutorial for working with meteor+angular and is what I am basing this project on.
 
+- [Astronomy package for dealing with Database Schemas and stuff](https://atmospherejs.com/jagi/astronomy)
+
+
 - [A JavaScript Primer For Meteor](https://www.discovermeteor.com/blog/javascript-for-meteor/)
 
 ## Getting Started
