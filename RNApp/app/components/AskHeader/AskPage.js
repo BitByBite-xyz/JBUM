@@ -22,19 +22,8 @@ export default class AskPage extends Component {
           <View style={styles.bottom}>
             <View style={styles.views}>
               <TextInput
-                  style={styles.smallText}
-                  placeholder='Question Title'
-                  returnKeyType='next'
-                  placeholderTextColor='#DBD9D9'
-                  underlineColorAndroid='transparent'
-                  autoCorrect={false}
-                  />
-                  <View style={styles.lineDivider} />
-            </View>
-            <View style={styles.views}>
-              <TextInput
                   style={styles.largeText}
-                  placeholder='Tell us your question...'
+                  placeholder='Have a question?'
                   returnKeyType='next'
                   placeholderTextColor='#DBD9D9'
                   underlineColorAndroid='transparent'
@@ -87,7 +76,7 @@ const styles = {
         backgroundColor: '#F3F3F3',
     },
     views: {
-        paddingTop: 15,
+        paddingTop: 8,
         paddingLeft: 12,
         paddingRight: 12,
         //Also padding-bottom can be added too
@@ -101,19 +90,19 @@ const styles = {
         fontSize: 10
     },
     smallText: {
-        height: 50,
+        height: 40,
         color: '#BABABA',
         textAlign: 'center',
-        fontSize: 20,
+        fontSize: 18,
         fontFamily: 'Avenir-Book'
 
     },
     largeText: {
-        height: 80,
+        height: 60,
         color: '#BABABA',
         paddingLeft: 10,
         paddingRight: 10,
-        fontSize: 15,
+        fontSize: 17,
         fontFamily: 'Avenir',
 
     },
