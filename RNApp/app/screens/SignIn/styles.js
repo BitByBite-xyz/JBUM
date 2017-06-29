@@ -11,9 +11,13 @@ export default StyleSheet.create({
     flexDirection: 'column',
 
   },
+  textForms: {
+    marginBottom: 10
+  },
   buttons: {
     flexDirection: 'row',
     marginBottom: 10,
+    alignItems: 'center'
   },
   backgroundImage: {
     flex: 1,
