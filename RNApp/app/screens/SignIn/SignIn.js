@@ -47,7 +47,7 @@ const SignIn = (props) => {
         <GenericTextInput
           source={images.usernameImg}
           placeholder="Username"
-          onChangeText={(email) => updateState({ email })}
+          onChangeText={(username) => updateState({ username })}
         />
         <GenericTextInput
           source={images.passwordImg}

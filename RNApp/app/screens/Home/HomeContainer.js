@@ -18,7 +18,7 @@ HomeContainer.propTypes = {
 };
 
 export default createContainer(() => {
-  const handle = Meteor.subscribe('posts-list');
+  const handle = Meteor.subscribe('Posts.pub.list');
 
   return {
     posts: Meteor.collection('posts').find(),

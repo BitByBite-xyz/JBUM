@@ -1,8 +1,13 @@
 import React from 'react';
 import Meteor, { createContainer } from 'react-native-meteor';
 
-import { ProfileStack } from './config/router';
+import { AppRouter, Tabs} from './config/router';
+
 import settings from './config/settings';
+import Loading from './components/Loading';
+
+import Home from './screens/Home';
+
 
 Meteor.connect(settings.METEOR_URL);
 
@@ -10,15 +15,13 @@ console.ignoredYellowBox = ['Warning:'] //comment out to get yelled at
 
 const RNApp = (props) => {
   const { status, user, loggingIn } = props;
-  /*
+
   if (status.connected === false || loggingIn) {
     return <Loading />;
   } else if (user !== null) {
-    return <LoggedIn />;
+    return <Tabs />;
   }
-  return <LoggedOut />;
-  */
-  return <ProfileStack />; //opens to login screen defined in ./config/router'
+  return <AppRouter />;
 };
 
 RNApp.propTypes = {
