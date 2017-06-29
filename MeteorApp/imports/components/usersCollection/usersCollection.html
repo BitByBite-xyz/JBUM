@@ -1,0 +1,14 @@
+<header>
+  <h1>Todo List</h1>
+</header>
+
+<div class="users">
+  <h3 class="userID"></h3>
+  <p class="userInfo">{{user.posts}} posts</p>
+  <p class="userInfo">{{user.likes}} likes</p>
+  <p class="userInfo">{{user.replies}} replies</p>
+  <p class="userInfo">{{user.reposts}} reports</p>
+  <li ng-repeat="task in $ctrl.tasks">
+    <!--{{task.text}}-->
+  </li>
+</div>
