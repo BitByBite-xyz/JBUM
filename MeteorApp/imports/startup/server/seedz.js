@@ -39,9 +39,9 @@ Meteor.startup(() => {
     for (let i = 0; i < 10; i++) {
       Posts.insert({
         user_id: Meteor.users.findOne()._id,
-        title: Fake.sentence(12),
-        body: Fake.sentence(48),
-      })
+        post_title: Fake.sentence(12),
+        post_body: Fake.sentence(48),
+      });
 
     }
 

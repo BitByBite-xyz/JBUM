@@ -1,16 +1,27 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import template from './todosList.html';
+import { Meteor } from 'meteor/meteor';
+
+import { Posts } from '../../api/posts/posts';
+
+
 
 class TodosListCtrl {
-  constructor() {
-    this.tasks = [{
-      text: 'This is task 1'
-    }, {
-      text: 'This is task 2'
-    }, {
-      text: 'This is task 3'
-    }];
+  constructor($scope) {
+    $scope.viewModel(this);
+
+    this.subscribe('Posts');
+
+    this.helpers({
+      tasks() {
+
+        return Posts.find();
+      },
+      currentUser() {
+        return Meteor.user();
+      }
+    })
   }
 }
 
@@ -19,5 +30,5 @@ export default angular.module('todosList', [
 ])
   .component('todosList', {
     templateUrl: 'imports/components/todosList/todosList.html',
-    controller: TodosListCtrl
+    controller:  ['$scope', TodosListCtrl]
   });

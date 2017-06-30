@@ -25,3 +25,6 @@ dburles:collection-helpers
 mdg:validated-method
 aldeed:simple-schema
 anti:fake
+aldeed:collection2
+reywood:publish-composite
+dotansimha:accounts-ui-angular
