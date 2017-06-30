@@ -43,6 +43,11 @@ PostsSchema = new SimpleSchema({
     label: "Post's comments",
     optional:true //a post does not require post_items
  },
+ post_likes: {
+     type: Number,
+     label: "Posts's likes",
+     optional: true
+ }
 });
 
 export const PostComments = new Mongo.Collection("posts_comments");
