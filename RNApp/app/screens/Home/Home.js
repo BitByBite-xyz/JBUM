@@ -33,6 +33,10 @@ const Home = (props) => {
           body={post.body}
         />
       ))}
+      <QuestionPanel
+        title={"header af"}
+        body={"body plody plody plody plody plody plody plody plody plody plody pls"}
+      />
 
     </ScrollView>
   );

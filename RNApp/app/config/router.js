@@ -101,12 +101,6 @@ export const ProfileStack = StackNavigator({
 			title: 'Login'
 		}
 	},
-	Tabs: {
-		screen: Tabs,
-		navigationOptions: {
-			title: 'Tabs'
-		}
-	},
 	AccountSetup: {
 		screen: AccountSetup,
 		navigationOptions: {
@@ -119,12 +113,12 @@ export const ProfileStack = StackNavigator({
 			title: 'Ask'
 		}
 	},
-	Settings: {
-		screen: Settings,
-		navigationOptions: {
-			title: 'Settings'
-		}
-	}
 }, {
 	headerMode: 'none'
+});
+export const AppRouter = StackNavigator({
+    ProfileStack: { screen: ProfileStack},
+    Tabs: { screen: Tabs}
+	}, {
+		headerMode: 'none'
 });
