@@ -25,6 +25,7 @@ class LikeButton extends Component {
         this.setState({ liked: !this.state.liked });
         if(this.state.liked) {
           this.setState({ likes: this.state.likes = this.state.likes - 1});
+          
         }
         else {
           this.setState({ likes: this.state.likes = this.state.likes + 1});
