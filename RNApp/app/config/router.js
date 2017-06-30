@@ -26,74 +26,25 @@ This is the only navigation I have but every time a screen is added we add to th
 export const Tabs = TabNavigator({
 	Home: {
 		screen: Home,
-		navigationOptions: {
-			tabBarLabel: 'Home',
-			tabBar: ({
-				state
-			}) => ({
-				icon: ({
-					tintColor,
-					focused
-				}) => (<Icon name="home" color={tintColor}
-           size={28}
-         />)
-			}),
-		},
 	},
 	Debug: {
 		screen: Debug,
-		navigationOptions: {
-			tabBarLabel: 'Hacks',
-			tabBar: ({
-				state
-			}) => ({
-				icon: ({
-					tintColor,
-					focused
-				}) => (<Icon name="build" color={tintColor}
-           size={28}
-         />)
-			})
-		}
 	},
 	Profile: {
 		screen: Profile,
-		navigationOptions: {
-			tabBarLabel: 'Profile',
-			tabBar: ({
-				state
-			}) => ({
-				icon: ({
-					tintColor,
-					focused
-				}) => (<Icon name="face" color={tintColor}
-           size={28}
-         />)
-			})
-		}
 	},
 	Settings: {
 		screen: Settings,
-		navigationOptions: {
-			tabBarLabel: 'Settings',
-			tabBar: ({
-				state
-			}) => ({
-				icon: ({
-					tintColor,
-					focused
-				}) => (<Icon name="settings" color={tintColor}
-           size={28}
-         />)
-			})
-		}
-	}
-}, {
-	tabBarComponent: TabView.TabBarBottom,
-	swipeEnabled: false,
-	tabBarPosition: 'bottom',
-	animationEnabled: true
+	},}, {
+  tabBarOptions: {
+		activeTintColor: '#e91e63',
+		tabBarComponent: TabView.TabBarBottom,
+		swipeEnabled: false,
+		tabBarPosition: 'bottom',
+		animationEnabled: true
+  },
 });
+
 export const ProfileStack = StackNavigator({
 	SignIn: {
 		screen: SignIn,
@@ -116,9 +67,14 @@ export const ProfileStack = StackNavigator({
 }, {
 	headerMode: 'none'
 });
-export const AppRouter = StackNavigator({
-    ProfileStack: { screen: ProfileStack},
-    Tabs: { screen: Tabs}
-	}, {
-		headerMode: 'none'
-});
+export const MainNavigator = StackNavigator({
+      SignIn: { screen: SignIn },
+			AccountSetup: { screen: AccountSetup },
+			Ask: { screen: Ask },
+      Tabs: { screen: Tabs }
+    }, {
+      navigationOptions: {
+        tabBarVisible: false,
+        header: null
+      }
+    });

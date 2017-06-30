@@ -27,10 +27,16 @@ class SignInContainer extends Component {
 
   componentWillMount() {
     this.mounted = true;
+
   }
 
   componentWillUnmount() {
     this.mounted = false;
+  }
+  componentDidMount() {
+    if (Meteor.user()){
+      this.props.navigation.navigate('Tabs');
+    }
   }
 
   handleError(error) {

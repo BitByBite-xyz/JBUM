@@ -1,7 +1,7 @@
 import React from 'react';
 import Meteor, { createContainer } from 'react-native-meteor';
 
-import { AppRouter, Tabs} from './config/router';
+import { MainNavigator, Tabs} from './config/router';
 
 import settings from './config/settings';
 import Loading from './components/Loading';
@@ -18,10 +18,9 @@ const RNApp = (props) => {
 
   if (status.connected === false || loggingIn) {
     return <Loading />;
-  } else if (user !== null) {
-    return <Tabs />;
-  }
-  return <AppRouter />;
+  } 
+
+  return <MainNavigator />;
 };
 
 RNApp.propTypes = {

@@ -8,24 +8,19 @@ class DebugContainer extends Component {
   constructor(props) {
 
     super(props);
-
   }
   toAccountSetup(){
-    const resetAction = NavigationActions.reset({
-      index: 0,
-      actions: [
-        NavigationActions.navigate({ routeName: 'ProfileStack' }),
-      ],
-    });
-    this.props.navigation.dispatch(resetAction);
+    this.props.navigation.navigate('AccountSetup');
+
   }
 
   toAsk(){
-    this.props.navigation.navigate('ProfileStack');
+    this.props.navigation.navigate('Ask');
 
   }
   toSettings(){
     this.props.navigation.navigate('Settings');
+    console.log("NAV: ", this.props.navigation);
 
   }
 

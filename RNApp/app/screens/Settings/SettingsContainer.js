@@ -28,7 +28,7 @@ class SettingsContainer extends Component {
       const resetAction = NavigationActions.reset({
         index: 0,
         actions: [
-          NavigationActions.navigate({ routeName: 'Login' }),
+          NavigationActions.navigate({ routeName: 'SignIn' }),
         ],
       });
       this.props.navigation.dispatch(resetAction);
