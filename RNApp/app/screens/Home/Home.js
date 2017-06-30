@@ -12,6 +12,7 @@ import styles from './styles';
 
 import QuestionPanel from '../../components/QuestionPanel';
 
+import AskHeader from '../../components/AskHeader';
 
 const Home = (props) => {
   const { posts } = props;
@@ -22,11 +23,12 @@ const Home = (props) => {
             style={styles.container}
             contentContainerStyle={styles.contentContainerStyle}
     >
+      <AskHeader/>
 
       {posts.map((post) => (
         <QuestionPanel
-          title={post.title}
-          body={post.body}
+          title={post.post_title}
+          body={post.post_body}
         />
       ))}
       <QuestionPanel
