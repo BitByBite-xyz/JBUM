@@ -15,6 +15,9 @@ export default StyleSheet.create({
     flexDirection: 'row',
     marginBottom: 10,
   },
+  textForms: {
+      marginBottom: 10,
+  },
   backgroundImage: {
     flex: 1,
     resizeMode: 'stretch', // or 'stretch'

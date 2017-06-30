@@ -36,21 +36,23 @@ Meteor.startup(() => {
   if (Posts.find().count() === 0) {
     console.log('Seeding Posts DB...');
 
+    let comments = [];
+    for(let i = 0; i < 10; i++) {
+        comments.push({
+            user_id: Meteor.users.findOne()._id,
+            post_id: Fake.word(),
+            comment_body: Fake.sentence(30),
+            created: new Date()
+        })
+    }
     for (let i = 0; i < 10; i++) {
       Posts.insert({
         user_id: Meteor.users.findOne()._id,
         post_title: Fake.sentence(12),
         post_body: Fake.sentence(48),
+        post_comments: [comments[i]],
+        post_likes: Math.floor(Math.random() * 50)
       });
-
     }
-
-
-
-
-
-
   }
-
-
 });
