@@ -79,27 +79,25 @@ const SignIn = (props) => {
       <View style={styles.buttons}>
         <Button
           title='LOGIN'
-          backgroundColor={colors.buttonBackground}
-          borderRadius={20}
-          onPress={signIn}
-          onLongPress={createAccount}
-          fontFamily= 'Avenir'
-          fontSize={17}
-          fontWeight='bold'
-          iconRight={true}
-        />
-        <Button
-          title='CREATE ACCOUNT'
-          backgroundColor={colors.buttonBackground}
+          icon={{name: 'add-circle-outline'}}
+          backgroundColor={'transparent'}
           borderRadius={20}
           onPress={createAccount}
           fontFamily= 'Avenir'
-          fontSize={17}
-          fontWeight='bold'
+          fontSize={15}
+          fontWeight='500'
         />
-
-
-      </View>
+        <Button
+          title='CREATE ACCOUNT'
+          icon={{name: 'supervisor-account'}}
+          backgroundColor={'transparent'}
+          borderRadius={20}
+          onPress={createAccount}
+          fontFamily= 'Avenir'
+          fontSize={15}
+          fontWeight='500'
+        />
+        </View>
     </FadeInView>
 
 
@@ -143,7 +141,6 @@ const SignIn = (props) => {
 
     </FadeInView>
 
-    <KeyboardSpacer />
 
   </View>
 </Wallpaper>
