@@ -17,7 +17,7 @@ class SignInContainer extends Component {
 
     this.mounted = false;
     this.state = {
-      email: '',
+      username: '',
       password: '',
       confirmPassword: '',
       confirmPasswordVisible: false,
@@ -26,7 +26,6 @@ class SignInContainer extends Component {
   }
 
   componentWillMount() {
-    this.props.navigation.navigate('Tabs');
     this.mounted = true;
   }
 
@@ -41,11 +40,11 @@ class SignInContainer extends Component {
   }
 
   validInput(overrideConfirm) {
-    const { email, password, confirmPassword, confirmPasswordVisible } = this.state;
+    const { username, password, confirmPassword, confirmPasswordVisible } = this.state;
     let valid = true;
 
-    if (email.length === 0 || password.length === 0) {
-      this.handleError('Email and password cannot be empty.');
+    if (username.length === 0 || password.length === 0) {
+      this.handleError('Username and password cannot be empty.');
       valid = false;
     }
 
@@ -62,21 +61,23 @@ class SignInContainer extends Component {
   }
 
   handleSignIn() {
-    this.props.navigation.navigate('Tabs');
 
     if (this.validInput(true)) {
-      const { email, password } = this.state;
-      Meteor.loginWithPassword(email, password, (err) => {
+      const { username, password } = this.state;
+      Meteor.loginWithPassword(username, password, (err) => {
         if (err) {
           this.handleError(err.reason);
         }
+        else {
+          this.props.navigation.navigate('Tabs');
+        }
       });
+
     }
   }
 
   handleCreateAccount() {
-    //this.props.navigation.navigate('Setup');
-    const { email, password, confirmPasswordVisible } = this.state;
+    const { username, password, confirmPasswordVisible } = this.state;
 
     var CustomLayoutSpring = {
         duration: 500,
@@ -92,7 +93,7 @@ class SignInContainer extends Component {
     };
 
     if (confirmPasswordVisible && this.validInput()) {
-      Accounts.createUser({ email, password }, (err) => {
+      Accounts.createUser({ username, password }, (err) => {
         if (err) {
           this.handleError(err.reason);
         } else {

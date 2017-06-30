@@ -7,7 +7,7 @@ import SettingsList from 'react-native-settings-list';
 //https://github.com/evetstech/react-native-settings-list?files=1#usage
 
 const Settings = (props) => {
-  const { switchValue } = props;
+  const { switchValue, signOut } = props;
 
   return (
     <View style={{backgroundColor:'#EFEFF4',flex:1}}>
@@ -70,7 +70,7 @@ const Settings = (props) => {
               <SettingsList.Item
                 title='Log Out'
                 titleStyle={{color:'#020C7E', fontSize: 16}}
-                onPress={() => Alert.alert('Route To Display Page')}
+                onPress={() => signOut()}
               />
 
             </SettingsList>
@@ -83,6 +83,7 @@ const Settings = (props) => {
 Settings.propTypes = {
   onDetailsPress: React.PropTypes.func,
   onValueChange: React.PropTypes.func,
+  signOut: React.PropTypes.func
 };
 
 export default Settings;

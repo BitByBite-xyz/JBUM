@@ -1,8 +1,4 @@
-import { Meteor } from 'meteor/meteor';
-import publications from './publications';
-import seeds from './seeds';
+// Server entry point, imports all server code
 
-Meteor.startup(() => {
-  publications();
-  seeds();
-});
+import '../imports/startup/server';
+import '../imports/startup/both';
