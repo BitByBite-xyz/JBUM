@@ -9,6 +9,8 @@ import {
 } from 'react-native';
 import imgArrowUp from './images/arrow-up.png';
 import imgArrowDown from './images/arrow-down.png';
+import LikeButton from './likebutton.js';
+
 
 class Panel extends Component {
   constructor(props) {
@@ -112,6 +114,7 @@ class Panel extends Component {
             </View>
           }
       </Animated.View>
+      <LikeButton />
       </View>
     );
 
