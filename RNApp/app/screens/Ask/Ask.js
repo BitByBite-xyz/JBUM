@@ -5,6 +5,7 @@ import styles from './styles';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
 import AskPage from './AskPage.js';
 import AnswerPage from './AnswerPage.js';
+import ReplyPage from './ReplyPage.js';
 
 const Ask = (props) => {
   return (
@@ -12,6 +13,7 @@ const Ask = (props) => {
       <ScrollableTabView style={styles.page}>
            <AskPage styles={styles.page} tabLabel={'Ask'} />
            <AnswerPage style={styles.page} tabLabel={'Answer'} />
+           <ReplyPage style={styles.page} tabLabel={'Reply'} />
       </ScrollableTabView>
     </View>
   );
