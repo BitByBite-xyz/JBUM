@@ -78,7 +78,7 @@ const styles = {
     bottomBox: {
         paddingLeft: 10,
         paddingRight: 10,
-        backgroundColor: '#FFFFF',
+        backgroundColor: 'white',
     },
     views: {
         paddingTop: 15,

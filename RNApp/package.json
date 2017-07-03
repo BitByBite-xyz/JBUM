@@ -9,6 +9,7 @@
   "dependencies": {
     "@expo/vector-icons": "^4.0.0",
     "@monterosa/react-native-parallax-scroll": "^1.2.3",
+    "art": "^0.10.1",
     "expo": "^16.0.0",
     "gravatar-api": "^1.5.0",
     "moment": "^2.18.1",
@@ -34,7 +35,11 @@
     "react-native-swiper-animated": "^1.2.5",
     "react-native-vector-icons": "~4.0.0",
     "react-navigation": "git+https://github.com/react-community/react-navigation.git",
+    "react-redux": "^5.0.5",
     "react-toolbox": "^2.0.0-beta.8",
+    "redux": "^3.7.1",
+    "redux-logger": "^3.0.6",
+    "redux-saga": "^0.15.4",
     "tcomb-form-native": "^0.6.9",
     "uuid": "^3.1.0"
   },

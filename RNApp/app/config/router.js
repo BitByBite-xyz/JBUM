@@ -16,7 +16,7 @@ import Debug from '../screens/Debug';
 import AccountSetup from '../screens/AccountSetup';
 import Home from '../screens/Home';
 import Profile from '../screens/Profile';
-import Ask from '../screens/Ask';
+import AnswerPage from '../screens/AnswerPage';
 import Settings from '../screens/Settings';
 
 /*
@@ -58,19 +58,19 @@ export const ProfileStack = StackNavigator({
 			title: 'Account Setup'
 		}
 	},
-	Ask: {
-		screen: Ask,
+	AnswerPage: {
+		screen: AnswerPage,
 		navigationOptions: {
-			title: 'Ask'
+			title: 'AnswerPage'
 		}
 	},
 }, {
 	headerMode: 'none'
 });
-export const MainNavigator = StackNavigator({
+export default StackNavigator({
       SignIn: { screen: SignIn },
 			AccountSetup: { screen: AccountSetup },
-			Ask: { screen: Ask },
+			AnswerPage: { screen: AnswerPage },
       Tabs: { screen: Tabs }
     }, {
       navigationOptions: {

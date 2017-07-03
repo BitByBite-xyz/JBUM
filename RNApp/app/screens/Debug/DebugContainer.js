@@ -15,7 +15,8 @@ class DebugContainer extends Component {
   }
 
   toAsk(){
-    this.props.navigation.navigate('Ask');
+    this.props.navigation.navigate('AnswerPage');
+
 
   }
   toSettings(){

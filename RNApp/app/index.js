@@ -1,26 +1,47 @@
 import React from 'react';
 import Meteor, { createContainer } from 'react-native-meteor';
 
-import { MainNavigator, Tabs} from './config/router';
+import Navigator from './config/router';
 
 import settings from './config/settings';
 import Loading from './components/Loading';
 
 import Home from './screens/Home';
+import store from './config/store';
+
+import {Provider, connect} from 'react-redux';
+import {addNavigationHelpers} from 'react-navigation';
 
 
 Meteor.connect(settings.METEOR_URL);
 
 console.ignoredYellowBox = ['Warning:'] //comment out to get yelled at
 
+const App = ({dispatch, nav}) => (
+  <Navigator
+    navigation={addNavigationHelpers({
+      dispatch,
+      state: nav,
+    })}
+  />
+);
+
+const mapStateToProps = state => ({
+  nav: state.nav,
+});
+
+const AppWithNavigation = connect(mapStateToProps)(App);
+
 const RNApp = (props) => {
   const { status, user, loggingIn } = props;
 
   if (status.connected === false || loggingIn) {
     return <Loading />;
-  } 
+  }
 
-  return <MainNavigator />;
+  return <Provider store={store}>
+            <AppWithNavigation/>
+          </Provider>
 };
 
 RNApp.propTypes = {
