@@ -6,14 +6,14 @@ export default StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: colors.background,
+    backgroundColor: colors.background
   },
   myDescription: {
     padding: 10,
-    paddingTop: 0,
+    paddingTop: 0
   },
   headerContainer: {
     margin: 5,
-    backgroundColor: 'white',
+    backgroundColor: 'white'
   },
 });

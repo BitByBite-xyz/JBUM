@@ -1,7 +1,7 @@
 import React, {
     Component
 }
-from 'react';
+    from 'react';
 import {
     TouchableOpacity,
     Image,
@@ -9,7 +9,7 @@ import {
     StyleSheet,
     View
 }
-from 'react-native';
+    from 'react-native';
 
 class LikeButton extends Component {
     constructor(props) {
@@ -23,13 +23,13 @@ class LikeButton extends Component {
 
     _onPress() {
         this.setState({ liked: !this.state.liked });
-        if(this.state.liked) {
-          this.setState({ likes: this.state.likes = this.state.likes - 1});
-          
+        if (this.state.liked) {
+            this.setState({ likes: this.state.likes = this.state.likes - 1 });
+
         }
         else {
-          this.setState({ likes: this.state.likes = this.state.likes + 1});
-          console.log('liked');
+            this.setState({ likes: this.state.likes = this.state.likes + 1 });
+            console.log('liked');
         }
     }
 
@@ -37,24 +37,25 @@ class LikeButton extends Component {
         let { liked, likes, comments } = this.state;
 
         return (
-          <View style={styles.bottom}>
+            <View style={styles.bottom}>
 
-              <TouchableOpacity style={styles.imgs} onPress={() => this._onPress()}>
-                <Image
-                    source={liked ? require('./images/heart.png') : require('./images/heartUnfilled.png')}
-                    style={styles.button}
-                />
-              </TouchableOpacity>
+                <TouchableOpacity style={styles.imgs} onPress={() => this._onPress()}>
+                    <Image
+                        source={liked ? require('./images/heart.png') : require('./images/heartUnfilled.png')}
+                        style={styles.button}
+                    />
+                </TouchableOpacity>
                 <Text style={styles.counters}>{likes} people sent love</Text>
 
-              <TouchableOpacity style={styles.imgs}>
-                <Image
-                  source={require('./images/comment.png')}
-                  style={styles.button}
-                />
+                <TouchableOpacity style={styles.imgs}>
+                    <Image
+                        source={require('./images/comment.png')}
+                        style={styles.commentButton}
+                    />
 
-              </TouchableOpacity>
-                <Text style={styles.counters}>{comments} responses</Text>
+                </TouchableOpacity>
+                <Text style={styles.counters}>{comments} responses |</Text>
+                <TouchableOpacity><Text style={styles.counters}>Reply</Text></TouchableOpacity>
             </View>
         )
     }
@@ -62,31 +63,36 @@ class LikeButton extends Component {
 
 const styles = StyleSheet.create({
     bottom: {
-      flexDirection: 'row',
-      flex: 1,
-      justifyContent: 'space-around',
-      paddingTop: 10,
-      paddingBottom: 10,
-      resizeMode: 'contain'
+        flexDirection: 'row',
+        flex: 1,
+        justifyContent: 'space-around',
+        paddingTop: 10,
+        paddingBottom: 10,
+        resizeMode: 'contain',
+        paddingLeft: 12
     },
     button: {
-        width: 25,
-        height: 22,
+        width: 20,
+        height: 18,
         paddingLeft: 5,
-        paddingBottom: 5
+    },
+    commentButton: {
+        width: 22,
+        height: 17,
+        paddingLeft: 5,
     },
     counters: {
-      fontFamily: "Avenir",
-      fontSize: 16,
-      color: '#D3D3D3',
-      paddingLeft: 0,
-      paddingBottom: 2
+        fontFamily: "Avenir",
+        fontSize: 16,
+        color: '#D3D3D3',
+        paddingLeft: 0,
+        paddingBottom: 2
     },
     imgs: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      paddingLeft: 0,
-      paddingBottom: 2,
+        flexDirection: 'row',
+        alignItems: 'center',
+        paddingLeft: 0,
+        paddingBottom: 2,
 
     },
 

@@ -16,28 +16,22 @@ class AskHeader extends Component {
 
   render() {
     return (
-      <View style={styles.backdrop}>
+      <TouchableOpacity onPress={console.log("fuck")} focusedOpacity={1}>
+        <View style={styles.backdrop}>
         <View style={styles.bottomBox}>
           <View style={styles.bottom}>
-            <View style={styles.views}>
-              <TextInput
-                  style={styles.largeText}
-                  placeholder='Have a question?'
-                  returnKeyType='next'
-                  placeholderTextColor='#DBD9D9'
-                  underlineColorAndroid='transparent'
-                  multiline={true}
-                  autoCorrect={false}
-                  />
-              </View>
-            <View style={styles.button}>
-            <View style={styles.lineDivider}/>
-              <Button fontSize={'12'} color={'#BABABA'} title={'Ask Question'} onPress={this.onPressButton} />
-            </View>
+          <View style={styles.views}>
+            <Text style={styles.largeText}>Have a question?</Text>
           </View>
-          <View style={styles.bottomPadding} />
+          <View style={styles.button}>
+            <View style={styles.lineDivider} />
+            <Text style={styles.fakeButton}>Ask Question</Text>
+          </View>
         </View>
+        <View style={styles.bottomPadding} />
       </View>
+      </View >
+      </TouchableOpacity>
     );
   }
 }
