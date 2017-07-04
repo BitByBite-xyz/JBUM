@@ -2,13 +2,13 @@ import {
 	StyleSheet,
 	Dimensions
 }
-from 'react-native';
+	from 'react-native';
 import {
 	colors,
 	DEVICE_WIDTH,
 	DEVICE_HEIGHT
 }
-from '../../config/styles';
+	from '../../config/styles';
 
 const window = Dimensions.get('window');
 
@@ -26,25 +26,40 @@ export default StyleSheet.create({
 		paddingLeft: 45,
 	},
 	wrapper: {
-    backgroundColor: '#009688',
-  },
+		paddingTop: 60,
+		paddingLeft: 5,
+		paddingRight: 5,
+		backgroundColor: '#0095c1',
+	},
 	slide1: {
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
-		backgroundColor: '#e91e63',
+		backgroundColor: '#f4f4f4',
+		borderRadius: 10,
+		shadowColor: '#000',
+		shadowOffset: { width: 0, height: 2 },
+		shadowOpacity: .3
 	},
 	slide2: {
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
-		backgroundColor: '#673ab7',
+		backgroundColor: '#f4f4f4',
+		borderRadius: 10,
+		shadowColor: '#000',
+		shadowOffset: { width: 0, height: 2 },
+		shadowOpacity: .3
 	},
 	slide3: {
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
-		backgroundColor: '#3f51b5',
+		backgroundColor: '#f4f4f4',
+		borderRadius: 10,
+		shadowColor: '#000',
+		shadowOffset: { width: 0, height: 5 },
+		shadowOpacity: .3
 	},
 	text: {
 		color: '#fff',

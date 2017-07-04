@@ -16,7 +16,7 @@ class AskHeader extends Component {
 
   render() {
     return (
-      <TouchableOpacity onPress={console.log("fuck")} focusedOpacity={1}>
+      <TouchableOpacity onPress={console.log("fuck")} activeOpacity={1}>
         <View style={styles.backdrop}>
         <View style={styles.bottomBox}>
           <View style={styles.bottom}>
