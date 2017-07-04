@@ -7,15 +7,18 @@ import {
   TouchableOpacity,
   Animated,
 } from 'react-native';
-import images from '../../../config/images';
-import LikeButton from './likebutton.js';
-
+import images from '../../config/images';
+import styles from './styles.js';
 
 class Panel extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      liked: false,
+      likes: 0,
+      comments: 0,
+
       is_visible: false,
       expanded: false,
       animation: new Animated.Value(),
@@ -25,6 +28,18 @@ class Panel extends Component {
     this.setMinHeight = this.setMinHeight.bind(this);
     this.toggle = this.toggle.bind(this);
 
+  }
+
+  _onPress() {
+    this.setState({ liked: !this.state.liked });
+    if (this.state.liked) {
+      this.setState({ likes: this.state.likes = this.state.likes - 1 });
+
+    }
+    else {
+      this.setState({ likes: this.state.likes = this.state.likes + 1 });
+      console.log('liked');
+    }
   }
 
   componentDidMount() {
@@ -40,7 +55,7 @@ class Panel extends Component {
     const initialValue = expanded ? maxHeight + minHeight : minHeight;
     const finalValue = expanded ? minHeight : maxHeight + minHeight;
 
-    this.setState({ expanded : !expanded });
+    this.setState({ expanded: !expanded });
 
     animation.setValue(initialValue);
 
@@ -71,7 +86,7 @@ class Panel extends Component {
       return (
         <View style={styles.button}>
           <Text style={styles.title}>{header}</Text>
-          <Image style={styles.buttonImage} source={icon}/>
+          <Image style={styles.buttonImage} source={icon} />
         </View>
       );
     } else {
@@ -81,7 +96,7 @@ class Panel extends Component {
             [Must be String, or Function that {'\n'}
             render React Element]
             </Text>
-          <Image style={styles.buttonImage} source={icon}/>
+          <Image style={styles.buttonImage} source={icon} />
         </View>
       );
     }
@@ -90,11 +105,12 @@ class Panel extends Component {
   render() {
     const { children, style } = this.props;
     const { expanded, animation } = this.state;
+    let { liked, likes, comments } = this.state;
 
     return (
-      <View style={styles.container}>
+      <View style={styles.container1}>
         <Animated.View style={[
-          styles.container, style, {
+          styles.container1, style, {
             overflow: 'hidden',
             height: animation
           }
@@ -107,44 +123,38 @@ class Panel extends Component {
           >
             {this.renderHeader()}
           </TouchableOpacity>
-          { this.state.is_visible &&
+          {this.state.is_visible &&
             <View onLayout={this.setMaxHeight}>
               {children}
             </View>
           }
-      </Animated.View>
-      <LikeButton />
+        </Animated.View>
+        <View style={styles.bottom}>
+
+          <TouchableOpacity style={styles.imgs} onPress={() => this._onPress()}>
+            <Image
+              source={liked ? images.heartFilled : images.heartUnfilled}
+              style={styles.button2}
+            />
+          </TouchableOpacity>
+          <Text style={styles.counters}>{likes} people sent love</Text>
+
+          <TouchableOpacity style={styles.imgs}>
+            <Image
+              source={images.commentIcon}
+              style={styles.commentButton}
+            />
+
+          </TouchableOpacity>
+          <Text style={styles.counters}>{comments} responses |</Text>
+          <TouchableOpacity><Text style={styles.counters}>Reply</Text></TouchableOpacity>
+        </View>
+
       </View>
     );
 
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'column',
-    margin: 7,
-    backgroundColor: 'white',
-    opacity: 1,
-    overflow: 'hidden',
-    borderRadius: 4,
-  },
-  title: {
-    flex: 1,
-    padding: 10,
-    color: '#2a2f43',
-    fontWeight: 'bold',
-  },
-  button: {
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    flexDirection: 'row',
-  },
-  buttonImage: {
-    width: 30,
-    height: 25,
-  },
-});
 
 Panel.propTypes = {
   header: PropTypes.oneOfType([
