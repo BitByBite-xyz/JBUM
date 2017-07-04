@@ -25,11 +25,20 @@ class HomeContainer extends Component {
 
   }
 
+  onAskPress() {
+    console.log('Ask');
+
+    this.props.navigation.navigate('Ask');
+
+  }
+
   render() {
     const { posts } = this.props;
     return (
       <Home
         posts={posts}
+        onAskPress={this.onAskPress.bind(this)}
+        {...this.state}
       />
     );
   }

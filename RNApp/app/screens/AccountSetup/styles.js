@@ -61,9 +61,34 @@ export default StyleSheet.create({
 		shadowOffset: { width: 0, height: 5 },
 		shadowOpacity: .3
 	},
+	slide4: {
+		flex: 1,
+		justifyContent: 'center',
+		alignItems: 'center',
+		backgroundColor: 'rgba(209,209,209,0.3)',
+		borderRadius: 10,
+		paddingLeft: 30,
+		paddingRight: 30,
+		shadowColor: '#000',
+	},
+	congratsHeader: {
+		fontSize: 50,
+		paddingBottom: 30,
+		color: 'rgba(239, 239, 239, 0.5)'
+	},
+	congratsBody: {
+		fontSize: 17,
+		paddingBottom: 30,
+		color: 'rgba(239, 239, 239, 0.5)'
+	},
 	text: {
 		color: '#fff',
 		fontSize: 30,
 		fontWeight: 'bold',
+	},
+	getStarted: {
+		fontSize: 30,
+		color: 'rgba(239, 239, 239, 0.7)'
 	}
+
 });

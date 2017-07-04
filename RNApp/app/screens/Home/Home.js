@@ -15,7 +15,8 @@ import QuestionPanel from '../../components/QuestionPanel';
 import AskHeader from '../../components/AskHeader';
 
 const Home = (props) => {
-  const { posts } = props;
+  const { posts, onAskPress } = props;
+
 
 
   return (
@@ -23,7 +24,11 @@ const Home = (props) => {
             style={styles.container}
             contentContainerStyle={styles.contentContainerStyle}
     >
-      <AskHeader/>
+      <AskHeader
+        onAskPress={onAskPress}
+        {...this.state}
+
+      />
 
       {posts.map((post) => (
         <QuestionPanel

@@ -17,6 +17,7 @@ import AccountSetup from '../screens/AccountSetup';
 import Home from '../screens/Home';
 import Profile from '../screens/Profile';
 import AnswerPage from '../screens/AnswerPage';
+import Ask from '../screens/Ask';
 import Settings from '../screens/Settings';
 
 /*
@@ -71,6 +72,7 @@ export default StackNavigator({
       SignIn: { screen: SignIn },
 			AccountSetup: { screen: AccountSetup },
 			AnswerPage: { screen: AnswerPage },
+			Ask: { screen: Ask },
       Tabs: { screen: Tabs }
     }, {
       navigationOptions: {

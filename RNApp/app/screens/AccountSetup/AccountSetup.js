@@ -5,7 +5,8 @@ import {
 	Image,
 	StyleSheet,
 	StatusBar,
-	Linking
+	Linking,
+	TouchableOpacity
 }
 from 'react-native';
 
@@ -154,6 +155,7 @@ const options_r = {
 
 const AccountSetup = (props) => {
 	var Form = t.form.Form; //docs :https://github.com/gcanti/tcomb-form-native#setup
+
 	return (
 
 			<Swiper style={styles.wrapper}
@@ -165,9 +167,9 @@ const AccountSetup = (props) => {
 							paginationStyle={{ container: { backgroundColor: 'transparent' } }}
 							dragY
 							dragDownToBack
-							backPressToBack
 							paginationActiveDotColor={"#f4f4f4"}
 							paginationDotColor={"#8e8e8e"}
+							hidePaginationOnLast
 							>
 
 				<View style={styles.slide1}>
@@ -190,7 +192,14 @@ const AccountSetup = (props) => {
 						type={Relationships}
 						options={options_r}
 					/>
-	        	</View>
+	       </View>
+					<View style={styles.slide4}>
+						<Text style={styles.congratsHeader}>Congrats!</Text>
+						<Text style={styles.congratsBody}>You have offically completed the setup of your account! All of the information you give is completely anonymous. You may now go on to use the application!</Text>
+						<TouchableOpacity>
+							<Text style={styles.getStarted}>Get Started</Text>
+						</TouchableOpacity>
+			    </View>
 			</Swiper>
 
 	);

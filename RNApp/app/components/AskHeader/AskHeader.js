@@ -15,8 +15,12 @@ class AskHeader extends Component {
   }
 
   render() {
+    const { onAskPress } = this.props;
+    console.log(onAskPress);
+
+
     return (
-      <TouchableOpacity onPress={console.log("fuck")} activeOpacity={1}>
+      <TouchableOpacity onPress={onAskPress} activeOpacity={1}>
         <View style={styles.backdrop}>
           <View style={styles.bottomBox}>
             <View style={styles.bottom}>
@@ -37,6 +41,8 @@ class AskHeader extends Component {
 }
 AskHeader.propTypes = {
   navigator: React.PropTypes.object,
+  onAskPress: React.PropTypes.func,
+
 };
 
 export default AskHeader;
