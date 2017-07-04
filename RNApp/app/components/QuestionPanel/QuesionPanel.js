@@ -10,13 +10,13 @@ import styles from './styles';
 
 
 const QuesionPanel = (props) => {
-  const { title, body, loveCounter, responseCounter, onPress } = props;
+  const { title, body, loveCounter, responseCounter, onReplyPress } = props;
 
   var swipeoutBtns = [
     {
       text: 'Report',
       backgroundColor: 'red',
-      onPress: onPress
+    //   onPress: onPress
     }
   ]
   return (
@@ -29,7 +29,7 @@ const QuesionPanel = (props) => {
       <Panel
         style={styles.headerContainer}
         header={title}
-        onPress={onPress}
+        onReplyPress={onReplyPress}
       >
         <Text style={styles.myDescription}>
           {body}
@@ -44,7 +44,7 @@ QuesionPanel.propTypes = {
   body: React.PropTypes.string,
   loveCounter: React.PropTypes.string,
   responseCounter: React.PropTypes.string,
-  onPress: React.PropTypes.func,
+  onReplyPress: React.PropTypes.func,
 };
 
 export default QuesionPanel;

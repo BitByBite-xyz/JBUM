@@ -8,7 +8,7 @@ export default StyleSheet.create({
     },
     container: {
       flex: 1,
-      backgroundColor: '#eee',
+      backgroundColor: '#F3F3F3',
     },
     firstHeaderContainer: {
       backgroundColor: '#ccc',

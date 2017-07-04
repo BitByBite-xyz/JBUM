@@ -15,7 +15,7 @@ import QuestionPanel from '../../components/QuestionPanel';
 import AskHeader from '../../components/AskHeader';
 
 const Home = (props) => {
-  const { posts, onAskPress } = props;
+  const { posts, onAskPress,onReplyPress } = props;
 
 
 
@@ -34,6 +34,7 @@ const Home = (props) => {
         <QuestionPanel
           title={post.post_title}
           body={post.post_body}
+          onReplyPress={onReplyPress}
         />
       ))}
       <QuestionPanel

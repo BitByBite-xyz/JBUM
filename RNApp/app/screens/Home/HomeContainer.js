@@ -20,8 +20,7 @@ class HomeContainer extends Component {
 
 
   onReplyPress() {
-    console.log('bitchs');
-    this.props.navigation.navigate('AnswerPage');
+    this.props.navigation.navigate('Ask');
 
   }
 
@@ -38,6 +37,7 @@ class HomeContainer extends Component {
       <Home
         posts={posts}
         onAskPress={this.onAskPress.bind(this)}
+        onReplyPress={this.onReplyPress.bind(this)}
         {...this.state}
       />
     );

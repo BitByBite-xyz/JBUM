@@ -7,13 +7,17 @@ import {
   TouchableOpacity,
   Animated,
 } from 'react-native';
+
+import { Icon } from 'react-native-elements'
+
+
 import images from '../../config/images';
 import styles from './styles.js';
 
 class Panel extends Component {
   constructor(props) {
     super(props);
-  
+
     this.state = {
       liked: false,
       likes: 0,
@@ -103,7 +107,7 @@ class Panel extends Component {
   }
 
   render() {
-    const { children, style } = this.props;
+    const { children, style, onReplyPress } = this.props;
     const { expanded, animation } = this.state;
     let { liked, likes, comments } = this.state;
 
@@ -146,8 +150,12 @@ class Panel extends Component {
             />
 
           </TouchableOpacity>
-          <Text style={styles.counters}>{comments} responses |</Text>
-          <TouchableOpacity><Text style={styles.counters}>Reply</Text></TouchableOpacity>
+          <Text style={styles.counters}>{comments} responses  </Text>
+          <Icon
+            name='redo'
+            color='#AAAAAA'
+            onPress={onReplyPress}
+          />
         </View>
 
       </View>

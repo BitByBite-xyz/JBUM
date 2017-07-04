@@ -35,7 +35,7 @@ class SignInContainer extends Component {
   }
   componentDidMount() {
     if (Meteor.user()){
-      this.props.navigation.navigate('AccountSetup');
+      this.props.navigation.navigate('Tabs');
     }
   }
 
