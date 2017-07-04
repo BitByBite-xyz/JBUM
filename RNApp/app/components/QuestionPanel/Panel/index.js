@@ -7,8 +7,7 @@ import {
   TouchableOpacity,
   Animated,
 } from 'react-native';
-import imgArrowUp from './images/arrow-up.png';
-import imgArrowDown from './images/arrow-down.png';
+import images from '../../../config/images';
 import LikeButton from './likebutton.js';
 
 
@@ -64,7 +63,7 @@ class Panel extends Component {
   renderHeader() {
     const { header } = this.props;
     const { expanded } = this.state;
-    const icon = expanded ? imgArrowUp : imgArrowDown;
+    const icon = expanded ? images.arrowUp : images.arrowDown;
 
     if (typeof header === 'function') {
       return header();

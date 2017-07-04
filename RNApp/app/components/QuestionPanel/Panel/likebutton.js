@@ -1,7 +1,8 @@
 import React, {
     Component
 }
-    from 'react';
+from 'react';
+
 import {
     TouchableOpacity,
     Image,
@@ -9,7 +10,9 @@ import {
     StyleSheet,
     View
 }
-    from 'react-native';
+from 'react-native';
+
+import images from '../../../config/images';
 
 class LikeButton extends Component {
     constructor(props) {
@@ -41,7 +44,7 @@ class LikeButton extends Component {
 
                 <TouchableOpacity style={styles.imgs} onPress={() => this._onPress()}>
                     <Image
-                        source={liked ? require('./images/heart.png') : require('./images/heartUnfilled.png')}
+                        source={liked ? images.heartFilled : images.heartUnfilled}
                         style={styles.button}
                     />
                 </TouchableOpacity>
@@ -49,7 +52,7 @@ class LikeButton extends Component {
 
                 <TouchableOpacity style={styles.imgs}>
                     <Image
-                        source={require('./images/comment.png')}
+                        source={images.commentIcon}
                         style={styles.commentButton}
                     />
 
