@@ -13,7 +13,7 @@ import styles from './styles.js';
 class Panel extends Component {
   constructor(props) {
     super(props);
-
+ 
     this.state = {
       liked: false,
       likes: 0,
