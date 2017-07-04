@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     counters: {
         fontFamily: "Avenir",
         fontSize: 16,
-        color: '#D3D3D3',
+        color: '#AAAAAA',
         paddingLeft: 0,
         paddingBottom: 2
     },

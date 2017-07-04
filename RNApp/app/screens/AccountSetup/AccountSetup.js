@@ -140,7 +140,7 @@ const options_e = {
 const options_r = {
 	fields: {
 		parents: {
-			label: "Parents                                       "
+			label: "Parents                                       "//i hate you connor -sean
 		},
 		siblings: {
 			label: "Siblings"
@@ -157,11 +157,18 @@ const AccountSetup = (props) => {
 	return (
 
 			<Swiper style={styles.wrapper}
-							showsButtons={false}
+							showsButtons={true}
 							stack
+							Swiper
+							showPagination={true}
+							showPaginationBelow={true}
 							paginationStyle={{ container: { backgroundColor: 'transparent' } }}
 							dragY
-							dragDownToBack>
+							dragDownToBack
+							backPressToBack
+							paginationActiveDotColor={"#f4f4f4"}
+							paginationDotColor={"#8e8e8e"}
+							>
 
 				<View style={styles.slide1}>
 					<Form
