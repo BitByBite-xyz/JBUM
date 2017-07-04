@@ -8,7 +8,7 @@ import {
   Animated,
 } from 'react-native';
 
-import { Icon } from 'react-native-elements'
+import { Icon, Divider } from 'react-native-elements'
 
 
 import images from '../../config/images';
@@ -133,6 +133,8 @@ class Panel extends Component {
             </View>
           }
         </Animated.View>
+
+        <View style={styles.lineDivider} />
         <View style={styles.bottom}>
 
           <TouchableOpacity style={styles.imgs} onPress={() => this._onPress()}>

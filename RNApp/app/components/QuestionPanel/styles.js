@@ -43,7 +43,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     flex: 1,
     justifyContent: 'space-around',
-    paddingTop: 10,
+    paddingTop: 0,
     paddingBottom: 10,
     resizeMode: 'contain',
     paddingLeft: 12
@@ -70,5 +70,13 @@ export default StyleSheet.create({
     alignItems: 'center',
     paddingLeft: 0,
     paddingBottom: 2
+  },
+  lineDivider: {
+      width: 320,
+      color: '#BABABA',
+      borderTopColor: '#DBD9D9',
+      borderTopWidth: .5,
+      margin: 20,
+      fontSize: 15
   },
 });

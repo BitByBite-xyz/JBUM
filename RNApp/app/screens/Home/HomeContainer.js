@@ -47,13 +47,6 @@ class HomeContainer extends Component {
 export default createContainer(() => {
   const handle = Meteor.subscribe('Posts.pub.list');
 
-  /*Meteor.call('Posts.insert', 'i','def', (err) => {
-    if (err) {
-      return;
-    } else {
-
-  });}*/
-
   return {
     posts: Meteor.collection('posts').find(),
   };

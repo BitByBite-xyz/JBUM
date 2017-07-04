@@ -42,7 +42,6 @@ class AskHeader extends Component {
 AskHeader.propTypes = {
   navigator: React.PropTypes.object,
   onAskPress: React.PropTypes.func,
-
 };
 
 export default AskHeader;

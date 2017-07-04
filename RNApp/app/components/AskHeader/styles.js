@@ -16,7 +16,7 @@ export default StyleSheet.create({
         fontStyle: 'italic',
     },
     backdrop: {
-        backgroundColor: '#eee',
+        backgroundColor: '#F3F3F3',
         flex: 1,
     },
     bottomPadding: {

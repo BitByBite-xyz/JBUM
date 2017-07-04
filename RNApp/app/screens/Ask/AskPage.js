@@ -2,76 +2,74 @@ import React, { Component } from 'react';
 import { Text, View, TextInput, Button, Image, TouchableOpacity } from 'react-native';
 import ModalDropdown from 'react-native-modal-dropdown';
 
-export default class AskPage extends Component {
-  constructor(props) {
-      super(props);
-      this.state = ({
-          question: '',
-          description: '',
-          selectedTab: ''
 
-      });
-  }
-  onPressButton() {
+const AskPage = (props) => {
+  const { title, body,updateState, postButton } = props;
 
-  }
-  render() {
-      return (
-        <View style={styles.backdrop}>
-          <View style={styles.dropdown}>
-            <View style={styles.selectors}>
-              <View style={styles.plsWork}>
-                <ModalDropdown textStyle={styles.selectorText} defaultValue={'Categories  ∨'} options={['Crippling Depression', 'Osteoperosis']} />
-              </View>
-            </View>
-          <View style={styles.selectors}>
-            <View style={styles.plsWork}>
-              <ModalDropdown textStyle={styles.selectorText} defaultValue={'Receiver  ∨'} options={['Edups', 'dade', 'kysFag', 'nigger', 'sandNigger']} />
-            </View>
-          </View>
-          <View>
-            <TouchableOpacity activeOpacity={0.4} onPress={this.onPressButton}>
-              <View style={styles.plsWork}>
-                <Text style={styles.addTags}>Add Tags</Text>
-              </View>
-            </TouchableOpacity>
+
+
+
+  return (
+    <View style={styles.backdrop}>
+      <View style={styles.dropdown}>
+        <View style={styles.selectors}>
+          <View style={styles.plsWork}>
+            <ModalDropdown textStyle={styles.selectorText} defaultValue={'Categories  ∨'} options={['Crippling Depression', 'Osteoperosis']} />
           </View>
         </View>
-
-        <View style={styles.bottomBox}>
-          <View style={styles.bottom}>
-            <View style={styles.views}>
-              <TextInput
-                  style={styles.smallText}
-                  placeholder='Question Title'
-                  returnKeyType='next'
-                  placeholderTextColor='#DBD9D9'
-                  underlineColorAndroid='transparent'
-                  autoCorrect={false}
-                  />
-                  <View style={styles.lineDivider} />
-            </View>
-            <View style={styles.views}>
-              <TextInput
-                  style={styles.largeText}
-                  placeholder='Tell us your question...'
-                  returnKeyType='next'
-                  placeholderTextColor='#DBD9D9'
-                  underlineColorAndroid='transparent'
-                  multiline={true}
-                  autoCorrect={false}
-                  />
-              </View>
-            <View style={styles.button}>
-            <View style={styles.lineDivider}/>
-              <Button color={'#BABABA'} title={'Ask Question'} onPress={this.onPressButton} />
-            </View>
-          </View>
+      <View style={styles.selectors}>
+        <View style={styles.plsWork}>
+          <ModalDropdown textStyle={styles.selectorText} defaultValue={'Receiver  ∨'} options={['Edups', 'dade', 'kysFag', 'nigger', 'sandNigger']} />
         </View>
       </View>
-    );
-  }
-}
+      <View>
+        <TouchableOpacity activeOpacity={0.4} onPress={this.onPressButton}>
+          <View style={styles.plsWork}>
+            <Text style={styles.addTags}>Add Tags</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+    </View>
+
+    <View style={styles.bottomBox}>
+      <View style={styles.bottom}>
+        <View style={styles.views}>
+          <TextInput
+              style={styles.smallText}
+              placeholder='Question Title'
+              returnKeyType='next'
+              placeholderTextColor='#DBD9D9'
+              underlineColorAndroid='transparent'
+              onChangeText={(title) => updateState({ title })}
+              autoCorrect={true}
+              />
+              <View style={styles.lineDivider} />
+        </View>
+        <View style={styles.views}>
+          <TextInput
+              style={styles.largeText}
+              placeholder='Tell us your question...'
+              returnKeyType='next'
+              placeholderTextColor='#DBD9D9'
+              underlineColorAndroid='transparent'
+              onChangeText={(body) => updateState({ body })}
+              multiline={true}
+              autoCorrect={true}
+              />
+          </View>
+        <View style={styles.button}>
+        <View style={styles.lineDivider}/>
+          <Button color={'#BABABA'} title={'Ask Question'} onPress={postButton} />
+        </View>
+      </View>
+    </View>
+  </View>
+  );
+};
+
+
+
+export default AskPage;
 const styles = {
     backdrop: {
         backgroundColor: '#F3F3F3',
