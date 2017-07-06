@@ -14,12 +14,12 @@ const AskPage = (props) => {
       <View style={styles.dropdown}>
         <View style={styles.selectors}>
           <View style={styles.dropdownBackground}>
-            <ModalDropdown textStyle={styles.selectorText} defaultValue={'Categories  ∨'} options={['Crippling Depression', 'Osteoperosis']} />
+            <ModalDropdown textStyle={styles.selectorText} defaultValue={'Categories  ∨'} options={['Abuse', 'Sexual orientation', 'School', 'Other']} />
           </View>
         </View>
       <View style={styles.selectors}>
         <View style={styles.dropdownBackground}>
-          <ModalDropdown textStyle={styles.selectorText} defaultValue={'Receiver  ∨'} options={['Edups', 'dade', 'kysFag', 'nigger', 'sandNigger']} />
+          <ModalDropdown textStyle={styles.selectorText} defaultValue={'Receiver  ∨'} options={['Students', 'Therapist', 'Anyone']} />
         </View>
       </View>
       <View>

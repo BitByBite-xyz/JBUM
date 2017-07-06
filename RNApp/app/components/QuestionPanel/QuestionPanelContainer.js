@@ -155,7 +155,7 @@ class Panel extends Component {
           <Text style={styles.counters}>{comments} responses  </Text>
           <Icon
             name='redo'
-            color='#AAAAAA'
+            color='#d8d8d8'
             onPress={onReplyPress}
           />
         </View>

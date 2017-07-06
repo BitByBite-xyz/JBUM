@@ -71,12 +71,12 @@ export default StyleSheet.create({
 		shadowColor: '#000'
 	},
 	congratsHeader: {
-		fontSize: 50,
+		fontSize: 70,
 		paddingBottom: 30,
 		color: 'rgba(239, 239, 239, 0.5)'
 	},
 	congratsBody: {
-		fontSize: 17,
+		fontSize: 20,
 		paddingBottom: 30,
 		color: 'rgba(239, 239, 239, 0.5)'
 	},
@@ -86,8 +86,8 @@ export default StyleSheet.create({
 		fontWeight: 'bold'
 	},
 	getStarted: {
-		fontSize: 30,
-		color: 'rgba(239, 239, 239, 0.7)'
+		fontSize: 35,
+		color: 'lightblue'
 	}
 
 });
