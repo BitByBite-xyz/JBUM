@@ -27,7 +27,7 @@ class AskContainer extends Component {
         return;
       } else {
         console.log("Post added");
-        this.props.navigation.navigate('Tabs');
+        this.props.navigation.goBack();
       }
     });
 

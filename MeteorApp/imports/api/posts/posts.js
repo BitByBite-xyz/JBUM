@@ -47,6 +47,15 @@ PostsSchema = new SimpleSchema({
      type: Number,
      label: "Posts's likes",
      optional: true
+ },
+ "created": {
+   type: Date,
+   label: "Date Comment Added to System",
+   autoValue: function() {
+     if ( this.isInsert ) {
+       return new Date;
+     }
+   }
  }
 });
 

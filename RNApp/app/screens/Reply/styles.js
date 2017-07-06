@@ -1,22 +1,9 @@
-import {
-	StyleSheet,
-	Dimensions
-}
-from 'react-native';
-import {
-	colors,
-	DEVICE_WIDTH,
-	DEVICE_HEIGHT
-}
-from '../../config/styles';
-
-const window = Dimensions.get('window');
-
+import { StyleSheet, Dimensions } from 'react-native';
 
 export default StyleSheet.create({
   backdrop: {
       backgroundColor: '#F3F3F3',
-      flex: 1
+      flex: 1,
   },
   logo: {
       justifyContent: 'center',
@@ -28,6 +15,21 @@ export default StyleSheet.create({
       fontFamily: 'Avenir',
       fontSize: 17
   },
+  questionTitleText: {
+      color: '#BABABA',
+      fontFamily: 'Avenir',
+      fontSize: 25,
+      paddingBottom: 5
+  },
+  questionTitleContainer: {
+      alignItems: 'center',
+      paddingBottom: 8
+  },
+  questionText: {
+      color: '#BABABA',
+      fontFamily: 'Avenir',
+      fontSize: 14
+  },
   textBold: {
       color: 'black',
       fontFamily: 'Avenir-Heavy',
@@ -37,16 +39,26 @@ export default StyleSheet.create({
   bottom: {
       backgroundColor: 'white',
       borderRadius: 5,
-      paddingLeft: 20
+      paddingLeft: 20,
+  },
+  topBox: {
+      backgroundColor: 'white',
+      borderRadius: 5,
+      paddingTop: 10,
+      paddingBottom: 10,
+      paddingLeft: 20,
+      margin: 10,
+      paddingRight: 15
   },
   bottomBox: {
       paddingLeft: 10,
       paddingRight: 10,
-      backgroundColor: 'white'
+      backgroundColor: '#FFFFFF',
   },
+
   views: {
       paddingTop: 15,
-      paddingRight: 23
+      paddingRight: 23,
       //Also padding-bottom can be added too
       // This can be changed to add a divider between the boxes; change to E5E5E5
   },
@@ -55,13 +67,13 @@ export default StyleSheet.create({
       paddingTop: 15
   },
   lineDivider: {
-    width: 320,
-    color: '#BABABA',
-    borderTopColor: '#DBD9D9',
-    borderTopWidth: .5,
-    paddingLeft: 10,
-    paddingRight: 10,
-    fontSize: 15
+      width: 320,
+      color: '#BABABA',
+      borderTopColor: '#DBD9D9',
+      borderTopWidth: .5,
+      paddingLeft: 10,
+      paddingRight: 10,
+      fontSize: 15
   },
   smallText: {
       height: 50,
@@ -71,10 +83,11 @@ export default StyleSheet.create({
       borderRadius: 5,
       paddingRight: 25,
       paddingLeft: 25,
-      textAlign: 'center'
+      textAlign: 'center',
+
   },
   largeText: {
-      height: 300,
+      height: 200,
       backgroundColor: 'white',
       //borderWidth: 2,
       //borderColor: '#E5E5E5',
@@ -82,26 +95,26 @@ export default StyleSheet.create({
       color: '#BABABA',
       fontSize: 15
   },
-  dropdown: {
+  topPadding: {
       justifyContent: 'center',
       alignItems: 'center',
       flexDirection: 'row',
-      height: 50,
+      height: 8,
       flex: 0
   },
   selectors: {
-    margin: 8
+      margin: 8,
   },
   selectorText: {
-    fontFamily: 'Avenir',
-    color: '#BABABA',
-    fontSize: 14,
-    margin: 4
+      fontFamily: 'Avenir',
+      color: '#BABABA',
+      fontSize: 14,
+      margin: 4
   },
   addTags: {
-    fontSize: 14,
-    fontFamily: 'Avenir',
-    color: '#BABABA',
-    padding: 3.5
+      fontSize: 14,
+      fontFamily: 'Avenir',
+      color: '#BABABA',
+      padding: 3.5
   }
 });
