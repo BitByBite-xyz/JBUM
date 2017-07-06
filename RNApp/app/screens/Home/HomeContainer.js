@@ -18,12 +18,6 @@ class HomeContainer extends Component {
     this.mounted = true;
   }
 
-
-  onReplyPress() {
-    this.props.navigation.navigate('Ask');
-
-  }
-
   onAskPress() {
     console.log('Ask');
 
@@ -37,7 +31,7 @@ class HomeContainer extends Component {
       <Home
         posts={posts}
         onAskPress={this.onAskPress.bind(this)}
-        onReplyPress={this.onReplyPress.bind(this)}
+        navigation={this.props.navigation}
         {...this.state}
       />
     );
@@ -48,6 +42,6 @@ export default createContainer(() => {
   const handle = Meteor.subscribe('Posts.pub.list');
 
   return {
-    //posts: Meteor.collection('posts').find({}, {sort: {createdAt: -1}});
+    posts: Meteor.collection('posts').find({},{ sort: { createdAt: -1 } })
   };
 }, HomeContainer);

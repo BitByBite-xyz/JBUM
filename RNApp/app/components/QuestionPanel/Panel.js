@@ -46,6 +46,19 @@ class Panel extends Component {
     }
   }
 
+  onReplyPress(){
+    const { navigation, header,body } = this.props;
+
+    let title = header;
+
+
+    if (navigation) {
+      navigation.navigate("Reply",{ title: header,body:body });
+    }
+
+
+  }
+
   componentDidMount() {
     setTimeout(() => {
       this.setState({ is_visible: true });
@@ -107,7 +120,7 @@ class Panel extends Component {
   }
 
   render() {
-    const { children, style, onReplyPress } = this.props;
+    const { children, style, header } = this.props;
     const { expanded, animation } = this.state;
     let { liked, likes, comments } = this.state;
 
@@ -143,7 +156,7 @@ class Panel extends Component {
               style={styles.heartFilled}
             />
           </TouchableOpacity>
-          <Text style={styles.counters}>{likes} people sent love</Text>
+          <Text style={styles.counters}>{likes} Loved</Text>
 
           <TouchableOpacity style={styles.imgs}>
             <Image
@@ -152,11 +165,11 @@ class Panel extends Component {
             />
 
           </TouchableOpacity>
-          <Text style={styles.counters}>{comments} responses  </Text>
+          <Text style={styles.counters}>{comments} Responses  </Text>
           <Icon
             name='redo'
             color='#d8d8d8'
-            onPress={onReplyPress}
+            onPress={() => this.onReplyPress()}
           />
         </View>
 

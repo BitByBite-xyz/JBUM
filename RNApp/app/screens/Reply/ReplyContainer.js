@@ -8,12 +8,16 @@ class ReplyContainer extends Component {
   constructor(props) {
 
     super(props);
+
+
+
   }
 
   render() {
     return (
       <Reply
-
+        navigation={this.props.navigation}
+        {...this.state}
       />
     );
   }

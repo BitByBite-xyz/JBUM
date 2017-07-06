@@ -13,30 +13,23 @@ import { LayoutAnimation } from 'react-native';
 import styles from './styles'
 
 const Reply = (props) => {
-
-		const { } = props;
+  const { navigation } = props;
+  const { title, body } = navigation.state.params;//hack idk why it need this
 
    return (
+
+
      <View style={styles.backdrop}>
          <View style={styles.topPadding}>
          </View>
 
          <View style={styles.topBox}>
              <View style={styles.questionTitleContainer}>
-                 <Text style={styles.questionTitleText}>Sed ut perspiciatis unde</Text>
+                 <Text style={styles.questionTitleText}>{title}</Text>
                  <View style={styles.lineDivider} />
              </View>
 
-             <Text style={styles.questionText}>Sed ut perspiciatis unde omnis iste natus error sit
-                                             voluptatem accusantium doloremque laudantium.
-                                             Nemo enim ipsam voluptatem quia voluptas sit
-                                             aspernatur aut odit aut fugit, sed quia consequuntur
-                                             magni dolores eos qui ratione voluptatem sequi
-                                             nesciunt. Neque porro quisquam est, qui dolorem
-                                             ipsum quia dolor sit amet, consectetur, adipisci
-                                             velit, sed quia non numquam eius modi tempora
-                                             incidunt ut labore et dolore
-                                             </Text>
+             <Text style={styles.questionText}>{body}</Text>
          </View>
       <View style={styles.bottomWrapper}>
          <View style={styles.bottomBox}>
@@ -74,9 +67,8 @@ const Reply = (props) => {
 }
 
 Reply.propTypes = {
-  toAccountSetup: React.PropTypes.func,
-  toAsk: React.PropTypes.func,
-  toSettings: React.PropTypes.func,
+  title: React.PropTypes.string,
+  body: React.PropTypes.string,
 };
 
 export default Reply;
