@@ -6,11 +6,11 @@ export default StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 20,
     backgroundColor: colors.buttonBackground,
-    margin: 5,
+    margin: 5
   },
   buttonText: {
     color: colors.buttonText,
     fontSize: 15,
-    fontWeight: '500',
+    fontWeight: '500'
   },
 });

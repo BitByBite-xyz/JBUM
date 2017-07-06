@@ -16,7 +16,7 @@ const window = Dimensions.get('window');
 export default StyleSheet.create({
   backdrop: {
       backgroundColor: '#F3F3F3',
-      flex: 1,
+      flex: 1
   },
   logo: {
       justifyContent: 'center',
@@ -42,11 +42,11 @@ export default StyleSheet.create({
   bottomBox: {
       paddingLeft: 10,
       paddingRight: 10,
-      backgroundColor: 'white',
+      backgroundColor: 'white'
   },
   views: {
       paddingTop: 15,
-      paddingRight: 23,
+      paddingRight: 23
       //Also padding-bottom can be added too
       // This can be changed to add a divider between the boxes; change to E5E5E5
   },
@@ -71,8 +71,7 @@ export default StyleSheet.create({
       borderRadius: 5,
       paddingRight: 25,
       paddingLeft: 25,
-      textAlign: 'center',
-
+      textAlign: 'center'
   },
   largeText: {
       height: 300,
@@ -91,19 +90,13 @@ export default StyleSheet.create({
       flex: 0
   },
   selectors: {
-    margin: 8,
+    margin: 8
   },
   selectorText: {
     fontFamily: 'Avenir',
     color: '#BABABA',
     fontSize: 14,
     margin: 4
-  },
-  plsWork: {
-    borderRadius: 20,
-    backgroundColor: 'white',
-    paddingLeft: 15,
-    paddingRight: 15,
   },
   addTags: {
     fontSize: 14,

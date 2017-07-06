@@ -13,18 +13,18 @@ const AskPage = (props) => {
     <View style={styles.backdrop}>
       <View style={styles.dropdown}>
         <View style={styles.selectors}>
-          <View style={styles.plsWork}>
-            <ModalDropdown textStyle={styles.selectorText} defaultValue={'Categories  ∨'} options={['Crippling Depression', 'Osteoperosis']} />
+          <View style={styles.dropdownBackground}>
+            <ModalDropdown textStyle={styles.selectorText} defaultValue={'Categories  ∨'} options={['Abuse', 'Sexual orientation', 'School', 'Other']} />
           </View>
         </View>
       <View style={styles.selectors}>
-        <View style={styles.plsWork}>
-          <ModalDropdown textStyle={styles.selectorText} defaultValue={'Receiver  ∨'} options={['Edups', 'dade', 'kysFag', 'nigger', 'sandNigger']} />
+        <View style={styles.dropdownBackground}>
+          <ModalDropdown textStyle={styles.selectorText} defaultValue={'Receiver  ∨'} options={['Students', 'Therapist', 'Anyone']} />
         </View>
       </View>
       <View>
         <TouchableOpacity activeOpacity={0.4} onPress={this.onPressButton}>
-          <View style={styles.plsWork}>
+          <View style={styles.dropdownBackground}>
             <Text style={styles.addTags}>Add Tags</Text>
           </View>
         </TouchableOpacity>
@@ -156,7 +156,7 @@ const styles = {
       fontSize: 14,
       margin: 4
     },
-    plsWork: {
+    dropdownBackground: {
       borderRadius: 20,
       backgroundColor: 'white',
       paddingLeft: 15,

@@ -6,13 +6,13 @@ export default StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: colors.background,
+    backgroundColor: colors.background
   },
   main: {
     fontSize: 20,
     textAlign: 'center',
     color: colors.headerText,
     fontWeight: '400',
-    fontStyle: 'italic',
+    fontStyle: 'italic'
   },
 });

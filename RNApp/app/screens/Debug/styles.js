@@ -10,13 +10,13 @@ export default StyleSheet.create({
     justifyContent: 'center',
     height: 40,
     borderRadius: 50,
-    zIndex: 100,
+    zIndex: 100
 
   },
   buttons: {
     paddingVertical: 10,
     paddingHorizontal: 20,
-    margin: 5,
+    margin: 5
 	},
 
 });

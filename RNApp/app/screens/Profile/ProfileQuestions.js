@@ -17,7 +17,7 @@ import images from '../../config/images';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const ProflieQuestions = (props) => {
-  const { QuestionNumber, AnsweredNumber, Karma, Level,Name } = props;
+  const { QuestionNumber, AnsweredNumber, Karma, Level } = props;
 
   return (
 
@@ -28,8 +28,8 @@ const ProflieQuestions = (props) => {
 							data={[{key: 'f'}, {key: 'b'}]}
 							renderItem={({item}) => <Text>{item.key}</Text>}
 						/>
-						<Text tabLabel='Tab #2'>favorite</Text>
-						<Text tabLabel='Tab #3'>project</Text>
+						<Text tabLabel='Answered'>favorite</Text>
+						<Text tabLabel='Liked'>project</Text>
 
 					</ScrollableTabView>
 

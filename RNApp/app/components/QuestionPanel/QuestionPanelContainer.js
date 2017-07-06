@@ -112,9 +112,9 @@ class Panel extends Component {
     let { liked, likes, comments } = this.state;
 
     return (
-      <View style={styles.container1}>
+      <View style={styles.questionPanelContainer}>
         <Animated.View style={[
-          styles.container1, style, {
+          styles.questionPanelContainer, style, {
             overflow: 'hidden',
             height: animation
           }
@@ -140,7 +140,7 @@ class Panel extends Component {
           <TouchableOpacity style={styles.imgs} onPress={() => this._onPress()}>
             <Image
               source={liked ? images.heartFilled : images.heartUnfilled}
-              style={styles.button2}
+              style={styles.heartFilled}
             />
           </TouchableOpacity>
           <Text style={styles.counters}>{likes} people sent love</Text>
@@ -155,7 +155,7 @@ class Panel extends Component {
           <Text style={styles.counters}>{comments} responses  </Text>
           <Icon
             name='redo'
-            color='#AAAAAA'
+            color='#d8d8d8'
             onPress={onReplyPress}
           />
         </View>

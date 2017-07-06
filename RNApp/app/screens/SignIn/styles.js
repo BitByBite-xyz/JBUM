@@ -8,39 +8,38 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     //backgroundColor: colors.background,
-    flexDirection: 'column',
-
+    flexDirection: 'column'
   },
   buttons: {
     flexDirection: 'row',
-    marginBottom: 10,
+    marginBottom: 10
   },
   textForms: {
-      marginBottom: 10,
+      marginBottom: 10
   },
   backgroundImage: {
     flex: 1,
-    resizeMode: 'stretch', // or 'stretch'
+    resizeMode: 'stretch' // or 'stretch'
   },
   error: {
     height: 28,
     justifyContent: 'center',
     width: window.width,
-    alignItems: 'center',
+    alignItems: 'center'
   },
   errorText: {
     color: colors.errorText,
-    fontSize: 14,
+    fontSize: 14
   },
   header: {
     marginBottom: 70,
-    alignItems: 'center',
+    alignItems: 'center'
   },
   text: {
     color: 'white',
     fontFamily: 'Avenir-Light',
     fontSize: 26,
-    backgroundColor: 'transparent',
+    backgroundColor: 'transparent'
   },
   textBold: {
     color: 'white',
@@ -59,12 +58,12 @@ export default StyleSheet.create({
     color: '#000',
     fontFamily: 'Avenir-Light',
     backgroundColor: 'transparent',
-    letterSpacing: 1.6,
+    letterSpacing: 1.6
   },
   contactUsText2: {
     color: 'white',
     fontFamily: 'Avenir-Heavy',
     backgroundColor: 'transparent',
-    letterSpacing: 1.6,
+    letterSpacing: 1.6
   }
 });

@@ -6,18 +6,18 @@ export default StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: colors.background,
+        backgroundColor: colors.background
     },
     main: {
         fontSize: 20,
         textAlign: 'center',
         color: colors.headerText,
         fontWeight: '400',
-        fontStyle: 'italic',
+        fontStyle: 'italic'
     },
     backdrop: {
         backgroundColor: '#F3F3F3',
-        flex: 1,
+        flex: 1
     },
     bottomPadding: {
         height: 6
@@ -32,7 +32,7 @@ export default StyleSheet.create({
         paddingTop: 8,
         color: '#BABABA',
         justifyContent: 'center',
-        alignItems: 'center',
+        alignItems: 'center'
     },
     text: {
         color: 'black',
@@ -47,12 +47,12 @@ export default StyleSheet.create({
     },
     bottom: {
         backgroundColor: 'white',
-        borderRadius: 5,
+        borderRadius: 5
     },
     bottomBox: {
         paddingLeft: 10,
         paddingRight: 10,
-        backgroundColor: '#F3F3F3',
+        backgroundColor: '#F3F3F3'
     },
     views: {
         paddingTop: 8,
@@ -61,14 +61,13 @@ export default StyleSheet.create({
         //Also padding-bottom can be added too
         // This can be changed to add a divider between the boxes; change to E5E5E5
     },
-
     button: {
         paddingBottom: 10,
         paddingTop: 15,
         paddingLeft: 17,
         fontSize: 10,
         justifyContent: 'center',
-        alignItems: 'center',
+        alignItems: 'center'
     },
     smallText: {
         height: 40,
@@ -78,14 +77,13 @@ export default StyleSheet.create({
         fontFamily: 'Avenir-Book'
 
     },
-    largeText: {
+    questionBox: {
         height: 60,
         color: '#BABABA',
         paddingLeft: 10,
         paddingRight: 10,
         fontSize: 17,
-        fontFamily: 'Avenir',
-
+        fontFamily: 'Avenir'
     },
     lineDivider: {
         width: 320,
@@ -104,18 +102,12 @@ export default StyleSheet.create({
         flex: 0
     },
     selectors: {
-        margin: 8,
+        margin: 8
     },
     selectorText: {
         fontFamily: 'Avenir',
         color: '#BABABA',
         fontSize: 14,
         margin: 4
-    },
-    plsWork: {
-        borderRadius: 20,
-        backgroundColor: 'white',
-        paddingLeft: 15,
-        paddingRight: 15
     },
 });

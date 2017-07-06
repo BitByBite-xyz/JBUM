@@ -104,7 +104,8 @@ let Relationships = t.struct({
 	age: t.enums({
 		old: 'Oldest sibling',
 		mid: 'Middle sibling',
-		young: 'Youngest sibling'
+		young: 'Youngest sibling',
+		nosib: 'No Siblings'
 	})
 });
 

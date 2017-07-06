@@ -30,7 +30,6 @@ const bacground = (
 );
 const bacddground = (
   <Foreground
-		Name='Christine Sanchez'
 		QuestionNumber='21'
 		AnsweredNumber='12'
 		Karma='84'
@@ -40,7 +39,7 @@ const bacddground = (
 
 
 const Proflie = (props) => {
-  const { QuestionNumber, AnsweredNumber, Karma, Level,Name } = props;
+  const { QuestionNumber, AnsweredNumber, Karma, Level } = props;
 
   return (
     <View style={styles.container}>
