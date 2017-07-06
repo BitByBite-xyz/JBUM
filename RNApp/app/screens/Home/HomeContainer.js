@@ -48,6 +48,6 @@ export default createContainer(() => {
   const handle = Meteor.subscribe('Posts.pub.list');
 
   return {
-    posts: Meteor.collection('posts').find(),
+    //posts: Meteor.collection('posts').find({}, {sort: {createdAt: -1}});
   };
 }, HomeContainer);

@@ -16,7 +16,7 @@ import Debug from '../screens/Debug';
 import AccountSetup from '../screens/AccountSetup';
 import Home from '../screens/Home';
 import Profile from '../screens/Profile';
-import AnswerPage from '../screens/AnswerPage';
+import Reply from '../screens/Reply';
 import Ask from '../screens/Ask';
 import Settings from '../screens/Settings';
 
@@ -59,24 +59,20 @@ export const ProfileStack = StackNavigator({
 			title: 'Account Setup'
 		}
 	},
-	AnswerPage: {
-		screen: AnswerPage,
-		navigationOptions: {
-			title: 'AnswerPage'
-		}
-	},
 }, {
-	headerMode: 'none'
+	headerMode: 'none',
+	mode:'modal'
 });
 export default StackNavigator({
       SignIn: { screen: SignIn },
 			AccountSetup: { screen: AccountSetup },
-			AnswerPage: { screen: AnswerPage },
+			Reply: { screen: Reply },
 			Ask: { screen: Ask },
       Tabs: { screen: Tabs }
     }, {
       navigationOptions: {
         tabBarVisible: false,
-        header: null
+        header: null,
+				mode:'modal'
       }
     });
