@@ -135,12 +135,6 @@ const styles = {
       fontSize: 14,
       margin: 4
     },
-    plsWork: {
-      borderRadius: 20,
-      backgroundColor: 'white',
-      paddingLeft: 15,
-      paddingRight: 15,
-    },
     addTags: {
       fontSize: 14,
       fontFamily: 'Avenir',

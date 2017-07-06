@@ -10,7 +10,7 @@ export default StyleSheet.create({
     textAlign: 'center',
     color: colors.headerText,
     fontWeight: '400',
-    fontStyle: 'italic',
+    fontStyle: 'italic'
   },
   info: {
 	    flexDirection: 'row',
@@ -54,10 +54,10 @@ export default StyleSheet.create({
 	    alignItems: 'center'
   	},
   	progressBar: {
-	    flexDirection: 'row',
-	    justifyContent: 'center',
-	    alignItems: 'center',
-		paddingBottom: 23
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+      paddingBottom: 23
   },
     questions: {
         flex: 1,
@@ -68,6 +68,6 @@ export default StyleSheet.create({
     },
     bottomSpace:{
         height: 15,
-        width: 1,
+        width: 1
     }
 });

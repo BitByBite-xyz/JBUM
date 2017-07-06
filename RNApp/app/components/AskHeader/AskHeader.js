@@ -25,7 +25,7 @@ class AskHeader extends Component {
           <View style={styles.bottomBox}>
             <View style={styles.bottom}>
               <View style={styles.views}>
-                <Text style={styles.largeText}>Have a question?</Text>
+                <Text style={styles.questionBox}>Have a question?</Text>
               </View>
               <View style={styles.button}>
                 <View style={styles.lineDivider} />

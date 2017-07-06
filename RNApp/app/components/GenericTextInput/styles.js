@@ -12,17 +12,16 @@ export default StyleSheet.create({
 		borderRadius: 20,
 		color: 'white',
 		fontFamily: 'Avenir-light',
-		fontSize: 14,
+		fontSize: 14
 	},
   divider: {
     height: 2,
     backgroundColor: colors.inputDivider,
-    marginLeft: 10,
+    marginLeft: 10
   },
   inputWrapper: {
     backgroundColor: colors.inputWrapper,
-
-    width: window.width,
+    width: window.width
   },
   image: {
     position: 'absolute',
@@ -30,6 +29,6 @@ export default StyleSheet.create({
     width: 22,
     height: 22,
     left: 35,
-    top: 9,
+    top: 9
   },
 });

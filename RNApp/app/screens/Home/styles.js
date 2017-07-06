@@ -8,10 +8,10 @@ export default StyleSheet.create({
     },
     container: {
       flex: 1,
-      backgroundColor: '#F3F3F3',
+      backgroundColor: '#F3F3F3'
     },
     firstHeaderContainer: {
-      backgroundColor: '#ccc',
+      backgroundColor: '#ccc'
     },
     firstHeader: {
       marginHorizontal: 10,
@@ -19,32 +19,32 @@ export default StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
       borderRadius: 15,
-      height: 50,
+      height: 50
     },
     thirdHeaderContainer: {
       margin: 15,
-      backgroundColor: 'yellow',
+      backgroundColor: 'yellow'
     },
     myDescription: {
       padding: 10,
-      paddingTop: 0,
+      paddingTop: 0
     },
     customContent: {
       backgroundColor: '#bada55',
       flexDirection: 'row',
       justifyContent: 'space-around',
       alignItems: 'center',
-      paddingVertical: 10,
+      paddingVertical: 10
     },
     square: {
       backgroundColor: 'yellow',
       width: 50,
-      height: 50,
+      height: 50
     },
     circle: {
       backgroundColor: 'blue',
       width: 50,
       height: 50,
-      borderRadius: 25,
+      borderRadius: 25
     },
 });

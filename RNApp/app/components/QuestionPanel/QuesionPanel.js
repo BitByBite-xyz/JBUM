@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 
 //https://github.com/dwicao/react-native-panel
-import Panel from './aids.js';
+import Panel from './QuestionPanelContainer';
 //https://github.com/dancormier/react-native-swipeout
 import Swipeout from 'react-native-swipeout';
 

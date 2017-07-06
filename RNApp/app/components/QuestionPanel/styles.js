@@ -16,28 +16,28 @@ export default StyleSheet.create({
     margin: 5,
     backgroundColor: 'white'
   },
-  container1: {
+  questionPanelContainer: {
     flexDirection: 'column',
     margin: 7,
     backgroundColor: 'white',
     opacity: 1,
     overflow: 'hidden',
-    borderRadius: 4,
+    borderRadius: 4
   },
   title: {
     flex: 1,
     padding: 10,
     color: '#2a2f43',
-    fontWeight: 'bold',
+    fontWeight: 'bold'
   },
   button: {
     alignItems: 'center',
     justifyContent: 'space-between',
-    flexDirection: 'row',
+    flexDirection: 'row'
   },
   buttonImage: {
     width: 30,
-    height: 25,
+    height: 25
   },
   bottom: {
     flexDirection: 'row',
@@ -48,15 +48,15 @@ export default StyleSheet.create({
     resizeMode: 'contain',
     paddingLeft: 12
   },
-  button2: {
+  heartFilled: {
     width: 20,
     height: 18,
-    paddingLeft: 5,
+    paddingLeft: 5
   },
   commentButton: {
     width: 22,
     height: 17,
-    paddingLeft: 5,
+    paddingLeft: 5
   },
   counters: {
     fontFamily: "Avenir",

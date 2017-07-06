@@ -20,16 +20,15 @@ export default StyleSheet.create({
 		backgroundColor: colors.inputBackground,
 		borderRadius: 20,
 		width: DEVICE_WIDTH - 20,
-
 		justifyContent: 'center',
 		marginHorizontal: 10,
-		paddingLeft: 45,
+		paddingLeft: 45
 	},
 	wrapper: {
 		paddingTop: 60,
 		paddingLeft: 5,
 		paddingRight: 5,
-		backgroundColor: '#0095c1',
+		backgroundColor: '#0095c1'
 	},
 	slide1: {
 		flex: 1,
@@ -69,7 +68,7 @@ export default StyleSheet.create({
 		borderRadius: 10,
 		paddingLeft: 30,
 		paddingRight: 30,
-		shadowColor: '#000',
+		shadowColor: '#000'
 	},
 	congratsHeader: {
 		fontSize: 50,
@@ -84,7 +83,7 @@ export default StyleSheet.create({
 	text: {
 		color: '#fff',
 		fontSize: 30,
-		fontWeight: 'bold',
+		fontWeight: 'bold'
 	},
 	getStarted: {
 		fontSize: 30,
