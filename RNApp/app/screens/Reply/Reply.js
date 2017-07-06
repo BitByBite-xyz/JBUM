@@ -2,7 +2,8 @@ import {
   Text,
   View,
   ScrollView,
-  TextInput
+  TextInput,
+  TouchableOpacity
 } from 'react-native';
 import React, { Component } from 'react';
 import { Button, Icon } from 'react-native-elements'
@@ -37,6 +38,7 @@ const Reply = (props) => {
                                              incidunt ut labore et dolore
                                              </Text>
          </View>
+      <View style={styles.bottomWrapper}>
          <View style={styles.bottomBox}>
 
              <View style={styles.bottom}>
@@ -55,18 +57,10 @@ const Reply = (props) => {
                      />
                  </View>
                  <View style={styles.button}>
-                     <Button
-                       title='Reply'
-                       icon={{name: 'add-circle-outline'}}
-                       backgroundColor={'blue'}
-
-                       borderRadius={20}
-                       //onPress={signIn}
-                       fontFamily= 'Avenir'
-                       fontSize={15}
-                       fontWeight='500'
-                       iconRight={true}
-                     />
+                 <View style={styles.lineDivider}/>
+                 <TouchableOpacity>
+                     <Text style={styles.button}>Reply</Text>
+                </TouchableOpacity>
                  </View>
 
              </View>
@@ -74,6 +68,7 @@ const Reply = (props) => {
          </View>
 
      </View>
+  </View>
    );
 
 }
