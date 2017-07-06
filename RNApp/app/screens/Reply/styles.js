@@ -54,8 +54,8 @@ export default StyleSheet.create({
       paddingLeft: 10,
       paddingRight: 10,
       backgroundColor: '#FFFFFF',
+      borderRadius: 5
   },
-
   views: {
       paddingTop: 15,
       paddingRight: 23,
@@ -63,8 +63,12 @@ export default StyleSheet.create({
       // This can be changed to add a divider between the boxes; change to E5E5E5
   },
   button: {
-      paddingBottom: 10,
-      paddingTop: 15
+    fontSize: 16,
+    paddingTop: 10,
+    paddingBottom: 8,
+    color: '#BABABA',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   lineDivider: {
       width: 320,
@@ -93,7 +97,7 @@ export default StyleSheet.create({
       //borderColor: '#E5E5E5',
       //borderRadius: 5,
       color: '#BABABA',
-      fontSize: 15
+      fontSize: 15,
   },
   topPadding: {
       justifyContent: 'center',
@@ -116,5 +120,8 @@ export default StyleSheet.create({
       fontFamily: 'Avenir',
       color: '#BABABA',
       padding: 3.5
+  },
+  bottomWrapper: {
+    margin: 10,
   }
 });
