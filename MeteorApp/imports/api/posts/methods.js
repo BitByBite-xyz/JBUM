@@ -25,11 +25,28 @@ Meteor.methods({
     check(postId, String);
 
     const post = Post.findOne(postId);
-    if (task.user_id !== Meteor.userId()) {
+    if (post.user_id !== Meteor.userId()) {
       // If the task is private, make sure only the owner can delete it
       throw new Meteor.Error('not-authorized');
     }
 
     Post.remove(postId);
+  },
+  'Posts.like' (postId) {
+    if (!Meteor.userId()) {
+      throw new Meteor.Error('not-authorized');
+    }
+
+    const post = Post.findOne(postId);
+
+    if(post.post_likes.includes(Meteor.userId)){
+      throw new Meteor.Error('user already liked post!');
+    }
+
+    post.update(
+      { $push: { post_likes: Meteor.userId } }
+    )
+
+    return post.post_likes.length;
   },
 });

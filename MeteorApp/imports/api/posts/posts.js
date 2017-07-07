@@ -44,7 +44,7 @@ PostsSchema = new SimpleSchema({
     optional:true //a post does not require post_items
  },
  post_likes: {
-     type: Number,
+     type: [String],
      label: "Posts's likes",
      optional: true
  },

@@ -1,0 +1,7 @@
+{
+  "galaxy.meteor.com": {
+     "env": {
+       "MONGO_URL": "mongodb://user:fbs-3Lt-p8e-HmD@ds031607.mlab.com:31607/jbum-dev-db"
+     }
+   }
+}
