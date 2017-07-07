@@ -36,12 +36,13 @@ const AskPage = (props) => {
         <View style={styles.views}>
           <TextInput
               style={styles.smallText}
-              placeholder='Question Title'
+              placeholder='Your Question&#39;s Title'
               returnKeyType='next'
               placeholderTextColor='#DBD9D9'
               underlineColorAndroid='transparent'
               onChangeText={(title) => updateState({ title })}
               autoCorrect={true}
+              placeholderTextColor={'black'}
               />
               <View style={styles.lineDivider} />
         </View>
@@ -54,6 +55,8 @@ const AskPage = (props) => {
               underlineColorAndroid='transparent'
               onChangeText={(body) => updateState({ body })}
               multiline={true}
+              blurOnSubmit={true}
+              placeholderTextColor={'black'}
               autoCorrect={true}
               />
           </View>

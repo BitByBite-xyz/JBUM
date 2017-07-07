@@ -3,7 +3,7 @@ import Dimensions from 'Dimensions';
 //store any appwide variables and colors here
 
 export const colors = {
-  background: '#F5F2F9',
+  background: '#F3F3F3',
   errorText: '#FA3256',
   headerText: '#444444',
   buttonBackground: '#00abff',
