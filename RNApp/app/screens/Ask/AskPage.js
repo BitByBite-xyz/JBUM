@@ -49,7 +49,7 @@ const AskPage = (props) => {
           <TextInput
               style={styles.largeText}
               placeholder='Tell us your question...'
-              returnKeyType='next'
+              returnKeyType='done'
               placeholderTextColor='#DBD9D9'
               underlineColorAndroid='transparent'
               onChangeText={(body) => updateState({ body })}

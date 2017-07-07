@@ -10,5 +10,8 @@
     "babel-runtime": "^6.23.0",
     "bcrypt": "^1.0.2",
     "meteor-node-stubs": "~0.2.0"
-  }
+  },
+  "scripts": {
+    "deploy": "DEPLOY_HOSTNAME=galaxy.meteor.com meteor deploy jbum.meteorapp.com --settings /Users/connorlarkin/dev/JBUM/MeteorApp/settings.json"
+ }
 }

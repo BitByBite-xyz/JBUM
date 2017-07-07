@@ -54,6 +54,7 @@ const SignIn = (props) => {
           placeholder="Password"
           onChangeText={(password) => updateState({ password })}
           secureTextEntry
+          returnKeyType='next'
           borderTop
         />
         {confirmPasswordVisible ?
@@ -61,6 +62,7 @@ const SignIn = (props) => {
             placeholder="confirm password"
             onChangeText={(confirmPassword) => updateState({ confirmPassword })}
             secureTextEntry
+            returnKeyType='done'
             borderTop
           />
         : null}
