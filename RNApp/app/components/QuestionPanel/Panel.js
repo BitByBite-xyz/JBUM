@@ -24,7 +24,7 @@ class Panel extends Component {
     this.state = {
       liked: postContent.post_likes.includes(Meteor.userId()),
       likes: postContent.post_likes.length,
-      comments: 0,
+      comments: postContent.post_comments.length,
 
       is_visible: false,
       expanded: false,
@@ -44,6 +44,14 @@ class Panel extends Component {
     if (this.state.liked) {
       this.setState({ likes: this.state.likes = this.state.likes - 1 });
 
+      Meteor.call('Posts.unlike', postContent._id , (err) => {
+        if (err) {
+          console.log("Like err:"+err.details);
+          return;
+        } else {
+          console.log("like removed. Sad!");
+        }
+      });
     }
     else {
       this.setState({ likes: this.state.likes = this.state.likes + 1 });

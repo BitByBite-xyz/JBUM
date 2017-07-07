@@ -33,7 +33,7 @@ Meteor.methods({
     Post.remove(postId);
   },
   'Posts.like' (postId) {
-    if (!Meteor.userId()) {
+    if (!Meteor.userId() || !Posts.findOne(postId)) {
       throw new Meteor.Error('not-authorized');
     }
 
@@ -45,6 +45,24 @@ Meteor.methods({
 
     Posts.update({ _id: postId }, {
       $push: {
+        post_likes: Meteor.userId(),
+      },
+    });
+
+  //  return post.post_likes.length;
+  },
+  'Posts.unlike' (postId) {
+    if (!Meteor.userId() || !Posts.findOne(postId)) {
+      throw new Meteor.Error('not-authorized');
+    }
+    const post = Posts.findOne(postId);
+
+    if(!post.post_likes.includes(Meteor.userId())){
+      throw new Meteor.Error('user never liked the post!');
+    }
+
+    Posts.update({ _id: postId }, {
+      $pop: {
         post_likes: Meteor.userId(),
       },
     });
