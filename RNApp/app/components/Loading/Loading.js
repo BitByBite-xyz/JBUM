@@ -1,14 +1,19 @@
 import React from 'react';
 import { View, ActivityIndicator } from 'react-native';
+import Spinner from 'react-native-spinkit';
+
 import styles from './styles';
 
 const Loading = (props) => {
+  const types = ['CircleFlip', 'Bounce', 'Pulse', 'ChasingDots', 'ThreeBounce', 'Circle', '9CubeGrid','FadingCircleAlt']
   return (
     <View style={styles.container}>
-      <ActivityIndicator
-        animating
-        size={props.size}
-        {...props}
+      <Spinner
+        style={styles.spinner}
+        //isVisible={this.state.isVisible}
+        size={125}
+        type={types[Math.floor(Math.random()*types.length)]}
+        color={'blue'}
       />
     </View>
   );

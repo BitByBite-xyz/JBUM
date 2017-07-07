@@ -8,4 +8,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     backgroundColor: colors.background
   },
+  spinner: {
+    marginBottom: 50
+  },
 });

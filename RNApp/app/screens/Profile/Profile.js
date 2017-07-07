@@ -6,6 +6,7 @@ import {
 	Image,
 	ScrollView,
 	FlatList ,
+	StatusBar
 } from 'react-native';
 import * as Progress from 'react-native-progress';
 
@@ -43,6 +44,7 @@ const Proflie = (props) => {
 
   return (
     <View style={styles.container}>
+			<StatusBar hidden = {true}/>
 
 			<ParallaxScroll
 	      parallaxHeight={225}

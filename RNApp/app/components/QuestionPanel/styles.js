@@ -55,8 +55,8 @@ export default StyleSheet.create({
     paddingLeft: 12
   },
   heartFilled: {
-    width: 20,
-    height: 18,
+    width: 23,
+    height: 20.7,
     paddingLeft: 5
   },
   commentButton: {

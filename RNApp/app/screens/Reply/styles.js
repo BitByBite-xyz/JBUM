@@ -28,7 +28,7 @@ export default StyleSheet.create({
   questionText: {
       color: '#BABABA',
       fontFamily: 'Avenir',
-      fontSize: 14
+      fontSize: 16
   },
   textBold: {
       color: 'black',
@@ -97,7 +97,7 @@ export default StyleSheet.create({
       //borderColor: '#E5E5E5',
       //borderRadius: 5,
       color: '#BABABA',
-      fontSize: 15,
+      fontSize: 16,
   },
   topPadding: {
       justifyContent: 'center',

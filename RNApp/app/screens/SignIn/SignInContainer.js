@@ -27,6 +27,9 @@ class SignInContainer extends Component {
 
   componentWillMount() {
     this.mounted = true;
+    if (Meteor.user()){
+      this.props.navigation.navigate('Tabs');
+    }
 
   }
 
@@ -34,9 +37,7 @@ class SignInContainer extends Component {
     this.mounted = false;
   }
   componentDidMount() {
-    if (Meteor.user()){
-      this.props.navigation.navigate('Tabs');
-    }
+
   }
 
   handleError(error) {
