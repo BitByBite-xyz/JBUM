@@ -17,9 +17,7 @@ class AskContainer extends Component {
   }
 
   postButton(){
-
     const {title, body} = (this.state)
-
 
     Meteor.call('Posts.insert', title,body, (err) => {
       if (err) {
@@ -30,7 +28,6 @@ class AskContainer extends Component {
         this.props.navigation.goBack();
       }
     });
-
   }
 
   render() {

@@ -18,19 +18,19 @@ Meteor.startup(() => {
       password: 'dev'
     });
     seed2UserId = Accounts.createUser({
-      username: 'david',
+      username: 'a',
       email: 'd@oo.com',
-      password: '123456'
+      password: 'a'
     });
     seed3UserId = Accounts.createUser({
-      username: 'glenn',
+      username: 'b',
       email: 'g@oo.com',
-      password: '123456'
+      password: 'b'
     });
     seed4UserId = Accounts.createUser({
-      username: 'martin',
+      username: 'c',
       email: 'm@oo.com',
-      password: '123456'
+      password: 'c'
     });
   }
   if (Posts.find().count() === 0) {
@@ -51,7 +51,7 @@ Meteor.startup(() => {
         post_title: Fake.sentence(12),
         post_body: Fake.sentence(48),
         post_comments: [comments[i]],
-        post_likes: postLikes 
+        post_likes: postLikes
       });
     }
   }

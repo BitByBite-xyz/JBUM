@@ -7,8 +7,8 @@ import {
   TouchableOpacity,
   Animated,
 } from 'react-native';
-
 import { Icon, Divider } from 'react-native-elements'
+import Meteor, { createContainer } from 'react-native-meteor';
 
 
 import images from '../../config/images';
@@ -17,10 +17,13 @@ import styles from './styles.js';
 class Panel extends Component {
   constructor(props) {
     super(props);
+    const { navigation, header,postContent } = this.props;
+
+    console.log(postContent.post_likes);
 
     this.state = {
-      liked: false,
-      likes: 0,
+      liked: postContent.post_likes.includes(Meteor.userId()),
+      likes: postContent.post_likes.length,
       comments: 0,
 
       is_visible: false,
@@ -34,7 +37,9 @@ class Panel extends Component {
 
   }
 
-  _onPress() {
+  onLikePress() {
+    const { postContent } = this.props;
+
     this.setState({ liked: !this.state.liked });
     if (this.state.liked) {
       this.setState({ likes: this.state.likes = this.state.likes - 1 });
@@ -42,21 +47,26 @@ class Panel extends Component {
     }
     else {
       this.setState({ likes: this.state.likes = this.state.likes + 1 });
-      console.log('liked');
+      console.log(postContent._id);
+
+      Meteor.call('Posts.like', postContent._id , (err) => {
+        if (err) {
+          console.log("Like err:"+err.details);
+          return;
+        } else {
+          console.log("Like added");
+        }
+      });
     }
   }
 
   onReplyPress(){
-    const { navigation, header,postContent } = this.props;
-
     let title = header;
 
 
     if (navigation) {
       navigation.navigate("Reply",{ title: header,body:postContent.post_body });
     }
-
-
   }
 
   componentDidMount() {
@@ -150,7 +160,7 @@ class Panel extends Component {
         <View style={styles.lineDivider} />
         <View style={styles.bottom}>
 
-          <TouchableOpacity style={styles.imgs} onPress={() => this._onPress()}>
+          <TouchableOpacity style={styles.imgs} onPress={() => this.onLikePress()}>
             <Image
               source={liked ? images.heartFilled : images.heartUnfilled}
               style={styles.heartFilled}

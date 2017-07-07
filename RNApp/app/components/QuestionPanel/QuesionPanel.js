@@ -12,8 +12,6 @@ import styles from './styles';
 const QuesionPanel = (props) => {
   const { postContent, title, loveCounter, responseCounter,navigation } = props;
 
-
-  console.log(title)
   var swipeoutBtns = [
     {
       text: 'Report',

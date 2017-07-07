@@ -24,7 +24,7 @@ Meteor.methods({
   'Posts.remove' (postId) {
     check(postId, String);
 
-    const post = Post.findOne(postId);
+    const post = Posts.findOne(postId);
     if (post.user_id !== Meteor.userId()) {
       // If the task is private, make sure only the owner can delete it
       throw new Meteor.Error('not-authorized');
@@ -37,16 +37,18 @@ Meteor.methods({
       throw new Meteor.Error('not-authorized');
     }
 
-    const post = Post.findOne(postId);
+    const post = Posts.findOne(postId);
 
-    if(post.post_likes.includes(Meteor.userId)){
+    if(post.post_likes.includes(Meteor.userId())){
       throw new Meteor.Error('user already liked post!');
     }
 
-    post.update(
-      { $push: { post_likes: Meteor.userId } }
-    )
+    Posts.update({ _id: postId }, {
+      $push: {
+        post_likes: Meteor.userId(),
+      },
+    });
 
-    return post.post_likes.length;
+  //  return post.post_likes.length;
   },
 });
