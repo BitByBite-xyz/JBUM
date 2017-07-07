@@ -10,8 +10,10 @@ import styles from './styles';
 
 
 const QuesionPanel = (props) => {
-  const { title, body, loveCounter, responseCounter,navigation } = props;
+  const { postContent, title, loveCounter, responseCounter,navigation } = props;
 
+
+  console.log(title)
   var swipeoutBtns = [
     {
       text: 'Report',
@@ -29,11 +31,11 @@ const QuesionPanel = (props) => {
       <Panel
         style={styles.headerContainer}
         header={title}
-        body={body}
+        postContent={postContent}
         navigation={navigation}
       >
         <Text style={styles.myDescription}>
-          {body}
+          {postContent.post_body}
         </Text>
     </Panel>
   </Swipeout>

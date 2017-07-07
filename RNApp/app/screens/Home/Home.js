@@ -4,7 +4,8 @@ import {
   Text,
   View,
   ScrollView,
-  StatusBar
+  StatusBar,
+  FlatList
 } from 'react-native';
 import Meteor, { MeteorListView } from 'react-native-meteor';
 import FadeInView from 'react-native-fade-in-view';//{/* onFadeComplete={() => alert('Ready') */}
@@ -35,17 +36,22 @@ const Home = (props) => {
 
       />
 
-      {posts.map((post) => (
-        <FadeInView
-            duration={700}
-        >
-          <QuestionPanel
-            title={post.post_title}
-            body={post.post_body}
-            navigation={navigation}
-          />
-        </FadeInView>
-      ))}
+      <FlatList
+        data={posts}
+        keyExtractor={(item, index) => item._id}
+        renderItem={({item}) =>
+          <FadeInView
+              duration={700}
+          >
+            <QuestionPanel
+              postContent={item}
+              title={item.post_title}
+              navigation={navigation}
+            />
+          </FadeInView>}
+        />
+
+
 
     </ScrollView>
   );

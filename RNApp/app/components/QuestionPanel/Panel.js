@@ -47,13 +47,13 @@ class Panel extends Component {
   }
 
   onReplyPress(){
-    const { navigation, header,body } = this.props;
+    const { navigation, header,postContent } = this.props;
 
     let title = header;
 
 
     if (navigation) {
-      navigation.navigate("Reply",{ title: header,body:body });
+      navigation.navigate("Reply",{ title: header,body:postContent.post_body });
     }
 
 
@@ -120,7 +120,7 @@ class Panel extends Component {
   }
 
   render() {
-    const { children, style, header } = this.props;
+    const { children, style, header,postContent } = this.props;
     const { expanded, animation } = this.state;
     let { liked, likes, comments } = this.state;
 
