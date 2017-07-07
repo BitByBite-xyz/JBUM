@@ -72,6 +72,7 @@ const SignIn = (props) => {
 
     <View style={styles.error}>
       <Text style={styles.errorText}>{error}</Text>
+      <KeyboardSpacer />
     </View>
 
     <FadeInView
@@ -101,9 +102,8 @@ const SignIn = (props) => {
           fontSize={15}
           fontWeight='500'
         />
-
-
       </View>
+
     </FadeInView>
 
 
@@ -146,8 +146,6 @@ const SignIn = (props) => {
       </View>
 
     </FadeInView>
-
-    <KeyboardSpacer />
 
   </View>
 </Wallpaper>
