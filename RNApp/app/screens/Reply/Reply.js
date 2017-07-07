@@ -3,7 +3,8 @@ import {
   View,
   ScrollView,
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
+  Keyboard
 } from 'react-native';
 import React, { Component } from 'react';
 import { Button, Icon } from 'react-native-elements'
@@ -17,7 +18,6 @@ const Reply = (props) => {
   const { title, body } = navigation.state.params;//hack idk why it need this
 
    return (
-
 
      <View style={styles.backdrop}>
          <View style={styles.topPadding}>
@@ -42,7 +42,7 @@ const Reply = (props) => {
                      <TextInput
                          style={styles.largeText}
                          placeholder='Response...'
-                         returnKeyType='next'
+                         returnKeyType="done"
                          placeholderTextColor='#DBD9D9'
                          underlineColorAndroid='transparent'
                          multiline={true}

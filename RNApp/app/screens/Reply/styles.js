@@ -28,7 +28,7 @@ export default StyleSheet.create({
   questionText: {
       color: '#BABABA',
       fontFamily: 'Avenir',
-      fontSize: 14
+      fontSize: 16
   },
   textBold: {
       color: 'black',
@@ -45,7 +45,7 @@ export default StyleSheet.create({
       backgroundColor: 'white',
       borderRadius: 5,
       paddingTop: 10,
-      paddingBottom: 10,
+      paddingBottom: 12,
       paddingLeft: 20,
       margin: 10,
       paddingRight: 15
@@ -63,9 +63,9 @@ export default StyleSheet.create({
       // This can be changed to add a divider between the boxes; change to E5E5E5
   },
   button: {
-    fontSize: 16,
-    paddingTop: 10,
-    paddingBottom: 8,
+    fontSize: 19,
+    paddingTop: 14,
+    paddingBottom: 10,
     color: '#BABABA',
     justifyContent: 'center',
     alignItems: 'center'
@@ -91,13 +91,13 @@ export default StyleSheet.create({
 
   },
   largeText: {
-      height: 200,
+      height: 300,
       backgroundColor: 'white',
       //borderWidth: 2,
       //borderColor: '#E5E5E5',
       //borderRadius: 5,
       color: '#BABABA',
-      fontSize: 15,
+      fontSize: 16,
   },
   topPadding: {
       justifyContent: 'center',
