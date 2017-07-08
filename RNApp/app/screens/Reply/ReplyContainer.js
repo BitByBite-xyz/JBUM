@@ -32,7 +32,8 @@ class ReplyContainer extends Component {
         return;
       } else {
         console.log("reply added!");
-        //this.props.navigation.goBack();
+        this.setState(this.state);
+        this.props.navigation.goBack();
       }
     });
   }

@@ -22,7 +22,7 @@ class Panel extends Component {
     this.state = {
       liked: (postContent.post_likes) ? postContent.post_likes.includes(Meteor.userId()) : false,
       likes: (postContent.post_likes) ? postContent.post_likes.length : 0,
-      comments: postContent.post_comments.length || 0,
+      comments: postContent.post_comments.length,
 
       is_visible: false,
       expanded: false,

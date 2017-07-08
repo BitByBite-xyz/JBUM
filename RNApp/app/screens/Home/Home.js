@@ -33,7 +33,6 @@ const Home = (props) => {
       <AskHeader
         onAskPress={onAskPress}
         {...this.state}
-
       />
 
       <FlatList
@@ -49,6 +48,7 @@ const Home = (props) => {
               navigation={navigation}
             />
           </FadeInView>}
+
         />
 
 
