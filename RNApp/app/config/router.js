@@ -27,15 +27,31 @@ This is the only navigation I have but every time a screen is added we add to th
 export const Tabs = TabNavigator({
 	Home: {
 		screen: Home,
+		navigationOptions: {
+				tabBarLabel: 'Home',
+				tabBarIcon: ({tintColor}) => <Icon name="home" size={30} color={tintColor}/>
+		}
 	},
 	Debug: {
 		screen: Debug,
+		navigationOptions: {
+				tabBarLabel: 'Debug',
+				tabBarIcon: ({tintColor}) => <Icon name="bug-report" size={30} color={tintColor}/>
+		}
 	},
 	Profile: {
 		screen: Profile,
+		navigationOptions: {
+				tabBarLabel: 'Profile',
+				tabBarIcon: ({tintColor}) => <Icon name="account-circle" size={30} color={tintColor}/>
+		}
 	},
 	Settings: {
 		screen: Settings,
+		navigationOptions: {
+				tabBarLabel: 'Settings',
+				tabBarIcon: ({tintColor}) => <Icon name="settings" size={28} color={tintColor}/>
+		}
 	},}, {
   tabBarOptions: {
 		activeTintColor: '#e91e63',
