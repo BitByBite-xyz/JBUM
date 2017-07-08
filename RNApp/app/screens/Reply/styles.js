@@ -26,7 +26,7 @@ export default StyleSheet.create({
   questionTitleText: {
       color: '#BABABA',
       fontFamily: 'Avenir',
-      fontSize: 25,
+      fontSize: 20,
       paddingBottom: 5
   },
   questionTitleContainer: {
@@ -46,12 +46,13 @@ export default StyleSheet.create({
   },
   bottom: {
       backgroundColor: 'white',
-      borderRadius: 5,
-      paddingLeft: 20,
+      borderRadius: 8,
+      paddingLeft: 15,
+      paddingTop: 15
   },
   topBox: {
       backgroundColor: 'white',
-      borderRadius: 5,
+      borderRadius: 8,
       paddingTop: 10,
       paddingBottom: 12,
       paddingLeft: 20,
@@ -62,10 +63,9 @@ export default StyleSheet.create({
       paddingLeft: 10,
       paddingRight: 10,
       backgroundColor: '#FFFFFF',
-      borderRadius: 5
+      borderRadius: 8
   },
   views: {
-      paddingTop: 15,
       paddingRight: 0,
       //Also padding-bottom can be added too
       // This can be changed to add a divider between the boxes; change to E5E5E5
@@ -74,7 +74,9 @@ export default StyleSheet.create({
     paddingTop: 14,
     paddingBottom: 10,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    color: '#BBB',
+    fontSize: 18
   },
   lineDivider: {
       width: 320,
@@ -89,7 +91,7 @@ export default StyleSheet.create({
       backgroundColor: '#E5E5E5',
       borderWidth: 2,
       borderColor: '#E5E5E5',
-      borderRadius: 5,
+      borderRadius: 8,
       paddingRight: 25,
       paddingLeft: 25,
       textAlign: 'center',

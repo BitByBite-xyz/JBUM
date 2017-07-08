@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
   text: {
     color: '#BBB',
     fontFamily: 'Avenir',
-    fontSize: 15,
+    fontSize: 16,
   },
   name: {
     fontWeight: 'bold',
