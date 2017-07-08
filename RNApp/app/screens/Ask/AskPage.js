@@ -38,7 +38,7 @@ const AskPage = (props) => {
               style={styles.smallText}
               placeholder='Your Question&#39;s Title'
               returnKeyType='next'
-              placeholderTextColor='#DBD9D9'
+              placeholderTextColor='#BBB'
               underlineColorAndroid='transparent'
               onChangeText={(title) => updateState({ title })}
               autoCorrect={true}
@@ -51,7 +51,7 @@ const AskPage = (props) => {
               style={styles.largeText}
               placeholder='Tell us your question...'
               returnKeyType='done'
-              placeholderTextColor='#DBD9D9'
+              placeholderTextColor='#BBB'
               underlineColorAndroid='transparent'
               onChangeText={(body) => updateState({ body })}
               multiline={true}
@@ -119,7 +119,7 @@ const styles = {
     },
     smallText: {
         height: 50,
-        color: '#BABABA',
+        color: '#BBB',
         textAlign: 'center',
         fontSize: 24,
         fontFamily: 'Avenir-Book'
@@ -127,7 +127,7 @@ const styles = {
     },
     largeText: {
         height: 300,
-        color: '#BABABA',
+        color: '#BBB',
         paddingLeft: 10,
         paddingRight: 10,
         fontSize: 15,
