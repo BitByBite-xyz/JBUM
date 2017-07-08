@@ -5,7 +5,7 @@ import {
 	Text,
 	Image,
 } from 'react-native';
-
+import Meteor, { createContainer } from 'react-native-meteor';
 import Profile from './Profile';
 
 class ProfileContainer extends Component {
@@ -30,4 +30,10 @@ ProfileContainer.propTypes = {
   navigator: React.PropTypes.object,
 };
 
-export default ProfileContainer;
+export default createContainer(() => {
+  const handle = Meteor.subscribe('Posts.pub.list');
+
+  return {
+    posts: Meteor.collection('posts').find({},{ sort: { created: -1 } })
+  };
+}, ProfileContainer);
