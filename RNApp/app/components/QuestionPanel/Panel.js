@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 import {
   StyleSheet,
   Text,
@@ -14,7 +14,7 @@ import Meteor, { createContainer } from 'react-native-meteor';
 import images from '../../config/images';
 import styles from './styles.js';
 
-class Panel extends Component {
+class Panel extends React.PureComponent {
   constructor(props) {
     super(props);
     const { navigation, header,postContent } = this.props;

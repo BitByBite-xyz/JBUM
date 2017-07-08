@@ -14,14 +14,29 @@ import FadeInView from 'react-native-fade-in-view';//{/* onFadeComplete={() => a
 import styles from './styles';
 
 import QuestionPanel from '../../components/QuestionPanel';
+import Loading from '../../components/Loading';
 
 import AskHeader from '../../components/AskHeader';
 
 
 const Home = (props) => {
-  const { posts, onAskPress,navigation } = props;
+  const { posts, onAskPress,navigation,postsReady } = props;
 
+  renderFooter = () => {
+    if (postsReady) return null;
 
+    return (
+      <View
+        style={{
+          paddingVertical: 20,
+          borderTopWidth: 1,
+          borderColor: "#CED0CE"
+        }}
+      >
+        <Loading />
+      </View>
+    );
+  };
 
   return (
 
@@ -48,6 +63,8 @@ const Home = (props) => {
               navigation={navigation}
             />
           </FadeInView>}
+          ListFooterComponent={this.renderFooter}
+          onEndReachedThreshold={50}
 
         />
 

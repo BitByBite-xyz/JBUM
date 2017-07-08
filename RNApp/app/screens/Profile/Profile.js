@@ -8,68 +8,138 @@ import {
 	FlatList ,
 	StatusBar
 } from 'react-native';
-import * as Progress from 'react-native-progress';
-
-import ParallaxScroll from '@monterosa/react-native-parallax-scroll';
 
 import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-view';
-import Panel from 'react-native-panel';
-
+import FadeInView from 'react-native-fade-in-view';
+import QuestionPanel from '../../components/QuestionPanel';
+import Loading from '../../components/Loading';
 
 import Button from '../../components/Button';
 import styles from './styles';
-import ProfileQuestions from './ProfileQuestions';
-
-import Wallpaper from '../../components/Wallpaper';
 import images from '../../config/images';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import Foreground, { Background, } from '../../components/ParallaxProfile';
-
-const bacground = (
-  <Background source={images.profileBannerImg} />
-);
-const bacddground = (
-  <Foreground
-		QuestionNumber='21'
-		AnsweredNumber='12'
-		Karma='84'
-		Level='7'
-	/>
-);
+import ParallaxScroll from '@monterosa/react-native-parallax-scroll';
 
 
 const Proflie = (props) => {
-  const { QuestionNumber, AnsweredNumber, Karma, Level, navigation } = props;
-	const { user_posts,responded_posts,liked_posts } = props;
+  const { QuestionNumber,
+					AnsweredNumber,
+					Karma,
+					Level,
+					navigation } = props;
+
+	const { user_posts,responded_posts,liked_posts,postsReady } = props;
+
+	const foreground = (
+	  <Foreground
+			QuestionNumber={user_posts.length}
+			AnsweredNumber={responded_posts.length}
+			Karma='84'
+			Level='7'
+		/>
+	);
+	const background = (
+	  <Background source={images.profileBannerImg} />
+	);
+	renderFooter = () => {
+    if (postsReady) return null;
+
+    return (
+      <View
+        style={{
+          paddingVertical: 20,
+          borderTopWidth: 1,
+          borderColor: "#CED0CE"
+        }}
+      >
+        <Loading />
+      </View>
+    );
+  };
 
   return (
-    <View style={styles.container}>
-			<StatusBar hidden = {true}/>
 
-			<ParallaxScroll
-	      parallaxHeight={225}
+		<ParallaxScroll
+
+			parallaxHeight={225}
 	      isBackgroundScalable={true}
-	      renderParallaxBackground={() => bacground}
-				renderParallaxForeground={() => bacddground}
+	      renderParallaxBackground={() => background}
+				renderParallaxForeground={() => foreground}
 
 	      fadeOutParallaxBackground={true}
 				fadeOutParallaxForeground={true}
 
 	      parallaxBackgroundScrollSpeed={5}
-    >
 
-				<ProfileQuestions
-					responded_posts={responded_posts}
-					user_posts={user_posts}
-					navigation={navigation}
-					liked_posts={liked_posts}
-				/>
+
+	>
+		<StatusBar hidden = {true}/>
+
+
+
+
+			<ScrollableTabView
+					renderTabBar={()=><DefaultTabBar backgroundColor='rgba(255, 255, 255, 0.7)' />}
+					>
+					<FlatList
+						tabLabel='My Posts'
+		        data={user_posts}
+		        keyExtractor={(item, index) => item._id}
+		        renderItem={({item}) =>
+		          <FadeInView
+		              duration={700}
+		          >
+		            <QuestionPanel
+		              postContent={item}
+		              title={item.post_title}
+		              navigation={navigation}
+		            />
+		          </FadeInView>}
+							ListFooterComponent={this.renderFooter}
+			        onEndReachedThreshold={50}
+		        />
+
+						<FlatList
+							tabLabel='Liked'
+							data={liked_posts}
+							keyExtractor={(item, index) => item._id}
+							renderItem={({item}) =>
+								<FadeInView
+										duration={700}
+								>
+									<QuestionPanel
+										postContent={item}
+										title={item.post_title}
+										navigation={navigation}
+									/>
+								</FadeInView>}
+							ListFooterComponent={this.renderFooter}
+			        onEndReachedThreshold={50}
+							/>
+
+							<FlatList
+								tabLabel='Answered'
+								data={responded_posts}
+								keyExtractor={(item, index) => item._id}
+								renderItem={({item}) =>
+									<FadeInView
+											duration={700}
+									>
+										<QuestionPanel
+											postContent={item}
+											title={item.post_title}
+											navigation={navigation}
+										/>
+									</FadeInView>}
+									ListFooterComponent={this.renderFooter}
+					        onEndReachedThreshold={50}
+								/>
+
+					</ScrollableTabView>
 
 		</ParallaxScroll>
-
-    </View>
-
 
   );
 };

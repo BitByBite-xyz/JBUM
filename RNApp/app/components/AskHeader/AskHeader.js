@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Text, View, TextInput, Button, Image, TouchableOpacity } from 'react-native';
 
 import styles from './styles';
 
-class AskHeader extends Component {
+class AskHeader extends React.PureComponent {
   constructor(props) {
     super(props);
 
