@@ -22,9 +22,9 @@ class Panel extends Component {
     console.log(postContent.post_likes);
 
     this.state = {
-      liked: postContent.post_likes.includes(Meteor.userId()),
-      likes: postContent.post_likes.length,
-      comments: postContent.post_comments.length,
+      liked: postContent.post_likes.includes(Meteor.userId()) || false,
+      likes: postContent.post_likes.length || 0,
+      comments: postContent.post_comments.length || 0,
 
       is_visible: false,
       expanded: false,
@@ -69,11 +69,13 @@ class Panel extends Component {
   }
 
   onReplyPress(){
+    const { header, navigation, postContent } = this.props;
+
     let title = header;
 
 
     if (navigation) {
-      navigation.navigate("Reply",{ title: header,body:postContent.post_body });
+      navigation.navigate("Reply",{ postContent: postContent});
     }
   }
 

@@ -12,10 +12,11 @@ import { Button, Icon } from 'react-native-elements'
 import { LayoutAnimation } from 'react-native';
 
 import styles from './styles'
+import Comment from './Comment'
 
 const Reply = (props) => {
   const { navigation } = props;
-  const { title, body } = navigation.state.params;//hack idk why it need this
+  const { postContent } = navigation.state.params;//hack idk why it need this
 
    return (
 
@@ -25,11 +26,11 @@ const Reply = (props) => {
 
          <View style={styles.topBox}>
              <View style={styles.questionTitleContainer}>
-                 <Text style={styles.questionTitleText}>{title}</Text>
+                 <Text style={styles.questionTitleText}>{postContent.post_title}</Text>
                  <View style={styles.lineDivider} />
              </View>
 
-             <Text style={styles.questionText}>{body}</Text>
+             <Text style={styles.questionText}>{postContent.post_body}</Text>
          </View>
       <View style={styles.bottomWrapper}>
          <View style={styles.bottomBox}>
@@ -38,6 +39,11 @@ const Reply = (props) => {
 
 
                  <View style={styles.views}>
+
+                   <Comment
+                     postContent={postContent.post_comments[0]}
+                   />
+
 
                      <TextInput
                          style={styles.largeText}
