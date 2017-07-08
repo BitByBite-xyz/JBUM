@@ -3,6 +3,7 @@ import { ValidatedMethod } from 'meteor/mdg:validated-method';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 import { Posts, PostComments } from './posts';
 import { check } from 'meteor/check';
+import { Random } from 'meteor/random'
 
 
 Meteor.methods({
@@ -67,7 +68,21 @@ Meteor.methods({
         post_likes: Meteor.userId(),
       },
     });
-
-  //  return post.post_likes.length;
   },
+  'Posts.reply' (postId, body) {
+    if (!Meteor.userId() || !Posts.findOne(postId)) {
+      throw new Meteor.Error('not-authorized');
+    }
+
+    Posts.update({ _id: postId }, {
+      $push: {
+        post_comments: {
+          comment_id: Random.id(),
+          user_id: Meteor.userId(),
+          comment_body: body,
+          created: new Date,
+        }
+      },
+    });
+  }
 });

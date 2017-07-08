@@ -3,3 +3,4 @@
 import './seedz';
 import './register-api';
 import './accounts';
+//db.dropDatabase()

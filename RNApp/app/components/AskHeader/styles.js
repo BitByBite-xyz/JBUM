@@ -66,7 +66,6 @@ export default StyleSheet.create({
         paddingBottom: 10,
         paddingTop: 15,
         paddingLeft: 17,
-        fontSize: 10,
         justifyContent: 'center',
         alignItems: 'center'
     },
@@ -89,7 +88,6 @@ export default StyleSheet.create({
     },
     lineDivider: {
         width: 320,
-        color: '#BABABA',
         borderTopColor: '#DBD9D9',
         borderTopWidth: .5,
         paddingLeft: 10,

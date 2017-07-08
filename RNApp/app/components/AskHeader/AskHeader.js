@@ -16,8 +16,6 @@ class AskHeader extends Component {
 
   render() {
     const { onAskPress } = this.props;
-    console.log(onAskPress);
-
 
     return (
       <TouchableOpacity onPress={onAskPress} activeOpacity={1}>

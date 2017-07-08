@@ -2,13 +2,13 @@ import { Mongo } from 'meteor/mongo';
 
 
 CommentsSchema = new SimpleSchema({
+  "comment_id": {
+    type: String,
+    label: "Comment ID"
+  },
   "user_id": {
     type: String,
     label: "Commenter's meteor.User ID"
-  },
-  "post_id": {
-    type: String,
-    label: "Origin post ID"
   },
   comment_body:{
     type: String,
