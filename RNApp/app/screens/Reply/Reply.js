@@ -51,7 +51,6 @@ const Reply = (props) => {
                  />}
             />
 
-
           </View>
       <View style={styles.bottomWrapper}>
          <View style={styles.bottomBox}>

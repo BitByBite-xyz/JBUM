@@ -59,8 +59,8 @@ const Proflie = (props) => {
     >
 
 				<ProfileQuestions
-				posts={posts}
-
+					posts={posts}
+					navigation={navigation}
 				/>
 
 		</ParallaxScroll>
