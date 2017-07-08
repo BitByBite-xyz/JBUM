@@ -28,8 +28,9 @@ export default StyleSheet.create({
         alignItems: 'center'
     },
     fakeButton: {
-        fontSize: 16,
-        paddingTop: 8,
+        fontSize: 18,
+        paddingTop: 9,
+        paddingBottom: 2,
         color: '#BABABA',
         justifyContent: 'center',
         alignItems: 'center'
@@ -82,7 +83,8 @@ export default StyleSheet.create({
         color: '#BABABA',
         paddingLeft: 10,
         paddingRight: 10,
-        fontSize: 17,
+        paddingTop: 5,
+        fontSize: 19,
         fontFamily: 'Avenir'
     },
     lineDivider: {
