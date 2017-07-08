@@ -16,8 +16,7 @@ import styles from './styles'
 import Comment from './Comment'
 
 const Reply = (props) => {
-  const { navigation, replyButton, body,updateState } = props;
-  const { postContent } = navigation.state.params;//hack idk why it need this
+  const { navigation, replyButton, body,updateState,post } = props;
 
    return (
 
@@ -32,24 +31,21 @@ const Reply = (props) => {
 
          <View style={styles.topBox}>
              <View style={styles.questionTitleContainer}>
-                 <Text style={styles.questionTitleText}>{postContent.post_title}</Text>
+                 <Text style={styles.questionTitleText}>{post.post_title}</Text>
                  <View style={styles.lineDivider} />
              </View>
 
-             <Text style={styles.questionText}>{postContent.post_body}</Text>
+             <Text style={styles.questionText}>{post.post_body}</Text>
          </View>
 
          <View style={styles.views}>
 
-           <FlatList
-             data={postContent.post_comments}
-             keyExtractor={(item, index) => item.comment_id}
-             extraData={this.state}
-             renderItem={({item}) =>
-                 <Comment
-                   postComment={item}
-                 />}
-            />
+
+            {post.post_comments.map((comment) => (
+              <Comment
+                 postComment={comment}
+              />
+            ))}
 
           </View>
       <View style={styles.bottomWrapper}>

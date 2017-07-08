@@ -40,7 +40,8 @@ const bacddground = (
 
 
 const Proflie = (props) => {
-  const { QuestionNumber, AnsweredNumber, Karma, Level, posts, navigation } = props;
+  const { QuestionNumber, AnsweredNumber, Karma, Level, navigation } = props;
+	const { user_posts,responded_posts,liked_posts } = props;
 
   return (
     <View style={styles.container}>
@@ -59,8 +60,10 @@ const Proflie = (props) => {
     >
 
 				<ProfileQuestions
-					posts={posts}
+					responded_posts={responded_posts}
+					user_posts={user_posts}
 					navigation={navigation}
+					liked_posts={liked_posts}
 				/>
 
 		</ParallaxScroll>

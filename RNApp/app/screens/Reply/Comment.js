@@ -25,7 +25,6 @@ export default class Comment extends PureComponent {
     // Pull comment object out of props
     const { postComment } = this.props;
 
-    console.log(postComment.user_id);
     return (
       <View style={styles.container}>
         <View style={styles.contentContainer}>

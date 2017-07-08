@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import Reply from './Reply';
+import _ from 'lodash';
 
 import { NavigationActions } from 'react-navigation';
-import Meteor from 'react-native-meteor';
+import Meteor, {createContainer} from 'react-native-meteor';
 
-
+import Reply from './Reply'
 
 class ReplyContainer extends Component {
   constructor(props) {
@@ -14,6 +14,7 @@ class ReplyContainer extends Component {
     this.state = {
       body: '',
     };
+
 
 
 
@@ -32,8 +33,9 @@ class ReplyContainer extends Component {
         return;
       } else {
         console.log("reply added!");
+
         this.setState(this.state);
-        this.props.navigation.goBack();
+        //this.props.navigation.goBack();
       }
     });
   }
@@ -44,10 +46,18 @@ class ReplyContainer extends Component {
         replyButton={this.replyButton.bind(this)}
         navigation={this.props.navigation}
         updateState={this.setState.bind(this)}
+        post={this.props.post}
         {...this.state}
       />
     );
   }
 };
 
-export default ReplyContainer;
+export default createContainer((params) => {
+  const handle = Meteor.subscribe('Posts.pub.list');
+  const post_id = _.get(params, 'navigation.state.params.postContent._id', {});
+
+  return {
+    post: Meteor.collection('posts').findOne(post_id)
+  };
+}, ReplyContainer);

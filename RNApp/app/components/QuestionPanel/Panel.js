@@ -27,6 +27,7 @@ class Panel extends Component {
       is_visible: false,
       expanded: false,
       animation: new Animated.Value(),
+      updateComments:false
     };
 
     this.setMaxHeight = this.setMaxHeight.bind(this);
@@ -65,6 +66,9 @@ class Panel extends Component {
       });
     }
   }
+  refreshComments(){
+    this.setState({ updateComments: true });
+  }
 
   onReplyPress(){
     const { header, navigation, postContent } = this.props;
@@ -72,7 +76,7 @@ class Panel extends Component {
     let title = header;
 
     if (navigation) {
-      navigation.navigate("Reply",{ postContent: postContent});
+      navigation.navigate("Reply",{ postContent: postContent });
     }
   }
 
@@ -80,6 +84,7 @@ class Panel extends Component {
     setTimeout(() => {
       this.setState({ is_visible: true });
     }, 100);
+
   }
 
   toggle() {
@@ -172,17 +177,19 @@ class Panel extends Component {
               source={liked ? images.heartFilled : images.heartUnfilled}
               style={styles.heartFilled}
             />
+            <Text style={styles.counters}>{' '+likes} Loved</Text>
           </TouchableOpacity>
-          <Text style={styles.counters}>{likes} Loved</Text>
 
-          <TouchableOpacity style={styles.imgs}>
+
+          <TouchableOpacity style={styles.imgs} onPress={() => this.onReplyPress()}>
             <Image
               source={images.commentIcon}
               style={styles.commentButton}
             />
+            <Text style={styles.counters}>{' '+postContent.post_comments.length} Responses </Text>
 
           </TouchableOpacity>
-          <Text style={styles.counters}>{comments} Responses  </Text>
+
           <Icon
             name='redo'
             color='#d8d8d8'

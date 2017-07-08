@@ -21,6 +21,7 @@ Meteor.methods({
       post_title: title,
       post_body: body,
       post_comments: [],
+      post_likes: [],
     });
   },
   'Posts.remove' (postId) {

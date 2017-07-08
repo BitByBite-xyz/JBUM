@@ -17,17 +17,25 @@ import images from '../../config/images';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const ProflieQuestions = (props) => {
-  const { QuestionNumber, AnsweredNumber, Karma, Level, posts, navigation } = props;
-	console.log(posts);
+  const { QuestionNumber,
+					AnsweredNumber,
+					Karma,
+					Level,
+					navigation } = props;
+
+	const { user_posts,responded_posts,liked_posts } = props;
+					console.log(user_posts);
 
   return (
+
+
 
 			<ScrollableTabView
 					renderTabBar={()=><DefaultTabBar backgroundColor='rgba(255, 255, 255, 0.7)' />}
 					>
 					<FlatList
 						tabLabel='My Posts'
-		        data={posts}
+		        data={user_posts}
 		        keyExtractor={(item, index) => item._id}
 		        renderItem={({item}) =>
 		          <FadeInView
@@ -43,7 +51,7 @@ const ProflieQuestions = (props) => {
 
 						<FlatList
 							tabLabel='Liked'
-							data={posts}
+							data={liked_posts}
 							keyExtractor={(item, index) => item._id}
 							renderItem={({item}) =>
 								<FadeInView
@@ -59,7 +67,7 @@ const ProflieQuestions = (props) => {
 
 							<FlatList
 								tabLabel='Answered'
-								data={posts}
+								data={responded_posts}
 								keyExtractor={(item, index) => item._id}
 								renderItem={({item}) =>
 									<FadeInView

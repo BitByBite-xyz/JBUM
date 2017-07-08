@@ -41,12 +41,12 @@ PostsSchema = new SimpleSchema({
   post_comments: {
     type: [CommentsSchema],
     label: "Post's comments",
-    optional:true //a post does not require post_items
+    optional:false //a post does not require post_items
  },
  post_likes: {
      type: [String],
      label: "Posts's likes",
-     optional: true
+     optional: false
  },
  "created": {
    type: Date,
@@ -59,8 +59,6 @@ PostsSchema = new SimpleSchema({
  }
 });
 
-export const PostComments = new Mongo.Collection("posts_comments");
 export const Posts = new Mongo.Collection('posts');
 
 Posts.attachSchema( PostsSchema );
-PostComments.attachSchema( CommentsSchema );

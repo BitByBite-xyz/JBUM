@@ -21,12 +21,12 @@ export default StyleSheet.create({
   text: {
       color: 'black',
       fontFamily: 'Avenir',
-      fontSize: 17
+      fontSize: 25
   },
   questionTitleText: {
       color: '#BABABA',
       fontFamily: 'Avenir',
-      fontSize: 20,
+      fontSize: 30,
       paddingBottom: 5
   },
   questionTitleContainer: {
