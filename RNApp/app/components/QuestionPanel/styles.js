@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
-import { colors } from '../../config/styles';
+import { colors,DEVICE_WIDTH,DEVICE_HEIGHT } from '../../config/styles';
+
 
 export default StyleSheet.create({
   container: {
@@ -48,11 +49,14 @@ export default StyleSheet.create({
   bottom: {
     flexDirection: 'row',
     flex: 1,
-    justifyContent: 'space-around',
     paddingTop: 0,
     paddingBottom: 10,
     resizeMode: 'contain',
-    paddingLeft: 12
+    paddingLeft: 12,
+    width: DEVICE_WIDTH,
+    flexDirection: 'row',
+    paddingRight:29,
+    justifyContent: 'flex-end',
   },
   heartFilled: {
     width: 23,
@@ -73,7 +77,7 @@ export default StyleSheet.create({
   imgs: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingLeft: 0,
+    paddingRight: 50,
     paddingBottom: 2
   },
   lineDivider: {
@@ -83,5 +87,14 @@ export default StyleSheet.create({
       borderTopWidth: .5,
       margin: 20,
       fontSize: 15
+  },
+  timeText: {
+    color: '#BBB',
+    fontFamily: 'Avenir',
+    fontSize: 16,
+  },
+  created: {
+    fontSize: 12,
+    color: '#BBB'
   },
 });

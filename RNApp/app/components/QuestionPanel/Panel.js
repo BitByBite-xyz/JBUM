@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Animated,
 } from 'react-native';
+import moment from 'moment';
 import { Icon, Divider } from 'react-native-elements'
 import Meteor, { createContainer } from 'react-native-meteor';
 
@@ -109,13 +110,13 @@ class Panel extends React.PureComponent {
   }
 
   setMinHeight(event) {
-    const minHeight = event.nativeEvent.layout.height
+    const minHeight = event.nativeEvent.layout.height;
     this.state.animation.setValue(minHeight);
     this.setState({ minHeight });
   }
 
   renderHeader() {
-    const { header } = this.props;
+    const { header,post } = this.props;
     const { expanded } = this.state;
     const icon = expanded ? images.arrowUp : images.arrowDown;
 
@@ -127,6 +128,7 @@ class Panel extends React.PureComponent {
           <Text style={styles.title}>{header}</Text>
           <Image style={styles.buttonImage} source={icon} />
         </View>
+
       );
     } else {
       return (
@@ -165,6 +167,9 @@ class Panel extends React.PureComponent {
           {this.state.is_visible &&
             <View onLayout={this.setMaxHeight}>
               {children}
+              <View style={styles.questionPanelContainer}>
+                <Text style={[styles.timeText, styles.created]}>{' '+moment(postContent.created).fromNow()}</Text>
+              </View>
             </View>
           }
         </Animated.View>

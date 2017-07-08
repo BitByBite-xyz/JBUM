@@ -32,7 +32,7 @@ export default class Header extends Component {
         color: 'white',
         fontFamily: 'Avenir',
         backgroundColor: 'transparent',
-        marginTop: 20,
+        marginTop: 10,
         fontSize: 18,
         letterSpacing: 2,
         alignSelf: 'center'
@@ -41,7 +41,7 @@ export default class Header extends Component {
             color: 'white',
           fontFamily: 'Avenir-Heavy',
           backgroundColor: 'transparent',
-          marginTop: 20,
+          marginTop: 10,
           fontSize: 18,
           letterSpacing: 2,
             alignSelf: 'center'
@@ -56,7 +56,8 @@ export default class Header extends Component {
         levelView: {
           flexDirection: 'row',
           justifyContent: 'center',
-          alignItems: 'center'
+          alignItems: 'center',
+          marginBottom: 7,
         },
         progressBar: {
           flexDirection: 'row',
@@ -88,7 +89,7 @@ export default class Header extends Component {
           </View>
           <View style={styles.progressBar}>
             <Progress.Bar
-                progress={0.3}
+                progress={0.7}
                 width={200}
                 color={'white'}
               />

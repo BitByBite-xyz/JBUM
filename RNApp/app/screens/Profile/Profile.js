@@ -63,7 +63,7 @@ const Proflie = (props) => {
 
 		<ParallaxScroll
 
-			parallaxHeight={225}
+			parallaxHeight={150}
 	      isBackgroundScalable={true}
 	      renderParallaxBackground={() => background}
 				renderParallaxForeground={() => foreground}

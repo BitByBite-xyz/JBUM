@@ -8,7 +8,7 @@ export default function Background(props) {
       {...props}
       style={{
         flex:1,
-        height: 225,
+        height: 200,
         resizeMode: 'stretch',
       }}
     />
