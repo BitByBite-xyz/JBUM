@@ -16,9 +16,12 @@ class ProfileContainer extends Component {
 
 
   render() {
+		const { posts } = this.props;
     return (
       <Profile
+				posts={posts}
         updateState={this.setState.bind(this)}
+				navigation={this.props.navigation}
         {...this.state}
       />
 

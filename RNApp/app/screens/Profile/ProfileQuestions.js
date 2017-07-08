@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 
 import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-view';
-
+import FadeInView from 'react-native-fade-in-view';
 import QuestionPanel from '../../components/QuestionPanel';
 import Button from '../../components/Button';
 import styles from './styles';
@@ -17,7 +17,8 @@ import images from '../../config/images';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const ProflieQuestions = (props) => {
-  const { QuestionNumber, AnsweredNumber, Karma, Level, posts } = props;
+  const { QuestionNumber, AnsweredNumber, Karma, Level, posts, navigation } = props;
+	console.log(posts);
 
   return (
 
