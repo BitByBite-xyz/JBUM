@@ -66,7 +66,7 @@ export default StyleSheet.create({
   },
   views: {
       paddingTop: 15,
-      paddingRight: 23,
+      paddingRight: 0,
       //Also padding-bottom can be added too
       // This can be changed to add a divider between the boxes; change to E5E5E5
   },

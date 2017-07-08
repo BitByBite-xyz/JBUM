@@ -28,13 +28,6 @@ export default class Comment extends PureComponent {
     console.log(postComment.user_id);
     return (
       <View style={styles.container}>
-        <View style={styles.avatarContainer}>
-          <Image
-            resizeMode='contain'
-            style={styles.avatar}
-            source={images.loved}
-          />
-        </View>
         <View style={styles.contentContainer}>
           <Text>
             <Text style={[styles.text, styles.name]}>{postComment.user_id}</Text>
@@ -52,25 +45,15 @@ export default class Comment extends PureComponent {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-  },
-  avatarContainer: {
-    alignItems: 'center',
-    marginLeft: 5,
-    paddingTop: 10,
-    width: 40,
+    margin: 10,
+    backgroundColor: 'white',
+    borderRadius: 8,
+    padding: 10,
   },
   contentContainer: {
     flex: 1,
-    borderBottomWidth: 1,
     borderColor: '#EEE',
     padding: 5,
-  },
-  avatar: {
-    borderWidth: 1,
-    borderColor: '#EEE',
-    borderRadius: 13,
-    width: 26,
-    height: 26,
   },
   text: {
     color: '#000',
