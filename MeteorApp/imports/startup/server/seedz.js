@@ -40,8 +40,8 @@ Meteor.startup(() => {
     for(let i = 0; i < 10; i++) {
         comments.push({
             user_id: Meteor.users.findOne()._id,
-            post_id: Fake.word(),
             comment_body: Fake.sentence(30),
+            comment_id: Random.id()
         })
     }
     for (let i = 0; i < 10; i++) {
