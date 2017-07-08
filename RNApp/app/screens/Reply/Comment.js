@@ -48,7 +48,10 @@ const styles = StyleSheet.create({
     margin: 10,
     backgroundColor: 'white',
     borderRadius: 8,
-    padding: 10,
+    paddingTop: 10,
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingBottom: 8
   },
   contentContainer: {
     flex: 1,
@@ -56,7 +59,7 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   text: {
-    color: '#000',
+    color: '#BBB',
     fontFamily: 'Avenir',
     fontSize: 15,
   },
@@ -64,6 +67,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   created: {
-    color: '#BBB',
+    fontSize: 12,
+    color: '#BBB'
   },
 });
