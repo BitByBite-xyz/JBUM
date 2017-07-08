@@ -24,7 +24,7 @@ import Wallpaper from '../../components/Wallpaper';
 import images from '../../config/images';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-import Foreground, {Background, } from '../../components/ParallaxProfile';
+import Foreground, { Background, } from '../../components/ParallaxProfile';
 
 const bacground = (
   <Background source={images.profileBannerImg} />
@@ -40,7 +40,7 @@ const bacddground = (
 
 
 const Proflie = (props) => {
-  const { QuestionNumber, AnsweredNumber, Karma, Level } = props;
+  const { QuestionNumber, AnsweredNumber, Karma, Level, posts, navigation } = props;
 
   return (
     <View style={styles.container}>
@@ -58,7 +58,10 @@ const Proflie = (props) => {
 	      parallaxBackgroundScrollSpeed={5}
     >
 
-			<ProfileQuestions/>
+				<ProfileQuestions
+				posts={posts}
+
+				/>
 
 		</ParallaxScroll>
 
