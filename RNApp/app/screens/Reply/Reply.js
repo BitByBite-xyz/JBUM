@@ -16,10 +16,9 @@ import styles from './styles'
 import Comment from './Comment'
 
 const Reply = (props) => {
-  const { navigation } = props;
+  const { navigation, replyButton, body,updateState } = props;
   const { postContent } = navigation.state.params;//hack idk why it need this
 
-  console.log(postContent);
    return (
 
      <ScrollView
@@ -44,7 +43,8 @@ const Reply = (props) => {
 
            <FlatList
              data={postContent.post_comments}
-             keyExtractor={(item, index) => item._id}
+             keyExtractor={(item, index) => item.comment_id}
+             extraData={this.state}
              renderItem={({item}) =>
                  <Comment
                    postComment={item}
@@ -60,18 +60,20 @@ const Reply = (props) => {
                  <View style={styles.views}>
                      <TextInput
                          style={styles.largeText}
-                         placeholder='Response...'
+                         placeholder='Reply to this question'
                          returnKeyType="done"
                          placeholderTextColor='#DBD9D9'
                          underlineColorAndroid='transparent'
+                         onChangeText={(body) => updateState( {body} )}
+                         blurOnSubmit={true}
                          multiline={true}
-                         autoCorrect={false}
+                         autoCorrect={true}
                      />
                  </View>
                  <View style={styles.button}>
                  <View style={styles.lineDivider}/>
-                 <TouchableOpacity>
-                     <Text style={styles.button}>Reply</Text>
+                 <TouchableOpacity onPress={replyButton}>
+                     <Text style={styles.button}>Submit Reply</Text>
                 </TouchableOpacity>
                  </View>
 
