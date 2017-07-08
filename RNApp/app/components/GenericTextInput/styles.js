@@ -12,7 +12,8 @@ export default StyleSheet.create({
 		borderRadius: 20,
 		color: 'white',
 		fontFamily: 'Avenir-light',
-		fontSize: 14
+		fontSize: 14,
+    marginBottom: 5
 	},
   divider: {
     height: 2,
