@@ -11,7 +11,7 @@ const Loading = (props) => {
       <Spinner
         style={styles.spinner}
         //isVisible={this.state.isVisible}
-        size={125}
+        size={80}
         type={types[Math.floor(Math.random()*types.length)]}
         color={'blue'}
       />

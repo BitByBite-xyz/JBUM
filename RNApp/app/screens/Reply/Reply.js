@@ -4,6 +4,7 @@ import {
   ScrollView,
   TextInput,
   TouchableOpacity,
+  FlatList,
   Keyboard
 } from 'react-native';
 import React, { Component } from 'react';
@@ -18,7 +19,13 @@ const Reply = (props) => {
   const { navigation } = props;
   const { postContent } = navigation.state.params;//hack idk why it need this
 
+  console.log(postContent);
    return (
+
+     <ScrollView
+             style={styles.container}
+             contentContainerStyle={styles.contentContainerStyle}
+     >
 
      <View style={styles.backdrop}>
          <View style={styles.topPadding}>
@@ -32,19 +39,25 @@ const Reply = (props) => {
 
              <Text style={styles.questionText}>{postContent.post_body}</Text>
          </View>
+
+         <View style={styles.views}>
+
+           <FlatList
+             data={postContent.post_comments}
+             keyExtractor={(item, index) => item._id}
+             renderItem={({item}) =>
+                 <Comment
+                   postComment={item}
+                 />}
+            />
+
+
+          </View>
       <View style={styles.bottomWrapper}>
          <View style={styles.bottomBox}>
 
              <View style={styles.bottom}>
-
-
                  <View style={styles.views}>
-
-                   <Comment
-                     postContent={postContent.post_comments[0]}
-                   />
-
-
                      <TextInput
                          style={styles.largeText}
                          placeholder='Response...'
@@ -68,6 +81,7 @@ const Reply = (props) => {
 
      </View>
   </View>
+  </ScrollView>
    );
 
 }

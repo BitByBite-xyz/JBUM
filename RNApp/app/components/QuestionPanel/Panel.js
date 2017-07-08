@@ -19,11 +19,9 @@ class Panel extends Component {
     super(props);
     const { navigation, header,postContent } = this.props;
 
-    console.log(postContent.post_likes);
-
     this.state = {
-      liked: postContent.post_likes.includes(Meteor.userId()) || false,
-      likes: postContent.post_likes.length || 0,
+      liked: (postContent.post_likes) ? postContent.post_likes.includes(Meteor.userId()) : false,
+      likes: (postContent.post_likes) ? postContent.post_likes.length : 0,
       comments: postContent.post_comments.length || 0,
 
       is_visible: false,
@@ -72,7 +70,6 @@ class Panel extends Component {
     const { header, navigation, postContent } = this.props;
 
     let title = header;
-
 
     if (navigation) {
       navigation.navigate("Reply",{ postContent: postContent});

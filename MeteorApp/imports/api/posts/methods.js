@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { ValidatedMethod } from 'meteor/mdg:validated-method';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
-import { Posts } from './posts';
+import { Posts, PostComments } from './posts';
 import { check } from 'meteor/check';
 
 
@@ -19,6 +19,7 @@ Meteor.methods({
       user_id: Meteor.userId(),
       post_title: title,
       post_body: body,
+      post_comments: [],
     });
   },
   'Posts.remove' (postId) {

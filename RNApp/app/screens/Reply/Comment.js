@@ -3,7 +3,8 @@ import {
   Image,
   StyleSheet,
   Text,
-  View
+  View,
+  FlatList
 } from 'react-native';
 import moment from 'moment';
 
@@ -22,7 +23,9 @@ export default class Comment extends PureComponent {
 
   render() {
     // Pull comment object out of props
-    const { commentContent } = this.props;
+    const { postComment } = this.props;
+
+    console.log(postComment.user_id);
     return (
       <View style={styles.container}>
         <View style={styles.avatarContainer}>
@@ -34,11 +37,11 @@ export default class Comment extends PureComponent {
         </View>
         <View style={styles.contentContainer}>
           <Text>
-            <Text style={[styles.text, styles.name]}>{commentContent.user_id}</Text>
+            <Text style={[styles.text, styles.name]}>{postComment.user_id}</Text>
             {' '}
-            <Text style={styles.text}>{commentContent.comment_body}</Text>
+            <Text style={styles.text}>{postComment.comment_body}</Text>
           </Text>
-          <Text style={[styles.text, styles.created]}>{moment(created).fromNow()}</Text>
+          <Text style={[styles.text, styles.created]}>{moment(postComment.created).fromNow()}</Text>
         </View>
       </View>
     );

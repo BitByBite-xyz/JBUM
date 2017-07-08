@@ -1,6 +1,14 @@
 import { StyleSheet, Dimensions } from 'react-native';
 
 export default StyleSheet.create({
+  contentContainerStyle: {
+      paddingTop: 30,
+      paddingBottom: 20,
+    },
+    container: {
+      flex: 1,
+      backgroundColor: '#F3F3F3'
+    },
   backdrop: {
       backgroundColor: '#F3F3F3',
       flex: 1,
@@ -63,16 +71,13 @@ export default StyleSheet.create({
       // This can be changed to add a divider between the boxes; change to E5E5E5
   },
   button: {
-    fontSize: 19,
     paddingTop: 14,
     paddingBottom: 10,
-    color: '#BABABA',
     justifyContent: 'center',
     alignItems: 'center'
   },
   lineDivider: {
       width: 320,
-      color: '#BABABA',
       borderTopColor: '#DBD9D9',
       borderTopWidth: .5,
       paddingLeft: 10,
