@@ -1,13 +1,12 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, Alert, Linking } from 'react-native';
 import Button from '../../components/Button';
 import styles from './styles';
-
 import SettingsList from 'react-native-settings-list';
 //https://github.com/evetstech/react-native-settings-list?files=1#usage
 
 const Settings = (props) => {
-  const { switchValue, signOut } = props;
+  const { switchValue, signOut, navigation } = props;
 
   return (
     <View style={{backgroundColor:'#EFEFF4',flex:1}}>
@@ -35,25 +34,25 @@ const Settings = (props) => {
               <SettingsList.Header headerText='SUPPORT' headerStyle={{color:'gray', marginTop:15}}/>
               <SettingsList.Item
                 title='Help Center'
-                onPress={() => Alert.alert('Route To General Page')}
+                onPress={() => Linking.openURL('http://www.justbetweenuandme.com')}
               />
               <SettingsList.Item
                 title='Report a Problem'
-                onPress={() => Alert.alert('Route To Display Page')}
-              />
+                onPress={() => Linking.openURL("http://www.justbetweenuandme.com")}
+                />
 
               <SettingsList.Header headerText='ABOUT' headerStyle={{color:'gray', marginTop:15}}/>
               <SettingsList.Item
                 title='Privacy Policy'
-                onPress={() => Alert.alert('Route To General Page')}
+                onPress={() => Linking.openURL('https://help.instagram.com/155833707900388/?helpref=hc_fnav')}
               />
               <SettingsList.Item
                 title='Terms'
-                onPress={() => Alert.alert('Route To Display Page')}
+                onPress={() => Linking.openURL('https://help.instagram.com/478745558852511')}
               />
               <SettingsList.Item
                 title='Website'
-                onPress={() => Alert.alert('Route To Display Page')}
+                onPress={() => Linking.openURL('http://www.justbetweenuandme.com')}
               />
 
               <SettingsList.Header headerStyle={{marginTop:10}}/>
