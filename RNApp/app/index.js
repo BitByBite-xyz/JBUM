@@ -15,7 +15,7 @@ import {addNavigationHelpers} from 'react-navigation';
 
 Meteor.connect(settings.METEOR_URL);
 
-console.ignoredYellowBox = ['Warning:'] //comment out to get yelled at
+//console.ignoredYellowBox = ['Warning:'] //comment out to get yelled at
 
 const App = ({dispatch, nav}) => (
   <Navigator

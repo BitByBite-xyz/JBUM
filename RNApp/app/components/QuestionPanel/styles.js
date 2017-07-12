@@ -51,7 +51,6 @@ export default StyleSheet.create({
     flex: 1,
     paddingTop: 0,
     paddingBottom: 10,
-    resizeMode: 'contain',
     paddingLeft: 12,
     width: DEVICE_WIDTH,
     flexDirection: 'row',
@@ -82,11 +81,9 @@ export default StyleSheet.create({
   },
   lineDivider: {
       width: 320,
-      color: '#BABABA',
       borderTopColor: '#DBD9D9',
       borderTopWidth: .5,
       margin: 20,
-      fontSize: 15
   },
   timeText: {
     color: '#BBB',

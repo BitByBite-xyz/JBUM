@@ -92,7 +92,6 @@ export default StyleSheet.create({
         borderTopWidth: .5,
         paddingLeft: 10,
         paddingRight: 10,
-        fontSize: 15
     },
     dropdown: {
         justifyContent: 'center',

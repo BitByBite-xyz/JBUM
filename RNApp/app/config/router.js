@@ -23,10 +23,36 @@ import Settings from '../screens/Settings';
 /*
 This is the only navigation I have but every time a screen is added we add to this...
  */
-
+ export const HomeStack = StackNavigator({
+   Home: {
+     screen: Home,
+		 navigationOptions: {
+       title: 'JBUM',
+			 headerStyle: {
+       	backgroundColor: '#D3D3D3',
+       	elevation: null,
+				paddingTop: 0,
+				height: 50,
+		 	},
+		}
+   },
+   Ask: {
+     screen: Ask,
+     navigationOptions: {
+       title: '',
+			 headerStyle: {
+       	backgroundColor: '#D3D3D3',
+       	elevation: null,
+				paddingTop: 0,
+				height: 50,
+		 	},
+     },
+  }}, {
+   headerMode: 'screen',
+ });
 export const Tabs = TabNavigator({
-	Home: {
-		screen: Home,
+	HomeStack: {
+		screen: HomeStack,
 		navigationOptions: {
 				tabBarLabel: 'Home',
 				tabBarIcon: ({tintColor}) => <Icon name="home" size={30} color={tintColor}/>
@@ -83,7 +109,6 @@ export default StackNavigator({
       SignIn: { screen: SignIn },
 			AccountSetup: { screen: AccountSetup },
 			Reply: { screen: Reply },
-			Ask: { screen: Ask },
       Tabs: { screen: Tabs }
     }, {
       navigationOptions: {

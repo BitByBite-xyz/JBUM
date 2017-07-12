@@ -16,7 +16,7 @@ import {
 	Icon
 }
 from 'react-native-elements'
-import Swiper from 'react-native-swiper-animated';
+import Swiper from 'react-native-swiper-animated';//https://github.com/chitezh/react-native-swiper-animated
 
 import colors from '../../config/styles';
 

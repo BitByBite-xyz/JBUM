@@ -28,7 +28,6 @@ class Panel extends React.PureComponent {
       is_visible: false,
       expanded: false,
       animation: new Animated.Value(),
-      updateComments:false
     };
 
     this.setMaxHeight = this.setMaxHeight.bind(this);
@@ -67,10 +66,6 @@ class Panel extends React.PureComponent {
       });
     }
   }
-  refreshComments(){
-    this.setState({ updateComments: true });
-  }
-
   onReplyPress(){
     const { header, navigation, postContent } = this.props;
 
@@ -80,12 +75,10 @@ class Panel extends React.PureComponent {
       navigation.navigate("Reply",{ postContent: postContent });
     }
   }
-
   componentDidMount() {
     setTimeout(() => {
       this.setState({ is_visible: true });
     }, 100);
-
   }
 
   toggle() {

@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import Meteor, { MeteorListView } from 'react-native-meteor';
 import FadeInView from 'react-native-fade-in-view';//{/* onFadeComplete={() => alert('Ready') */}
+import { Header } from 'react-native-elements';
 
 
 import styles from './styles';
@@ -40,10 +41,12 @@ const Home = (props) => {
 
   return (
 
+
     <ScrollView
             style={styles.container}
             contentContainerStyle={styles.contentContainerStyle}
     >
+
       <StatusBar hidden = {true} />
       <AskHeader
         onAskPress={onAskPress}
