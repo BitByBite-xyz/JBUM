@@ -71,7 +71,7 @@ export default StyleSheet.create({
 		shadowColor: '#000'
 	},
 	congratsHeader: {
-		fontSize: 70,
+		fontSize: 60,
 		paddingBottom: 30,
 		color: 'rgba(239, 239, 239, 0.5)'
 	},

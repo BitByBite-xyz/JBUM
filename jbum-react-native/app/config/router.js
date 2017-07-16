@@ -38,7 +38,7 @@ This is the only navigation I have but every time a screen is added we add to th
 			 ,
 			 headerStyle: {
 				borderBottomWidth: 0.5,
-				borderBottomColor: 'black',
+				borderBottomColor: '#d1d1d1',
        	backgroundColor: 'white',
        	elevation: null,
 				paddingTop: 0,
