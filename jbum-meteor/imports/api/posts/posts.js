@@ -45,7 +45,7 @@ PostsSchema = new SimpleSchema({
  },
  post_likes: {
      type: [String],
-     label: "Posts's likes",
+     label: "Post's likes",
      optional: false
  },
  "created": {

@@ -1,24 +1,18 @@
-<header>
-  <h1>Todo List</h1>
+<body>
+  <div>
+    <header>
+      <h1>Todo List</h1>
+    </header>
 
-  <login-buttons></login-buttons>
+    <ul>
+      {{#each tasks}}
+        {{> task}}
+      {{/each}}
+    </ul>
+  </div>
 
-  <form class="new-task" ng-submit="$ctrl.addTask($ctrl.newTask)" ng-show="$ctrl.currentUser">
-    <input ng-model="$ctrl.newTask" type="text" name="text" placeholder="Type to add new tasks"/>
-  </form>
+</body>
 
-</header>
-
-
-
-<ul>
-
-
-  <li ng-repeat="task in $ctrl.tasks">
-
-    <span class="text">
-        {{task.post_body}}
-    </span>
-  </li>
-
-</ul>
+<template name="task">
+  <li>{{text}}</li>
+</template>
