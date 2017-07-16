@@ -65,7 +65,7 @@ const Reply = (props) => {
                          autoCorrect={true}
                      />
                  </View>
-                 <View style={styles.button}>
+                 <View style={styles.buttonView}>
                  <View style={styles.lineDivider}/>
                  <TouchableOpacity onPress={replyButton}>
                      <Text style={styles.button}>Submit Reply</Text>
