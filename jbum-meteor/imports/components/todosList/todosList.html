@@ -1,18 +1,9 @@
-<body>
-  <div>
-    <header>
-      <h1>Todo List</h1>
-    </header>
+<header>
+  <h1>Todo List</h1>
+</header>
 
-    <ul>
-      {{#each tasks}}
-        {{> task}}
-      {{/each}}
-    </ul>
-  </div>
-
-</body>
-
-<template name="task">
-  <li>{{text}}</li>
-</template>
+<ul>
+  <li ng-repeat="task in $ctrl.tasks">
+    {{task.text}}
+  </li>
+</ul>

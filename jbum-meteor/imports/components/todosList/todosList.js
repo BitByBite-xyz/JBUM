@@ -1,10 +1,24 @@
-import { Template } from 'meteor/templating';
-import './todosList.html';
+import angular from 'angular';
+import angularMeteor from 'angular-meteor';
+import template from './todosList.html';
+import { Tasks } from '../../api/tasks.js';
 
-Template.body.helpers({
-  tasks: [
-    { text: 'This is task 1' },
-    { text: 'This is task 2' },
-    { text: 'This is task 3' },
-  ],
-});
+class TodosListCtrl {
+  constructor($scope) {
+    $scope.viewModel(this);
+
+    this.helpers({
+      tasks() {
+        return Tasks.find({});
+      }
+    })
+  }
+}
+
+export default angular.module('todosList', [
+  angularMeteor
+])
+  .component('todosList', {
+    templateUrl: 'imports/components/todosList/todosList.html',
+    controller: ['$scope', TodosListCtrl]
+  });

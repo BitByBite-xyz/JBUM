@@ -1,3 +1,8 @@
+import angular from 'angular';
+import angularMeteor from 'angular-meteor';
 import todosList from '../imports/components/todosList/todosList';
-import Meteor from 'meteor/meteor';
-import loginForm from '../imports/components/loginForm/loginForm';
+
+angular.module('simple-todos', [
+    angularMeteor,
+    todosList.name
+]);
