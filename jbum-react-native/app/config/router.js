@@ -10,9 +10,10 @@ import {
 	Icon
 }
 from 'react-native-elements';
-
+import { Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import SignIn from '../screens/SignIn';
 import Debug from '../screens/Debug';
+import images from '../config/images';
 import AccountSetup from '../screens/AccountSetup';
 import Home from '../screens/Home';
 import Profile from '../screens/Profile';
@@ -27,13 +28,26 @@ This is the only navigation I have but every time a screen is added we add to th
    Home: {
      screen: Home,
 		 navigationOptions: {
-       title: 'JBUM',
+       title: 'Just Between U and Me',
+			 headerRight:
+			 <TouchableOpacity>
+			 	<Image source={images.inboxCircle} style={{width: 31, height: 31, marginRight: 10}}>
+				<Text style={{marginTop: 7, marginLeft: 12, color: 'white', fontFamily: 'Avenir', fontWeight: '500'}}>2</Text>
+				</Image>
+			 </TouchableOpacity>
+			 ,
 			 headerStyle: {
-       	backgroundColor: '#D3D3D3',
+				borderBottomWidth: 0.5,
+				borderBottomColor: '#d1d1d1',
+       	backgroundColor: 'white',
        	elevation: null,
 				paddingTop: 0,
 				height: 50,
 		 	},
+			titleStyle: {
+				//Doesn't work idk why..
+				fontFamily: 'Avenir'
+			 },
 		}
    },
    Ask: {
@@ -117,3 +131,10 @@ export default StackNavigator({
 				mode:'modal'
       }
     });
+
+		const styles =  StyleSheet.create({
+	  inboxCircle: {
+			width: 28,
+			height: 28
+		}
+	})

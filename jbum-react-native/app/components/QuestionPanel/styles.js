@@ -58,14 +58,17 @@ export default StyleSheet.create({
     justifyContent: 'flex-end',
   },
   heartFilled: {
+    marginBottom: 4,
+    marginRight: 5,
+    marginLeft: 10,
     width: 23,
-    height: 20.7,
+    height: 21,
     paddingLeft: 5
   },
   commentButton: {
     width: 22,
     height: 17,
-    paddingLeft: 5
+    marginRight: 5,
   },
   counters: {
     fontFamily: "Avenir",
@@ -76,7 +79,7 @@ export default StyleSheet.create({
   imgs: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingRight: 50,
+    marginRight: 43,
     paddingBottom: 2
   },
   lineDivider: {

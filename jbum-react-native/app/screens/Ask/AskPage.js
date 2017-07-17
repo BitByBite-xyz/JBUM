@@ -14,12 +14,12 @@ const AskPage = (props) => {
       <View style={styles.dropdown}>
         <View style={styles.selectors}>
           <View style={styles.dropdownBackground}>
-            <ModalDropdown textStyle={styles.selectorText} defaultValue={'Categories  ∨'} options={['Abuse', 'Sexual orientation', 'School', 'Other']} />
+            <ModalDropdown dropdownStyle={styles.dropDown} textStyle={styles.selectorText} defaultValue={'Categories  ∨'} options={['Abuse', 'Sexual orientation', 'School', 'Other']} />
           </View>
         </View>
       <View style={styles.selectors}>
         <View style={styles.dropdownBackground}>
-          <ModalDropdown textStyle={styles.selectorText} defaultValue={'Receiver  ∨'} options={['Students', 'Therapist', 'Anyone']} />
+          <ModalDropdown textStyle={styles.selectorText} dropdownStyle={styles.dropDown} defaultValue={'Receiver  ∨'} options={['Students', 'Therapist', 'Anyone']} />
         </View>
       </View>
       <View>
@@ -38,11 +38,10 @@ const AskPage = (props) => {
               style={styles.smallText}
               placeholder='Your Question&#39;s Title'
               returnKeyType='next'
-              placeholderTextColor='#BBB'
               underlineColorAndroid='transparent'
               onChangeText={(title) => updateState({ title })}
               autoCorrect={true}
-              placeholderTextColor={'black'}
+              placeholderTextColor={'#c9c9c9'}
               />
               <View style={styles.lineDivider} />
         </View>
@@ -51,12 +50,11 @@ const AskPage = (props) => {
               style={styles.largeText}
               placeholder='Tell us your question...'
               returnKeyType='done'
-              placeholderTextColor='#BBB'
               underlineColorAndroid='transparent'
               onChangeText={(body) => updateState({ body })}
               multiline={true}
               blurOnSubmit={true}
-              placeholderTextColor={'black'}
+              placeholderTextColor={'#c9c9c9'}
               autoCorrect={true}
               />
           </View>
@@ -111,7 +109,10 @@ const styles = {
         // This can be changed to add a divider between the boxes; change to E5E5E5
 
     },
-
+    dropDown: {
+      borderBottomLeftRadius: 10,
+      borderBottomRightRadius: 10,
+    },
     button: {
         paddingBottom: 10,
         paddingTop: 15,

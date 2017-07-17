@@ -12,9 +12,9 @@ const Settings = (props) => {
   return (
     <View style={{backgroundColor:'#EFEFF4',flex:1}}>
           <View style={{borderBottomWidth:1, backgroundColor:'#f7f7f8',borderColor:'#c8c7cc'}}>
-            <Text style={{alignSelf:'center',marginTop:30,marginBottom:10,fontWeight:'bold',fontSize:16}}>Settings</Text>
+            <Text style={{alignSelf:'center',marginTop:12,marginBottom:10,fontWeight:'bold',fontSize:18}}>Settings</Text>
           </View>
-          <View style={{backgroundColor:'#EFEFF4',flex:1}}>
+          <View style={{backgroundColor:'#f7f7f7',flex:1}}>
             <SettingsList borderColor='#c8c7cc' defaultItemSize={50}>
               <SettingsList.Header headerStyle={{marginTop:0}}/>
               <SettingsList.Item
@@ -32,7 +32,7 @@ const Settings = (props) => {
                 onPress={() => Alert.alert('Route To Notifications Page')}
               />
 
-              <SettingsList.Header headerText='SUPPORT' headerStyle={{color:'gray', marginTop:15}}/>
+              <SettingsList.Header headerText='SUPPORT' headerStyle={{color:'gray', marginTop:15, marginLeft: 10}}/>
               <SettingsList.Item
                 title='Help Center'
                 onPress={() => Linking.openURL('http://www.justbetweenuandme.com')}
@@ -42,7 +42,7 @@ const Settings = (props) => {
                 onPress={() => Linking.openURL("http://www.justbetweenuandme.com")}
               />
 
-              <SettingsList.Header headerText='ABOUT' headerStyle={{color:'gray', marginTop:15}}/>
+              <SettingsList.Header headerText='ABOUT' headerStyle={{color:'gray', marginTop:15, marginLeft: 10}}/>
               <SettingsList.Item
                 title='Privacy Policy'
                 onPress={() => Linking.openURL('https://help.instagram.com/155833707900388/?helpref=hc_fnav')}
