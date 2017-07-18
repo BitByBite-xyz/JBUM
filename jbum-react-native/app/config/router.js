@@ -44,9 +44,11 @@ This is the only navigation I have but every time a screen is added we add to th
 				paddingTop: 0,
 				height: 50,
 		 	},
-			titleStyle: {
+			headerTitleStyle: {
 				//Doesn't work idk why..
-				fontFamily: 'Avenir'
+				fontFamily: 'Avenir',
+				fontSize: 18,
+				fontWeight: '600'
 			 },
 		}
    },
