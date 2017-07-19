@@ -147,7 +147,7 @@ const options_r = {
 	}
 };
 
-class AccountSetupContainer extends Component {//all in here for refs to work :)
+class AccountSetup extends Component {//all in here for refs to work :)
   constructor(props) {
     super(props);
 
@@ -173,8 +173,6 @@ class AccountSetupContainer extends Component {//all in here for refs to work :)
   next = () => {
     this.swiper.forceRightSwipe();
   }
-
-
 
   render() {
     return (
@@ -225,12 +223,8 @@ class AccountSetupContainer extends Component {//all in here for refs to work :)
 						</TouchableOpacity>
 			    </View>
 			</Swiper>
-
-
-
-
     );
   }
 }
 
-export default AccountSetupContainer;
+export default AccountSetup;
