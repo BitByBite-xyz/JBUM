@@ -63,8 +63,6 @@ const Proflie = (props) => {
 	<View style={styles.container}>
 		<StatusBar hidden = {true}/>
 
-		<Background source={images.profileBannerImg} />
-
 
 			<ScrollableTabView
 					renderTabBar={()=><DefaultTabBar backgroundColor='rgba(255, 255, 255, 0.7)' />}
