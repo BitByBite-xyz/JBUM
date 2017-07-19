@@ -83,6 +83,7 @@ const Proflie = (props) => {
 		          </FadeInView>}
 							ListFooterComponent={this.renderFooter}
 			        onEndReachedThreshold={50}
+							removeClippedSubviews={false}
 		        />
 
 						<FlatList
@@ -101,6 +102,7 @@ const Proflie = (props) => {
 								</FadeInView>}
 							ListFooterComponent={this.renderFooter}
 			        onEndReachedThreshold={50}
+							removeClippedSubviews={false}
 							/>
 
 							<FlatList
@@ -119,6 +121,7 @@ const Proflie = (props) => {
 									</FadeInView>}
 									ListFooterComponent={this.renderFooter}
 					        onEndReachedThreshold={50}
+									removeClippedSubviews={false}
 								/>
 
 					</ScrollableTabView>

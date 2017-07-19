@@ -86,6 +86,7 @@ class Home extends Component {
             </FadeInView>}
           ListFooterComponent={this.renderFooter}
           onEndReachedThreshold={50}
+          removeClippedSubviews={false}
         />
 
         <DropdownAlert
