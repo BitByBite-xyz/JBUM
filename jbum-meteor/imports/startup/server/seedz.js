@@ -13,24 +13,29 @@ Meteor.startup(() => {
     console.time('DB_Seed');
     console.log('Seeding Accounts DB...');
 
-    seed1UserId = Accounts.createUser({
-      username: 'dev',
-      password: 'dev'
-    });
-    seed2UserId = Accounts.createUser({
-      username: 'a',
-      email: 'd@oo.com',
-      password: 'a'
-    });
-    seed3UserId = Accounts.createUser({
-      username: 'b',
-      email: 'g@oo.com',
-      password: 'b'
-    });
-    seed4UserId = Accounts.createUser({
-      username: 'c',
-      email: 'm@oo.com',
-      password: 'c'
+    var users = [
+      {username:"user",password:'user',roles:[]},
+      {username:"responder",password:"responder",roles:['responder']},
+      {username:"admin",password:"admin",roles:['responder','admin']},
+      {username:"dev",password:"dev",roles:['admin']}
+    ];
+
+    //giving roles of ['responder','admin']
+
+    _.each(users, function (user) {
+      var id;
+
+      id = Accounts.createUser({
+        username: user.username,
+        password: user.password,
+        //profile: { name: user.name }
+      });
+
+      if (user.roles.length > 0) {
+        // Need _id of existing user record so this call must come
+        // after `Accounts.createUser` or `Accounts.onCreate`
+        Roles.addUsersToRoles(id, user.roles, 'default-group');
+      }
     });
   }
   if (Posts.find().count() === 0) {
@@ -44,7 +49,7 @@ Meteor.startup(() => {
             comment_id: Random.id()
         })
     }
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 50; i++) {
       let postLikes = [Meteor.users.findOne()._id, Meteor.users.findOne()._id]
       Posts.insert({
         user_id: Meteor.users.findOne()._id,
