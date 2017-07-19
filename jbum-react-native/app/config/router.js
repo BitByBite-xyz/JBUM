@@ -45,7 +45,6 @@ This is the only navigation I have but every time a screen is added we add to th
 				height: 50,
 		 	},
 			headerTitleStyle: {
-				//Doesn't work idk why..
 				fontFamily: 'Avenir',
 				fontSize: 18,
 				fontWeight: '600'
@@ -54,18 +53,46 @@ This is the only navigation I have but every time a screen is added we add to th
    },
    Ask: {
      screen: Ask,
-     navigationOptions: {
-       title: '',
-			 headerStyle: {
-       	backgroundColor: '#D3D3D3',
-       	elevation: null,
-				paddingTop: 0,
-				height: 50,
-		 	},
-     },
+		 navigationOptions: {
+ 			title: 'Just Between You and Me',
+ 		 headerStyle: {
+ 				borderBottomWidth: 0.5,
+ 				borderBottomColor: '#d1d1d1',
+ 				backgroundColor: 'white',
+ 				elevation: null,
+ 				height: 50,
+ 				paddingBottom: 10,
+ 				paddingTop: 10
+ 			},
+ 			headerTitleStyle: {
+ 				fontFamily: 'Avenir',
+ 				fontSize: 17.5,
+ 				fontWeight: '600',
+ 				marginRight: 10,
+ 				paddingTop: 2
+ 			 },
+ 		},
   },
 	Reply: { screen: Reply },}, {
-   headerMode: 'screen',
+		navigationOptions: {
+			title: 'Just Between You and Me',
+		 headerStyle: {
+				borderBottomWidth: 0.5,
+				borderBottomColor: '#d1d1d1',
+				backgroundColor: 'white',
+				elevation: null,
+				height: 50,
+				paddingBottom: 10,
+				paddingTop: 10
+			},
+			headerTitleStyle: {
+				fontFamily: 'Avenir',
+				fontSize: 17.5,
+				fontWeight: '600',
+				marginRight: 10,
+				paddingTop: 2
+			 },
+		},
  });
 export const Tabs = TabNavigator({
 	HomeStack: {
