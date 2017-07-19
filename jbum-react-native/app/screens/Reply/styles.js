@@ -2,7 +2,6 @@ import { StyleSheet, Dimensions } from 'react-native';
 
 export default StyleSheet.create({
   contentContainerStyle: {
-      paddingTop: 30,
       paddingBottom: 20,
     },
     container: {

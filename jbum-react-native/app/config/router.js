@@ -63,7 +63,8 @@ This is the only navigation I have but every time a screen is added we add to th
 				height: 50,
 		 	},
      },
-  }}, {
+  },
+	Reply: { screen: Reply },}, {
    headerMode: 'screen',
  });
 export const Tabs = TabNavigator({
@@ -118,25 +119,23 @@ export const ProfileStack = StackNavigator({
 		}
 	},
 }, {
-	headerMode: 'none',
-	mode:'modal'
+		headerMode: 'none',
+		mode:'modal'
 });
 export default StackNavigator({
-      SignIn: { screen: SignIn },
-			AccountSetup: { screen: AccountSetup },
-			Reply: { screen: Reply },
-      Tabs: { screen: Tabs }
-    }, {
-      navigationOptions: {
-        tabBarVisible: false,
-        header: null,
+    SignIn: { screen: SignIn },
+		AccountSetup: { screen: AccountSetup },
+    Tabs: { screen: Tabs }
+	},{
+    	navigationOptions: {
+	      tabBarVisible: false,
+	      header: null,
 				mode:'modal'
-      }
-    });
-
-		const styles =  StyleSheet.create({
-	  inboxCircle: {
+    	}
+	});
+	const styles =  StyleSheet.create({
+		 inboxCircle: {
 			width: 28,
 			height: 28
 		}
-	})
+})

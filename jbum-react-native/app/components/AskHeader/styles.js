@@ -51,9 +51,12 @@ export default StyleSheet.create({
         borderRadius: 5
     },
     bottomBox: {
-        paddingLeft: 10,
-        paddingRight: 10,
-        backgroundColor: '#F3F3F3'
+        flexDirection: 'column',
+        margin: 7,
+        backgroundColor: 'white',
+        opacity: 1,
+        overflow: 'hidden',
+        borderRadius: 6
     },
     views: {
         paddingTop: 8,
