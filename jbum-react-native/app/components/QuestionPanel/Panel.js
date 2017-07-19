@@ -110,7 +110,7 @@ class Panel extends React.PureComponent {
   renderHeader() {
     const { header,post } = this.props;
     const { expanded } = this.state;
-    const icon = expanded ? images.arrowUp : images.arrowDown;
+    const icon = expanded ? images.arrowDown : images.arrowUp;
 
     if (typeof header === 'function') {
       return header();
