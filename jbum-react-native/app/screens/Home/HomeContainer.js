@@ -1,19 +1,17 @@
 import React, { PropTypes, Component } from 'react';
 
 import Meteor, { createContainer } from 'react-native-meteor';
+
+
 import Loading from '../../components/Loading';
-
-
 import Home from './Home';
 
 class HomeContainer extends Component {
   constructor(props) {
     super(props);
 
-
     this.mounted = false;
     //this.props.navigation.navigate('AccountSetup');
-
   }
 
   componentWillMount() {
