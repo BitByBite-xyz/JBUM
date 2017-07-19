@@ -2,16 +2,14 @@ import {
 	StyleSheet,
 	Dimensions
 }
-	from 'react-native';
+from 'react-native';
 import {
 	colors,
 	DEVICE_WIDTH,
 	DEVICE_HEIGHT
 }
-	from '../../config/styles';
-
+from '../../config/styles';
 const window = Dimensions.get('window');
-
 
 export default StyleSheet.create({
 	container: {
@@ -89,5 +87,4 @@ export default StyleSheet.create({
 		fontSize: 35,
 		color: 'lightblue'
 	}
-
 });

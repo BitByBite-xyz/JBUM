@@ -1,3 +1,3 @@
-import AccountSetupContainer from './AccountSetupContainer';
+import AccountSetup from './AccountSetup';
 
-export default AccountSetupContainer;
+export default AccountSetup;
