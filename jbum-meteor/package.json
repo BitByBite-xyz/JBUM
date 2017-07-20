@@ -7,10 +7,10 @@
   "dependencies": {
     "angular": "^1.6.5",
     "angular-meteor": "^1.3.12",
-    "babel-runtime": "^6.23.0",
+    "babel-runtime": "^6.20.0",
     "bcrypt": "^1.0.2",
-    "meteor-node-stubs": "~0.2.0"
-  },
+    "meteor-node-stubs": "~0.2.4"
+},
   "scripts": {
     "deploy": "DEPLOY_HOSTNAME=galaxy.meteor.com meteor deploy jbum.meteorapp.com --settings /Users/connorlarkin/dev/JBUM/jbum-meteor/settings.json"
  }
