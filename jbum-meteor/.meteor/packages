@@ -27,5 +27,8 @@ anti:fake
 aldeed:collection2
 reywood:publish-composite
 dotansimha:accounts-ui-angular
+
 accounts-ui@1.1.9
 angular-templates
+alanning:roles
+

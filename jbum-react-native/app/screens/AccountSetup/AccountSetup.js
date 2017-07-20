@@ -1,37 +1,22 @@
-import React from 'react';
-import {
-	Text,
-	View,
-	Image,
-	StyleSheet,
-	StatusBar,
-	Linking,
-	TouchableOpacity
+ import React, { Component } from 'react';
+ import {
+   	Text,
+   	View,
+   	Image,
+   	StatusBar,
+   	Linking,
+    TouchableOpacity
 }
 from 'react-native';
-
-import KeyboardSpacer from 'react-native-keyboard-spacer';
+import Meteor, { Accounts } from 'react-native-meteor';
 import {
 	Button,
 	Icon
 }
 from 'react-native-elements'
 import Swiper from 'react-native-swiper-animated';//https://github.com/chitezh/react-native-swiper-animated
-
-import colors from '../../config/styles';
-
-import images from '../../config/images';
 import styles from './styles';
-import Wallpaper from '../../components/Wallpaper';
 var t = require('tcomb-form-native');
-
-var Age = t.refinement(t.Number, function(n) {
-	return n >= 18;
-});
-
-Age.getValidationErrorMessage = function(value, path, context) {
-	return 'bad age, locale: ' + context.locale;
-};
 //Styling for tcomb-form-native
 var _ = require('lodash');
 const stylesheet = _.cloneDeep(t.form.Form.stylesheet);
@@ -52,6 +37,15 @@ stylesheet.formGroup.normal.flexDirection = 'column';
 stylesheet.formGroup.error.flexDirection = 'row';
 const options = {
 	stylesheet: stylesheet
+};
+var Form = t.form.Form;
+
+var Age = t.refinement(t.Number, function(n) {
+	return n >= 18;
+});
+
+Age.getValidationErrorMessage = function(value, path, context) {
+	return 'bad age, locale: ' + context.locale;
 };
 
 let Person = t.struct({ //add here to add to the form
@@ -153,13 +147,37 @@ const options_r = {
 	}
 };
 
+class AccountSetup extends Component {//all in here for refs to work :)
+  constructor(props) {
+    super(props);
 
-const AccountSetup = (props) => {
-	var Form = t.form.Form; //docs :https://github.com/gcanti/tcomb-form-native#setup
+    this.mounted = false;
 
-	return (
+  }
 
-			<Swiper style={styles.wrapper}
+  componentWillMount() {
+    this.mounted = true;
+  }
+
+
+  componentWillUnmount() {
+    this.mounted = false;
+  }
+
+  swiper = null;
+
+  prev = () => {
+    this.swiper.forceLeftSwipe();
+  }
+
+  next = () => {
+    this.swiper.forceRightSwipe();
+  }
+
+  render() {
+    return (
+
+      <Swiper style={styles.wrapper}
 							showsButtons={true}
 							stack
 							Swiper
@@ -171,15 +189,18 @@ const AccountSetup = (props) => {
 							paginationActiveDotColor={"#f4f4f4"}
 							paginationDotColor={"#8e8e8e"}
 							hidePaginationOnLast
+              onRightSwipe={this.prev}
+              ref={(swiper) => {
+		            this.swiper = swiper;
+		          }}
 							>
-
 				<View style={styles.slide1}>
 					<Form
-						//ref="form"
+						ref="person_form"
 						type={Person}
 						options={options_p}
 					/>
-	        	</View>
+	      </View>
 				<View style={styles.slide2}>
 					<Form
 						//ref="form"
@@ -202,15 +223,8 @@ const AccountSetup = (props) => {
 						</TouchableOpacity>
 			    </View>
 			</Swiper>
-
-	);
-};
-
-AccountSetup.propTypes = {
-	updateState: React.PropTypes.func,
-	next: React.PropTypes.func,
-	error: React.PropTypes.string,
-	confirmPasswordVisible: React.PropTypes.bool,
-};
+    );
+  }
+}
 
 export default AccountSetup;

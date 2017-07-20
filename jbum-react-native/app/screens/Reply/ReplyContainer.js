@@ -14,10 +14,10 @@ class ReplyContainer extends Component {
     this.state = {
       body: '',
     };
+  }
 
-
-
-
+  clearText = () => {
+    this._textInput.setNativeProps({text: ''});
   }
 
   replyButton(){
@@ -33,6 +33,10 @@ class ReplyContainer extends Component {
         return;
       } else {
         console.log("reply added!");
+        this.state = {
+          body: '',
+        };
+        this.clearText();
 
         this.setState(this.state);
         //this.props.navigation.goBack();

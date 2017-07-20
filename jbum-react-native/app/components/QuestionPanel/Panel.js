@@ -110,7 +110,7 @@ class Panel extends React.PureComponent {
   renderHeader() {
     const { header,post } = this.props;
     const { expanded } = this.state;
-    const icon = expanded ? images.arrowUp : images.arrowDown;
+    const icon = expanded ? images.arrowDown : images.arrowUp;
 
     if (typeof header === 'function') {
       return header();
@@ -174,7 +174,7 @@ class Panel extends React.PureComponent {
               source={liked ? images.heartFilled : images.heartUnfilled}
               style={styles.heartFilled}
             />
-            <Text style={styles.counters}>{' '+likes} Loved</Text>
+            <Text style={styles.counters}>{' '+likes} loved</Text>
           </TouchableOpacity>
 
 
@@ -183,7 +183,7 @@ class Panel extends React.PureComponent {
               source={images.commentIcon}
               style={styles.commentButton}
             />
-            <Text style={styles.counters}>{' '+postContent.post_comments.length} Responses </Text>
+            <Text style={styles.counters}>{' '+postContent.post_comments.length} responses </Text>
 
           </TouchableOpacity>
 

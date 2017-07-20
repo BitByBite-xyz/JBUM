@@ -38,31 +38,61 @@ This is the only navigation I have but every time a screen is added we add to th
 			 ,
 			 headerStyle: {
 				borderBottomWidth: 0.5,
-				borderBottomColor: 'black',
+				borderBottomColor: '#d1d1d1',
        	backgroundColor: 'white',
        	elevation: null,
 				paddingTop: 0,
 				height: 50,
 		 	},
-			titleStyle: {
-				//Doesn't work idk why..
-				fontFamily: 'Avenir'
+			headerTitleStyle: {
+				fontFamily: 'Avenir',
+				fontSize: 18,
+				fontWeight: '600'
 			 },
 		}
    },
    Ask: {
      screen: Ask,
-     navigationOptions: {
-       title: '',
-			 headerStyle: {
-       	backgroundColor: '#D3D3D3',
-       	elevation: null,
-				paddingTop: 0,
+		 navigationOptions: {
+ 			title: 'Just Between You and Me',
+ 		 headerStyle: {
+ 				borderBottomWidth: 0.5,
+ 				borderBottomColor: '#d1d1d1',
+ 				backgroundColor: 'white',
+ 				elevation: null,
+ 				height: 50,
+ 				paddingBottom: 10,
+ 				paddingTop: 10
+ 			},
+ 			headerTitleStyle: {
+ 				fontFamily: 'Avenir',
+ 				fontSize: 17.5,
+ 				fontWeight: '600',
+ 				marginRight: 10,
+ 				paddingTop: 2
+ 			 },
+ 		},
+  },
+	Reply: { screen: Reply },}, {
+		navigationOptions: {
+			title: 'Just Between You and Me',
+		 headerStyle: {
+				borderBottomWidth: 0.5,
+				borderBottomColor: '#d1d1d1',
+				backgroundColor: 'white',
+				elevation: null,
 				height: 50,
-		 	},
-     },
-  }}, {
-   headerMode: 'screen',
+				paddingBottom: 10,
+				paddingTop: 10
+			},
+			headerTitleStyle: {
+				fontFamily: 'Avenir',
+				fontSize: 17.5,
+				fontWeight: '600',
+				marginRight: 10,
+				paddingTop: 2
+			 },
+		},
  });
 export const Tabs = TabNavigator({
 	HomeStack: {
@@ -116,25 +146,23 @@ export const ProfileStack = StackNavigator({
 		}
 	},
 }, {
-	headerMode: 'none',
-	mode:'modal'
+		headerMode: 'none',
+		mode:'modal'
 });
 export default StackNavigator({
-      SignIn: { screen: SignIn },
-			AccountSetup: { screen: AccountSetup },
-			Reply: { screen: Reply },
-      Tabs: { screen: Tabs }
-    }, {
-      navigationOptions: {
-        tabBarVisible: false,
-        header: null,
+    SignIn: { screen: SignIn },
+		AccountSetup: { screen: AccountSetup },
+    Tabs: { screen: Tabs }
+	},{
+    	navigationOptions: {
+	      tabBarVisible: false,
+	      header: null,
 				mode:'modal'
-      }
-    });
-
-		const styles =  StyleSheet.create({
-	  inboxCircle: {
+    	}
+	});
+	const styles =  StyleSheet.create({
+		 inboxCircle: {
 			width: 28,
 			height: 28
 		}
-	})
+})

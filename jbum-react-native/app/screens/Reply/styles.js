@@ -2,7 +2,6 @@ import { StyleSheet, Dimensions } from 'react-native';
 
 export default StyleSheet.create({
   contentContainerStyle: {
-      paddingTop: 30,
       paddingBottom: 20,
     },
     container: {
@@ -25,8 +24,11 @@ export default StyleSheet.create({
   },
   questionTitleText: {
       color: '#BABABA',
+      paddingTop: 5,
+      paddingBottom: 8,
+      fontWeight: '500',
       fontFamily: 'Avenir',
-      fontSize: 30,
+      fontSize: 18,
       paddingBottom: 5
   },
   questionTitleContainer: {
@@ -70,12 +72,18 @@ export default StyleSheet.create({
       //Also padding-bottom can be added too
       // This can be changed to add a divider between the boxes; change to E5E5E5
   },
-  button: {
+  buttonView: {
     paddingTop: 14,
     paddingBottom: 10,
     justifyContent: 'center',
     alignItems: 'center',
-    color: '#BBB',
+  },
+  button: {
+    color: '#BBBB',
+    fontSize: 20,
+    fontFamily: 'Avenir',
+    paddingTop: 11,
+    paddingBottom: 5
   },
   lineDivider: {
       width: 320,

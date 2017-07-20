@@ -63,8 +63,6 @@ const Proflie = (props) => {
 	<View style={styles.container}>
 		<StatusBar hidden = {true}/>
 
-		<Background source={images.profileBannerImg} />
-
 
 			<ScrollableTabView
 					renderTabBar={()=><DefaultTabBar backgroundColor='rgba(255, 255, 255, 0.7)' />}
@@ -85,6 +83,7 @@ const Proflie = (props) => {
 		          </FadeInView>}
 							ListFooterComponent={this.renderFooter}
 			        onEndReachedThreshold={50}
+							removeClippedSubviews={false}
 		        />
 
 						<FlatList
@@ -103,6 +102,7 @@ const Proflie = (props) => {
 								</FadeInView>}
 							ListFooterComponent={this.renderFooter}
 			        onEndReachedThreshold={50}
+							removeClippedSubviews={false}
 							/>
 
 							<FlatList
@@ -121,6 +121,7 @@ const Proflie = (props) => {
 									</FadeInView>}
 									ListFooterComponent={this.renderFooter}
 					        onEndReachedThreshold={50}
+									removeClippedSubviews={false}
 								/>
 
 					</ScrollableTabView>

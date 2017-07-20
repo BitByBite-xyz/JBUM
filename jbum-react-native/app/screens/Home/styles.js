@@ -3,7 +3,7 @@ import { colors } from '../../config/styles';
 
 export default StyleSheet.create({
   contentContainerStyle: {
-      paddingTop: 30,
+      paddingTop: 7,
       paddingBottom: 20,
     },
     container: {

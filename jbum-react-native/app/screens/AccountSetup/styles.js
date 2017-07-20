@@ -2,16 +2,14 @@ import {
 	StyleSheet,
 	Dimensions
 }
-	from 'react-native';
+from 'react-native';
 import {
 	colors,
 	DEVICE_WIDTH,
 	DEVICE_HEIGHT
 }
-	from '../../config/styles';
-
+from '../../config/styles';
 const window = Dimensions.get('window');
-
 
 export default StyleSheet.create({
 	container: {
@@ -71,7 +69,7 @@ export default StyleSheet.create({
 		shadowColor: '#000'
 	},
 	congratsHeader: {
-		fontSize: 70,
+		fontSize: 60,
 		paddingBottom: 30,
 		color: 'rgba(239, 239, 239, 0.5)'
 	},
@@ -89,5 +87,4 @@ export default StyleSheet.create({
 		fontSize: 35,
 		color: 'lightblue'
 	}
-
 });
