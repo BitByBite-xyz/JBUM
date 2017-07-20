@@ -27,6 +27,7 @@ class Home extends Component {
 
   componentWillMount() {
     this.mounted = true;
+    this.props.navigation.navigate('Profile')
   }
 
   componentDidMount() {

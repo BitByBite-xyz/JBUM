@@ -42,7 +42,7 @@ Meteor.startup(() => {
     console.log('Seeding Posts DB...');
 
     let comments = [];
-    for(let i = 0; i < 10; i++) {
+    for(let i = 0; i < 50; i++) {
         comments.push({
             user_id: Meteor.users.findOne()._id,
             comment_body: Fake.sentence(30),

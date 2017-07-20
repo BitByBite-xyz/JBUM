@@ -22,10 +22,6 @@ const QuesionPanel = (props) => {
   return (
 
 
-  <Swipeout
-    right={swipeoutBtns}
-    backgroundColor='transparent'
-    >
       <Panel
         style={styles.headerContainer}
         header={title}
@@ -36,7 +32,7 @@ const QuesionPanel = (props) => {
           {postContent.post_body}
         </Text>
     </Panel>
-  </Swipeout>
+  
   );
 };
 
