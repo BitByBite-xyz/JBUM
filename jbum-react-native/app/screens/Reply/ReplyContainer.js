@@ -16,10 +16,6 @@ class ReplyContainer extends Component {
     };
   }
 
-  clearText = () => {
-    this._textInput.setNativeProps({text: ''});
-  }
-
   replyButton(){
     const { navigation, replyButton } = this.props;
     const { postContent } = navigation.state.params;
@@ -33,13 +29,8 @@ class ReplyContainer extends Component {
         return;
       } else {
         console.log("reply added!");
-        this.state = {
-          body: '',
-        };
-        this.clearText();
 
-        this.setState(this.state);
-        //this.props.navigation.goBack();
+        this.props.navigation.goBack();
       }
     });
   }
