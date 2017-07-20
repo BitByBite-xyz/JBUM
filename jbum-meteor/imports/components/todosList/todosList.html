@@ -1,3 +1,4 @@
+
 <header>
     <h1>Todo List ( {{$ctrl.incompleteCount}} )</h1>
 
@@ -26,3 +27,18 @@
       </span>
   </li>
 </ul>
+
+<div>
+  <form novalidate class="simple-form" ng-show="$ctrl.currentUser">
+    <label>Name: <input type="text" ng-model="user.text1" /></label><br />
+    <label>E-mail: <input type="text" ng-model="user.text2" /></label><br />
+    Selector: <label><input type="checkbox" ng-checked="task.checked" ng-click="$ctrl.setChecked(task)" class="toggle-checked"/>selector1</label>
+    <label><input type="checkbox" ng-model="user.selector" value="emacs" />selector2</label><br />
+    <input type="button" ng-click="reset()" value="Reset" />
+    <input type="submit" ng-click="update(user)" value="Save" />
+  </form>
+<u1>
+</u1>
+</div>
+
+</header>

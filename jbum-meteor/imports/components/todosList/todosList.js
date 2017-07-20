@@ -67,7 +67,7 @@ class TodosListCtrl {
  removeTask(task) {
    Tasks.remove(task._id);
  }
- }
+}
 export default angular.module('todosList', [
   angularMeteor
 ])
