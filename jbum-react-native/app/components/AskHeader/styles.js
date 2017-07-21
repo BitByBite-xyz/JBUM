@@ -28,7 +28,7 @@ export default StyleSheet.create({
         alignItems: 'center'
     },
     fakeButton: {
-        fontSize: 18,
+        fontSize: 20,
         color: '#BABABA',
         fontFamily: 'Avenir',
         justifyContent: 'center',
@@ -65,7 +65,7 @@ export default StyleSheet.create({
         // This can be changed to add a divider between the boxes; change to E5E5E5
     },
     button: {
-        paddingBottom: 10,
+        paddingBottom: 7,
         paddingTop: 15,
         paddingLeft: 17,
         justifyContent: 'center',
@@ -85,12 +85,12 @@ export default StyleSheet.create({
         paddingLeft: 10,
         paddingRight: 10,
         paddingTop: 5,
-        fontSize: 19,
+        fontSize: 22,
         fontFamily: 'Avenir'
     },
     lineDivider: {
         position: 'absolute',
-        paddingBottom: 35,
+        paddingBottom: 42,
         width: '95%',
         borderTopColor: '#DBD9D9',
         borderTopWidth: .5,

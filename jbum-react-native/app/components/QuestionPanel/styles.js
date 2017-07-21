@@ -87,7 +87,7 @@ export default StyleSheet.create({
       borderTopColor: '#DBD9D9',
       borderTopWidth: .5,
       justifyContent: 'center',
-      marginBottom: 13,
+      marginBottom: 17,
       marginTop: 2,
       marginLeft: 18
   },
