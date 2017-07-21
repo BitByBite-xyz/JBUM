@@ -26,7 +26,7 @@ export default StyleSheet.create({
     backgroundColor: 'white',
     opacity: 1,
     overflow: 'hidden',
-    borderRadius: 6
+    borderRadius: 9
   },
   title: {
     flex: 1,

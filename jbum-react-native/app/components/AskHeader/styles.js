@@ -30,6 +30,7 @@ export default StyleSheet.create({
     fakeButton: {
         fontSize: 18,
         color: '#BABABA',
+        fontFamily: 'Avenir',
         justifyContent: 'center',
         alignItems: 'center'
     },
@@ -54,7 +55,7 @@ export default StyleSheet.create({
         backgroundColor: 'white',
         opacity: 1,
         overflow: 'hidden',
-        borderRadius: 6
+        borderRadius: 9
     },
     views: {
         paddingTop: 8,
