@@ -29,8 +29,6 @@ export default StyleSheet.create({
     },
     fakeButton: {
         fontSize: 18,
-        paddingTop: 9,
-        paddingBottom: 2,
         color: '#BABABA',
         justifyContent: 'center',
         alignItems: 'center'
@@ -90,11 +88,11 @@ export default StyleSheet.create({
         fontFamily: 'Avenir'
     },
     lineDivider: {
-        width: 320,
+        position: 'absolute',
+        paddingBottom: 35,
+        width: '95%',
         borderTopColor: '#DBD9D9',
         borderTopWidth: .5,
-        paddingLeft: 10,
-        paddingRight: 10,
     },
     dropdown: {
         justifyContent: 'center',

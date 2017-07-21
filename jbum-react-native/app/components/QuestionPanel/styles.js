@@ -83,10 +83,13 @@ export default StyleSheet.create({
     paddingBottom: 2
   },
   lineDivider: {
-      width: 320,
+      width: '90%',
       borderTopColor: '#DBD9D9',
       borderTopWidth: .5,
-      margin: 20,
+      justifyContent: 'center',
+      marginBottom: 13,
+      marginTop: 2,
+      marginLeft: 18
   },
   timeText: {
     color: '#BBB',
