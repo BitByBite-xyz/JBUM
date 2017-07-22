@@ -3658,6 +3658,10 @@ react-native-button-component@^0.1.18:
     react-native-linear-gradient "^2.0.0"
     react-native-spinkit "^1.0.2"
 
+react-native-chooser@^1.5.3:
+  version "1.5.3"
+  resolved "https://registry.yarnpkg.com/react-native-chooser/-/react-native-chooser-1.5.3.tgz#1b3a250dd13f480de165ddd2d8535193bb8fddde"
+
 "react-native-circular-progress@github:jacklam718/react-native-circular-progress#v0.0.8":
   version "0.0.8"
   resolved "https://codeload.github.com/jacklam718/react-native-circular-progress/tar.gz/1f05129e188e166744ae8ee0455ba9a3ae744353"

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, TextInput, Button, Image, TouchableOpacity } from 'react-native';
 import ModalDropdown from 'react-native-modal-dropdown';
+import {Select, Option} from "react-native-chooser"
 
 
 const AskPage = (props) => {
@@ -14,12 +15,48 @@ const AskPage = (props) => {
       <View style={styles.dropdown}>
         <View style={styles.selectors}>
           <View style={styles.dropdownBackground}>
-            <ModalDropdown dropdownStyle={styles.dropDown} textStyle={styles.selectorText} defaultValue={'Categories  ∨'} options={['Abuse', 'Sexual orientation', 'School', 'Other']} />
+            <Select
+
+              defaultText  = "Select Me Please"
+              style = {{borderWidth : 1, borderColor : "green"}}
+              textStyle = {{}}
+              backdropStyle  = {{backgroundColor : "#d3d5d6"}}
+              optionListStyle = {{backgroundColor : "#F5FCFF"}}
+            >
+              <Option value = {{name : "azhar"}}>Azhar</Option>
+              <Option value = "johnceena">Johnceena</Option>
+              <Option value = "undertaker">Undertaker</Option>
+              <Option value = "Daniel">Daniel</Option>
+              <Option value = "Roman">Roman</Option>
+              <Option value = "Stonecold">Stonecold</Option>
+              <Option value = "Rock">Rock</Option>
+              <Option value = "Sheild">Sheild</Option>
+              <Option value = "Orton">Orton</Option>
+
+            </Select>
           </View>
         </View>
       <View style={styles.selectors}>
         <View style={styles.dropdownBackground}>
-          <ModalDropdown textStyle={styles.selectorText} dropdownStyle={styles.dropDown} defaultValue={'Receiver  ∨'} options={['Students', 'Therapist', 'Anyone']} />
+          <Select
+            
+            defaultText  = "Select Me Please"
+            style = {{borderWidth : 1, borderColor : "green"}}
+            textStyle = {{}}
+            backdropStyle  = {{backgroundColor : "#d3d5d6"}}
+            optionListStyle = {{backgroundColor : "#F5FCFF"}}
+          >
+            <Option value = {{name : "azhar"}}>Azhar</Option>
+            <Option value = "johnceena">Johnceena</Option>
+            <Option value = "undertaker">Undertaker</Option>
+            <Option value = "Daniel">Daniel</Option>
+            <Option value = "Roman">Roman</Option>
+            <Option value = "Stonecold">Stonecold</Option>
+            <Option value = "Rock">Rock</Option>
+            <Option value = "Sheild">Sheild</Option>
+            <Option value = "Orton">Orton</Option>
+
+          </Select>
         </View>
       </View>
       <View>
