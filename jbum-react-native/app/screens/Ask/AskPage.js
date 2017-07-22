@@ -37,6 +37,7 @@ const AskPage = (props) => {
           <TextInput
               style={styles.smallText}
               placeholder='Your Question&#39;s Title'
+              maxLength={73}
               returnKeyType='next'
               underlineColorAndroid='transparent'
               onChangeText={(title) => updateState({ title })}

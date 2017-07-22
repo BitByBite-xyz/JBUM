@@ -10,8 +10,9 @@ export default StyleSheet.create({
     backgroundColor: colors.background
   },
   myDescription: {
-    padding: 10,
-    paddingTop: 0,
+    paddingTop: 10,
+    paddingLeft: 10,
+    paddingRight: 10,
     color: '#AAAAAA',
     fontSize: 15,
     fontFamily: 'Avenir'
