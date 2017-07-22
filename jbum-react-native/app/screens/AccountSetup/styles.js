@@ -30,6 +30,9 @@ export default StyleSheet.create({
 	},
 	slide1: {
 		flex: 1,
+		height: '95%',
+		marginLeft: '2%',
+		marginRight: '2%',
 		justifyContent: 'center',
 		alignItems: 'center',
 		backgroundColor: '#f4f4f4',
@@ -40,6 +43,9 @@ export default StyleSheet.create({
 	},
 	slide2: {
 		flex: 1,
+		height: '95%',
+		marginLeft: '2%',
+		marginRight: '2%',
 		justifyContent: 'center',
 		alignItems: 'center',
 		backgroundColor: '#f4f4f4',
@@ -50,6 +56,9 @@ export default StyleSheet.create({
 	},
 	slide3: {
 		flex: 1,
+		height: '95%',
+		marginLeft: '2%',
+		marginRight: '2%',
 		justifyContent: 'center',
 		alignItems: 'center',
 		backgroundColor: '#f4f4f4',
@@ -60,6 +69,9 @@ export default StyleSheet.create({
 	},
 	slide4: {
 		flex: 1,
+		height: '95%',
+		marginLeft: '2%',
+		marginRight: '2%',
 		justifyContent: 'center',
 		alignItems: 'center',
 		backgroundColor: 'rgba(209,209,209,0.3)',
