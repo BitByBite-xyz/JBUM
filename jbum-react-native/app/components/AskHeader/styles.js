@@ -28,10 +28,9 @@ export default StyleSheet.create({
         alignItems: 'center'
     },
     fakeButton: {
-        fontSize: 18,
-        paddingTop: 9,
-        paddingBottom: 2,
+        fontSize: 20,
         color: '#BABABA',
+        fontFamily: 'Avenir',
         justifyContent: 'center',
         alignItems: 'center'
     },
@@ -56,7 +55,7 @@ export default StyleSheet.create({
         backgroundColor: 'white',
         opacity: 1,
         overflow: 'hidden',
-        borderRadius: 6
+        borderRadius: 9
     },
     views: {
         paddingTop: 8,
@@ -66,7 +65,7 @@ export default StyleSheet.create({
         // This can be changed to add a divider between the boxes; change to E5E5E5
     },
     button: {
-        paddingBottom: 10,
+        paddingBottom: 7,
         paddingTop: 15,
         paddingLeft: 17,
         justifyContent: 'center',
@@ -86,15 +85,15 @@ export default StyleSheet.create({
         paddingLeft: 10,
         paddingRight: 10,
         paddingTop: 5,
-        fontSize: 19,
+        fontSize: 22,
         fontFamily: 'Avenir'
     },
     lineDivider: {
-        width: 320,
+        position: 'absolute',
+        paddingBottom: 42,
+        width: '95%',
         borderTopColor: '#DBD9D9',
         borderTopWidth: .5,
-        paddingLeft: 10,
-        paddingRight: 10,
     },
     dropdown: {
         justifyContent: 'center',

@@ -10,8 +10,9 @@ export default StyleSheet.create({
     backgroundColor: colors.background
   },
   myDescription: {
-    padding: 10,
-    paddingTop: 0,
+    paddingTop: 10,
+    paddingLeft: 10,
+    paddingRight: 10,
     color: '#AAAAAA',
     fontSize: 15,
     fontFamily: 'Avenir'
@@ -26,7 +27,7 @@ export default StyleSheet.create({
     backgroundColor: 'white',
     opacity: 1,
     overflow: 'hidden',
-    borderRadius: 6
+    borderRadius: 9
   },
   title: {
     flex: 1,
@@ -83,10 +84,13 @@ export default StyleSheet.create({
     paddingBottom: 2
   },
   lineDivider: {
-      width: 320,
+      width: '90%',
       borderTopColor: '#DBD9D9',
       borderTopWidth: .5,
-      margin: 20,
+      justifyContent: 'center',
+      marginBottom: 17,
+      marginTop: 2,
+      marginLeft: 18
   },
   timeText: {
     color: '#BBB',
