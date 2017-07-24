@@ -55,7 +55,7 @@ export default StyleSheet.create({
     width: DEVICE_WIDTH,
     flexDirection: 'row',
     paddingRight:29,
-    justifyContent: 'flex-end',
+    justifyContent: 'space-around',
   },
   heartFilled: {
     marginBottom: 4,
