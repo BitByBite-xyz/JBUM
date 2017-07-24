@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, TextInput, Button, Image, TouchableOpacity } from 'react-native';
 import ModalDropdown from 'react-native-modal-dropdown';
+import {Select, Option} from "react-native-chooser"
 
 
 const AskPage = (props) => {
@@ -13,14 +14,32 @@ const AskPage = (props) => {
     <View style={styles.backdrop}>
       <View style={styles.dropdown}>
         <View style={styles.selectors}>
-          <View style={styles.dropdownBackground}>
-            <ModalDropdown dropdownStyle={styles.dropDown} textStyle={styles.selectorText} defaultValue={'Categories  ∨'} options={['Abuse', 'Sexual orientation', 'School', 'Other']} />
-          </View>
+            <Select
+              defaultText  = "Category"
+              style = {{borderWidth : 1, borderColor : "transparent", height: 26, width: 100, justifyContent: 'center', alignItems: 'center', borderRadius: 12, backgroundColor: 'white'}}
+              textStyle = {{color: '#BABABA', fontFamily: 'Avenir', fontSize: 15}}
+              backdropStyle  = {{backgroundColor : "#d3d5d6"}}
+              optionListStyle = {{backgroundColor : "#F5FCFF", borderRadius: 12, borderColor : "transparent", shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: .3}}
+            >
+              <Option value = {{name : "Family"}}>Family</Option>
+              <Option value = "Friendships">Friendships</Option>
+              <Option value = "Abuse">Abuse</Option>
+              <Option value = "Other">Other</Option>
+            </Select>
         </View>
       <View style={styles.selectors}>
-        <View style={styles.dropdownBackground}>
-          <ModalDropdown textStyle={styles.selectorText} dropdownStyle={styles.dropDown} defaultValue={'Receiver  ∨'} options={['Students', 'Therapist', 'Anyone']} />
-        </View>
+          <Select
+            defaultText  = "Reciever"
+            style = {{borderWidth : 1, borderColor : "transparent", height: 26, width: 100, justifyContent: 'center', alignItems: 'center', borderRadius: 12, backgroundColor: 'white'}}
+            textStyle = {{color: '#BABABA', fontFamily: 'Avenir', fontSize: 15}}
+            backdropStyle  = {{backgroundColor : "#d3d5d6"}}
+            optionListStyle = {{backgroundColor : "#F5FCFF", borderRadius: 12, borderColor : "transparent", shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: .3}}
+          >
+            <Option value = {{name : "Student"}}>Student</Option>
+            <Option value = "Teacher">Teacher</Option>
+            <Option value = "Tharapist">Tharapist</Option>
+            <Option value = "Any">Any</Option>
+          </Select>
       </View>
       <View>
         <TouchableOpacity activeOpacity={0.4} onPress={this.onPressButton}>

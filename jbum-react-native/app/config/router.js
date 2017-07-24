@@ -20,6 +20,7 @@ import Profile from '../screens/Profile';
 import Reply from '../screens/Reply';
 import Ask from '../screens/Ask';
 import Settings from '../screens/Settings';
+import Notifications from '../components/Notifications';
 
 /*
 This is the only navigation I have but every time a screen is added we add to this...
@@ -29,12 +30,7 @@ This is the only navigation I have but every time a screen is added we add to th
      screen: Home,
 		 navigationOptions: {
        title: 'Just Between U and Me',
-			 headerRight:
-			 <TouchableOpacity>
-			 	<Image source={images.inboxCircle} style={{width: 31, height: 31, marginRight: 10}}>
-				<Text style={{marginTop: 7, marginLeft: 12, color: 'white', fontFamily: 'Avenir', fontWeight: '500'}}>2</Text>
-				</Image>
-			 </TouchableOpacity>
+			 headerRight: <Notifications />
 			 ,
 			 headerStyle: {
 				borderBottomWidth: 0.5,
