@@ -14,9 +14,8 @@ class DebugContainer extends Component {
 
   }
 
-  toAsk(){
-    this.props.navigation.navigate('Reply');
-
+  toBarcodeScanner(){
+    this.props.navigation.navigate('BarcodeScanner');
 
   }
   toSettings(){
@@ -29,7 +28,7 @@ class DebugContainer extends Component {
     return (
       <Debug
         toAccountSetup={this.toAccountSetup.bind(this)}
-        toAsk={this.toAsk.bind(this)}
+        toBarcodeScanner={this.toBarcodeScanner.bind(this)}
         toSettings={this.toSettings.bind(this)}
       />
     );
