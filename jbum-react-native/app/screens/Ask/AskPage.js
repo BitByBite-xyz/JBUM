@@ -18,7 +18,7 @@ const AskPage = (props) => {
               defaultText  = "Category"
               style = {{borderWidth : 1, borderColor : "transparent", height: 26, width: 100, justifyContent: 'center', alignItems: 'center', borderRadius: 12, backgroundColor: 'white'}}
               textStyle = {{color: '#BABABA', fontFamily: 'Avenir', fontSize: 15}}
-              backdropStyle  = {{backgroundColor : "#d3d5d6"}}
+              backdropStyle  = {{backgroundColor : "#e5e5e5"}}
               optionListStyle = {{backgroundColor : "#F5FCFF", borderRadius: 12, borderColor : "transparent", shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: .3}}
             >
               <Option value = {{name : "Family"}}>Family</Option>
@@ -32,7 +32,7 @@ const AskPage = (props) => {
             defaultText  = "Reciever"
             style = {{borderWidth : 1, borderColor : "transparent", height: 26, width: 100, justifyContent: 'center', alignItems: 'center', borderRadius: 12, backgroundColor: 'white'}}
             textStyle = {{color: '#BABABA', fontFamily: 'Avenir', fontSize: 15}}
-            backdropStyle  = {{backgroundColor : "#d3d5d6"}}
+            backdropStyle  = {{backgroundColor : "#e5e5e5"}}
             optionListStyle = {{backgroundColor : "#F5FCFF", borderRadius: 12, borderColor : "transparent", shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: .3}}
           >
             <Option value = {{name : "Student"}}>Student</Option>
