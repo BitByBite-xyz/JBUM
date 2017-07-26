@@ -21,6 +21,7 @@ import Reply from '../screens/Reply';
 import Ask from '../screens/Ask';
 import Settings from '../screens/Settings';
 import Notifications from '../components/Notifications';
+import BarcodeScanner from '../components/BarcodeScanner';
 
 /*
 This is the only navigation I have but every time a screen is added we add to this...
@@ -148,6 +149,7 @@ export const ProfileStack = StackNavigator({
 export default StackNavigator({
     SignIn: { screen: SignIn },
 		AccountSetup: { screen: AccountSetup },
+		BarcodeScanner: { screen: BarcodeScanner },
     Tabs: { screen: Tabs }
 	},{
     	navigationOptions: {

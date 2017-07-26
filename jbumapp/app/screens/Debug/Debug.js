@@ -10,12 +10,7 @@ import {Button } from 'react-native-elements';
 import { LayoutAnimation } from 'react-native';
 
 const Debug = (props) => {
-
-		const { toAccountSetup, toAsk, toSettings} = props;
-
-
-
-
+  const { toAccountSetup, toBarcodeScanner} = props;
 
    return (
      <View style={styles.container}>
@@ -33,24 +28,12 @@ const Debug = (props) => {
          iconRight={true}
        />
        <Button
-         title='To Ask Screen'
+         title='To QR Component'
          large
          borderRadius={20}
          icon={{name: 'pages',buttonStyle: styles.buttons}}
          backgroundColor={'blue'}
-         onPress={toAsk}
-         fontFamily= 'Avenir'
-         fontSize={25}
-         fontWeight='bold'
-         iconRight={true}
-       />
-       <Button
-         title='To Settings Screen'
-         large
-         borderRadius={20}
-         icon={{name: 'pages',buttonStyle: styles.buttons}}
-         backgroundColor={'purple'}
-         onPress={toSettings}
+         onPress={toBarcodeScanner}
          fontFamily= 'Avenir'
          fontSize={25}
          fontWeight='bold'
