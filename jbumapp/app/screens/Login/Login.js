@@ -1,6 +1,6 @@
 /*
 This is where the login screen is put together. the .onPress methods are props
-from SignInContainer so when changing butten funcionality look there..
+from LoginContainer so when changing butten funcionality look there..
  */
 
 import React from 'react';
@@ -18,8 +18,8 @@ import Wallpaper from '../../components/Wallpaper';
 
 import styles from './styles';
 
-const SignIn = (props) => {
-  const { updateState, signIn, createAccount, error, confirmPasswordVisible } = props;
+const Login = (props) => {
+  const { updateState, signIn, error, confirmPasswordVisible } = props;
   const B = (props) => <Text style={styles.textBold}>{props.children}</Text>
 
   return (
@@ -92,16 +92,6 @@ const SignIn = (props) => {
           fontWeight='500'
           iconRight={true}
         />
-        <Button
-          title='CREATE ACCOUNT'
-          backgroundColor={'transparent'}
-          icon={{name: 'supervisor-account'}}
-          borderRadius={20}
-          onPress={createAccount}
-          fontFamily= 'Avenir'
-          fontSize={15}
-          fontWeight='500'
-        />
       </View>
 
     </FadeInView>
@@ -153,12 +143,12 @@ const SignIn = (props) => {
   );
 };
 
-SignIn.propTypes = {
+Login.propTypes = {
   updateState: React.PropTypes.func,
-  signIn: React.PropTypes.func,
+  Login: React.PropTypes.func,
   createAccount: React.PropTypes.func,
   error: React.PropTypes.string,
   confirmPasswordVisible: React.PropTypes.bool,
 };
 
-export default SignIn;
+export default Login;

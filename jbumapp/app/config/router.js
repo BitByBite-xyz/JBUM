@@ -11,7 +11,7 @@ import {
 }
 from 'react-native-elements';
 import { Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
-import SignIn from '../screens/SignIn';
+import Login from '../screens/Login';
 import Debug from '../screens/Debug';
 import images from '../config/images';
 import AccountSetup from '../screens/AccountSetup';
@@ -20,8 +20,11 @@ import Profile from '../screens/Profile';
 import Reply from '../screens/Reply';
 import Ask from '../screens/Ask';
 import Settings from '../screens/Settings';
+import Welcome from '../screens/Welcome';
+
 import Notifications from '../components/Notifications';
 import BarcodeScanner from '../components/BarcodeScanner';
+
 
 /*
 This is the only navigation I have but every time a screen is added we add to this...
@@ -70,7 +73,7 @@ This is the only navigation I have but every time a screen is added we add to th
  			 },
  		},
   },
-	Reply: { screen: Reply },}, {
+	Reply: { screen: Reply, 
 		navigationOptions: {
 			title: 'Just Between You and Me',
 		 headerStyle: {
@@ -90,7 +93,17 @@ This is the only navigation I have but every time a screen is added we add to th
 				paddingTop: 2
 			 },
 		},
- });
+ }},{mode:'modal'});
+ export const WelcomeStack = StackNavigator({
+	 Welcome: {screen: Welcome,},
+	 Login: { screen: Login },
+	 AccountSetup: { screen: AccountSetup },},
+	 {
+	 		headerMode: 'none',
+	 		mode:'modal'
+	 }
+);
+
 export const Tabs = TabNavigator({
 	HomeStack: {
 		screen: HomeStack,
@@ -130,8 +143,8 @@ export const Tabs = TabNavigator({
 });
 
 export const ProfileStack = StackNavigator({
-	SignIn: {
-		screen: SignIn,
+	Login: {
+		screen: Login,
 		navigationOptions: {
 			title: 'Login'
 		}
@@ -147,8 +160,7 @@ export const ProfileStack = StackNavigator({
 		mode:'modal'
 });
 export default StackNavigator({
-    SignIn: { screen: SignIn },
-		AccountSetup: { screen: AccountSetup },
+		WelcomeStack: { screen: WelcomeStack },
 		BarcodeScanner: { screen: BarcodeScanner },
     Tabs: { screen: Tabs }
 	},{

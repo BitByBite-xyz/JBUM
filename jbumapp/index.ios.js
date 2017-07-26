@@ -17,6 +17,4 @@ AppRegistry.registerComponent('jbumapp', () => App); //regesters /app/index.js
   "tron": "node_modules/.bin/reactotron"
 }
 
-
-
  */

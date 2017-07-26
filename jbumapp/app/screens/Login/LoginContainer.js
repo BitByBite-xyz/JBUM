@@ -9,9 +9,9 @@ import React, { Component } from 'react';
 import { LayoutAnimation } from 'react-native';
 import Meteor, { Accounts } from 'react-native-meteor';
 
-import SignIn from './SignIn';
+import Login from './Login';
 
-class SignInContainer extends Component {
+class LoginContainer extends Component {
   constructor(props) {
     super(props);
 
@@ -27,10 +27,6 @@ class SignInContainer extends Component {
 
   componentWillMount() {
     this.mounted = true;
-    if (Meteor.user()){
-      this.props.navigation.navigate('Tabs');
-    }
-
   }
 
   componentWillUnmount() {
@@ -83,7 +79,7 @@ class SignInContainer extends Component {
     }
   }
 
-  handleCreateAccount() {
+  /*handleCreateAccount() {
     const { username, password, confirmPasswordVisible } = this.state;
 
     var CustomLayoutSpring = {
@@ -112,18 +108,17 @@ class SignInContainer extends Component {
       LayoutAnimation.configureNext(CustomLayoutSpring);
       this.setState({ confirmPasswordVisible: true });
     }
-  }
+  }*/
 
   render() {
     return (
-      <SignIn
+      <Login
         updateState={this.setState.bind(this)}
         signIn={this.handleSignIn.bind(this)}
-        createAccount={this.handleCreateAccount.bind(this)}
         {...this.state}
       />
     );
   }
 }
 
-export default SignInContainer;
+export default LoginContainer;
