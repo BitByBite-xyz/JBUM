@@ -15,7 +15,7 @@
     "react-native": "0.46.4",
     "react-native-blur-image": "^1.0.6",
     "react-native-button-component": "^0.1.18",
-    "react-native-camera": "git+https://github.com/lwansbrough/react-native-camera.git",
+    "react-native-camera": "^0.9.4",
     "react-native-chooser": "^1.5.3",
     "react-native-dropdownalert": "^2.10.0",
     "react-native-elements": "^0.12.2",
