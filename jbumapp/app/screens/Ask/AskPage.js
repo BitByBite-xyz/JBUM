@@ -23,7 +23,15 @@ const AskPage = (props) => {
             >
               <Option value = {{name : "Family"}}>Family</Option>
               <Option value = "Friendships">Friendships</Option>
+              <Option value = "Relationships">Relationships</Option>
+              <Option value = "Bullying">Bullying</Option>
+              <Option value = "Drugs">Drugs</Option>
               <Option value = "Abuse">Abuse</Option>
+              <Option value = "Eating-Disorder">Eating Disorder</Option>
+              <Option value = "Religion">Religion</Option>
+              <Option value = "Discrimination">Discrimination</Option>
+              <Option value = "Sexuality">Sexuality</Option>
+              <Option value = "Sickness">Sickness</Option>
               <Option value = "Other">Other</Option>
             </Select>
         </View>
