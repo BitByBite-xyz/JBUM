@@ -3707,6 +3707,12 @@ react-mixin@^3.0.3:
     object-assign "^4.0.1"
     smart-mixin "^2.0.0"
 
+react-native-animatable@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/react-native-animatable/-/react-native-animatable-1.2.3.tgz#d0f0bd694833b934f3aaa1275739228b786ecb4b"
+  dependencies:
+    prop-types "^15.5.10"
+
 react-native-blur-image@^1.0.6:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/react-native-blur-image/-/react-native-blur-image-1.0.6.tgz#1a294d96f75ad1a667e455a1ba472ead48d14666"
@@ -3849,6 +3855,12 @@ react-native-settings-list@^1.6.1:
 react-native-side-menu@^0.20.1:
   version "0.20.3"
   resolved "https://registry.yarnpkg.com/react-native-side-menu/-/react-native-side-menu-0.20.3.tgz#5dffe3e237018360ed081433d505ea454cba9ca4"
+
+react-native-slider@^0.10.0:
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/react-native-slider/-/react-native-slider-0.10.0.tgz#43de21a0442a8f8163f431886f52bcf4ada04fd9"
+  dependencies:
+    prop-types "^15.5.6"
 
 react-native-spinkit@^1.0.2, react-native-spinkit@^1.0.3:
   version "1.0.3"

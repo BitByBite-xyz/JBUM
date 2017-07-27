@@ -14,6 +14,7 @@ class ReplyContainer extends Component {
     this.state = {
       body: '',
     };
+    
   }
 
   replyButton(){

@@ -9,8 +9,8 @@ class DebugContainer extends Component {
 
     super(props);
   }
-  toAccountSetup(){
-    this.props.navigation.navigate('AccountSetup');
+  toInbox(){
+    this.props.navigation.navigate('Inbox');
 
   }
 
@@ -27,7 +27,7 @@ class DebugContainer extends Component {
   render() {
     return (
       <Debug
-        toAccountSetup={this.toAccountSetup.bind(this)}
+        toInbox={this.toInbox.bind(this)}
         toBarcodeScanner={this.toBarcodeScanner.bind(this)}
         toSettings={this.toSettings.bind(this)}
       />

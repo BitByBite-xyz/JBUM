@@ -29,8 +29,6 @@ export default class Comment extends PureComponent {
       <View style={styles.container}>
         <View style={styles.contentContainer}>
           <Text>
-            <Text style={[styles.text, styles.name]}>{postComment.user_id}</Text>
-            {' '}
             <Text style={styles.text}>{postComment.comment_body}</Text>
           </Text>
           <Text style={[styles.text, styles.created]}>{moment(postComment.created).fromNow()}</Text>

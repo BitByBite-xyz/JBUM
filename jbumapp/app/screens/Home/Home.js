@@ -14,10 +14,20 @@ import DropdownAlert from 'react-native-dropdownalert'
 import QuestionPanel from '../../components/QuestionPanel';
 import Loading from '../../components/Loading';
 import AskHeader from '../../components/AskHeader';
+import Notifications from '../../components/Notifications';
 
 import styles from './styles';
 
 class Home extends Component {
+  /*static navigationOptions = {
+    headerRight: ({ navigation }) => <Notifications navigation={navigation} />,
+  };*/
+  static navigationOptions = ({ navigation }) => {
+        const { params = {} } = navigation.state;
+        return {
+            headerRight: <Button title="S" onPress={() => null} />
+        };
+  };
   constructor(props) {
     super(props);
 
@@ -27,7 +37,7 @@ class Home extends Component {
 
   componentWillMount() {
     this.mounted = true;
-    this.props.navigation.navigate('Profile')
+    //this.props.navigation.navigate('Inbox')
   }
 
   componentDidMount() {
@@ -85,10 +95,10 @@ class Home extends Component {
                 navigation={navigation}
               />
             </FadeInView>}
-          ListFooterComponent={this.renderFooter}
-          onEndReachedThreshold={50}
-          removeClippedSubviews={false}
-        />
+              ListFooterComponent={this.renderFooter}
+              onEndReachedThreshold={50}
+              removeClippedSubviews={false}
+            />
 
         <DropdownAlert
           ref={(ref) => this.dropdown = ref}

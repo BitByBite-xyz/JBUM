@@ -14,6 +14,7 @@ import { LayoutAnimation } from 'react-native';
 
 import styles from './styles'
 import Comment from './Comment'
+import Meteor, { createContainer } from 'react-native-meteor';
 
 const Reply = (props) => {
   const { navigation, replyButton, body,updateState,post } = props;
@@ -41,7 +42,7 @@ const Reply = (props) => {
          <View style={styles.views}>
 
 
-            {post.post_comments.map((comment) => (
+            {Meteor.userId() === post.user_id && post.post_comments.map((comment) => (
               <Comment
                  postComment={comment}
               />

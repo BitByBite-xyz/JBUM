@@ -21,6 +21,7 @@ import Reply from '../screens/Reply';
 import Ask from '../screens/Ask';
 import Settings from '../screens/Settings';
 import Welcome from '../screens/Welcome';
+import Inbox from '../screens/Inbox';
 
 import Notifications from '../components/Notifications';
 import BarcodeScanner from '../components/BarcodeScanner';
@@ -73,7 +74,7 @@ This is the only navigation I have but every time a screen is added we add to th
  			 },
  		},
   },
-	Reply: { screen: Reply, 
+	Reply: { screen: Reply,
 		navigationOptions: {
 			title: 'Just Between You and Me',
 		 headerStyle: {
@@ -162,6 +163,7 @@ export const ProfileStack = StackNavigator({
 export default StackNavigator({
 		WelcomeStack: { screen: WelcomeStack },
 		BarcodeScanner: { screen: BarcodeScanner },
+		Inbox: { screen: Inbox },
     Tabs: { screen: Tabs }
 	},{
     	navigationOptions: {

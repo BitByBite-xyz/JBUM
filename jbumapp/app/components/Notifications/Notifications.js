@@ -15,9 +15,14 @@ export default class Notifications extends Component{
       notiNum: 4
     }
   }
+
+  onPress = () => {
+    console.log(this.props);
+    this.props.navigation.navigate('Ask');
+  }
   render(){
     return(
-      <TouchableOpacity>
+      <TouchableOpacity onPress={this.onPress}>
        <Image source={images.inboxCircle} style={{width: 31, height: 31, marginRight: 10}}>
        <Text style={{marginTop: 7, marginLeft: 12, color: 'white', fontFamily: 'Avenir', fontWeight: '500'}}>
         {this.state.notiNum}
