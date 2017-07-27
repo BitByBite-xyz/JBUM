@@ -99,7 +99,7 @@ const Login = (props) => {
 
     <FadeInView
       duration={4000}
-      style={styles.buttons}
+      style={styles.socialMediaButtons}
     >
       <View style={styles.buttons}>
 

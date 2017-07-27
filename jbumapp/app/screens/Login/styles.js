@@ -4,6 +4,7 @@ import { colors,DEVICE_WIDTH,DEVICE_HEIGHT } from '../../config/styles';
 const window = Dimensions.get('window');
 export default StyleSheet.create({
   container: {
+    marginTop: '38%',
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
@@ -11,6 +12,10 @@ export default StyleSheet.create({
     flexDirection: 'column'
   },
   buttons: {
+    flexDirection: 'row',
+    marginBottom: 10
+  },
+  socialMediaButtons: {
     flexDirection: 'row',
     marginBottom: 10
   },
@@ -48,22 +53,23 @@ export default StyleSheet.create({
 		backgroundColor: 'transparent'
   },
   contactUsContainer: {
-    top: 130,
+    marginTop: '5%',
     width: DEVICE_WIDTH,
     flexDirection: 'row',
     justifyContent: 'center',
     marginBottom: 30
   },
   contactUsText: {
-    color: '#000',
+    color: 'white',
     fontFamily: 'Avenir-Light',
     backgroundColor: 'transparent',
     letterSpacing: 1.6
   },
   contactUsText2: {
-    color: 'white',
+    color: '#fca314',
     fontFamily: 'Avenir-Heavy',
     backgroundColor: 'transparent',
+    fontWeight: '900',
     letterSpacing: 1.6
   }
 });
