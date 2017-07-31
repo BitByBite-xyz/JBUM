@@ -1,13 +1,10 @@
-# JBUM Boilerplate
+# JBUM 
 
-This is a boilerplate for JBUM that closely resembles [this](https://github.com/spencercarli/react-native-meteor-boilerplate).
-
-This includes re-writes to maximize code reuse and simplify the code as much as possible. There is still much to do but it's a good step in the right direction to the final app. 
+This project for JBUM was based on [this](https://github.com/spencercarli/react-native-meteor-boilerplate).
 
 ## Project Structure
 
-Check out [this article](https://medium.com/@spencer_carli/organizing-a-react-native-project-9514dfadaa0#.361gf1awu) for an overview of the `RNApp` directory.
-
+Check out [this article](https://medium.com/@spencer_carli/organizing-a-react-native-project-9514dfadaa0#.361gf1awu) for an overview of the `jbumapp` directory.
 
 ## Getting Started
 
