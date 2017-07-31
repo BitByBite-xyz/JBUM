@@ -96,7 +96,7 @@ class Home extends Component {
               />
             </FadeInView>}
               ListFooterComponent={this.renderFooter}
-              onEndReachedThreshold={50}
+              onEndReachedThreshold={0.5}
               removeClippedSubviews={false}
             />
 

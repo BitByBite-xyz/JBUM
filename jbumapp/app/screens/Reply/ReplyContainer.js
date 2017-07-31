@@ -8,21 +8,17 @@ import Reply from './Reply'
 
 class ReplyContainer extends Component {
   constructor(props) {
-
     super(props);
 
     this.state = {
       body: '',
     };
-    
   }
 
   replyButton(){
     const { navigation, replyButton } = this.props;
     const { postContent } = navigation.state.params;
     const body = this.state;
-
-    console.log(body.body);
 
     Meteor.call('Posts.reply', postContent._id, body.body, (err) => {
       if (err) {
@@ -35,7 +31,6 @@ class ReplyContainer extends Component {
       }
     });
   }
-
   render() {
     return (
       <Reply

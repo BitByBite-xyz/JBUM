@@ -1,4 +1,4 @@
-import React, {PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import {
 	StyleSheet,
 	View,
@@ -8,130 +8,125 @@ import {
 	FlatList ,
 	StatusBar
 } from 'react-native';
-
+import Meteor, { createContainer } from 'react-native-meteor';
 import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-view';
 import FadeInView from 'react-native-fade-in-view';
-import QuestionPanel from '../../components/QuestionPanel';
+
 import Loading from '../../components/Loading';
+import QuestionPanel from '../../components/QuestionPanel';
 
-import Button from '../../components/Button';
 import styles from './styles';
-import images from '../../config/images';
-import Icon from 'react-native-vector-icons/Ionicons';
 
-import Foreground, { Background, } from '../../components/ParallaxProfile';
+class ProfileContainer extends Component {
 
-const Proflie = (props) => {
-  const { QuestionNumber,
-					AnsweredNumber,
-					Karma,
-					Level,
-					navigation } = props;
+  constructor(props) {
+    super(props);
 
-	const { user_posts,responded_posts,liked_posts,postsReady } = props;
+  }
 
-	const foreground = (
-	  <Foreground
-			QuestionNumber={user_posts.length}
-			AnsweredNumber={responded_posts.length}
-			Karma='84'
-			Level='7'
-		/>
-	);
-	const background = (
-	  <Background source={images.profileBannerImg} />
-	);
+
 	renderFooter = () => {
-    if (postsReady) return null;
+		const { postsReady } = this.props;
 
-    return (
-      <View
-        style={{
-          paddingVertical: 20,
-          borderTopWidth: 1,
-          borderColor: "#CED0CE"
-        }}
-      >
-        <Loading />
-      </View>
-    );
-  };
+		if (postsReady) return null;
 
-  return (
+		return (
+			<View
+				style={{
+					paddingVertical: 20,
+					borderTopWidth: 1,
+					borderColor: "#CED0CE"
+				}}
+			>
+				<Loading />
+			</View>
+		);
+	}
 
+  render() {
+		const { user_posts,responded_posts,liked_posts,postsReady,navigation } = this.props;
 
-	<View style={styles.container}>
-		<StatusBar hidden = {true}/>
+		return (
+			<View style={styles.container}>
+				<StatusBar hidden = {true}/>
 
-			<ScrollableTabView
-					renderTabBar={()=><DefaultTabBar backgroundColor='rgba(255, 255, 255, 0.7)' />}
-					>
-					<FlatList
-						tabLabel='My Posts'
-		        data={user_posts}
-		        keyExtractor={(item, index) => item._id}
-		        renderItem={({item}) =>
-		          <FadeInView
-		              duration={700}
-		          >
-		            <QuestionPanel
-		              postContent={item}
-		              title={item.post_title}
-		              navigation={navigation}
-		            />
-		          </FadeInView>}
-							ListFooterComponent={this.renderFooter}
-			        onEndReachedThreshold={50}
-							removeClippedSubviews={false}
-		        />
-
-						<FlatList
-							tabLabel='Liked'
-							data={liked_posts}
-							keyExtractor={(item, index) => item._id}
-							renderItem={({item}) =>
-								<FadeInView
-										duration={700}
-								>
-									<QuestionPanel
-										postContent={item}
-										title={item.post_title}
-										navigation={navigation}
-									/>
-								</FadeInView>}
-							ListFooterComponent={this.renderFooter}
-			        onEndReachedThreshold={50}
-							removeClippedSubviews={false}
-							/>
-
+					<ScrollableTabView
+							renderTabBar={()=><DefaultTabBar backgroundColor='rgba(255, 255, 255, 0.7)' />}
+							>
 							<FlatList
-								tabLabel='Answered'
-								data={responded_posts}
-								keyExtractor={(item, index) => item._id}
-								renderItem={({item}) =>
-									<FadeInView
-											duration={700}
-									>
-										<QuestionPanel
-											postContent={item}
-											title={item.post_title}
-											navigation={navigation}
-										/>
-									</FadeInView>}
+								tabLabel='My Posts'
+				        data={user_posts}
+				        keyExtractor={(item, index) => item._id}
+				        renderItem={({item}) =>
+				          <FadeInView
+				              duration={700}
+				          >
+				            <QuestionPanel
+				              postContent={item}
+				              title={item.post_title}
+				              navigation={navigation}
+				            />
+				          </FadeInView>}
 									ListFooterComponent={this.renderFooter}
 					        onEndReachedThreshold={50}
 									removeClippedSubviews={false}
-								/>
+				        />
 
-					</ScrollableTabView>
-		</View>
+								<FlatList
+									tabLabel='Liked'
+									data={liked_posts}
+									keyExtractor={(item, index) => item._id}
+									renderItem={({item}) =>
+										<FadeInView
+												duration={700}
+										>
+											<QuestionPanel
+												postContent={item}
+												title={item.post_title}
+												navigation={navigation}
+											/>
+										</FadeInView>}
+									ListFooterComponent={this.renderFooter}
+					        onEndReachedThreshold={50}
+									removeClippedSubviews={false}
+									/>
 
+									<FlatList
+										tabLabel='Answered'
+										data={responded_posts}
+										keyExtractor={(item, index) => item._id}
+										renderItem={({item}) =>
+											<FadeInView
+													duration={700}
+											>
+												<QuestionPanel
+													postContent={item}
+													title={item.post_title}
+													navigation={navigation}
+												/>
+											</FadeInView>}
+											ListFooterComponent={this.renderFooter}
+							        onEndReachedThreshold={50}
+											removeClippedSubviews={false}
+										/>
 
-  );
+							</ScrollableTabView>
+				</View>
+    );
+  }
+}
+
+ProfileContainer.propTypes = {
+  navigator: React.PropTypes.object,
 };
 
-Proflie.propTypes = {
-  onDetailsPress: React.PropTypes.func,
-};
+export default createContainer(() => {
+  const handle = Meteor.subscribe('Posts.pub.list');
 
-export default Proflie;
+  return {
+    user_posts: Meteor.collection('posts').find({ user_id: Meteor.userId() }, { sort: { created: -1 } }),
+		responded_posts: Meteor.collection('posts').find({ "post_comments.user_id": Meteor.userId() }, { sort: { created: -1 } }),
+		postsReady: handle.ready(),
+		liked_posts: Meteor.collection('posts').find({ post_likes: Meteor.userId() }, { sort: { created: -1 } }),
+	};
+}, ProfileContainer);

@@ -12,6 +12,6 @@
     "meteor-node-stubs": "~0.2.4"
 },
   "scripts": {
-    "deploy": "DEPLOY_HOSTNAME=galaxy.meteor.com meteor deploy jbum.meteorapp.com --settings /Users/connorlarkin/dev/JBUM/jbum-meteor/settings.json"
+    "deploy": "DEPLOY_HOSTNAME=galaxy.meteor.com meteor deploy jbum.meteorapp.com --settings /Users/connorlarkin/dev/JBUM/jbummeteor/settings.json"
  }
 }

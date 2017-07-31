@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import AskPage from './AskPage';
+import Ask from './Ask';
 import Meteor, { createContainer } from 'react-native-meteor';
 
 
@@ -32,11 +32,9 @@ class AskContainer extends Component {
 
   render() {
     return (
-      <AskPage
+      <Ask
         updateState={this.setState.bind(this)}
         postButton={this.postButton.bind(this)}
-
-
         {...this.state}
       />
     );

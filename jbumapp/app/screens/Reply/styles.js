@@ -104,7 +104,7 @@ export default StyleSheet.create({
 
   },
   largeText: {
-      height: 200,
+      height: 100,
       backgroundColor: 'white',
       //borderWidth: 2,
       //borderColor: '#E5E5E5',

@@ -44,7 +44,7 @@ export default class Welcome extends Component {
         <View style={styles.bigContainer}>
 
             <FadeInView
-              duration={1400}
+              duration={3000}
               style={styles.header}
             >
 
@@ -54,7 +54,7 @@ export default class Welcome extends Component {
 
             </FadeInView>
 
-          <FadeInView duration={3000}>
+          <FadeInView duration={2000}>
             <View style={styles.container}>
               <Animatable.View animation='fadeInDown' duration={1000}>
                 <Button

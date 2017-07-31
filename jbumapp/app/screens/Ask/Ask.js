@@ -4,7 +4,7 @@ import ModalDropdown from 'react-native-modal-dropdown';
 import {Select, Option} from "react-native-chooser"
 
 
-const AskPage = (props) => {
+const Ask = (props) => {
   const { title, body,updateState, postButton } = props;
 
 
@@ -98,7 +98,7 @@ const AskPage = (props) => {
 
 
 
-export default AskPage;
+export default Ask;
 const styles = {
     backdrop: {
         backgroundColor: '#F3F3F3',
@@ -155,7 +155,7 @@ const styles = {
 
     },
     largeText: {
-        height: 300,
+        height: 150,
         color: '#BBB',
         paddingLeft: 10,
         paddingRight: 10,
