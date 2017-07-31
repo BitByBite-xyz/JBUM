@@ -1,7 +1,5 @@
 # JBUM 
 
-This project for JBUM was based on [this](https://github.com/spencercarli/react-native-meteor-boilerplate).
-
 ## Project Structure
 
 Check out [this article](https://medium.com/@spencer_carli/organizing-a-react-native-project-9514dfadaa0#.361gf1awu) for an overview of the `jbumapp` directory.
