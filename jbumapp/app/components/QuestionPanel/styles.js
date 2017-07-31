@@ -51,7 +51,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     flex: 1,
     paddingTop: 0,
-    paddingBottom: 10,
+    paddingBottom: 5,
     paddingLeft: 12,
     width: DEVICE_WIDTH,
     flexDirection: 'row',
@@ -86,7 +86,7 @@ export default StyleSheet.create({
   lineDivider: {
       width: '90%',
       borderTopColor: '#DBD9D9',
-      borderTopWidth: .5,
+      borderTopWidth: .3,
       justifyContent: 'center',
       marginBottom: 17,
       marginTop: 2,

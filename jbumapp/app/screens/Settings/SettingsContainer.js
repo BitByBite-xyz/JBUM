@@ -18,9 +18,6 @@ class SettingsContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {switchValue: false};
-
-
-
   }
 
   signOut = () => {
@@ -28,7 +25,7 @@ class SettingsContainer extends Component {
       const resetAction = NavigationActions.reset({
         index: 0,
         actions: [
-          NavigationActions.navigate({ routeName: 'SignIn' }),
+          NavigationActions.navigate({ routeName: 'Home' }),
         ],
       });
       this.props.navigation.dispatch(resetAction);
@@ -42,10 +39,8 @@ class SettingsContainer extends Component {
   render() {
     return (
       <Settings
-
         onValueChange={this.onValueChange.bind(this)}
         signOut={this.signOut.bind(this)}
-
         {...this.state}
       />
     );
