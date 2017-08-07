@@ -81,10 +81,10 @@ class Home extends Component {
             <View style={{paddingRight:10}}>{/*//i hate this*/}
             <View style={styles.headerRight}>
               <Badge
-                containerStyle={{ backgroundColor: '#00abff'}}
+                containerStyle={{ backgroundColor: '#00abff', height: 32, width: 32}}
                 value={3}
                 onPress={() => this.props.navigation.navigate('Inbox')}
-                textStyle={{ color: 'white', fontFamily: 'Avenir', fontWeight: '500'}}
+                textStyle={{ color: 'white', fontFamily: 'Avenir', fontWeight: '500', fontSize: 15}}
               />
             </View>
             </View>
