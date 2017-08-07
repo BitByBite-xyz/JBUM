@@ -17,6 +17,9 @@ export default class Welcome extends Component {
     this.mounted = false;
   }
   componentWillMount() {
+    if (Meteor.user()){
+      this.props.navigation.navigate('Tabs');
+    }
     this.mounted = true;
   }
   toCreateAccount = () => {
@@ -30,9 +33,6 @@ export default class Welcome extends Component {
   }
 
   render() {
-    if (Meteor.user()){
-      this.props.navigation.navigate('Tabs');
-    }
     return (
 
       <Wallpaper>

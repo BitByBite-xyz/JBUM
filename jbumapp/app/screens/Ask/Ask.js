@@ -62,7 +62,7 @@ const Ask = (props) => {
       <View style={styles.bottom}>
         <View style={styles.views}>
           <TextInput
-              style={styles.smallText}
+              style={styles.largeText}
               placeholder='Your Question&#39;s Title'
               maxLength={73}
               returnKeyType='next'
@@ -75,7 +75,7 @@ const Ask = (props) => {
         </View>
         <View style={styles.views}>
           <TextInput
-              style={styles.largeText}
+              style={styles.smallText}
               placeholder='Tell us your question...'
               returnKeyType='done'
               underlineColorAndroid='transparent'
@@ -86,18 +86,6 @@ const Ask = (props) => {
               autoCorrect={true}
               />
           </View>
-        <View style={styles.button}>
-        <View style={styles.lineDivider}/>
-          <Button color={'#BABABA'} title={'Ask Question'} onPress={postButton} />
-        </View>
-        <Picker
-          onValueChange={(itemValue, itemIndex) => this.setState({language: itemValue})}>
-          <Picker.Item label="Java" value="java" />
-          <Picker.Item label="JavaScript" value="js" />
-          <Picker.Item label="JavaScript" value="js" />
-          <Picker.Item label="JavaScript" value="js" />
-          <Picker.Item label="JavaScript" value="js" />
-        </Picker>
       </View>
     </View>
   </View>
@@ -154,7 +142,7 @@ const styles = {
         paddingTop: 15,
         paddingLeft: 17
     },
-    smallText: {
+    largeText: {
         height: 50,
         color: '#BBB',
         textAlign: 'center',
@@ -162,7 +150,7 @@ const styles = {
         fontFamily: 'Avenir-Book'
 
     },
-    largeText: {
+    smallText: {
         height: 150,
         color: '#BBB',
         paddingLeft: 10,

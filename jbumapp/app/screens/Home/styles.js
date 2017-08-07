@@ -59,6 +59,7 @@ export default StyleSheet.create({
       flexDirection: 'row',
       justifyContent: 'flex-end',
       alignItems: 'center',
+      paddingRight: '1000',
       backgroundColor: 'red',
     },
     centerContainer: {

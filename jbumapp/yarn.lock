@@ -3822,9 +3822,11 @@ react-native-panel@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/react-native-panel/-/react-native-panel-1.0.3.tgz#59966c2bad761d9e887b51814f39ff4607e41744"
 
-react-native-parallax-scroll-view@^0.19.0:
+"react-native-parallax-scroll-view@git+https://github.com/fungilation/react-native-parallax-scroll-view.git":
   version "0.19.0"
-  resolved "https://registry.yarnpkg.com/react-native-parallax-scroll-view/-/react-native-parallax-scroll-view-0.19.0.tgz#23b9af1f13249a610f4641e2582a58997df7d80a"
+  resolved "git+https://github.com/fungilation/react-native-parallax-scroll-view.git#086b0f01f69fecb013b0efa657c2c419b5702515"
+  dependencies:
+    prop-types "^15.5.10"
 
 react-native-parallax-view@^2.0.6:
   version "2.0.6"
@@ -3855,12 +3857,6 @@ react-native-settings-list@^1.6.1:
 react-native-side-menu@^0.20.1:
   version "0.20.3"
   resolved "https://registry.yarnpkg.com/react-native-side-menu/-/react-native-side-menu-0.20.3.tgz#5dffe3e237018360ed081433d505ea454cba9ca4"
-
-react-native-slider@^0.10.0:
-  version "0.10.0"
-  resolved "https://registry.yarnpkg.com/react-native-slider/-/react-native-slider-0.10.0.tgz#43de21a0442a8f8163f431886f52bcf4ada04fd9"
-  dependencies:
-    prop-types "^15.5.6"
 
 react-native-spinkit@^1.0.2, react-native-spinkit@^1.0.3:
   version "1.0.3"

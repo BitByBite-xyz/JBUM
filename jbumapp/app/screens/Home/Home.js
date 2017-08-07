@@ -10,6 +10,8 @@ import {
 import Meteor, { createContainer } from 'react-native-meteor';
 import FadeInView from 'react-native-fade-in-view';//{/* onFadeComplete={() => alert('Ready') */}
 import DropdownAlert from 'react-native-dropdownalert'
+import ParallaxScrollView from 'react-native-parallax-scroll-view';
+import { Badge } from 'react-native-elements'
 
 import SwipeHiddenHeader from '../../components/SwipeHiddenHeader';
 import QuestionPanel from '../../components/QuestionPanel';
@@ -39,9 +41,6 @@ class Home extends Component {
   componentWillMount() {
     this.mounted = true;
     //this.props.navigation.navigate('Inbox')
-  }
-
-  componentDidMount() {
   }
 
   onAskPress = () => {
@@ -79,10 +78,15 @@ class Home extends Component {
             <View style={styles.centerContainer}>
               <Text style={styles.headerText}>Just Between U and Me</Text>
             </View>
+            <View style={{paddingRight:10}}>{/*//i hate this*/}
             <View style={styles.headerRight}>
-              <Notifications
-                navigation={navigation}
+              <Badge
+                containerStyle={{ backgroundColor: '#00abff'}}
+                value={3}
+                onPress={() => this.props.navigation.navigate('Inbox')}
+                textStyle={{ color: 'white', fontFamily: 'Avenir', fontWeight: '500'}}
               />
+            </View>
             </View>
           </View>}
       >
@@ -102,15 +106,11 @@ class Home extends Component {
             data={posts}
             keyExtractor={(item, index) => item._id}
             renderItem={({item}) =>
-              <FadeInView
-                  duration={700}
-              >
                 <QuestionPanel
                   postContent={item}
                   title={item.post_title}
                   navigation={navigation}
-                />
-              </FadeInView>}
+                />}
                 ListFooterComponent={this.renderFooter}
                 onEndReachedThreshold={0.5}
                 removeClippedSubviews={false}

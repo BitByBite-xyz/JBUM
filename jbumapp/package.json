@@ -23,7 +23,7 @@
     "react-native-fade-in-view": "^1.0.4",
     "react-native-modal-dropdown": "^0.4.4",
     "react-native-panel": "^1.0.3",
-    "react-native-parallax-scroll-view": "^0.19.0",
+    "react-native-parallax-scroll-view": "git+https://github.com/fungilation/react-native-parallax-scroll-view.git",
     "react-native-parallax-view": "^2.0.6",
     "react-native-progress": "^3.3.0",
     "react-native-scrollable-tab-view": "^0.6.7 ",

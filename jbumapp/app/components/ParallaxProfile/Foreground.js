@@ -89,7 +89,7 @@ export default class Header extends Component {
           </View>
           <View style={styles.progressBar}>
             <Progress.Bar
-                progress={0.7}
+                progress={(Karma % 10)*.1}
                 width={200}
                 color={'white'}
               />
