@@ -11,21 +11,13 @@ import { Button } from 'react-native-elements';
 import * as Animatable from 'react-native-animatable';
 import FadeInView from 'react-native-fade-in-view';
 
-
 export default class Welcome extends Component {
   constructor(props) {
     super(props);
-    console.log(this.props.navigation);
-
     this.mounted = false;
-
   }
   componentWillMount() {
     this.mounted = true;
-    if (Meteor.user()){
-      this.props.navigation.navigate('Tabs');
-    }
-
   }
   toCreateAccount = () => {
     this.props.navigation.navigate('AccountSetup');
@@ -38,6 +30,9 @@ export default class Welcome extends Component {
   }
 
   render() {
+    if (Meteor.user()){
+      this.props.navigation.navigate('Tabs');
+    }
     return (
 
       <Wallpaper>

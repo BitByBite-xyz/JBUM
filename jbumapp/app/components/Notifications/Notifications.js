@@ -18,7 +18,8 @@ export default class Notifications extends Component{
 
   onPress = () => {
     console.log(this.props);
-    this.props.navigation.navigate('Ask');
+    const { navigation } = this.props;
+    navigation.navigate('Ask');
   }
   render(){
     return(

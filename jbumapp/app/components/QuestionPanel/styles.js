@@ -54,9 +54,8 @@ export default StyleSheet.create({
     paddingBottom: 5,
     paddingLeft: 12,
     width: DEVICE_WIDTH,
-    flexDirection: 'row',
     paddingRight:29,
-    justifyContent: 'space-around',
+    justifyContent: 'flex-end',
   },
   heartFilled: {
     marginBottom: 4,
@@ -67,8 +66,7 @@ export default StyleSheet.create({
     paddingLeft: 5
   },
   commentButton: {
-    width: 22,
-    height: 17,
+
     marginRight: 5,
   },
   counters: {
@@ -80,7 +78,7 @@ export default StyleSheet.create({
   imgs: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginRight: 43,
+    marginRight: 3,
     paddingBottom: 2
   },
   lineDivider: {

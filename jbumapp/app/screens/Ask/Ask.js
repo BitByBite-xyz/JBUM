@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, TextInput, Button, Image, TouchableOpacity } from 'react-native';
+import { Text, View, TextInput, Button, Image, TouchableOpacity,Picker } from 'react-native';
 import ModalDropdown from 'react-native-modal-dropdown';
 import {Select, Option} from "react-native-chooser"
 
@@ -19,7 +19,7 @@ const Ask = (props) => {
               style = {{borderWidth : 1, borderColor : "transparent", height: 26, width: 100, justifyContent: 'center', alignItems: 'center', borderRadius: 12, backgroundColor: 'white'}}
               textStyle = {{color: '#BABABA', fontFamily: 'Avenir', fontSize: 15}}
               backdropStyle  = {{backgroundColor : "#e5e5e5"}}
-              optionListStyle = {{backgroundColor : "#F5FCFF", borderRadius: 12, borderColor : "transparent", shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: .3}}
+              optionListStyle = {{backgroundColor : "#F5FCFF", borderRadius: 12, height: 100, borderColor : "transparent", shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: .3}}
             >
               <Option value = {{name : "Family"}}>Family</Option>
               <Option value = "Friendships">Friendships</Option>
@@ -90,6 +90,14 @@ const Ask = (props) => {
         <View style={styles.lineDivider}/>
           <Button color={'#BABABA'} title={'Ask Question'} onPress={postButton} />
         </View>
+        <Picker
+          onValueChange={(itemValue, itemIndex) => this.setState({language: itemValue})}>
+          <Picker.Item label="Java" value="java" />
+          <Picker.Item label="JavaScript" value="js" />
+          <Picker.Item label="JavaScript" value="js" />
+          <Picker.Item label="JavaScript" value="js" />
+          <Picker.Item label="JavaScript" value="js" />
+        </Picker>
       </View>
     </View>
   </View>

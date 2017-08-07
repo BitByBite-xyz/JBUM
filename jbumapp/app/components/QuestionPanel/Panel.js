@@ -13,6 +13,7 @@ import Meteor, { createContainer } from 'react-native-meteor';
 import FadeInView from 'react-native-fade-in-view';//{/* onFadeComplete={() => alert('Ready') */}
 
 import images from '../../config/images';
+import { colors } from '../../config/styles';
 import styles from './styles.js';
 
 class Panel extends React.PureComponent {
@@ -170,29 +171,24 @@ class Panel extends React.PureComponent {
         <View style={styles.lineDivider} />
         <View style={styles.bottom}>
 
-          <TouchableOpacity style={styles.imgs} onPress={() => this.onLikePress()}>
+          {/*<TouchableOpacity style={styles.imgs} onPress={() => this.onLikePress()}>
             <Image
               source={liked ? images.heartFilled : images.heartUnfilled}
               style={styles.heartFilled}
             />
             <Text style={styles.counters}>{' '+likes} loved</Text>
-          </TouchableOpacity>
+          </TouchableOpacity>*/}
 
 
           <TouchableOpacity style={styles.imgs} onPress={() => this.onReplyPress()}>
-            <Image
-              source={images.commentIcon}
+
+            <Text style={styles.counters}>{' '+postContent.post_comments.length} Responses </Text>
+            <Icon
+              name='chat'
+              color={colors.buttonBackground}
               style={styles.commentButton}
             />
-            <Text style={styles.counters}>{' '+postContent.post_comments.length} responses </Text>
-
           </TouchableOpacity>
-
-          <Icon
-            name='redo'
-            color='#d8d8d8'
-            onPress={() => this.onReplyPress()}
-          />
         </View>
 
       </View>

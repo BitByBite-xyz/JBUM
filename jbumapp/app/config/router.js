@@ -34,7 +34,7 @@ This is the only navigation I have but every time a screen is added we add to th
    Home: {
      screen: Home,
 		 navigationOptions: {
-       title: 'Just Between U and Me',
+       /*title: 'Just Between U and Me',
 			 headerRight: <Notifications />
 			 ,
 			 headerStyle: {
@@ -49,7 +49,8 @@ This is the only navigation I have but every time a screen is added we add to th
 				fontFamily: 'Avenir',
 				fontSize: 18,
 				fontWeight: '600'
-			 },
+			},*/
+			 header: null
 		}
    },
    Ask: {

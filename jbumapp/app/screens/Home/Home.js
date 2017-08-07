@@ -11,6 +11,7 @@ import Meteor, { createContainer } from 'react-native-meteor';
 import FadeInView from 'react-native-fade-in-view';//{/* onFadeComplete={() => alert('Ready') */}
 import DropdownAlert from 'react-native-dropdownalert'
 
+import SwipeHiddenHeader from '../../components/SwipeHiddenHeader';
 import QuestionPanel from '../../components/QuestionPanel';
 import Loading from '../../components/Loading';
 import AskHeader from '../../components/AskHeader';
@@ -73,39 +74,55 @@ class Home extends Component {
     };
 
     return (
-      <ScrollView
-              style={styles.container}
-              contentContainerStyle={styles.contentContainerStyle}
-      >
-        <AskHeader
-          onAskPress={this.onAskPress}
-          {...this.state}
-        />
-
-        <FlatList
-          data={posts}
-          keyExtractor={(item, index) => item._id}
-          renderItem={({item}) =>
-            <FadeInView
-                duration={700}
-            >
-              <QuestionPanel
-                postContent={item}
-                title={item.post_title}
+      <SwipeHiddenHeader header={()=>
+          <View style={styles.header}>
+            <View style={styles.centerContainer}>
+              <Text style={styles.headerText}>Just Between U and Me</Text>
+            </View>
+            <View style={styles.headerRight}>
+              <Notifications
                 navigation={navigation}
               />
-            </FadeInView>}
-              ListFooterComponent={this.renderFooter}
-              onEndReachedThreshold={0.5}
-              removeClippedSubviews={false}
-            />
-
-        <DropdownAlert
-          ref={(ref) => this.dropdown = ref}
-          onClose={(data) => this.onClose(data)}
+            </View>
+          </View>}
+      >
+        <StatusBar
+          barStyle="light-content"
         />
+        <ScrollView
+                style={styles.container}
+                contentContainerStyle={styles.contentContainerStyle}
+        >
+          <AskHeader
+            onAskPress={this.onAskPress}
+            {...this.state}
+          />
 
-      </ScrollView>
+          <FlatList
+            data={posts}
+            keyExtractor={(item, index) => item._id}
+            renderItem={({item}) =>
+              <FadeInView
+                  duration={700}
+              >
+                <QuestionPanel
+                  postContent={item}
+                  title={item.post_title}
+                  navigation={navigation}
+                />
+              </FadeInView>}
+                ListFooterComponent={this.renderFooter}
+                onEndReachedThreshold={0.5}
+                removeClippedSubviews={false}
+              />
+
+          <DropdownAlert
+            ref={(ref) => this.dropdown = ref}
+            onClose={(data) => this.onClose(data)}
+          />
+
+        </ScrollView>
+      </SwipeHiddenHeader>
     );
   }
 };

@@ -47,4 +47,29 @@ export default StyleSheet.create({
       height: 50,
       borderRadius: 25
     },
+    header:{
+      height: 57,
+      backgroundColor: 'rgba(34,34,34,.8)',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+    },
+    rightContainer: {
+      flex: 1,
+      flexDirection: 'row',
+      justifyContent: 'flex-end',
+      alignItems: 'center',
+      backgroundColor: 'red',
+    },
+    centerContainer: {
+      flex: 1,
+      justifyContent:'center'
+    },
+    headerText:{
+      color: 'white',
+      fontSize: 18,
+      fontWeight: 'bold',
+      fontFamily: 'Avenir',
+      textAlign:'center'
+    },
 });
