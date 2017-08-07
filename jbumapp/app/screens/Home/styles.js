@@ -48,11 +48,13 @@ export default StyleSheet.create({
       borderRadius: 25
     },
     header:{
-      height: 57,
-      backgroundColor: 'rgba(34,34,34,.8)',
+      height: 50,
+      backgroundColor: 'white',
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
+      borderBottomWidth: 0.5,
+      borderBottomColor: '#d1d1d1'
     },
     rightContainer: {
       flex: 1,
@@ -67,10 +69,11 @@ export default StyleSheet.create({
       justifyContent:'center'
     },
     headerText:{
-      color: 'white',
+      color: 'black',
       fontSize: 18,
-      fontWeight: 'bold',
+      fontWeight: '500',
       fontFamily: 'Avenir',
-      textAlign:'center'
+      textAlign:'center',
+      marginLeft: '10%'
     },
 });
