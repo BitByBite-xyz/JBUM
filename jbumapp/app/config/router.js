@@ -33,7 +33,19 @@ import BarcodeScanner from '../components/BarcodeScanner';
 			 header: null
 		}
    },
-	 Inbox: { screen: Inbox },
+	 Inbox: { screen: Inbox,
+			 navigationOptions: {
+				 title: 'Inbox',
+				 headerStyle: {
+		 				borderBottomWidth: 0.5,
+		 				borderBottomColor: '#d1d1d1',
+						color: 'white',
+		 				height: 50,
+		 				paddingBottom: 10,
+		 				paddingTop: 10
+		 			},
+		 	 }
+		 },
    Ask: {
      screen: Ask,
 		 navigationOptions: {

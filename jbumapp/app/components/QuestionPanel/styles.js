@@ -66,8 +66,9 @@ export default StyleSheet.create({
     paddingLeft: 5
   },
   commentButton: {
-
+    marginLeft: 6,
     marginRight: 5,
+    paddingBottom: 5
   },
   counters: {
     fontFamily: "Avenir",
