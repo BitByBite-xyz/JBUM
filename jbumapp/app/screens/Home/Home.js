@@ -53,9 +53,15 @@ class Home extends Component {
   // action means how the alert was dismissed. returns: automatic, programmatic, tap, pan or cancel
   }
 
+  renderHeader = () => (
+      <AskHeader
+        onAskPress={this.onAskPress}
+        {...this.state}
+      />
+  );
+
   render() {
     const { posts,postsReady,navigation } = this.props;
-
     renderFooter = () => {
       if (postsReady) return null;
 
@@ -89,39 +95,34 @@ class Home extends Component {
             </View>
             </View>
           </View>}
+          style={styles.container}
+          startHiddenHeaderOffset={230}
       >
         <StatusBar
           barStyle="light-content"
         />
-        <ScrollView
-                style={styles.container}
-                contentContainerStyle={styles.contentContainerStyle}
-        >
-          <AskHeader
-            onAskPress={this.onAskPress}
-            {...this.state}
-          />
-
           <FlatList
             data={posts}
             keyExtractor={(item, index) => item._id}
-            renderItem={({item}) =>
-                <QuestionPanel
-                  postContent={item}
-                  title={item.post_title}
-                  navigation={navigation}
-                />}
-                ListFooterComponent={this.renderFooter}
-                onEndReachedThreshold={0.5}
-                removeClippedSubviews={false}
-              />
+            extraData={this.state}
+            renderItem={({item}) => (
+
+              <QuestionPanel
+                postContent={item}
+                title={item.post_title}
+                navigation={this.props.navigation}
+              />)}
+            ListFooterComponent={this.renderFooter}
+            onEndReachedThreshold={0.5}
+            removeClippedSubviews={false}
+            ListHeaderComponent={this.renderHeader}
+          />
 
           <DropdownAlert
             ref={(ref) => this.dropdown = ref}
             onClose={(data) => this.onClose(data)}
           />
 
-        </ScrollView>
       </SwipeHiddenHeader>
     );
   }

@@ -77,7 +77,7 @@ class ProfileContainer extends Component {
 			<View style={styles.container}>
 				<StatusBar hidden = {true}/>
 				<ParallaxScrollView
-					style={{ flex: 1, backgroundColor: 'hotpink', overflow: 'hidden' }}
+					style={{ flex: 1, backgroundColor: '#F3F3F3', overflow: 'hidden' }}
 					parallaxHeaderHeight={PARALLAX_HEADER_HEIGHT}
 					stickyHeaderHeight={80}
 					backgroundSpeed={10}

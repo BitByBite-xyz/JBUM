@@ -26,33 +26,14 @@ import Inbox from '../screens/Inbox';
 import Notifications from '../components/Notifications';
 import BarcodeScanner from '../components/BarcodeScanner';
 
-
-/*
-This is the only navigation I have but every time a screen is added we add to this...
- */
  export const HomeStack = StackNavigator({
    Home: {
      screen: Home,
 		 navigationOptions: {
-       /*title: 'Just Between U and Me',
-			 headerRight: <Notifications />
-			 ,
-			 headerStyle: {
-				borderBottomWidth: 0.5,
-				borderBottomColor: '#d1d1d1',
-       	backgroundColor: 'white',
-       	elevation: null,
-				paddingTop: 0,
-				height: 50,
-		 	},
-			headerTitleStyle: {
-				fontFamily: 'Avenir',
-				fontSize: 18,
-				fontWeight: '600'
-			},*/
 			 header: null
 		}
    },
+	 Inbox: { screen: Inbox },
    Ask: {
      screen: Ask,
 		 navigationOptions: {
@@ -74,28 +55,8 @@ This is the only navigation I have but every time a screen is added we add to th
  				paddingTop: 2
  			 },
  		},
-  },
-	Reply: { screen: Reply,
-		navigationOptions: {
-			title: 'Just Between You and Me',
-		 headerStyle: {
-				borderBottomWidth: 0.5,
-				borderBottomColor: '#d1d1d1',
-				backgroundColor: 'white',
-				elevation: null,
-				height: 50,
-				paddingBottom: 10,
-				paddingTop: 10
-			},
-			headerTitleStyle: {
-				fontFamily: 'Avenir',
-				fontSize: 17.5,
-				fontWeight: '600',
-				marginRight: 10,
-				paddingTop: 2
-			 },
-		},
- }},{mode:'modal'});
+  }},{mode:'modal'});
+
  export const WelcomeStack = StackNavigator({
 	 Welcome: {screen: Welcome,},
 	 Login: { screen: Login },
@@ -162,10 +123,35 @@ export const ProfileStack = StackNavigator({
 		mode:'modal'
 });
 export default StackNavigator({
-		WelcomeStack: { screen: WelcomeStack },
+		Tabs: { screen: Tabs },
+		WelcomeStack: { screen: WelcomeStack,
+		 	navigationOptions: {
+
+					gesturesEnabled: false,
+
+
+			}},
 		BarcodeScanner: { screen: BarcodeScanner },
-		Inbox: { screen: Inbox },
-    Tabs: { screen: Tabs }
+		Reply: { screen: Reply,
+			navigationOptions: {
+				title: 'Just Between You and Me',
+			 headerStyle: {
+					borderBottomWidth: 0.5,
+					borderBottomColor: '#d1d1d1',
+					backgroundColor: 'white',
+					elevation: null,
+					height: 50,
+					paddingBottom: 10,
+					paddingTop: 10
+				},
+				headerTitleStyle: {
+					fontFamily: 'Avenir',
+					fontSize: 17.5,
+					fontWeight: '600',
+					marginRight: 10,
+					paddingTop: 2
+				 },
+			},},
 	},{
     	navigationOptions: {
 	      tabBarVisible: false,

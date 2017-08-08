@@ -22,8 +22,8 @@ class Panel extends React.PureComponent {
     const { navigation, header,postContent } = this.props;
 
     this.state = {
-      liked: (postContent.post_likes) ? postContent.post_likes.includes(Meteor.userId()) : false,
-      likes: (postContent.post_likes) ? postContent.post_likes.length : 0,
+      //liked: (postContent.post_likes) ? postContent.post_likes.includes(Meteor.userId()) : false,
+      //likes: (postContent.post_likes) ? postContent.post_likes.length : 0,
       comments: postContent.post_comments.length,
 
       is_visible: false,
