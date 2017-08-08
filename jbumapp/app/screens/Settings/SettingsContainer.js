@@ -24,8 +24,9 @@ class SettingsContainer extends Component {
     Meteor.logout(() => {
       const resetAction = NavigationActions.reset({
         index: 0,
+        key: null,
         actions: [
-          NavigationActions.navigate({ routeName: 'Home' }),
+          NavigationActions.navigate({ routeName: 'WelcomeStack' }),
         ],
       });
       this.props.navigation.dispatch(resetAction);

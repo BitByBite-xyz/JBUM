@@ -85,8 +85,7 @@ class ProfileContainer extends Component {
 					backgroundColor={'#46B4BC'}
 					style={{ flex: 1, backgroundColor: '#F3F3F3', overflow: 'hidden' }}
 					parallaxHeaderHeight={PARALLAX_HEADER_HEIGHT}
-					stickyHeaderHeight={80}
-					//backgroundSpeed={10}
+					//backgroundSpeed={1130}
 					onScroll={this.props.onScroll}
 					contentBackgroundColor='#F3F3F3'
 					renderStickyHeader={() => stickyHeader}
@@ -95,10 +94,12 @@ class ProfileContainer extends Component {
 					renderBackground={() => (
               <View key="background">
                 <Image source={images.profileBannerImg}
+									style={{width: window.width,
+	                        height: PARALLAX_HEADER_HEIGHT}}
 								/>
                 <View style={{position: 'absolute',
                               top: 0,
-                              width: window.width,
+                              width: 'auto',
                               backgroundColor: 'rgba(0,0,0,.4)',
                               height: PARALLAX_HEADER_HEIGHT}}/>
               </View>
