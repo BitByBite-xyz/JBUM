@@ -57,7 +57,7 @@ class ProfileContainer extends Component {
 
   render() {
 		const { user_posts,responded_posts,postsReady,navigation } = this.props;
-		const PARALLAX_HEADER_HEIGHT = 150;
+		const PARALLAX_HEADER_HEIGHT = 170;
 		const buttons = ['My Posts', 'Replied Posts'];
   	const { selectedIndex } = this.state;
 		const questionNumber = user_posts.length;
@@ -85,12 +85,11 @@ class ProfileContainer extends Component {
 					backgroundColor={'#46B4BC'}
 					style={{ flex: 1, backgroundColor: '#F3F3F3', overflow: 'hidden' }}
 					parallaxHeaderHeight={PARALLAX_HEADER_HEIGHT}
-					stickyHeaderHeight={80}
+					stickyHeaderHeight={50}
 					//backgroundSpeed={10}
 					onScroll={this.props.onScroll}
 					contentBackgroundColor='#F3F3F3'
 					renderStickyHeader={() => stickyHeader}
-					stickyHeaderHeight={50}
 					renderForeground={() => foreground}
 					renderBackground={() => (
               <View key="background">
