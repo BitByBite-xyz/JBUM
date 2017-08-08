@@ -54,10 +54,14 @@ class Home extends Component {
   }
 
   renderHeader = () => (
+    <FadeInView
+      duration={750}
+    >
       <AskHeader
         onAskPress={this.onAskPress}
         {...this.state}
       />
+      </FadeInView>
   );
 
   render() {
@@ -105,11 +109,12 @@ class Home extends Component {
             data={posts}
             keyExtractor={(item, index) => item._id}
             extraData={this.state}
+            initialNumToRender={5}
             renderItem={({item}) => (
 
               <QuestionPanel
                 postContent={item}
-                title={item.post_title}
+                header={item.post_title}
                 navigation={this.props.navigation}
               />)}
             ListFooterComponent={this.renderFooter}

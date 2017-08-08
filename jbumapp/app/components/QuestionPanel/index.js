@@ -1,3 +1,3 @@
-import QuesionPanel from './QuesionPanel';
+import Panel from './Panel';
 
-export default QuesionPanel;
+export default Panel;

@@ -135,15 +135,21 @@ export const ProfileStack = StackNavigator({
 		mode:'modal'
 });
 export default StackNavigator({
-		Tabs: { screen: Tabs },
+		Tabs: { screen: Tabs,
+		 	navigationOptions: {
+				header: null,
+				gesturesEnabled: false,
+		}},
 		WelcomeStack: { screen: WelcomeStack,
 		 	navigationOptions: {
-
-					gesturesEnabled: false,
-
-
+				header: null,
+				gesturesEnabled: false,
 			}},
-		BarcodeScanner: { screen: BarcodeScanner },
+		BarcodeScanner: { screen: BarcodeScanner,
+		 	navigationOptions: {
+				header: null,
+				gesturesEnabled: false,
+			}},
 		Reply: { screen: Reply,
 			navigationOptions: {
 				title: 'Just Between You and Me',
@@ -167,7 +173,6 @@ export default StackNavigator({
 	},{
     	navigationOptions: {
 	      tabBarVisible: false,
-	      header: null,
 				mode:'modal'
     	}
 	});

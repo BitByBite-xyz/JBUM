@@ -34,7 +34,6 @@ class Panel extends React.PureComponent {
     this.setMaxHeight = this.setMaxHeight.bind(this);
     this.setMinHeight = this.setMinHeight.bind(this);
     this.toggle = this.toggle.bind(this);
-
   }
 
   onLikePress() {
@@ -79,7 +78,7 @@ class Panel extends React.PureComponent {
   componentDidMount() {
     setTimeout(() => {
       this.setState({ is_visible: true });
-    }, 100);
+    }, 200);
   }
 
   toggle() {
@@ -122,7 +121,6 @@ class Panel extends React.PureComponent {
           <Text style={styles.title}>{header}</Text>
           <Image style={styles.buttonImage} source={icon} />
         </View>
-
       );
     } else {
       return (
@@ -160,7 +158,9 @@ class Panel extends React.PureComponent {
           </TouchableOpacity>
           {this.state.is_visible &&
             <View onLayout={this.setMaxHeight}>
-              {children}
+              <Text style={styles.myDescription}>
+                {postContent.post_body}
+              </Text>
               <View style={styles.questionPanelContainer}>
                 <Text style={[styles.timeText, styles.created]}>{' '+moment(postContent.created).fromNow()}</Text>
               </View>
@@ -207,7 +207,6 @@ Panel.propTypes = {
     PropTypes.number,
   ]),
   onPress: PropTypes.func,
-  children: PropTypes.element.isRequired,
 };
 
 export default Panel;

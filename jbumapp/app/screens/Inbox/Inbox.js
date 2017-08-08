@@ -59,13 +59,12 @@ class Inbox extends Component {
               <Swipeout
                 right={swipeoutBtns}
                 backgroundColor='transparent'
-
               >
-              <QuestionPanel
-                postContent={item}
-                title={item.post_title}
-                navigation={navigation}
-              />
+                <QuestionPanel
+                  postContent={item}
+                  header={item.post_title}
+                  navigation={navigation}
+                />
               </Swipeout>
             </FadeInView>}
               ListFooterComponent={this.renderFooter}

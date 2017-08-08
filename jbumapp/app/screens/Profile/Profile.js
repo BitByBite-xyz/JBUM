@@ -80,7 +80,7 @@ class ProfileContainer extends Component {
 					style={{ flex: 1, backgroundColor: '#F3F3F3', overflow: 'hidden' }}
 					parallaxHeaderHeight={PARALLAX_HEADER_HEIGHT}
 					stickyHeaderHeight={80}
-					backgroundSpeed={10}
+					//backgroundSpeed={10}
 					onScroll={this.props.onScroll}
 					contentBackgroundColor='#F3F3F3'
 					renderForeground={() => foreground}
@@ -107,11 +107,12 @@ class ProfileContainer extends Component {
 					{ selectedIndex === 0 ?
 						<FlatList
 							data={user_posts}
+							initialNumToRender={5}
 							keyExtractor={(item, index) => item._id}
 							renderItem={({item}) =>
 									<QuestionPanel
 										postContent={item}
-										title={item.post_title}
+										header={item.post_title}
 										navigation={navigation}
 									/>}
 									ListFooterComponent={this.renderFooter}
@@ -120,11 +121,12 @@ class ProfileContainer extends Component {
 						/> :
 						<FlatList
 							data={responded_posts}
+							initialNumToRender={5}
 							keyExtractor={(item, index) => item._id}
 							renderItem={({item}) =>
 									<QuestionPanel
 										postContent={item}
-										title={item.post_title}
+										header={item.post_title}
 										navigation={navigation}
 									/>}
 									ListFooterComponent={this.renderFooter}
