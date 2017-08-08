@@ -152,7 +152,7 @@ export default StackNavigator({
 			}},
 		Reply: { screen: Reply,
 			navigationOptions: {
-				title: 'Just Between You and Me',
+				title: 'Reply',
 			 headerStyle: {
 					borderBottomWidth: 0.5,
 					borderBottomColor: '#d1d1d1',
