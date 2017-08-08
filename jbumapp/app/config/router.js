@@ -150,10 +150,14 @@ export default StackNavigator({
 				gesturesEnabled: false,
 			}},
 		BarcodeScanner: { screen: BarcodeScanner,
-		 	navigationOptions: {
-				header: null,
-				gesturesEnabled: false,
-			}},
+			navigationOptions: {
+				headerStyle: {
+					 color: null,
+					 backgroundColor: null,
+					 height: 20,
+				 },
+			}
+		},
 		Reply: { screen: Reply,
 			navigationOptions: {
 				title: 'Reply',
