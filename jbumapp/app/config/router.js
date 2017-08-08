@@ -44,12 +44,16 @@ import BarcodeScanner from '../components/BarcodeScanner';
 		 				paddingBottom: 10,
 		 				paddingTop: 10
 		 			},
+				headerTitleStyle: {
+						fontSize: 22,
+						fontFamily: 'Avenir'
+				},
 		 	 }
 		 },
    Ask: {
      screen: Ask,
 		 navigationOptions: {
- 			title: 'Just Between You and Me',
+ 			title: 'Ask Question',
  		 headerStyle: {
  				borderBottomWidth: 0.5,
  				borderBottomColor: '#d1d1d1',
@@ -61,7 +65,7 @@ import BarcodeScanner from '../components/BarcodeScanner';
  			},
  			headerTitleStyle: {
  				fontFamily: 'Avenir',
- 				fontSize: 17.5,
+ 				fontSize: 21,
  				fontWeight: '600',
  				marginRight: 10,
  				paddingTop: 2
