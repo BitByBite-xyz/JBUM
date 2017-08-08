@@ -73,16 +73,24 @@ class ProfileContainer extends Component {
 				Level={Math.floor(karma / 10)}
 			/>
 		);
+		const stickyHeader = (
+			<View style={{justifyContent: 'center', alignItems: 'center', borderBottomWidth: 0.5, borderBottomColor: 'gray' }}>
+				<Text style={{ textAlign: 'center', color: 'white', padding: 15, fontSize: 19 }}>Profile</Text>
+			</View>
+		);
 		return (
 			<View style={styles.container}>
 				<StatusBar hidden = {true}/>
 				<ParallaxScrollView
+					backgroundColor={'#46B4BC'}
 					style={{ flex: 1, backgroundColor: '#F3F3F3', overflow: 'hidden' }}
 					parallaxHeaderHeight={PARALLAX_HEADER_HEIGHT}
 					stickyHeaderHeight={80}
 					//backgroundSpeed={10}
 					onScroll={this.props.onScroll}
 					contentBackgroundColor='#F3F3F3'
+					renderStickyHeader={() => stickyHeader}
+					stickyHeaderHeight={50}
 					renderForeground={() => foreground}
 					renderBackground={() => (
               <View key="background">
