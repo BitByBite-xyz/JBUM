@@ -98,10 +98,12 @@ class ProfileContainer extends Component {
 				>
 					<View style={{paddingTop:10}}>
 						<ButtonGroup
+							selectedTextStyle={{fontWeight: '700'}}
+							innerBorderStyle={{color: 'transparent'}}
 				      onPress={this.updateIndex}
 				      selectedIndex={selectedIndex}
 				      buttons={buttons}
-				      containerStyle={{height: 30}} />
+				      containerStyle={{height: 35}} />
 					</View>
 
 					{ selectedIndex === 0 ?
