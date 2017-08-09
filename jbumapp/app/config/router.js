@@ -124,12 +124,6 @@ export const ProfileStack = StackNavigator({
 			title: 'Login'
 		}
 	},
-	AccountSetup: {
-		screen: AccountSetup,
-		navigationOptions: {
-			title: 'Account Setup'
-		}
-	},
 }, {
 		headerMode: 'none',
 		mode:'modal'
@@ -150,6 +144,12 @@ export default StackNavigator({
 				header: null,
 				gesturesEnabled: false,
 			}},
+		AccountSetup: { screen: AccountSetup,
+			navigationOptions: {
+				header: null,
+				gesturesEnabled: false,
+			}
+		},
 		Reply: { screen: Reply,
 			navigationOptions: {
 				title: 'Reply',
