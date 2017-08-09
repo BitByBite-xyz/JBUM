@@ -65,10 +65,17 @@ class Home extends Component {
   }
 
   renderHeader = () => (
+    <View
+      style={{
+        marginTop: 5.55,
+      }}
+    >
       <AskHeader
         onAskPress={this.onAskPress}
         {...this.state}
       />
+    </View>
+
   );
 
   render() {
