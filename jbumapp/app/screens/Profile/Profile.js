@@ -93,10 +93,13 @@ class ProfileContainer extends Component {
 					renderForeground={() => foreground}
 					renderBackground={() => (
               <View key="background">
-							{/* <Image source={images.profileBannerImg}*/}
+                {/*<Image source={images.profileBannerImg}
+									style={{width: window.width,
+	                        height: PARALLAX_HEADER_HEIGHT}}
+								/>*/}
                 <View style={{position: 'absolute',
                               top: 0,
-                              width: window.width,
+                              width: 'auto',
                               backgroundColor: 'rgba(0,0,0,.4)',
                               height: PARALLAX_HEADER_HEIGHT}}/>
               </View>
