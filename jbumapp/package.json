@@ -15,6 +15,7 @@
     "react-dom": "^15.6.1",
     "react-native": "0.46.4",
     "react-native-animatable": "^1.2.3",
+    "react-native-app-intro": "^1.1.5",
     "react-native-blur-image": "^1.0.6",
     "react-native-button-component": "^0.1.18",
     "react-native-camera": "^0.9.4",
