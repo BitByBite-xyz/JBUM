@@ -82,7 +82,7 @@ class ProfileContainer extends Component {
 			<View style={styles.container}>
 				<StatusBar hidden = {true}/>
 				<ParallaxScrollView
-					backgroundColor={'#46B4BC'}
+					backgroundColor={'#4CB4C9'}
 					style={{ flex: 1, backgroundColor: '#F3F3F3', overflow: 'hidden' }}
 					parallaxHeaderHeight={PARALLAX_HEADER_HEIGHT}
 					stickyHeaderHeight={50}
@@ -93,8 +93,7 @@ class ProfileContainer extends Component {
 					renderForeground={() => foreground}
 					renderBackground={() => (
               <View key="background">
-                <Image source={images.profileBannerImg}
-								/>
+							{/* <Image source={images.profileBannerImg}*/}
                 <View style={{position: 'absolute',
                               top: 0,
                               width: window.width,
@@ -110,7 +109,7 @@ class ProfileContainer extends Component {
 				      onPress={this.updateIndex}
 				      selectedIndex={selectedIndex}
 				      buttons={buttons}
-				      containerStyle={{height: 35}} />
+				      containerStyle={{height: 35, backgroundColor: 'transparent'}} />
 					</View>
 
 					{ selectedIndex === 0 ?
