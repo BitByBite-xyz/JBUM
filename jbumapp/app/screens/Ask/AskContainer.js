@@ -82,11 +82,14 @@ class AskContainer extends Component {
           </View>
 
           <Button
-            containerViewStyle={{paddingTop:10}}
-            backgroundColor={'#BABABA'}
+            borderRadius={25}
+            containerViewStyle={{marginTop:10}}
+            backgroundColor={'white'}
             //disabled={title.length !== 0 && body.length !== 0}
-            icon={{name: 'phonelink-ring'}}
+            icon={{name: 'send', color: '#BBB', size: 20}}
+            iconRight
             title='Submit Question'
+            textStyle={{color:'#BBB', fontFamily: 'Avenir', fontSize: 18}}
             onPress={() => this.postButton()}/>
         </View>
       </View>

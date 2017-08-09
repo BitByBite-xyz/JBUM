@@ -37,16 +37,16 @@ export default StyleSheet.create({
   },
   bottom: {
       backgroundColor: 'white',
-      borderRadius: 5,
+      borderRadius: 10,
   },
   bottomBox: {
       paddingLeft: 10,
       paddingRight: 10,
-      paddingTop: 15,
+      marginTop: 10,
       backgroundColor: '#F3F3F3',
   },
   views: {
-      paddingTop: 15,
+      paddingTop: 7,
       paddingLeft: 12,
       paddingRight: 12,
       //Also padding-bottom can be added too
@@ -75,7 +75,7 @@ export default StyleSheet.create({
       color: '#BBB',
       paddingLeft: 10,
       paddingRight: 10,
-      fontSize: 15,
+      fontSize: 17,
       fontFamily: 'Avenir',
 
   },
