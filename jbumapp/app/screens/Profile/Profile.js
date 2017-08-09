@@ -88,7 +88,7 @@ class ProfileContainer extends Component {
 					stickyHeaderHeight={50}
 					//backgroundSpeed={10}
 					onScroll={this.props.onScroll}
-					contentBackgroundColor='#F3F3F3'
+					contentBackgroundColor='transparent'
 					renderStickyHeader={() => stickyHeader}
 					renderForeground={() => foreground}
 					renderBackground={() => (
@@ -102,14 +102,15 @@ class ProfileContainer extends Component {
               </View>
             )}
 				>
-					<View style={{paddingTop:10}}>
+				<View style={{borderTopLeftRadius: 15, borderTopRightRadius: 15, overflow: 'hidden', backgroundColor: '#F3F3F3'}}>
+					<View style={{paddingTop:15, backgroundColor: '#F3F3F3'}}>
 						<ButtonGroup
 							selectedTextStyle={{fontWeight: '700'}}
 							innerBorderStyle={{color: 'transparent'}}
 				      onPress={this.updateIndex}
 				      selectedIndex={selectedIndex}
 				      buttons={buttons}
-				      containerStyle={{height: 35, backgroundColor: 'transparent'}} />
+				      containerStyle={{height: 35, borderRadius: 10}} />
 					</View>
 
 					{ selectedIndex === 0 ?
@@ -141,7 +142,7 @@ class ProfileContainer extends Component {
 									onEndReachedThreshold={50}
 									removeClippedSubviews={false}
 					/>}
-
+			</View>
 				</ParallaxScrollView>
 
 				</View>
