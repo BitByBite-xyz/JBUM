@@ -12,6 +12,7 @@ import FadeInView from 'react-native-fade-in-view';//{/* onFadeComplete={() => a
 import DropdownAlert from 'react-native-dropdownalert'
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import { Badge } from 'react-native-elements'
+import { NavigationActions } from 'react-navigation';
 
 import SwipeHiddenHeader from '../../components/SwipeHiddenHeader';
 import QuestionPanel from '../../components/QuestionPanel';
@@ -39,6 +40,16 @@ class Home extends Component {
   }
 
   componentWillMount() {
+    if (!Meteor.userId()) {
+      const resetAction = NavigationActions.reset({
+        index: 0,
+        key: null,
+        actions: [
+          NavigationActions.navigate({ routeName: 'WelcomeStack' }),
+        ],
+      });
+      this.props.navigation.dispatch(resetAction);
+    }
     this.mounted = true;
     //this.props.navigation.navigate('Inbox')
   }
@@ -54,14 +65,10 @@ class Home extends Component {
   }
 
   renderHeader = () => (
-    <FadeInView
-      duration={750}
-    >
       <AskHeader
         onAskPress={this.onAskPress}
         {...this.state}
       />
-      </FadeInView>
   );
 
   render() {

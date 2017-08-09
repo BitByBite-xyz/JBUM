@@ -53,20 +53,21 @@ class Inbox extends Component {
           data={user_posts}
           keyExtractor={(item, index) => item._id}
           renderItem={({item}) =>
-            <FadeInView
-                duration={700}
-            >
-              <Swipeout
-                right={swipeoutBtns}
-                backgroundColor='transparent'
-              >
-                <QuestionPanel
-                  postContent={item}
-                  header={item.post_title}
-                  navigation={navigation}
-                />
-              </Swipeout>
-            </FadeInView>}
+                <FadeInView
+                    duration={700}
+                >
+                  <Swipeout
+                    right={swipeoutBtns}
+                    backgroundColor='transparent'
+                  >
+                    <QuestionPanel
+                      postContent={item}
+                      header={item.post_title}
+                      navigation={navigation}
+                    />
+                  </Swipeout>
+                </FadeInView>
+          }
               ListFooterComponent={this.renderFooter}
               onEndReachedThreshold={50}
               removeClippedSubviews={false}
@@ -91,7 +92,7 @@ export default createContainer(() => {
   const handle = Meteor.subscribe('Posts.pub.list');
 
   return {
-    user_posts: Meteor.collection('posts').find({ user_id: Meteor.userId() }, { sort: { created: -1 } }),
+    user_posts: Meteor.collection('posts').find({ user_id: Meteor.userId(), post_comments: { $gt: 0 }}, { sort: { created: -1 } }),
     user_postsReady: handle.ready(),
   };
 }, Inbox);
