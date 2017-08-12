@@ -27,17 +27,17 @@ export default class AccountSetup extends Component {
 
   render() {
     return(
-      <AppIntro>
-        <View style={[styles.slide,{ backgroundColor: '#1E90FF' }]}>
+      <AppIntro dotColor='#bbddff' activeDotColor='#1E90FF' leftTextColor='#1E90FF' rightTextColor='#1E90FF'>
+        <View style={[styles.slide,{ backgroundColor: '#fff' }]}>
           <PageOne />
         </View>
-        <View style={[styles.slide, { backgroundColor: '#1E90FF' }]}>
+        <View style={[styles.slide, { backgroundColor: '#fff' }]}>
           <PageTwo />
         </View>
-        <View style={[styles.slide,{ backgroundColor: '#1E90FF' }]}>
+        <View style={[styles.slide,{ backgroundColor: '#fff' }]}>
           <PageThree />
         </View>
-        <View style={[styles.slide, { backgroundColor: '#1E90FF' }]}>
+        <View style={[styles.slide, { backgroundColor: '#fff' }]}>
           <PageFour />
         </View>
       </AppIntro>
