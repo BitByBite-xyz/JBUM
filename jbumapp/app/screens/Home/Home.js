@@ -40,7 +40,7 @@ class Home extends Component {
     };
 
     this.mounted = false;
-    //this.props.navigation.navigate('AccountSetup');
+    this.props.navigation.navigate('Ask');
   }
 
   componentWillMount() {
