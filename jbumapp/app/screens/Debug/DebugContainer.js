@@ -23,6 +23,9 @@ class DebugContainer extends Component {
     console.log("NAV: ", this.props.navigation);
 
   }
+  toAccountSetup(){
+    this.props.navigation.navigate('AccountSetup');
+  }
 
   render() {
     return (
@@ -30,6 +33,7 @@ class DebugContainer extends Component {
         toInbox={this.toInbox.bind(this)}
         toBarcodeScanner={this.toBarcodeScanner.bind(this)}
         toSettings={this.toSettings.bind(this)}
+        toAccountSetup={this.toAccountSetup.bind(this)}
       />
     );
   }

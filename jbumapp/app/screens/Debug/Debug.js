@@ -10,7 +10,7 @@ import {Button } from 'react-native-elements';
 import { LayoutAnimation } from 'react-native';
 
 const Debug = (props) => {
-  const { toInbox, toBarcodeScanner} = props;
+  const { toInbox, toBarcodeScanner, toAccountSetup } = props;
 
    return (
      <View style={styles.container}>
@@ -34,6 +34,18 @@ const Debug = (props) => {
          icon={{name: 'pages',buttonStyle: styles.buttons}}
          backgroundColor={'turquoise'}
          onPress={toInbox}
+         fontFamily= 'Avenir'
+         fontSize={25}
+         fontWeight='bold'
+         iconRight={true}
+       />
+       <Button
+         title='Sign Up'
+         large
+         borderRadius={20}
+         icon={{name: 'pages',buttonStyle: styles.buttons}}
+         backgroundColor={'orange'}
+         onPress={toAccountSetup}
          fontFamily= 'Avenir'
          fontSize={25}
          fontWeight='bold'

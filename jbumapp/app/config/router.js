@@ -128,12 +128,6 @@ export const ProfileStack = StackNavigator({
 			title: 'Login'
 		}
 	},
-	AccountSetup: {
-		screen: AccountSetup,
-		navigationOptions: {
-			title: 'Account Setup'
-		}
-	},
 }, {
 		headerMode: 'none',
 		mode:'modal'
