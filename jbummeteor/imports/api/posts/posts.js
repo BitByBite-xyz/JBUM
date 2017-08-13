@@ -1,4 +1,5 @@
 import { Mongo } from 'meteor/mongo';
+import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
 
 CommentsSchema = new SimpleSchema({
@@ -28,7 +29,14 @@ CommentsSchema = new SimpleSchema({
 PostsSchema = new SimpleSchema({
   "user_id": {
     type: String,
-    label: "Poster's meteor.User ID"
+    label: "Poster's meteor.User ID",
+  },
+  "post_visibility": {
+    type: [String],
+    minCount: 1,
+    maxCount: 4,
+    optional:false,
+    label: "Post's intended reciever"
   },
   post_title:{
     type: String,
@@ -41,7 +49,16 @@ PostsSchema = new SimpleSchema({
   post_comments: {
     type: [CommentsSchema],
     label: "Post's comments",
-    optional:false //a post does not require post_items
+    optional:false
+ },
+ isFlagged: {
+     type: Boolean,
+     label: "indicates if post is flagged",
+     autoValue: function() {
+       if ( this.isInsert ) {
+         return false;
+       }
+     }
  },
  post_likes: {
      type: [String],

@@ -50,12 +50,13 @@ Meteor.startup(() => {
         })
     }
     for (let i = 0; i < 50; i++) {
-      let postLikes = [Meteor.users.findOne()._id, Meteor.users.findOne()._id]
+      let postLikes = [Meteor.users.findOne()._id, Meteor.users.findOne()._id];
       Posts.insert({
         user_id: Meteor.users.findOne()._id,
         post_title: Fake.sentence(12),
         post_body: Fake.sentence(48),
         post_comments: [comments[i]],
+        post_visibility: [Random.choice(['Therapist','Peers','Adult'])],
         post_likes: postLikes
       });
     }

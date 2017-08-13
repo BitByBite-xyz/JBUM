@@ -8,8 +8,8 @@ import { Random } from 'meteor/random'
 
 Meteor.methods({
   'Posts.insert' (title, body) {
-    //check(title, String);
-    //check(body, String);
+    check(title, String);
+    check(body, String);
 
     // Make sure the user is logged in before inserting a post
     if (!Meteor.userId()) {
