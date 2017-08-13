@@ -69,7 +69,7 @@ export default class AccountSetup extends Component {
         <View style={[styles.slide,{ backgroundColor: '#bbddff' }]}>
           <PageThree />
         </View>
-        <View style={[styles.slide, { backgroundColor: '#fa931d' }]}>
+        <View style={[styles.slide, { backgroundColor: '#E1A3DC' }]}>
           <PageFour />
         </View>
       </AppIntro>

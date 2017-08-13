@@ -135,7 +135,7 @@ export default class PageThree extends Component {
     },
     pageTitle: {
     color: '#fff',
-    fontSize: 50,
+    fontSize: 47,
     fontWeight: 'bold',
     },
     });
