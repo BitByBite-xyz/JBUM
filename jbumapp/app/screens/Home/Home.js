@@ -5,7 +5,8 @@ import {
   View,
   ScrollView,
   StatusBar,
-  FlatList
+  FlatList,
+  Animated
 } from 'react-native';
 import Meteor, { createContainer } from 'react-native-meteor';
 import FadeInView from 'react-native-fade-in-view';//{/* onFadeComplete={() => alert('Ready') */}
@@ -34,6 +35,9 @@ class Home extends Component {
   };
   constructor(props) {
     super(props);
+    this.state= {
+      scrollY: new Animated.Value(0)
+    };
 
     this.mounted = false;
     //this.props.navigation.navigate('AccountSetup');
@@ -78,24 +82,26 @@ class Home extends Component {
 
   );
 
+  renderFooter = () => {
+    const { loading } = this.props;
+
+    /*if (!loading) {
+      return null;
+    }*/
+
+    return (
+      <View
+        style={{
+          paddingVertical: 20,
+        }}
+      >
+        <Loading />
+      </View>
+    );
+  };
+
   render() {
-    const { posts,postsReady,navigation } = this.props;
-    renderFooter = () => {
-      if (postsReady) return null;
-
-      return (
-        <View
-          style={{
-            paddingVertical: 20,
-            borderTopWidth: 1,
-            borderColor: "#CED0CE"
-          }}
-        >
-          <Loading />
-        </View>
-      );
-    };
-
+    const { posts,loading,navigation } = this.props;
     return (
       <SwipeHiddenHeader header={()=>
           <View style={styles.header}>
@@ -119,6 +125,9 @@ class Home extends Component {
         <StatusBar
           barStyle="light-content"
         />
+
+        {loading ?
+          <Loading /> :
           <FlatList
             data={posts}
             keyExtractor={(item, index) => item._id}
@@ -135,12 +144,12 @@ class Home extends Component {
             onEndReachedThreshold={0.5}
             removeClippedSubviews={false}
             ListHeaderComponent={this.renderHeader}
-          />
-
+          />}
           <DropdownAlert
             ref={(ref) => this.dropdown = ref}
             onClose={(data) => this.onClose(data)}
           />
+
 
       </SwipeHiddenHeader>
     );
@@ -149,9 +158,9 @@ class Home extends Component {
 
 export default createContainer(() => {
   const handle = Meteor.subscribe('Posts.pub.list');
+  const loading = !handle.ready();
 
   return {
     posts: Meteor.collection('posts').find({},{ sort: { created: -1 } }),
-    postsReady: handle.ready(),
   };
 }, Home);

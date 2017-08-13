@@ -78,7 +78,7 @@ class Panel extends React.PureComponent {
   componentDidMount() {
     setTimeout(() => {
       this.setState({ is_visible: true });
-    }, 200);
+    }, 900);
   }
 
   toggle() {
