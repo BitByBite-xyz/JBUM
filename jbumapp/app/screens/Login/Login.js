@@ -4,7 +4,7 @@ from LoginContainer so when changing butten funcionality look there..
  */
 
 import React from 'react';
-import { Text, View, Image, StyleSheet, StatusBar, Linking } from 'react-native';
+import { Text, View, Image, StyleSheet, StatusBar, Linking, KeyboardAvoidingView } from 'react-native';
 import KeyboardSpacer from 'react-native-keyboard-spacer';
 import { Button, Icon } from 'react-native-elements'
 import { SocialIcon } from 'react-native-elements';
@@ -26,8 +26,10 @@ const Login = (props) => {
 
 <Wallpaper>
 
-    <View style={styles.container}>
-
+  <KeyboardAvoidingView
+    style={styles.container}
+    behavior="padding"
+  >
       <FadeInView
         duration={700}
         style={styles.header}
@@ -56,6 +58,7 @@ const Login = (props) => {
           secureTextEntry
           returnKeyType='next'
           borderTop
+          blurOnSubmit={true}
         />
         {confirmPasswordVisible ?
           <GenericTextInput
@@ -64,6 +67,7 @@ const Login = (props) => {
             secureTextEntry
             returnKeyType='done'
             borderTop
+            blurOnSubmit={true}
           />
         : null}
       </InputWrapper>
@@ -95,7 +99,7 @@ const Login = (props) => {
       </View>
 
     </FadeInView>
-
+  </KeyboardAvoidingView>
 
     <FadeInView
       duration={4000}
@@ -136,8 +140,6 @@ const Login = (props) => {
       </View>
 
     </FadeInView>
-
-  </View>
 </Wallpaper>
 
   );

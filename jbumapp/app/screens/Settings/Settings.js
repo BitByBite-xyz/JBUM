@@ -12,12 +12,13 @@ const Settings = (props) => {
   return (
     <View style={{backgroundColor:'#EFEFF4',flex:1}}>
           <View style={{borderBottomWidth:1, backgroundColor:'#f7f7f8',borderColor:'#c8c7cc'}}>
-            <Text style={{alignSelf:'center',marginTop:12,marginBottom:10,fontWeight:'bold',fontSize:18}}>Settings</Text>
+            <Text style={{alignSelf:'center', marginTop:9, marginBottom:7, fontWeight:'500', fontSize:21, fontFamily: 'Avenir'}}>Settings</Text>
           </View>
           <View style={{backgroundColor:'#f7f7f7',flex:1}}>
             <SettingsList borderColor='#c8c7cc' defaultItemSize={50}>
               <SettingsList.Header headerStyle={{marginTop:0}}/>
               <SettingsList.Item
+                titleStyle={{fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
                 hasSwitch={true}
                 switchState={switchValue}
                 switchOnValueChange={this.onValueChange}
@@ -26,6 +27,7 @@ const Settings = (props) => {
               />
               <SettingsList.Header headerStyle={{marginTop:10}}/>
               <SettingsList.Item
+                titleStyle={{fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
                 title='Account Pin'
                 titleInfo='3245'
                 hasNavArrow={false}
@@ -34,24 +36,29 @@ const Settings = (props) => {
 
               <SettingsList.Header headerText='SUPPORT' headerStyle={{color:'gray', marginTop:15, marginLeft: 10}}/>
               <SettingsList.Item
+                titleStyle={{fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
                 title='Help Center'
                 onPress={() => Linking.openURL('http://www.justbetweenuandme.com')}
               />
               <SettingsList.Item
+                titleStyle={{fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
                 title='Report a Problem'
                 onPress={() => Linking.openURL("http://www.justbetweenuandme.com")}
               />
 
               <SettingsList.Header headerText='ABOUT' headerStyle={{color:'gray', marginTop:15, marginLeft: 10}}/>
               <SettingsList.Item
+                titleStyle={{fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
                 title='Privacy Policy'
                 onPress={() => Linking.openURL('https://help.instagram.com/155833707900388/?helpref=hc_fnav')}
               />
               <SettingsList.Item
+                titleStyle={{fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
                 title='Terms'
                 onPress={() => Linking.openURL('https://help.instagram.com/478745558852511')}
               />
               <SettingsList.Item
+                titleStyle={{fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
                 title='Website'
                 onPress={() => Linking.openURL('http://www.justbetweenuandme.com')}
               />
@@ -59,17 +66,17 @@ const Settings = (props) => {
               <SettingsList.Header headerStyle={{marginTop:10}}/>
               <SettingsList.Item
                 title='Change Password'
-                titleStyle={{color:'#020C7E', fontSize: 16}}
+                titleStyle={{color:'#020C7E', fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
                 onPress={() => Alert.alert('Route To General Page')}
               />
               <SettingsList.Item
                 title='Delete Account'
-                titleStyle={{color:'#020C7E', fontSize: 16}}
+                titleStyle={{color:'#020C7E', fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
                 onPress={() => Alert.alert('Route To Display Page')}
               />
               <SettingsList.Item
                 title='Log Out'
-                titleStyle={{color:'#020C7E', fontSize: 16}}
+                titleStyle={{color:'#020C7E', fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
                 onPress={() => signOut()}
               />
 

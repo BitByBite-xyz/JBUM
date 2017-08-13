@@ -42,7 +42,7 @@ export default class Header extends Component {
           fontFamily: 'Avenir-Heavy',
           backgroundColor: 'transparent',
           marginTop: 10,
-          fontSize: 18,
+          fontSize: 20,
           letterSpacing: 2,
             alignSelf: 'center'
       },
@@ -50,7 +50,7 @@ export default class Header extends Component {
           color: 'white',
           fontFamily: 'Avenir-Light',
           backgroundColor: 'transparent',
-          fontSize: 12,
+          fontSize: 15,
           alignSelf: 'center'
         },
         levelView: {

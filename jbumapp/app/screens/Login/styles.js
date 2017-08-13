@@ -17,6 +17,8 @@ export default StyleSheet.create({
   },
   socialMediaButtons: {
     flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
     marginBottom: 10
   },
   textForms: {
