@@ -100,17 +100,17 @@ export default class PageTwo extends Component {
         <View style={{alignItems: 'center', marginTop: '10%'}}><Text style={styles.pageTitle}>Identity</Text></View>
         <View style={{marginTop: '35%'}}>
             <View>
-              <TouchableHighlight onPress={this.onPressEthnicity} activeOpacity={0}>
+              <TouchableHighlight onPress={this.onPressEthnicity} underlayColor={'transparent'}>
                 <Text style={styles.text}>{displayEthnicity}</Text>
               </TouchableHighlight>
             </View>
             <View style={{marginTop: '17%'}}>
-              <TouchableHighlight onPress={this.onPressGeneration}>
+              <TouchableHighlight onPress={this.onPressGeneration} underlayColor={'transparent'}>
                 <Text style={styles.text}>{displayGeneration}</Text>
               </TouchableHighlight>
             </View>
             <View style={{marginTop: '17%'}}>
-            <TouchableHighlight onPress={this.onPressCitizenship}>
+            <TouchableHighlight onPress={this.onPressCitizenship} underlayColor={'transparent'}>
               <Text style={styles.text}>{displayCitizenship}</Text>
             </TouchableHighlight>
             </View>
