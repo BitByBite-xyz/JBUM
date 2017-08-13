@@ -29,6 +29,7 @@ export default class PageTwo extends Component {
   onPressEthnicity = () => {
     const selectedEthnicity = this.state;
     Picker.init({
+        pickerTitleText: 'Select Ethnicicty',
         pickerData: ethOptions,
         selectedValue: [],
         onPickerConfirm: ethOptions => {
@@ -50,6 +51,7 @@ export default class PageTwo extends Component {
   onPressGeneration = () => {
     const selectedGeneration = this.state;
     Picker.init({
+        pickerTitleText: 'Select Generation',
         pickerData: genOptions,
         selectedValue: [],
         onPickerConfirm: genOptions => {
@@ -71,6 +73,7 @@ export default class PageTwo extends Component {
   onPressCitizenship = () => {
     const selectedCitizenship = this.state;
     Picker.init({
+        pickerTitleText: 'Select Citizenship',
         pickerData: citizenshipOptions,
         selectedValue: [],
         onPickerConfirm: citizenshipOptions => {

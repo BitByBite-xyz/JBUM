@@ -29,6 +29,7 @@ export default class PageThree extends Component {
   onPressFamily = () => {
     const selectedFamily = this.state;
     Picker.init({
+        pickerTitleText: 'Select Family',
         pickerData: parOptions,
         selectedValue: [],
         onPickerConfirm: parOptions => {
@@ -50,6 +51,7 @@ export default class PageThree extends Component {
   onPressSiblings = () => {
     const selectedSiblings = this.state;
     Picker.init({
+        pickerTitleText: 'Select Siblings',
         pickerData: sibOptions,
         selectedValue: [],
         onPickerConfirm: sibOptions => {
@@ -71,6 +73,7 @@ export default class PageThree extends Component {
   onPressSibOrder = () => {
     const selectedSibOrder = this.state;
     Picker.init({
+        pickerTitleText: 'Select Birth Order',
         pickerData: sibOrderOptions,
         selectedValue: [],
         onPickerConfirm: sibOrderOptions => {
@@ -95,7 +98,7 @@ export default class PageThree extends Component {
     const displaySibOrder = this.state.showSibOrder ? 'Birth Order: ' + this.state.selectedSibOrder : 'Select Birth Order';
     return(
           <View>
-            <View style={{alignItems: 'center', marginTop: '10%'}}><Text style={styles.pageTitle}>Identity</Text></View>
+            <View style={{alignItems: 'center', marginTop: '10%'}}><Text style={styles.pageTitle}>Relationships</Text></View>
             <View style={{marginTop: '35%'}}>
                 <View>
                   <TouchableHighlight onPress={this.onPressFamily} activeOpacity={0}>

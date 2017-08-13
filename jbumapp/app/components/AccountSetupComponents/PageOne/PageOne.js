@@ -35,6 +35,7 @@ export default class PageOne extends Component {
   onPressAge = () => {
     const selectedAge = this.state;
     Picker.init({
+        pickerTitleText: 'Select Age',
         pickerData: data,
         selectedValue: [],
         onPickerConfirm: data => {
@@ -56,6 +57,7 @@ export default class PageOne extends Component {
   onPressGender = () => {
     const selectedGender = this.state;
     Picker.init({
+        pickerTitleText: 'Select Gender',
         pickerData: genderOptions,
         selectedValue: [],
         onPickerConfirm: genderOptions => {
@@ -77,6 +79,7 @@ export default class PageOne extends Component {
   onPressSexuality = () => {
     const selectedSexuality = this.state;
     Picker.init({
+        pickerTitleText: 'Select Sexuality',
         pickerData: sexualityOptions,
         selectedValue: [],
         onPickerConfirm: sexualityOptions => {
