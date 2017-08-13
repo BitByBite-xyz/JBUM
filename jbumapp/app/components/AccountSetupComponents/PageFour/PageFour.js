@@ -1,15 +1,24 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import {
   Text,
   View,
-  StyleSheet
+  StyleSheet,
+  TouchableHighlight
 } from 'react-native';
 
+export default class InitialPage extends Component {
+    constructor(props) {
+      super(props);
+  }
 
-export default class PageFour extends Component {
   render() {
     return(
-      <Text>PageFour</Text>
+      <View>
+        <View style={{alignItems: 'center', marginTop: '45%'}}><Text style={styles.pageTitle}>Congradulation!</Text></View>
+        <View style={{marginTop: '17%'}}>
+            <Text style={styles.text}>You have officially completed the account setup process, please use and ejoy JBUM safely.</Text>
+        </View>
+      </View>
     );
   }
 };
@@ -23,7 +32,12 @@ const styles = StyleSheet.create({
   },
   text: {
     color: '#fff',
-    fontSize: 30,
+    fontSize: 22,
+    fontWeight: '600',
+  },
+  pageTitle: {
+    color: '#fff',
+    fontSize: 40,
     fontWeight: 'bold',
   },
 });
