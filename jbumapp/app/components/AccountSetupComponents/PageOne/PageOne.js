@@ -18,6 +18,7 @@ export default class PageOne extends Component {
 
     this.state = {
       selectedAge: "",
+      showAge:false,
       selectedGender: '',
       selectedSexuality: '',
       showAge:false,
@@ -27,7 +28,7 @@ export default class PageOne extends Component {
 
     //Seeding Age options
 
-    for (i = 0; i < 30; i++) {
+    for (i = 8; i < 25; i++) {
       data.push(""+i);
     }
   }
