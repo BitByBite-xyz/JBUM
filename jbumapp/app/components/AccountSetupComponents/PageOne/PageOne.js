@@ -21,7 +21,9 @@ export default class PageOne extends Component {
       showAge:false,
       selectedGender: '',
       selectedSexuality: '',
-
+      showAge:false,
+      showGender:false,
+      showSexuality: false
     };
 
     //Seeding Age options
@@ -30,11 +32,13 @@ export default class PageOne extends Component {
       data.push(""+i);
     }
   }
+  //Age
   onPressAge = () => {
     const selectedAge = this.state;
     Picker.init({
+        pickerTitleText: 'Select Age',
         pickerData: data,
-        selectedValue: [59],
+        selectedValue: [],
         onPickerConfirm: data => {
           this.setState(previousState => {
             return { selectedAge: data, showAge: true };
@@ -49,20 +53,96 @@ export default class PageOne extends Component {
         }
     });
     Picker.show();
-
+  }
+  //Gender
+  onPressGender = () => {
+    const selectedGender = this.state;
+    Picker.init({
+        pickerTitleText: 'Select Gender',
+        pickerData: genderOptions,
+        selectedValue: [],
+        onPickerConfirm: genderOptions => {
+          this.setState(previousState => {
+            return { selectedGender: genderOptions, showGender: true };
+          });
+        },
+        onPickerCancel: data => {
+            console.log(data);
+            Picker.hide();
+        },
+        onPickerSelect: data => {
+            console.log(data);
+        }
+    });
+    Picker.show();
+  }
+  //Sexuality
+  onPressSexuality = () => {
+    const selectedSexuality = this.state;
+    Picker.init({
+        pickerTitleText: 'Select Sexuality',
+        pickerData: sexualityOptions,
+        selectedValue: [],
+        onPickerConfirm: sexualityOptions => {
+          this.setState(previousState => {
+            return { selectedSexuality: sexualityOptions, showSexuality: true };
+          });
+        },
+        onPickerCancel: data => {
+            console.log(data);
+            Picker.hide();
+        },
+        onPickerSelect: data => {
+            console.log(data);
+        }
+    });
+    Picker.show();
+  }
+  //Citizenship
+  onPressCitizenship = () => {
+    const selectedCitizenship = this.state;
+    Picker.init({
+        pickerData: citizenshipOptions,
+        selectedValue: [],
+        onPickerConfirm: citizenshipOptions => {
+          this.setState(previousState => {
+            return { selectedCitizenship: citizenshipOptions, showCitizenship: true };
+          });
+        },
+        onPickerCancel: data => {
+            console.log(data);
+            Picker.hide();
+        },
+        onPickerSelect: data => {
+            console.log(data);
+        }
+    });
+    Picker.show();
   }
   render() {
-    const selectedAge = this.state;
-    let displayAge = this.state.showAge ? 'Age:' + this.state.selectedAge : 'Tap to select Age';
+    const displayAge = this.state.showAge ? 'Age: ' + this.state.selectedAge : 'Select Age';
+    const displayGender = this.state.showGender ? 'Gender: ' + this.state.selectedGender : 'Select Gender';
+    const displaySexuality = this.state.showSexuality ? 'Sexuality: ' + this.state.selectedSexuality : 'Select Sexuality';
     return(
       <View>
-        <TouchableHighlight onPress={this.onPressAge}>
-          <Text style={styles.text}>{displayAge}</Text>
-        </TouchableHighlight>
-
-
-          <View level={15}><Text style={styles.text}>Page 1</Text></View>
-          <View level={8}><Text style={styles.text}>Page 1</Text></View>
+        <View style={{alignItems: 'center', marginTop: '10%'}}><Text style={styles.pageTitle}>Ethnicicty</Text></View>
+        <View style={{marginTop: '35%'}}>
+            <View>
+              <TouchableHighlight onPress={this.onPressAge} activeOpacity={0}>
+                <Text style={styles.text}>{displayAge}</Text>
+              </TouchableHighlight>
+            </View>
+            <View style={{marginTop: '17%'}}>
+              <TouchableHighlight onPress={this.onPressGender}>
+                <Text style={styles.text}>{displayGender}</Text>
+              </TouchableHighlight>
+            </View>
+            <View style={{marginTop: '17%'}}>
+            <TouchableHighlight onPress={this.onPressSexuality}>
+              <Text style={styles.text}>{displaySexuality}</Text>
+            </TouchableHighlight>
+            </View>
+        </View>
       </View>
     );
   }
@@ -77,7 +157,12 @@ const styles = StyleSheet.create({
   },
   text: {
     color: '#fff',
-    fontSize: 30,
+    fontSize: 28,
+    fontWeight: 'bold',
+  },
+  pageTitle: {
+    color: '#fff',
+    fontSize: 50,
     fontWeight: 'bold',
   },
 });
