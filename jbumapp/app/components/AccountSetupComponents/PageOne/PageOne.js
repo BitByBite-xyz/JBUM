@@ -26,6 +26,19 @@ export default class PageOne extends Component {
       showSexuality: false
     };
 
+    /*Meteor.call('UserData.insert', 'huirueoh','uh', (err) => {
+      if (err) {
+        console.log("Post err"+err.details);
+        Alert.alert(
+          'Oops! Screenshot this and send to support!',
+          'Server error: \n\n'+err.details
+        );
+        return;
+      } else {
+        console.log("UserData added");
+      }
+    });*/
+
     //Seeding Age options
 
     for (i = 8; i < 25; i++) {

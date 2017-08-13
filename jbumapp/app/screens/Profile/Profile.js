@@ -18,6 +18,7 @@ import Loading from '../../components/Loading';
 import Foreground, {Background} from '../../components/ParallaxProfile';
 import QuestionPanel from '../../components/QuestionPanel';
 
+import DEVICE_HEIGHT from '../../config/styles';
 import styles from './styles';
 import images from '../../config/images';
 const background = (
@@ -40,14 +41,18 @@ class ProfileContainer extends Component {
 	renderFooter = () => {
 		const { postsReady } = this.props;
 
-		if (postsReady) return null;
+		if (postsReady) return (
+			<View
+				style={{
+					paddingVertical: '100%',
+					backgroundColor:'#F3F3F3',
+				}}>
+				</View>);
 
 		return (
 			<View
 				style={{
 					paddingVertical: 20,
-					borderTopWidth: 1,
-					borderColor: "#CED0CE"
 				}}
 			>
 				<Loading />
