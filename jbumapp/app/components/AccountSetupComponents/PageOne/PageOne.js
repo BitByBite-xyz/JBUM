@@ -8,7 +8,7 @@ import {
 
 import Picker from 'react-native-picker';
 
-const data = [];
+const ageOptions = [];
 const genderOptions = ['Male', 'Female', 'Transgender', 'Gender Fluid', 'Other'];
 const sexualityOptions = ['Heterosexual', 'Homosexual', 'Bisexual', 'Asexual', 'Pansexual', 'Other']
 
@@ -42,7 +42,7 @@ export default class PageOne extends Component {
     //Seeding Age options
 
     for (i = 8; i < 25; i++) {
-      data.push(""+i);
+      ageOptions.push(""+i);
     }
   }
   //Age
@@ -50,19 +50,22 @@ export default class PageOne extends Component {
     const selectedAge = this.state;
     Picker.init({
         pickerTitleText: 'Select Age',
-        pickerData: data,
-        selectedValue: [],
+        pickerData: ageOptions,
         onPickerConfirm: data => {
           this.setState(previousState => {
             return { selectedAge: data, showAge: true };
           });
         },
         onPickerCancel: data => {
-            console.log(data);
-            Picker.hide();
+          this.setState(previousState => {
+            return { selectedAge: '', showAge: false };
+          });
+          Picker.hide();
         },
         onPickerSelect: data => {
-            console.log(data);
+          this.setState(previousState => {
+            return { selectedAge: data, showAge: true };
+          });
         }
     });
     Picker.show();
@@ -74,17 +77,21 @@ export default class PageOne extends Component {
         pickerTitleText: 'Select Gender',
         pickerData: genderOptions,
         selectedValue: [],
-        onPickerConfirm: genderOptions => {
+        onPickerConfirm: data => {
           this.setState(previousState => {
-            return { selectedGender: genderOptions, showGender: true };
+            return { selectedGender: data, showGender: true };
           });
         },
         onPickerCancel: data => {
-            console.log(data);
-            Picker.hide();
+          this.setState(previousState => {
+            return { selectedGender: '', showGender: false };
+          });
+          Picker.hide();
         },
         onPickerSelect: data => {
-            console.log(data);
+          this.setState(previousState => {
+            return { selectedGender: data, showGender: true };
+          });
         }
     });
     Picker.show();
@@ -96,17 +103,21 @@ export default class PageOne extends Component {
         pickerTitleText: 'Select Sexuality',
         pickerData: sexualityOptions,
         selectedValue: [],
-        onPickerConfirm: sexualityOptions => {
+        onPickerConfirm: data => {
           this.setState(previousState => {
-            return { selectedSexuality: sexualityOptions, showSexuality: true };
+            return { selectedSexuality: data, showSexuality: true };
           });
         },
         onPickerCancel: data => {
-            console.log(data);
+          this.setState(previousState => {
+            return { selectedSexuality: '', showSexuality: false };
+          });
             Picker.hide();
         },
         onPickerSelect: data => {
-            console.log(data);
+          this.setState(previousState => {
+            return { selectedSexuality: data, showSexuality: true };
+          });
         }
     });
     Picker.show();
