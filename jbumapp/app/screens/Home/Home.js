@@ -6,7 +6,8 @@ import {
   ScrollView,
   StatusBar,
   FlatList,
-  Animated
+  Animated,
+  Alert
 } from 'react-native';
 import Meteor, { createContainer } from 'react-native-meteor';
 import FadeInView from 'react-native-fade-in-view';//{/* onFadeComplete={() => alert('Ready') */}
@@ -40,7 +41,7 @@ class Home extends Component {
     };
 
     this.mounted = false;
-    this.props.navigation.navigate('Ask');
+    //this.props.navigation.navigate('Ask');
   }
 
   componentWillMount() {

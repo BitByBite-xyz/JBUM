@@ -14,7 +14,7 @@ export default class InitialPage extends Component {
   render() {
     return(
       <View>
-        <View style={{alignItems: 'center', marginTop: '45%'}}><Text style={styles.pageTitle}>Congradulation!</Text></View>
+        <View style={{alignItems: 'center', marginTop: '55%'}}><Text style={styles.pageTitle}>Congradulations!</Text></View>
         <View style={{marginTop: '17%'}}>
             <Text style={styles.text}>You have officially completed the account setup process, please use and ejoy JBUM safely.</Text>
         </View>
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   },
   pageTitle: {
     color: '#fff',
-    fontSize: 40,
+    fontSize: 37,
     fontWeight: 'bold',
   },
 });
