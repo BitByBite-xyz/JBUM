@@ -13,9 +13,11 @@ from 'react-native';
 import Meteor, { Accounts } from 'react-native-meteor';
 import {
 	Button,
-	Icon
+	Icon,
+  Header
 }
 from 'react-native-elements';
+
 import AppIntro from 'react-native-app-intro';
 import PageOne from '../../components/AccountSetupComponents/PageOne';
 import PageTwo from '../../components/AccountSetupComponents/PageTwo';
@@ -25,19 +27,35 @@ import PageFour from '../../components/AccountSetupComponents/PageFour';
 
 export default class AccountSetup extends Component {
 
+
+  nextBtnHandle = (index) => {
+      Alert.alert('Next');
+      console.log(index);
+  }
+
+  onSlideChangeHandle = (index, total) => {
+    console.log(index, total);
+  }
+
   render() {
     return(
-      <AppIntro dotColor='#bbddff' activeDotColor='#1E90FF' leftTextColor='#1E90FF' rightTextColor='#1E90FF'>
-        <View style={[styles.slide,{ backgroundColor: '#fff' }]}>
-          <PageOne />
+      <AppIntro dotColor='#bbddff'
+                activeDotColor='#1E90FF'
+                leftTextColor='#1E90FF'
+                rightTextColor='#1E90FF'
+                showSkipButton={false}
+                onSlideChange={this.onSlideChangeHandle}
+                onNextBtnClick={this.nextBtnHandle}>
+        <View style={[styles.slide]}>
+          <PageOne/>
         </View>
-        <View style={[styles.slide, { backgroundColor: '#fff' }]}>
+        <View style={[styles.slide, { backgroundColor: '#fa931d' }]}>
           <PageTwo />
         </View>
-        <View style={[styles.slide,{ backgroundColor: '#fff' }]}>
+        <View style={[styles.slide,{ backgroundColor: '#bbddff' }]}>
           <PageThree />
         </View>
-        <View style={[styles.slide, { backgroundColor: '#fff' }]}>
+        <View style={[styles.slide, { backgroundColor: '#fa931d' }]}>
           <PageFour />
         </View>
       </AppIntro>

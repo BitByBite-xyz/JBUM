@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import {
   Text,
   View,
+  StyleSheet
 } from 'react-native';
 
-import SimplePicker from 'react-native-simple-picker';
 
 const parOptions = ['Biological Mother and Father', 'Biological Mother', 'Biological Father', 'Biological Mother and Stepfather or another Male',
 'Biological Father and Stepmother or another woman', 'Aunt or Uncle', 'Grandparents', 'Guardian mother and father', 'Guardian Mother', 'Guardian Father',
@@ -25,85 +25,27 @@ export default class PageThree extends Component {
   render() {
     return(
       <View>
-        <View>
-
-          <Text
-            onPress={() => {
-              this.refs.picker.show();
-            }}
-          >
-
-            Which parents or guardians do you live with?
-          </Text>
-
-          <Text>{this.state.selectedParentals}</Text>
-
-          <SimplePicker
-            ref={'picker'}
-            options={parOptions}
-            onSubmit={(parOptions) => {
-              this.setState({
-                selectedParentals: parOptions,
-              });
-            }}
-          />
+        <View level={8}><Text style={styles.text}>Page 3</Text></View>
+          <View level={0}><Text style={styles.text}>Page 3</Text></View>
+          <View level={-10}><Text style={styles.text}>Page 3</Text></View>
 
 
-        </View>
-
-        <View>
-
-          <Text
-            onPress={() => {
-              this.refs.picker2.show();
-            }}
-          >
-
-            How many siblings do you have?
-          </Text>
-
-          <Text>{this.state.selectedSiblings}</Text>
-
-          <SimplePicker
-            ref={'picker2'}
-            options={sibOptions}
-            onSubmit={(sibOptions) => {
-              this.setState({
-                selectedSiblings: sibOptions,
-              });
-            }}
-          />
-
-
-        </View>
-
-        <View>
-
-          <Text
-            onPress={() => {
-              this.refs.picker3.show();
-            }}
-          >
-
-            What generation are you that has lived in the US
-          </Text>
-
-          <Text>{this.state.selectedSiblingOrder}</Text>
-
-          <SimplePicker
-            ref={'picker3'}
-            options={sibOrderOptions}
-            onSubmit={(sibOrderOptions) => {
-              this.setState({
-                selectedSiblingOrder: sibOrderOptions,
-              });
-            }}
-          />
-
-
-        </View>
 
       </View>
     );
   }
 };
+const styles = StyleSheet.create({
+  slide: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#9DD6EB',
+    padding: 15,
+  },
+  text: {
+    color: '#fff',
+    fontSize: 30,
+    fontWeight: 'bold',
+  },
+});

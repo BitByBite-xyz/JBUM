@@ -18,6 +18,11 @@ export default class Welcome extends Component {
   }
   componentWillMount() {
     this.mounted = true;
+
+  }
+
+  componentDidMount() {
+
   }
   toCreateAccount = () => {
     this.props.navigation.navigate('AccountSetup');
