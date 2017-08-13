@@ -113,5 +113,15 @@ export default StyleSheet.create({
     fontFamily: 'Avenir',
     color: '#BABABA',
     padding: 3.5
+  },
+  header: {
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingTop: 10,
+    backgroundColor: '#F3F3F3',
+  },
+  headerText: {
+    fontSize: 20,
+    fontWeight: 'bold',
   }
 });

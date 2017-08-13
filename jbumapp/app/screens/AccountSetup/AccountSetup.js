@@ -26,11 +26,20 @@ import PageFour from '../../components/AccountSetupComponents/PageFour';
 
 
 export default class AccountSetup extends Component {
+  constructor() {
+    super();
 
+          this.state = {
+              currentIndex : 0
+          };
+  }
 
   nextBtnHandle = (index) => {
       Alert.alert('Next');
       console.log(index);
+      this.setState(previousState => {
+        return { currentIndex: -1 };
+      });
   }
 
   onSlideChangeHandle = (index, total) => {
@@ -45,7 +54,8 @@ export default class AccountSetup extends Component {
                 rightTextColor='#1E90FF'
                 showSkipButton={false}
                 onSlideChange={this.onSlideChangeHandle}
-                onNextBtnClick={this.nextBtnHandle}>
+                onNextBtnClick={this.nextBtnHandle}
+                defaultIndex={this.state.currentIndex}>
         <View style={[styles.slide]}>
           <PageOne/>
         </View>
