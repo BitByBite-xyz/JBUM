@@ -101,17 +101,17 @@ export default class PageThree extends Component {
             <View style={{alignItems: 'center', marginTop: '10%'}}><Text style={styles.pageTitle}>Relationships</Text></View>
             <View style={{marginTop: '35%'}}>
                 <View>
-                  <TouchableHighlight onPress={this.onPressFamily} activeOpacity={0}>
+                  <TouchableHighlight onPress={this.onPressFamily} underlayColor={'transparent'}>
                     <Text style={styles.text}>{displayFamily}</Text>
                   </TouchableHighlight>
                 </View>
                 <View style={{marginTop: '17%'}}>
-                  <TouchableHighlight onPress={this.onPressSiblings}>
+                  <TouchableHighlight onPress={this.onPressSiblings} underlayColor={'transparent'}>
                     <Text style={styles.text}>{displaySiblings}</Text>
                   </TouchableHighlight>
                 </View>
                 <View style={{marginTop: '17%'}}>
-                <TouchableHighlight onPress={this.onPressSibOrder}>
+                <TouchableHighlight onPress={this.onPressSibOrder} underlayColor={'transparent'}>
                   <Text style={styles.text}>{displaySibOrder}</Text>
                 </TouchableHighlight>
                 </View>

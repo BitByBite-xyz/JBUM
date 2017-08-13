@@ -60,13 +60,13 @@ export default class AccountSetup extends Component {
         <View style={[styles.slide, { backgroundColor: '#54C6DB' }]}>
           <InitialPage/>
         </View>
-        <View style={[styles.slide]}>
+        <View style={[styles.slide, { backgroundColor: '#9ED6EA' }]}>
           <PageOne/>
         </View>
         <View style={[styles.slide, { backgroundColor: '#fa931d' }]}>
           <PageTwo />
         </View>
-        <View style={[styles.slide,{ backgroundColor: '#bbddff' }]}>
+        <View style={[styles.slide,{ backgroundColor: '#55CFAC' }]}>
           <PageThree />
         </View>
         <View style={[styles.slide, { backgroundColor: '#E1A3DC' }]}>

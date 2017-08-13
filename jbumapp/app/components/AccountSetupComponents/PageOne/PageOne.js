@@ -141,17 +141,17 @@ export default class PageOne extends Component {
         <View style={{alignItems: 'center', marginTop: '10%'}}><Text style={styles.pageTitle}>Ethnicicty</Text></View>
         <View style={{marginTop: '35%'}}>
             <View>
-              <TouchableHighlight onPress={this.onPressAge} activeOpacity={0}>
+              <TouchableHighlight onPress={this.onPressAge} underlayColor={'transparent'}>
                 <Text style={styles.text}>{displayAge}</Text>
               </TouchableHighlight>
             </View>
             <View style={{marginTop: '17%'}}>
-              <TouchableHighlight onPress={this.onPressGender}>
+              <TouchableHighlight onPress={this.onPressGender} underlayColor={'transparent'}>
                 <Text style={styles.text}>{displayGender}</Text>
               </TouchableHighlight>
             </View>
             <View style={{marginTop: '17%'}}>
-            <TouchableHighlight onPress={this.onPressSexuality}>
+            <TouchableHighlight onPress={this.onPressSexuality} underlayColor={'transparent'}>
               <Text style={styles.text}>{displaySexuality}</Text>
             </TouchableHighlight>
             </View>
