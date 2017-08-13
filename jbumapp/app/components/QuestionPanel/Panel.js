@@ -217,8 +217,8 @@ class Panel extends React.PureComponent {
 
           <TouchableOpacity style={styles.imgs} onPress={() => this.onFlagPress()}>
             <Icon
-              name='flag'
-              color='red'
+              name='more-horiz'
+              color='gray'
               style={styles.flag}
             />
           </TouchableOpacity>
