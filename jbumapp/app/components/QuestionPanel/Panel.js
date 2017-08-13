@@ -6,6 +6,7 @@ import {
   Image,
   TouchableOpacity,
   Animated,
+  Alert,
 } from 'react-native';
 import moment from 'moment';
 import { Icon, Divider } from 'react-native-elements'
@@ -74,6 +75,30 @@ class Panel extends React.PureComponent {
     if (navigation) {
       navigation.navigate("Reply",{ postContent: postContent });
     }
+  }
+  onFlagPress(){
+    const { postContent } = this.props;
+    Alert.alert(
+      'Flag this post?',
+      'Are you sure you want to flag this post?',
+      [
+        {text: 'OK', onPress: Meteor.call('Posts.flag', postContent._id)},
+        {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+      ],
+      { cancelable: false }
+    )
+  }
+  onArchivePress(){
+    const { postContent } = this.props;
+    Alert.alert(
+      'Archive this post?',
+      'Archived posts can be found in your profile',
+      [
+        {text: 'OK', onPress: Meteor.call('Posts.archive', postContent._id)},
+        {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+      ],
+      { cancelable: false }
+    )
   }
   componentDidMount() {
     setTimeout(() => {
@@ -187,6 +212,22 @@ class Panel extends React.PureComponent {
               name='chat'
               color={colors.buttonBackground}
               style={styles.commentButton}
+            />
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.imgs} onPress={() => this.onFlagPress()}>
+            <Icon
+              name='flag'
+              color='red'
+              style={styles.flag}
+            />
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.imgs} onPress={() => this.onArchivePress()}>
+            <Icon
+              name='archive'
+              color='gray'
+              style={styles.archive}
             />
           </TouchableOpacity>
         </View>
