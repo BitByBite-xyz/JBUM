@@ -19,6 +19,7 @@ import {
 from 'react-native-elements';
 
 import AppIntro from 'react-native-app-intro';
+import InitialPage from '../../components/AccountSetupComponents/InitialPage';
 import PageOne from '../../components/AccountSetupComponents/PageOne';
 import PageTwo from '../../components/AccountSetupComponents/PageTwo';
 import PageThree from '../../components/AccountSetupComponents/PageThree';
@@ -46,6 +47,10 @@ export default class AccountSetup extends Component {
                 showSkipButton={false}
                 onSlideChange={this.onSlideChangeHandle}
                 onNextBtnClick={this.nextBtnHandle}>
+
+        <View style={[styles.slide, { backgroundColor: '#54C6DB' }]}>
+          <InitialPage/>
+        </View>
         <View style={[styles.slide]}>
           <PageOne/>
         </View>
@@ -66,8 +71,6 @@ export default class AccountSetup extends Component {
 const styles = StyleSheet.create({
   slide: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#9DD6EB',
     padding: 15,
   },

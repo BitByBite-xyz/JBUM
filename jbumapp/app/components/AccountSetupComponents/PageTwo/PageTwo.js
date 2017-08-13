@@ -3,12 +3,15 @@ import {
   Text,
   View,
   TextInput,
-  StyleSheet
+  StyleSheet,
+  TouchableHighlight
 } from 'react-native';
 
+import Picker from 'react-native-picker';
 
 const genOptions = ['1st Generation', '2nd Generation', '3rd Generation', '4th Generation', '5th Generation'];
-const ethOptions = ['Caucasian', 'Black or African American', 'Hispanic and or Latino', 'Asian', 'Pacific Islander', 'American Indian']
+const ethOptions = ['Caucasian', 'Black or African American', 'Hispanic and or Latino', 'Asian', 'Pacific Islander', 'American Indian', 'Don\'t Know'];
+const citizenshipOptions = ['Born in the U.S.', 'Born outside the U.S.', 'Mirgrated to U.S.'];
 
 export default class PageTwo extends Component {
   constructor(props) {
@@ -18,15 +21,97 @@ export default class PageTwo extends Component {
       placeholder: 'Enter your city of birth',
       selectedGeneration: '',
       selectedEthnicity: '',
+      showEthnicity: false,
+      showGeneration: false
     };
   }
+  //Ethnicicty
+  onPressEthnicity = () => {
+    const selectedEthnicity = this.state;
+    Picker.init({
+        pickerData: ethOptions,
+        selectedValue: [],
+        onPickerConfirm: ethOptions => {
+          this.setState(previousState => {
+            return { selectedEthnicity: ethOptions, showEthnicity: true };
+          });
+        },
+        onPickerCancel: data => {
+            console.log(data);
+            Picker.hide();
+        },
+        onPickerSelect: data => {
+            console.log(data);
+        }
+    });
+    Picker.show();
+  }
+  //Generation
+  onPressGeneration = () => {
+    const selectedGeneration = this.state;
+    Picker.init({
+        pickerData: genOptions,
+        selectedValue: [],
+        onPickerConfirm: genOptions => {
+          this.setState(previousState => {
+            return { selectedGeneration: genOptions, showGeneration: true };
+          });
+        },
+        onPickerCancel: data => {
+            console.log(data);
+            Picker.hide();
+        },
+        onPickerSelect: data => {
+            console.log(data);
+        }
+    });
+    Picker.show();
+  }
+  //Citizenship
+  onPressCitizenship = () => {
+    const selectedCitizenship = this.state;
+    Picker.init({
+        pickerData: citizenshipOptions,
+        selectedValue: [],
+        onPickerConfirm: citizenshipOptions => {
+          this.setState(previousState => {
+            return { selectedCitizenship: citizenshipOptions, showCitizenship: true };
+          });
+        },
+        onPickerCancel: data => {
+            console.log(data);
+            Picker.hide();
+        },
+        onPickerSelect: data => {
+            console.log(data);
+        }
+    });
+    Picker.show();
+  }
   render() {
+    const displayEthnicity = this.state.showEthnicity ? 'Ethnicicty: ' + this.state.selectedEthnicity : 'Select Ethnicicty';
+    const displayGeneration = this.state.showGeneration ? 'Generation: ' + this.state.selectedGeneration : 'Select Generation';
+    const displayCitizenship = this.state.showCitizenship ? 'Citizenship: ' + this.state.selectedCitizenship : 'Select Citizenship';
     return(
       <View>
-        <View level={-10}><Text style={styles.text}>Page 2</Text></View>
-          <View level={5}><Text style={styles.text}>Page 2</Text></View>
-          <View level={20}><Text style={styles.text}>Page 2</Text></View>
-
+        <View style={{alignItems: 'center', marginTop: '10%'}}><Text style={styles.pageTitle}>Identity</Text></View>
+        <View style={{marginTop: '35%'}}>
+            <View>
+              <TouchableHighlight onPress={this.onPressEthnicity} activeOpacity={0}>
+                <Text style={styles.text}>{displayEthnicity}</Text>
+              </TouchableHighlight>
+            </View>
+            <View style={{marginTop: '17%'}}>
+              <TouchableHighlight onPress={this.onPressGeneration}>
+                <Text style={styles.text}>{displayGeneration}</Text>
+              </TouchableHighlight>
+            </View>
+            <View style={{marginTop: '17%'}}>
+            <TouchableHighlight onPress={this.onPressCitizenship}>
+              <Text style={styles.text}>{displayCitizenship}</Text>
+            </TouchableHighlight>
+            </View>
+        </View>
       </View>
     );
   }
@@ -41,7 +126,12 @@ const styles = StyleSheet.create({
   },
   text: {
     color: '#fff',
-    fontSize: 30,
+    fontSize: 27,
+    fontWeight: 'bold',
+  },
+  pageTitle: {
+    color: '#fff',
+    fontSize: 50,
     fontWeight: 'bold',
   },
 });
