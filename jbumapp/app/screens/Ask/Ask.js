@@ -12,7 +12,7 @@ const SECTIONS = [
     title: '🌀 Reciever 🌀',
   },
   {
-    title: 'Second',
+    title: '🔅 Category 🔅',
   }
 ];
 
@@ -66,7 +66,7 @@ class Ask extends Component {
 
   renderHeader = (section) => {
     return (
-      <View style={styles.header}>
+      <View style={styles.bottom}>
         <Text style={styles.headerText}>{section.title}</Text>
       </View>
     );
@@ -76,6 +76,63 @@ class Ask extends Component {
     if (section.title.includes('Reciever')) {
       return (
         <View style={styles.content}>
+          <CheckBox
+            title='Click Here'
+            checkedIcon='dot-circle-o'
+            uncheckedIcon='circle-o'
+            checked={this.state.checked}
+            onPress={() => {
+              this.setState(previousState => {
+                return { checked: !previousState.checked };
+              });}}
+          />
+          <CheckBox
+            title='Click Here'
+            checkedIcon='dot-circle-o'
+            uncheckedIcon='circle-o'
+            checked={this.state.checked}
+            onPress={() => {
+              this.setState(previousState => {
+                return { checked: !previousState.checked };
+              });}}
+          />
+          <CheckBox
+            title='Click Here'
+            checkedIcon='dot-circle-o'
+            uncheckedIcon='circle-o'
+            checked={this.state.checked}
+            onPress={() => {
+              this.setState(previousState => {
+                return { checked: !previousState.checked };
+              });}}
+          />
+        </View>
+      );
+
+    }
+    if (section.title.includes('Category')) {
+      return (
+        <View style={styles.content}>
+          <CheckBox
+            title='Click Here'
+            checkedIcon='dot-circle-o'
+            uncheckedIcon='circle-o'
+            checked={this.state.checked}
+            onPress={() => {
+              this.setState(previousState => {
+                return { checked: !previousState.checked };
+              });}}
+          />
+          <CheckBox
+            title='Click Here'
+            checkedIcon='dot-circle-o'
+            uncheckedIcon='circle-o'
+            checked={this.state.checked}
+            onPress={() => {
+              this.setState(previousState => {
+                return { checked: !previousState.checked };
+              });}}
+          />
           <CheckBox
             title='Click Here'
             checkedIcon='dot-circle-o'
@@ -133,12 +190,15 @@ class Ask extends Component {
                   />
               </View>
           </View>
+          <View style={{margin:10,backgroundColor:'#F3F3F3',borderRadius: 10,}}>
+
             <Accordion
               sections={SECTIONS}
               renderHeader={this.renderHeader}
               renderContent={this.renderContent}
               touchableProps={{activeOpacity:1}}
             />
+            </View>
 
 
 

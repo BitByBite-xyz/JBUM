@@ -118,10 +118,11 @@ export default StyleSheet.create({
     paddingLeft: 10,
     paddingRight: 10,
     paddingTop: 10,
-    backgroundColor: '#F3F3F3',
+    backgroundColor: 'white',
   },
   headerText: {
-    fontSize: 20,
+    borderRadius: 10,
+    fontSize: 30,
     fontWeight: 'bold',
   }
 });
