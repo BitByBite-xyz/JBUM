@@ -45,8 +45,8 @@ export default StyleSheet.create({
     fontWeight: '500'
   },
   popupTitle: {
-    marginTop: '2%',
-    fontSize: 24,
+    marginTop: '0.5%',
+    fontSize: 25,
     fontWeight: '400',
     fontFamily: 'Avenir',
     marginLeft: '4%',
@@ -101,6 +101,10 @@ export default StyleSheet.create({
     alignItems: 'center',
     marginRight: 3,
     paddingBottom: 2
+  },
+  optionsButton: {
+    marginRight: '48%',
+    marginBottom: '2.5%'
   },
   lineDivider: {
       width: '90%',
