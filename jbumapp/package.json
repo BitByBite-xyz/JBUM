@@ -24,6 +24,7 @@
     "react-native-dropdownalert": "^2.10.0",
     "react-native-elements": "^0.12.2",
     "react-native-fade-in-view": "^1.0.4",
+    "react-native-modal": "^2.5.0",
     "react-native-modal-dropdown": "^0.4.4",
     "react-native-panel": "^1.0.3",
     "react-native-parallax-scroll-view": "git+https://github.com/fungilation/react-native-parallax-scroll-view.git",

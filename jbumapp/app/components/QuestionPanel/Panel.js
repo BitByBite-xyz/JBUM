@@ -187,13 +187,13 @@ class Panel extends React.PureComponent {
             />
             <Text style={styles.counters}>{' '+likes} loved</Text>
           </TouchableOpacity>*/}
+
           <TouchableOpacity onPress={this._showModal}>
           <Icon
             name='more-horiz'
             color={colors.buttonBackground}
             style={styles.commentButton}
           />
-
           </TouchableOpacity>
 
 
@@ -208,10 +208,53 @@ class Panel extends React.PureComponent {
           </TouchableOpacity>
         </View>
 
-        <View style={{ flex: 1 }}>
-          <Modal isVisible={this.state.isModalVisible}>
-            <View style={{ flex: 1, height: 100, width: 250, backgroundColor: 'white' }}>
-              <Text>Hello!</Text>
+        <View style={{flex: 1}}>
+          <Modal style={{alignItems: 'center'}} isVisible={this.state.isModalVisible} animationIn={'zoomInUp'}>
+            <View style={styles.popupContainer}>
+              <View style={{flexDirection: 'row'}}>
+                <TouchableOpacity onPress={this._hideModal}>
+                <Icon
+                  name='close'
+                  color={colors.buttonBackground}
+                  style={{marginLeft: '10%', marginTop: '10%'}}
+                />
+                </TouchableOpacity>
+                <Text style={styles.popupTitle}>Question Options</Text>
+              </View>
+
+              <View style={{flexDirection: 'row', justifyContent: 'center', marginTop: '5%'}}>
+                <View style={{marginRight: '16%'}}>
+                  <TouchableOpacity>
+                  <Icon
+                    name='report-problem'
+                    color={'#FF5848'}
+                    size={35}
+                  />
+                  </TouchableOpacity>
+                  <Text style={styles.popupSubTitles}>Report</Text>
+                </View>
+                <View>
+                  <TouchableOpacity>
+                  <Icon
+                    name='delete-forever'
+                    color={'gray'}
+                    size={35}
+                  />
+                  </TouchableOpacity>
+                  <Text style={styles.popupSubTitles}>Delete</Text>
+                </View>
+                <View style={{marginLeft: '16%'}}>
+                  <TouchableOpacity>
+                  <Icon
+                    name='announcement'
+                    color={'#ECC21B'}
+                    size={35}
+                  />
+                  </TouchableOpacity>
+                  <Text style={styles.popupSubTitles}>Urgent</Text>
+                </View>
+              </View>
+
             </View>
           </Modal>
         </View>
