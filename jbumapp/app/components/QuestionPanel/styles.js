@@ -53,7 +53,7 @@ export default StyleSheet.create({
     fontSize: 25,
     fontWeight: '400',
     fontFamily: 'Avenir',
-    marginLeft: '4%',
+    marginLeft: '3.25%',
     color: 'gray'
   },
   popupSubTitles: {
