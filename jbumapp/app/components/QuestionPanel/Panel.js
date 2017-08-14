@@ -11,10 +11,10 @@ import moment from 'moment';
 import { Icon, Divider } from 'react-native-elements'
 import Meteor, { createContainer } from 'react-native-meteor';
 import FadeInView from 'react-native-fade-in-view';//{/* onFadeComplete={() => alert('Ready') */}
-
 import images from '../../config/images';
 import { colors } from '../../config/styles';
 import styles from './styles.js';
+import Modal from 'react-native-modal';
 
 class Panel extends React.PureComponent {
   constructor(props) {
@@ -25,7 +25,7 @@ class Panel extends React.PureComponent {
       //liked: (postContent.post_likes) ? postContent.post_likes.includes(Meteor.userId()) : false,
       //likes: (postContent.post_likes) ? postContent.post_likes.length : 0,
       comments: postContent.post_comments.length,
-
+      isModalVisible: false,
       is_visible: false,
       expanded: false,
       animation: new Animated.Value(),
@@ -34,6 +34,11 @@ class Panel extends React.PureComponent {
     this.setMaxHeight = this.setMaxHeight.bind(this);
     this.setMinHeight = this.setMinHeight.bind(this);
     this.toggle = this.toggle.bind(this);
+  }
+
+  onMorePress() {
+    const { navigation } = this.props;
+
   }
 
   onLikePress() {
@@ -135,6 +140,10 @@ class Panel extends React.PureComponent {
     }
   }
 
+  _showModal = () => this.setState({ isModalVisible: true })
+
+  _hideModal = () => this.setState({ isModalVisible: false })
+
   render() {
     const { children, style, header,postContent } = this.props;
     const { expanded, animation } = this.state;
@@ -178,6 +187,14 @@ class Panel extends React.PureComponent {
             />
             <Text style={styles.counters}>{' '+likes} loved</Text>
           </TouchableOpacity>*/}
+          <TouchableOpacity onPress={this._showModal}>
+          <Icon
+            name='more-horiz'
+            color={colors.buttonBackground}
+            style={styles.commentButton}
+          />
+
+          </TouchableOpacity>
 
 
           <TouchableOpacity style={styles.imgs} onPress={() => this.onReplyPress()}>
@@ -189,6 +206,14 @@ class Panel extends React.PureComponent {
               style={styles.commentButton}
             />
           </TouchableOpacity>
+        </View>
+
+        <View style={{ flex: 1 }}>
+          <Modal isVisible={this.state.isModalVisible}>
+            <View style={{ flex: 1, height: 100, width: 250, backgroundColor: 'white' }}>
+              <Text>Hello!</Text>
+            </View>
+          </Modal>
         </View>
 
       </View>
