@@ -34,19 +34,7 @@ const MAIN_ERROR_COLOR = '#cc3232'
 const MAIN_SUCCESS_COLOR = '#32A54A'
 const MAIN_CUSTOM_COLOR = '#6441A4'
 const MAIN_DISMISS_COLOR = '#748182'
-const styles = StyleSheet.create({
-  slide: {
-    //flex: 1,
-    backgroundColor: '#9DD6EB',
-    padding: 15,
-    height:'100%'
-  },
-  text: {
-    color: '#fff',
-    fontSize: 30,
-    fontWeight: 'bold',
-  },
-});
+
 export default class AccountSetup extends Component {
   constructor() {
     super();
@@ -148,3 +136,17 @@ export default class AccountSetup extends Component {
     );
   }
 };
+
+const styles = StyleSheet.create({
+  slide: {
+    //flex: 1,
+    backgroundColor: '#9DD6EB',
+    padding: 15,
+    height:'100%'
+  },
+  text: {
+    color: '#fff',
+    fontSize: 30,
+    fontWeight: 'bold',
+  },
+});

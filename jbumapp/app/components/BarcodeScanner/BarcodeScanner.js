@@ -19,7 +19,7 @@ class BarcodeScanner extends Component {
     this.state = {
       login: false,
       loginData:null,
-      barcodeData:null
+      barcodeData:'2wGQQTyWQgFgYg62N'
     }
     /*
       Setup your onBarCodeRead throttle here
@@ -35,8 +35,9 @@ class BarcodeScanner extends Component {
   }
 
   handleCreateAccount = () => {
-    if (this.state.barcodeData !== null) {
-      Meteor.call('createUserAccount', code, (err, response) => {
+    const { barcodeData } = this.state;
+    if (barcodeData !== null) {
+      Meteor.call('createUserAccount', barcodeData, (err, response) => {
         if (err) {
           console.log("err: "+err.details);
           Alert.alert(

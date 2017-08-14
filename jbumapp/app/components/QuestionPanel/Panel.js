@@ -208,7 +208,12 @@ class Panel extends React.PureComponent {
         </View>
 
         <View style={{flex: 1}}>
-          <Modal style={{alignItems: 'center'}} isVisible={this.state.isModalVisible} animationIn={'zoomInUp'}>
+          <Modal style={{alignItems: 'center'}}
+                 isVisible={this.state.isModalVisible}
+                 animationIn={'slideInDown'}
+                 animationOut={'slideOutUp'}
+                 backdropOpacity={.5}
+          >
             <View style={styles.popupContainer}>
               <View style={{flexDirection: 'row'}}>
                 <TouchableOpacity onPress={this._hideModal}>
