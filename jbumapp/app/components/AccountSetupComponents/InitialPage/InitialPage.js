@@ -14,6 +14,8 @@ export default class InitialPage extends Component {
 
     this.state = {
     };
+    const { handlePageComplete } = props;
+    handlePageComplete();
 
   }
 

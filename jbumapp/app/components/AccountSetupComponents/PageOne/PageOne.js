@@ -23,7 +23,8 @@ export default class PageOne extends Component {
       selectedSexuality: '',
       showAge:false,
       showGender:false,
-      showSexuality: false
+      showSexuality: false,
+      hasValidData:false
     };
 
     /*Meteor.call('UserData.insert', 'huirueoh','uh', (err) => {
@@ -45,6 +46,19 @@ export default class PageOne extends Component {
       ageOptions.push(""+i);
     }
   }
+
+  validateData = () => {
+    if (this.state.showAge &&
+        this.state.showGender &&
+        this.state.showSexuality &&
+        !this.state.hasValidData) {
+          this.state.hasValidData = true;
+          this.props.handlePageComplete();
+
+    }
+
+  }
+
   //Age
   onPressAge = () => {
     const selectedAge = this.state;
@@ -55,6 +69,7 @@ export default class PageOne extends Component {
           this.setState(previousState => {
             return { selectedAge: data, showAge: true };
           });
+          this.validateData();
         },
         onPickerCancel: data => {
           this.setState(previousState => {
@@ -81,6 +96,7 @@ export default class PageOne extends Component {
           this.setState(previousState => {
             return { selectedGender: data, showGender: true };
           });
+          this.validateData();
         },
         onPickerCancel: data => {
           this.setState(previousState => {
@@ -107,6 +123,7 @@ export default class PageOne extends Component {
           this.setState(previousState => {
             return { selectedSexuality: data, showSexuality: true };
           });
+          this.validateData();
         },
         onPickerCancel: data => {
           this.setState(previousState => {
@@ -144,9 +161,9 @@ export default class PageOne extends Component {
     Picker.show();
   }
   render() {
-    const displayAge = this.state.showAge ? 'Age: ' + this.state.selectedAge : 'Select Age';
-    const displayGender = this.state.showGender ? 'Gender: ' + this.state.selectedGender : 'Select Gender';
-    const displaySexuality = this.state.showSexuality ? 'Sexuality: ' + this.state.selectedSexuality : 'Select Sexuality';
+    const displayAge = this.state.showAge ? 'Your Age: ' + this.state.selectedAge : 'Please Select Your Age';
+    const displayGender = this.state.showGender ? 'Your Gender: ' + this.state.selectedGender : 'Please Select Your Gender';
+    const displaySexuality = this.state.showSexuality ? 'Your Sexuality: ' + this.state.selectedSexuality : 'Please Select Your Sexuality';
     return(
       <View>
         <View style={{alignItems: 'center', marginTop: '10%'}}><Text style={styles.pageTitle}>Ethnicicty</Text></View>
@@ -181,7 +198,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: '#fff',
-    fontSize: 28,
+    fontSize: 24,
     fontWeight: 'bold',
   },
   pageTitle: {

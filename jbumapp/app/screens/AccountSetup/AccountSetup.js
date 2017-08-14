@@ -18,7 +18,7 @@ import {
 }
 from 'react-native-elements';
 
-import AppIntro from 'react-native-app-intro';
+import Swiper from 'react-native-swiper';
 import InitialPage from '../../components/AccountSetupComponents/InitialPage';
 import PageOne from '../../components/AccountSetupComponents/PageOne';
 import PageTwo from '../../components/AccountSetupComponents/PageTwo';
@@ -30,38 +30,51 @@ export default class AccountSetup extends Component {
   constructor() {
     super();
 
-          this.state = {
-              currentIndex : 0
-          };
-  }
+    this.state = {
+      currentIndex : 0,
+    };
 
-  nextBtnHandle = (index) => {
-      Alert.alert('Next');
-      console.log(index);
-      this.setState(previousState => {
-        return { currentIndex: -1 };
-      });
+  }
+  componentDidMount() {
+
   }
 
   onSlideChangeHandle = (index, total) => {
+    console.log(index);
+    if (this.state.currentIndex < index) {
+      Alert.alert('Complete this slide before moving on!');
+
+      this.swiper.scrollBy(0);
+    }
+    else if (this.state.slideComplete){
+      this.state.slideComplete = false;
+    }
+
     console.log(index, total);
+  }
+
+  handlePageComplete = () => {
+    this.state.currentIndex = this.state.currentIndex+1;
   }
 
   render() {
     return(
-      <AppIntro dotColor='#bbddff'
+      <Swiper dotColor='#bbddff'
                 activeDotColor='#1E90FF'
                 leftTextColor='#1E90FF'
                 rightTextColor='#1E90FF'
-                showSkipButton={false}
-                onSlideChange={this.onSlideChangeHandle}
-                onNextBtnClick={this.nextBtnHandle}>
+                loop={false}
+                index={this.state.currentIndex}
+                onIndexChanged={this.onSlideChangeHandle}
+                ref={(s: React.Element<Swiper>) => this.swiper = s}>
 
         <View style={[styles.slide, { backgroundColor: '#54C6DB' }]}>
-          <InitialPage/>
+          <InitialPage
+            handlePageComplete={this.handlePageComplete}/>
         </View>
         <View style={[styles.slide, { backgroundColor: '#9ED6EA' }]}>
-          <PageOne/>
+          <PageOne
+            handlePageComplete={this.handlePageComplete}/>
         </View>
         <View style={[styles.slide, { backgroundColor: '#fa931d' }]}>
           <PageTwo />
@@ -72,7 +85,7 @@ export default class AccountSetup extends Component {
         <View style={[styles.slide, { backgroundColor: '#E1A3DC' }]}>
           <PageFour />
         </View>
-      </AppIntro>
+      </Swiper>
     );
   }
 };

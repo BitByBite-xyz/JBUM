@@ -3928,6 +3928,12 @@ react-native-swiper-animated@^1.2.5:
     clamp "^1.0.1"
     react-native-material-ui "^1.6.0"
 
+react-native-swiper@^1.5.9:
+  version "1.5.9"
+  resolved "https://registry.yarnpkg.com/react-native-swiper/-/react-native-swiper-1.5.9.tgz#7f7cd21e74a0c9fe7ac25c12714bf4d655823920"
+  dependencies:
+    prop-types "^15.5.10"
+
 "react-native-swiper@git+https://github.com/FuYaoDe/react-native-swiper.git":
   version "1.4.4"
   resolved "git+https://github.com/FuYaoDe/react-native-swiper.git#a6417ff41a8b2d490bdcc4541015ab35736d4595"
