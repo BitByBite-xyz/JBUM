@@ -22,12 +22,22 @@ export default class PageTwo extends Component {
       selectedGeneration: '',
       selectedEthnicity: '',
       showEthnicity: false,
-      showGeneration: false
+      showGeneration: false,
+      showCitizenship:false,
+      hasValidData:false
     };
+  }
+  validateData = () => {
+    if (this.state.showEthnicity &&
+        this.state.showGeneration &&
+        this.state.showCitizenship &&
+        !this.state.hasValidData) {
+          this.state.hasValidData = true;
+          this.props.handlePageComplete();
+    }
   }
   //Ethnicicty
   onPressEthnicity = () => {
-    const selectedEthnicity = this.state;
     Picker.init({
         pickerTitleText: 'Select Ethnicicty',
         pickerData: ethOptions,
@@ -36,6 +46,7 @@ export default class PageTwo extends Component {
           this.setState(previousState => {
             return { selectedEthnicity: ethOptions, showEthnicity: true };
           });
+          this.validateData();
         },
         onPickerCancel: data => {
             console.log(data);
@@ -58,6 +69,7 @@ export default class PageTwo extends Component {
           this.setState(previousState => {
             return { selectedGeneration: genOptions, showGeneration: true };
           });
+          this.validateData();
         },
         onPickerCancel: data => {
             console.log(data);
@@ -80,6 +92,7 @@ export default class PageTwo extends Component {
           this.setState(previousState => {
             return { selectedCitizenship: citizenshipOptions, showCitizenship: true };
           });
+          this.validateData();
         },
         onPickerCancel: data => {
             console.log(data);
@@ -129,7 +142,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: '#fff',
-    fontSize: 27,
+    fontSize: 24,
     fontWeight: 'bold',
   },
   pageTitle: {

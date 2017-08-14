@@ -22,8 +22,20 @@ export default class PageThree extends Component {
       selectedSiblingOrder: '',
       showFamily: false,
       showSiblings: false,
-      showSibOrder: false
+      showSibOrder: false,
+      hasValidData:false
     };
+  }
+  validateData = () => {
+    if (this.state.showFamily &&
+        this.state.showSiblings &&
+        this.state.showSibOrder &&
+        !this.state.hasValidData) {
+          this.state.hasValidData = true;
+          this.props.handlePageComplete();
+
+    }
+
   }
   //Family
   onPressFamily = () => {
@@ -36,6 +48,7 @@ export default class PageThree extends Component {
           this.setState(previousState => {
             return { selectedFamily: parOptions, showFamily: true };
           });
+          this.validateData();
         },
         onPickerCancel: data => {
             console.log(data);
@@ -58,6 +71,7 @@ export default class PageThree extends Component {
           this.setState(previousState => {
             return { selectedSiblings: sibOptions, showSiblings: true };
           });
+          this.validateData();
         },
         onPickerCancel: data => {
             console.log(data);
@@ -80,6 +94,7 @@ export default class PageThree extends Component {
           this.setState(previousState => {
             return { selectedSibOrder: sibOrderOptions, showSibOrder: true };
           });
+          this.validateData();
         },
         onPickerCancel: data => {
             console.log(data);
@@ -122,20 +137,20 @@ export default class PageThree extends Component {
     };
     const styles = StyleSheet.create({
     slide: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#9DD6EB',
-    padding: 15,
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: '#9DD6EB',
+      padding: 15,
     },
     text: {
-    color: '#fff',
-    fontSize: 27,
-    fontWeight: 'bold',
+      color: '#fff',
+      fontSize: 24,
+      fontWeight: 'bold',
     },
     pageTitle: {
-    color: '#fff',
-    fontSize: 47,
-    fontWeight: 'bold',
+      color: '#fff',
+      fontSize: 47,
+      fontWeight: 'bold',
     },
     });

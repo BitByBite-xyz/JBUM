@@ -77,10 +77,12 @@ export default class AccountSetup extends Component {
             handlePageComplete={this.handlePageComplete}/>
         </View>
         <View style={[styles.slide, { backgroundColor: '#fa931d' }]}>
-          <PageTwo />
+          <PageTwo
+            handlePageComplete={this.handlePageComplete}/>
         </View>
         <View style={[styles.slide,{ backgroundColor: '#55CFAC' }]}>
-          <PageThree />
+          <PageThree
+            handlePageComplete={this.handlePageComplete}/>
         </View>
         <View style={[styles.slide, { backgroundColor: '#E1A3DC' }]}>
           <PageFour />
