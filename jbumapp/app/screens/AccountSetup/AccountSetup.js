@@ -24,6 +24,7 @@ import PageOne from '../../components/AccountSetupComponents/PageOne';
 import PageTwo from '../../components/AccountSetupComponents/PageTwo';
 import PageThree from '../../components/AccountSetupComponents/PageThree';
 import PageFour from '../../components/AccountSetupComponents/PageFour';
+import PasswordPage from '../../components/AccountSetupComponents/PasswordPage';
 
 
 export default class AccountSetup extends Component {
@@ -67,7 +68,6 @@ export default class AccountSetup extends Component {
                 index={this.state.currentIndex}
                 onIndexChanged={this.onSlideChangeHandle}
                 ref={(s: React.Element<Swiper>) => this.swiper = s}>
-
         <View style={[styles.slide, { backgroundColor: '#54C6DB' }]}>
           <InitialPage
             handlePageComplete={this.handlePageComplete}/>
@@ -83,6 +83,9 @@ export default class AccountSetup extends Component {
         <View style={[styles.slide,{ backgroundColor: '#55CFAC' }]}>
           <PageThree
             handlePageComplete={this.handlePageComplete}/>
+        </View>
+        <View style={[styles.slide, { backgroundColor: '#46C87F' }]}>
+          <PasswordPage />
         </View>
         <View style={[styles.slide, { backgroundColor: '#E1A3DC' }]}>
           <PageFour />

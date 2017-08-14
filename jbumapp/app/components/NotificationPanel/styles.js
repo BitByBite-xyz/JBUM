@@ -13,6 +13,7 @@ export default StyleSheet.create({
     paddingTop: 10,
     paddingLeft: 10,
     paddingRight: 10,
+    paddingBottom: 10,
     color: '#AAAAAA',
     fontSize: 15,
     fontFamily: 'Avenir'
@@ -29,16 +30,6 @@ export default StyleSheet.create({
     overflow: 'hidden',
     borderRadius: 9
   },
-  popupContainer: {
-    width: '95%',
-    height: '20%',
-    backgroundColor: '#ECEDF6',
-    borderRadius: 8,
-    shadowColor: '#282C34',
-    shadowOffset: {width: 3, height: 5},
-    shadowOpacity: 5,
-    shadowRadius: 5
-  },
   title: {
     flex: 1,
     padding: 10,
@@ -47,20 +38,6 @@ export default StyleSheet.create({
     fontSize: 16,
     color: '#AAAAAA',
     fontWeight: '500'
-  },
-  popupTitle: {
-    marginTop: '0.5%',
-    fontSize: 25,
-    fontWeight: '400',
-    fontFamily: 'Avenir',
-    marginLeft: '3.25%',
-    color: 'gray'
-  },
-  popupSubTitles: {
-    fontFamily: 'Avenir',
-    marginTop: '3%',
-    fontSize: 16,
-    color: 'gray'
   },
   button: {
     alignItems: 'center',
@@ -105,10 +82,6 @@ export default StyleSheet.create({
     alignItems: 'center',
     marginRight: 3,
     paddingBottom: 2
-  },
-  optionsButton: {
-    marginRight: '48%',
-    marginBottom: '2.5%'
   },
   lineDivider: {
       width: '90%',
