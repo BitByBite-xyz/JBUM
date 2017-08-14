@@ -34,6 +34,10 @@ export default StyleSheet.create({
     height: '20%',
     backgroundColor: '#ECEDF6',
     borderRadius: 8,
+    shadowColor: '#282C34',
+    shadowOffset: {width: 3, height: 5},
+    shadowOpacity: 5,
+    shadowRadius: 5
   },
   title: {
     flex: 1,
