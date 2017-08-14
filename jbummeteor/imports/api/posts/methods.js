@@ -35,6 +35,23 @@ Meteor.methods({
 
     Post.remove(postId);
   },
+  'Posts.archive' (postId) {
+    if (!Meteor.userId() || !Posts.findOne(postId)) {
+      throw new Meteor.Error('not-authorized');
+    }
+
+    const post = Posts.findOne(postId);
+
+    if(post.archived.includes(Meteor.userId())){
+      throw new Meteor.Error('This post is already archived!');
+    }
+
+    Posts.update({ _id: postId }, {
+      $push: {
+        archived: Meteor.userId(),
+      },
+    });
+  },
   'Posts.like' (postId) {
     if (!Meteor.userId() || !Posts.findOne(postId)) {
       throw new Meteor.Error('not-authorized');
@@ -85,5 +102,18 @@ Meteor.methods({
         }
       },
     });
-  }
+  },
+  'Posts.flag' (postId) {
+    if (!Meteor.userId() || !Posts.findOne(postId)) {
+      throw new Meteor.Error('not-authorized');
+    }
+    const post = Posts.findOne(postId);
+
+    Posts.update({ _id: postId }, {
+      $set: {
+        isFlagged: true,
+      },
+    });
+  },
+
 });

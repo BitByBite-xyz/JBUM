@@ -60,6 +60,11 @@ PostsSchema = new SimpleSchema({
        }
      }
  },
+ archived: {
+   type: [String],
+   label: "All the users who have the post archived",
+   optional: false
+ },
  post_likes: {
      type: [String],
      label: "Post's likes",

@@ -70,6 +70,16 @@ export default StyleSheet.create({
     marginRight: 5,
     paddingBottom: 5
   },
+  flag: {
+    marginLeft: 6,
+    marginRight: 5,
+    paddingBottom: 5
+  },
+  archive: {
+    marginLeft: 6,
+    marginRight: 5,
+    paddingBottom: 5
+  },
   counters: {
     fontFamily: "Avenir",
     fontSize: 16,

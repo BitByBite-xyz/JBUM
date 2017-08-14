@@ -63,7 +63,7 @@ class ProfileContainer extends Component {
   render() {
 		const { user_posts,responded_posts,postsReady,navigation } = this.props;
 		const PARALLAX_HEADER_HEIGHT = 170;
-		const buttons = ['My Posts', 'Replied Posts'];
+		const buttons = ['My Posts', 'Replied Posts', 'Archived'];
   	const { selectedIndex } = this.state;
 		const questionNumber = user_posts.length;
 		const answeredNumber = responded_posts.length;
