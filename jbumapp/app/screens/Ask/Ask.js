@@ -20,16 +20,18 @@ class Ask extends Component {
   constructor(props) {
     super(props);
 
+
     this.state = {
       title: '',
       body: '',
+      post_visibility:["Therapist"],
       error: null,
       checked:false,
     };
   }
 
   postButton = () => {
-    const {title, body} = (this.state)
+    const {title, body,post_visibility} = (this.state)
 
     if (title.length === 0 || body.length === 0){
       Alert.alert(
@@ -38,7 +40,13 @@ class Ask extends Component {
       );
     }
     else {
-      Meteor.call('Posts.insert', title,body, (err) => {
+      const params = {
+        title:title,
+        body: body,
+        post_visibility:post_visibility
+
+      }
+      Meteor.call('Posts.insert', params, (err) => {
         if (err) {
           console.log("Post err"+err.details);
           Alert.alert(

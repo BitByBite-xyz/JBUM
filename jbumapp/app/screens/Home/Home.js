@@ -42,6 +42,7 @@ class Home extends Component {
 
     this.mounted = false;
     //this.props.navigation.navigate('Ask');
+    const { posts } = this.props;
   }
 
   componentWillMount() {

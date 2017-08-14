@@ -7,7 +7,7 @@ import { Random } from 'meteor/random'
 
 
 Meteor.methods({
-  'Posts.insert' (title, body) {
+  'Posts.insert' ({title, body, post_visibility}) {
     check(title, String);
     check(body, String);
 
@@ -22,6 +22,7 @@ Meteor.methods({
       post_body: body,
       post_comments: [],
       post_likes: [],
+      post_visibility:post_visibility
     });
   },
   'Posts.remove' (postId) {
@@ -83,6 +84,18 @@ Meteor.methods({
           comment_body: body,
           created: new Date,
         }
+      },
+    });
+  },
+  'Posts.flag' (postId) {
+    if (!Meteor.userId() || !Posts.findOne(postId)) {
+      throw new Meteor.Error('not-authorized');
+    }
+    const post = Posts.findOne(postId);
+
+    Posts.update({ _id: postId }, {
+      $set: {
+        isFlagged: true,
       },
     });
   }
