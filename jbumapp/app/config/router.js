@@ -157,7 +157,7 @@ export default StackNavigator({
 				headerStyle: {
 					 color: null,
 					 backgroundColor: null,
-					 height: 20,
+					 height: 0.00001,
 				 },
 			}
 		},
