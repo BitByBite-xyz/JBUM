@@ -25,7 +25,7 @@ export default class Welcome extends Component {
 
   }
   toCreateAccount = () => {
-    this.props.navigation.navigate('AccountSetup');
+    this.props.navigation.navigate('BarcodeScanner');
 
   }
 

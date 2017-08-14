@@ -11,15 +11,68 @@ import {
 } from 'react-native';
 import Camera from 'react-native-camera';
 import _ from 'lodash';
+import Meteor, { Accounts } from 'react-native-meteor';
 
 class BarcodeScanner extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      login: false,
+      data:null
+    }
     /*
       Setup your onBarCodeRead throttle here
       Choose your throttle time in ms - 500 etc.
     */
     this.onBarCodeRead = _.throttle(this.onBarCodeRead, 500);
+
+
+  }
+  componentDidMount() {
+
+
+  }
+
+  handleCreateAccount = (code) => {
+    Meteor.call('createUserAccount', code, (err, response) => {
+      if (err) {
+        console.log("err: "+err.details);
+        Alert.alert(
+          'Oops! Screenshot this and send to support!',
+          'Server error: \n\n'+err.details
+        );
+        return;
+      } else {
+        console.log(response.username);
+        this.state.data = response;
+        this.handleLogin();
+      }
+    });
+
+
+  }
+  handleLogin = () => {
+    console.log("jdieo");
+    if(this.state.data !== null){
+      const { data } = this.state;
+      console.log(data);
+      Meteor.loginWithPassword(data.username, data.password, (err) => {
+        if (err) {
+          Alert.alert(
+            'Oops! Screenshot this and send to support!',
+            'Server error: \n\n'+err.details
+          );
+        }
+        this.props.navigation.navigate('AccountSetup')
+      });
+    }
+  }
+
+  onBarCodeRead = (data) => {
+    Alert.alert("Barcode Saw dis: ", data.data);
+    console.log("Barcode: " + data);
+
+    this.handleCreateAccount(data.data);
   }
 
   render() {
@@ -30,9 +83,9 @@ class BarcodeScanner extends Component {
             this.camera = cam;
           }}
           style={styles.preview}
-          onBarCodeRead={this.onBarCodeRead.bind(this)}
+          onBarCodeRead={() => this.onBarCodeRead()}
           aspect={Camera.constants.Aspect.fill}>
-          <Text style={styles.capture} >Please Scan Authentication Barcode</Text>
+          <Text onPress={() => this.handleCreateAccount('2wGQQTyWQgFgYg62N')} style={styles.capture} >Please Scan Authentication Barcode</Text>
         </Camera>
       </View>
     );
@@ -44,11 +97,6 @@ class BarcodeScanner extends Component {
     this.camera.capture({metadata: options})
       .then((data) => console.log(data))
       .catch(err => console.error(err));
-  }
-
-  onBarCodeRead(data) {
-    Alert.alert("Barcode Saw dis: ", data.data);
-    console.log("Barcode: " + data);
   }
 
 }

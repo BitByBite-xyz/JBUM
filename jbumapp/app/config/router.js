@@ -76,6 +76,15 @@ import BarcodeScanner from '../components/BarcodeScanner';
  export const WelcomeStack = StackNavigator({
 	 Welcome: {screen: Welcome,},
 	 Login: { screen: Login },
+	 BarcodeScanner: { screen: BarcodeScanner,
+		 navigationOptions: {
+			 headerStyle: {
+					color: null,
+					backgroundColor: null,
+					height: 20,
+				},
+		 }
+	 },
 	 AccountSetup: { screen: AccountSetup },},
 	 {
 	 		headerMode: 'none',
