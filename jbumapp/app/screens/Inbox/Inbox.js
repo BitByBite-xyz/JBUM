@@ -20,6 +20,12 @@ class Inbox extends Component {
     super(props);
   }
 
+  onArchivePress() {
+    const { user_posts } = this.props;
+
+    Meteor.call('Posts.archive', user_posts._id);
+  }
+
   renderFooter = () => {
     if (this.props.user_postsReady) return null;
 
@@ -42,6 +48,7 @@ class Inbox extends Component {
       {
         text: 'Archive',
         backgroundColor:'#24B2FF',
+        onPress: () => this.onArchivePress(),
       }
     ]
     return (

@@ -87,15 +87,47 @@ Meteor.methods({
       },
     });
   },
-  'Posts.flag' (postId) {
+  'Posts.archive' (postId) {
+    if (!Meteor.userId() || !Posts.findOne(postId)) {
+      throw new Meteor.Error('not-authorized');
+    }
+
+    Posts.update({ _id: postId }, {
+      $set: {
+        isArchived: true,
+      },
+    });
+  },
+  'Posts.unflag' (postId) {
     if (!Meteor.userId() || !Posts.findOne(postId)) {
       throw new Meteor.Error('not-authorized');
     }
     const post = Posts.findOne(postId);
 
+    if(!post.post_flags.includes(Meteor.userId())){
+      throw new Meteor.Error('user never flagged the post!');
+    }
+
     Posts.update({ _id: postId }, {
-      $set: {
-        isFlagged: true,
+      $pop: {
+        post_flags: Meteor.userId(),
+      },
+    });
+  },
+  'Posts.flag' (postId) {
+    if (!Meteor.userId() || !Posts.findOne(postId)) {
+      throw new Meteor.Error('not-authorized');
+    }
+
+    const post = Posts.findOne(postId);
+
+    if(post.post_flags.includes(Meteor.userId())){
+      throw new Meteor.Error('user already flagged post!');
+    }
+
+    Posts.update({ _id: postId }, {
+      $push: {
+        post_flags: Meteor.userId(),
       },
     });
   }

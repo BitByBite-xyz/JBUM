@@ -51,19 +51,29 @@ PostsSchema = new SimpleSchema({
     label: "Post's comments",
     optional:false
  },
- isFlagged: {
-     type: Boolean,
-     label: "indicates if post is flagged",
-     autoValue: function() {
-       if ( this.isInsert ) {
-         return false;
-       }
+ post_flags: {
+   type: [String],
+   label: "Users that flagged this post",
+   autoValue: function() {
+     if ( this.isInsert ) {
+       return [];
      }
+   }
  },
  post_likes: {
      type: [String],
      label: "Post's likes",
      optional: false
+ },
+ isArchived: {
+   type: Boolean,
+   label: "Indicates if post is archived",
+   autoValue: function() {
+     if ( this.isInsert ) {
+       return false;
+     }
+   }
+
  },
  "created": {
    type: Date,

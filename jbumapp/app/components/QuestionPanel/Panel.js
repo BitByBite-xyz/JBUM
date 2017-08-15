@@ -29,6 +29,7 @@ class Panel extends React.PureComponent {
       is_visible: false,
       expanded: false,
       animation: new Animated.Value(),
+      flagged: false,
     };
 
     this.setMaxHeight = this.setMaxHeight.bind(this);
@@ -38,6 +39,17 @@ class Panel extends React.PureComponent {
 
   onMorePress() {
     const { navigation } = this.props;
+
+  }
+
+  onReportPress() {
+    const { postContent } = this.props;
+    if (flagged) {
+      Meteor.call('Posts.unflag', postContent._id);
+    }
+    else {
+      Meteor.call('Posts.flag', postContent._id);
+    }
 
   }
 
@@ -228,7 +240,7 @@ class Panel extends React.PureComponent {
 
               <View style={{flexDirection: 'row', justifyContent: 'center', marginTop: '5%'}}>
                 <View style={{marginRight: '16%'}}>
-                  <TouchableOpacity>
+                  <TouchableOpacity onPress={() => this.onReportPress(), this._hideModal}>
                   <Icon
                     name='report-problem'
                     color={'#FF5848'}
