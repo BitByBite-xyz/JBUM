@@ -9,7 +9,6 @@ import {
 	StatusBar
 } from 'react-native';
 import Meteor, { createContainer } from 'react-native-meteor';
-import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-view';
 import FadeInView from 'react-native-fade-in-view';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import { ButtonGroup } from 'react-native-elements'
