@@ -3950,12 +3950,13 @@ react-native-keyboard-spacer@0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/react-native-keyboard-spacer/-/react-native-keyboard-spacer-0.3.0.tgz#09016c11f6b5cfbc3b96c63e6d049e77a3e0908b"
 
+
 react-native-linear-gradient@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-2.2.0.tgz#7d9ff9fc3e413079cf3c7354873eaf923145364d"
   dependencies:
     prop-types "^15.5.10"
-
+    
 react-native-material-design-styles@^0.2.6:
   version "0.2.6"
   resolved "https://registry.yarnpkg.com/react-native-material-design-styles/-/react-native-material-design-styles-0.2.6.tgz#2039f638fd11f1e340db7b39ea81ad07f6d81ff0"
