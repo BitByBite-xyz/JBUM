@@ -4064,6 +4064,13 @@ react-native-tab-navigator@0.3.3, "react-native-tab-navigator@git+https://github
     immutable "^3.8.1"
     prop-types "^15.5.10"
 
+"react-native-tab-navigator@git+https://github.com/alphasp/react-native-tab-navigator.git#476a6463934c7bb684e8d94d1b9cdf43dc058ec6":
+  version "0.3.3"
+  resolved "git+https://github.com/alphasp/react-native-tab-navigator.git#476a6463934c7bb684e8d94d1b9cdf43dc058ec6"
+  dependencies:
+    immutable "^3.8.1"
+    prop-types "^15.5.10"
+
 react-native-tab-view@^0.0.67:
   version "0.0.67"
   resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-0.0.67.tgz#cdd146fe5e5d4baff6c89f2d5d0b15fa23db39d0"
