@@ -3,12 +3,12 @@ package com.jbumapp;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.cmcewen.blurview.BlurViewPackage;
 import com.beefe.picker.PickerViewPackage;
 import com.lwansbrough.RCTCamera.RCTCameraPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.react.rnspinkit.RNSpinkitPackage;
-import com.aigegou.blur.BlurImageViewPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -29,12 +29,12 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new BlurViewPackage(),
             new PickerViewPackage(),
             new RCTCameraPackage(),
             new VectorIconsPackage(),
             new LinearGradientPackage(),
-            new RNSpinkitPackage(),
-            new BlurImageViewPackage()
+            new RNSpinkitPackage()
       );
     }
   };

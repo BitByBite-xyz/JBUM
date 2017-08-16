@@ -37,6 +37,7 @@
 		D785BCFA2050411DB0FE851C /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C8B4FE85F91140C7B08D4B18 /* Ionicons.ttf */; };
 		DA76B19D2CB04959A68F761D /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95F6BD7637154E6EB2666F7C /* libRNVectorIcons.a */; };
 		FDA4B26C86AE46E69021AB85 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E557DB8A6A0B4C0C93843763 /* Octicons.ttf */; };
+		C252AE6299A44A5BA26A1D21 /* libRNBlur.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E517CAB5EA84DEBBA05287A /* libRNBlur.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -366,6 +367,8 @@
 		EC51066868254F0798C905D9 /* RCTBEEPickerManager.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTBEEPickerManager.xcodeproj; path = "../node_modules/react-native-picker/ios/RCTBEEPickerManager.xcodeproj"; sourceTree = "<group>"; };
 		F0B63C34F31C4AC6BDAF164A /* libBVLinearGradient.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libBVLinearGradient.a; sourceTree = "<group>"; };
 		FA89F894F88B400A908CF2DE /* BVLinearGradient.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = BVLinearGradient.xcodeproj; path = "../node_modules/react-native-linear-gradient/BVLinearGradient.xcodeproj"; sourceTree = "<group>"; };
+		82C4F8CBDCE74FFCABA8971E /* RNBlur.xcodeproj */ = {isa = PBXFileReference; name = "RNBlur.xcodeproj"; path = "../node_modules/react-native-blur/ios/RNBlur.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		1E517CAB5EA84DEBBA05287A /* libRNBlur.a */ = {isa = PBXFileReference; name = "libRNBlur.a"; path = "libRNBlur.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -390,6 +393,7 @@
 				DA76B19D2CB04959A68F761D /* libRNVectorIcons.a in Frameworks */,
 				A53CBB67A9844D609ACE52EB /* libRCTCamera.a in Frameworks */,
 				73FC7AD21F9445E6BF2FE774 /* libRCTBEEPickerManager.a in Frameworks */,
+				C252AE6299A44A5BA26A1D21 /* libRNBlur.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,6 +548,7 @@
 				6B21F6F612C6429AB259D690 /* RNVectorIcons.xcodeproj */,
 				596ECF49CB9C45FAA9320CB6 /* RCTCamera.xcodeproj */,
 				EC51066868254F0798C905D9 /* RCTBEEPickerManager.xcodeproj */,
+				82C4F8CBDCE74FFCABA8971E /* RNBlur.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1136,6 +1141,7 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-picker/ios/RCTBEEPickerManager",
+					"$(SRCROOT)/../node_modules/react-native-blur/ios",
 				);
 				"HEADER_SEARCH_PATHS[arch=*]" = "$(REACT_HEADERS_PATH)";
 				INFOPLIST_FILE = jbumapp/Info.plist;
@@ -1144,6 +1150,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/jbum-react-native\"",
+					"\"$(SRCROOT)/jbumapp\"",
 					"\"$(SRCROOT)/jbumapp\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1175,6 +1182,7 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-picker/ios/RCTBEEPickerManager",
+					"$(SRCROOT)/../node_modules/react-native-blur/ios",
 				);
 				"HEADER_SEARCH_PATHS[arch=*]" = "$(REACT_HEADERS_PATH)";
 				INFOPLIST_FILE = jbumapp/Info.plist;
@@ -1183,6 +1191,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/jbum-react-native\"",
+					"\"$(SRCROOT)/jbumapp\"",
 					"\"$(SRCROOT)/jbumapp\"",
 				);
 				OTHER_LDFLAGS = (
