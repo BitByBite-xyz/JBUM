@@ -3,11 +3,11 @@ import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
 
 CommentsSchema = new SimpleSchema({
-  "comment_id": {
+  comment_id: {
     type: String,
     label: "Comment ID"
   },
-  "user_id": {
+  user_id: {
     type: String,
     label: "Commenter's meteor.User ID"
   },
@@ -15,7 +15,7 @@ CommentsSchema = new SimpleSchema({
     type: String,
     label: "body of this comment"
   },
-  "created": {
+  created: {
     type: Date,
     label: "Date Comment Added to System",
     autoValue: function() {
@@ -27,11 +27,11 @@ CommentsSchema = new SimpleSchema({
 });
 
 PostsSchema = new SimpleSchema({
-  "user_id": {
+  user_id: {
     type: String,
     label: "Poster's meteor.User ID",
   },
-  "post_visibility": {
+  post_visibility: {
     type: [String],
     minCount: 1,
     maxCount: 4,
@@ -65,7 +65,7 @@ PostsSchema = new SimpleSchema({
      label: "Post's likes",
      optional: false
  },
- "created": {
+ created: {
    type: Date,
    label: "Date Comment Added to System",
    autoValue: function() {
