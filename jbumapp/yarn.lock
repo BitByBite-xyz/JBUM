@@ -655,8 +655,8 @@ babel-plugin-transform-regenerator@^6.5.0:
     regenerator-transform "0.9.11"
 
 babel-plugin-transform-remove-console@^6.8.4:
-  version "6.8.4"
-  resolved "https://registry.yarnpkg.com/babel-plugin-transform-remove-console/-/babel-plugin-transform-remove-console-6.8.4.tgz#41fddac19a729a4c3dd7ef2964eac07b096f9a8f"
+  version "6.8.5"
+  resolved "https://registry.yarnpkg.com/babel-plugin-transform-remove-console/-/babel-plugin-transform-remove-console-6.8.5.tgz#fde9d2d3d725530b0fadd8d31078402410386810"
 
 babel-plugin-transform-strict-mode@^6.24.1:
   version "6.24.1"
@@ -910,8 +910,8 @@ babel-types@^6.18.0, babel-types@^6.19.0, babel-types@^6.24.1, babel-types@^6.25
     to-fast-properties "^1.0.1"
 
 babylon@^6.17.0, babylon@^6.17.2, babylon@^6.17.4:
-  version "6.17.4"
-  resolved "https://registry.yarnpkg.com/babylon/-/babylon-6.17.4.tgz#3e8b7402b88d22c3423e137a1577883b15ff869a"
+  version "6.18.0"
+  resolved "https://registry.yarnpkg.com/babylon/-/babylon-6.18.0.tgz#af2f3b88fa6f5c1e4c634d1a0f8eac4f55b395e3"
 
 balanced-match@^1.0.0:
   version "1.0.0"
@@ -3872,8 +3872,8 @@ react-komposer@^1.8.0:
     shallowequal "0.2.x"
 
 react-mixin@^3.0.3:
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/react-mixin/-/react-mixin-3.0.5.tgz#e0b7b6713fdc9ddc429267df808b6ac5184c6706"
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/react-mixin/-/react-mixin-3.1.0.tgz#0c5dea2ee90d01455dabfbebe44db03a37497e53"
   dependencies:
     object-assign "^4.0.1"
     smart-mixin "^2.0.0"
@@ -3897,11 +3897,11 @@ react-native-app-intro@^1.1.5:
   dependencies:
     prop-types "^15.5.10"
 
-react-native-camera@^0.9.4:
-  version "0.9.5"
-  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-0.9.5.tgz#c8e49470d9f9e254a128b8df3ff2fd80eb14d675"
+"react-native-camera@git+https://github.com/lwansbrough/react-native-camera.git":
+  version "0.10.0"
+  resolved "git+https://github.com/lwansbrough/react-native-camera.git#02eb51d962c8b55ffd46f256d223aa41cd2df4a4"
   dependencies:
-    opencollective "^1.0.3"
+    prop-types "^15.5.10"
 
 react-native-collapsible@^0.9.0:
   version "0.9.0"
@@ -3931,16 +3931,16 @@ react-native-dropdownalert@^2.10.0:
   dependencies:
     prop-types "^15.5.10"
 
-react-native-elements@^0.16.0:
+"react-native-elements@git+https://github.com/connorlarkin1/react-native-elements.git":
   version "0.16.0"
-  resolved "https://registry.yarnpkg.com/react-native-elements/-/react-native-elements-0.16.0.tgz#933a567d850d2f8ef605fcfb9ab95dfaf27393ce"
+  resolved "git+https://github.com/connorlarkin1/react-native-elements.git#2628f415bc87080fa84931fcc06aa3d725471fe3"
   dependencies:
     lodash.isempty "^4.4.0"
     lodash.times "^4.3.2"
     opencollective "^1.0.3"
     prop-types "^15.5.8"
     react-native-side-menu "^1.0.2"
-    react-native-tab-navigator "^0.3.3"
+    react-native-tab-navigator "git+https://github.com/alphasp/react-native-tab-navigator.git#476a6463934c7bb684e8d94d1b9cdf43dc058ec6"
 
 react-native-fade-in-view@^1.0.4:
   version "1.0.4"
@@ -3968,17 +3968,19 @@ react-native-material-ui@^1.6.0:
     lodash.merge "^4.0.0"
     react-native-material-design-styles "^0.2.6"
 
-react-native-meteor@1.0.0-rc14:
-  version "1.0.0-rc14"
-  resolved "https://registry.yarnpkg.com/react-native-meteor/-/react-native-meteor-1.0.0-rc14.tgz#9fceec6f2bdf2c121653598eb8f007f4f157acdb"
+react-native-meteor@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-meteor/-/react-native-meteor-1.1.0.tgz#55a91efe2d466d3a8cceb5b5419799aeedcd6756"
   dependencies:
     base-64 "^0.1.0"
     crypto-js "^3.1.6"
     ejson "^2.1.2"
     minimongo-cache "0.0.48"
+    prop-types "^15.5.10"
     react-komposer "^1.8.0"
     react-mixin "^3.0.3"
     trackr "^2.0.2"
+    underscore "^1.8.3"
     wolfy87-eventemitter "^4.3.0"
 
 react-native-modal-dropdown@^0.4.4:
@@ -4044,8 +4046,8 @@ react-native-swiper-animated@^1.2.5:
     react-native-material-ui "^1.6.0"
 
 react-native-swiper@^1.5.9:
-  version "1.5.9"
-  resolved "https://registry.yarnpkg.com/react-native-swiper/-/react-native-swiper-1.5.9.tgz#7f7cd21e74a0c9fe7ac25c12714bf4d655823920"
+  version "1.5.10"
+  resolved "https://registry.yarnpkg.com/react-native-swiper/-/react-native-swiper-1.5.10.tgz#20569b85623bdd3f667a376999b3844007d11dc1"
   dependencies:
     prop-types "^15.5.10"
 
@@ -4055,11 +4057,12 @@ react-native-swiper@^1.5.9:
   dependencies:
     react-timer-mixin "^0.13.3"
 
-react-native-tab-navigator@0.3.3, react-native-tab-navigator@^0.3.3:
+react-native-tab-navigator@0.3.3, "react-native-tab-navigator@git+https://github.com/alphasp/react-native-tab-navigator.git#476a6463934c7bb684e8d94d1b9cdf43dc058ec6":
   version "0.3.3"
-  resolved "https://registry.yarnpkg.com/react-native-tab-navigator/-/react-native-tab-navigator-0.3.3.tgz#b222bad21fbe773c8d28f9a0de30ce62b08724d3"
+  resolved "git+https://github.com/alphasp/react-native-tab-navigator.git#476a6463934c7bb684e8d94d1b9cdf43dc058ec6"
   dependencies:
     immutable "^3.8.1"
+    prop-types "^15.5.10"
 
 react-native-tab-view@^0.0.67:
   version "0.0.67"
@@ -5125,7 +5128,7 @@ ultron@~1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/ultron/-/ultron-1.1.0.tgz#b07a2e6a541a815fc6a34ccd4533baec307ca864"
 
-underscore@1.8.x:
+underscore@1.8.x, underscore@^1.8.3:
   version "1.8.3"
   resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.8.3.tgz#4f3fb53b106e6097fcf9cb4109f2a5e9bdfa5022"
 
