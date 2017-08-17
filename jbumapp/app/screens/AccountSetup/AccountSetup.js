@@ -28,23 +28,14 @@ import PageFour from '../../components/AccountSetupComponents/PageFour';
 import PasswordPage from '../../components/AccountSetupComponents/PasswordPage';
 
 // Colors
-const MAIN_INFO_COLOR = '#2B73B6'
-const MAIN_WARN_COLOR = '#cd853f'
-const MAIN_ERROR_COLOR = '#cc3232'
-const MAIN_SUCCESS_COLOR = '#32A54A'
-const MAIN_CUSTOM_COLOR = '#6441A4'
-const MAIN_DISMISS_COLOR = '#748182'
+const MAIN_WARN_COLOR = '#FF9A1E'
 
 export default class AccountSetup extends Component {
   constructor() {
     super();
     const items = [
-      {key: 0, backgroundColor: MAIN_INFO_COLOR, type: 'info', title: 'Info', message: 'System is going down at 12 AM tonight for routine maintenance. We\'ll notify you when the system is back online.'},
+      {key: 0, backgroundColor: MAIN_WARN_COLOR, type: 'info', title: 'Info', message: 'Complete this slide before moving on!'},
       {key: 1, backgroundColor: MAIN_WARN_COLOR, type: 'warn', title: 'Warning', message: 'Complete this slide before moving on!'},
-      {key: 2, backgroundColor: MAIN_ERROR_COLOR, type: 'error', title: 'Error', message: 'Complete this slide before moving on!'},
-      {key: 3, backgroundColor: MAIN_SUCCESS_COLOR, type: 'success', title: 'Success', message: 'Thank you for your order. We will email and charge you when it\'s on it\'s way.'},
-      {key: 4, backgroundColor: MAIN_CUSTOM_COLOR, type: 'custom', title: 'Custom', message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'},
-      {key: 5, backgroundColor: MAIN_DISMISS_COLOR, type: 'dismiss', title: 'Dismiss alert'}
     ]
 
     this.state = {
@@ -61,7 +52,7 @@ export default class AccountSetup extends Component {
     console.log(index);
     if (this.state.currentIndex < index) {
       this.swiper.scrollBy(0);
-      this.showAlert(this.state.items[2]);
+      this.showAlert(this.state.items[1]);
     }
     else if (this.state.slideComplete){
       this.state.slideComplete = false;
@@ -87,9 +78,7 @@ export default class AccountSetup extends Component {
     if (item.type == 'dismiss') {
       this.dismissAlert();
     } else {
-      const random = Math.floor((Math.random() * 1000) + 1);
-      const title = item.title + ' #' + random;
-      console.log(item.type);
+      const title = 'Warning';
       this.dropdown.alertWithType(item.type, title, item.message);
     }
   }
