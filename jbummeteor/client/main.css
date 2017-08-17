@@ -126,3 +126,7 @@ header .hide-completed {
         padding-bottom: 5px;
     }
 }
+
+svg{
+  display: none !important;
+}

@@ -19,7 +19,7 @@ import UsersCard from './UsersCard';
             <MuiThemeProvider>
               <AppBar
                 title="JBUM Admin"
-                iconClassNameRight="muidocs-icon-navigation-expand-more"
+                // iconClassNameRight="muidocs-icon-navigation-expand-more"
               />
             </MuiThemeProvider>
               <div style={{backgroundColor: 'white', width: '22%'}}>
