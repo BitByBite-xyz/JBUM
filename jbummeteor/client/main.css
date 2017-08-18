@@ -143,3 +143,7 @@ svg{
     padding-top: 10px !important;
     padding-bottom: 10px !important;
 }
+.dashboardCardNumber {
+  padding-bottom: 0px !important;
+  margin-bottom: 0px !important;
+}

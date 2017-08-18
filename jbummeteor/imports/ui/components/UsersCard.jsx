@@ -10,8 +10,8 @@ const UsersCard = () => (
       <div style={{display: 'flex', flexDirection: 'row'}}>
         <div style={{height: 100, width: 5, backgroundColor: 'blue'}}/>
         <div style={{marginLeft: '15%', marginTop: '5.5%'}}>
-          <p style={{fontSize: 32}}>532 <br />
-          <p style={{fontSize: 17, color: 'gray'}}>Users</p></p>
+          <p className="dashboardCardNumber" style={{fontSize: 32}}>532 <br /></p>
+          <p style={{fontSize: 17, color: 'gray'}}>Users</p>
         </div>
       </div>
     </Paper>

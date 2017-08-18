@@ -9,8 +9,8 @@ const PostsCard = () => (
       <div style={{display: 'flex', flexDirection: 'row'}}>
         <div style={{height: 100, width: 5, backgroundColor: 'orange'}}/>
         <div style={{marginLeft: '15%', marginTop: '5.5%'}}>
-          <p style={{fontSize: 32}}>16,924 <br />
-          <p style={{fontSize: 17, color: 'gray'}}>Posts</p></p>
+          <p className="dashboardCardNumber" style={{fontSize: 32}}>16,924 <br /></p>
+           <p style={{fontSize: 17, color: 'gray'}}>Posts</p>
         </div>
       </div>
     </Paper>

@@ -10,8 +10,8 @@ const RepliesCard = () => (
       <div style={{display: 'flex', flexDirection: 'row'}}>
         <div style={{height: 100, width: 5, backgroundColor: 'green'}}/>
         <div style={{marginLeft: '15%', marginTop: '5.5%'}}>
-          <p style={{fontSize: 32}}>12,532 <br />
-          <p style={{fontSize: 17, color: 'gray'}}>Replies</p></p>
+          <p className="dashboardCardNumber" style={{fontSize: 32}}>12,532 <br /></p>
+          <p style={{fontSize: 17, color: 'gray'}}>Replies</p>
         </div>
       </div>
     </Paper>
