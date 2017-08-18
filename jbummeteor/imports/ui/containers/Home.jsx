@@ -2,8 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Switch, Route } from 'react-router-dom';
 
-import Test from './test';
 import Settings from './Settings';
+import Users from './Users';
 import Dashboard from './Dashboard';
 import SubHeader from '../components/SubHeader';
 import Header from '../components/Header';
@@ -24,6 +24,7 @@ const Home = () => {
                     {/* This is where all of screens go to populate the dashboard*/}
                     <Switch>
                       <Route exact path='/home' component={Dashboard}/>
+                      <Route path='/home/users' component={Users}/>
                       <Route path='/home/settings' component={Settings}/>
                     </Switch>
                   </div>

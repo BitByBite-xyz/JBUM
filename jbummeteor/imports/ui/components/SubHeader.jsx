@@ -22,7 +22,7 @@ const SubHeader = () => (
           primaryText="Dashboard"
         />
       </Link>
-      <Link to="/home/settings">
+      <Link to="/home/users">
         <ListItem
           leftAvatar={<Avatar icon={<FileFolder />} />}
           primaryText="Users"
