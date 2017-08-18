@@ -20,10 +20,10 @@ class Inbox extends Component {
     super(props);
   }
 
-  onArchivePress() {
-    const { user_posts } = this.props;
+  onArchivePress(item) {
+    console.log(item);
 
-    Meteor.call('Posts.archive', user_posts._id);
+    Meteor.call('Posts.archive', item._id);
   }
 
   renderFooter = () => {
@@ -42,15 +42,40 @@ class Inbox extends Component {
     );
   };
 
-  render() {
-    const { user_posts,user_postsReady,navigation } = this.props;
+  renderRow = (item) => {
+    const { navigation } = this.props;
+
     var swipeoutBtns = [
       {
         text: 'Archive',
         backgroundColor:'#24B2FF',
-        onPress: () => this.onArchivePress(),
+        onPress: () => {
+                   this.onArchivePress(item);
+                 },
       }
     ]
+
+    return (
+      <FadeInView
+          duration={700}
+      >
+        <Swipeout
+          right={swipeoutBtns}
+          backgroundColor='transparent'
+        >
+          <QuestionPanel
+            postContent={item}
+            header={item.post_title}
+            navigation={navigation}
+          />
+        </Swipeout>
+      </FadeInView>
+    );
+  };
+
+  render() {
+    const { user_posts,user_postsReady,navigation } = this.props;
+
     return (
       <ScrollView
         style={styles.container}
@@ -59,22 +84,7 @@ class Inbox extends Component {
         <FlatList
           data={user_posts}
           keyExtractor={(item, index) => item._id}
-          renderItem={({item}) =>
-                <FadeInView
-                    duration={700}
-                >
-                  <Swipeout
-                    right={swipeoutBtns}
-                    backgroundColor='transparent'
-                  >
-                    <QuestionPanel
-                      postContent={item}
-                      header={item.post_title}
-                      navigation={navigation}
-                    />
-                  </Swipeout>
-                </FadeInView>
-          }
+          renderItem={({item}) => this.renderRow(item)}
               ListFooterComponent={this.renderFooter}
               onEndReachedThreshold={50}
               removeClippedSubviews={false}

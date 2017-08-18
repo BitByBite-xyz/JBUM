@@ -65,7 +65,6 @@ PostsSchema = new SimpleSchema({
      label: "Post's likes",
      optional: false
  },
-<<<<<<< HEAD
  isArchived: {
    type: Boolean,
    label: "Indicates if post is archived",
@@ -76,10 +75,7 @@ PostsSchema = new SimpleSchema({
    }
 
  },
- "created": {
-=======
  created: {
->>>>>>> master
    type: Date,
    label: "Date Comment Added to System",
    autoValue: function() {

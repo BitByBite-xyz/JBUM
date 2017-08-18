@@ -88,47 +88,35 @@ Meteor.methods({
     });
   },
   'Posts.archive' (postId) {
-    if (!Meteor.userId() || !Posts.findOne(postId)) {
+    if (!Meteor.userId() || !Posts.findOne(postId) || Posts.findOne(postId).user_id !== Meteor.userId()) {
       throw new Meteor.Error('not-authorized');
     }
-
+    const isArchived = Posts.findOne(postId).isArchived;
     Posts.update({ _id: postId }, {
       $set: {
-        isArchived: true,
+        isArchived: !isArchived,
       },
     });
   },
-  'Posts.unflag' (postId) {
+  'Posts.report' (postId) {
     if (!Meteor.userId() || !Posts.findOne(postId)) {
       throw new Meteor.Error('not-authorized');
     }
     const post = Posts.findOne(postId);
 
-    if(!post.post_flags.includes(Meteor.userId())){
-      throw new Meteor.Error('user never flagged the post!');
+    if (_.contains(post.post_flags, Meteor.userId())) {
+      Posts.update({ _id: postId }, {
+        $pop: {
+          post_flags: Meteor.userId(),
+        },
+      });
     }
-
-    Posts.update({ _id: postId }, {
-      $pop: {
-        post_flags: Meteor.userId(),
-      },
-    });
-  },
-  'Posts.flag' (postId) {
-    if (!Meteor.userId() || !Posts.findOne(postId)) {
-      throw new Meteor.Error('not-authorized');
+    else {
+      Posts.update({ _id: postId }, {
+        $push: {
+          post_flags: Meteor.userId(),
+        },
+      });
     }
-
-    const post = Posts.findOne(postId);
-
-    if(post.post_flags.includes(Meteor.userId())){
-      throw new Meteor.Error('user already flagged post!');
-    }
-
-    Posts.update({ _id: postId }, {
-      $push: {
-        post_flags: Meteor.userId(),
-      },
-    });
   }
 });
