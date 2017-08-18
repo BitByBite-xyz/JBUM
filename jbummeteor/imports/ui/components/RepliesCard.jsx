@@ -8,7 +8,7 @@ const RepliesCard = () => (
   <div className="col-sm-4 row-no-padding">
     <Paper zDepth={1}>
       <div style={{display: 'flex', flexDirection: 'row'}}>
-        <div style={{height: '100', width: 5, backgroundColor: 'green'}}/>
+        <div style={{height: 100, width: 5, backgroundColor: 'green'}}/>
         <div style={{marginLeft: '15%', marginTop: '5.5%'}}>
           <p style={{fontSize: 32}}>12,532 <br />
           <p style={{fontSize: 17, color: 'gray'}}>Replies</p></p>
