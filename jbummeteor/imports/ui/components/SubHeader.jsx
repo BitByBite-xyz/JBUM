@@ -16,31 +16,31 @@ const SubHeader = () => (
   <Paper zDepth={2}>
   <div style={{height: 600}}>
     <List>
-      <Link to="/home">
+      <Link to="/home" style={{ textDecoration: 'none' }}>
         <ListItem
           leftAvatar={<Avatar icon={<SettingsCell />} />}
           primaryText="Dashboard"
         />
       </Link>
-      <Link to="/home/users">
+      <Link to="/home/users" style={{ textDecoration: 'none' }}>
         <ListItem
           leftAvatar={<Avatar icon={<FileFolder />} />}
           primaryText="Users"
         />
       </Link>
-      <Link to="/home/survey">
+      <Link to="/home/survey" style={{ textDecoration: 'none' }}>
         <ListItem
           leftAvatar={<Avatar icon={<FileFolder />} />}
           primaryText="Survey"
         />
       </Link>
-      <Link to="/home/account">
+      <Link to="/home/account" style={{ textDecoration: 'none' }}>
         <ListItem
           leftAvatar={<Avatar icon={<FileFolder />} />}
           primaryText="Account"
         />
       </Link>
-      <Link to="/home/settings">
+      <Link to="/home/settings" style={{ textDecoration: 'none' }}>
         <ListItem
           leftAvatar={<Avatar icon={<FileFolder />} />}
           primaryText="Settings"
