@@ -28,18 +28,18 @@ const SubHeader = () => (
           primaryText="Users"
         />
       </Link>
-      <ListItem
-        leftAvatar={<Avatar icon={<FileFolder />} />}
-        primaryText="Survey"
-      />
-      <ListItem
-        leftAvatar={<Avatar icon={<FileFolder />} />}
-        primaryText="Dashboard"
-      />
-      <ListItem
-        leftAvatar={<Avatar icon={<FileFolder />} />}
-        primaryText="Account"
-      />
+      <Link to="/home/survey">
+        <ListItem
+          leftAvatar={<Avatar icon={<FileFolder />} />}
+          primaryText="Survey"
+        />
+      </Link>
+      <Link to="/home/account">
+        <ListItem
+          leftAvatar={<Avatar icon={<FileFolder />} />}
+          primaryText="Account"
+        />
+      </Link>
       <Link to="/home/settings">
         <ListItem
           leftAvatar={<Avatar icon={<FileFolder />} />}

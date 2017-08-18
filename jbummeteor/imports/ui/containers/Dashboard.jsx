@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import UsersCard from '../components/UsersCard';
 import PostsCard from '../components/PostsCard';
 import RepliesCard from '../components/RepliesCard';
+import SendPost from '../components/SendPost';
 
 const Dashboard = () => {
 
@@ -16,6 +17,7 @@ const Dashboard = () => {
       <UsersCard />
       <PostsCard />
       <RepliesCard />
+      <SendPost />
     </div>
   )
 }

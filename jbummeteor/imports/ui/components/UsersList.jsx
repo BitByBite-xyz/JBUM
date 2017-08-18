@@ -21,10 +21,10 @@ const UsersList = () => (
     <Table>
       <TableHeader>
         <TableRow>
-          <TableHeaderColumn>ID</TableHeaderColumn>
-          <TableHeaderColumn>Name</TableHeaderColumn>
-          <TableHeaderColumn>Posts</TableHeaderColumn>
-          <TableHeaderColumn>Replies</TableHeaderColumn>
+          <TableHeaderColumn style={{fontSize: 16}}>ID</TableHeaderColumn>
+          <TableHeaderColumn style={{fontSize: 16}}>Name</TableHeaderColumn>
+          <TableHeaderColumn style={{fontSize: 16}}>Posts</TableHeaderColumn>
+          <TableHeaderColumn style={{fontSize: 16}}>Replies</TableHeaderColumn>
         </TableRow>
       </TableHeader>
       <TableBody>
