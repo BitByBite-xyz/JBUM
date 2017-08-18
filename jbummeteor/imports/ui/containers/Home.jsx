@@ -11,6 +11,9 @@ import {blue500, yellow600} from 'material-ui/styles/colors';
 import SettingsCell from 'material-ui/svg-icons/action/settings-cell';
 import EditorInsertChart from 'material-ui/svg-icons/editor/insert-chart';
 import Paper from 'material-ui/Paper';
+import { Switch, Route } from 'react-router-dom'
+import Test from './test'
+import Testd from './test-copy'
 
 import { Link } from 'react-router-dom';
 
@@ -30,10 +33,12 @@ const Home = () => {
                               leftAvatar={<Avatar icon={<SettingsCell />} />}
                               primaryText="Dashboard"
                             />
+                            <Link to="/home/hello">
                             <ListItem
                               leftAvatar={<Avatar icon={<FileFolder />} />}
                               primaryText="Users"
                             />
+                          </Link>
                             <ListItem
                               leftAvatar={<Avatar icon={<FileFolder />} />}
                               primaryText="Survey"
@@ -56,6 +61,10 @@ const Home = () => {
                     </div>
                     <div className="col-sm-9 corrected-row-padding">
                       {/* This is where all of screens go to populate the dashboard*/}
+                      <Switch>
+                        <Route exact path='/home' component={Test}/>
+                        <Route path='/home/hello' component={Testd}/>
+                      </Switch>
                     </div>
                   </div>
                 </MuiThemeProvider>
