@@ -12,10 +12,7 @@ import Dashboard from './Dashboard';
 import SubHeader from '../components/SubHeader';
 import Header from '../components/Header';
 
-
-
 const Home = () => {
-
   return (
         <div className="row row-no-padding">
               <MuiThemeProvider>
