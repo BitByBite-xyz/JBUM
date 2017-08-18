@@ -5,7 +5,7 @@ import {
   ScrollView
 } from 'react-native';
 import React, { Component } from 'react';
-import {Button } from 'react-native-elements';
+import { Button } from 'react-native-elements';
 
 import { LayoutAnimation } from 'react-native';
 

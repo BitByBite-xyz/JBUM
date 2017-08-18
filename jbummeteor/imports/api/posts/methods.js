@@ -87,16 +87,36 @@ Meteor.methods({
       },
     });
   },
-  'Posts.flag' (postId) {
+  'Posts.archive' (postId) {
+    if (!Meteor.userId() || !Posts.findOne(postId) || Posts.findOne(postId).user_id !== Meteor.userId()) {
+      throw new Meteor.Error('not-authorized');
+    }
+    const isArchived = Posts.findOne(postId).isArchived;
+    Posts.update({ _id: postId }, {
+      $set: {
+        isArchived: !isArchived,
+      },
+    });
+  },
+  'Posts.report' (postId) {
     if (!Meteor.userId() || !Posts.findOne(postId)) {
       throw new Meteor.Error('not-authorized');
     }
     const post = Posts.findOne(postId);
 
-    Posts.update({ _id: postId }, {
-      $set: {
-        isFlagged: true,
-      },
-    });
+    if (_.contains(post.post_flags, Meteor.userId())) {
+      Posts.update({ _id: postId }, {
+        $pop: {
+          post_flags: Meteor.userId(),
+        },
+      });
+    }
+    else {
+      Posts.update({ _id: postId }, {
+        $push: {
+          post_flags: Meteor.userId(),
+        },
+      });
+    }
   }
 });
