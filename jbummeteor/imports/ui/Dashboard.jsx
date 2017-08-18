@@ -14,20 +14,31 @@ import UsersCard from './UsersCard';
 
   render() {
     return (
-      <MuiThemeProvider>
-        <div style={{backgroundColor: '#EFEFEF'}}>
-            <MuiThemeProvider>
-              <AppBar
-                title="JBUM Admin"
-                iconClassNameRight="muidocs-icon-navigation-expand-more"
-              />
-            </MuiThemeProvider>
-              <div style={{backgroundColor: 'white', width: '22%'}}>
-                <SubHeader />
+    <div className="row row-no-padding">
+        <MuiThemeProvider>
+          <div className="col-sm-12 row-no-padding" style={{backgroundColor: '#EFEFEF'}}>
+          <AppBar
+            title="JBUM Admin"
+            // iconClassNameRight="muidocs-icon-navigation-expand-more"
+          />
+            <div className="col-sm-3 row-no-padding">
+              <SubHeader />
+            </div>
+            <div className="col-sm-9 corrected-row-padding">
+              {/* This is where all of screens go to populate the dashboard*/}
+              <div className="col-sm-4 row-no-padding">
                 <UsersCard />
               </div>
-        </div>
-      </MuiThemeProvider>
+              <div className="col-sm-4 row-no-padding">
+                <UsersCard />
+              </div>
+              <div className="col-sm-4 row-no-padding">
+                <UsersCard />
+              </div>
+            </div>
+          </div>
+        </MuiThemeProvider>
+    </div>
     )
   }
 }

@@ -126,3 +126,20 @@ header .hide-completed {
         padding-bottom: 5px;
     }
 }
+
+svg{
+  display: none !important;
+}
+.container-fluid {
+  padding: 0px;
+}
+.row-no-padding > [class*="col-"] {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+.corrected-row-padding > [class*="col-"] {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
