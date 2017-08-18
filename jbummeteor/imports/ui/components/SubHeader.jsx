@@ -4,13 +4,15 @@ import ActionInfo from 'material-ui/svg-icons/action/info';
 import Divider from 'material-ui/Divider';
 import Subheader from 'material-ui/Subheader';
 import Avatar from 'material-ui/Avatar';
-import FileFolder from 'material-ui/svg-icons/file/folder';
-import ActionAssignment from 'material-ui/svg-icons/action/assignment';
 import {blue500, yellow600} from 'material-ui/styles/colors';
-import SettingsCell from 'material-ui/svg-icons/action/settings-cell';
-import EditorInsertChart from 'material-ui/svg-icons/editor/insert-chart';
 import Paper from 'material-ui/Paper';
 import { Link } from 'react-router-dom';
+//Icon Imports
+import MdSettings from 'react-icons/lib/md/settings';
+import MdHome from 'react-icons/lib/md/home';
+import MdSupervisorAccount from 'react-icons/lib/md/supervisor-account';
+import MdQuestionAnswer from 'react-icons/lib/md/question-answer';
+import MdAccountCircle from 'react-icons/lib/md/account-circle';
 
 const SubHeader = () => (
   <Paper zDepth={2}>
@@ -18,31 +20,31 @@ const SubHeader = () => (
     <List>
       <Link to="/home" style={{ textDecoration: 'none' }}>
         <ListItem
-          leftAvatar={<Avatar icon={<SettingsCell />} />}
+          leftAvatar={<Avatar icon={<MdHome />} />}
           primaryText="Dashboard"
         />
       </Link>
       <Link to="/home/users" style={{ textDecoration: 'none' }}>
         <ListItem
-          leftAvatar={<Avatar icon={<FileFolder />} />}
+          leftAvatar={<Avatar icon={<MdSupervisorAccount />} />}
           primaryText="Users"
         />
       </Link>
       <Link to="/home/survey" style={{ textDecoration: 'none' }}>
         <ListItem
-          leftAvatar={<Avatar icon={<FileFolder />} />}
+          leftAvatar={<Avatar icon={<MdQuestionAnswer />} />}
           primaryText="Survey"
         />
       </Link>
       <Link to="/home/account" style={{ textDecoration: 'none' }}>
         <ListItem
-          leftAvatar={<Avatar icon={<FileFolder />} />}
+          leftAvatar={<Avatar icon={<MdAccountCircle />} />}
           primaryText="Account"
         />
       </Link>
       <Link to="/home/settings" style={{ textDecoration: 'none' }}>
         <ListItem
-          leftAvatar={<Avatar icon={<FileFolder />} />}
+          leftAvatar={<Avatar icon={<MdSettings />} />}
           primaryText="Settings"
         />
       </Link>
