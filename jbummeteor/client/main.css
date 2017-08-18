@@ -127,9 +127,6 @@ header .hide-completed {
     }
 }
 
-svg{
-  display: none !important;
-}
 .container-fluid {
   padding: 0px;
 }
@@ -144,6 +141,10 @@ svg{
     padding-bottom: 10px !important;
 }
 .dashboardCardNumber {
+  padding-bottom: 0px !important;
+  margin-bottom: 0px !important;
+}
+.no-padding-header {
   padding-bottom: 0px !important;
   margin-bottom: 0px !important;
 }
