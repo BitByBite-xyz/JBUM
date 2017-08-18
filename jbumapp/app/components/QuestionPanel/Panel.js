@@ -29,7 +29,6 @@ class Panel extends React.PureComponent {
       is_visible: false,
       expanded: false,
       animation: new Animated.Value(),
-      flagged: false,
     };
 
     this.setMaxHeight = this.setMaxHeight.bind(this);
