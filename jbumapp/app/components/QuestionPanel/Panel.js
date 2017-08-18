@@ -6,6 +6,7 @@ import {
   Image,
   TouchableOpacity,
   Animated,
+  Alert
 } from 'react-native';
 import moment from 'moment';
 import { Icon, Divider } from 'react-native-elements'
@@ -39,6 +40,25 @@ class Panel extends React.PureComponent {
   onMorePress() {
     const { navigation } = this.props;
 
+  }
+
+  onReportPress = () => {
+    const { postContent } = this.props;
+    console.log("jejife");
+
+    Meteor.call('Posts.report', postContent._id, (err) => {
+      if (err) {
+        console.log("Post err"+err.details);
+        Alert.alert(
+          'Oops! Screenshot this and send to support!',
+          'Server error: \n\n'+err.details
+        );
+        return;
+      } else {
+        console.log("Post report handled");
+        this._hideModal();
+      }
+    });
   }
 
   onLikePress() {
@@ -228,7 +248,7 @@ class Panel extends React.PureComponent {
 
               <View style={{flexDirection: 'row', justifyContent: 'center', marginTop: '5%'}}>
                 <View style={{marginRight: '16%'}}>
-                  <TouchableOpacity>
+                  <TouchableOpacity onPress={() => this.onReportPress()}>
                   <Icon
                     name='report-problem'
                     color={'#FF5848'}
