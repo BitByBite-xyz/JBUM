@@ -15,7 +15,7 @@ CommentsSchema = new SimpleSchema({
     type: String,
     label: "body of this comment"
   },
-  created: {
+  createdAt: {
     type: Date,
     label: "Date Comment Added to System",
     autoValue: function() {
@@ -75,7 +75,7 @@ PostsSchema = new SimpleSchema({
    }
 
  },
- created: {
+ createdAt: {
    type: Date,
    label: "Date Comment Added to System",
    autoValue: function() {

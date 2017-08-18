@@ -22,6 +22,8 @@ import Loading from '../../components/Loading';
 import AskHeader from '../../components/AskHeader';
 import Notifications from '../../components/Notifications';
 
+import {queryConstructor} from '../../lib/queryHelpers';
+
 import styles from './styles';
 
 class Home extends Component {
@@ -159,10 +161,18 @@ class Home extends Component {
 };
 
 export default createContainer(() => {
+
+
+  var terms = {
+    viewName: 'mostPopularPosts',
+  }
   const handle = Meteor.subscribe('Posts.pub.list');
   const loading = !handle.ready();
 
+  var parameters = queryConstructor(terms);
+  console.log(parameters);
+
   return {
-    posts: Meteor.collection('posts').find({},{ sort: { created: -1 } }),
+    posts: Meteor.collection('posts').find(parameters.find, parameters.sort),
   };
 }, Home);
