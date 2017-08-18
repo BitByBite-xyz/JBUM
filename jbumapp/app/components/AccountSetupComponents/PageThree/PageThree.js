@@ -67,9 +67,14 @@ export default class PageThree extends Component {
         pickerTitleText: 'Select Siblings',
         pickerData: sibOptions,
         selectedValue: [],
-        onPickerConfirm: sibOptions => {
+        onPickerConfirm: sibOption => {
           this.setState(previousState => {
-            return { selectedSiblings: sibOptions, showSiblings: true };
+            console.log(sibOption === ['Only child']);
+            if (sibOption === ['Only child']) {
+              return {selectedSiblings: sibOption, showSiblings: true,
+                      selectedSibOrder: 'No Siblings', showSibOrder: true }
+            }
+            return { selectedSiblings: sibOption, showSiblings: true };
           });
           this.validateData();
         },
