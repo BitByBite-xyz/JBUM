@@ -1,28 +1,26 @@
 import React from 'react';
 import GenderSurveyChart from '../components/GenderSurveyChart';
-
+import { createContainer } from 'meteor/react-meteor-data';
+import { Posts } from '../../api/posts/posts';
 import FlaggedPost from '../components/FlaggedPost';
 
-const Flagged = () => (
+const Flagged = (props) => {
+  const { flaggedPosts } = props;
+  console.log(flaggedPosts);
+
+  return (
   <div>
     <FlaggedPost
-      postTitle={'Test post title!'}
-      postQuestion={'asjdaslkdjsa ldjaasdassdjjaskasdksja dlkasjd lkasdja s ldksajdlksajd lsakdjsa kldjsa dsajdlsadj askdjas ldasjd lasdjasldjaslkdjasdasd asdsa dasd sadasd sdsa dasdsdlksajd lkasdjas djasd ajskdjasdas jdkasjd asdj asdjas dasjd asjd askdjasd'}
-    />
-    <FlaggedPost
-      postTitle={'Another post title!'}
-      postQuestion={'asjdaslkdjsa ldjasdlksajd lkasdjas djasd ajskdjasdas jdkasjd asdj asdjas dasjd asjd askdjasd'}
-    />
-    <FlaggedPost
-      postTitle={'More post titles!'}
-      postQuestion={'asjdaslkdjsa ldjasdlksajd lkasdjas djasd ajskdjasdas jdkasjd asdj asdjas dasjd asjd askdjasd'}
-    />
-    <FlaggedPost
-      postTitle={'MORE post titlesss!'}
-      postQuestion={'sadasdasd ldjasdlksajd lkasdjas djasd heheh jdkasjd asdj asdjas dasjd asjd askdjasd'}
+      postTitle={'flaggedPosts[0].post_title.toString()'}
+      postQuestion={'flaggedPosts[0].post_body.toString()'}
     />
   </div>
-)
+);}
 
 
-export default Flagged;
+export default createContainer(() => {
+  Meteor.subscribe('Posts.pub.list');
+  return {
+    flaggedPosts: Posts.find({}).fetch(),
+  }
+}, Flagged);
