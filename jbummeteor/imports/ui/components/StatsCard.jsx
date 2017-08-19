@@ -2,6 +2,8 @@ import React from 'react';
 import Paper from 'material-ui/Paper';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
+import { createContainer } from 'meteor/react-meteor-data';
+import { Posts } from '../../api/posts/posts';
 
 const StatsCard = (props) => {
   const { cardTitle, cardDiscriptor, cardStyle} = props;
@@ -20,4 +22,9 @@ const StatsCard = (props) => {
         </div>
       );}
 
-export default StatsCard;
+export default createContainer(() => {
+  Meteor.subscribe("Posts.pub.list");
+  return {
+    cardTitle: Posts.find({}).count()
+  }
+}, StatsCard);
