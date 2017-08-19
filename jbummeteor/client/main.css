@@ -148,3 +148,7 @@ header .hide-completed {
   padding-bottom: 0px !important;
   margin-bottom: 0px !important;
 }
+.flaggedPostContent {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
