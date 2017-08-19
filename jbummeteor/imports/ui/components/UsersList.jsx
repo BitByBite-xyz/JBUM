@@ -47,7 +47,7 @@ class UsersList extends React.Component {
             <div className="col-sm-12 row-no-padding">
               <Paper zDepth={2}>
               <Table>
-                <TableHeader>
+                <TableHeader displaySelectAll={false}>
                   <TableRow>
                     <TableHeaderColumn style={{fontSize: 16}}>ID</TableHeaderColumn>
                     <TableHeaderColumn style={{fontSize: 16}}>Name</TableHeaderColumn>

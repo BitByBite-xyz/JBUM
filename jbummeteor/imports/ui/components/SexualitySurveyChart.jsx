@@ -10,7 +10,7 @@ const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
 const RADIAN = Math.PI / 180;
 
-const GenderPieChart = () => (
+const SexualityPieChart = () => (
   <PieChart width={195} height={195} onMouseEnter={this.onPieEnter}>
       <Pie
         data={data}
@@ -29,16 +29,16 @@ const GenderPieChart = () => (
     </PieChart>
 )
 
-const GenderSurveyChart = () => (
-  <div className="col-sm-6" style={{marginTop: 10}}>
+const SexualitySurveyChart = () => (
+  <div className="col-sm-6" style={{marginTop: 20}}>
     <Paper zDepth={1}>
       <div style={{display: 'flex', flexDirection: 'row'}}>
-        <div style={{height: 266, width: 5, backgroundColor: 'orange'}}/>
-        <center style={{marginLeft: '25%'}}><h4 style={{marginTop: 0, paddingTop: 20}}>Gender Survey</h4>
-        <GenderPieChart className="graph-container" /></center>
+        <div style={{height: 266, width: 5, backgroundColor: 'green'}}/>
+        <center style={{marginLeft: '25%'}}><h4 style={{marginTop: 0, paddingTop: 20}}>Race Survey</h4>
+        <SexualityPieChart className="graph-container" /></center>
       </div>
     </Paper>
   </div>
 )
 
-export default GenderSurveyChart;
+export default SexualitySurveyChart;
