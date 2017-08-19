@@ -5,12 +5,16 @@ import { Switch, Route } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 //Screen components
-
+import GenderSurveyChart from '../components/GenderSurveyChart';
+import RaceSurveyChart from '../components/RaceSurveyChart';
+import SexualitySurveyChart from '../components/SexualitySurveyChart';
 const Survey = () => {
 
   return (
     <div>
-      <h1>Survey</h1>
+      <GenderSurveyChart />
+      <RaceSurveyChart />
+      <SexualitySurveyChart />
     </div>
   )
 }

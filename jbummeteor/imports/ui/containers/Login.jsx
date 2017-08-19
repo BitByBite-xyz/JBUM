@@ -7,7 +7,6 @@ import { createContainer } from 'meteor/react-meteor-data';
 import { Link } from 'react-router-dom';
 import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
-import Jquery from 'jquery';
 
 const style = {
   height: 350,

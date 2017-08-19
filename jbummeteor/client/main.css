@@ -127,9 +127,6 @@ header .hide-completed {
     }
 }
 
-svg{
-  display: none !important;
-}
 .container-fluid {
   padding: 0px;
 }
@@ -142,4 +139,19 @@ svg{
     padding-right: 10px !important;
     padding-top: 10px !important;
     padding-bottom: 10px !important;
+}
+.dashboardCardNumber {
+  padding-bottom: 0px !important;
+  margin-bottom: 0px !important;
+}
+.no-padding-header {
+  padding-bottom: 0px !important;
+  margin-bottom: 0px !important;
+}
+.flaggedPostContent {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.flaggedPostContainer {
+  margin-right: 0px !important;
 }

@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import Settings from './Settings';
 import Users from './Users';
 import Survey from './Survey';
+import Flagged from './Flagged';
 import Account from './Account';
 import Dashboard from './Dashboard';
 import SubHeader from '../components/SubHeader';
@@ -27,6 +28,7 @@ const Home = () => {
                       <Route exact path='/home' component={Dashboard}/>
                       <Route path='/home/users' component={Users}/>
                       <Route path='/home/survey' component={Survey}/>
+                      <Route path='/home/flagged' component={Flagged}/>
                       <Route path='/home/account' component={Account}/>
                       <Route path='/home/settings' component={Settings}/>
                     </Switch>
