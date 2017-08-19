@@ -11,8 +11,7 @@ const Flagged = (props) => {
     if (true) {
       return flaggedPosts.map((post) => (
                 <FlaggedPost
-                  postTitle={post.post_title.toString()}
-                  postQuestion={post.post_body.toString()}
+                  postContent={post}
                 />
               ));
     }
