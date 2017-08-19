@@ -29,7 +29,7 @@ const Flagged = (props) => {
 export default createContainer(() => {
   const handle = Meteor.subscribe('Posts.pub.list');
   return {
-    flaggedPosts: Posts.find({isFlagged: true}).fetch(),
+    flaggedPosts: Posts.find( { $where: "this.post_flags.length > 0" }).fetch(),
     postsReady: handle.ready()
   }
 }, Flagged);

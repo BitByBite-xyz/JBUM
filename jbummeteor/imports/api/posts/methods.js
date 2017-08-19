@@ -29,10 +29,12 @@ Meteor.methods({
     check(postId, String);
 
     const post = Posts.findOne(postId);
-    if (post.user_id !== Meteor.userId()) {
+
+    console.log("deleted this: " + post.toString());
+    /*if (post.user_id !== Meteor.userId()) {
       // If the task is private, make sure only the owner can delete it
       throw new Meteor.Error('not-authorized');
-    }
+    }*/
 
     Posts.remove(postId);
   },
@@ -124,10 +126,11 @@ Meteor.methods({
       throw new Meteor.Error('not-authorized');
     }*/
     const post = Posts.findOne(postId);
+    const flaggedStuff = [];
 
     Posts.update({ _id: postId }, {
-      $push: {
-        post_flags: [],
+      $set: {
+        post_flags: flaggedStuff,
       },
     });
   }

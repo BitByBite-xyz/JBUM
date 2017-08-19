@@ -5,8 +5,8 @@ import FlatButton from 'material-ui/FlatButton';
 
 const FlaggedPost = (props) => {
   const { postContent } = props;
-  unFlagPost = () => {
-    Meteor.call('Posts.unflag', postContent._id, (err) => {
+  unFlagPost = (pc) => {
+    Meteor.call('Posts.unflag', pc._id.toString(), (err) => {
       if (err) {
         console.log("Post err"+err.details);
         return;
@@ -15,10 +15,10 @@ const FlaggedPost = (props) => {
         }
       });
   }
-  deletePost = () => {
-    Meteor.call('Posts.delete', postContent._id, (err) => {
+  deletePost = (pc) => {
+    Meteor.call('Posts.remove', pc._id.toString(), (err) => {
       if (err) {
-        console.log("Post err"+err.details);
+        console.log("Post err "+err.details);
         return;
       } else {
         console.log("Post has been unflagged");
@@ -33,7 +33,7 @@ const FlaggedPost = (props) => {
           <Divider style={{width: '95%', marginBottom: 10, marginLeft: '2.5%'}}/>
           <p>{postContent.post_body}</p>
         </div>
-          <center><FlatButton style={{marginRight: 10}} primary={true} label="Unflag" onClick={unFlagPost()} /><FlatButton secondary={true} label="Delete Post" onClick={unFlagPost()} /></center>
+          <center><FlatButton style={{marginRight: 10}} primary={true} label="Unflag" onClick={() => unFlagPost(postContent)} /><FlatButton secondary={true} label="Delete Post" onClick={() => deletePost(postContent)} /></center>
       </Paper>
     </div>
 );}
