@@ -5,22 +5,32 @@ import { Posts } from '../../api/posts/posts';
 import FlaggedPost from '../components/FlaggedPost';
 
 const Flagged = (props) => {
-  const { flaggedPosts } = props;
-  console.log(flaggedPosts);
+  const { flaggedPosts, postsReady } = props;
+  console.log(postsReady);
+  renderFlagPosts = () => {
+    if (true) {
+      return flaggedPosts.map((post) => (
+                <FlaggedPost
+                  postTitle={post.post_title.toString()}
+                  postQuestion={post.post_body.toString()}
+                />
+              ));
+    }
+
+  }
 
   return (
   <div>
-    <FlaggedPost
-      postTitle={'flaggedPosts[0].post_title.toString()'}
-      postQuestion={'flaggedPosts[0].post_body.toString()'}
-    />
+    {postsReady ?
+      this.renderFlagPosts(): null}
   </div>
 );}
 
 
 export default createContainer(() => {
-  Meteor.subscribe('Posts.pub.list');
+  const handle = Meteor.subscribe('Posts.pub.list');
   return {
-    flaggedPosts: Posts.find({}).fetch(),
+    flaggedPosts: Posts.find({isFlagged: true}).fetch(),
+    postsReady: handle.ready()
   }
 }, Flagged);
