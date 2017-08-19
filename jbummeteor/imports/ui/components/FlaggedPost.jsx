@@ -7,7 +7,7 @@ const FlaggedPost = (props) => {
   const { postTitle, postQuestion } = props;
 
   return (
-    <div className="col-sm-4" style={{marginTop: 10}}>
+    <div className="col-sm-4 flaggedPostContainer" style={{marginBottom: 15}}>
       <Paper zDepth={1} style={{borderRadius: 5, paddingLeft: 20, paddingRight: 20, paddingTop: 10, paddingBottom: 10}}>
         <div className="flaggedPostContent" style={{ height: 150, textOverflow: 'elipsis'}}>
           <p style={{fontSize: 18}}>{postTitle}</p>
