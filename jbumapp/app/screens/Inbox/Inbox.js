@@ -15,6 +15,8 @@ import Swipeout from 'react-native-swipeout';
 import QuestionPanel from '../../components/QuestionPanel';
 import Loading from '../../components/Loading';
 
+import {queryConstructor} from '../../lib/queryHelpers';
+
 class Inbox extends Component {
   constructor(props) {
     super(props);
@@ -108,8 +110,14 @@ const styles = StyleSheet.create({
 export default createContainer(() => {
   const handle = Meteor.subscribe('Posts.pub.list');
 
+  var terms = {
+    viewName: 'inboxPosts',
+    limit: 50
+  }
+  var parameters = queryConstructor(terms);
+
   return {
-    user_posts: Meteor.collection('posts').find({ user_id: Meteor.userId(), post_comments: { $gt: 0 }}, { sort: { created: -1 } }),
+    user_posts: Meteor.collection('posts').find(parameters.find, parameters.sort),
     user_postsReady: handle.ready(),
   };
 }, Inbox);

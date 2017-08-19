@@ -34,7 +34,7 @@ Meteor.methods({
       throw new Meteor.Error('not-authorized');
     }
 
-    Post.remove(postId);
+    Posts.remove(postId);
   },
   'Posts.like' (postId) {
     if (!Meteor.userId() || !Posts.findOne(postId)) {
@@ -82,7 +82,7 @@ Meteor.methods({
           comment_id: Random.id(),
           user_id: Meteor.userId(),
           comment_body: body,
-          created: new Date,
+          createdAt: new Date,
         }
       },
     });
@@ -118,5 +118,18 @@ Meteor.methods({
         },
       });
     }
+  },
+  'Posts.unflag' (postId) {
+    /*if (!Meteor.userId() || !Posts.findOne(postId)) {
+      throw new Meteor.Error('not-authorized');
+    }*/
+    const post = Posts.findOne(postId);
+
+    Posts.update({ _id: postId }, {
+      $push: {
+        post_flags: [],
+      },
+    });
   }
+
 });

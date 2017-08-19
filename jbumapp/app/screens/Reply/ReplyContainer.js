@@ -23,6 +23,10 @@ class ReplyContainer extends Component {
     Meteor.call('Posts.reply', postContent._id, body.body, (err) => {
       if (err) {
         console.log("reply err "+err.details);
+        Alert.alert(
+          'Oops! Screenshot this and send to support!',
+          'Server error: \n\n'+err.details
+        );
         return;
       } else {
         console.log("reply added!");

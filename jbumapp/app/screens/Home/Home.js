@@ -164,7 +164,8 @@ export default createContainer(() => {
 
 
   var terms = {
-    viewName: 'mostPopularPosts',
+    viewName: 'homePosts',
+    limit:50
   }
   const handle = Meteor.subscribe('Posts.pub.list');
   const loading = !handle.ready();

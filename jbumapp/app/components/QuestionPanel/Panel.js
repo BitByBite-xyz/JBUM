@@ -30,6 +30,7 @@ class Panel extends React.PureComponent {
       is_visible: false,
       expanded: false,
       animation: new Animated.Value(),
+      isUsersPost: postContent.user_id === Meteor.userId()
     };
 
     this.setMaxHeight = this.setMaxHeight.bind(this);
@@ -56,6 +57,25 @@ class Panel extends React.PureComponent {
         return;
       } else {
         console.log("Post report handled");
+        this._hideModal();
+      }
+    });
+  }
+
+  onDeletePress = () => {
+    const { postContent } = this.props;
+    console.log("jejife");
+
+    Meteor.call('Posts.remove', postContent._id, (err) => {
+      if (err) {
+        console.log("Post err"+err.details);
+        Alert.alert(
+          'Oops! Screenshot this and send to support!',
+          'Server error: \n\n'+err.details
+        );
+        return;
+      } else {
+        console.log("Post delete handled");
         this._hideModal();
       }
     });
@@ -166,7 +186,7 @@ class Panel extends React.PureComponent {
 
   render() {
     const { children, style, header,postContent } = this.props;
-    const { expanded, animation } = this.state;
+    const { expanded, animation, isUsersPost } = this.state;
     let { liked, likes, comments } = this.state;
 
     return (
@@ -191,7 +211,7 @@ class Panel extends React.PureComponent {
                 {postContent.post_body}
               </Text>
               <View style={styles.questionPanelContainer}>
-                <Text style={[styles.timeText, styles.created]}>{' '+moment(postContent.created).fromNow()}</Text>
+                <Text style={[styles.timeText, styles.created]}>{' '+moment(postContent.createdAt).fromNow()}</Text>
               </View>
             </View>
           }
@@ -257,16 +277,20 @@ class Panel extends React.PureComponent {
                   </TouchableOpacity>
                   <Text style={styles.popupSubTitles}>Report</Text>
                 </View>
-                <View>
-                  <TouchableOpacity>
-                  <Icon
-                    name='delete-forever'
-                    color={'gray'}
-                    size={35}
-                  />
-                  </TouchableOpacity>
-                  <Text style={styles.popupSubTitles}>Delete</Text>
-                </View>
+
+                { isUsersPost ?
+                  <View>
+                    <TouchableOpacity onPress={() => this.onDeletePress()}>
+                    <Icon
+                      name='delete-forever'
+                      color={'gray'}
+                      size={35}
+                    />
+                    </TouchableOpacity>
+                    <Text style={styles.popupSubTitles}>Delete</Text>
+                  </View> : null
+                }
+
                 <View style={{marginLeft: '16%'}}>
                   <TouchableOpacity>
                   <Icon
