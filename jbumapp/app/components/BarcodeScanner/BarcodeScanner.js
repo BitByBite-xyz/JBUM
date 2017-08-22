@@ -91,7 +91,7 @@ class BarcodeScanner extends Component {
           aspect={Camera.constants.Aspect.fill}>
           <Button
             iconRight
-            icon={{name: 'code'}}
+            icon={{name: 'crop-free'}}
             onPress={() => this.handleButtonPress()}
             title='Please Scan Barcode' />
         </Camera>
