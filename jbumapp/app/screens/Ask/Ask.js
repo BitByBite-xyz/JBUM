@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, TextInput, Image, TouchableOpacity,Picker,Alert } from 'react-native';
+import { Text, View, TextInput, Image, TouchableOpacity,Picker,Alert,ScrollView } from 'react-native';
 import { Button,CheckBox } from 'react-native-elements'
 
 import Meteor, { createContainer } from 'react-native-meteor';
@@ -9,10 +9,10 @@ import styles from './styles'
 
 const SECTIONS = [
   {
-    title: '🌀 Reciever 🌀',
+    title: ' Reciever ',
   },
   {
-    title: '🔅 Category 🔅',
+    title: ' Category ',
   }
 ];
 
@@ -77,7 +77,10 @@ class Ask extends Component {
       return (
         <View style={styles.content}>
           <CheckBox
-            title='Click Here'
+            style={{backgroundColor: 'white', paddingLeft: 15, paddingTop: 5}}
+            textStyle={{color: '#A4A7A6', fontSize: 16}}
+            checkedColor={'#24BEE4'}
+            title='Student'
             checkedIcon='dot-circle-o'
             uncheckedIcon='circle-o'
             checked={this.state.checked}
@@ -87,7 +90,10 @@ class Ask extends Component {
               });}}
           />
           <CheckBox
-            title='Click Here'
+            style={{backgroundColor: 'white', paddingLeft: 15, paddingTop: 10}}
+            textStyle={{color: '#A4A7A6', fontSize: 16}}
+            checkedColor={'#24BEE4'}
+            title='Adult'
             checkedIcon='dot-circle-o'
             uncheckedIcon='circle-o'
             checked={this.state.checked}
@@ -97,7 +103,10 @@ class Ask extends Component {
               });}}
           />
           <CheckBox
-            title='Click Here'
+            style={{backgroundColor: 'white', paddingLeft: 15, paddingTop: 10, paddingBottom: 8}}
+            textStyle={{color: '#A4A7A6', fontSize: 16}}
+            checkedColor={'#24BEE4'}
+            title='Professional'
             checkedIcon='dot-circle-o'
             uncheckedIcon='circle-o'
             checked={this.state.checked}
@@ -114,7 +123,10 @@ class Ask extends Component {
       return (
         <View style={styles.content}>
           <CheckBox
-            title='Click Here'
+            style={{backgroundColor: 'white', paddingLeft: 15, paddingTop: 5}}
+            textStyle={{color: '#A4A7A6', fontSize: 16}}
+            checkedColor={'#24BEE4'}
+            title='Friends'
             checkedIcon='dot-circle-o'
             uncheckedIcon='circle-o'
             checked={this.state.checked}
@@ -124,7 +136,10 @@ class Ask extends Component {
               });}}
           />
           <CheckBox
-            title='Click Here'
+            style={{backgroundColor: 'white', paddingLeft: 15, paddingTop: 10}}
+            textStyle={{color: '#A4A7A6', fontSize: 16}}
+            checkedColor={'#24BEE4'}
+            title='Family'
             checkedIcon='dot-circle-o'
             uncheckedIcon='circle-o'
             checked={this.state.checked}
@@ -134,7 +149,127 @@ class Ask extends Component {
               });}}
           />
           <CheckBox
-            title='Click Here'
+            style={{backgroundColor: 'white', paddingLeft: 15, paddingTop: 10, paddingBottom: 3}}
+            textStyle={{color: '#A4A7A6', fontSize: 16}}
+            checkedColor={'#24BEE4'}
+            title='Relationships'
+            checkedIcon='dot-circle-o'
+            uncheckedIcon='circle-o'
+            checked={this.state.checked}
+            onPress={() => {
+              this.setState(previousState => {
+                return { checked: !previousState.checked };
+              });}}
+          />
+          <CheckBox
+            style={{backgroundColor: 'white', paddingLeft: 15, paddingTop: 10, paddingBottom: 3}}
+            textStyle={{color: '#A4A7A6', fontSize: 16}}
+            checkedColor={'#24BEE4'}
+            title='Bullying'
+            checkedIcon='dot-circle-o'
+            uncheckedIcon='circle-o'
+            checked={this.state.checked}
+            onPress={() => {
+              this.setState(previousState => {
+                return { checked: !previousState.checked };
+              });}}
+          />
+          <CheckBox
+            style={{backgroundColor: 'white', paddingLeft: 15, paddingTop: 10, paddingBottom: 3}}
+            textStyle={{color: '#A4A7A6', fontSize: 16}}
+            checkedColor={'#24BEE4'}
+            title='Drugs'
+            checkedIcon='dot-circle-o'
+            uncheckedIcon='circle-o'
+            checked={this.state.checked}
+            onPress={() => {
+              this.setState(previousState => {
+                return { checked: !previousState.checked };
+              });}}
+          />
+          <CheckBox
+            style={{backgroundColor: 'white', paddingLeft: 15, paddingTop: 10, paddingBottom: 3}}
+            textStyle={{color: '#A4A7A6', fontSize: 16}}
+            checkedColor={'#24BEE4'}
+            title='Eating Disorder'
+            checkedIcon='dot-circle-o'
+            uncheckedIcon='circle-o'
+            checked={this.state.checked}
+            onPress={() => {
+              this.setState(previousState => {
+                return { checked: !previousState.checked };
+              });}}
+          />
+          <CheckBox
+            style={{backgroundColor: 'white', paddingLeft: 15, paddingTop: 10, paddingBottom: 3}}
+            textStyle={{color: '#A4A7A6', fontSize: 16}}
+            checkedColor={'#24BEE4'}
+            title='Religion'
+            checkedIcon='dot-circle-o'
+            uncheckedIcon='circle-o'
+            checked={this.state.checked}
+            onPress={() => {
+              this.setState(previousState => {
+                return { checked: !previousState.checked };
+              });}}
+          />
+          <CheckBox
+            style={{backgroundColor: 'white', paddingLeft: 15, paddingTop: 10, paddingBottom: 3}}
+            textStyle={{color: '#A4A7A6', fontSize: 16}}
+            checkedColor={'#24BEE4'}
+            title='Discrimination'
+            checkedIcon='dot-circle-o'
+            uncheckedIcon='circle-o'
+            checked={this.state.checked}
+            onPress={() => {
+              this.setState(previousState => {
+                return { checked: !previousState.checked };
+              });}}
+          />
+          <CheckBox
+            style={{backgroundColor: 'white', paddingLeft: 15, paddingTop: 10, paddingBottom: 3}}
+            textStyle={{color: '#A4A7A6', fontSize: 16}}
+            checkedColor={'#24BEE4'}
+            title='Sexuality'
+            checkedIcon='dot-circle-o'
+            uncheckedIcon='circle-o'
+            checked={this.state.checked}
+            onPress={() => {
+              this.setState(previousState => {
+                return { checked: !previousState.checked };
+              });}}
+          />
+          <CheckBox
+            style={{backgroundColor: 'white', paddingLeft: 15, paddingTop: 10, paddingBottom: 3}}
+            textStyle={{color: '#A4A7A6', fontSize: 16}}
+            checkedColor={'#24BEE4'}
+            title='Sickness'
+            checkedIcon='dot-circle-o'
+            uncheckedIcon='circle-o'
+            checked={this.state.checked}
+            onPress={() => {
+              this.setState(previousState => {
+                return { checked: !previousState.checked };
+              });}}
+          />
+          <CheckBox
+            style={{backgroundColor: 'white', paddingLeft: 15, paddingTop: 10, paddingBottom: 3}}
+            textStyle={{color: '#A4A7A6', fontSize: 16}}
+            checkedColor={'#24BEE4'}
+            title='Abuse'
+            checkedIcon='dot-circle-o'
+            uncheckedIcon='circle-o'
+            checked={this.state.checked}
+            onPress={() => {
+              this.setState(previousState => {
+                return { checked: !previousState.checked };
+              });}}
+          />
+          <CheckBox
+            style={{backgroundColor: 'white', paddingLeft: 15, paddingTop: 10, paddingBottom: 3}}
+            textStyle={{color: '#A4A7A6', fontSize: 16}}
+            checkedColor={'#24BEE4'}
+            title='Other'
             checkedIcon='dot-circle-o'
             uncheckedIcon='circle-o'
             checked={this.state.checked}
@@ -160,6 +295,7 @@ class Ask extends Component {
     const body = this.state.body;
 
     return (
+      <ScrollView style={styles.backdrop}>
       <View style={styles.backdrop}>
         <View style={styles.bottomBox}>
           <View style={styles.bottom}>
@@ -190,31 +326,31 @@ class Ask extends Component {
                   />
               </View>
           </View>
-          <View style={{margin:10,backgroundColor:'#F3F3F3',borderRadius: 10,}}>
-
-            <Accordion
-              sections={SECTIONS}
-              renderHeader={this.renderHeader}
-              renderContent={this.renderContent}
-              touchableProps={{activeOpacity:1}}
-            />
+          <View style={{padding: 10, backgroundColor: 'white', borderBottomRightRadius: 10, borderBottomLeftRadius: 10}}>
+            <View style={{backgroundColor:'#F3F3F3', borderRadius: 10}}>
+              <Accordion
+                sections={SECTIONS}
+                renderHeader={this.renderHeader}
+                renderContent={this.renderContent}
+                touchableProps={{activeOpacity:1}}
+              />
             </View>
-
-
+          </View>
 
 
           <Button
             borderRadius={25}
-            containerViewStyle={{marginTop:10}}
+            containerViewStyle={{marginTop:10, paddingBottom: 20}}
             backgroundColor={'white'}
             //disabled={title.length !== 0 && body.length !== 0}
             icon={{name: 'send', color: '#BBB', size: 20}}
             iconRight
             title='Submit Question'
-            textStyle={{color:'#BBB', fontFamily: 'Avenir', fontSize: 18}}
+            textStyle={{color:'#BBB', fontFamily: 'Avenir', fontSize: 22, fontWeight: '500'}}
             onPress={() => this.postButton()}/>
         </View>
       </View>
+    </ScrollView>
     );
   }
 }

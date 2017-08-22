@@ -37,7 +37,8 @@ export default StyleSheet.create({
   },
   bottom: {
       backgroundColor: 'white',
-      borderRadius: 10,
+      borderTopLeftRadius: 10,
+      borderTopRightRadius: 10,
   },
   bottomBox: {
       paddingLeft: 10,
@@ -121,8 +122,10 @@ export default StyleSheet.create({
     backgroundColor: 'white',
   },
   headerText: {
-    borderRadius: 10,
-    fontSize: 30,
-    fontWeight: 'bold',
+    fontSize: 25,
+    paddingBottom: 5,
+    paddingLeft: 10,
+    color: '#B8BAB9',
+    fontWeight: '600',
   }
 });
