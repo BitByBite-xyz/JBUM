@@ -66,7 +66,7 @@ class BarcodeScanner extends Component {
           );
         }
         //Alert.alert('Login data:', 'username: ' + loginData.username+ '\npassword: ' +loginData.password);
-        this.props.navigation.navigate('AccountSetup', { loginData: loginData})
+        this.props.navigation.navigate('AccountSetup', { loginData: loginData })
       });
     }
   }

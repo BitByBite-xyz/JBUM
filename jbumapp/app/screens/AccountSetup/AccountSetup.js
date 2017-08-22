@@ -44,14 +44,15 @@ export default class AccountSetup extends Component {
       loginData: {},
       profileData: {}
     };
-
   }
   componentDidMount() {
     const { navigation } = this.props;
 
+
     this.setState(previousState => {
       return { loginData: navigation.state.params.loginData};
     });
+
   }
 
   onSlideChangeHandle = (index, total) => {
@@ -96,7 +97,7 @@ export default class AccountSetup extends Component {
     this.dropdown.onClose()
   }
 
-  showAlert(item) { //for DropdownAlert
+  showAlert = (item) => { //for DropdownAlert
     if (item.type == 'dismiss') {
       this.dismissAlert();
     } else {
@@ -138,10 +139,17 @@ export default class AccountSetup extends Component {
                   handlePageComplete={this.handlePageComplete}/>
               </View>
               <View style={[styles.slide, { backgroundColor: '#46C87F' }]}>
-                <PasswordPage />
+                <PasswordPage
+                  showAlert={this.showAlert}
+                  previousPass={loginData.password}
+                  handlePageComplete={this.handlePageComplete}
+                  swiper={this.swiper}
+                />
               </View>
               <View style={[styles.slide, { backgroundColor: '#E1A3DC' }]}>
-                <PageFour />
+                <PageFour
+                  navigation={this.props.navigation}
+                />
               </View>
             </Swiper>
             <DropdownAlert
