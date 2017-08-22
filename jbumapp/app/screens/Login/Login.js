@@ -24,123 +24,119 @@ const Login = (props) => {
 
   return (
 
-<Wallpaper>
+        <Wallpaper>
+          <KeyboardAvoidingView
+            style={styles.container}
+            behavior="padding"
+          >
+            <FadeInView
+              duration={700}
+              style={styles.header}
+            >
+              <Text style={styles.text}>
+                    Just Between <B>You </B>and <B>Me</B>
+              </Text>
+            </FadeInView>
 
-  <KeyboardAvoidingView
-    style={styles.container}
-    behavior="padding"
-  >
-      <FadeInView
-        duration={700}
-        style={styles.header}
-      >
+            <FadeInView
+                duration={2000}
+            >
+              <InputWrapper>
+                <GenericTextInput
+                  source={images.usernameImg}
+                  placeholder="Username"
+                  onChangeText={(username) => updateState({ username })}
+                />
+                <GenericTextInput
+                  source={images.passwordImg}
+                  placeholder="Password"
+                  onChangeText={(password) => updateState({ password })}
+                  secureTextEntry
+                  returnKeyType='next'
+                  borderTop
+                  blurOnSubmit={true}
+                />
+                {confirmPasswordVisible ?
+                  <GenericTextInput
+                    placeholder="confirm password"
+                    onChangeText={(confirmPassword) => updateState({ confirmPassword })}
+                    secureTextEntry
+                    returnKeyType='done'
+                    borderTop
+                    blurOnSubmit={true}
+                  />
+                : null}
+              </InputWrapper>
 
-        <Text style={styles.text}>
-              Just Between <B>You </B>and <B>Me</B>
-        </Text>
+            </FadeInView>
 
-      </FadeInView>
+            <View style={styles.error}>
+              <Text style={styles.errorText}>{error}</Text>
+              <KeyboardSpacer />
+            </View>
 
-    <FadeInView
-        duration={2000}
-    >
+            <FadeInView
+              duration={1500}
+              style={styles.buttons}
+            >
+              <View style={styles.buttons}>
+                <Button
+                  title='LOGIN'
+                  icon={{name: 'add-circle-outline'}}
+                  backgroundColor={'transparent'}
 
-      <InputWrapper>
-        <GenericTextInput
-          source={images.usernameImg}
-          placeholder="Username"
-          onChangeText={(username) => updateState({ username })}
-        />
-        <GenericTextInput
-          source={images.passwordImg}
-          placeholder="Password"
-          onChangeText={(password) => updateState({ password })}
-          secureTextEntry
-          returnKeyType='next'
-          borderTop
-          blurOnSubmit={true}
-        />
-        {confirmPasswordVisible ?
-          <GenericTextInput
-            placeholder="confirm password"
-            onChangeText={(confirmPassword) => updateState({ confirmPassword })}
-            secureTextEntry
-            returnKeyType='done'
-            borderTop
-            blurOnSubmit={true}
-          />
-        : null}
-      </InputWrapper>
+                  borderRadius={20}
+                  onPress={signIn}
+                  fontFamily= 'Avenir'
+                  fontSize={15}
+                  fontWeight='500'
+                  iconRight={true}
+                />
+              </View>
 
-    </FadeInView>
+            </FadeInView>
+          </KeyboardAvoidingView>
 
-    <View style={styles.error}>
-      <Text style={styles.errorText}>{error}</Text>
-      <KeyboardSpacer />
-    </View>
+            <FadeInView
+              duration={4000}
+              style={styles.socialMediaButtons}
+            >
+              <View style={styles.buttons}>
 
-    <FadeInView
-      duration={1500}
-      style={styles.buttons}
-    >
-      <View style={styles.buttons}>
-        <Button
-          title='LOGIN'
-          icon={{name: 'add-circle-outline'}}
-          backgroundColor={'transparent'}
+                <SocialIcon
+                  type='twitter'
+                  raised={false}
+                />
+                <SocialIcon
+                  type='facebook'
+                  raised={false}
+                />
+                <SocialIcon
+                  raised={false}
+                  type='instagram'
+                />
 
-          borderRadius={20}
-          onPress={signIn}
-          fontFamily= 'Avenir'
-          fontSize={15}
-          fontWeight='500'
-          iconRight={true}
-        />
-      </View>
+              </View>
+            </FadeInView>
 
-    </FadeInView>
-  </KeyboardAvoidingView>
+            <FadeInView
+              duration={5000}
+              style={styles.buttons}
+            >
 
-    <FadeInView
-      duration={4000}
-      style={styles.socialMediaButtons}
-    >
-      <View style={styles.buttons}>
+              <View style={styles.contactUsContainer}>
+                <Text style={styles.contactUsText}>Don't have us at your school?</Text>
+                <View style={width=2}/>
+                <Text style={styles.contactUsText2} onPress={()=> {
+                  let url = 'http://www.bitbybite.co';
+                  if(Linking.canOpenURL(url)) {
+                    Linking.openURL(url);
+                  }
+                }}> Contact us</Text>
+              </View>
 
-        <SocialIcon
-          type='twitter'
-          raised={false}
-        />
-        <SocialIcon
-          type='facebook'
-          raised={false}
-        />
-        <SocialIcon
-          raised={false}
-          type='instagram'
-        />
-
-      </View>
-    </FadeInView>
-
-    <FadeInView
-      duration={5000}
-      style={styles.buttons}
-    >
-
-      <View style={styles.contactUsContainer}>
-        <Text style={styles.contactUsText}>Don't have us at your school?</Text>
-        <View style={width=2}/>
-        <Text style={styles.contactUsText2} onPress={()=> {
-          let url = 'http://www.bitbybite.co';
-          if(Linking.canOpenURL(url)) {
-            Linking.openURL(url);
-          }
-        }}> Contact us</Text>
-      </View>
-
-    </FadeInView>
-</Wallpaper>
+            </FadeInView>
+        </Wallpaper>
 
   );
 };

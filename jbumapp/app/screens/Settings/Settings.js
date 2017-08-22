@@ -7,7 +7,15 @@ import SettingsList from 'react-native-settings-list';
 //https://github.com/evetstech/react-native-settings-list?files=1#usage
 
 const Settings = (props) => {
-  const { switchValue, signOut, navigation } = props;
+  const { switchValue, signOut, navigation, user } = props;
+  let userId = null;
+  if (user._id) {
+    userId = ''+user._id;
+  }
+  else {
+    userId='';
+  }
+
 
   return (
     <View style={{backgroundColor:'#EFEFF4',flex:1}}>
@@ -29,7 +37,7 @@ const Settings = (props) => {
               <SettingsList.Item
                 titleStyle={{fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
                 title='Account Pin'
-                titleInfo='3245'
+                titleInfo={userId}
                 hasNavArrow={false}
                 onPress={() => Alert.alert('Route To Notifications Page')}
               />

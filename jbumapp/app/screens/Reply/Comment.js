@@ -12,13 +12,8 @@ import images from '../../config/images';
 
 
 export default class Comment extends PureComponent {
-
   constructor(props) {
-
     super(props);
-
-
-
   }
 
   render() {
@@ -36,7 +31,6 @@ export default class Comment extends PureComponent {
       </View>
     );
   }
-
 }
 
 const styles = StyleSheet.create({

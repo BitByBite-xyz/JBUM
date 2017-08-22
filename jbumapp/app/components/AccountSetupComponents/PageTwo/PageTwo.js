@@ -38,14 +38,19 @@ export default class PageTwo extends Component {
   }
   //Ethnicicty
   onPressEthnicity = () => {
+    const selectedEthnicity = this.state;
+
+    const {handleSubmitToMeteor} = this.props;
+
     Picker.init({
         pickerTitleText: 'Select Ethnicicty',
         pickerData: ethOptions,
         selectedValue: [],
-        onPickerConfirm: ethOptions => {
+        onPickerConfirm: data => {
           this.setState(previousState => {
-            return { selectedEthnicity: ethOptions, showEthnicity: true };
+            return { selectedEthnicity: data, showEthnicity: true };
           });
+          handleSubmitToMeteor('Ethnicicty',data);
           this.validateData();
         },
         onPickerCancel: data => {
@@ -53,7 +58,9 @@ export default class PageTwo extends Component {
             Picker.hide();
         },
         onPickerSelect: data => {
-            console.log(data);
+          this.setState(previousState => {
+            return { selectedEthnicity: data, showEthnicity: true };
+          });
         }
     });
     Picker.show();
@@ -61,14 +68,17 @@ export default class PageTwo extends Component {
   //Generation
   onPressGeneration = () => {
     const selectedGeneration = this.state;
+    const {handleSubmitToMeteor} = this.props;
+
     Picker.init({
         pickerTitleText: 'Select Generation',
         pickerData: genOptions,
         selectedValue: [],
-        onPickerConfirm: genOptions => {
+        onPickerConfirm: data => {
           this.setState(previousState => {
-            return { selectedGeneration: genOptions, showGeneration: true };
+            return { selectedGeneration: data, showGeneration: true };
           });
+          handleSubmitToMeteor('Generation',data);
           this.validateData();
         },
         onPickerCancel: data => {
@@ -76,7 +86,9 @@ export default class PageTwo extends Component {
             Picker.hide();
         },
         onPickerSelect: data => {
-            console.log(data);
+          this.setState(previousState => {
+            return { selectedGeneration: data, showGeneration: true };
+          });
         }
     });
     Picker.show();
@@ -84,14 +96,17 @@ export default class PageTwo extends Component {
   //Citizenship
   onPressCitizenship = () => {
     const selectedCitizenship = this.state;
+    const {handleSubmitToMeteor} = this.props;
+
     Picker.init({
         pickerTitleText: 'Select Citizenship',
         pickerData: citizenshipOptions,
         selectedValue: [],
-        onPickerConfirm: citizenshipOptions => {
+        onPickerConfirm: data => {
           this.setState(previousState => {
-            return { selectedCitizenship: citizenshipOptions, showCitizenship: true };
+            return { selectedCitizenship: data, showCitizenship: true };
           });
+          handleSubmitToMeteor('Citizenship', data);
           this.validateData();
         },
         onPickerCancel: data => {
@@ -99,7 +114,9 @@ export default class PageTwo extends Component {
             Picker.hide();
         },
         onPickerSelect: data => {
-            console.log(data);
+          this.setState(previousState => {
+            return { selectedCitizenship: data, showCitizenship: true };
+          });
         }
     });
     Picker.show();

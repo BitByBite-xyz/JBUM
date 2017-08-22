@@ -40,12 +40,18 @@ export default class AccountSetup extends Component {
 
     this.state = {
       currentIndex : 0,
-      items: items
+      items: items,
+      loginData: {},
+      profileData: {}
     };
 
   }
   componentDidMount() {
+    const { navigation } = this.props;
 
+    this.setState(previousState => {
+      return { loginData: navigation.state.params.loginData};
+    });
   }
 
   onSlideChangeHandle = (index, total) => {
@@ -59,10 +65,26 @@ export default class AccountSetup extends Component {
     }
 
     console.log(index, total);
+    console.log(this.state.profileData);
   }
 
   handlePageComplete = () => {
     this.state.currentIndex = this.state.currentIndex+1;
+  }
+
+  handleSubmitToMeteor = (field, response) => {//cancer way to implent this.. need to be redone at some point
+    Meteor.call('UserData.insert', field, response.toString(), (err) => {
+      if (err) {
+        console.log("Post err"+err.details);
+        Alert.alert(
+          'Oops! Screenshot this and send to support!',
+          'Server error: \n\n'+err.details
+        );
+        return;
+      } else {
+        console.log("UserData added");
+      }
+    });
   }
 
   onClose(data) {//for DropdownAlert
@@ -84,46 +106,51 @@ export default class AccountSetup extends Component {
   }
 
   render() {
+    const { loginData, profileData } = this.state;
     return(
-      <View style={{flex:1}}>
-        <Swiper dotColor='#bbddff'
-                  activeDotColor='#1E90FF'
-                  leftTextColor='#1E90FF'
-                  rightTextColor='#1E90FF'
-                  loop={false}
-                  index={this.state.currentIndex}
-                  onIndexChanged={this.onSlideChangeHandle}
-                  ref={(s: React.Element<Swiper>) => this.swiper = s}>
-          <View style={[styles.slide, { backgroundColor: '#54C6DB' }]}>
-            <InitialPage
-              handlePageComplete={this.handlePageComplete}/>
+          <View style={{flex:1}}>
+            <Swiper dotColor='#bbddff'
+                      activeDotColor='#1E90FF'
+                      leftTextColor='#1E90FF'
+                      rightTextColor='#1E90FF'
+                      loop={false}
+                      index={this.state.currentIndex}
+                      onIndexChanged={this.onSlideChangeHandle}
+                      ref={(s: React.Element<Swiper>) => this.swiper = s}>
+              <View style={[styles.slide, { backgroundColor: '#54C6DB' }]}>
+                <InitialPage
+                  loginData={loginData}
+                  handlePageComplete={this.handlePageComplete}/>
+              </View>
+              <View style={[styles.slide, { backgroundColor: '#9ED6EA' }]}>
+                <PageOne
+                  handleSubmitToMeteor={this.handleSubmitToMeteor}
+                  handlePageComplete={this.handlePageComplete}/>
+              </View>
+              <View style={[styles.slide, { backgroundColor: '#fa931d' }]}>
+                <PageTwo
+                  handleSubmitToMeteor={this.handleSubmitToMeteor}
+                  handlePageComplete={this.handlePageComplete}/>
+              </View>
+              <View style={[styles.slide,{ backgroundColor: '#55CFAC' }]}>
+                <PageThree
+                  handleSubmitToMeteor={this.handleSubmitToMeteor}
+                  handlePageComplete={this.handlePageComplete}/>
+              </View>
+              <View style={[styles.slide, { backgroundColor: '#46C87F' }]}>
+                <PasswordPage />
+              </View>
+              <View style={[styles.slide, { backgroundColor: '#E1A3DC' }]}>
+                <PageFour />
+              </View>
+            </Swiper>
+            <DropdownAlert
+              ref={(ref) => this.dropdown = ref}
+              onClose={(data) => this.onClose(data)}
+            />
           </View>
-          <View style={[styles.slide, { backgroundColor: '#9ED6EA' }]}>
-            <PageOne
-              handlePageComplete={this.handlePageComplete}/>
-          </View>
-          <View style={[styles.slide, { backgroundColor: '#fa931d' }]}>
-            <PageTwo
-              handlePageComplete={this.handlePageComplete}/>
-          </View>
-          <View style={[styles.slide,{ backgroundColor: '#55CFAC' }]}>
-            <PageThree
-              handlePageComplete={this.handlePageComplete}/>
-          </View>
-          <View style={[styles.slide, { backgroundColor: '#46C87F' }]}>
-            <PasswordPage />
-          </View>
-          <View style={[styles.slide, { backgroundColor: '#E1A3DC' }]}>
-            <PageFour />
-          </View>
-        </Swiper>
-        <DropdownAlert
-          ref={(ref) => this.dropdown = ref}
-          onClose={(data) => this.onClose(data)}
-        />
-      </View>
-    );
-  }
+        );
+      }
 };
 
 const styles = StyleSheet.create({

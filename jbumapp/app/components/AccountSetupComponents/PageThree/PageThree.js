@@ -40,14 +40,17 @@ export default class PageThree extends Component {
   //Family
   onPressFamily = () => {
     const selectedFamily = this.state;
+    const {handleSubmitToMeteor} = this.props;
+
     Picker.init({
         pickerTitleText: 'Select Family',
         pickerData: parOptions,
         selectedValue: [],
-        onPickerConfirm: parOptions => {
+        onPickerConfirm: data => {
           this.setState(previousState => {
-            return { selectedFamily: parOptions, showFamily: true };
+            return { selectedFamily: data, showFamily: true };
           });
+          handleSubmitToMeteor('Family',data);
           this.validateData();
         },
         onPickerCancel: data => {
@@ -55,7 +58,9 @@ export default class PageThree extends Component {
             Picker.hide();
         },
         onPickerSelect: data => {
-            console.log(data);
+          this.setState(previousState => {
+            return { selectedFamily: data, showFamily: true };
+          });
         }
     });
     Picker.show();
@@ -63,19 +68,22 @@ export default class PageThree extends Component {
   //Siblings
   onPressSiblings = () => {
     const selectedSiblings = this.state;
+    const {handleSubmitToMeteor} = this.props;
+
     Picker.init({
         pickerTitleText: 'Select Siblings',
         pickerData: sibOptions,
         selectedValue: [],
-        onPickerConfirm: sibOption => {
+        onPickerConfirm: data => {
           this.setState(previousState => {
-            console.log(sibOption === ['Only child']);
-            if (sibOption === ['Only child']) {
-              return {selectedSiblings: sibOption, showSiblings: true,
+            console.log(data === ['Only child']);
+            if (data === ['Only child']) {
+              return {selectedSiblings: data, showSiblings: true,
                       selectedSibOrder: 'No Siblings', showSibOrder: true }
             }
-            return { selectedSiblings: sibOption, showSiblings: true };
+            return { selectedSiblings: data, showSiblings: true };
           });
+          handleSubmitToMeteor('Siblings',data);
           this.validateData();
         },
         onPickerCancel: data => {
@@ -83,7 +91,9 @@ export default class PageThree extends Component {
             Picker.hide();
         },
         onPickerSelect: data => {
-            console.log(data);
+          this.setState(previousState => {
+            return { selectedSiblings: data, showSiblings: true };
+          });
         }
     });
     Picker.show();
@@ -91,14 +101,17 @@ export default class PageThree extends Component {
   //Birth Order
   onPressSibOrder = () => {
     const selectedSibOrder = this.state;
+    const {handleSubmitToMeteor} = this.props;
+
     Picker.init({
         pickerTitleText: 'Select Birth Order',
         pickerData: sibOrderOptions,
         selectedValue: [],
-        onPickerConfirm: sibOrderOptions => {
+        onPickerConfirm: data => {
           this.setState(previousState => {
-            return { selectedSibOrder: sibOrderOptions, showSibOrder: true };
+            return { selectedSibOrder: data, showSibOrder: true };
           });
+          handleSubmitToMeteor('Birth Order',data);
           this.validateData();
         },
         onPickerCancel: data => {
@@ -106,7 +119,9 @@ export default class PageThree extends Component {
             Picker.hide();
         },
         onPickerSelect: data => {
-            console.log(data);
+          this.setState(previousState => {
+            return { selectedSibOrder: data, showSibOrder: true };
+          });
         }
     });
     Picker.show();

@@ -68,7 +68,6 @@ const Reply = (props) => {
     </View>
   </ScrollView>
   );
-
 }
 
 Reply.propTypes = {

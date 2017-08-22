@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 import { check } from 'meteor/check';
 import { Random } from 'meteor/random'
+import { Fake } from 'meteor/anti:fake';
 
 Meteor.methods({
   'createUserAccount' (code) {
@@ -12,8 +13,8 @@ Meteor.methods({
       throw new Meteor.Error('not-authorized');
     }
 
-    let username = Random.id();
-    let password = Random.id();
+    let username = Fake.word() +' '+ Fake.word();
+    let password = Fake.word() +' '+ Fake.word();
 
 
     const id = Accounts.createUser({

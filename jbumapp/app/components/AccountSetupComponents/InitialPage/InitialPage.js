@@ -20,11 +20,14 @@ export default class InitialPage extends Component {
   }
 
   render() {
+    const { loginData } = this.props;
     return(
       <View>
         <View style={{alignItems: 'center', marginTop: '45%'}}><Text style={styles.pageTitle}>Account Setup</Text></View>
         <View style={{marginTop: '17%'}}>
-            <Text style={styles.text}>All of the following information you enter will be completely anonymous. Please do you best to fill out the account setup questions.</Text>
+            <Text style={styles.text}>All of the following information you enter will be completely anonymous. Please do you best to fill out the account setup questions.
+            {'\n'}{'\n'} temp username: {loginData.username}
+            {'\n'} temp password: {loginData.password}</Text>
         </View>
       </View>
     );

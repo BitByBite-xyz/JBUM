@@ -27,19 +27,6 @@ export default class PageOne extends Component {
       hasValidData:false
     };
 
-    /*Meteor.call('UserData.insert', 'huirueoh','uh', (err) => {
-      if (err) {
-        console.log("Post err"+err.details);
-        Alert.alert(
-          'Oops! Screenshot this and send to support!',
-          'Server error: \n\n'+err.details
-        );
-        return;
-      } else {
-        console.log("UserData added");
-      }
-    });*/
-
     //Seeding Age options
 
     for (i = 8; i < 25; i++) {
@@ -62,6 +49,7 @@ export default class PageOne extends Component {
   //Age
   onPressAge = () => {
     const selectedAge = this.state;
+    const {handleSubmitToMeteor} = this.props;
     Picker.init({
         pickerTitleText: 'Select Age',
         pickerData: ageOptions,
@@ -69,6 +57,7 @@ export default class PageOne extends Component {
           this.setState(previousState => {
             return { selectedAge: data, showAge: true };
           });
+          handleSubmitToMeteor('Age',data);
           this.validateData();
         },
         onPickerCancel: data => {
@@ -88,6 +77,8 @@ export default class PageOne extends Component {
   //Gender
   onPressGender = () => {
     const selectedGender = this.state;
+    const {handleSubmitToMeteor} = this.props;
+
     Picker.init({
         pickerTitleText: 'Select Gender',
         pickerData: genderOptions,
@@ -96,6 +87,7 @@ export default class PageOne extends Component {
           this.setState(previousState => {
             return { selectedGender: data, showGender: true };
           });
+          handleSubmitToMeteor('Gender',data);
           this.validateData();
         },
         onPickerCancel: data => {
@@ -115,6 +107,8 @@ export default class PageOne extends Component {
   //Sexuality
   onPressSexuality = () => {
     const selectedSexuality = this.state;
+    const {handleSubmitToMeteor} = this.props;
+
     Picker.init({
         pickerTitleText: 'Select Sexuality',
         pickerData: sexualityOptions,
@@ -123,13 +117,14 @@ export default class PageOne extends Component {
           this.setState(previousState => {
             return { selectedSexuality: data, showSexuality: true };
           });
+          handleSubmitToMeteor('Sexuality',data);
           this.validateData();
         },
         onPickerCancel: data => {
           this.setState(previousState => {
             return { selectedSexuality: '', showSexuality: false };
           });
-            Picker.hide();
+          Picker.hide();
         },
         onPickerSelect: data => {
           this.setState(previousState => {
@@ -139,27 +134,7 @@ export default class PageOne extends Component {
     });
     Picker.show();
   }
-  //Citizenship
-  onPressCitizenship = () => {
-    const selectedCitizenship = this.state;
-    Picker.init({
-        pickerData: citizenshipOptions,
-        selectedValue: [],
-        onPickerConfirm: citizenshipOptions => {
-          this.setState(previousState => {
-            return { selectedCitizenship: citizenshipOptions, showCitizenship: true };
-          });
-        },
-        onPickerCancel: data => {
-            console.log(data);
-            Picker.hide();
-        },
-        onPickerSelect: data => {
-            console.log(data);
-        }
-    });
-    Picker.show();
-  }
+
   render() {
     const displayAge = this.state.showAge ? 'Your Age: ' + this.state.selectedAge : 'Please Select Your Age';
     const displayGender = this.state.showGender ? 'Your Gender: ' + this.state.selectedGender : 'Please Select Your Gender';
