@@ -4,7 +4,8 @@ import {
   View,
   StyleSheet,
   TouchableHighlight,
-  Alert
+  Alert,
+  KeyboardAvoidingView
 } from 'react-native';
 
 import { Jiro } from 'react-native-textinput-effects';
@@ -66,7 +67,10 @@ export default class PasswordPage extends Component {
   render() {
     const {password, confirmPassword} = this.state;
     return(
-      <View>
+
+      <KeyboardAvoidingView
+        behavior="padding"
+      >
         <View style={{alignItems: 'center', marginTop: '35%'}}><Text style={styles.pageTitle}>Account Password</Text></View>
         <View style={{marginTop: '25%'}}>
           <Jiro
@@ -97,7 +101,7 @@ export default class PasswordPage extends Component {
               title='Create Account' />
           </View>
         </View>
-      </View>
+      </KeyboardAvoidingView>
     );
   }
 };

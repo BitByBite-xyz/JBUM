@@ -109,9 +109,8 @@ class BarcodeScanner extends Component {
 
   onBarCodeRead = (data) => {
     if (data.data !== null){
-      Alert.alert("Barcode Saw dis: ", data.data);
-      console.log("Barcode: " + data);
-
+      //Alert.alert("Barcode Saw dis: ", data.data);
+      //console.log("Barcode: " + data);
       this.state.barcodeData = data.data;
       this.handleCreateAccount()
     }
