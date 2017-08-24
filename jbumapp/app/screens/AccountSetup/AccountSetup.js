@@ -39,20 +39,37 @@ export default class AccountSetup extends Component {
     ]
 
     this.state = {
-      currentIndex : 0,
+      currentIndex: 0,
       items: items,
-      loginData: {},
-      profileData: {}
+      profileData: []
     };
+    console.log(Meteor.userId());
+    console.log();
+    console.log();
+
+    if (Meteor.userId() && Meteor.user().profile) {
+      console.log('ss');
+      const data = {
+        username: Meteor.user().username,
+        temporaryPass: Meteor.user().profile.temporaryPass
+      };
+      this.state.loginData = data;
+    }
+    else {
+      console.log('ff');
+
+      const data = {
+        username: '',
+        temporaryPass: ''
+      };
+      this.state.loginData = data;;
+    };
+    console.log(this.state.loginData);
+
   }
+
   componentDidMount() {
     const { navigation } = this.props;
-
-
-    this.setState(previousState => {
-      return { loginData: navigation.state.params.loginData};
-    });
-
   }
 
   onSlideChangeHandle = (index, total) => {
@@ -73,24 +90,72 @@ export default class AccountSetup extends Component {
     this.state.currentIndex = this.state.currentIndex+1;
   }
 
-  handleSubmitToMeteor = (field, response) => {//cancer way to implent this.. need to be redone at some point
-    Meteor.call('UserData.insert', field, response.toString(), (err) => {
+  handleAddData = (field, response) => {
+    this.state.profileData.push({field:field, response:response.toString()});
+    console.log(this.state.profileData);
+  }
+
+  handleAccountSetupComplete = () => {
+    const { profileData } = this.state;
+    Meteor.call('UserData.insert', profileData , (err) => {
       if (err) {
-        console.log("Post err"+err.details);
+        console.log("UserData err"+err.details);
         Alert.alert(
           'Oops! Screenshot this and send to support!',
           'Server error: \n\n'+err.details
         );
         return;
-      } else {
+      }
+      else {
         console.log("UserData added");
+        this.props.navigation.navigate('Tabs');
       }
     });
   }
 
-  onClose(data) {//for DropdownAlert
-  // data = {type, title, message, action}
-  // action means how the alert was dismissed. returns: automatic, programmatic, tap, pan or cancel
+  validateInput = (password, confirmPassword) => {
+    const { loginData } = this.state;
+    const MAIN_WARN_COLOR = '#FF9A1E'
+
+    const items = [
+      {key: 0, backgroundColor: MAIN_WARN_COLOR, type: 'info', title: 'Info', message: 'Complete this slide before moving on!'},
+      {key: 1, backgroundColor: MAIN_WARN_COLOR, type: 'warn', title: 'Warning', message: 'Passwords do not match!'},
+    ]
+
+    let valid = true;
+
+    if (password.length === 0 || password.length === 0) {
+      this.showAlert(items[0]);
+      valid = false;
+    }
+
+    if ( password !== confirmPassword) {
+      this.showAlert(items[1]);
+      valid = false;
+    }
+
+    if (valid) {
+      this.handlePageComplete();
+      console.log(loginData);
+      Accounts.changePassword(loginData.temporaryPass, password, (err) => {
+        if (err) {
+          console.log("change err"+err.details);
+          Alert.alert(
+            'Oops! Screenshot this and send to support!',
+            'Server error: \n\n'+err.details
+          );
+          return;
+        }
+        this.swiper.scrollBy(1);
+      });
+    }
+  }
+
+  handleAbandonSetup = () => {
+    Meteor.logout(() => {
+
+      this.props.navigation.navigate('WelcomeStack');
+    });
   }
 
   dismissAlert = () => {
@@ -121,34 +186,34 @@ export default class AccountSetup extends Component {
               <View style={[styles.slide, { backgroundColor: '#54C6DB' }]}>
                 <InitialPage
                   loginData={loginData}
+                  handleAbandonSetup={this.handleAbandonSetup}
                   handlePageComplete={this.handlePageComplete}/>
               </View>
               <View style={[styles.slide, { backgroundColor: '#9ED6EA' }]}>
                 <PageOne
-                  handleSubmitToMeteor={this.handleSubmitToMeteor}
+                  handleAddData={this.handleAddData}
                   handlePageComplete={this.handlePageComplete}/>
               </View>
               <View style={[styles.slide, { backgroundColor: '#fa931d' }]}>
                 <PageTwo
-                  handleSubmitToMeteor={this.handleSubmitToMeteor}
+                  handleAddData={this.handleAddData}
                   handlePageComplete={this.handlePageComplete}/>
               </View>
               <View style={[styles.slide,{ backgroundColor: '#55CFAC' }]}>
                 <PageThree
-                  handleSubmitToMeteor={this.handleSubmitToMeteor}
+                  handleAddData={this.handleAddData}
                   handlePageComplete={this.handlePageComplete}/>
               </View>
               <View style={[styles.slide, { backgroundColor: '#46C87F' }]}>
                 <PasswordPage
-                  showAlert={this.showAlert}
-                  previousPass={loginData.password}
+                  validateInput={this.validateInput}
                   handlePageComplete={this.handlePageComplete}
-                  swiper={this.swiper}
                 />
               </View>
               <View style={[styles.slide, { backgroundColor: '#E1A3DC' }]}>
                 <PageFour
-                  navigation={this.props.navigation}
+                  loginData={loginData}
+                  handleAccountSetupComplete={this.handleAccountSetupComplete}
                 />
               </View>
             </Swiper>

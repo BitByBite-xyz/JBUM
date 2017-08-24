@@ -40,7 +40,7 @@ export default class PageThree extends Component {
   //Family
   onPressFamily = () => {
     const selectedFamily = this.state;
-    const {handleSubmitToMeteor} = this.props;
+    const {handleAddData} = this.props;
 
     Picker.init({
         pickerTitleText: 'Select Family',
@@ -50,7 +50,7 @@ export default class PageThree extends Component {
           this.setState(previousState => {
             return { selectedFamily: data, showFamily: true };
           });
-          handleSubmitToMeteor('Family',data);
+          handleAddData('Family',data);
           this.validateData();
         },
         onPickerCancel: data => {
@@ -68,7 +68,7 @@ export default class PageThree extends Component {
   //Siblings
   onPressSiblings = () => {
     const selectedSiblings = this.state;
-    const {handleSubmitToMeteor} = this.props;
+    const {handleAddData} = this.props;
 
     Picker.init({
         pickerTitleText: 'Select Siblings',
@@ -83,7 +83,7 @@ export default class PageThree extends Component {
             }
             return { selectedSiblings: data, showSiblings: true };
           });
-          handleSubmitToMeteor('Siblings',data);
+          handleAddData('Siblings',data);
           this.validateData();
         },
         onPickerCancel: data => {
@@ -101,7 +101,7 @@ export default class PageThree extends Component {
   //Birth Order
   onPressSibOrder = () => {
     const selectedSibOrder = this.state;
-    const {handleSubmitToMeteor} = this.props;
+    const {handleAddData} = this.props;
 
     Picker.init({
         pickerTitleText: 'Select Birth Order',
@@ -111,7 +111,7 @@ export default class PageThree extends Component {
           this.setState(previousState => {
             return { selectedSibOrder: data, showSibOrder: true };
           });
-          handleSubmitToMeteor('Birth Order',data);
+          handleAddData('Birth Order',data);
           this.validateData();
         },
         onPickerCancel: data => {

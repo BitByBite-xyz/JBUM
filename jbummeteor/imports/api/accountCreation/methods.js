@@ -16,12 +16,16 @@ Meteor.methods({
     let username = Fake.word() +' '+ Fake.word();
     let password = Fake.word() +' '+ Fake.word();
 
+    const id = Accounts.createUser({ username: username, password: password });
 
-    const id = Accounts.createUser({
-                                      username: username,
-                                      password: password,
-                                    });
+    var obj = {};
 
-    return {username:username,password:password}
+    obj['profile.temporaryPass'] = password;
+    obj['profile.isAccountSetupComplete'] = false;
+
+
+    Meteor.users.update(id, {$set: obj });
+
+    return {username: username, password:password}
   }
 });

@@ -62,6 +62,13 @@ class Home extends Component {
     //this.props.navigation.navigate('Inbox')
   }
 
+  componentDidMount(){
+    if (Meteor.userId() && !Meteor.user().profile.isAccountSetupComplete) {
+      console.log(Meteor.user().profile.isAccountSetupComplete);
+      this.props.navigation.navigate('AccountSetup');
+    }
+  }
+
   onAskPress = () => {
     this.props.navigation.navigate('Ask');
     //this.dropdown.alertWithType('error', 'Error','dd')

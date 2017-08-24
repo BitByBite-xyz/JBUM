@@ -6,6 +6,7 @@ import {
   TouchableHighlight
 } from 'react-native';
 import { Button } from 'react-native-elements'
+import Meteor from 'react-native-meteor';
 
 export default class InitialPage extends Component {
     constructor(props) {
@@ -13,17 +14,17 @@ export default class InitialPage extends Component {
   }
 
   render() {
-    const { navigation } = this.props;
+    const { handleAccountSetupComplete, loginData } = this.props;
     return(
       <View>
         <View style={{alignItems: 'center', marginTop: '55%'}}><Text style={styles.pageTitle}>Congradulations!</Text></View>
         <View style={{marginTop: '17%'}}>
-            <Text style={styles.text}>You have officially completed the account setup process, please use and ejoy JBUM safely.</Text>
-
+            <Text style={styles.text}>You have officially completed the account setup process, please use and ejoy JBUM safely.
+                  your randomized username: {loginData.username}</Text>
             <View style={{marginTop: '17%'}}>
               <Button
                 backgroundColor={'#4AD9B9'}
-                onPress={() => navigation.navigate('Tabs')}
+                onPress={handleAccountSetupComplete}
                 icon={{name: 'directions-walk'}}
                 textStyle={{fontSize: 22, color: 'white'}}
                 title='Get Started' />
