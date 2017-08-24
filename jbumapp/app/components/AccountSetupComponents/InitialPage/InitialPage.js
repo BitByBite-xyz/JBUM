@@ -27,7 +27,7 @@ export default class InitialPage extends Component {
           onPress={handleAbandonSetup}
           icon={{name: 'directions-walk'}}
           textStyle={{fontSize: 10, color: 'white'}}
-          buttonStyle={{height:20,width:100}}
+          buttonStyle={{height:20,width:130}}
           title='Abandon Setup' />
         <View style={{alignItems: 'center', marginTop: '45%'}}><Text style={styles.pageTitle}>Account Setup</Text></View>
         <View style={{marginTop: '17%'}}>

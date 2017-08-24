@@ -20,7 +20,7 @@ export default class InitialPage extends Component {
         <View style={{alignItems: 'center', marginTop: '55%'}}><Text style={styles.pageTitle}>Congradulations!</Text></View>
         <View style={{marginTop: '17%'}}>
             <Text style={styles.text}>You have officially completed the account setup process, please use and ejoy JBUM safely.
-                  your randomized username: {loginData.username}</Text>
+                   {'\n'} {'\n'}your randomized username: {loginData.username}</Text>
             <View style={{marginTop: '17%'}}>
               <Button
                 backgroundColor={'#4AD9B9'}

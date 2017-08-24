@@ -43,12 +43,8 @@ export default class AccountSetup extends Component {
       items: items,
       profileData: []
     };
-    console.log(Meteor.userId());
-    console.log();
-    console.log();
 
     if (Meteor.userId() && Meteor.user().profile) {
-      console.log('ss');
       const data = {
         username: Meteor.user().username,
         temporaryPass: Meteor.user().profile.temporaryPass
@@ -56,16 +52,12 @@ export default class AccountSetup extends Component {
       this.state.loginData = data;
     }
     else {
-      console.log('ff');
-
       const data = {
         username: '',
         temporaryPass: ''
       };
       this.state.loginData = data;;
     };
-    console.log(this.state.loginData);
-
   }
 
   componentDidMount() {
@@ -83,7 +75,6 @@ export default class AccountSetup extends Component {
     }
 
     console.log(index, total);
-    console.log(this.state.profileData);
   }
 
   handlePageComplete = () => {
@@ -92,7 +83,6 @@ export default class AccountSetup extends Component {
 
   handleAddData = (field, response) => {
     this.state.profileData.push({field:field, response:response.toString()});
-    console.log(this.state.profileData);
   }
 
   handleAccountSetupComplete = () => {
@@ -169,6 +159,10 @@ export default class AccountSetup extends Component {
       const title = 'Warning';
       this.dropdown.alertWithType(item.type, title, item.message);
     }
+  }
+
+  onClose = (data) => {
+    this.dropdown.onClose()
   }
 
   render() {

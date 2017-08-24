@@ -27,7 +27,7 @@ views.mostPopularPosts = function (terms) {
 
 views.inboxPosts = function (terms) {
   return {
-    find: { user_id: Meteor.userId(), isArchived: false, },
+    find: { user_id: Meteor.userId(), isArchived: false, post_comments: {$gt:0}},
     sort: {sort: { createdAt: -1 }, limit: terms.limit}
   };
 }
