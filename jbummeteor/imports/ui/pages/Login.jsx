@@ -73,7 +73,7 @@ class Login extends Component {
   }
 
   doTheThing = () =>{
-    this.propss.history.push('/');
+    this.props.history.push('/');
   }
 
   render() {

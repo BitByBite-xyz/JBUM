@@ -19,11 +19,6 @@ export default class AppContainer extends Component {
     }
   }
 
-  componentDidUpdate(prevProps, prevState){
-    if (!this.state.isAuthenticated) {
-      this.props.history.push('/login');
-    }
-  }
 
   logout(e){
     e.preventDefault();
