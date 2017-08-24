@@ -28,10 +28,16 @@ export default class PageOne extends Component {
     };
 
     //Seeding Age options
+    //S
 
-    for (i = 8; i < 25; i++) {
-      ageOptions.push(""+i);
+
+    if (ageOptions.length === 0) {
+      for (i = 8; i < 25; i++) {
+        ageOptions.push(""+i);
+      }
     }
+
+
   }
 
   validateData = () => {
@@ -49,7 +55,7 @@ export default class PageOne extends Component {
   //Age
   onPressAge = () => {
     const selectedAge = this.state;
-    const {handleSubmitToMeteor} = this.props;
+    const {handleAddData} = this.props;
     Picker.init({
         pickerTitleText: 'Select Age',
         pickerData: ageOptions,
@@ -57,7 +63,7 @@ export default class PageOne extends Component {
           this.setState(previousState => {
             return { selectedAge: data, showAge: true };
           });
-          handleSubmitToMeteor('Age',data);
+          handleAddData('Age',data);
           this.validateData();
         },
         onPickerCancel: data => {
@@ -77,7 +83,7 @@ export default class PageOne extends Component {
   //Gender
   onPressGender = () => {
     const selectedGender = this.state;
-    const {handleSubmitToMeteor} = this.props;
+    const {handleAddData} = this.props;
 
     Picker.init({
         pickerTitleText: 'Select Gender',
@@ -87,7 +93,7 @@ export default class PageOne extends Component {
           this.setState(previousState => {
             return { selectedGender: data, showGender: true };
           });
-          handleSubmitToMeteor('Gender',data);
+          handleAddData('Gender',data);
           this.validateData();
         },
         onPickerCancel: data => {
@@ -107,7 +113,7 @@ export default class PageOne extends Component {
   //Sexuality
   onPressSexuality = () => {
     const selectedSexuality = this.state;
-    const {handleSubmitToMeteor} = this.props;
+    const {handleAddData} = this.props;
 
     Picker.init({
         pickerTitleText: 'Select Sexuality',
@@ -117,7 +123,7 @@ export default class PageOne extends Component {
           this.setState(previousState => {
             return { selectedSexuality: data, showSexuality: true };
           });
-          handleSubmitToMeteor('Sexuality',data);
+          handleAddData('Sexuality',data);
           this.validateData();
         },
         onPickerCancel: data => {

@@ -1,17 +1,21 @@
 import { Meteor } from 'meteor/meteor';
 
 Meteor.methods({
-  'UserData.insert' (key, response) {
-    //check(title, String);
-    //check(body, String);
-
-    // Make sure the user is logged in before inserting a post
+  'UserData.insert' (data) {
+    // Make sure the user is logged in before inserting userdata
     if (!Meteor.userId()) {
       throw new Meteor.Error('not-authorized');
     }
+    if (data.length === 0) {
+      throw new Meteor.Error('no data error :)');
+    }
 
     var obj = {};
-    obj['profile.' + key] = response;
+
+    _.each(data, function (item) {
+      obj['profile.AccountSetupData.' + item.field] = item.response;
+    });
+    obj['profile.isAccountSetupComplete'] = true;
 
     Meteor.users.update(this.userId, {$set: obj });
   }

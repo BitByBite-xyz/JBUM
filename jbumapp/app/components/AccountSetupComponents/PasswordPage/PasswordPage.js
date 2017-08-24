@@ -23,49 +23,9 @@ export default class PasswordPage extends Component {
 
   }
 
-  validateInput = () => {
-    const { password, confirmPassword } = this.state;
-    const { showAlert, swiper } = this.props;
-    const MAIN_WARN_COLOR = '#FF9A1E'
-
-    const items = [
-      {key: 0, backgroundColor: MAIN_WARN_COLOR, type: 'info', title: 'Info', message: 'Complete this slide before moving on!'},
-      {key: 1, backgroundColor: MAIN_WARN_COLOR, type: 'warn', title: 'Warning', message: 'Passwords do not match!'},
-    ]
-
-    let valid = true;
-
-    if (password.length === 0 || password.length === 0) {
-      showAlert(items[0]);
-      valid = false;
-    }
-
-    if ( password !== confirmPassword) {
-      showAlert(items[1]);
-      valid = false;
-    }
-
-    if (valid) {
-      this.props.handlePageComplete();
-      Accounts.changePassword(this.props.previousPass, password, (err) => {
-        if (err) {
-          console.log("change err"+err.details);
-          Alert.alert(
-            'Oops! Screenshot this and send to support!',
-            'Server error: \n\n'+err.details
-          );
-          return;
-        }
-      });
-
-      swiper.scrollBy(1);
-    }
-
-
-  }
-
   render() {
     const {password, confirmPassword} = this.state;
+    const { validateInput } = this.props;
     return(
 
       <KeyboardAvoidingView
@@ -95,7 +55,7 @@ export default class PasswordPage extends Component {
               large
               iconRight
               backgroundColor={'#4AD9B9'}
-              onPress={() => this.validateInput()}
+              onPress={() => validateInput(password, confirmPassword)}
               icon={{name: 'account-circle'}}
               textStyle={{fontSize: 22, color: 'white'}}
               title='Create Account' />

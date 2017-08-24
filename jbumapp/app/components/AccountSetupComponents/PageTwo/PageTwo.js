@@ -40,7 +40,7 @@ export default class PageTwo extends Component {
   onPressEthnicity = () => {
     const selectedEthnicity = this.state;
 
-    const {handleSubmitToMeteor} = this.props;
+    const {handleAddData} = this.props;
 
     Picker.init({
         pickerTitleText: 'Select Ethnicicty',
@@ -50,7 +50,7 @@ export default class PageTwo extends Component {
           this.setState(previousState => {
             return { selectedEthnicity: data, showEthnicity: true };
           });
-          handleSubmitToMeteor('Ethnicicty',data);
+          handleAddData('Ethnicicty',data);
           this.validateData();
         },
         onPickerCancel: data => {
@@ -68,7 +68,7 @@ export default class PageTwo extends Component {
   //Generation
   onPressGeneration = () => {
     const selectedGeneration = this.state;
-    const {handleSubmitToMeteor} = this.props;
+    const {handleAddData} = this.props;
 
     Picker.init({
         pickerTitleText: 'Select Generation',
@@ -78,7 +78,7 @@ export default class PageTwo extends Component {
           this.setState(previousState => {
             return { selectedGeneration: data, showGeneration: true };
           });
-          handleSubmitToMeteor('Generation',data);
+          handleAddData('Generation',data);
           this.validateData();
         },
         onPickerCancel: data => {
@@ -96,7 +96,7 @@ export default class PageTwo extends Component {
   //Citizenship
   onPressCitizenship = () => {
     const selectedCitizenship = this.state;
-    const {handleSubmitToMeteor} = this.props;
+    const {handleAddData} = this.props;
 
     Picker.init({
         pickerTitleText: 'Select Citizenship',
@@ -106,7 +106,7 @@ export default class PageTwo extends Component {
           this.setState(previousState => {
             return { selectedCitizenship: data, showCitizenship: true };
           });
-          handleSubmitToMeteor('Citizenship', data);
+          handleAddData('Citizenship', data);
           this.validateData();
         },
         onPickerCancel: data => {

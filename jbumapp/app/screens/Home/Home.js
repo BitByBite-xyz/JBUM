@@ -62,6 +62,13 @@ class Home extends Component {
     //this.props.navigation.navigate('Inbox')
   }
 
+  componentDidMount(){
+    if (Meteor.userId() && !Meteor.user().profile.isAccountSetupComplete) {
+      console.log(Meteor.user().profile.isAccountSetupComplete);
+      this.props.navigation.navigate('AccountSetup');
+    }
+  }
+
   onAskPress = () => {
     this.props.navigation.navigate('Ask');
     //this.dropdown.alertWithType('error', 'Error','dd')
@@ -105,7 +112,8 @@ class Home extends Component {
   };
 
   render() {
-    const { posts,loading,navigation } = this.props;
+    const { posts,loading,navigation,inboxCount } = this.props;
+    console.log(inboxCount);
     return (
       <SwipeHiddenHeader header={()=>
           <View style={styles.header}>
@@ -116,7 +124,7 @@ class Home extends Component {
             <View style={styles.headerRight}>
               <Badge
                 containerStyle={{ backgroundColor: '#00abff', height: 32, width: 32}}
-                value={3}
+                value={inboxCount}
                 onPress={() => this.props.navigation.navigate('Inbox')}
                 textStyle={{ color: 'white', fontFamily: 'Avenir', fontWeight: '500', fontSize: 15}}
               />
@@ -163,17 +171,24 @@ class Home extends Component {
 export default createContainer(() => {
 
 
-  var terms = {
+  var homeTerms = {
     viewName: 'homePosts',
+    limit:50
+  }
+  var inboxTerms = {
+    viewName: 'inboxPosts',
     limit:50
   }
   const handle = Meteor.subscribe('Posts.pub.list');
   const loading = !handle.ready();
 
-  var parameters = queryConstructor(terms);
-  console.log(parameters);
+  var homeParameters = queryConstructor(homeTerms);
+  var inboxParameters = queryConstructor(inboxTerms);
+
 
   return {
-    posts: Meteor.collection('posts').find(parameters.find, parameters.sort),
+    posts: Meteor.collection('posts').find(homeParameters.find, homeParameters.sort),
+    inboxCount: Meteor.collection('posts').find(inboxParameters.find).length,
+
   };
 }, Home);

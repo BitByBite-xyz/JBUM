@@ -6,10 +6,7 @@ import {
 	TabView
 }
 from 'react-navigation';
-import {
-	Icon
-}
-from 'react-native-elements';
+import { Icon } from 'react-native-elements';
 import { Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import Login from '../screens/Login';
 import Debug from '../screens/Debug';
