@@ -39,20 +39,6 @@ export default class AppContainer extends Component {
   render(){
     return (
       <div>
-        <nav className="navbar navbar-default navbar-static-top">
-          <div className="container">
-            <div className="navbar-header">
-              <a className="navbar-brand" href="#">Auth App</a>
-            </div>
-            <div className="navbar-collapse">
-              <ul className="nav navbar-nav navbar-right">
-                <li>
-                  <a href="#" onClick={this.logout}>Logout</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
         <MainContainer />
       </div>
     );

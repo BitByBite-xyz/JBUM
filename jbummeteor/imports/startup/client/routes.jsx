@@ -11,8 +11,8 @@ import LoginPage from '../../ui/pages/Login.jsx'
 export const renderRoutes = () => (
   <Router>
     <div>
-      <Route path="/login" component={LoginPage}/>
-      <Route exact={true} path="/" component={AppContainer}/>
+      <Route exact path="/login" component={LoginPage}/>
+      <Route path="/" component={AppContainer}/>
     </div>
   </Router>
 );

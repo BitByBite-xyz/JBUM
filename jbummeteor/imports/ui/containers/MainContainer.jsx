@@ -14,8 +14,10 @@ import SubHeader from '../components/SubHeader';
 import Header from '../components/Header';
 
 const MainContainer = () => {
+  const isAuthenticated = Meteor.userId() !== null
   return (
         <div className="row row-no-padding">
+          { isAuthenticated ?
               <MuiThemeProvider>
                 <div className="col-sm-12 row-no-padding" style={{backgroundColor: '#EFEFEF'}}>
                   <Header />
@@ -34,7 +36,7 @@ const MainContainer = () => {
                     </Switch>
                   </div>
                 </div>
-              </MuiThemeProvider>
+              </MuiThemeProvider> : null}
           </div>
           )
 }
