@@ -12,7 +12,7 @@ export const renderRoutes = () => (
   <Router>
     <div>
       <Route exact path="/login" component={LoginPage}/>
-      <Route path="/" component={AppContainer}/>
+      <Route  path="/" component={AppContainer}/>
     </div>
   </Router>
 );

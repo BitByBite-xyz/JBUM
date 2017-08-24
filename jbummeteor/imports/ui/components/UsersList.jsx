@@ -20,6 +20,13 @@ const users = [];
 class UsersList extends React.Component {
   constructor(props){
     super(props);
+    Meteor.logout( (err) => {
+        if (err) {
+            console.log( err.reason );
+        } else {
+            this.props.history.push('/login');
+        }
+    });
     for(let i = 0; i < 500; i++) {
         users.push({
             posts: _.random(0,233),
