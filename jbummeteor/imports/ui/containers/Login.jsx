@@ -44,6 +44,8 @@ const style = {
          if(err){
            console.log('unsuccessful login');
            this.handleTouchTap();
+           this.refs.email.value = '';
+           this.refs.password.value = '';
            this.setState({
              error: err.reason
            });
