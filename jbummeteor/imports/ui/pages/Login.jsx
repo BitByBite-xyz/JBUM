@@ -50,7 +50,7 @@ const style = {
              error: err.reason
            });
          } else {
-           this.props.history.push('/home');
+           this.props.history.push('/');
          }
        });
        //console.log(email + ' ' + password);

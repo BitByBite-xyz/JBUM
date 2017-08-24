@@ -19,37 +19,37 @@ const SubHeader = () => (
   <Paper zDepth={2}>
   <div style={{height: 600}}>
     <List>
-      <Link to="/home" style={{ textDecoration: 'none' }}>
+      <Link to='/' style={{ textDecoration: 'none' }}>
         <ListItem
           leftAvatar={<Avatar icon={<MdHome />} />}
           primaryText="Dashboard"
         />
       </Link>
-      <Link to="/home/users" style={{ textDecoration: 'none' }}>
+      <Link to="/users" style={{ textDecoration: 'none' }}>
         <ListItem
           leftAvatar={<Avatar icon={<MdSupervisorAccount />} />}
           primaryText="Users"
         />
       </Link>
-      <Link to="/home/survey" style={{ textDecoration: 'none' }}>
+      <Link to="/survey" style={{ textDecoration: 'none' }}>
         <ListItem
           leftAvatar={<Avatar icon={<MdQuestionAnswer />} />}
           primaryText="Survey"
         />
       </Link>
-      <Link to="/home/flagged" style={{ textDecoration: 'none' }}>
+      <Link to="/flagged" style={{ textDecoration: 'none' }}>
         <ListItem
           leftAvatar={<Avatar icon={<MdFlag />} />}
           primaryText="Flagged"
         />
       </Link>
-      <Link to="/home/account" style={{ textDecoration: 'none' }}>
+      <Link to="/account" style={{ textDecoration: 'none' }}>
         <ListItem
           leftAvatar={<Avatar icon={<MdAccountCircle />} />}
           primaryText="Account"
         />
       </Link>
-      <Link to="/home/settings" style={{ textDecoration: 'none' }}>
+      <Link to="/settings" style={{ textDecoration: 'none' }}>
         <ListItem
           leftAvatar={<Avatar icon={<MdSettings />} />}
           primaryText="Settings"

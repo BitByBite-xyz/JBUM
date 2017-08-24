@@ -8,10 +8,10 @@ import {
   Link
 } from 'react-router-dom';
 
-import App from '../imports/ui/index.jsx';
+// add render routes function
+import { renderRoutes } from '../imports/startup/client/routes.jsx'
 
-render((
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  ), document.getElementById('render-target'));
+// render routes after DOM has loaded
+Meteor.startup(() => {
+  render(renderRoutes(), document.getElementById('render-target'));
+});
