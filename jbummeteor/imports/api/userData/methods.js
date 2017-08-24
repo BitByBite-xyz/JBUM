@@ -20,3 +20,7 @@ Meteor.methods({
     Meteor.users.update(this.userId, {$set: obj });
   }
 });
+
+Meteor.publish('userList', function (){
+  return Meteor.users.find({});
+});
