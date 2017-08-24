@@ -16,20 +16,42 @@ const style = {
   display: 'inline-block',
   borderRadius: 5
 };
-const Login = () => (
-  <MuiThemeProvider>
-      <div className="row">
-        <center>
-          {/*At the moment, the login doesn't actually do anything besides bring you to the dasboard when you click login*/}
-          <Paper zDepth={2} style={style}>
-            <h4 style={{marginTop: 55, marginBottom: 50, color: '#919799'}}>JBUM Admin</h4>
-            <input type="text" placeholder="Username" style={{width: '80%', marginBottom: 25}} />
-            <input type="password" placeholder="Password" style={{width: '80%'}} />
-            <Link to="/home"><RaisedButton label="Login" primary={true} style={{width: '80%', marginTop: 10}}/></Link>
-          </Paper>
-        </center>
-      </div>
-  </MuiThemeProvider>
-)
 
+  class Login extends Component {
+    loginUser = (event) => {
+      event.preventDefault();
+      let email = this.refs.email.value.trim();
+      let password = this.refs.password.value.trim();
+        Meteor.loginWithPassword(email, password, (err) => {
+         if(err){
+           console.log('unsuccessful login');
+           this.setState({
+             error: err.reason
+           });
+         } else {
+           this.props.history.push('/home');
+         }
+       });
+       //console.log(email + ' ' + password);
+    }
+
+    render() {
+      return(
+      <MuiThemeProvider>
+        <form onSubmit={this.loginUser.bind(this)}>
+          <div className="row">
+            <center>
+              <Paper zDepth={2} style={style}>
+                <h4 style={{marginTop: 55, marginBottom: 50, color: '#919799'}}>JBUM Admin</h4>
+                <input type="text" placeholder="Email" ref='email' style={{width: '80%', marginBottom: 25}} />
+                <input type="password" placeholder="Password" ref='password' style={{width: '80%'}} />
+                <RaisedButton label="Login" primary={true} type='submit' style={{width: '80%', marginTop: 10}}/>
+              </Paper>
+            </center>
+          </div>
+        </form>
+      </MuiThemeProvider>
+    );
+  }
+}
 export default Login;
