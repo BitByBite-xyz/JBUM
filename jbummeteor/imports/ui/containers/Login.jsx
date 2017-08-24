@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import { Meteor } from 'meteor/meteor';
+import Snackbar from 'material-ui/Snackbar';
 import RaisedButton from 'material-ui/RaisedButton';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { createContainer } from 'meteor/react-meteor-data';
@@ -18,6 +19,23 @@ const style = {
 };
 
   class Login extends Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        open: false,
+      };
+    }
+    handleTouchTap = () => {
+      this.setState({
+        open: true,
+      });
+    };
+
+    handleRequestClose = () => {
+      this.setState({
+        open: false,
+      });
+    };
     loginUser = (event) => {
       event.preventDefault();
       let email = this.refs.email.value.trim();
@@ -25,6 +43,7 @@ const style = {
         Meteor.loginWithPassword(email, password, (err) => {
          if(err){
            console.log('unsuccessful login');
+           this.handleTouchTap();
            this.setState({
              error: err.reason
            });
@@ -37,8 +56,8 @@ const style = {
 
     render() {
       return(
-      <MuiThemeProvider>
-        <form onSubmit={this.loginUser.bind(this)}>
+      <form onSubmit={this.loginUser.bind(this)}>
+        <MuiThemeProvider>
           <div className="row">
             <center>
               <Paper zDepth={2} style={style}>
@@ -48,9 +67,15 @@ const style = {
                 <RaisedButton label="Login" primary={true} type='submit' style={{width: '80%', marginTop: 10}}/>
               </Paper>
             </center>
+            <Snackbar
+              open={this.state.open}
+              message="Invalid Username or Password"
+              autoHideDuration={4000}
+              onRequestClose={this.handleRequestClose}
+            />
           </div>
-        </form>
-      </MuiThemeProvider>
+        </MuiThemeProvider>
+      </form>
     );
   }
 }
