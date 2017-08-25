@@ -97,13 +97,13 @@ export const Tabs = TabNavigator({
 				tabBarIcon: ({tintColor}) => <Icon name="home" size={30} color={tintColor}/>
 		}
 	},
-	/*Debug: {
+	Debug: {
 		screen: Debug,
 		navigationOptions: {
 				tabBarLabel: 'Debug',
 				tabBarIcon: ({tintColor}) => <Icon name="bug-report" size={30} color={tintColor}/>
 		}
-	},*/
+	},
 	Profile: {
 		screen: Profile,
 		navigationOptions: {

@@ -1,67 +1,65 @@
+import React, { Component } from 'react';
 import styles from './styles';
 import {
   Text,
   View,
   ScrollView
 } from 'react-native';
-import React, { Component } from 'react';
-import { Button } from 'react-native-elements';
 
-import { LayoutAnimation } from 'react-native';
+import { NavigationActions } from 'react-navigation';
+import { Pages } from 'react-native-pages';
 
-const Debug = (props) => {
-  const { toInbox, toBarcodeScanner, toAccountSetup } = props;
 
-   return (
-     <View style={styles.container}>
+import Ask from '../Ask';
+import Home from '../Home';
 
-       <Button
-         title='To QR Component'
-         large
-         borderRadius={20}
-         icon={{name: 'pages',buttonStyle: styles.buttons}}
-         backgroundColor={'blue'}
-         onPress={toBarcodeScanner}
-         fontFamily= 'Avenir'
-         fontSize={25}
-         fontWeight='bold'
-         iconRight={true}
-       />
-       <Button
-         title='Notification'
-         large
-         borderRadius={20}
-         icon={{name: 'pages',buttonStyle: styles.buttons}}
-         backgroundColor={'turquoise'}
-         onPress={toInbox}
-         fontFamily= 'Avenir'
-         fontSize={25}
-         fontWeight='bold'
-         iconRight={true}
-       />
-       <Button
-         title='Sign Up'
-         large
-         borderRadius={20}
-         icon={{name: 'pages',buttonStyle: styles.buttons}}
-         backgroundColor={'orange'}
-         onPress={toAccountSetup}
-         fontFamily= 'Avenir'
-         fontSize={25}
-         fontWeight='bold'
-         iconRight={true}
-       />
+import Profile from '../Profile';
+import Settings from '../Settings';
 
-     </View>
 
-   );
+class DebugContainer extends Component {
+  constructor(props) {
 
-}
+    super(props);
+  }
+  toInbox(){
+    this.props.navigation.navigate('Inbox');
 
-Debug.propTypes = {
-  toAccountSetup: React.PropTypes.func,
-  toAsk: React.PropTypes.func,
-  toSettings: React.PropTypes.func,
+  }
+
+  toBarcodeScanner(){
+    this.props.navigation.navigate('BarcodeScanner');
+
+  }
+  toSettings(){
+    this.props.navigation.navigate('Settings');
+    console.log("NAV: ", this.props.navigation);
+
+  }
+  toAccountSetup(){
+    this.props.navigation.navigate('AccountSetup');
+  }
+
+  render() {
+    return (
+      <Pages
+        horizontal={false}
+        indicatorPosition={'none'}
+        startPage={1}
+        >
+        <Ask/>
+        <Pages
+          startPage={1}
+          indicatorPosition={'none'}
+          rtl>
+          <Settings/>
+          <View style={{ flex: 1, backgroundColor: 'green' }} />
+          <Profile/>
+        </Pages>
+        <Home />
+      </Pages>
+    );
+  }
 };
 
-export default Debug;
+export default DebugContainer;
