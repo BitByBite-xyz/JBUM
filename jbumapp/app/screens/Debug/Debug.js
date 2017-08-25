@@ -3,7 +3,8 @@ import styles from './styles';
 import {
   Text,
   View,
-  ScrollView
+  ScrollView,
+  Image
 } from 'react-native';
 
 import { NavigationActions } from 'react-navigation';
@@ -15,6 +16,7 @@ import Home from '../Home';
 
 import Profile from '../Profile';
 import Settings from '../Settings';
+import images from '../../config/images';
 
 
 class DebugContainer extends Component {
@@ -65,7 +67,12 @@ class DebugContainer extends Component {
           >
           <Settings
           navigation={navigation}/>
-          <View style={{ flex: 1, backgroundColor: 'green' }} />
+          <View style={{ flex: 1, backgroundColor: 'transparent' }} >
+            <Image
+              source={images.profileBannerImg}
+              style={{width: '100%', height: '100%'}}
+            />
+          </View >
           <Profile
           navigation={navigation}/>
         </Pages>

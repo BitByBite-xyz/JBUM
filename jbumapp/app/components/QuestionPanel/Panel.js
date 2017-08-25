@@ -9,7 +9,7 @@ import {
   Alert
 } from 'react-native';
 import moment from 'moment';
-import { Icon, Divider } from 'react-native-elements'
+import { Icon, Divider, Badge } from 'react-native-elements'
 import Meteor, { createContainer } from 'react-native-meteor';
 import FadeInView from 'react-native-fade-in-view';//{/* onFadeComplete={() => alert('Ready') */}
 import images from '../../config/images';
@@ -26,6 +26,7 @@ class Panel extends React.PureComponent {
       //liked: (postContent.post_likes) ? postContent.post_likes.includes(Meteor.userId()) : false,
       //likes: (postContent.post_likes) ? postContent.post_likes.length : 0,
       comments: postContent.post_comments.length,
+      post_categories: postContent.post_categories,
       isModalVisible: false,
       is_visible: false,
       expanded: false,
@@ -180,6 +181,25 @@ class Panel extends React.PureComponent {
     }
   }
 
+  renderCategoryBadges() {
+    const { post_categories } = this.state;
+    const colors = ['#00B796', '#00D2F1', '#86269B', '#CC0063', '#FE9601']
+    const color =  "#"+((1<<24)*Math.random()|0).toString(16);
+
+    if (post_categories) {
+      var items = post_categories.map(function (item){
+          return (
+            <Badge
+              containerStyle={{ backgroundColor: color} }
+              value={item}
+              textStyle={{ color: 'white' }}
+            />
+          );
+      });
+      return items;
+    }
+  }
+
   _showModal = () => this.setState({ isModalVisible: true })
 
   _hideModal = () => this.setState({ isModalVisible: false })
@@ -212,6 +232,7 @@ class Panel extends React.PureComponent {
               </Text>
               <View style={styles.questionPanelContainer}>
                 <Text style={[styles.timeText, styles.created]}>{' '+moment(postContent.createdAt).fromNow()}</Text>
+                <View style={{flexDirection:'row'}}>{this.renderCategoryBadges()}</View>
               </View>
             </View>
           }

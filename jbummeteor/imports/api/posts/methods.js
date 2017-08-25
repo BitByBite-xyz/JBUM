@@ -7,7 +7,7 @@ import { Random } from 'meteor/random'
 
 
 Meteor.methods({
-  'Posts.insert' ({title, body, post_visibility}) {
+  'Posts.insert' ({title, body, post_visibility, post_categories}) {
     check(title, String);
     check(body, String);
 
@@ -22,6 +22,7 @@ Meteor.methods({
       post_body: body,
       post_comments: [],
       post_likes: [],
+      post_categories: post_categories,
       post_visibility:post_visibility
     });
   },

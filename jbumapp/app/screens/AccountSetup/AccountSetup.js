@@ -39,7 +39,7 @@ export default class AccountSetup extends Component {
     ]
 
     this.state = {
-      currentIndex: 4,
+      currentIndex: 0,
       items: items,
       profileData: []
     };
