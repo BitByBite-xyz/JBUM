@@ -21,42 +21,62 @@ class DebugContainer extends Component {
   constructor(props) {
 
     super(props);
+
+    this.state = {
+      loading: true
+    };
+
+
   }
+
+  componentDidMount() {
+    setTimeout(() => this.setState({ loading: false }), 2000);
+  }
+
   toInbox(){
     this.props.navigation.navigate('Inbox');
-
+  }
+  toAskPage(){
+    this.props.navigation.navigate('Ask');
   }
 
-  toBarcodeScanner(){
-    this.props.navigation.navigate('BarcodeScanner');
-
-  }
-  toSettings(){
-    this.props.navigation.navigate('Settings');
-    console.log("NAV: ", this.props.navigation);
-
-  }
-  toAccountSetup(){
-    this.props.navigation.navigate('AccountSetup');
+  scrollToPage = () => {
+    console.log('hey');
+    this.pages.scrollToPage(2)
   }
 
   render() {
+    const { loading } = this.state;
+    const { navigation } = this.props;
+
+    if(loading) {
+      return null; // render null when app is not ready
+    }
+
     return (
       <Pages
         horizontal={false}
         indicatorPosition={'none'}
         startPage={1}
-        >
-        <Ask/>
+         ref={(c) => this.pages = c}
+      >
+        <Ask
+          navigation={navigation}
+          scrollToPage={this.scrollToPage}
+        />
         <Pages
           startPage={1}
           indicatorPosition={'none'}
-          rtl>
-          <Settings/>
-          <View style={{ flex: 1, backgroundColor: 'green' }} />
-          <Profile/>
+          rtl
+          >
+          <Settings
+          navigation={navigation}/>
+          <View style={{ flex: 1, backgroundColor: 'blue' }} />
+          <Profile
+          navigation={navigation}/>
         </Pages>
-        <Home />
+        <Home
+          navigation={navigation}/>
       </Pages>
     );
   }

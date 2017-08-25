@@ -6,6 +6,7 @@ import Meteor, { createContainer } from 'react-native-meteor';
 import Accordion from 'react-native-collapsible/Accordion';
 
 import styles from './styles'
+import {AutoGrowingTextInput} from 'react-native-autogrow-textinput';
 
 const SECTIONS = [
   {
@@ -31,7 +32,8 @@ class Ask extends Component {
   }
 
   postButton = () => {
-    const {title, body,post_visibility} = (this.state)
+    const {title, body,post_visibility} = (this.state);
+    const { scrollToPage } = this.props;
 
     if (title.length === 0 || body.length === 0){
       Alert.alert(
@@ -56,7 +58,8 @@ class Ask extends Component {
           return;
         } else {
           console.log("Post added");
-          this.props.navigation.goBack();
+          scrollToPage();
+
         }
       });
     }
@@ -300,20 +303,20 @@ class Ask extends Component {
         <View style={styles.bottomBox}>
           <View style={styles.bottom}>
             <View style={styles.views}>
-              <TextInput
+              <AutoGrowingTextInput
                   style={styles.largeText}
                   placeholder='Your Question&#39;s Title'
-                  maxLength={73}
                   returnKeyType='next'
                   underlineColorAndroid='transparent'
                   onChangeText={(title) => this.setState({ title })}
                   autoCorrect={true}
                   placeholderTextColor={'#c9c9c9'}
+                  minHeight={45}
                   />
                   <View style={styles.lineDivider} />
             </View>
             <View style={styles.views}>
-              <TextInput
+              <AutoGrowingTextInput
                   style={styles.smallText}
                   placeholder='Tell us your question...'
                   returnKeyType='done'
@@ -323,6 +326,7 @@ class Ask extends Component {
                   blurOnSubmit={true}
                   placeholderTextColor={'#c9c9c9'}
                   autoCorrect={true}
+                  minHeight={75}
                   />
               </View>
           </View>

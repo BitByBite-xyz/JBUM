@@ -3891,9 +3891,9 @@ react-native-app-intro@^1.1.5:
     assign-deep "^0.4.5"
     react-native-swiper "git+https://github.com/FuYaoDe/react-native-swiper.git"
 
-react-native-auto-grow-textinput@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/react-native-auto-grow-textinput/-/react-native-auto-grow-textinput-1.2.0.tgz#575f2e0fc2c49dbd4fa7fd91ba9f82bdf3409b0c"
+react-native-autogrow-textinput@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-autogrow-textinput/-/react-native-autogrow-textinput-4.1.0.tgz#a7e5b17eb3c16ab08e31bbfb88d92488ed87f276"
 
 "react-native-blur@git+https://github.com/react-native-community/react-native-blur.git":
   version "3.1.3"
