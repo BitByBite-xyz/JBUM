@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 
 import { NavigationActions } from 'react-navigation';
-import { Pages } from 'react-native-pages';
+import { Pages } from '../../components/SwipePages';
 
 
 import Ask from '../Ask';
@@ -29,8 +29,8 @@ class DebugContainer extends Component {
 
   }
 
-  componentDidMount() {
-    setTimeout(() => this.setState({ loading: false }), 2000);
+  componentDidMount(){
+
   }
 
   toInbox(){
@@ -46,13 +46,7 @@ class DebugContainer extends Component {
   }
 
   render() {
-    const { loading } = this.state;
     const { navigation } = this.props;
-
-    if(loading) {
-      return null; // render null when app is not ready
-    }
-
     return (
       <Pages
         horizontal={false}
@@ -71,7 +65,7 @@ class DebugContainer extends Component {
           >
           <Settings
           navigation={navigation}/>
-          <View style={{ flex: 1, backgroundColor: 'blue' }} />
+          <View style={{ flex: 1, backgroundColor: 'green' }} />
           <Profile
           navigation={navigation}/>
         </Pages>
