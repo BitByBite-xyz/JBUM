@@ -25,14 +25,14 @@ const Responder = (props) => {
   return (
   <div>
     {postsReady ?
-      this.renderResponderPosts: null}
+      this.renderResponderPosts(): null}
   </div>
 );}
 
 export default createContainer(() => {
   const handle = Meteor.subscribe('Posts.pub.list');
   return {
-    responderPost: Posts.find({}).fetch(),
+    responderPost: Posts.find({post_visibility: 'Responder'}).fetch(),
     postsReady: handle.ready()
   }
 }, Responder);

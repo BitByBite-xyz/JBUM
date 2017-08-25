@@ -24,7 +24,7 @@ class Ask extends Component {
     this.state = {
       title: '',
       body: '',
-      post_visibility:["Peers"],
+      post_visibility:["Responder"],
       error: null,
       checked:false,
     };
