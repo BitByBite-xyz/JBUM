@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { PureComponent, Children } from 'react';
 import { View, ScrollView, Animated, Platform, ViewPropTypes, Text } from 'react-native';
 
+import Loading from '../../../../Loading'
 import Indicator from '../indicator';
 import styles from './styles';
 
@@ -76,7 +77,7 @@ export default class Pages extends PureComponent {
   }
 
   componentDidMount() {
-    setTimeout(() => this.setState({ loading: false }), 150);
+    setTimeout(() => this.setState({ loading: false }), 10);
   }
 
   componentDidUpdate() {
@@ -167,7 +168,7 @@ export default class Pages extends PureComponent {
   }
 
   renderPage(page, index) {
-    let { width, height, progress, loading } = this.state;
+    let { width, height, progress } = this.state;
     let { children, horizontal, rtl } = this.props;
 
     let pages = Children.count(children);
@@ -177,15 +178,7 @@ export default class Pages extends PureComponent {
       null;
 
     /* Adjust progress by page index */
-    progress = Animated.add(progress, -index);
-
-    if(loading) {
-      return (
-        <View style={{flex:1, justifyContent: 'center'}}>
-          <Text> Cheers
-          </Text>
-      </View>); // render null when app is not ready
-    }
+    //progress = Animated.add(progress, -index);
 
     return (
       <View style={[{ width, height }, pageStyle]}>
@@ -235,7 +228,7 @@ export default class Pages extends PureComponent {
     let pages = Children.count(children);
 
 
-    let Pager = () => 
+    let Pager = () =>
       this.renderPager({
         pages,
         progress,
@@ -261,7 +254,9 @@ export default class Pages extends PureComponent {
           onScrollEndDrag={this.onScrollEndDrag}
           ref={this.updateRef}
         >
-          {Children.map(children, this.renderPage)}
+           { loading ?
+             <View style={{backgroundColor: 'white'}}>
+           </View> : Children.map(children, this.renderPage)}
         </ScrollView>
 
         <Pager />
