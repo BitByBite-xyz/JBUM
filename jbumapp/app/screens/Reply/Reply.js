@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import React, { Component } from 'react';
 import { Button, Icon } from 'react-native-elements'
+import {AutoGrowingTextInput} from 'react-native-autogrow-textinput';
 
 import { LayoutAnimation } from 'react-native';
 
@@ -53,6 +54,8 @@ const Reply = (props) => {
                            onChangeText={(body) => updateState( {body} )}
                            blurOnSubmit={true}
                            multiline={true}
+                           minHeight={60}
+                           maxHeight={200}
                            autoCorrect={true}
                        />
                    </View>

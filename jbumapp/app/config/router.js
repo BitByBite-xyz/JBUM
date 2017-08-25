@@ -24,12 +24,39 @@ import Notifications from '../components/Notifications';
 import BarcodeScanner from '../components/BarcodeScanner';
 
  export const HomeStack = StackNavigator({
-   Home: {
-     screen: Home,
+   Debug: {
+     screen: Debug,
 		 navigationOptions: {
 			 header: null
 		}
    },
+	 Reply: { screen: Reply,
+		 navigationOptions: {
+			 title: 'Reply',
+			headerStyle: {
+				 borderBottomWidth: 0.5,
+				 borderBottomColor: '#d1d1d1',
+				 backgroundColor: 'white',
+				 elevation: null,
+				 height: 50,
+				 paddingBottom: 10,
+				 paddingTop: 10
+			 },
+			 headerTitleStyle: {
+				 fontFamily: 'Avenir',
+				 fontSize: 17.5,
+				 fontWeight: '600',
+				 marginRight: 10,
+				 paddingTop: 2
+				},
+		 },},
+		 Profile: {
+ 			screen: Profile,
+ 			navigationOptions: {
+ 					tabBarLabel: 'Profile',
+ 					tabBarIcon: ({tintColor}) => <Icon name="account-circle" size={30} color={tintColor}/>
+ 			}
+ 		},
 	 Inbox: { screen: Inbox,
 			 navigationOptions: {
 				 title: 'Inbox',
@@ -67,7 +94,7 @@ import BarcodeScanner from '../components/BarcodeScanner';
  				marginRight: 10,
  				paddingTop: 2
  			 },
- 		},
+ 		}
   }},{mode:'modal'});
 
  export const WelcomeStack = StackNavigator({
@@ -97,13 +124,13 @@ export const Tabs = TabNavigator({
 				tabBarIcon: ({tintColor}) => <Icon name="home" size={30} color={tintColor}/>
 		}
 	},
-	/*Debug: {
+	Debug: {
 		screen: Debug,
 		navigationOptions: {
 				tabBarLabel: 'Debug',
 				tabBarIcon: ({tintColor}) => <Icon name="bug-report" size={30} color={tintColor}/>
 		}
-	},*/
+	},
 	Profile: {
 		screen: Profile,
 		navigationOptions: {
@@ -139,7 +166,7 @@ export const ProfileStack = StackNavigator({
 		mode:'modal'
 });
 export default StackNavigator({
-		Tabs: { screen: Tabs,
+		HomeStack: { screen: HomeStack,
 		 	navigationOptions: {
 				header: null,
 				gesturesEnabled: false,
@@ -158,26 +185,6 @@ export default StackNavigator({
 				 },
 			}
 		},
-		Reply: { screen: Reply,
-			navigationOptions: {
-				title: 'Reply',
-			 headerStyle: {
-					borderBottomWidth: 0.5,
-					borderBottomColor: '#d1d1d1',
-					backgroundColor: 'white',
-					elevation: null,
-					height: 50,
-					paddingBottom: 10,
-					paddingTop: 10
-				},
-				headerTitleStyle: {
-					fontFamily: 'Avenir',
-					fontSize: 17.5,
-					fontWeight: '600',
-					marginRight: 10,
-					paddingTop: 2
-				 },
-			},},
 	},{
     	navigationOptions: {
 	      tabBarVisible: false,
