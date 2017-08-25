@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
+import { Icon, Divider } from 'react-native-elements'
 
 const header = 'It is Foreground Component';
 import * as Progress from 'react-native-progress';
@@ -20,7 +21,8 @@ export default class Header extends Component {
       info: {
           flexDirection: 'row',
           justifyContent: 'space-around',
-          alignItems: 'center'
+          alignItems: 'center',
+          marginTop: 5
       },
       info2: {
           flexDirection: 'row',
@@ -69,7 +71,18 @@ export default class Header extends Component {
     return (
       <View style={styles.container}>
 
-      <Text style={styles.text}>{Name}</Text>
+        <View style={{justifyContent: 'space-around',marginLeft: '85%',marginTop:10}}>
+          <Icon
+            style={{justifyContent: 'flex-start'}}
+            name='more-horiz'
+            large
+            size={28}
+            color={'#C1C1C2'}
+          />
+
+        </View>
+
+
 
 
 

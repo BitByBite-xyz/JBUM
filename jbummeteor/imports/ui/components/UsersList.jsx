@@ -20,6 +20,7 @@ const users = [];
 class UsersList extends React.Component {
   constructor(props){
     super(props);
+
     for(let i = 0; i < 500; i++) {
         users.push({
             posts: _.random(0,233),

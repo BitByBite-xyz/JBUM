@@ -63,9 +63,25 @@ class Home extends Component {
   }
 
   componentDidMount(){
-    if (Meteor.userId() && !Meteor.user().profile.isAccountSetupComplete) {
-      console.log(Meteor.user().profile.isAccountSetupComplete);
-      this.props.navigation.navigate('AccountSetup');
+    const { navigation } = this.props;
+    if (Meteor.userId()) { //this is cancer
+      if (Meteor.user().profile) {
+        if (!Meteor.user().profile.isAccountSetupComplete) {
+          if (navigation.state.params && navigation.state.params.overrideToAccountSetup) {
+            return;
+          }
+          else {
+            navigation.navigate('AccountSetup');
+          }
+        }
+      }
+      else {
+        navigation.navigate('AccountSetup');
+      }
+
+
+
+
     }
   }
 
@@ -113,7 +129,6 @@ class Home extends Component {
 
   render() {
     const { posts,loading,navigation,inboxCount } = this.props;
-    console.log(inboxCount);
     return (
       <SwipeHiddenHeader header={()=>
           <View style={styles.header}>

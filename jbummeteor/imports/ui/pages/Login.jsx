@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import ReactDOM from 'react-dom';
+import { browserHistory } from 'react-router'
+
 import { Meteor } from 'meteor/meteor';
 import Snackbar from 'material-ui/Snackbar';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -18,47 +19,67 @@ const style = {
   borderRadius: 5
 };
 
-  class Login extends Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        open: false,
-      };
+class Login extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: false,
+    };
+    this.state = this.getMeteorData();
+    this.loginUser = this.loginUser.bind(this);
+  }
+  componentWillMount(){
+    if (this.state.isAuthenticated) {
+      this.props.history.push('/');
     }
-    handleTouchTap = () => {
-      this.setState({
-        open: true,
-      });
-    };
+  }
 
-    handleRequestClose = () => {
-      this.setState({
-        open: false,
-      });
-    };
-    loginUser = (event) => {
-      event.preventDefault();
-      let email = this.refs.email.value.trim();
-      let password = this.refs.password.value.trim();
-        Meteor.loginWithPassword(email, password, (err) => {
-         if(err){
-           console.log('unsuccessful login');
-           this.handleTouchTap();
-           this.refs.email.value = '';
-           this.refs.password.value = '';
-           this.setState({
-             error: err.reason
-           });
-         } else {
-           this.props.history.push('/home');
-         }
+  getMeteorData(){
+    return { isAuthenticated: Meteor.userId() !== null };
+  }
+
+  handleTouchTap = () => {
+    this.setState({
+      open: true,
+    });
+  };
+
+  handleRequestClose = () => {
+    this.setState({
+      open: false,
+    });
+  };
+
+  loginUser = (event) => {
+    event.preventDefault();
+    let email = this.refs.email.value.trim();
+    let password = this.refs.password.value.trim();
+    console.log(this.props.history);
+    Meteor.loginWithPassword(email, password, (err) => {
+     if(err){
+       console.log('unsuccessful login');
+       this.handleTouchTap();
+       this.refs.email.value = '';
+       this.refs.password.value = '';
+       this.setState({
+         error: err.reason
        });
-       //console.log(email + ' ' + password);
-    }
+     }
+     else {
+       this.doTheThing();
+     }
+   });
+     //console.log(email + ' ' + password);
+  }
 
-    render() {
-      return(
-      <form onSubmit={this.loginUser.bind(this)}>
+  doTheThing = () =>{
+    this.props.history.push('/');
+  }
+
+  render() {
+
+    return(
+      <form onSubmit={ this.loginUser}>
         <MuiThemeProvider>
           <div className="row">
             <center>
@@ -77,8 +98,7 @@ const style = {
             />
           </div>
         </MuiThemeProvider>
-      </form>
-    );
-  }
+      </form>);
+    }
 }
 export default Login;

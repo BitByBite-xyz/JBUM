@@ -22,9 +22,4 @@ const StatsCard = (props) => {
         </div>
       );}
 
-export default createContainer(() => {
-  Meteor.subscribe("Posts.pub.list");
-  return {
-    cardTitle: Posts.find({}).count()
-  }
-}, StatsCard);
+export default StatsCard;

@@ -58,7 +58,7 @@ export default class PasswordPage extends Component {
               onPress={() => validateInput(password, confirmPassword)}
               icon={{name: 'account-circle'}}
               textStyle={{fontSize: 22, color: 'white'}}
-              title='Create Account' />
+              title='Choose Password' />
           </View>
         </View>
       </KeyboardAvoidingView>
