@@ -126,6 +126,7 @@ export default StyleSheet.create({
   },
   created: {
     fontSize: 12,
+    marginBottom: 4,
     color: '#BBB'
   },
 });

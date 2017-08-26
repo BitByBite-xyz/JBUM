@@ -17,7 +17,7 @@ import { colors } from '../../config/styles';
 import styles from './styles.js';
 import Modal from 'react-native-modal';
 
-class Panel extends React.PureComponent {
+class Panel extends PureComponent {
   constructor(props) {
     super(props);
     const { navigation, header,postContent } = this.props;
@@ -183,14 +183,15 @@ class Panel extends React.PureComponent {
 
   renderCategoryBadges() {
     const { post_categories } = this.state;
-    const colors = ['#00B796', '#00D2F1', '#86269B', '#CC0063', '#FE9601']
-    const color =  "#"+((1<<24)*Math.random()|0).toString(16);
+    const colors = ['#00B796', '#00D2F1', '#B565C6', '#FEBE00', '#FF5656', '#D63E87'];
+    //const color =  "#"+((1<<24)*Math.random()|0).toString(16);
+    const color = colors[Math.floor(colors.length * Math.random())];
 
     if (post_categories) {
       var items = post_categories.map(function (item){
           return (
             <Badge
-              containerStyle={{ backgroundColor: color} }
+              containerStyle={{ backgroundColor: color, marginRight: 2} }
               value={item}
               textStyle={{ color: 'white' }}
             />
