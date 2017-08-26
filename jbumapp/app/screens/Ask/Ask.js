@@ -135,12 +135,12 @@ class Ask extends Component {
             style={{backgroundColor: 'white', paddingLeft: 15, paddingTop: 10, paddingBottom: 8}}
             textStyle={{color: '#A4A7A6', fontSize: 16}}
             checkedColor={'#24BEE4'}
-            title='Professional'
+            title='Responder'
             checkedIcon='dot-circle-o'
             uncheckedIcon='circle-o'
-            checked={post_visibility.indexOf('Professional') !== -1}
+            checked={post_visibility.indexOf('Responder') !== -1}
             onPress={() => {
-              this.updateResponder('Professional');
+              this.updateResponder('Responder');
             }}
           />
         </View>

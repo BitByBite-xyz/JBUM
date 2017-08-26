@@ -44,7 +44,7 @@ class DebugContainer extends Component {
 
   scrollToPage = () => {
     console.log('hey');
-    this.pages.scrollToPage(2)
+    this.pages.scrollToPage(1)
   }
 
   render() {
