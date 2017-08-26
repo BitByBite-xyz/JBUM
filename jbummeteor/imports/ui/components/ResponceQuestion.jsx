@@ -19,7 +19,7 @@ const ResponceQuestion = (props) => {
           <Divider style={{width: '95%', marginBottom: 10, marginLeft: '2.5%'}}/>
           <p style={{marginLeft: '2.2%'}}>{postContent.post_body}</p>
         </div>
-          <center><FlatButton style={{width: '85%'}} primary={true} onClick={handleRespondButtonPressed} label="Respond" /></center>
+          <center><FlatButton style={{marginTop: 8}} primary={true} onClick={handleRespondButtonPressed} label="Respond" /></center>
       </Paper>
     </div>
 );}
