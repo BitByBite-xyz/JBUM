@@ -27,7 +27,7 @@ export default class AppContainer extends Component {
         if (err) {
             console.log( err.reason );
         } else {
-            this.props.history.push('/login');
+            window.location.reload();
         }
     });
   }
