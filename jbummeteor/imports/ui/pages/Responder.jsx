@@ -63,7 +63,7 @@ class Responder extends Component {
           hintText="Your response"
           floatingLabelText="Respond to this question..."
           multiLine={true}
-          rows={2}
+          rows={1}
           ref="replyField"
           onChange={(newValue) => this.setState({response:newValue})}
           style={{width: '90%', marginLeft: '4%'}}
