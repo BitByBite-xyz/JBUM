@@ -9,25 +9,13 @@ class Settings extends Component {
     super(props);
 
   }
-  logout(e){
-    e.preventDefault();
-    Meteor.logout( (err) => {
-        if (err) {
-            console.log( err.reason );
-        } else {
-            this.props.history.push('/');
-        }
-    });
-  }
+
   render() {
     return (
 
       <div className="col-sm-12 row-no-padding">
         <Paper zDepth={2}>
           <h1>Settings</h1>
-          <RaisedButton label="logout" onClick={this.logout} />
-
-
       </Paper>
       </div>
     );
