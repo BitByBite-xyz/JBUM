@@ -38,6 +38,12 @@ PostsSchema = new SimpleSchema({
     optional:false,
     label: "Post's intended reciever"
   },
+  post_categories: {
+    type: [String],
+    minCount: 1,
+    optional:false,
+    label: "Post's category"
+  },
   post_title:{
     type: String,
     label: "Title of this post"

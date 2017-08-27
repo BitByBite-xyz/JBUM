@@ -165,8 +165,8 @@ export default createContainer(() => {
   const handle = Meteor.subscribe('Posts.pub.list');
 
   return {
-    user_posts: Meteor.collection('posts').find({ user_id: Meteor.userId() }, { sort: { created: -1 } }),
-		responded_posts: Meteor.collection('posts').find({ "post_comments.user_id": Meteor.userId() }, { sort: { created: -1 } }),
+    user_posts: Meteor.collection('posts').find({ user_id: Meteor.userId() }, { sort: { createdAt: -1 } }),
+		responded_posts: Meteor.collection('posts').find({ "post_comments.user_id": Meteor.userId() }, { sort: { createdAt: -1 } }),
 		postsReady: handle.ready(),
 		//liked_posts: Meteor.collection('posts').find({ post_likes: Meteor.userId() }, { sort: { created: -1 } }),
 	};

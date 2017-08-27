@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Meteor } from 'meteor/meteor'
 import { withHistory } from 'react-router-dom';
 import MainContainer from './MainContainer.jsx';
 
@@ -26,7 +27,7 @@ export default class AppContainer extends Component {
         if (err) {
             console.log( err.reason );
         } else {
-            this.props.history.push('/login');
+            window.location.reload();
         }
     });
   }

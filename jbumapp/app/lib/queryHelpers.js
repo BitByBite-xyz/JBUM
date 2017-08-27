@@ -6,7 +6,7 @@ views = {};
 // client & server
 views.homePosts = function (terms) {
   return {
-    find: {post_flags: [], post_visibility: ['Peers']},
+    find: {post_flags: [], post_visibility: { "$in" : ["Student"]} },
     sort: {sort: {createdAt: -1}, limit: terms.limit}
   };
 }

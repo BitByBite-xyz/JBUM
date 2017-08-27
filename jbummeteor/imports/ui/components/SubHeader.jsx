@@ -14,6 +14,7 @@ import MdSupervisorAccount from 'react-icons/lib/md/supervisor-account';
 import MdQuestionAnswer from 'react-icons/lib/md/question-answer';
 import MdAccountCircle from 'react-icons/lib/md/account-circle';
 import MdFlag from 'react-icons/lib/md/flag';
+import MdPeople from 'react-icons/lib/md/people';
 
 const SubHeader = () => (
   <Paper zDepth={2}>
@@ -35,6 +36,12 @@ const SubHeader = () => (
         <ListItem
           leftAvatar={<Avatar icon={<MdQuestionAnswer />} />}
           primaryText="Survey"
+        />
+      </Link>
+      <Link to="/responder" style={{ textDecoration: 'none' }}>
+        <ListItem
+          leftAvatar={<Avatar icon={<MdPeople />} />}
+          primaryText="Responder"
         />
       </Link>
       <Link to="/flagged" style={{ textDecoration: 'none' }}>

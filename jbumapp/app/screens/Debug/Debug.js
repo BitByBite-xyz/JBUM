@@ -1,67 +1,86 @@
+import React, { Component } from 'react';
 import styles from './styles';
 import {
   Text,
   View,
-  ScrollView
+  ScrollView,
+  Image
 } from 'react-native';
-import React, { Component } from 'react';
-import { Button } from 'react-native-elements';
 
-import { LayoutAnimation } from 'react-native';
+import { NavigationActions } from 'react-navigation';
+import { Pages } from '../../components/SwipePages';
 
-const Debug = (props) => {
-  const { toInbox, toBarcodeScanner, toAccountSetup } = props;
 
-   return (
-     <View style={styles.container}>
+import Ask from '../Ask';
+import Home from '../Home';
 
-       <Button
-         title='To QR Component'
-         large
-         borderRadius={20}
-         icon={{name: 'pages',buttonStyle: styles.buttons}}
-         backgroundColor={'blue'}
-         onPress={toBarcodeScanner}
-         fontFamily= 'Avenir'
-         fontSize={25}
-         fontWeight='bold'
-         iconRight={true}
-       />
-       <Button
-         title='Notification'
-         large
-         borderRadius={20}
-         icon={{name: 'pages',buttonStyle: styles.buttons}}
-         backgroundColor={'turquoise'}
-         onPress={toInbox}
-         fontFamily= 'Avenir'
-         fontSize={25}
-         fontWeight='bold'
-         iconRight={true}
-       />
-       <Button
-         title='Sign Up'
-         large
-         borderRadius={20}
-         icon={{name: 'pages',buttonStyle: styles.buttons}}
-         backgroundColor={'orange'}
-         onPress={toAccountSetup}
-         fontFamily= 'Avenir'
-         fontSize={25}
-         fontWeight='bold'
-         iconRight={true}
-       />
+import Profile from '../Profile';
+import Settings from '../Settings';
+import images from '../../config/images';
 
-     </View>
 
-   );
+class DebugContainer extends Component {
+  constructor(props) {
 
-}
+    super(props);
 
-Debug.propTypes = {
-  toAccountSetup: React.PropTypes.func,
-  toAsk: React.PropTypes.func,
-  toSettings: React.PropTypes.func,
+    this.state = {
+      loading: true
+    };
+
+
+  }
+
+  componentDidMount(){
+
+  }
+
+  toInbox(){
+    this.props.navigation.navigate('Inbox');
+  }
+  toAskPage(){
+    this.props.navigation.navigate('Ask');
+  }
+
+  scrollToPage = () => {
+    console.log('hey');
+    this.pages.scrollToPage(1)
+  }
+
+  render() {
+    const { navigation } = this.props;
+    return (
+      <Pages
+        horizontal={false}
+        indicatorPosition={'none'}
+        startPage={1}
+         ref={(c) => this.pages = c}
+      >
+        <Ask
+          navigation={navigation}
+          scrollToPage={this.scrollToPage}
+        />
+        <Pages
+          startPage={1}
+          indicatorPosition={'none'}
+          rtl
+          >
+          <Settings
+          navigation={navigation}/>
+          <View style={{ flex: 1, backgroundColor: 'transparent' }} >
+            <Image
+              source={images.profileBannerImg}
+              style={{width: '100%', height: '100%'}}
+            />
+          </View >
+          <Profile
+          navigation={navigation}/>
+        </Pages>
+        <Home
+          navigation={navigation}/>
+      </Pages>
+    );
+  }
 };
 
-export default Debug;
+export default DebugContainer;

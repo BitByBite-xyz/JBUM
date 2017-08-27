@@ -72,7 +72,7 @@ class LoginContainer extends Component {
           this.handleError(err.reason);
         }
         else {
-          this.props.navigation.navigate('Tabs');
+          this.props.navigation.navigate('HomeStack');
         }
       });
 

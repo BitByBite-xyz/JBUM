@@ -55,20 +55,54 @@ class Login extends Component {
     let email = this.refs.email.value.trim();
     let password = this.refs.password.value.trim();
     console.log(this.props.history);
-    Meteor.loginWithPassword(email, password, (err) => {
-     if(err){
-       console.log('unsuccessful login');
-       this.handleTouchTap();
-       this.refs.email.value = '';
-       this.refs.password.value = '';
-       this.setState({
-         error: err.reason
-       });
-     }
-     else {
-       this.doTheThing();
-     }
-   });
+
+    let shouldLogIn = Meteor.call('canLoginToAdminPanel', email, (err, isAllowed) => {
+      if (err) {
+        console.log('unsuccessful login');
+        this.handleTouchTap();
+        this.refs.email.value = '';
+        this.refs.password.value = '';
+        this.setState({
+          error: err.reason
+        });
+        return;
+      } else {
+        if (isAllowed) {
+          Meteor.loginWithPassword(email, password, (err) => {
+           if(err){
+             console.log('unsuccessful login');
+             this.handleTouchTap();
+             this.refs.email.value = '';
+             this.refs.password.value = '';
+             this.setState({
+               error: err.reason
+             });
+           }
+           else {
+             this.doTheThing();
+           }
+         });
+        }
+        else {
+          console.log('unsuccessful login');
+          this.handleTouchTap();
+          this.refs.email.value = '';
+          this.refs.password.value = '';
+          this.setState({
+            error: 'not-authorized'
+          });
+
+        }
+
+      }
+    });
+    console.log(shouldLogIn);
+
+    //Roles.userIsInRole(Meteor.userId(), ['responder', 'admin'], 'default-group')
+    if (shouldLogIn) {
+
+    }
+
      //console.log(email + ' ' + password);
   }
 
@@ -77,6 +111,7 @@ class Login extends Component {
   }
 
   render() {
+    const { error } = this.state;
 
     return(
       <form onSubmit={ this.loginUser}>
@@ -92,7 +127,7 @@ class Login extends Component {
             </center>
             <Snackbar
               open={this.state.open}
-              message="Invalid Username or Password"
+              message={error}
               autoHideDuration={4000}
               onRequestClose={this.handleRequestClose}
             />

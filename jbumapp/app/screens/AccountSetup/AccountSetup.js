@@ -39,7 +39,7 @@ export default class AccountSetup extends Component {
     ]
 
     this.state = {
-      currentIndex: 4,
+      currentIndex: 0,
       items: items,
       profileData: []
     };
@@ -98,7 +98,7 @@ export default class AccountSetup extends Component {
       }
       else {
         console.log("UserData added");
-        this.props.navigation.navigate('Tabs', {overrideToAccountSetup:true});
+        this.props.navigation.navigate('HomeStack', {overrideToAccountSetup:true});
       }
     });
   }
