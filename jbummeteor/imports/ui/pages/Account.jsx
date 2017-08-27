@@ -33,12 +33,10 @@ class Account extends Component {
   render() {
     const { currentUser } = this.state;
     return (
-      <div>
-        <Paper style={{marginLeft: '1.5%', marginRight: '1.5%'}}>
-          <h1>Account:</h1><p>{currentUser.username}</p>
-          <RaisedButton label="logout" onClick={this.logout} />
-        </Paper>
-      </div>
+      <Paper style={{marginLeft: '1.5%', marginRight: '1.5%', height: 89, width: '97%'}}>
+          <div style={{float: 'left', marginLeft: 15}}><h3>Welcome, {currentUser.username}</h3></div>
+          <div style={{float: 'right', paddingTop: 28, marginRight: 20}}><RaisedButton label="logout" primary={true} onClick={this.logout} /></div>
+      </Paper>
     )
   }
 }
