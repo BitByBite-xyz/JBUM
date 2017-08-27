@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Meteor } from 'meteor/meteor'
 import { withHistory } from 'react-router-dom';
 import MainContainer from './MainContainer.jsx';
 
