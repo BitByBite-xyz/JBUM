@@ -31,6 +31,16 @@ class Ask extends Component {
     };
   }
 
+  resetFields = () => {
+    this.setState( {
+      title: '',
+      body: '',
+      post_visibility:[],
+      post_categories:[],
+      error: null,
+    });
+  }
+
   postButton = () => {
     const {title, body,post_visibility, post_categories} = (this.state);
     const { scrollToPage } = this.props;
@@ -58,6 +68,8 @@ class Ask extends Component {
           return;
         } else {
           console.log("Post added");
+          this.resetFields();
+          console.log(title);
 
           if (scrollToPage) {
             scrollToPage();
@@ -145,7 +157,6 @@ class Ask extends Component {
           />
         </View>
       );
-
     }
     if (section.title.includes('Category')) {
       return (
@@ -260,13 +271,14 @@ class Ask extends Component {
               <AutoGrowingTextInput
                   style={styles.largeText}
                   placeholder='Your Question&#39;s Title'
-                  returnKeyType='next'
+                  returnKeyType='done'
                   underlineColorAndroid='transparent'
                   onChangeText={(title) => this.setState({ title })}
                   autoCorrect={true}
                   placeholderTextColor={'#c9c9c9'}
                   minHeight={45}
-                  />
+                  value={title}
+                />
                   <View style={styles.lineDivider} />
             </View>
             <View style={styles.views}>
@@ -280,8 +292,9 @@ class Ask extends Component {
                   blurOnSubmit={true}
                   placeholderTextColor={'#c9c9c9'}
                   autoCorrect={true}
+                  value={body}
                   minHeight={75}
-                  />
+                />
               </View>
           </View>
           <View style={{padding: 10, backgroundColor: 'white', borderBottomRightRadius: 10, borderBottomLeftRadius: 10}}>
@@ -294,7 +307,6 @@ class Ask extends Component {
               />
             </View>
           </View>
-
 
           <Button
             borderRadius={25}

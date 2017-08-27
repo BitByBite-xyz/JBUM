@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import {
+  Alert
+} from 'react-native';
+
 import _ from 'lodash';
 
 import { NavigationActions } from 'react-navigation';
@@ -20,20 +24,32 @@ class ReplyContainer extends Component {
     const { postContent } = navigation.state.params;
     const body = this.state;
 
-    Meteor.call('Posts.reply', postContent._id, body.body, (err) => {
-      if (err) {
-        console.log("reply err "+err.details);
-        Alert.alert(
-          'Oops! Screenshot this and send to support!',
-          'Server error: \n\n'+err.details
-        );
-        return;
-      } else {
-        console.log("reply added!");
+    console.log(body.body);
 
-        this.props.navigation.goBack();
-      }
-    });
+    if (body.body.length > 0) {
+      Meteor.call('Posts.reply', postContent._id, body.body, (err) => {
+        if (err) {
+          console.log("reply err "+err.details);
+          Alert.alert(
+            'Oops! Screenshot this and send to support!',
+            'Server error: \n\n'+err.details
+          );
+          return;
+        } else {
+          console.log("reply added!");
+
+          this.props.navigation.goBack();
+        }
+      });
+    }
+    else {
+      Alert.alert(
+        'Oops!',
+        'Please reply to the question before tapping submit'
+      );
+    }
+
+
   }
   render() {
     return (

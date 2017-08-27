@@ -59,12 +59,7 @@ PostsSchema = new SimpleSchema({
  },
  post_flags: {
    type: [String],
-   label: "Users that flagged this post",
-   autoValue: function() {
-     if ( this.isInsert ) {
-       return [];
-     }
-   }
+   label: "Users that flagged this post"
  },
  post_likes: {
      type: [String],

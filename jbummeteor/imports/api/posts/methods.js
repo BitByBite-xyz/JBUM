@@ -3,13 +3,20 @@ import { ValidatedMethod } from 'meteor/mdg:validated-method';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 import { Posts } from './posts';
 import { check } from 'meteor/check';
-import { Random } from 'meteor/random'
+import { Random } from 'meteor/random';
 
+var Filter = require('bad-words'),
+filter = new Filter({ placeHolder: '🤲'});
+filter.removeWords("gay", "gayboy", "gaygirl","gays","gayz");
+filter.removeWords('gay');
 
 Meteor.methods({
   'Posts.insert' ({title, body, post_visibility, post_categories}) {
     check(title, String);
     check(body, String);
+
+    var isFlagged = (filter.clean(body).indexOf('🤲') !== -1 || filter.clean(title).indexOf('🤲') !== -1);
+    const post_flags = isFlagged ? ['autogen']:[];
 
     // Make sure the user is logged in before inserting a post
     if (!Meteor.userId()) {
@@ -23,7 +30,8 @@ Meteor.methods({
       post_comments: [],
       post_likes: [],
       post_categories: post_categories,
-      post_visibility:post_visibility
+      post_visibility:post_visibility,
+      post_flags: post_flags
     });
   },
   'Posts.remove' (postId) {

@@ -86,7 +86,8 @@ class Home extends Component {
   }
 
   onAskPress = () => {
-    this.props.navigation.navigate('Ask');
+    this.props.toAskPage();
+    //this.props.navigation.navigate('Ask');
     //this.dropdown.alertWithType('error', 'Error','dd')
   }
 
@@ -102,7 +103,7 @@ class Home extends Component {
       }}
     >
       <AskHeader
-        onAskPress={this.onAskPress}
+        onAskPress={this.props.toAskPage}
         {...this.state}
       />
     </View>

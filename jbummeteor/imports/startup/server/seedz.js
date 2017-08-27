@@ -58,7 +58,8 @@ Meteor.startup(() => {
         post_comments: [comments[i]],
         post_visibility: [Random.choice(['Responder','Peers'])],
         post_categories: [Random.choice(['Drugs','Family','Sexuality'])],
-        post_likes: postLikes
+        post_likes: postLikes,
+        post_flags: []
       });
     }
   }

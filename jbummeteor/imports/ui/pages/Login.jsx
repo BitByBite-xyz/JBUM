@@ -52,15 +52,15 @@ class Login extends Component {
 
   loginUser = (event) => {
     event.preventDefault();
-    let email = this.refs.email.value.trim();
+    let username = this.refs.username.value.trim();
     let password = this.refs.password.value.trim();
     console.log(this.props.history);
 
-    let shouldLogIn = Meteor.call('canLoginToAdminPanel', email, (err, isAllowed) => {
+    let shouldLogIn = Meteor.call('canLoginToAdminPanel', username, (err, isAllowed) => {
       if (err) {
         console.log('unsuccessful login');
         this.handleTouchTap();
-        this.refs.email.value = '';
+        this.refs.username.value = '';
         this.refs.password.value = '';
         this.setState({
           error: err.reason
@@ -68,11 +68,11 @@ class Login extends Component {
         return;
       } else {
         if (isAllowed) {
-          Meteor.loginWithPassword(email, password, (err) => {
+          Meteor.loginWithPassword(username, password, (err) => {
            if(err){
              console.log('unsuccessful login');
              this.handleTouchTap();
-             this.refs.email.value = '';
+             this.refs.username.value = '';
              this.refs.password.value = '';
              this.setState({
                error: err.reason
@@ -86,7 +86,7 @@ class Login extends Component {
         else {
           console.log('unsuccessful login');
           this.handleTouchTap();
-          this.refs.email.value = '';
+          this.refs.username.value = '';
           this.refs.password.value = '';
           this.setState({
             error: 'not-authorized'
@@ -103,7 +103,7 @@ class Login extends Component {
 
     }
 
-     //console.log(email + ' ' + password);
+     //console.log(username + ' ' + password);
   }
 
   doTheThing = () =>{
@@ -120,7 +120,7 @@ class Login extends Component {
             <center>
               <Paper zDepth={2} style={style}>
                 <h4 style={{marginTop: 55, marginBottom: 50, color: '#919799'}}>JBUM Admin</h4>
-                <input type="text" placeholder="Email" ref='email' style={{width: '80%', marginBottom: 25}} />
+                <input type="text" placeholder="Username" ref='username' style={{width: '80%', marginBottom: 25}} />
                 <input type="password" placeholder="Password" ref='password' style={{width: '80%'}} />
                 <RaisedButton label="Login" primary={true} type='submit' style={{width: '80%', marginTop: 10}}/>
               </Paper>

@@ -39,7 +39,7 @@ class DebugContainer extends Component {
     this.props.navigation.navigate('Inbox');
   }
   toAskPage(){
-    this.props.navigation.navigate('Ask');
+    this.pages.scrollToPage(0)
   }
 
   scrollToPage = () => {
@@ -77,7 +77,8 @@ class DebugContainer extends Component {
           navigation={navigation}/>
         </Pages>
         <Home
-          navigation={navigation}/>
+          navigation={navigation}
+          toAskPage={this.toAskPage.bind(this)}/>
       </Pages>
     );
   }

@@ -38,8 +38,6 @@ Meteor.methods({
   },
 
   'loggedUser' () {
-    console.log(Meteor.users.findOne({ _id: Meteor.userId() }));
-
     if (Meteor.userId()) {
       return Meteor.users.findOne({ _id: Meteor.userId() });
     }
