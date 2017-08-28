@@ -26,6 +26,7 @@ const ChartPanel = (props) => {
                             <PieChart width={195} height={195} onMouseEnter={this.onPieEnter}>
                                 <Pie
                                     data={data}
+                                    dataKey={'value'}
                                     cx={'45%'}
                                     cy={'45%'}
                                     innerRadius={60}
