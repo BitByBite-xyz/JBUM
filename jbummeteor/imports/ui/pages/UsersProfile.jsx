@@ -84,7 +84,7 @@ class UserProfile extends Component {
   render() {
     return (
       <div>
-        <div style={{width: '96.5%', marginLeft: '1.75%', marginTop: -20}}>
+        <div style={{width: '96.5%', marginLeft: '1.75%'}}>
           <Paper zDepth={1}>
             <Link to="/users"><FlatButton primary={true} style={{float: 'left', width: 100, height: 40, marginTop: 18, marginLeft: 17}} labelStyle={{fontSize: 18}} label="back"/></Link>
             <h2 style={{paddingTop: 13, paddingBottom: 13, marginLeft: '35%', fontSize: 43}}>User Profile</h2>
