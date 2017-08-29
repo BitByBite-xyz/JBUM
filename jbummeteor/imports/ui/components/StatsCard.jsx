@@ -10,7 +10,7 @@ const StatsCard = (props) => {
 
   return (
         <div className="col-sm-4 row-no-padding">
-          <Paper zDepth={1}>
+          <Paper zDepth={1} style={{marginBottom: 15}}>
             <div style={{display: 'flex', flexDirection: 'row'}}>
               <div style={cardStyle}/>
               <div style={{marginLeft: '15%', marginTop: '5.5%'}}>
