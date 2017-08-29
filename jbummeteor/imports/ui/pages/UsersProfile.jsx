@@ -7,12 +7,18 @@ import { Link } from 'react-router-dom';
 import StatsCard from '../components/StatsCard';
 
 class UserProfile extends Component {
+  constructor(props){
+    super(props);
+  }
+  getParamID = (props) => {
+    return this.props.match.params.id;
+  }
   render() {
     return (
       <div>
         <div style={{width: '96.5%', marginLeft: '1.75%', marginTop: -20}}>
-          <Paper zDepth={2}>
-            <Link to="/users"><FlatButton primary={true} style={{float: 'left', width: 100, height: 40, marginTop: 18, marginLeft: 20}} labelStyle={{fontSize: 18}} label="back"/></Link>
+          <Paper zDepth={1}>
+            <Link to="/users"><FlatButton primary={true} style={{float: 'left', width: 100, height: 40, marginTop: 18, marginLeft: 17}} labelStyle={{fontSize: 18}} label="back"/></Link>
             <h2 style={{paddingTop: 13, paddingBottom: 13, marginLeft: '35%', fontSize: 43}}>User Profile</h2>
           </Paper>
         </div>
@@ -53,7 +59,7 @@ class UserProfile extends Component {
               <div style={{display: 'flex', flexDirection: 'row'}}>
                 <div style={{height: 100, width: 5, backgroundColor: '#03E9F8'}}/>
                 <div style={{marginLeft: '13%', marginTop: '5.5%'}}>
-                  <p className="dashboardCardNumber" style={{fontSize: 21, marginTop: 5}}>2uYADqNztWnszWgcJ<br /></p>
+                  <p className="dashboardCardNumber" style={{fontSize: 21, marginTop: 5}}>{this.getParamID()}<br /></p>
                   <p style={{fontSize: 17, color: 'gray', marginTop: 8}}>User ID</p>
                 </div>
               </div>

@@ -54,6 +54,7 @@ class UsersList extends React.Component {
                     <TableHeaderColumn style={{fontSize: 16}}>Name</TableHeaderColumn>
                     <TableHeaderColumn style={{fontSize: 16}}>Posts</TableHeaderColumn>
                     <TableHeaderColumn style={{fontSize: 16}}>Replies</TableHeaderColumn>
+                    <TableHeaderColumn></TableHeaderColumn>
                   </TableRow>
                 </TableHeader>
                 <TableBody>

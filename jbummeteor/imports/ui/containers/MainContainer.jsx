@@ -31,7 +31,7 @@ const MainContainer = () => {
                     <Switch>
                       <Route exact path='/' component={Dashboard}/>
                       <Route path='/users' component={Users}/>
-                      <Route path='/usersprofile' component={UsersProfile}/>
+                      <Route path='/usersprofile/:id' component={UsersProfile}/>
                       <Route path='/survey' component={Survey}/>
                       <Route path='/responder' component={Responder}/>
                       <Route path='/flagged' component={Flagged}/>
