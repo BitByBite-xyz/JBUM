@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 //Screens & components
 import Settings from '../pages/Settings';
 import Users from '../pages/Users';
+import UsersProfile from '../pages/UsersProfile';
 import Survey from '../pages/Survey';
 import Responder from '../pages/Responder';
 import Flagged from '../pages/Flagged';
@@ -30,6 +31,7 @@ const MainContainer = () => {
                     <Switch>
                       <Route exact path='/' component={Dashboard}/>
                       <Route path='/users' component={Users}/>
+                      <Route path='/usersprofile' component={UsersProfile}/>
                       <Route path='/survey' component={Survey}/>
                       <Route path='/responder' component={Responder}/>
                       <Route path='/flagged' component={Flagged}/>
