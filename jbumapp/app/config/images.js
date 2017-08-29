@@ -14,8 +14,10 @@ const images = {
   heartFilled: require('../images/heart.png'),
   arrowUp: require('../images/arrow-down.png'),
   arrowDown: require('../images/arrow-up.png'),
-  inboxCircle: require('../images/inboxCircle.png')
-
+  inboxCircle: require('../images/inboxCircle.png'),
+  homeBackground: require('../images/homeBackground.png'),
+  homeUnderlay: require('../images/homeUnderlay.png'),
+  homeArrowDown: require('../images/home-arrow-down.png'),
 }
 
 export default images;
