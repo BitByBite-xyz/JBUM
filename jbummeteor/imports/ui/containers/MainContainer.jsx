@@ -15,6 +15,7 @@ import Dashboard from '../pages/Dashboard';
 import SubHeader from '../components/SubHeader';
 import Header from '../components/Header';
 
+
 const MainContainer = () => {
   const isAuthenticated = Meteor.userId() !== null
   return (
