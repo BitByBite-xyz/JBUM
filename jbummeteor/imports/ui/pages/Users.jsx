@@ -28,7 +28,13 @@ class Users extends Component {
   }
   getNumberReplies(id) {
     const { users, posts } = this.props;
-    const count = _.filter(posts.post_comments, { 'user_id': id }).length;
+    let count = 0;
+    _.each(posts, function(post){
+      if (post.post_comments) {
+        count = count + _.filter(post.post_comments, (comment) => (comment.user_id === id)).length;
+      }
+    });
+
     return count;
   }
 
