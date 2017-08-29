@@ -8,7 +8,7 @@ import StatsCard from '../components/StatsCard';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Posts } from '../../api/posts/posts';
 
-import ResponceQuestion from '../components/ResponceQuestion';
+import UserPost from '../components/UserPost';
 
 class UserProfile extends Component {
   constructor(props){
@@ -33,32 +33,53 @@ class UserProfile extends Component {
     _.each(posts, function(post){
       if (post.post_comments) {
         count = count + _.filter(post.post_comments, (comment) => (comment.user_id === match.params.id)).length;
-        console.log(count);
       }
     });
     return count;
   }
-
+  getNumberReports() {
+    const { users, posts, match } = this.props;
+    let reportsCount = 0;
+    _.each(posts, function(post){
+      if (post.post_flags) {
+        reportsCount = reportsCount + _.filter(post.post_flags, (report) => (report.user_id === match.params.id)).length;
+      }
+    });
+    return reportsCount;
+  }
+  getUsersKarma() {
+    const questionNumber = this.getNumberPosts();
+    const answeredNumber = this.getNumberReplies();
+    const karma = Math.floor((questionNumber + answeredNumber)*1.5);
+    //console.log('Posts: ' + questionNumber);
+    //console.log('Replies: ' + answeredNumber);
+    //console.log('Karma: ' + karma);
+    return karma;
+  }
+  getUserLevel()  {
+    const karma = this.getUsersKarma();
+    const level = Math.floor(karma / 10);
+    return level;
+  }
+  getUserLevelProgress() {
+    const level = this.getUserLevel();
+    const karma = this.getUsersKarma();
+    const levelProgress = (karma * 10) - (level * 100);
+    console.log(levelProgress);
+    return levelProgress;
+  }
   renderUsersPosts = () => {
     const { usersPosts } = this.props;
 
     if (usersPosts) {
       return (usersPosts.map((post) => (
-        <ResponceQuestion
+        <UserPost
+          key={post._id}
           postContent={post}
-          onClick={this.handleOpen}
         />
       )))
     }
   }
-  handleOpen = (postContent) => {
-    this.setState({open: true,
-                   modalContent: postContent});
-  };
-
-  handleClose = () => {
-    this.setState({open: false});
-  };
 
   render() {
     return (
@@ -80,7 +101,7 @@ class UserProfile extends Component {
           cardStyle={{height: 100, width: 5, backgroundColor: '#F2BCE0'}}
         />
         <StatsCard
-          cardTitle={'2'}
+          cardTitle={this.getNumberReports()}
           cardDiscriptor={'Reports'}
           cardStyle={{height: 100, width: 5, backgroundColor: '#688FF4'}}
         />
@@ -90,14 +111,14 @@ class UserProfile extends Component {
               <div style={{height: 100, width: 5, backgroundColor: '#507EF4'}}/>
               <div style={{marginLeft: '13%', marginTop: '5.5%'}}>
                 {/*<p className="dashboardCardNumber" style={{fontSize: 32}}>Level<br /></p>*/}
-                <LinearProgress mode="determinate" value={44} style={{width: '380%', marginBottom: 18, marginTop: 22}} />
-                <p style={{fontSize: 17, color: 'gray'}}>Level 4</p>
+                <LinearProgress mode="determinate" value={this.getUserLevelProgress()} style={{width: '380%', marginBottom: 18, marginTop: 22}} />
+                <p style={{fontSize: 17, color: 'gray'}}>Level {this.getUserLevel()}</p>
               </div>
             </div>
           </Paper>
         </div>
           <StatsCard
-            cardTitle={'38'}
+            cardTitle={this.getUsersKarma()}
             cardDiscriptor={'Karma'}
             cardStyle={{height: 100, width: 5, backgroundColor: '#08C7F7'}}
           />
@@ -113,9 +134,9 @@ class UserProfile extends Component {
             </Paper>
           </div>
           <div className="col-sm-12 row-no-padding">
-            <Paper style={{height: 300}}>
-              <div style={{backgroundColor: '#E8E8E8'}}><h4 style={{color: '#8B8B8B', paddingTop: 8, marginLeft: 15, paddingBottom: 5}}>Posts</h4></div>
-              <div style={{paddingLeft: 15, paddingRight: 15}}>
+            <Paper className="col-sm-12 row-no-padding">
+              <div style={{backgroundColor: '#E8E8E8'}}><p style={{color: '#8B8B8B', paddingTop: 8, marginLeft: '4%', paddingBottom: 5, fontSize: 32}}>Posts</p></div>
+              <div style={{paddingLeft: 15, paddingRight: 15, marginTop: 18, marginBottom: 18}}>
                 {this.renderUsersPosts()}
               </div>
             </Paper>
