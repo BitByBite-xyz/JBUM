@@ -23,13 +23,13 @@ class Users extends Component {
 
   getNumberPosts(id) {
     const { users, posts } = this.props;
-    const usersPosts = _.where(posts, {user_id: id});
+    const usersPosts = _.where(posts, {user_id: id}).length;
     return usersPosts;
   }
   getNumberReplies(id) {
     const { users, posts } = this.props;
-    const usersReplies = _.where(posts.post_comments, {user_id: id});
-    return usersReplies;
+    const count = _.filter(posts.post_comments, { 'user_id': id }).length;
+    return count;
   }
 
   renderUserList = () => {
@@ -40,8 +40,8 @@ class Users extends Component {
         <TableRow key={user._id} selectable={false}>
           <TableRowColumn style={{paddingLeft: 70, width: 235}}>{user._id}</TableRowColumn>
           <TableRowColumn style={{paddingLeft: 13}}>{Roles.getRolesForUser(user._id, 'default-group')}</TableRowColumn>
-          <TableRowColumn style={{paddingLeft: 30}}>{this.getNumberReplies(user._id).length}</TableRowColumn>
-          <TableRowColumn style={{paddingLeft: 45}}>{this.getNumberPosts(user._id).length}</TableRowColumn>
+          <TableRowColumn style={{paddingLeft: 30}}>{this.getNumberReplies(user._id)}</TableRowColumn>
+          <TableRowColumn style={{paddingLeft: 45}}>{this.getNumberPosts(user._id)}</TableRowColumn>
           <TableRowColumn><Link to={'/usersprofile/' + user._id}><FlatButton label="Check Profile"/></Link></TableRowColumn>
         </TableRow>
       )))
