@@ -40,8 +40,8 @@ class Users extends Component {
         <TableRow key={user._id} selectable={false}>
           <TableRowColumn style={{paddingLeft: 70, width: 235}}>{user._id}</TableRowColumn>
           <TableRowColumn style={{paddingLeft: 13}}>{Roles.getRolesForUser(user._id, 'default-group')}</TableRowColumn>
-          <TableRowColumn style={{paddingLeft: 30}}>{this.getNumberReplies(user._id)}</TableRowColumn>
-          <TableRowColumn style={{paddingLeft: 45}}>{this.getNumberPosts(user._id)}</TableRowColumn>
+          <TableRowColumn style={{paddingLeft: 30}}>{this.getNumberPosts(user._id)}</TableRowColumn>
+          <TableRowColumn style={{paddingLeft: 45}}>{this.getNumberReplies(user._id)}</TableRowColumn>
           <TableRowColumn><Link to={'/usersprofile/' + user._id}><FlatButton label="Check Profile"/></Link></TableRowColumn>
         </TableRow>
       )))
