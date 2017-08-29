@@ -27,6 +27,18 @@ class UserProfile extends Component {
     const usersPosts = _.where(posts, {user_id: id}).length;
     return usersPosts;
   }
+  getNumberReplies() {
+    const { users, posts, match } = this.props;
+    let count = 0;
+    _.each(posts, function(post){
+      if (post.post_comments) {
+        count = count + _.filter(post.post_comments, (comment) => (comment.user_id === match.params.id)).length;
+        console.log(count);
+      }
+    });
+    return count;
+  }
+
   renderUsersPosts = () => {
     const { usersPosts } = this.props;
 
@@ -63,7 +75,7 @@ class UserProfile extends Component {
           cardStyle={{height: 100, width: 5, backgroundColor: '#82E6C2'}}
         />
         <StatsCard
-          cardTitle={'12'}
+          cardTitle={this.getNumberReplies()}
           cardDiscriptor={'Replies'}
           cardStyle={{height: 100, width: 5, backgroundColor: '#F2BCE0'}}
         />
