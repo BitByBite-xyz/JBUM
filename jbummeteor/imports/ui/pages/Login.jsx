@@ -89,7 +89,7 @@ class Login extends Component {
           this.refs.username.value = '';
           this.refs.password.value = '';
           this.setState({
-            error: 'not-authorized'
+            error: 'Account not authorized'
           });
 
         }
