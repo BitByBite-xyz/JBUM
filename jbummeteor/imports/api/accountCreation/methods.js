@@ -35,12 +35,5 @@ Meteor.methods({
       return Roles.userIsInRole(Meteor.users.findOne({username: username.trim()})._id, ['responder', 'admin'], 'default-group');
     }
     return false;
-  },
-
-  'loggedUser' () {
-    if (Meteor.userId()) {
-      return Meteor.users.findOne({ _id: Meteor.userId() });
-    }
-    return null;
   }
 });

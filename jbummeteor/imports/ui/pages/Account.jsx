@@ -13,12 +13,7 @@ import { createContainer } from 'meteor/react-meteor-data';
 class Account extends Component {
   constructor(props){
     super(props);
-    this.state = {
-      currentUser: ''
-    };
-    Meteor.call('loggedUser', (err, response) => {
-      this.setState({currentUser: response});
-    });
+
   }
   logout(e){
     e.preventDefault();
@@ -31,13 +26,20 @@ class Account extends Component {
     });
   }
   render() {
-    const { currentUser } = this.state;
+    const { currentUser } = this.props;
     return (
       <Paper style={{marginLeft: '1.5%', marginRight: '1.5%', height: 89, width: '97%'}}>
-          <div style={{float: 'left', marginLeft: 15}}><h3>Welcome, {currentUser.username}</h3></div>
+          <div style={{float: 'left', marginLeft: 15}}><h3>Welcome, {currentUser ? currentUser.username : ''}</h3></div>
           <div style={{float: 'right', paddingTop: 28, marginRight: 20}}><RaisedButton label="logout" primary={true} onClick={this.logout} /></div>
       </Paper>
     )
   }
 }
-export default Account;
+
+export default createContainer(() => {
+  const handle = Meteor.subscribe('userList');
+  return {
+    currentUser:  Meteor.users.findOne({ _id: Meteor.userId() }),
+    userDataReady: handle.ready()
+  }
+}, Account);

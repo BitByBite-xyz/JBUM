@@ -62,6 +62,5 @@ export default createContainer(() => {
   //  flaggedPosts: Posts.find( { $where: "this.post_flags.length > 0" }).fetch(),
     posts: Posts.find({}).fetch(),
     users: Meteor.users.find({}).fetch()
-
   }
 }, Dashboard);
