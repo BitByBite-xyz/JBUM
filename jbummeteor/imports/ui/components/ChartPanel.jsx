@@ -35,7 +35,7 @@ const ChartPanel = (props) => {
                                     //paddingAngle={5}
                                 >
                                   {
-                                    data.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)
+                                    data.map((entry, index) => <Cell key={entry} fill={COLORS[index % COLORS.length]}/>)
                                   }
                                 </Pie>
                                 <Tooltip/>

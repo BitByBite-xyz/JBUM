@@ -3,7 +3,7 @@ import Paper from 'material-ui/Paper';
 import Divider from 'material-ui/Divider';
 import FlatButton from 'material-ui/FlatButton';
 
-const ResponceQuestion = (props) => {
+const ResponseQuestion = (props) => {
   const { postContent, onClick } = props;
 
   handleRespondButtonPressed = () => {
@@ -24,4 +24,4 @@ const ResponceQuestion = (props) => {
     </div>
 );}
 
-export default ResponceQuestion;
+export default ResponseQuestion;

@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import GenderSurveyChart from '../components/GenderSurveyChart';
-
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
 

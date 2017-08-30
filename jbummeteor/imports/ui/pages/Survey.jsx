@@ -11,7 +11,6 @@ import ChartPanel from '../components/ChartPanel';
 class Survey extends Component {
   constructor(props){
     super(props);
-
     this.state = {
       surveyData: null,
     }
@@ -20,7 +19,7 @@ class Survey extends Component {
   doAccountSetup = () => {
     const { surveyData } = this.state;
     const { userData } = this.props;
-    
+
     let data = {};
 
     if (!surveyData && userData) {
@@ -38,14 +37,11 @@ class Survey extends Component {
         }
       });
       this.setState({surveyData: data});
-
-      this.harvestData(data['Age'])
     }
   }
 
   harvestData = (data) => {
     let returner = [];
-    console.log(data);
 
     const uniques = data.filter(function(item, i, ar){ return ar.indexOf(item) === i; });
 
@@ -59,8 +55,6 @@ class Survey extends Component {
     _.each(uniques, (datapoint, index) => {
       returner.push({name: datapoint, value: counts[datapoint]})
     } )
-
-    console.log(returner);
     return returner;
   }
 
@@ -79,7 +73,6 @@ class Survey extends Component {
     const { surveyData } = this.state;;
 
     if (surveyData) {
-      console.log(surveyData);
       ageData = this.harvestData(surveyData['Age']);
       genderData = this.harvestData(surveyData['Gender']);
       sexualityData = this.harvestData(surveyData['Sexuality']);
