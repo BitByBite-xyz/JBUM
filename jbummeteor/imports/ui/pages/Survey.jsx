@@ -20,7 +20,7 @@ class Survey extends Component {
   doAccountSetup = () => {
     const { surveyData } = this.state;
     const { userData } = this.props;
-
+    
     let data = {};
 
     if (!surveyData && userData) {
@@ -59,68 +59,74 @@ class Survey extends Component {
     _.each(uniques, (datapoint, index) => {
       returner.push({name: datapoint, value: counts[datapoint]})
     } )
-    
+
     console.log(returner);
+    return returner;
   }
 
   render() {
+    let ageData = null;
+    let genderData = null;
+    let sexualityData = null;
+    let ethnicityData = null;
+    let generationData = null;
+    let citizenshipData = null;
+    let familyData = null;
+    let siblingsData = null;
+    let birthOrderData = null;
+
+
+    const { surveyData } = this.state;;
+
+    if (surveyData) {
+      console.log(surveyData);
+      ageData = this.harvestData(surveyData['Age']);
+      genderData = this.harvestData(surveyData['Gender']);
+      sexualityData = this.harvestData(surveyData['Sexuality']);
+      ethnicityData = this.harvestData(surveyData['Ethnicicty']);
+      generationData = this.harvestData(surveyData['Generation']);
+      citizenshipData = this.harvestData(surveyData['Citizenship']);
+      familyData = this.harvestData(surveyData['Family']);
+      siblingsData = this.harvestData(surveyData['Siblings']);
+      birthOrderData = this.harvestData(surveyData['Birth Order']);
+    }
       return (
           <div>
             <ChartPanel
               graphName="Age"
-              data={[{name: '8', value: 450}, {name: '9', value: 200}, {name: '10', value: 350},
-                  {name: '11', value: 200}, {name: '12', value: 200}, {name: '13', value: 200},
-                  {name: '14', value: 200}, {name: '15', value: 200}, {name: '16', value: 200},
-                  {name: '17', value: 200}, {name: '18', value: 200}, {name: '19', value: 200},
-                  {name: '20', value: 200}, {name: '21', value: 200}, {name: '22', value: 200},
-                  {name: '23', value: 200}, {name: '24', value: 200}]}
+              data={ageData ? ageData: [{name: '', value: 400}]}
             />
             <ChartPanel
-                graphName="Gender"
-                data={[{name: 'Male', value: 400}, {name: 'Female', value: 300}, {name: 'Genderfluid', value: 300},
-                    {name: 'Transgender', value: 200}, {name: 'Other', value: 200}]}
+              graphName="Gender"
+              data={genderData ? genderData: [{name: '', value: 400}]}
             />
             <ChartPanel
-                graphName="Sexuality"
-                data={[{name: 'Heterosexual', value: 400}, {name: 'Homosexual', value: 300},
-                    {name: 'Bisexual', value: 300}, {name: 'Asexual', value: 200},
-                    {name: 'Pansexual', value: 200}, {name: 'Other', value: 200}]}
+              graphName="Sexuality"
+              data={sexualityData ? sexualityData: [{name: '', value: 400}]}
+              />
+            <ChartPanel
+              graphName="Ethnicity"
+              data={ethnicityData ? ethnicityData: [{name: '', value: 400}]}
             />
             <ChartPanel
-                graphName="Ethnicity"
-                data={[{name: 'Caucasian', value: 400}, {name: 'Black or African American', value: 300},
-                    {name: 'Hispanic or Latino', value: 300}, {name: 'Asian', value: 200},
-                    {name: 'Pacific Islander', value: 200}, {name: 'American Indian', value: 200},
-                    {name: "Don't Know", value: 200}]}
+              graphName="Generation"
+              data={generationData ? generationData: [{name: '', value: 400}]}
             />
             <ChartPanel
-                graphName="Generation"
-                data={[{name: '1st Generation', value: 400}, {name: '2nd Generation', value: 300},
-                    {name: '3rd Generation', value: 300}, {name: '4th Generation', value: 200},
-                    {name: '5th Generation', value: 200}]}
+              graphName="Citizenship"
+              data={citizenshipData ? citizenshipData: [{name: '', value: 400}]}
             />
             <ChartPanel
-                graphName="Citizenship"
-                data={[{name: 'Born inside the U.S.', value: 400},
-                    {name: 'Born outside the U.S.', value: 300},
-                    {name: 'Migrated to the U.S.', value: 300}]}
+              graphName="Family"
+              data={familyData ? familyData: [{name: '', value: 400}]}
             />
             <ChartPanel
-                graphName="Family"
-                data={[{name: 'Live with both parents', value: 400},
-                    {name: 'Live with one parent', value: 300},
-                    {name: 'Live with relatives', value: 300}]}
+              graphName="Siblings"
+              data={siblingsData ? siblingsData: [{name: '', value: 400}]}
             />
             <ChartPanel
-                graphName="Siblings"
-                data={[{name: 'Only Child', value: 400},
-                    {name: 'Have half/step siblings', value: 300},
-                    {name: 'Have brothers/sisters', value: 300}]}
-            />
-            <ChartPanel
-                graphName="Birth Order"
-                data={[{name: 'Oldest', value: 400}, {name: 'Middle Child', value: 300},
-                    {name: 'Youngest', value: 300}, {name: 'No Siblings', value: 200}]}
+              graphName="Birth Order"
+              data={birthOrderData ? birthOrderData: [{name: '', value: 400}]}
             />
             {this.props.userDataReady ? this.doAccountSetup() : null}
         </div>
