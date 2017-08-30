@@ -9,6 +9,7 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
+import Snackbar from 'material-ui/Snackbar';
 
 //Screen components
 import ResponceQuestion from '../components/ResponceQuestion';
@@ -18,6 +19,7 @@ class Responder extends Component {
     super(props);
     this.state = {
       open: false,
+      snackbarOpen: false,
       modalContent: '',
       modalTitle: '',
       response: '',
@@ -37,13 +39,24 @@ class Responder extends Component {
     const { modalContent, response } = this.state;
     const reply = this.refs.replyField.getValue();
 
+  handleTouchTap = () => {
+  this.setState({
+    snackbarOpen: true,
+    });
+  };
 
+  handleRequestClose = () => {
+    this.setState({
+      snackbarOpen: false,
+      });
+    };
 
     Meteor.call('Posts.reply', modalContent._id, reply, (err) => {
       if (err) {
         console.log("reply err "+err.details);
         return;
       } else {
+        handleTouchTap();
         console.log("reply added!");
         this.setState({open: false});
       }
@@ -115,6 +128,12 @@ class Responder extends Component {
         </Dialog>
         {postsReady ?
           this.renderResponderPosts(): null}
+          <Snackbar
+            open={this.state.snackbarOpen}
+            message="Post Response Sent!"
+            autoHideDuration={4000}
+            onRequestClose={this.handleRequestClose}
+          />
       </div>
     );
   }
