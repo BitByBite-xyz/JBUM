@@ -37,9 +37,30 @@ class Survey extends Component {
           });
         }
       });
-      this.setState({surveyData: data})
+      this.setState({surveyData: data});
+
+      this.harvestData(data['Age'])
     }
-    console.log(surveyData);
+  }
+
+  harvestData = (data) => {
+    let returner = [];
+    console.log(data);
+
+    const uniques = data.filter(function(item, i, ar){ return ar.indexOf(item) === i; });
+
+    var counts = {};
+
+    for (var i = 0; i < data.length; i++) {
+      var num = data[i];
+      counts[num] = counts[num] ? counts[num] + 1 : 1;
+    }
+
+    _.each(uniques, (datapoint, index) => {
+      returner.push({name: datapoint, value: counts[datapoint]})
+    } )
+    
+    console.log(returner);
   }
 
   render() {

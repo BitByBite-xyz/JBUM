@@ -78,10 +78,6 @@ class Home extends Component {
       else {
         navigation.navigate('AccountSetup');
       }
-
-
-
-
     }
   }
 
