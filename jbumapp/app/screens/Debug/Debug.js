@@ -5,7 +5,8 @@ import {
   View,
   ScrollView,
   Image,
-  Keyboard
+  Keyboard,
+  Animated
 } from 'react-native';
 
 import { NavigationActions } from 'react-navigation';
@@ -49,6 +50,7 @@ class DebugContainer extends Component {
 
   render() {
     const { navigation } = this.props;
+
     return (
       <Pages
         horizontal={false}
@@ -84,8 +86,8 @@ class DebugContainer extends Component {
                   style={{position: 'absolute', marginLeft: '48%', marginTop: '2%'}}
                   name='keyboard-arrow-up' />
                 <Icon
-                  style={{position: 'absolute', marginLeft: '1.5%', marginTop: '80%'}}
-                  name='keyboard-arrow-left' />
+                  style={{position: 'absolute', marginLeft: '92%', marginTop: '80%'}}
+                  name='keyboard-arrow-right' />
           </View >
           <Profile
             navigation={navigation}/>

@@ -100,7 +100,7 @@ export default createContainer(() => {
   return {
   //  flaggedPosts: Posts.find( { $where: "this.post_flags.length > 0" }).fetch(),
     posts: Posts.find({}).fetch(),
-    users: Meteor.users.find({}).fetch()
+    users: Meteor.users.find({}, {sort: {roles: {$gt:1}}}).fetch()
 
   }
 }, Users);

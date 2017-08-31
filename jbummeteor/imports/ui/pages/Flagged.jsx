@@ -7,12 +7,16 @@ const Flagged = (props) => {
   const { flaggedPosts, postsReady } = props;
   console.log(postsReady);
   renderFlagPosts = () => {
-    if (true) {
+    if (flaggedPosts.length > 0) {
       return flaggedPosts.map((post) => (
                 <FlaggedPost
+                  key={post._id}
                   postContent={post}
                 />
               ));
+    }
+    else {
+      return <p style={{fontSize: 35, marginLeft: '3%', marginTop: '1%'}}> No flagged posts</p> 
     }
 
   }

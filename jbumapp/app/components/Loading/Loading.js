@@ -5,7 +5,7 @@ import Spinner from 'react-native-spinkit';
 import styles from './styles';
 
 const Loading = (props) => {
-  const types = ['Bounce', 'Pulse', 'ChasingDots', 'ThreeBounce']
+  const types = ['Bounce', 'Pulse', 'ThreeBounce']
   const colors = ['#00B796', '#00D2F1', '#86269B', '#CC0063', '#FE9601']
 
   return (

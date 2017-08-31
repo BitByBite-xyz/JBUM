@@ -4,12 +4,12 @@ import { colors } from '../../config/styles';
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: 'transparent',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'transparent'
   },
   spinner: {
-    marginBottom: 50
+    marginBottom: 50,
+    backgroundColor: 'transparent'
   },
 });

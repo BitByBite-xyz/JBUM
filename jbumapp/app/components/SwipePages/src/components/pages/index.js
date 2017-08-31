@@ -77,7 +77,7 @@ export default class Pages extends PureComponent {
   }
 
   componentDidMount() {
-    setTimeout(() => this.setState({ loading: false }), 10);
+    setTimeout(() => this.setState({ loading: false }), 0);
   }
 
   componentDidUpdate() {
