@@ -93,7 +93,18 @@ class Account extends Component {
         </Paper>
         <div className="col-sm-12 row-no-padding" style={{marginTop: 20}}>
           <Paper className="col-sm-12 row-no-padding">
-            <div style={{backgroundColor: '#E8E8E8'}}><p style={{color: '#8B8B8B', paddingTop: 8, marginLeft: '4%', paddingBottom: 5, fontSize: 32}}>Change Password</p></div>
+            <div style={{backgroundColor: '#E8E8E8'}}><p style={{color: '#8B8B8B', paddingTop: 8, marginLeft: '1.5%', paddingBottom: 5, fontSize: 32}}>Credentials</p></div>
+            <div style={{paddingLeft: 15, paddingRight: 15, marginTop: 18, marginBottom: 18}}>
+                <p style={{fontSize: 18}}>Name: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Jacob Sussman</p>
+                <p style={{fontSize: 18}}>Email: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; jacobsussman5@gmail.com</p>
+                <p style={{fontSize: 18}}>School: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; New Trier</p>
+                <p style={{fontSize: 18}}>Host Domain: &nbsp; &nbsp; <a href="jbum.meteorapp.com">http://www.jbum.meteorapp.com</a></p>
+            </div>
+          </Paper>
+        </div>
+        <div className="col-sm-12 row-no-padding" style={{marginTop: 20}}>
+          <Paper className="col-sm-12 row-no-padding">
+            <div style={{backgroundColor: '#E8E8E8'}}><p style={{color: '#8B8B8B', paddingTop: 8, marginLeft: '1.5%', paddingBottom: 5, fontSize: 32}}>Change Password</p></div>
             <div style={{paddingLeft: 15, paddingRight: 15, marginTop: 18, marginBottom: 18}}>
               <form onSubmit={this.changeUserPassword.bind(this)}>
                 <input type="password" ref={"currentPassword"} placeholder="Current Password" style={{width: '31%', marginRight: '2%'}} required />
