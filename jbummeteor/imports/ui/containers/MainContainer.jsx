@@ -4,7 +4,6 @@ import { Switch, Route } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 //Screens & components
-import Settings from '../pages/Settings';
 import Users from '../pages/Users';
 import UsersProfile from '../pages/UsersProfile';
 import Demographics from '../pages/Demographics';
@@ -37,7 +36,6 @@ const MainContainer = () => {
                       <Route path='/responder' component={Responder}/>
                       <Route path='/flagged' component={Flagged}/>
                       <Route path='/account' component={Account}/>
-                      <Route path='/settings' component={Settings}/>
                     </Switch>
                   </div>
                 </div>

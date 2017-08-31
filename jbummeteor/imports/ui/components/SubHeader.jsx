@@ -56,12 +56,6 @@ const SubHeader = () => (
           primaryText="Account"
         />
       </Link>
-      <Link to="/settings" style={{ textDecoration: 'none' }}>
-        <ListItem
-          leftAvatar={<Avatar icon={<MdSettings />} />}
-          primaryText="Settings"
-        />
-      </Link>
     </List>
   </div>
 </Paper>
