@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom';
 import MdSettings from 'react-icons/lib/md/settings';
 import MdHome from 'react-icons/lib/md/home';
 import MdSupervisorAccount from 'react-icons/lib/md/supervisor-account';
+import MdDataUsage from 'react-icons/lib/md/data-usage';
 import MdQuestionAnswer from 'react-icons/lib/md/question-answer';
 import MdAccountCircle from 'react-icons/lib/md/account-circle';
 import MdFlag from 'react-icons/lib/md/flag';
@@ -34,7 +35,7 @@ const SubHeader = () => (
       </Link>
       <Link to="/demographics" style={{ textDecoration: 'none' }}>
         <ListItem
-          leftAvatar={<Avatar icon={<MdQuestionAnswer />} />}
+          leftAvatar={<Avatar icon={<MdDataUsage />} />}
           primaryText="Demographics"
         />
       </Link>
