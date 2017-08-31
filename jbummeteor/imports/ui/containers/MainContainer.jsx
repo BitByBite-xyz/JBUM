@@ -7,13 +7,14 @@ import { Link } from 'react-router-dom';
 import Settings from '../pages/Settings';
 import Users from '../pages/Users';
 import UsersProfile from '../pages/UsersProfile';
-import Survey from '../pages/Survey';
+import Demographics from '../pages/Demographics';
 import Responder from '../pages/Responder';
 import Flagged from '../pages/Flagged';
 import Account from '../pages/Account';
 import Dashboard from '../pages/Dashboard';
 import SubHeader from '../components/SubHeader';
 import Header from '../components/Header';
+
 
 const MainContainer = () => {
   const isAuthenticated = Meteor.userId() !== null
@@ -32,7 +33,7 @@ const MainContainer = () => {
                       <Route exact path='/' component={Dashboard}/>
                       <Route path='/users' component={Users}/>
                       <Route path='/usersprofile/:id' component={UsersProfile}/>
-                      <Route path='/survey' component={Survey}/>
+                      <Route path='/Demographics' component={Demographics}/>
                       <Route path='/responder' component={Responder}/>
                       <Route path='/flagged' component={Flagged}/>
                       <Route path='/account' component={Account}/>

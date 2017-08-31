@@ -42,15 +42,20 @@ class Users extends Component {
     const { users, posts } = this.props;
 
     if (users) {
-      return (users.map((user) => (
-        <TableRow key={user._id} selectable={false}>
-          <TableRowColumn style={{paddingLeft: 70, width: 235}}>{user._id}</TableRowColumn>
-          <TableRowColumn style={{paddingLeft: 13}}>{Roles.getRolesForUser(user._id, 'default-group')}</TableRowColumn>
-          <TableRowColumn style={{paddingLeft: 30}}>{this.getNumberPosts(user._id)}</TableRowColumn>
-          <TableRowColumn style={{paddingLeft: 45}}>{this.getNumberReplies(user._id)}</TableRowColumn>
-          <TableRowColumn><Link to={'/usersprofile/' + user._id}><FlatButton label="Check Profile"/></Link></TableRowColumn>
-        </TableRow>
-      )))
+      return (users.map((user) => {
+        const userRoles = Roles.getRolesForUser(user._id, 'default-group');
+
+        const displayRole = userRoles.length === 0 ? 'student' : userRoles.join(", ");;
+
+        return (
+          <TableRow key={user._id} selectable={false}>
+            <TableRowColumn >{user._id}</TableRowColumn>
+            <TableRowColumn >{displayRole}</TableRowColumn>
+            <TableRowColumn >{this.getNumberPosts(user._id)}</TableRowColumn>
+            <TableRowColumn >{this.getNumberReplies(user._id)}</TableRowColumn>
+            <TableRowColumn><Link to={'/usersprofile/' + user._id}><FlatButton label="Check Profile"/></Link></TableRowColumn>
+          </TableRow>)
+      }))
     }
   }
 
@@ -69,7 +74,7 @@ class Users extends Component {
                 <TableHeaderColumn></TableHeaderColumn>
               </TableRow>
             </TableHeader>
-            <TableBody displayRowCheckbox={false}>
+            <TableBody displayRowCheckbox={true}>
 
               {/*<TableRow>
                 <TableRowColumn style={{paddingLeft: 70}}>{user.id.toString()}</TableRowColumn>

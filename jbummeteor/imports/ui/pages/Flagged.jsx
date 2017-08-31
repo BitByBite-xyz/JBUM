@@ -1,5 +1,4 @@
 import React from 'react';
-import GenderSurveyChart from '../components/GenderSurveyChart';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Posts } from '../../api/posts/posts';
 import FlaggedPost from '../components/FlaggedPost';

@@ -32,10 +32,10 @@ const SubHeader = () => (
           primaryText="Users"
         />
       </Link>
-      <Link to="/survey" style={{ textDecoration: 'none' }}>
+      <Link to="/demographics" style={{ textDecoration: 'none' }}>
         <ListItem
           leftAvatar={<Avatar icon={<MdQuestionAnswer />} />}
-          primaryText="Survey"
+          primaryText="Demographics"
         />
       </Link>
       <Link to="/responder" style={{ textDecoration: 'none' }}>

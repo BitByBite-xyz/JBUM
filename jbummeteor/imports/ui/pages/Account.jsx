@@ -119,4 +119,11 @@ class Account extends Component {
     )
   }
 }
-export default Account;
+
+export default createContainer(() => {
+  const handle = Meteor.subscribe('userList');
+  return {
+    currentUser:  Meteor.users.findOne({ _id: Meteor.userId() }),
+    userDataReady: handle.ready()
+  }
+}, Account);

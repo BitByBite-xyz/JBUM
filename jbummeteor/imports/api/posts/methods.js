@@ -7,7 +7,7 @@ import { Random } from 'meteor/random';
 
 var Filter = require('bad-words'),
 filter = new Filter({ placeHolder: '🤲'});
-filter.removeWords("gay", "gayboy", "gaygirl","gays","gayz");
+filter.removeWords("gay", "gayboy", "gaygirl","gays","gayz", "queer","queers","queerz","qweers","qweerz","qweir","h4x0r");
 filter.removeWords('gay');
 
 Meteor.methods({

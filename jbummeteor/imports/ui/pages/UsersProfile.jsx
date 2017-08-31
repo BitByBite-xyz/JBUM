@@ -42,7 +42,7 @@ class UserProfile extends Component {
     let reportsCount = 0;
     _.each(posts, function(post){
       if (post.post_flags) {
-        reportsCount = reportsCount + _.filter(post.post_flags, (report) => (report.user_id === match.params.id)).length;
+        reportsCount = reportsCount + _.filter(post.post_flags, (id) => (id === match.params.id)).length;
       }
     });
     return reportsCount;
@@ -58,15 +58,14 @@ class UserProfile extends Component {
   }
   getUserLevel()  {
     const karma = this.getUsersKarma();
-    const level = Math.floor(karma / 10);
-    return level;
+
+    return Math.floor(karma / 10);
   }
   getUserLevelProgress() {
     const level = this.getUserLevel();
     const karma = this.getUsersKarma();
-    const levelProgress = (karma * 10) - (level * 100);
-    console.log(levelProgress);
-    return levelProgress;
+
+    return (karma * 10) - (level * 100);
   }
   renderUsersPosts = () => {
     const { usersPosts } = this.props;

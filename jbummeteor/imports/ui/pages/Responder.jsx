@@ -12,7 +12,7 @@ import TextField from 'material-ui/TextField';
 import Snackbar from 'material-ui/Snackbar';
 
 //Screen components
-import ResponceQuestion from '../components/ResponceQuestion';
+import ResponseQuestion from '../components/ResponseQuestion';
 
 class Responder extends Component {
   constructor(props){
@@ -28,40 +28,40 @@ class Responder extends Component {
 
   handleOpen = (postContent) => {
     this.setState({open: true,
-                   modalContent: postContent});
+                   modalContent: postContent,
+                   snackbarOpen: false });
   };
 
   handleClose = () => {
-    this.setState({open: false});
+    this.setState({open: false, snackbarOpen: false});
   };
 
   handleRespond = () => {
     const { modalContent, response } = this.state;
     const reply = this.refs.replyField.getValue();
 
-  handleTouchTap = () => {
-  this.setState({
-    snackbarOpen: true,
-    });
-  };
-
-  handleRequestClose = () => {
-    this.setState({
-      snackbarOpen: false,
-      });
-    };
+    console.log(modalContent);
 
     Meteor.call('Posts.reply', modalContent._id, reply, (err) => {
       if (err) {
         console.log("reply err "+err.details);
         return;
       } else {
-        handleTouchTap();
+
         console.log("reply added!");
-        this.setState({open: false});
+        this.handleClose();
+        this.setState({
+          snackbarOpen: true,
+        });
       }
     });
 
+  };
+
+  handleTouchTap = () => {
+    this.setState({
+      snackbarOpen: true,
+    });
   };
 
   renderModalContent = () => {
@@ -90,7 +90,8 @@ class Responder extends Component {
 
     if (responderPost) {
       return (responderPost.map((post) => (
-        <ResponceQuestion
+        <ResponseQuestion
+          key={post._id}
           postContent={post}
           onClick={this.handleOpen}
         />
