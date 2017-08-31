@@ -68,8 +68,6 @@ class Survey extends Component {
     let familyData = null;
     let siblingsData = null;
     let birthOrderData = null;
-
-
     const { surveyData } = this.state;;
 
     if (surveyData) {

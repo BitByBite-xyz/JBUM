@@ -12,7 +12,7 @@ Meteor.methods({
       console.log('not-authorized to create account');
       throw new Meteor.Error('not-authorized');
     }
-
+    
     let username = Fake.word() +' '+ Fake.word();
     let password = Fake.word() +' '+ Fake.word();
 
@@ -22,7 +22,6 @@ Meteor.methods({
 
     obj['profile.temporaryPass'] = password;
     obj['profile.isAccountSetupComplete'] = false;
-
 
     Meteor.users.update(id, {$set: obj });
 
