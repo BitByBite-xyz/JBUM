@@ -97,6 +97,14 @@ class Survey extends Component {
       siblingsData = this.harvestData(surveyData['Siblings']);
       birthOrderData = this.harvestData(surveyData['Birth Order']);
       this.valueConverter(ageData);
+      this.valueConverter(genderData);
+      this.valueConverter(sexualityData);
+      this.valueConverter(ethnicityData);
+      this.valueConverter(generationData);
+      this.valueConverter(citizenshipData);
+      this.valueConverter(familyData);
+      this.valueConverter(siblingsData);
+      this.valueConverter(birthOrderData);
 
     }
       return (
