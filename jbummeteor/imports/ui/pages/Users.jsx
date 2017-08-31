@@ -63,9 +63,10 @@ class Users extends Component {
     return (
       <div style={{marginLeft: 4}}>
         <div className="col-sm-12 row-no-padding">
-          <Paper zDepth={2}>
+          <Paper zDepth={2} style={{marginBottom: 30}}>
+          <div style={{marginLeft: 40, width: '90%'}}>
           <Table>
-            <TableHeader displaySelectAll={false} selectable={false}>
+            <TableHeader displaySelectAll={false} adjustForCheckbox={false} selectable={false}>
               <TableRow>
                 <TableHeaderColumn style={{fontSize: 16}}>ID</TableHeaderColumn>
                 <TableHeaderColumn style={{fontSize: 16}}>Role</TableHeaderColumn>
@@ -74,7 +75,7 @@ class Users extends Component {
                 <TableHeaderColumn></TableHeaderColumn>
               </TableRow>
             </TableHeader>
-            <TableBody displayRowCheckbox={true}>
+            <TableBody displayRowCheckbox={false}>
 
               {/*<TableRow>
                 <TableRowColumn style={{paddingLeft: 70}}>{user.id.toString()}</TableRowColumn>
@@ -86,6 +87,7 @@ class Users extends Component {
               {this.renderUserList()}
             </TableBody>
           </Table>
+        </div>
         </Paper>
         </div>
       </div>

@@ -4,7 +4,6 @@ import { Switch, Route } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 //Screens & components
-import Settings from '../pages/Settings';
 import Users from '../pages/Users';
 import UsersProfile from '../pages/UsersProfile';
 import Demographics from '../pages/Demographics';
@@ -14,12 +13,12 @@ import Account from '../pages/Account';
 import Dashboard from '../pages/Dashboard';
 import SubHeader from '../components/SubHeader';
 import Header from '../components/Header';
-
+import Footer from '../components/Footer.jsx';
 
 const MainContainer = () => {
   const isAuthenticated = Meteor.userId() !== null
   return (
-        <div className="row row-no-padding">
+        <div className="row row-no-padding" style={{marginBottom: 0, paddingBottom: 0}}>
           { isAuthenticated ?
               <MuiThemeProvider>
                 <div className="col-sm-12 row-no-padding" style={{backgroundColor: '#EFEFEF'}}>
@@ -37,9 +36,9 @@ const MainContainer = () => {
                       <Route path='/responder' component={Responder}/>
                       <Route path='/flagged' component={Flagged}/>
                       <Route path='/account' component={Account}/>
-                      <Route path='/settings' component={Settings}/>
                     </Switch>
                   </div>
+                  <Footer />
                 </div>
               </MuiThemeProvider> : null}
           </div>
