@@ -16,6 +16,20 @@ class Survey extends Component {
     }
   }
 
+  valueConverter = (objectArray) => {
+      let totalValue = 0;
+      for (var i = 0; i < objectArray.length; i++) {
+          totalValue += objectArray[i].value;
+      }
+      if (totalValue != 0) {
+          for (var i = 0; i < objectArray.length; i++) {
+              objectArray[i].value = (objectArray[i].value/totalValue) * 100;
+              console.log(objectArray[i].value);
+          }
+      }
+
+  }
+
   doAccountSetup = () => {
     const { surveyData } = this.state;
     const { userData } = this.props;
@@ -82,44 +96,55 @@ class Survey extends Component {
       familyData = this.harvestData(surveyData['Family']);
       siblingsData = this.harvestData(surveyData['Siblings']);
       birthOrderData = this.harvestData(surveyData['Birth Order']);
+      this.valueConverter(ageData);
+
     }
       return (
           <div>
             <ChartPanel
               graphName="Age"
               data={ageData ? ageData: [{name: '', value: 400}]}
+              dataKey="percentage"
             />
             <ChartPanel
               graphName="Gender"
               data={genderData ? genderData: [{name: '', value: 400}]}
+              dataKey="percentage"
             />
             <ChartPanel
               graphName="Sexuality"
               data={sexualityData ? sexualityData: [{name: '', value: 400}]}
+              dataKey="percentage"
               />
             <ChartPanel
               graphName="Ethnicity"
               data={ethnicityData ? ethnicityData: [{name: '', value: 400}]}
+              dataKey="percentage"
             />
             <ChartPanel
               graphName="Generation"
               data={generationData ? generationData: [{name: '', value: 400}]}
+              dataKey="percentage"
             />
             <ChartPanel
               graphName="Citizenship"
               data={citizenshipData ? citizenshipData: [{name: '', value: 400}]}
+              dataKey="percentage"
             />
             <ChartPanel
               graphName="Family"
               data={familyData ? familyData: [{name: '', value: 400}]}
+              dataKey="percentage"
             />
             <ChartPanel
               graphName="Siblings"
               data={siblingsData ? siblingsData: [{name: '', value: 400}]}
+              dataKey="percentage"
             />
             <ChartPanel
               graphName="Birth Order"
               data={birthOrderData ? birthOrderData: [{name: '', value: 400}]}
+              dataKey="percentage"
             />
             {this.props.userDataReady ? this.doAccountSetup() : null}
         </div>
