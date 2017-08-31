@@ -6,14 +6,13 @@ meteor stuff and app logic w RN stuff
  */
 
 import React, { Component } from 'react';
-import { Text, View, Image, StyleSheet, StatusBar, Linking, KeyboardAvoidingView,LayoutAnimation } from 'react-native';
+import { Text, View, Image, StyleSheet, StatusBar, Linking, KeyboardAvoidingView,LayoutAnimation, Alert } from 'react-native';
 import Meteor, { Accounts } from 'react-native-meteor';
 
 import KeyboardSpacer from 'react-native-keyboard-spacer';
 import { Button, Icon } from 'react-native-elements'
 import { SocialIcon } from 'react-native-elements';
 import FadeInView from 'react-native-fade-in-view';//{/* onFadeComplete={() => alert('Ready') */}
-import DropdownAlert from 'react-native-dropdownalert'
 
 import { colors } from '../../config/styles';
 import images from '../../config/images';
@@ -26,10 +25,6 @@ import styles from './styles';
 import Login from './Login';
 
 const B = (props) => <Text style={styles.textBold}>{props.children}</Text>
-const warnItems = [
-  {key: 0, backgroundColor: '#FF9A1E', type: 'info', title: 'Info', message: 'Username and password cannot be empty.'},
-  {key: 1, backgroundColor: '#FF9A1E', type: 'warn', title: 'Warning', message: 'Passwords do not match!'},
-]
 
 class LoginContainer extends Component {
   constructor(props) {
@@ -54,12 +49,10 @@ class LoginContainer extends Component {
   }
 
   validInput() {
-    return true;
     const { username, password, confirmPassword, confirmPasswordVisible } = this.state;
     let valid = true;
-
     if (username.length === 0 || password.length === 0) {
-      this.showAlert(warnItems[0])
+      Alert.alert('Incomplete Data!','Please fill in the login and password fields')
       valid = false;
     }
 
@@ -67,27 +60,19 @@ class LoginContainer extends Component {
   }
 
   handleSignIn() {
+    console.log(this.dropdown);
     let isa = this.validInput();
     if (isa) {
       const { username, password } = this.state;
       Meteor.loginWithPassword(username, password, (err) => {
         if (err) {
-          this.showAlert({key: 1, backgroundColor: '#cc0000', type: 'warn', title: 'Check your credentials!'});
-
-          //this.handleError(err.reason);
+          Alert.alert('Error Logging in',err.reason)
         }
         else {
           this.props.navigation.navigate('HomeStack');
         }
       });
     }
-  }
-
-  showAlert = (item) => { //for DropdownAlert
-
-    const title = 'Warning';
-    this.dropdown.alertWithType(item.type, title, item.message);
-
   }
 
   render() {
@@ -206,9 +191,6 @@ class LoginContainer extends Component {
             </View>
 
           </FadeInView>
-          <DropdownAlert
-            ref={(ref) => this.dropdown = ref}
-          />
       </Wallpaper>
     );
   }

@@ -14,12 +14,8 @@ class Account extends Component {
   constructor(props){
     super(props);
     this.state = {
-      currentUser: '',
       open: false
     };
-    Meteor.call('loggedUser', (err, response) => {
-      this.setState({currentUser: response});
-    });
   }
 
   handleTouchTap = () => {
@@ -86,11 +82,13 @@ class Account extends Component {
   }
 
   render() {
-    const { currentUser, snackBarResponse } = this.state;
+    const { snackBarResponse } = this.state;
+    const { currentUser } = this.props;
+
     return (
       <div>
         <Paper style={{marginLeft: '1.5%', marginRight: '1.5%', height: 89, width: '97%'}}>
-            <div style={{float: 'left', marginLeft: 15}}><h3>Welcome, {currentUser.username}</h3></div>
+            <div style={{float: 'left', marginLeft: 15}}><h3>Welcome, {currentUser ? currentUser.username: ''}</h3></div>
             <div style={{float: 'right', paddingTop: 28, marginRight: 20}}><RaisedButton label="logout" primary={true} onClick={this.logout} /></div>
         </Paper>
         <div className="col-sm-12 row-no-padding" style={{marginTop: 20}}>

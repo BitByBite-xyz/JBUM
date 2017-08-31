@@ -4,7 +4,8 @@ import {
   Text,
   View,
   ScrollView,
-  Image
+  Image,
+  Keyboard
 } from 'react-native';
 
 import { NavigationActions } from 'react-navigation';
@@ -21,18 +22,13 @@ import images from '../../config/images';
 
 class DebugContainer extends Component {
   constructor(props) {
-
     super(props);
 
     this.state = {
       loading: true
     };
-
-
   }
-
   componentDidMount(){
-
   }
 
   toInbox(){
@@ -47,6 +43,10 @@ class DebugContainer extends Component {
     this.pages.scrollToPage(1)
   }
 
+  onScrollEnd = () => {
+    Keyboard.dismiss();
+  }
+
   render() {
     const { navigation } = this.props;
     return (
@@ -54,19 +54,16 @@ class DebugContainer extends Component {
         horizontal={false}
         indicatorPosition={'none'}
         startPage={1}
-         ref={(c) => this.pages = c}
+        onScrollEnd={this.onScrollEnd}
+        ref={(c) => this.pages = c}
       >
         <Ask
           navigation={navigation}
           scrollToPage={this.scrollToPage}
         />
         <Pages
-          startPage={1}
           indicatorPosition={'none'}
-          rtl
-          >
-          <Settings
-          navigation={navigation}/>
+        >
           <View style={{ flex: 1, backgroundColor: 'transparent' }} >
             <Image
               source={images.homeUnderlay}
@@ -91,7 +88,7 @@ class DebugContainer extends Component {
                   name='keyboard-arrow-left' />
           </View >
           <Profile
-          navigation={navigation}/>
+            navigation={navigation}/>
         </Pages>
         <Home
           navigation={navigation}

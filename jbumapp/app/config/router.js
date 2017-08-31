@@ -95,25 +95,30 @@ import BarcodeScanner from '../components/BarcodeScanner';
  				paddingTop: 2
  			 },
  		}
-  }},{mode:'modal'});
+  },
+	Settings: {
+		screen: Settings,
+		navigationOptions: {
+				title: 'Settings',
+				tabBarIcon: ({tintColor}) => <Icon name="settings" size={28} color={tintColor}/>
+		}
+	}},{mode:'modal'});
 
  export const WelcomeStack = StackNavigator({
-	 Welcome: {screen: Welcome,},
-	 Login: { screen: Login },
-	 BarcodeScanner: { screen: BarcodeScanner,
-		 navigationOptions: {
-			 headerStyle: {
-					color: null,
-					backgroundColor: null,
-					height: 20,
-				},
-		 }
-	 },
-	 AccountSetup: { screen: AccountSetup },},
-	 {
-	 		headerMode: 'none',
-	 		mode:'modal'
-	 }
+ 	Welcome: {screen: Welcome,},
+	Login: { screen: Login },
+ 	BarcodeScanner: { screen: BarcodeScanner,
+	 navigationOptions: {
+		headerStyle: {
+		color: null,
+		backgroundColor: null,
+		height: 20,
+	},}},
+ 	AccountSetup: { screen: AccountSetup },},
+ 	{
+ 		headerMode: 'none',
+ 		mode:'modal'
+ 	}
 );
 
 export const Tabs = TabNavigator({

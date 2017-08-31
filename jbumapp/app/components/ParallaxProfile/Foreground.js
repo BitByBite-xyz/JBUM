@@ -76,7 +76,9 @@ export default class Header extends Component {
             style={{justifyContent: 'flex-start'}}
             name='more-horiz'
             large
+            onPress={() => this.props.navigation.navigate('Settings')}
             size={28}
+            underlayColor={'transparent'}
             color={'#C1C1C2'}
           />
 

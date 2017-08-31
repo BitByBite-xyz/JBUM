@@ -75,6 +75,7 @@ class ProfileContainer extends Component {
 				AnsweredNumber={responded_posts.length}
 				Karma={karma}
 				Level={Math.floor(karma / 10)}
+				navigation={this.props.navigation}
 			/>
 		);
 		const stickyHeader = (
@@ -90,17 +91,12 @@ class ProfileContainer extends Component {
 					style={{ flex: 1, backgroundColor: '#F3F3F3', overflow: 'hidden' }}
 					parallaxHeaderHeight={PARALLAX_HEADER_HEIGHT}
 					stickyHeaderHeight={50}
-					//backgroundSpeed={10}
 					onScroll={this.props.onScroll}
 					contentBackgroundColor='transparent'
 					renderStickyHeader={() => stickyHeader}
 					renderForeground={() => foreground}
 					renderBackground={() => (
               <View key="background">
-                {/*<Image source={images.profileBannerImg}
-									style={{width: window.width,
-	                        height: PARALLAX_HEADER_HEIGHT}}
-								/>*/}
                 <View style={{position: 'absolute',
                               top: 0,
                               width: 'auto',

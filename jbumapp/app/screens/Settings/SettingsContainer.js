@@ -42,7 +42,7 @@ class SettingsContainer extends Component {
       <Settings
         onValueChange={this.onValueChange.bind(this)}
         signOut={this.signOut.bind(this)}
-        user={this.props.user}
+        user={Meteor.user()}
         {...this.state}
       />
     );

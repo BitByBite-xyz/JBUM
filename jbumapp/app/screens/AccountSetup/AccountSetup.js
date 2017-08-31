@@ -23,7 +23,7 @@ import Swiper from 'react-native-swiper';
 import InitialPage from '../../components/AccountSetupComponents/InitialPage';
 import PageOne from '../../components/AccountSetupComponents/PageOne';
 import PageTwo from '../../components/AccountSetupComponents/PageTwo';
-import PageThree from '../../components/AccountSetupComponents/PageThree';
+//import PageThree from '../../components/AccountSetupComponents/PageThree';
 import PageFour from '../../components/AccountSetupComponents/PageFour';
 import PasswordPage from '../../components/AccountSetupComponents/PasswordPage';
 
@@ -190,11 +190,6 @@ export default class AccountSetup extends Component {
               </View>
               <View style={[styles.slide, { backgroundColor: '#fa931d' }]}>
                 <PageTwo
-                  handleAddData={this.handleAddData}
-                  handlePageComplete={this.handlePageComplete}/>
-              </View>
-              <View style={[styles.slide,{ backgroundColor: '#55CFAC' }]}>
-                <PageThree
                   handleAddData={this.handleAddData}
                   handlePageComplete={this.handlePageComplete}/>
               </View>

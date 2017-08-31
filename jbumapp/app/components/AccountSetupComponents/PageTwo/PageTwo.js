@@ -2,55 +2,55 @@ import React, { Component } from 'react';
 import {
   Text,
   View,
-  TextInput,
   StyleSheet,
   TouchableHighlight
 } from 'react-native';
 
 import Picker from 'react-native-picker';
 
-const genOptions = ['1st Generation', '2nd Generation', '3rd Generation', '4th Generation', '5th Generation'];
-const ethOptions = ['Caucasian', 'Black or African American', 'Hispanic and or Latino', 'Asian', 'Pacific Islander', 'American Indian', 'Don\'t Know'];
-const citizenshipOptions = ['Born in the U.S.', 'Born outside the U.S.', 'Mirgrated to U.S.'];
+const parOptions = ['Live with both parents', 'Live with one parent', 'Live with relatives'];
+const sibOptions = ['Only child', 'Have half/step siblings', 'Have brothers/sisters'];
+const sibOrderOptions = ['Oldest', 'Middle Child', 'Youngest', 'No Siblings'];
 
 export default class PageTwo extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
-      placeholder: 'Enter your city of birth',
-      selectedGeneration: '',
-      selectedEthnicity: '',
-      showEthnicity: false,
-      showGeneration: false,
-      showCitizenship:false,
+      slectedParentals: '',
+      selectedSiblings: '',
+      selectedSiblingOrder: '',
+      showFamily: false,
+      showSiblings: false,
+      showSibOrder: false,
       hasValidData:false
     };
   }
   validateData = () => {
-    if (this.state.showEthnicity &&
-        this.state.showGeneration &&
-        this.state.showCitizenship &&
+    if (this.state.showFamily &&
+        this.state.showSiblings &&
+        this.state.showSibOrder &&
         !this.state.hasValidData) {
           this.state.hasValidData = true;
           this.props.handlePageComplete();
+
     }
-  }
-  //Ethnicicty
-  onPressEthnicity = () => {
-    const selectedEthnicity = this.state;
 
+  }
+  //Family
+  onPressFamily = () => {
+    const selectedFamily = this.state;
     const {handleAddData} = this.props;
 
     Picker.init({
-        pickerTitleText: 'Select Ethnicicty',
-        pickerData: ethOptions,
+        pickerTitleText: 'Select Family',
+        pickerData: parOptions,
         selectedValue: [],
         onPickerConfirm: data => {
           this.setState(previousState => {
-            return { selectedEthnicity: data, showEthnicity: true };
+            return { selectedFamily: data, showFamily: true };
           });
-          handleAddData('Ethnicicty',data);
+          handleAddData('Family',data);
           this.validateData();
         },
         onPickerCancel: data => {
@@ -59,26 +59,31 @@ export default class PageTwo extends Component {
         },
         onPickerSelect: data => {
           this.setState(previousState => {
-            return { selectedEthnicity: data, showEthnicity: true };
+            return { selectedFamily: data, showFamily: true };
           });
         }
     });
     Picker.show();
   }
-  //Generation
-  onPressGeneration = () => {
-    const selectedGeneration = this.state;
+  //Siblings
+  onPressSiblings = () => {
+    const selectedSiblings = this.state;
     const {handleAddData} = this.props;
 
     Picker.init({
-        pickerTitleText: 'Select Generation',
-        pickerData: genOptions,
+        pickerTitleText: 'Select Siblings',
+        pickerData: sibOptions,
         selectedValue: [],
         onPickerConfirm: data => {
           this.setState(previousState => {
-            return { selectedGeneration: data, showGeneration: true };
+            console.log(data === ['Only child']);
+            if (data === ['Only child']) {
+              return {selectedSiblings: data, showSiblings: true,
+                      selectedSibOrder: 'No Siblings', showSibOrder: true }
+            }
+            return { selectedSiblings: data, showSiblings: true };
           });
-          handleAddData('Generation',data);
+          handleAddData('Siblings',data);
           this.validateData();
         },
         onPickerCancel: data => {
@@ -87,26 +92,26 @@ export default class PageTwo extends Component {
         },
         onPickerSelect: data => {
           this.setState(previousState => {
-            return { selectedGeneration: data, showGeneration: true };
+            return { selectedSiblings: data, showSiblings: true };
           });
         }
     });
     Picker.show();
   }
-  //Citizenship
-  onPressCitizenship = () => {
-    const selectedCitizenship = this.state;
+  //Birth Order
+  onPressSibOrder = () => {
+    const selectedSibOrder = this.state;
     const {handleAddData} = this.props;
 
     Picker.init({
-        pickerTitleText: 'Select Citizenship',
-        pickerData: citizenshipOptions,
+        pickerTitleText: 'Select Birth Order',
+        pickerData: sibOrderOptions,
         selectedValue: [],
         onPickerConfirm: data => {
           this.setState(previousState => {
-            return { selectedCitizenship: data, showCitizenship: true };
+            return { selectedSibOrder: data, showSibOrder: true };
           });
-          handleAddData('Citizenship', data);
+          handleAddData('Birth Order',data);
           this.validateData();
         },
         onPickerCancel: data => {
@@ -115,56 +120,57 @@ export default class PageTwo extends Component {
         },
         onPickerSelect: data => {
           this.setState(previousState => {
-            return { selectedCitizenship: data, showCitizenship: true };
+            return { selectedSibOrder: data, showSibOrder: true };
           });
         }
     });
     Picker.show();
   }
+
   render() {
-    const displayEthnicity = this.state.showEthnicity ? 'Ethnicicty: ' + this.state.selectedEthnicity : 'Select Ethnicicty';
-    const displayGeneration = this.state.showGeneration ? 'Generation: ' + this.state.selectedGeneration : 'Select Generation';
-    const displayCitizenship = this.state.showCitizenship ? 'Citizenship: ' + this.state.selectedCitizenship : 'Select Citizenship';
+    const displayFamily = this.state.showFamily ? 'Family: ' + this.state.selectedFamily : 'Select Family';
+    const displaySiblings = this.state.showSiblings ? 'Siblings: ' + this.state.selectedSiblings : 'Select Siblings';
+    const displaySibOrder = this.state.showSibOrder ? 'Birth Order: ' + this.state.selectedSibOrder : 'Select Birth Order';
     return(
-      <View>
-        <View style={{alignItems: 'center', marginTop: '10%'}}><Text style={styles.pageTitle}>Identity</Text></View>
-        <View style={{marginTop: '35%'}}>
-            <View>
-              <TouchableHighlight onPress={this.onPressEthnicity} underlayColor={'transparent'}>
-                <Text style={styles.text}>{displayEthnicity}</Text>
-              </TouchableHighlight>
+          <View>
+            <View style={{alignItems: 'center', marginTop: '10%'}}><Text style={styles.pageTitle}>Relationships</Text></View>
+            <View style={{marginTop: '35%'}}>
+                <View>
+                  <TouchableHighlight onPress={this.onPressFamily} underlayColor={'transparent'}>
+                    <Text style={styles.text}>{displayFamily}</Text>
+                  </TouchableHighlight>
+                </View>
+                <View style={{marginTop: '17%'}}>
+                  <TouchableHighlight onPress={this.onPressSiblings} underlayColor={'transparent'}>
+                    <Text style={styles.text}>{displaySiblings}</Text>
+                  </TouchableHighlight>
+                </View>
+                <View style={{marginTop: '17%'}}>
+                <TouchableHighlight onPress={this.onPressSibOrder} underlayColor={'transparent'}>
+                  <Text style={styles.text}>{displaySibOrder}</Text>
+                </TouchableHighlight>
+                </View>
             </View>
-            <View style={{marginTop: '17%'}}>
-              <TouchableHighlight onPress={this.onPressGeneration} underlayColor={'transparent'}>
-                <Text style={styles.text}>{displayGeneration}</Text>
-              </TouchableHighlight>
-            </View>
-            <View style={{marginTop: '17%'}}>
-            <TouchableHighlight onPress={this.onPressCitizenship} underlayColor={'transparent'}>
-              <Text style={styles.text}>{displayCitizenship}</Text>
-            </TouchableHighlight>
-            </View>
-        </View>
-      </View>
-    );
-  }
-};
-const styles = StyleSheet.create({
-  slide: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#9DD6EB',
-    padding: 15,
-  },
-  text: {
-    color: '#fff',
-    fontSize: 24,
-    fontWeight: 'bold',
-  },
-  pageTitle: {
-    color: '#fff',
-    fontSize: 50,
-    fontWeight: 'bold',
-  },
-});
+          </View>
+        );
+      }
+    };
+    const styles = StyleSheet.create({
+    slide: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: '#9DD6EB',
+      padding: 15,
+    },
+    text: {
+      color: '#fff',
+      fontSize: 24,
+      fontWeight: 'bold',
+    },
+    pageTitle: {
+      color: '#fff',
+      fontSize: 47,
+      fontWeight: 'bold',
+    },
+    });

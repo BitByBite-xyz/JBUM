@@ -8,14 +8,11 @@ import SettingsList from 'react-native-settings-list';
 
 const Settings = (props) => {
   const { switchValue, signOut, navigation, user } = props;
-  let userId = '';
+  let username = user.username;
 
 
   return (
     <View style={{backgroundColor:'#EFEFF4',flex:1}}>
-          <View style={{borderBottomWidth:1, backgroundColor:'#f7f7f8',borderColor:'#c8c7cc'}}>
-            <Text style={{alignSelf:'center', marginTop:9, marginBottom:7, fontWeight:'500', fontSize:21, fontFamily: 'Avenir'}}>Settings</Text>
-          </View>
           <View style={{backgroundColor:'#f7f7f7',flex:1}}>
             <SettingsList borderColor='#c8c7cc' defaultItemSize={50}>
               <SettingsList.Header headerStyle={{marginTop:0}}/>
@@ -30,8 +27,8 @@ const Settings = (props) => {
               <SettingsList.Header headerStyle={{marginTop:10}}/>
               <SettingsList.Item
                 titleStyle={{fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
-                title='Account Pin'
-                titleInfo={userId}
+                title='Account Username'
+                titleInfo={username}
                 hasNavArrow={false}
                 onPress={() => Alert.alert('Route To Notifications Page')}
               />
