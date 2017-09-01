@@ -16,7 +16,7 @@ export default StyleSheet.create({
     fontStyle: 'italic'
   },
   backdrop: {
-      backgroundColor: '#F3F3F3',
+      backgroundColor: '#57C2D7',
       flex: 1,
   },
   logo: {
@@ -43,8 +43,9 @@ export default StyleSheet.create({
   bottomBox: {
       paddingLeft: 10,
       paddingRight: 10,
-      marginTop: 10,
+      marginTop: 13,
       backgroundColor: '#F3F3F3',
+      height: '191%'
   },
   views: {
       paddingTop: 7,

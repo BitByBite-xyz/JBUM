@@ -14,8 +14,8 @@ const Footer = () => {
           <FaTwitter style={{float: 'right', marginRight: '1.5%'}} size={22} />
           <FaFacebookSquare style={{float: 'right', marginRight: '1.5%'}} size={22}/>
         </div>
-        <p style={{fontSize: 18, color: '#484848', float: 'right', marginRight: '3%'}}>About</p>
-        <p style={{fontSize: 18, color: '#484848', float: 'right', marginRight: '3%'}}>Powered by BitByBite, Inc.</p>
+        <a href="http://www.justbetweenuandme.com"><p style={{fontSize: 18, color: '#484848', float: 'right', marginRight: '3%'}}>About</p></a>
+        <a href="http://www.bitbybite.co"><p style={{fontSize: 18, color: '#484848', float: 'right', marginRight: '3%'}}>Powered by BitByBite, Inc.</p></a>
       </div>
     </div>
   );
