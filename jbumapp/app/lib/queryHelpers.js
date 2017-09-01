@@ -7,7 +7,7 @@ views = {};
 views.homePosts = function (terms) {
   return {
     find: {post_flags: [], post_visibility: { "$in" : ["Student"]} },
-    sort: {sort: {createdAt: -1}, limit: terms.limit}
+    sort: {sort: {post_comments: 1, createdAt: -1}, limit: terms.limit}
   };
 }
 
