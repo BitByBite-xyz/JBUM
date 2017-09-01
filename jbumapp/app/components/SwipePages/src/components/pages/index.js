@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { PureComponent, Children } from 'react';
-import { View, ScrollView, Animated, Platform, ViewPropTypes, Text } from 'react-native';
+import { View, ScrollView, Animated, Platform, ViewPropTypes } from 'react-native';
 
-import Loading from '../../../../Loading'
 import Indicator from '../indicator';
 import styles from './styles';
 
@@ -65,6 +64,7 @@ export default class Pages extends PureComponent {
 
     let { startPage } = this.props;
 
+    this.mounted = false;
     this.progress = startPage;
     this.scrollState = -1;
 
@@ -72,12 +72,11 @@ export default class Pages extends PureComponent {
       width: 0,
       height: 0,
       progress: new Animated.Value(this.progress),
-      loading: true
     };
   }
 
   componentDidMount() {
-    setTimeout(() => this.setState({ loading: false }), 0);
+    this.mounted = true;
   }
 
   componentDidUpdate() {
@@ -87,6 +86,10 @@ export default class Pages extends PureComponent {
         this.scrollToPage(Math.floor(this.progress), false);
       });
     }
+  }
+
+  componentWillUnmount() {
+    this.mounted = false;
   }
 
   updateRef(name, ref) {
@@ -153,14 +156,12 @@ export default class Pages extends PureComponent {
       this.scrollState = 1;
     }
 
-    if(this.scroll){
+    if (this.mounted && this.scroll) {
       this.scroll.scrollTo({
         [horizontal? 'x' : 'y']: page * base,
         animated,
       });
     }
-
-
   }
 
   isDragging() {
@@ -182,7 +183,7 @@ export default class Pages extends PureComponent {
       null;
 
     /* Adjust progress by page index */
-    //progress = Animated.add(progress, -index);
+    progress = Animated.add(progress, -index);
 
     return (
       <View style={[{ width, height }, pageStyle]}>
@@ -204,7 +205,6 @@ export default class Pages extends PureComponent {
       return null;
     }
 
-
     let indicatorStyle = (horizontal && rtl)?
       styles.rtl:
       null;
@@ -217,7 +217,7 @@ export default class Pages extends PureComponent {
   }
 
   render() {
-    let { progress, loading } = this.state;
+    let { progress } = this.state;
     let { horizontal, rtl } = this.props;
     let {
       style,
@@ -230,7 +230,6 @@ export default class Pages extends PureComponent {
     } = this.props;
 
     let pages = Children.count(children);
-
 
     let Pager = () =>
       this.renderPager({
@@ -245,8 +244,6 @@ export default class Pages extends PureComponent {
       styles.rtl:
       null;
 
-
-
     return (
       <View style={[styles.container, containerStyle]}>
         <ScrollView
@@ -258,9 +255,7 @@ export default class Pages extends PureComponent {
           onScrollEndDrag={this.onScrollEndDrag}
           ref={this.updateRef}
         >
-           { loading ?
-             <View style={{backgroundColor: 'white'}}>
-           </View> : Children.map(children, this.renderPage)}
+          {Children.map(children, this.renderPage)}
         </ScrollView>
 
         <Pager />
