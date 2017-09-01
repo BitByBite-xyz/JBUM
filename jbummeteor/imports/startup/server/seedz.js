@@ -38,6 +38,7 @@ Meteor.startup(() => {
       }
     });
   }
+  /*
   if (Posts.find().count() === 0) {
     console.log('Seeding Posts DB...');
 
@@ -62,5 +63,5 @@ Meteor.startup(() => {
         post_flags: []
       });
     }
-  }
+  }*/
 });

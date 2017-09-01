@@ -129,6 +129,8 @@ export default class PageOne extends Component {
 
     Picker.init({
         pickerTitleText: 'Select Sexuality',
+        pickerConfirmBtnText: 'Confirm',
+        pickerCancelBtnText: 'Cancel',
         pickerData: sexualityOptions,
         selectedValue: [],
         onPickerConfirm: data => {
