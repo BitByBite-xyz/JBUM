@@ -35,7 +35,7 @@
     "react-native-settings-list": "git+https://github.com/evetstech/react-native-settings-list.git",
     "react-native-spinkit": "git+https://github.com/maxs15/react-native-spinkit.git",
     "react-native-swipeout": "git+https://github.com/dancormier/react-native-swipeout.git",
-    "react-native-swiper": "^1.5.9",
+    "react-native-swiper": "git+https://github.com/connorlarkin1/react-native-swiper.git",
     "react-native-swiper-animated": "^1.2.5",
     "react-native-tab-view": "^0.0.69",
     "react-native-textinput-effects": "^0.4.0",
