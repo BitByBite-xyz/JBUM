@@ -11,10 +11,10 @@ import {AutoGrowingTextInput} from 'react-native-autogrow-textinput';
 
 const SECTIONS = [
   {
-    title: ' Reciever ',
+    title: ' Choose Reciever ',
   },
   {
-    title: ' Category ',
+    title: ' Choose Category ',
   }
 ];
 
@@ -147,12 +147,24 @@ class Ask extends Component {
             style={{backgroundColor: 'white', paddingLeft: 15, paddingTop: 10, paddingBottom: 8}}
             textStyle={{color: '#A4A7A6', fontSize: 16}}
             checkedColor={'#24BEE4'}
-            title='Responder'
+            title='Adult'
             checkedIcon='dot-circle-o'
             uncheckedIcon='circle-o'
-            checked={post_visibility.indexOf('Responder') !== -1}
+            checked={post_visibility.indexOf('Adult') !== -1}
             onPress={() => {
-              this.updateResponder('Responder');
+              this.updateResponder('Adult');
+            }}
+          />
+          <CheckBox
+            style={{backgroundColor: 'white', paddingLeft: 15, paddingTop: 10, paddingBottom: 8}}
+            textStyle={{color: '#A4A7A6', fontSize: 16}}
+            checkedColor={'#24BEE4'}
+            title='Professional'
+            checkedIcon='dot-circle-o'
+            uncheckedIcon='circle-o'
+            checked={post_visibility.indexOf('Professional') !== -1}
+            onPress={() => {
+              this.updateResponder('Professional');
             }}
           />
         </View>
@@ -281,6 +293,7 @@ class Ask extends Component {
                   autoCorrect={true}
                   placeholderTextColor={'#c9c9c9'}
                   minHeight={45}
+                  blurOnSubmit={true}
                   value={title}
                 />
                   <View style={styles.lineDivider} />

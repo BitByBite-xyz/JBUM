@@ -44,6 +44,8 @@ export default class PageTwo extends Component {
 
     Picker.init({
         pickerTitleText: 'Select Family',
+        pickerConfirmBtnText: 'Confirm',
+        pickerCancelBtnText: 'Cancel',
         pickerData: parOptions,
         selectedValue: [],
         onPickerConfirm: data => {
@@ -72,6 +74,8 @@ export default class PageTwo extends Component {
 
     Picker.init({
         pickerTitleText: 'Select Siblings',
+        pickerConfirmBtnText: 'Confirm',
+        pickerCancelBtnText: 'Cancel',
         pickerData: sibOptions,
         selectedValue: [],
         onPickerConfirm: data => {
@@ -105,6 +109,8 @@ export default class PageTwo extends Component {
 
     Picker.init({
         pickerTitleText: 'Select Birth Order',
+        pickerConfirmBtnText: 'Confirm',
+        pickerCancelBtnText: 'Cancel',
         pickerData: sibOrderOptions,
         selectedValue: [],
         onPickerConfirm: data => {

@@ -56,7 +56,7 @@ Meteor.startup(() => {
         post_title: Fake.sentence(12),
         post_body: Fake.sentence(48),
         post_comments: [comments[i]],
-        post_visibility: [Random.choice(['Responder','Peers'])],
+        post_visibility: [Random.choice(['Student','Adult','Professional'])],
         post_categories: [Random.choice(['Drugs','Family','Sexuality'])],
         post_likes: postLikes,
         post_flags: []

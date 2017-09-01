@@ -66,6 +66,8 @@ export default class PageOne extends Component {
     const {handleAddData} = this.props;
     Picker.init({
         pickerTitleText: 'Select Age',
+        pickerConfirmBtnText: 'Confirm',
+        pickerCancelBtnText: 'Cancel',
         pickerData: ageOptions,
         onPickerConfirm: data => {
           this.setState(previousState => {
@@ -95,6 +97,8 @@ export default class PageOne extends Component {
 
     Picker.init({
         pickerTitleText: 'Select Gender',
+        pickerConfirmBtnText: 'Confirm',
+        pickerCancelBtnText: 'Cancel',
         pickerData: genderOptions,
         selectedValue: [],
         onPickerConfirm: data => {
@@ -157,6 +161,8 @@ export default class PageOne extends Component {
 
     Picker.init({
         pickerTitleText: 'Select Ethnicicty',
+        pickerConfirmBtnText: 'Confirm',
+        pickerCancelBtnText: 'Cancel',
         pickerData: ethOptions,
         selectedValue: [],
         onPickerConfirm: data => {
@@ -185,6 +191,8 @@ export default class PageOne extends Component {
 
     Picker.init({
         pickerTitleText: 'Select answer',
+        pickerConfirmBtnText: 'Confirm',
+        pickerCancelBtnText: 'Cancel',
         pickerData: genOptions,
         selectedValue: [],
         onPickerConfirm: data => {

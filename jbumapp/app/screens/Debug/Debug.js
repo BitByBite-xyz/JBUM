@@ -10,7 +10,8 @@ import {
 } from 'react-native';
 
 import { NavigationActions } from 'react-navigation';
-import { Pages } from '../../components/SwipePages';
+import Swiper from 'react-native-swiper';
+
 import { Icon } from 'react-native-elements'
 import * as Animatable from 'react-native-animatable';
 
@@ -37,15 +38,15 @@ class DebugContainer extends Component {
     this.props.navigation.navigate('Inbox');
   }
   toAskPage(){
-    this.pages.scrollToPage(0)
+    this.pages.scrollBy(-2,true)
   }
 
   scrollToPage = () => {
     console.log('hey');
-    this.pages.scrollToPage(1)
+    this.pages.scrollBy(1,true)
   }
 
-  onScrollEnd = () => {
+  onIndexChanged = () => {
     Keyboard.dismiss();
   }
 
@@ -53,21 +54,28 @@ class DebugContainer extends Component {
     const { navigation } = this.props;
 
     return (
-      <Pages
+      <Swiper
         horizontal={false}
         indicatorPosition={'none'}
-        startPage={1}
-        onScrollEnd={this.onScrollEnd}
+        showsButtons={false}
+        showsPagination={false}
+        index={1}
+        loop={false}
+        bounces={true}
+        onIndexChanged={this.onIndexChanged}
         ref={(c) => this.pages = c}
       >
         <Ask
           navigation={navigation}
           scrollToPage={this.scrollToPage}
         />
-        <Pages
-          indicatorPosition={'none'}
+        <Swiper
+          showsPagination={false}
+          showsButtons={false}
+          loop={false}
+          bounces={true}
         >
-          <View style={{ flex: 1, backgroundColor: 'transparent' }} >
+          <View style={{ flex: 1, backgroundColor: 'transparent' }} effect='slide' >
             <Image
               source={images.homeUnderlay}
               style={{width: '100%', height: '100%', position: 'absolute'}}
@@ -94,11 +102,11 @@ class DebugContainer extends Component {
           </View >
           <Profile
             navigation={navigation}/>
-        </Pages>
+        </Swiper>
         <Home
           navigation={navigation}
           toAskPage={this.toAskPage.bind(this)}/>
-      </Pages>
+      </Swiper>
     );
   }
 };

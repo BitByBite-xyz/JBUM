@@ -48,13 +48,8 @@ const Settings = (props) => {
               <SettingsList.Header headerText='ABOUT' headerStyle={{color:'gray', marginTop:15, marginLeft: 10}}/>
               <SettingsList.Item
                 titleStyle={{fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
-                title='Privacy Policy'
+                title='Terms of Service'
                 onPress={() => Linking.openURL('https://help.instagram.com/155833707900388/?helpref=hc_fnav')}
-              />
-              <SettingsList.Item
-                titleStyle={{fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
-                title='Terms'
-                onPress={() => Linking.openURL('https://help.instagram.com/478745558852511')}
               />
               <SettingsList.Item
                 titleStyle={{fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
