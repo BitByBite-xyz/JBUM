@@ -264,6 +264,9 @@ class Ask extends Component {
 
     return (
       <ScrollView style={styles.backdrop}>
+        <View style={{height: 50, backgroundColor: 'white', borderBottomWidth: 0.5, borderBottomColor: 'black', alignItems: 'center', justifyContent: 'center'}}>
+          <Text style={{fontSize: 20, fontFamily: 'Avenir', fontWeight: '500'}}>Ask a Question</Text>
+        </View>
       <View style={styles.backdrop}>
         <View style={styles.bottomBox}>
           <View style={styles.bottom}>

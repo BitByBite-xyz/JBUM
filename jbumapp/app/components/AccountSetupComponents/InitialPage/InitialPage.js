@@ -3,7 +3,8 @@ import {
   Text,
   View,
   StyleSheet,
-  TouchableHighlight
+  TouchableHighlight,
+  TouchableOpacity
 } from 'react-native';
 
 import Picker from 'react-native-picker';
@@ -22,13 +23,15 @@ export default class InitialPage extends Component {
 
     return(
       <View>
-        <Button
-          backgroundColor={'#4AD9B9'}
+        <TouchableOpacity onPress={handleAbandonSetup} style={{position: 'absolute'}}>
+          <Text style={{color: 'white', fontSize: 18, marginTop: 10, fontWeight: '500'}}>Cancel</Text>
+        </TouchableOpacity>
+        {/*<Button
+          style={{position: 'absolute'}}
+          backgroundColor={'transparent'}
           onPress={handleAbandonSetup}
-          icon={{name: 'directions-walk'}}
-          textStyle={{fontSize: 10, color: 'white'}}
-          buttonStyle={{height:20,width:130}}
-          title='Abandon Setup' />
+          textStyle={{fontSize: 16, color: 'white', fontWeight: '500', padding: 0}}
+          title='Cancel' />*/}
         <View style={{alignItems: 'center', marginTop: '45%'}}><Text style={styles.pageTitle}>Account Setup</Text></View>
         <View style={{marginTop: '17%'}}>
             <Text style={styles.text}>All of the following information you enter will be completely anonymous. Please do you best to fill out the account setup questions.</Text>
