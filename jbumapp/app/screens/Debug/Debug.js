@@ -20,7 +20,9 @@ import Home from '../Home';
 
 import Profile from '../Profile';
 import Settings from '../Settings';
+
 import images from '../../config/images';
+import {quotes} from '../../config/styles';
 
 
 class DebugContainer extends Component {
@@ -31,7 +33,18 @@ class DebugContainer extends Component {
       loading: true
     };
   }
-  componentDidMount(){
+  componentDidMount() {
+    setTimeout(() => {
+      this.downArrow.transitionTo({opacity: 0});
+      this.rightArrow.transitionTo({opacity: 0});
+      this.upArrow.transitionTo({opacity: 0});
+    }, 45000);
+  }
+
+  onScrollBeginDrag = () => {
+    this.downArrow.transitionTo({opacity: 0});
+    this.rightArrow.transitionTo({opacity: 0});
+    this.upArrow.transitionTo({opacity: 0});
   }
 
   toInbox(){
@@ -52,6 +65,7 @@ class DebugContainer extends Component {
 
   render() {
     const { navigation } = this.props;
+    const quoteIndex = Math.floor(quotes.length * Math.random());
 
     return (
       <Swiper
@@ -63,6 +77,7 @@ class DebugContainer extends Component {
         loop={false}
         bounces={true}
         onIndexChanged={this.onIndexChanged}
+        onScrollBeginDrag={this.onScrollBeginDrag}
         ref={(c) => this.pages = c}
       >
         <Ask
@@ -84,21 +99,34 @@ class DebugContainer extends Component {
               source={images.homeBackground}
               style={{width: '100%', height: '85.5%'}}
             />
-              <Text style={{position: 'absolute', marginTop: '50%', marginLeft: '16%', fontFamily: 'Avenir', fontSize: 45, fontWeight: '700'}}>Welcome,</Text>
-              <Text style={{position: 'absolute', marginTop: '67%', marginLeft: '17%', fontFamily: 'Avenir', fontSize: 18, fontWeight: '500', marginRight: 35}}>“The only way to make sense out of change is to plunge into it” {"\n"}{"\n"} -Alan Watts</Text>
-              <Animatable.View animation="slideInUp" style={{position: 'absolute', marginLeft: '35%', marginTop: '170%'}}>
-                <Icon
-                  iconStyle={{color: 'white'}}
-                  name='keyboard-arrow-down' />
-              </Animatable.View>
-              <Animatable.View animation="slideInDown" style={{position: 'absolute', marginLeft: '35%', marginTop: '2%'}}>
-                <Icon
-                  name='keyboard-arrow-up' />
-              </Animatable.View>
-              <Animatable.View animation="slideInRight" style={{position: 'absolute', marginLeft: '92%', marginTop: '80%'}}>
-                <Icon
-                  name='keyboard-arrow-right' />
-              </Animatable.View>
+            <Animatable.Text
+              animation="pulse"
+              easing="ease-out"
+              iterationCount="1"
+              style={{position: 'absolute', marginTop: '43%', marginLeft: '10%', fontFamily: 'Avenir', fontSize: 45, fontWeight: '700'}}
+            >
+              Welcome,
+            </Animatable.Text>
+
+            <Text
+              style={{position: 'absolute', marginTop: '66%', marginLeft: '10%', fontFamily: 'Avenir', fontSize: 18, fontWeight: '500', marginRight: 35}}
+            >
+              {quotes[quoteIndex].quote} {"\n"}{"\n"} - {quotes[quoteIndex].author}
+            </Text>
+
+            <Animatable.View ref={(c) => this.downArrow = c} animation="slideInUp" style={{position: 'absolute', marginLeft: '35%', marginTop: '170%'}}>
+              <Icon
+                iconStyle={{color: 'white'}}
+                name='keyboard-arrow-down' />
+            </Animatable.View>
+            <Animatable.View ref={(c) => this.upArrow = c} animation="slideInDown" style={{position: 'absolute', marginLeft: '35%', marginTop: '2%'}}>
+              <Icon
+                name='keyboard-arrow-up' />
+            </Animatable.View>
+            <Animatable.View ref={(c) => this.rightArrow = c} animation="slideInRight" style={{position: 'absolute', marginLeft: '92%', marginTop: '80%'}}>
+              <Icon
+                name='keyboard-arrow-right' />
+            </Animatable.View>
           </View >
           <Profile
             navigation={navigation}/>
