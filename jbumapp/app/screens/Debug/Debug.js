@@ -38,7 +38,7 @@ class DebugContainer extends Component {
       this.downArrow.transitionTo({opacity: 0});
       this.rightArrow.transitionTo({opacity: 0});
       this.upArrow.transitionTo({opacity: 0});
-    }, 45000);
+    }, 2000);
   }
 
   onScrollBeginDrag = () => {
@@ -57,6 +57,11 @@ class DebugContainer extends Component {
   scrollToPage = () => {
     console.log('hey');
     this.pages.scrollBy(1,true)
+  }
+  onTouchEnd = () => {
+    this.downArrow.transitionTo({opacity: 0.5});
+    this.rightArrow.transitionTo({opacity: 0.5});
+    this.upArrow.transitionTo({opacity: 0.5});
   }
 
   onIndexChanged = () => {
@@ -78,6 +83,7 @@ class DebugContainer extends Component {
         bounces={true}
         onIndexChanged={this.onIndexChanged}
         onScrollBeginDrag={this.onScrollBeginDrag}
+        onTouchEnd={this.onTouchEnd}
         ref={(c) => this.pages = c}
       >
         <Ask
@@ -89,6 +95,8 @@ class DebugContainer extends Component {
           showsButtons={false}
           loop={false}
           bounces={true}
+          onScrollBeginDrag={this.onScrollBeginDrag}
+          onTouchEnd={this.onTouchEnd}
         >
           <View style={{ flex: 1, backgroundColor: 'transparent' }} effect='slide' >
             <Image
@@ -103,16 +111,17 @@ class DebugContainer extends Component {
               animation="pulse"
               easing="ease-out"
               iterationCount="1"
+              ref={(c) => this.welcomeText = c}
               style={{position: 'absolute', marginTop: '43%', marginLeft: '10%', fontFamily: 'Avenir', fontSize: 45, fontWeight: '700'}}
             >
               Welcome,
             </Animatable.Text>
-
-            <Text
+            <Animatable.Text
+              ref={(c) => this.quoteText = c}
               style={{position: 'absolute', marginTop: '66%', marginLeft: '10%', fontFamily: 'Avenir', fontSize: 18, fontWeight: '500', marginRight: 35}}
             >
               {quotes[quoteIndex].quote} {"\n"}{"\n"} - {quotes[quoteIndex].author}
-            </Text>
+            </Animatable.Text>
 
             <Animatable.View ref={(c) => this.downArrow = c} animation="slideInUp" style={{position: 'absolute', marginLeft: '35%', marginTop: '170%'}}>
               <Icon

@@ -188,10 +188,10 @@ class Panel extends PureComponent {
     const color = colors[Math.floor(colors.length * Math.random())];
 
     if (post_categories) {
-      var items = post_categories.map(function (item){
+      var items = post_categories.map(function (item, index){
           return (
             <Badge
-              containerStyle={{ backgroundColor: color, marginRight: 2} }
+              containerStyle={{ backgroundColor: colors[index], marginRight: 2} }
               value={item}
               textStyle={{ color: 'white' }}
             />
@@ -324,11 +324,9 @@ class Panel extends PureComponent {
                   <Text style={styles.popupSubTitles}>Urgent</Text>
                 </View>
               </View>
-
             </View>
           </Modal>
         </View>
-
       </View>
     );
 
