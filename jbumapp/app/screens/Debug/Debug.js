@@ -67,7 +67,7 @@ class DebugContainer extends Component {
         <Pages
           indicatorPosition={'none'}
         >
-          <View style={{ flex: 1, backgroundColor: 'transparent' }} >
+          <View style={{ flex: 1, backgroundColor: 'transparent' }} effect='slide' >
             <Image
               source={images.homeUnderlay}
               style={{width: '100%', height: '100%', position: 'absolute'}}

@@ -71,12 +71,16 @@ export default class Pages extends PureComponent {
     this.state = {
       width: 0,
       height: 0,
+      loading: true,
       progress: new Animated.Value(this.progress),
     };
   }
 
   componentDidMount() {
     this.mounted = true;
+    setTimeout(() => {
+      this.setState({ loading: false });
+    }, 2000);
   }
 
   componentDidUpdate() {
@@ -156,7 +160,7 @@ export default class Pages extends PureComponent {
       this.scrollState = 1;
     }
 
-    if (this.mounted && this.scroll) {
+    if (!this.state.loading && this.mounted && this.scroll) {
       this.scroll.scrollTo({
         [horizontal? 'x' : 'y']: page * base,
         animated,
