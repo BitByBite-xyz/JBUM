@@ -264,7 +264,11 @@ class Ask extends Component {
 
     return (
       <ScrollView style={styles.backdrop}>
+        <View style={{height: 50, backgroundColor: '#57C2D7', alignItems: 'center', justifyContent: 'center'}}>
+          <Text style={{fontSize: 24, fontFamily: 'Avenir', fontWeight: '500', color: 'white'}}>Ask a Question</Text>
+        </View>
       <View style={styles.backdrop}>
+        <View style={{borderTopLeftRadius: 15, borderTopRightRadius: 15, overflow: 'hidden', backgroundColor: '#F3F3F3'}}>
         <View style={styles.bottomBox}>
           <View style={styles.bottom}>
             <View style={styles.views}>
@@ -319,6 +323,7 @@ class Ask extends Component {
             textStyle={{color:'#BBB', fontFamily: 'Avenir', fontSize: 22, fontWeight: '500'}}
             onPress={() => this.postButton()}/>
         </View>
+      </View>
       </View>
     </ScrollView>
     );
