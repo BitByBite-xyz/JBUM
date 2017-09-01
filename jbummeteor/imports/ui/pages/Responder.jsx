@@ -144,7 +144,7 @@ class Responder extends Component {
 export default createContainer(() => {
   const handle = Meteor.subscribe('Posts.pub.list');
   return {
-    responderPost: Posts.find({post_visibility: 'Responder'}).fetch(),
+    responderPost: Posts.find({post_visibility: 'Adult',post_visibility: 'Professional'}).fetch(),
     postsReady: handle.ready()
   }
 }, Responder);

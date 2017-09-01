@@ -43,7 +43,7 @@ class DebugContainer extends Component {
 
   scrollToPage = () => {
     console.log('hey');
-    this.pages.scrollBy(0,true)
+    this.pages.scrollBy(1,true)
   }
 
   onIndexChanged = () => {
@@ -72,7 +72,8 @@ class DebugContainer extends Component {
         <Swiper
           showsPagination={false}
           showsButtons={false}
-          index={1}
+          loop={false}
+          bounces={true}
         >
           <View style={{ flex: 1, backgroundColor: 'transparent' }} effect='slide' >
             <Image
