@@ -85,20 +85,20 @@ class DebugContainer extends Component {
               style={{width: '100%', height: '85.5%'}}
             />
               <Text style={{position: 'absolute', marginTop: '50%', marginLeft: '16%', fontFamily: 'Avenir', fontSize: 45, fontWeight: '700'}}>Welcome,</Text>
-              <Text style={{position: 'absolute', marginTop: '67%', marginLeft: '17%', fontFamily: 'Avenir', fontSize: 18, fontWeight: '500', marginRight: 35}}>“The only way to make sense out of change is to plunge into it”</Text>
-              <Text style={{position: 'absolute', marginTop: '82%', marginLeft: '17%', fontFamily: 'Avenir', fontSize: 18, fontWeight: '500', marginRight: 35}}>-Alan Watts</Text>
-
+              <Text style={{position: 'absolute', marginTop: '67%', marginLeft: '17%', fontFamily: 'Avenir', fontSize: 18, fontWeight: '500', marginRight: 35}}>“The only way to make sense out of change is to plunge into it” {"\n"}{"\n"} -Alan Watts</Text>
+              <Animatable.View animation="slideInUp" style={{position: 'absolute', marginLeft: '35%', marginTop: '170%'}}>
                 <Icon
                   iconStyle={{color: 'white'}}
-                  style={{position: 'absolute', marginLeft: '48%', marginTop: '170%'}}
                   name='keyboard-arrow-down' />
+              </Animatable.View>
+              <Animatable.View animation="slideInDown" style={{position: 'absolute', marginLeft: '35%', marginTop: '2%'}}>
                 <Icon
-                  style={{position: 'absolute', marginLeft: '48%', marginTop: '2%'}}
                   name='keyboard-arrow-up' />
+              </Animatable.View>
+              <Animatable.View animation="slideInRight" style={{position: 'absolute', marginLeft: '92%', marginTop: '80%'}}>
                 <Icon
-                  style={{position: 'absolute', marginLeft: '92%', marginTop: '80%'}}
                   name='keyboard-arrow-right' />
-
+              </Animatable.View>
           </View >
           <Profile
             navigation={navigation}/>
