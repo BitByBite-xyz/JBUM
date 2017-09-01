@@ -53,7 +53,12 @@ const Settings = (props) => {
               />
               <SettingsList.Item
                 titleStyle={{fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
-                title='Website'
+                title='Guidelines'
+                onPress={() => Linking.openURL('https://help.instagram.com/155833707900388/?helpref=hc_fnav')}
+              />
+              <SettingsList.Item
+                titleStyle={{fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
+                title='JBUM Website'
                 onPress={() => Linking.openURL('http://www.justbetweenuandme.com')}
               />
 
