@@ -32,7 +32,6 @@ export default class Post extends Component {
         <CardText>
           <div style={styles.wrapper}>
 
-
           </div>
         </CardText>
       </Card>

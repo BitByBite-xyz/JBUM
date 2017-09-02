@@ -11,7 +11,11 @@ import SendPost from '../components/SendPost';
 
 import { Posts } from '../../api/posts/posts';
 
-class Dashboard extends Component {
+let comment = {
+  post_comments: "test comment"
+};
+
+export class Dashboard extends Component {
   constructor(props){
     super(props);
   }
@@ -26,7 +30,7 @@ class Dashboard extends Component {
     let count = 0;
 
     _.each(posts, function (post) {
-      count = count + post.post_comments.length;
+      count = count + post_comments.length;
     });
     return count;
   }
