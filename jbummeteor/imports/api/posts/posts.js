@@ -50,7 +50,7 @@ const PostSchema = new SimpleSchema({
   post_comments: {
   type: [CommentsSchema],
   label: "Post's comments",
-  optional:false
+  optional:true
 },
 post_flags: {
   type: [String],
