@@ -26,7 +26,7 @@ export default class Post extends Component {
     return (
       <Card>
         <CardMedia
-          overlay={<CardTitle title={post.title} />}
+          overlay={<CardTitle title={post.post_title} />}
         >
         </CardMedia>
         <CardText>
