@@ -1,31 +1,50 @@
-import React from 'react';
-import Paper from 'material-ui/Paper';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-import RaisedButton from 'material-ui/RaisedButton';
-import TextField from 'material-ui/TextField';
+import React, { Component } from 'react';
+import { browserHistory } from 'react-router';
+import { Posts } from '../../api/posts/posts';
 
-const SendPost = () => (
-  <div className="col-sm-6 row-no-padding" style={{marginTop: 15}}>
-    <Paper zDepth={1}>
-      <div>
-        <form style={{padding: 10}}>
-          <TextField
-            style={{width: '80%', marginLeft: '10%', marginTop:  '2%'}}
-            hintText="Post Title"
-            multiLine={true}
-          />
-          <TextField
-            style={{width: '80%', marginLeft: '10%', marginBottom: '4%'}}
-            hintText="Post Content"
-            multiLine={true}
-            rows={2}
-            rowsMax={4}
-            />
-          <RaisedButton label="Submit" style={{width: '80%', marginLeft: '10%', marginBottom: '2%'}} />
+export default class SendPost extends Component {
+  submitPost(event) {
+    event.preventDefault();
+
+    let post = {
+      title: this.refs.title.value,
+      content: this.refs.content.value,
+    }
+
+    Meteor.call('insertPost', post, (error) =>{
+      if(error) {
+        alert("Unable to submit post: " + error.reason);
+      } else {
+        alert("Post added");
+        browserHistory.push('/AppContainer');
+      }
+    });
+  }
+
+  render() {
+    return (
+      <div className="row">
+        <form className="col s12" onSubmit={this.submitPost.bind(this)}>
+          <h3>Add Post</h3>
+
+          <div className="row">
+            <div className="input-field col s6">
+              <input placeholder="Title" ref="title" type="text" className="validate"/>
+            </div>
+            <div className="input-field col s6">
+              <input placeholder="Content" ref="content" type="text" className="validate"/>
+            </div>
+          </div>
+          <div className="row">
+            <div className="input-field col s6">
+              <button className="btn waves-effect waves-light" type="submit" name="action">Submit
+                <i className="material-icons right">send</i>
+              </button>
+            </div>
+          </div>
+
         </form>
       </div>
-    </Paper>
-  </div>
-);
-
-export default SendPost;
+    )
+  }
+}

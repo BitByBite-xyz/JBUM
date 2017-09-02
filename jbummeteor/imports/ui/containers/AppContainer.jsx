@@ -1,42 +1,59 @@
-import React, { Component } from 'react';
-import { Meteor } from 'meteor/meteor'
-import { withHistory } from 'react-router-dom';
+import React, { Component, PropTypes } from 'react';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import RaisedButton from 'material-ui/RaisedButton';
+import { List } from 'material-ui/List';
+import Divider from 'material-ui/Divider';
+import { createContainer } from 'meteor/react-meteor-data';
+import { Link } from 'react-router';
 import MainContainer from './MainContainer.jsx';
 
-export default class AppContainer extends Component {
-  constructor(props){
+// database - collection
+import { Posts } from '../../api/posts/posts';
+
+import Post from './Post';
+
+export class AppContainer extends Component {
+  constructor(props) {
     super(props);
-    this.state = this.getMeteorData();
-    this.logout = this.logout.bind(this);
+
+    this.updateCurrentPost = this.updateCurrentPost.bind(this);
+
   }
 
-  getMeteorData(){
-    return { isAuthenticated: Meteor.userId() !== null };
+  renderPosts() {
+    return this.props.posts.map((post) => (
+      <Post key={post._id} post={post} updateCurrentPost={this.updateCurrentPost}/>
+
+    ));
   }
 
-  componentWillMount(){
-    if (!this.state.isAuthenticated) {
-      this.props.history.push('/login');
-    }
-  }
-
-
-  logout(e){
-    e.preventDefault();
-    Meteor.logout( (err) => {
-        if (err) {
-            console.log( err.reason );
-        } else {
-            window.location.reload();
-        }
+  updateCurrentPost(post) {
+    this.setState({
+      currentPost: post,
     });
   }
 
-  render(){
+
+  render() {
     return (
-      <div>
+
+        <div>
         <MainContainer />
-      </div>
-    );
+        </div>
+
+    )
   }
 }
+
+AppContainer.propTypes = {
+  posts: PropTypes.array.isRequired,
+};
+
+export default createContainer(() => {
+  Meteor.subscribe('posts');
+  const user = Meteor.userId();
+
+  return {
+    posts: Posts.find({ owner: user }, {sort: { title: 1}}).fetch(),
+  };
+}, AppContainer);
