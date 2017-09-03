@@ -16,7 +16,7 @@ export default class SendPost extends Component {
         alert("Unable to submit post: " + error.reason);
       } else {
         alert("Post added");
-        browserHistory.push('/AppContainer');
+        browserHistory.push('/');
       }
     });
   }

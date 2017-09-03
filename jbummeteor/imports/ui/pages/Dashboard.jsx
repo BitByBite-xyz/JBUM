@@ -11,7 +11,7 @@ import SendPost from '../components/SendPost';
 
 import { Posts } from '../../api/posts/posts';
 
-let comment = {
+let post_comments = {
   post_comments: "test comment"
 };
 

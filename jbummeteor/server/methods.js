@@ -11,11 +11,11 @@ filter.removeWords("gay", "gayboy", "gaygirl","gays","gayz", "queer","queers","q
 filter.removeWords('gay');
 
 Meteor.methods({
-  insertPost({title, body, post_visibility, post_categories}) {
-    check(title, String);
-    check(body, String);
+  insertPost({post_title, post_body}) {
+    check(post_title, String);
+    check(post_body, String);
 
-    var isFlagged = (filter.clean(body).indexOf('🤲') !== -1 || filter.clean(title).indexOf('🤲') !== -1);
+    var isFlagged = (filter.clean(post_body).indexOf('🤲') !== -1 || filter.clean(post_title).indexOf('🤲') !== -1);
     const post_flags = isFlagged ? ['autogen']:[];
 
     // Make sure the user is logged in before inserting a post
@@ -25,12 +25,12 @@ Meteor.methods({
 
     Posts.insert({
       user_id: Meteor.userId(),
-      post_title: title,
-      post_body: body,
+      post_title: post_title,
+      post_body: post_body,
       post_comments: [],
       post_likes: [],
-      post_categories: post_categories,
-      post_visibility:post_visibility,
+      // post_categories: post_categories,
+      // post_visibility:post_visibility,
       post_flags: post_flags
     });
   },
@@ -82,7 +82,7 @@ Meteor.methods({
       },
     });
   },
-  'Posts.reply' (postId, body) {
+  'Posts.reply' (postId, post_body) {
     if (!Meteor.userId() || !Posts.findOne(postId)) {
       throw new Meteor.Error('not-authorized');
     }
@@ -92,7 +92,7 @@ Meteor.methods({
         post_comments: {
           comment_id: Random.id(),
           user_id: Meteor.userId(),
-          comment_body: body,
+          comment_body: post_body,
           createdAt: new Date,
         }
       },
