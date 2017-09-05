@@ -42,16 +42,14 @@ class Survey extends Component {
 
   harvestData = (data) => {
     let returner = [];
-
-    const uniques = data.filter(function(item, i, ar){ return ar.indexOf(item) === i; });
-
     var counts = {};
+    const uniques = data.filter(function(item, i, ar){ return ar.indexOf(item) === i; });
 
     for (var i = 0; i < data.length; i++) {
       var num = data[i];
       counts[num] = counts[num] ? counts[num] + 1 : 1;
     }
-
+    
     _.each(uniques, (datapoint, index) => {
       returner.push({name: datapoint, value: counts[datapoint]})
     } )
@@ -100,7 +98,7 @@ class Survey extends Component {
               data={ethnicityData ? ethnicityData: [{name: '', value: 400}]}
             />
             <ChartPanel
-              graphName="Generation"
+              graphName="Parents from US"
               data={generationData ? generationData: [{name: '', value: 400}]}
             />
             <ChartPanel

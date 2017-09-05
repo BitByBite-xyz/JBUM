@@ -26,7 +26,7 @@ import {queryConstructor} from '../../lib/queryHelpers';
 
 import styles from './styles';
 
-class Home extends Component {
+class Answer extends Component {
   /*static navigationOptions = {
     headerRight: ({ navigation }) => <Notifications navigation={navigation} />,
   };*/
@@ -183,8 +183,8 @@ class Home extends Component {
 export default createContainer(() => {
 
 
-  var homeTerms = {
-    viewName: 'homePosts',
+  var answerTerms = {
+    viewName: 'answerPosts',
     limit:50
   }
   var inboxTerms = {
@@ -194,13 +194,12 @@ export default createContainer(() => {
   const handle = Meteor.subscribe('Posts.pub.list');
   const loading = !handle.ready();
 
-  var homeParameters = queryConstructor(homeTerms);
+  var answerParameters = queryConstructor(answerTerms);
   var inboxParameters = queryConstructor(inboxTerms);
 
 
   return {
-    posts: Meteor.collection('posts').find(homeParameters.find, homeParameters.sort),
+    posts: Meteor.collection('posts').find(answerParameters.find, answerParameters.sort),
     inboxCount: Meteor.collection('posts').find(inboxParameters.find).length,
-
   };
-}, Home);
+}, Answer);

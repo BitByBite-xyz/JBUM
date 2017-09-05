@@ -183,12 +183,12 @@ class Panel extends PureComponent {
 
   renderCategoryBadges() {
     const { post_categories } = this.state;
-    const colors = ['#00B796', '#00D2F1', '#B565C6', '#FEBE00', '#FF5656', '#D63E87'];
+    const colors = ['#B565C6','#D63E87','#00B796', '#00D2F1', '#FEBE00', '#FF5656'];
     //const color =  "#"+((1<<24)*Math.random()|0).toString(16);
-    const color = colors[Math.floor(colors.length * Math.random())];
 
     if (post_categories) {
       var items = post_categories.map(function (item, index){
+
           return (
             <Badge
               containerStyle={{ backgroundColor: colors[index], marginRight: 2} }

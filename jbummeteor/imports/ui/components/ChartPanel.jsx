@@ -15,14 +15,15 @@ const RADIAN = Math.PI / 180;
 
 const ChartPanel = (props) => {
     const { data, graphName } = props;
+    const color =  "#"+((1<<24)*Math.random()|0).toString(16);
 
     return (
         <div className="col-sm-6" style={{marginTop: 10}}>
             <Paper zDepth={1}>
                 <div style={{display: 'flex', flexDirection: 'row'}}>
-                    <div style={{height: 266, width: 5, backgroundColor: 'blue'}}/>
-                    <center style={{marginLeft: '25%'}}><h4 style={{marginTop: 0, paddingTop: 20}}>{graphName}</h4>
-                        <div className="graph-container">
+                    <div style={{height: 266, width: 5, backgroundColor: color}}/>
+                    <center style={{marginLeft: '20%'}}><h3 style={{marginTop: 0, paddingTop: 20}}>{graphName}</h3>
+                        <div className="graph-container" style={{marginLeft: '10%'}}>
                             <PieChart width={195} height={195} onMouseEnter={this.onPieEnter}>
                                 <Pie
                                     data={data}

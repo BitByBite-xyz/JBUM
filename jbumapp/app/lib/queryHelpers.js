@@ -4,7 +4,7 @@ views = {};
 
 
 // client & server
-views.homePosts = function (terms) {
+views.answerPosts = function (terms) {
   return {
     find: {post_flags: [], post_visibility: { "$in" : ["Student"]} },
     sort: {sort: {post_comments: 1, createdAt: -1}, limit: terms.limit}

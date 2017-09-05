@@ -12,6 +12,7 @@ import images from '../../config/images';
 
 export default class Wallpaper extends Component {
 	render() {
+		const img = this.props.img ? this.props.img : images.wallpaper;
 		return (
 
 			<Image style={{
@@ -20,7 +21,7 @@ export default class Wallpaper extends Component {
 				height: null,
 				width: null,
 				backgroundColor: (this.props.gray ? 'rgba(52, 52, 52, 1)' : null) // needs to be fixed with gray overlay
-			}} source={images.wallpaper}>
+			}} source={img}>
 				{this.props.children}
 			</Image>
 		);

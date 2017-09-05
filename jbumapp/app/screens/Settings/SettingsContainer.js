@@ -5,8 +5,6 @@ import { NavigationActions } from 'react-navigation';
 
 import Settings from './Settings';
 
-import { connectAlert } from '../../components/Alert';
-
 
 class SettingsContainer extends Component {
   static propTypes = {
@@ -49,7 +47,6 @@ class SettingsContainer extends Component {
   }
 }
 
-
 const ConnectedSettings = createContainer((params) => {
 
   return {
@@ -57,4 +54,4 @@ const ConnectedSettings = createContainer((params) => {
   };
 }, SettingsContainer);
 
-export default connectAlert(ConnectedSettings);
+export default ConnectedSettings;

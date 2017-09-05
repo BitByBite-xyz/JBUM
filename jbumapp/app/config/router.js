@@ -12,7 +12,7 @@ import Login from '../screens/Login';
 import Debug from '../screens/Debug';
 import images from '../config/images';
 import AccountSetup from '../screens/AccountSetup';
-import Home from '../screens/Home';
+import Answer from '../screens/Answer';
 import Profile from '../screens/Profile';
 import Reply from '../screens/Reply';
 import Ask from '../screens/Ask';
