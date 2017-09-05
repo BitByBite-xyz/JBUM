@@ -49,7 +49,7 @@ class Dashboard extends Component {
           cardDiscriptor={'Replies'}
           cardStyle={{height: 100, width: 5, backgroundColor: 'green'}}
         />
-        <SendPost />
+        {/*<SendPost />*/}
       </div>
     );
   }

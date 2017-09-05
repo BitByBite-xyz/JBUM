@@ -130,7 +130,7 @@ class Answer extends Component {
       <SwipeHiddenHeader header={()=>
           <View style={styles.header}>
             <View style={styles.centerContainer}>
-              <Text style={styles.headerText}>View Questions</Text>
+              <Text style={styles.headerText}>Just Between U and Me</Text>
             </View>
             <View style={{paddingRight:10}}>{/*//i hate this*/}
             <View style={styles.headerRight}>

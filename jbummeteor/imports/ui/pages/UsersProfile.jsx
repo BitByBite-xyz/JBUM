@@ -70,13 +70,17 @@ class UserProfile extends Component {
   renderUsersPosts = () => {
     const { usersPosts } = this.props;
 
-    if (usersPosts) {
+    if (usersPosts.length > 0) {
       return (usersPosts.map((post) => (
         <UserPost
           key={post._id}
           postContent={post}
         />
       )))
+    } else {
+      return (
+        <p style={{fontSize: 20, marginLeft: 15}}>This user currently has no posts</p>
+      );
     }
   }
 

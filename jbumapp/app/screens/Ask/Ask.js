@@ -132,7 +132,7 @@ class Ask extends Component {
       return (
         <View style={styles.content}>
           <CheckBox
-            style={{backgroundColor: 'white', paddingLeft: 15, paddingTop: 5}}
+            style={{backgroundColor: 'white', paddingLeft: 15, paddingTop: 5, paddingBottom: 5}}
             textStyle={{color: '#A4A7A6', fontSize: 16}}
             checkedColor={'#24BEE4'}
             title='Student'
@@ -144,7 +144,7 @@ class Ask extends Component {
             }}
           />
           <CheckBox
-            style={{backgroundColor: 'white', paddingLeft: 15, paddingTop: 10, paddingBottom: 8}}
+            style={{backgroundColor: 'white', paddingLeft: 15, paddingTop: 5, paddingBottom: 5}}
             textStyle={{color: '#A4A7A6', fontSize: 16}}
             checkedColor={'#24BEE4'}
             title='Adult'
@@ -156,7 +156,7 @@ class Ask extends Component {
             }}
           />
           <CheckBox
-            style={{backgroundColor: 'white', paddingLeft: 15, paddingTop: 10, paddingBottom: 8}}
+            style={{backgroundColor: 'white', paddingLeft: 15, paddingTop: 5, paddingBottom: 9}}
             textStyle={{color: '#A4A7A6', fontSize: 16}}
             checkedColor={'#24BEE4'}
             title='Professional'

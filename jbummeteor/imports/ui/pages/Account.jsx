@@ -95,9 +95,9 @@ class Account extends Component {
           <Paper className="col-sm-12 row-no-padding">
             <div style={{backgroundColor: '#E8E8E8'}}><p style={{color: '#8B8B8B', paddingTop: 8, marginLeft: '1.5%', paddingBottom: 5, fontSize: 32}}>Credentials</p></div>
             <div style={{paddingLeft: 15, paddingRight: 15, marginTop: 18, marginBottom: 18}}>
-                <p style={{fontSize: 18}}>Name: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Jacob Sussman</p>
-                <p style={{fontSize: 18}}>Email: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; jacobsussman5@gmail.com</p>
-                <p style={{fontSize: 18}}>School: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; New Trier</p>
+                <p style={{fontSize: 18}}>Name: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;John Appleseed</p>
+                <p style={{fontSize: 18}}>Email: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; johnappleseed@gmail.com</p>
+                <p style={{fontSize: 18}}>School: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Marie Murphy</p>
                 <p style={{fontSize: 18}}>Host Domain: &nbsp; &nbsp; <a href="jbum.meteorapp.com">http://www.jbum.meteorapp.com</a></p>
             </div>
           </Paper>
