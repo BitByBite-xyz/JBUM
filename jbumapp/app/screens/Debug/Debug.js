@@ -16,10 +16,11 @@ import { Icon } from 'react-native-elements'
 import * as Animatable from 'react-native-animatable';
 
 import Ask from '../Ask';
-import Home from '../Home';
-
+import Answer from '../Answer';
 import Profile from '../Profile';
 import Settings from '../Settings';
+
+import {AnimateIn} from '../../components/Animations';
 
 import images from '../../config/images';
 import {quotes} from '../../config/styles';
@@ -35,9 +36,12 @@ class DebugContainer extends Component {
   }
   componentDidMount() {
     setTimeout(() => {
-      this.downArrow.transitionTo({opacity: 0});
-      this.rightArrow.transitionTo({opacity: 0});
-      this.upArrow.transitionTo({opacity: 0});
+      if (this.downArrow) {
+        this.downArrow.transitionTo({opacity: 0});
+        this.rightArrow.transitionTo({opacity: 0});
+        this.upArrow.transitionTo({opacity: 0});
+      }
+
     }, 2000);
   }
 
@@ -107,21 +111,18 @@ class DebugContainer extends Component {
               source={images.homeBackground}
               style={{width: '100%', height: '85.5%'}}
             />
-            <Animatable.Text
-              animation="pulse"
-              easing="ease-out"
-              iterationCount="1"
-              ref={(c) => this.welcomeText = c}
-              style={{position: 'absolute', marginTop: '43%', marginLeft: '10%', fontFamily: 'Avenir', fontSize: 45, fontWeight: '700'}}
-            >
-              Welcome,
-            </Animatable.Text>
-            <Animatable.Text
-              ref={(c) => this.quoteText = c}
-              style={{position: 'absolute', marginTop: '66%', marginLeft: '10%', fontFamily: 'Avenir', fontSize: 18, fontWeight: '500', marginRight: 35}}
-            >
-              {quotes[quoteIndex].quote} {"\n"}{"\n"} - {quotes[quoteIndex].author}
-            </Animatable.Text>
+            <AnimateIn>
+              <Text style={{ marginTop: '-93%', marginLeft: '10%', fontFamily: 'Avenir', fontSize: 45, fontWeight: '700'}}>
+                Welcome,
+              </Text>
+
+              <Text
+                style={{ marginTop: '2%', marginLeft: '10%', fontFamily: 'Avenir', fontSize: 18, fontWeight: '500', marginRight: 35}}
+              >
+                {quotes[quoteIndex].quote} {"\n"}{"\n"} - {quotes[quoteIndex].author}
+              </Text>
+
+            </AnimateIn>
 
             <Animatable.View ref={(c) => this.downArrow = c} animation="slideInUp" style={{position: 'absolute', marginLeft: '35%', marginTop: '170%'}}>
               <Icon
@@ -140,7 +141,7 @@ class DebugContainer extends Component {
           <Profile
             navigation={navigation}/>
         </Swiper>
-        <Home
+        <Answer
           navigation={navigation}
           toAskPage={this.toAskPage.bind(this)}/>
       </Swiper>

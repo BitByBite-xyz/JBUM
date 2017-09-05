@@ -11,6 +11,8 @@ import { Button } from 'react-native-elements';
 import * as Animatable from 'react-native-animatable';
 import FadeInView from 'react-native-fade-in-view';
 
+import images from '../../config/images';
+
 export default class Welcome extends Component {
   constructor(props) {
     super(props);
@@ -37,7 +39,7 @@ export default class Welcome extends Component {
   render() {
     return (
 
-      <Wallpaper>
+      <Wallpaper img={images.welcomeBackground}>
         <View style={styles.bigContainer}>
 
             <FadeInView

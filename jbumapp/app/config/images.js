@@ -17,6 +17,7 @@ const images = {
   inboxCircle: require('../images/inboxCircle.png'),
   homeBackground: require('../images/homeBackground.png'),
   homeUnderlay: require('../images/homeUnderlay.png'),
+  welcomeBackground: require('../images/welcomebackg.jpg'),
 }
 
 export default images;

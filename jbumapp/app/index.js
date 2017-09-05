@@ -6,7 +6,6 @@ import Navigator from './config/router';
 import settings from './config/settings';
 import Loading from './components/Loading';
 
-import Home from './screens/Home';
 import store from './config/store';
 
 import {Provider, connect} from 'react-redux';
