@@ -1,7 +1,11 @@
 import React from 'react';
+import { Platform } from 'react-native';
+
 import Meteor, { createContainer } from 'react-native-meteor';
 
 import Navigator from './config/router';
+import AndroidRouter from './config/androidRouter';
+
 
 import settings from './config/settings';
 import Loading from './components/Loading';
@@ -38,6 +42,10 @@ const RNApp = (props) => {
 
   if (status.connected === false || loggingIn) {
     return <Loading />;
+  }
+
+  if (Platform.OS !== 'ios') {
+    return <AndroidRouter/>
   }
 
   return <Provider store={store}>

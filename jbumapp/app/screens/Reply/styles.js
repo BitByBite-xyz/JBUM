@@ -29,7 +29,6 @@ export default StyleSheet.create({
       fontWeight: '500',
       fontFamily: 'Avenir',
       fontSize: 18,
-      paddingBottom: 5
   },
   questionTitleContainer: {
       alignItems: 'center',
@@ -106,9 +105,6 @@ export default StyleSheet.create({
   largeText: {
       height: 100,
       backgroundColor: 'white',
-      //borderWidth: 2,
-      //borderColor: '#E5E5E5',
-      //borderRadius: 5,
       color: '#BABABA',
       fontSize: 16,
   },
