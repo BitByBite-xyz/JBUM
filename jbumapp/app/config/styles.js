@@ -40,7 +40,35 @@ export const quotes = [
   {
     quote: 'Darkness cannot drive out darkness, only light can do that. Hate cannot drive out hate, only love can do that.',
     author: 'MLK'
-  }
+  },
+  {
+    quote: 'When you find peace within yourself, you become the kind of person who can live at peace with others.',
+    author: 'Peace Pilgrim'
+  },
+  {
+    quote: 'Happiness is the only thing that multiplies when you share it.',
+    author: 'Albert Schweitzer'
+  },
+  {
+    quote: 'Now and then it\'s good to pause in our pursuit of happiness and just be happy.',
+    author: 'Guillaume Apollinaire'
+  },
+  {
+    quote: 'True success, true happiness lies in freedom and fulfillment.',
+    author: 'Dada Vaswani'
+  },
+  {
+    quote: 'Being of service to others is what brings true happiness.',
+    author: 'Marie Osmond'
+  },
+  {
+    quote: 'Many persons have a wrong idea of what constitutes true happiness. It is not attained through self-gratification but through fidelity to a worthy purpose.',
+    author: 'Helen Keller'
+  },
+  {
+    quote: 'Whenever you choose power over love, you will never find true happiness.',
+    author: 'Karen Salmansohn'
+  },
 ]
 
 export const DEVICE_WIDTH = Dimensions.get('window').width;
