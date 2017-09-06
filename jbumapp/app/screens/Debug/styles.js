@@ -7,7 +7,6 @@ export default StyleSheet.create({
     alignItems: 'center',
     //backgroundColor: colors.background,
     flexDirection: 'column',
-    justifyContent: 'center',
     height: 40,
     borderRadius: 50,
     zIndex: 100
