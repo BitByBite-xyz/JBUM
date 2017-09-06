@@ -30,12 +30,22 @@ const App = ({dispatch, nav}) => (
   />
 );
 
+const AndroidApp = ({dispatch, nav}) => (
+  <AndroidRouter
+    navigation={addNavigationHelpers({
+      dispatch,
+      state: nav,
+    })}
+  />
+);
+
 const mapStateToProps = state => ({
   nav: state.nav,
   isLoggedIn: Meteor.user()
 });
 
 const AppWithNavigation = connect(mapStateToProps)(App);
+const AndroidAppWithNavigation = connect(mapStateToProps)(AndroidApp);
 
 const RNApp = (props) => {
   const { status, user, loggingIn } = props;
@@ -43,10 +53,12 @@ const RNApp = (props) => {
   if (status.connected === false || loggingIn) {
     return <Loading />;
   }
-  /*
+
   if (Platform.OS !== 'ios') {
-    return <AndroidRouter/>
-  }*/
+    return <Provider store={store}>
+              <AndroidAppWithNavigation/>
+            </Provider>
+  }
 
   return <Provider store={store}>
             <AppWithNavigation/>

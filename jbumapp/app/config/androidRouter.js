@@ -9,7 +9,7 @@ from 'react-navigation';
 import { Icon } from 'react-native-elements';
 import { Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import Login from '../screens/Login';
-import Debug from '../screens/Debug';
+import Home from '../screens/Home';
 import images from '../config/images';
 import AccountSetup from '../screens/AccountSetup';
 import Answer from '../screens/Answer';
@@ -24,8 +24,8 @@ import Notifications from '../components/Notifications';
 import BarcodeScanner from '../components/BarcodeScanner';
 
  export const HomeStack = StackNavigator({
-   Debug: {
-     screen: Debug,
+   Home: {
+     screen: Home,
 		 navigationOptions: {
 			 header: null
 		}
@@ -129,10 +129,10 @@ export const Tabs = TabNavigator({
 				tabBarIcon: ({tintColor}) => <Icon name="home" size={30} color={tintColor}/>
 		}
 	},
-	Debug: {
-		screen: Debug,
+	Home: {
+		screen: Home,
 		navigationOptions: {
-				tabBarLabel: 'Debug',
+				tabBarLabel: 'Home',
 				tabBarIcon: ({tintColor}) => <Icon name="bug-report" size={30} color={tintColor}/>
 		}
 	},
@@ -171,7 +171,7 @@ export const ProfileStack = StackNavigator({
 		mode:'modal'
 });
 export default StackNavigator({
-		Tabs: { screen: Tabs,
+		HomeStack: { screen: HomeStack,
 		 	navigationOptions: {
 				header: null,
 				gesturesEnabled: false,

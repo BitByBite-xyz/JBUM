@@ -26,7 +26,7 @@ import images from '../../config/images';
 import {quotes} from '../../config/styles';
 
 
-class DebugContainer extends Component {
+class Home extends Component {
   constructor(props) {
     super(props);
 
@@ -149,4 +149,4 @@ class DebugContainer extends Component {
   }
 };
 
-export default DebugContainer;
+export default Home;
