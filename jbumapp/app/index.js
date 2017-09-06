@@ -43,10 +43,10 @@ const RNApp = (props) => {
   if (status.connected === false || loggingIn) {
     return <Loading />;
   }
-
+  /*
   if (Platform.OS !== 'ios') {
     return <AndroidRouter/>
-  }
+  }*/
 
   return <Provider store={store}>
             <AppWithNavigation/>

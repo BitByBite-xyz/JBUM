@@ -8,7 +8,7 @@ import SettingsList from 'react-native-settings-list';
 
 const Settings = (props) => {
   const { switchValue, signOut, navigation, user } = props;
-  let username = user.username;
+  let username = user? user.username : '';
 
 
   return (

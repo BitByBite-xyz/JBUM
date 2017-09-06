@@ -4119,8 +4119,8 @@ react-native-panel@^1.0.3:
     prop-types "^15.5.8"
 
 "react-native-settings-list@git+https://github.com/evetstech/react-native-settings-list.git":
-  version "1.7.0"
-  resolved "git+https://github.com/evetstech/react-native-settings-list.git#1298f3302d3522ac974e5ddf1ba06e6f85b58d4b"
+  version "1.7.1"
+  resolved "git+https://github.com/evetstech/react-native-settings-list.git#0fe14ee2e94ff1961fd1c194b1fbd33d1ab7eb08"
   dependencies:
     prop-types "^15.5.10"
 
