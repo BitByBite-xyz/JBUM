@@ -251,7 +251,7 @@ class Panel extends PureComponent {
           </TouchableOpacity>*/}
           <TouchableOpacity onPress={this._showModal} style={styles.optionsButton}>
           <Icon
-            style={{justifyContent: 'flex-start'}}
+            
             name='more-horiz'
             size={28}
             color={'#C1C1C2'}

@@ -32,6 +32,7 @@ export default StyleSheet.create({
   popupContainer: {
     width: '95%',
     height: '20%',
+    marginBottom: 15,
     backgroundColor: '#ECEDF6',
     borderRadius: 8,
     shadowColor: '#282C34',
@@ -49,7 +50,7 @@ export default StyleSheet.create({
     fontWeight: '500'
   },
   popupTitle: {
-    marginTop: '0.5%',
+    marginTop: 4.5,
     fontSize: 25,
     fontWeight: '400',
     fontFamily: 'Avenir',
@@ -60,7 +61,8 @@ export default StyleSheet.create({
     fontFamily: 'Avenir',
     marginTop: '3%',
     fontSize: 16,
-    color: 'gray'
+    color: 'gray',
+    marginBottom: 5
   },
   button: {
     alignItems: 'center',

@@ -79,7 +79,7 @@ export default class Header extends Component {
             onPress={() => this.props.navigation.navigate('Settings')}
             size={28}
             underlayColor={'transparent'}
-            color={'#C1C1C2'}
+            color={'white'}
           />
 
         </View>
