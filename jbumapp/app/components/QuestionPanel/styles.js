@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 import { colors,DEVICE_WIDTH,DEVICE_HEIGHT } from '../../config/styles';
 
 
@@ -31,7 +31,6 @@ export default StyleSheet.create({
   },
   popupContainer: {
     width: '95%',
-    height: '20%',
     marginBottom: 15,
     backgroundColor: '#ECEDF6',
     borderRadius: 8,
@@ -63,6 +62,14 @@ export default StyleSheet.create({
     fontSize: 16,
     color: 'gray',
     marginBottom: 5
+  },
+  elipsisIcon: {
+    ...Platform.select({
+      android: {
+        marginRight: -5
+      },
+    }),
+    //marginRight: -25
   },
   button: {
     alignItems: 'center',
