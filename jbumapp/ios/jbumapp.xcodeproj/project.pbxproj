@@ -34,6 +34,7 @@
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		8FD5A071D72B4872B8093541 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BED2D2E0F7C4419EA2B09663 /* Foundation.ttf */; };
 		A53CBB67A9844D609ACE52EB /* libRCTCamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A483F89A2096459BACC442BC /* libRCTCamera.a */; };
+		A6948A75B55A41408CC0B7FC /* libRNDeviceInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B87FBE61A9B48B095E5269A /* libRNDeviceInfo.a */; };
 		B5F31AC466D640AD864C8B18 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E285C21EC3544CBD8524628F /* MaterialCommunityIcons.ttf */; };
 		C252AE6299A44A5BA26A1D21 /* libRNBlur.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E517CAB5EA84DEBBA05287A /* libRNBlur.a */; };
 		D785BCFA2050411DB0FE851C /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C8B4FE85F91140C7B08D4B18 /* Ionicons.ttf */; };
@@ -266,6 +267,13 @@
 			remoteGlobalIDString = 3D383D621EBD27B9005632C8;
 			remoteInfo = "double-conversion-tvOS";
 		};
+		87856D231F626D2C00ED5207 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA89F894F88B400A908CF2DE /* BVLinearGradient.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 64AA15081EF7F30100718508;
+			remoteInfo = "BVLinearGradient-tvOS";
+		};
 		87A049E61F1F1EA9007C3ACC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C4EC16D8D1924758BED69E6D /* ButtonExplorer.xcodeproj */;
@@ -329,6 +337,13 @@
 			remoteGlobalIDString = 83CBBA2D1A601D0E00E9B192;
 			remoteInfo = React;
 		};
+		87D885C31F64AA3E00D7D1E3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9B714D6CAF24A9C90F424A8 /* RNDeviceInfo.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DA5891D81BA9A9FC002B4DB2;
+			remoteInfo = RNDeviceInfo;
+		};
 		87DF739E1F26F661009861A9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 596ECF49CB9C45FAA9320CB6 /* RCTCamera.xcodeproj */;
@@ -358,6 +373,7 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = jbumapp/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = jbumapp/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
+		1B87FBE61A9B48B095E5269A /* libRNDeviceInfo.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNDeviceInfo.a; sourceTree = "<group>"; };
 		1DD70A5192E144E68F1043B3 /* libRCTActionSheet.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTActionSheet.a; sourceTree = "<group>"; };
 		1E517CAB5EA84DEBBA05287A /* libRNBlur.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNBlur.a; sourceTree = "<group>"; };
 		1F90979D4CBF41C1942DBD18 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
@@ -377,6 +393,7 @@
 		BED2D2E0F7C4419EA2B09663 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		C4EC16D8D1924758BED69E6D /* ButtonExplorer.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = ButtonExplorer.xcodeproj; path = "../node_modules/react-native-button-component/button-explorer/ios/ButtonExplorer.xcodeproj"; sourceTree = "<group>"; };
 		C8B4FE85F91140C7B08D4B18 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
+		D9B714D6CAF24A9C90F424A8 /* RNDeviceInfo.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNDeviceInfo.xcodeproj; path = "../node_modules/react-native-device-info/RNDeviceInfo.xcodeproj"; sourceTree = "<group>"; };
 		E285C21EC3544CBD8524628F /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		E557DB8A6A0B4C0C93843763 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		E74BE98BC3484F34B700BA33 /* libRNSpinkit.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSpinkit.a; sourceTree = "<group>"; };
@@ -409,6 +426,7 @@
 				A53CBB67A9844D609ACE52EB /* libRCTCamera.a in Frameworks */,
 				73FC7AD21F9445E6BF2FE774 /* libRCTBEEPickerManager.a in Frameworks */,
 				C252AE6299A44A5BA26A1D21 /* libRNBlur.a in Frameworks */,
+				A6948A75B55A41408CC0B7FC /* libRNDeviceInfo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -564,6 +582,7 @@
 				596ECF49CB9C45FAA9320CB6 /* RCTCamera.xcodeproj */,
 				EC51066868254F0798C905D9 /* RCTBEEPickerManager.xcodeproj */,
 				82C4F8CBDCE74FFCABA8971E /* RNBlur.xcodeproj */,
+				D9B714D6CAF24A9C90F424A8 /* RNDeviceInfo.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -639,6 +658,7 @@
 			isa = PBXGroup;
 			children = (
 				87A049F01F1F1EA9007C3ACC /* libBVLinearGradient.a */,
+				87856D241F626D2C00ED5207 /* libBVLinearGradient.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -647,6 +667,14 @@
 			isa = PBXGroup;
 			children = (
 				87A04A121F1F1EA9007C3ACC /* libRNVectorIcons.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		87D8859E1F64AA3E00D7D1E3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				87D885C41F64AA3E00D7D1E3 /* libRNDeviceInfo.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -788,6 +816,10 @@
 				{
 					ProductGroup = 876008441F4417D200FC250B /* Products */;
 					ProjectRef = 82C4F8CBDCE74FFCABA8971E /* RNBlur.xcodeproj */;
+				},
+				{
+					ProductGroup = 87D8859E1F64AA3E00D7D1E3 /* Products */;
+					ProjectRef = D9B714D6CAF24A9C90F424A8 /* RNDeviceInfo.xcodeproj */;
 				},
 				{
 					ProductGroup = 87A049DC1F1F1EA9007C3ACC /* Products */;
@@ -1030,6 +1062,13 @@
 			remoteRef = 876A2A821F26F1F7005C30FF /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		87856D241F626D2C00ED5207 /* libBVLinearGradient.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libBVLinearGradient.a;
+			remoteRef = 87856D231F626D2C00ED5207 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		87A049E71F1F1EA9007C3ACC /* ButtonExplorer.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
@@ -1084,6 +1123,13 @@
 			fileType = archive.ar;
 			path = libRNVectorIcons.a;
 			remoteRef = 87A04A111F1F1EA9007C3ACC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		87D885C41F64AA3E00D7D1E3 /* libRNDeviceInfo.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNDeviceInfo.a;
+			remoteRef = 87D885C31F64AA3E00D7D1E3 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		87DF739F1F26F661009861A9 /* libRCTCamera.a */ = {
@@ -1184,6 +1230,7 @@
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-picker/ios/RCTBEEPickerManager",
 					"$(SRCROOT)/../node_modules/react-native-blur/ios",
+					"$(SRCROOT)/../node_modules/react-native-device-info/RNDeviceInfo",
 				);
 				"HEADER_SEARCH_PATHS[arch=*]" = "$(REACT_HEADERS_PATH)";
 				INFOPLIST_FILE = jbumapp/Info.plist;
@@ -1194,6 +1241,7 @@
 					"\"$(SRCROOT)/jbum-react-native\"",
 					"\"$(SRCROOT)/jbumapp\"",
 					"\"$(SRCROOT)/jbumapp\"",
+					"\"$(SRCROOT)/jbumapp\"",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1202,7 +1250,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitbybite.jbumapp;
 				PRODUCT_NAME = jbumapp;
-				PROVISIONING_PROFILE = "3d481bad-31ba-43a3-ad91-ac34e640dc6a";
+				PROVISIONING_PROFILE = "581f0f6c-334e-4eb8-b452-142aac4a8b03";
 				PROVISIONING_PROFILE_SPECIFIER = JBUM;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1225,6 +1273,7 @@
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-picker/ios/RCTBEEPickerManager",
 					"$(SRCROOT)/../node_modules/react-native-blur/ios",
+					"$(SRCROOT)/../node_modules/react-native-device-info/RNDeviceInfo",
 				);
 				"HEADER_SEARCH_PATHS[arch=*]" = "$(REACT_HEADERS_PATH)";
 				INFOPLIST_FILE = jbumapp/Info.plist;
@@ -1235,6 +1284,7 @@
 					"\"$(SRCROOT)/jbum-react-native\"",
 					"\"$(SRCROOT)/jbumapp\"",
 					"\"$(SRCROOT)/jbumapp\"",
+					"\"$(SRCROOT)/jbumapp\"",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1243,7 +1293,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitbybite.jbumapp;
 				PRODUCT_NAME = jbumapp;
-				PROVISIONING_PROFILE = "b4064505-e8d2-4a57-846a-1edb77e1805b";
+				PROVISIONING_PROFILE = "581f0f6c-334e-4eb8-b452-142aac4a8b03";
 				PROVISIONING_PROFILE_SPECIFIER = JBUM;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";

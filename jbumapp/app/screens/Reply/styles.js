@@ -132,5 +132,10 @@ export default StyleSheet.create({
   },
   bottomWrapper: {
     margin: 10,
-  }
+  },
+  created: {
+    marginTop: 4,
+    fontSize: 12,
+    color: '#BBB'
+  },
 });

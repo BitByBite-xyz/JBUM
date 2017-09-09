@@ -26,8 +26,8 @@ export default StyleSheet.create({
     margin: 7,
     backgroundColor: 'white',
     opacity: 1,
-    overflow: 'hidden',
-    borderRadius: 9
+  //  overflow: 'hidden',
+    borderRadius: 9,
   },
   popupContainer: {
     width: '95%',

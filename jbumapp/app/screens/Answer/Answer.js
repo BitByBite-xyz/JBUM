@@ -109,9 +109,9 @@ class Answer extends Component {
   renderFooter = () => {
     const { loading } = this.props;
 
-    /*if (!loading) {
+    if (!loading) {
       return null;
-    }*/
+    }
 
     return (
       <View
@@ -143,7 +143,7 @@ class Answer extends Component {
             </View>
             </View>
           </View>}
-          style={styles.container}
+          style={{backgroundColor: '#F3F3F3'}}
           startHiddenHeaderOffset={230}
       >
         <StatusBar

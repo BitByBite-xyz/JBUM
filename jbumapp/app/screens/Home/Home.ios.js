@@ -6,12 +6,13 @@ import {
   ScrollView,
   Image,
   Keyboard,
-  Animated
+  Animated,
+  Alert
 } from 'react-native';
-
+import DeviceInfo from 'react-native-device-info'
 import { NavigationActions } from 'react-navigation';
 import Swiper from 'react-native-swiper';
-
+import ActionButton from 'react-native-action-button';
 import { Icon } from 'react-native-elements'
 import * as Animatable from 'react-native-animatable';
 
@@ -33,6 +34,7 @@ class Home extends Component {
     this.state = {
       loading: true
     };
+    console.log(DeviceInfo.getModel());
   }
   componentDidMount() {
     setTimeout(() => {
@@ -70,6 +72,13 @@ class Home extends Component {
 
   onIndexChanged = () => {
     Keyboard.dismiss();
+  }
+
+  handleFloatingButtonPress = (message) => {
+    Alert.alert(
+      'Emergency button pressed',
+      'Are you sure you want to ' + message + '?'
+    );
   }
 
   render() {
@@ -137,6 +146,17 @@ class Home extends Component {
               <Icon
                 name='keyboard-arrow-right' />
             </Animatable.View>
+            <ActionButton buttonColor="rgba(231,76,60,1)">
+          <ActionButton.Item buttonColor='#9b59b6' title="Call 911" onPress={() => this.handleFloatingButtonPress("Call 911")}>
+            <Icon name="call" style={styles.actionButtonIcon} />
+          </ActionButton.Item>
+          <ActionButton.Item buttonColor='#3498db' title="Text a Tip" icon='call' onPress={() => this.handleFloatingButtonPress("Text a Tip")}>
+            <Icon name="textsms" style={styles.actionButtonIcon} />
+          </ActionButton.Item>
+          <ActionButton.Item buttonColor='#1abc9c' title="24 Hour Hotline" onPress={() => this.handleFloatingButtonPress("Call the 24 Hour Hotline")}>
+            <Icon name="call" style={styles.actionButtonIcon} />
+          </ActionButton.Item>
+        </ActionButton>
           </View >
           <Profile
             navigation={navigation}/>
