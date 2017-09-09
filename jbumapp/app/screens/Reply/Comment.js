@@ -26,7 +26,7 @@ export default class Comment extends PureComponent {
           <Text>
             <Text style={styles.text}>{postComment.comment_body}</Text>
           </Text>
-          <Text style={[styles.text, styles.created]}>{moment(postComment.created).fromNow()}</Text>
+          <Text style={[styles.text, styles.created]}>{moment(postComment.createdAt).fromNow()}</Text>
         </View>
       </View>
     );

@@ -45,13 +45,7 @@ class Ask extends Component {
     const {title, body,post_visibility, post_categories} = (this.state);
     const { scrollToPage } = this.props;
 
-    if (title.length === 0 || body.length === 0 || post_visibility.length === 0 || post_categories.length === 0){
-      Alert.alert(
-        'Oops',
-        'You forgot to fill everything out!'
-      );
-    }
-    else {
+    if (this.validatePostSubmission()) {
       const params = {
         title:title,
         body: body,
@@ -80,6 +74,52 @@ class Ask extends Component {
         }
       });
     }
+  }
+
+  validatePostSubmission = () => {
+    const {title, body,post_visibility, post_categories} = this.state;
+
+    if (!title.replace(/\s/g, '').length) {
+      Alert.alert(
+        'Oops',
+        'You need have a question title!'
+      );
+      return false;
+    }
+    if (!body.replace(/\s/g, '').length) {
+      Alert.alert(
+        'Oops',
+        'You need to fill out your question!'
+      );
+      return false;
+    }
+
+    if (title.length > 300) {
+      Alert.alert(
+        'Oops',
+        'Your question title is too long!'
+      );
+      return false;
+    }
+    if (body.length > 1000) {
+      Alert.alert(
+        'Oops',
+        'Your question is too long!'
+      );
+      return false;
+    }
+
+
+
+
+    if (title.length === 0 || body.length === 0 || post_visibility.length === 0 || post_categories.length === 0){
+      Alert.alert(
+        'Oops',
+        'You forgot to fill everything out!'
+      );
+      return false;
+    }
+    return true;
   }
 
   updateResponder = (visOption) => {
@@ -293,6 +333,7 @@ class Ask extends Component {
                   autoCorrect={true}
                   placeholderTextColor={'#c9c9c9'}
                   minHeight={45}
+                  maxLength={300}
                   blurOnSubmit={true}
                   value={title}
                 />

@@ -5,13 +5,13 @@ import {
   TextInput,
   TouchableOpacity,
   FlatList,
-  Keyboard
+  Keyboard,
+  LayoutAnimation
 } from 'react-native';
 import React, { Component } from 'react';
 import { Button, Icon } from 'react-native-elements'
+import moment from 'moment';
 import {AutoGrowingTextInput} from 'react-native-autogrow-textinput';
-
-import { LayoutAnimation } from 'react-native';
 
 import styles from './styles'
 import Comment from './Comment'
@@ -32,20 +32,21 @@ const Reply = (props) => {
                    <View style={styles.lineDivider} />
                </View>
                <Text style={styles.questionText}>{post.post_body}</Text>
+               <Text style={[styles.text, styles.created]}>{moment(post.createdAt).fromNow()}</Text>
            </View>
            <View style={styles.views}>
-              {Meteor.userId() === post.user_id && post.post_comments.map((comment) => (
+              {post.user_id === Meteor.userId() ? post.post_comments.map((comment) => (
                 <Comment
                   key={comment.comment_id}
                   postComment={comment}
                 />
-              ))}
+              )):null}
             </View>
         <View style={styles.bottomWrapper}>
            <View style={styles.bottomBox}>
                <View style={styles.bottom}>
                    <View style={styles.views}>
-                       <TextInput
+                       <AutoGrowingTextInput
                            style={styles.largeText}
                            placeholder='Reply to this question'
                            returnKeyType="done"

@@ -10,12 +10,15 @@ export default StyleSheet.create({
     height: 40,
     borderRadius: 50,
     zIndex: 100
-
   },
   buttons: {
     paddingVertical: 10,
     paddingHorizontal: 20,
     margin: 5
 	},
-
+  actionButtonIcon: {
+    fontSize: 20,
+    height: 22,
+    color: 'white',
+  },
 });

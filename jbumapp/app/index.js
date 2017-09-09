@@ -4,7 +4,6 @@ import { Platform } from 'react-native';
 import Meteor, { createContainer } from 'react-native-meteor';
 
 import Navigator from './config/router';
-import AndroidRouter from './config/androidRouter';
 
 
 import settings from './config/settings';
@@ -30,34 +29,18 @@ const App = ({dispatch, nav}) => (
   />
 );
 
-const AndroidApp = ({dispatch, nav}) => (
-  <AndroidRouter
-    navigation={addNavigationHelpers({
-      dispatch,
-      state: nav,
-    })}
-  />
-);
-
 const mapStateToProps = state => ({
   nav: state.nav,
   isLoggedIn: Meteor.user()
 });
 
 const AppWithNavigation = connect(mapStateToProps)(App);
-const AndroidAppWithNavigation = connect(mapStateToProps)(AndroidApp);
 
 const RNApp = (props) => {
   const { status, user, loggingIn } = props;
 
   if (status.connected === false || loggingIn) {
     return <Loading />;
-  }
-
-  if (Platform.OS !== 'ios') {
-    return <Provider store={store}>
-              <AndroidAppWithNavigation/>
-            </Provider>
   }
 
   return <Provider store={store}>
