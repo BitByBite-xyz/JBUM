@@ -17,8 +17,6 @@ export default StyleSheet.create({
     margin: 5
 	},
   actionButtonIcon: {
-    fontSize: 20,
     height: 22,
-    color: 'white',
   },
 });
