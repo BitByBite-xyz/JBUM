@@ -144,17 +144,19 @@ class Home extends Component {
               <Icon
                 name='keyboard-arrow-right' />
             </Animatable.View>
-        <ActionButton buttonColor="#F1606E">
-          <ActionButton.Item textStyle={{fontSize: 14}} buttonColor='#9b59b6' title="Call 911" onPress={() => this.handleFloatingButtonPress("Call 911")}>
-            <Icon name="call" style={styles.actionButtonIcon} color={'white'} />
-          </ActionButton.Item>
-          <ActionButton.Item textStyle={{fontSize: 14}} buttonColor='#3498db' title="Text a Tip" icon='call' onPress={() => this.handleFloatingButtonPress("Text a Tip")}>
-            <Icon name="textsms" style={styles.actionButtonIcon} color={'white'} />
-          </ActionButton.Item>
-          <ActionButton.Item textStyle={{fontSize: 14}} buttonColor='#1abc9c' title="24 Hour Hotline" onPress={() => this.handleFloatingButtonPress("Call the 24 Hour Hotline")}>
-            <Icon name="call" style={styles.actionButtonIcon} color={'white'} />
-          </ActionButton.Item>
-        </ActionButton>
+        <Animatable.View animation="slideInUp" style={{marginTop: '-4%'}}>
+          <ActionButton buttonColor="#F1606E">
+            <ActionButton.Item textStyle={{fontSize: 14}} buttonColor='#9b59b6' title="Call 911" onPress={() => this.handleFloatingButtonPress("Call 911")}>
+              <Icon name="call" style={styles.actionButtonIcon} color={'white'} />
+            </ActionButton.Item>
+            <ActionButton.Item textStyle={{fontSize: 14}} buttonColor='#3498db' title="Text a Tip" icon='call' onPress={() => this.handleFloatingButtonPress("Text a Tip")}>
+              <Icon name="textsms" style={styles.actionButtonIcon} color={'white'} />
+            </ActionButton.Item>
+            <ActionButton.Item textStyle={{fontSize: 14}} buttonColor='#1abc9c' title="24 Hour Hotline" onPress={() => this.handleFloatingButtonPress("Call the 24 Hour Hotline")}>
+              <Icon name="call" style={styles.actionButtonIcon} color={'white'} />
+            </ActionButton.Item>
+          </ActionButton>
+        </Animatable.View>
           </View >
           <Profile
             navigation={navigation}/>
