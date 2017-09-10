@@ -119,7 +119,7 @@ class Home extends Component {
               style={{width: '100%', height: '85.5%'}}
             />
             <AnimateIn>
-              <Text style={{ marginTop: '-93%', marginLeft: '10%', fontFamily: 'Avenir', fontSize: 45, fontWeight: '700'}}>
+              <Text style={{ marginTop: '-102%', marginLeft: '10%', fontFamily: 'Avenir', fontSize: 45, fontWeight: '700'}}>
                 Welcome,
               </Text>
 
@@ -144,15 +144,15 @@ class Home extends Component {
               <Icon
                 name='keyboard-arrow-right' />
             </Animatable.View>
-            <ActionButton buttonColor="rgba(231,76,60,1)">
-          <ActionButton.Item buttonColor='#9b59b6' title="Call 911" onPress={() => this.handleFloatingButtonPress("Call 911")}>
-            <Icon name="call" style={styles.actionButtonIcon} />
+        <ActionButton buttonColor="#F1606E">
+          <ActionButton.Item textStyle={{fontSize: 14}} buttonColor='#9b59b6' title="Call 911" onPress={() => this.handleFloatingButtonPress("Call 911")}>
+            <Icon name="call" style={styles.actionButtonIcon} color={'white'} />
           </ActionButton.Item>
-          <ActionButton.Item buttonColor='#3498db' title="Text a Tip" icon='call' onPress={() => this.handleFloatingButtonPress("Text a Tip")}>
-            <Icon name="textsms" style={styles.actionButtonIcon} />
+          <ActionButton.Item textStyle={{fontSize: 14}} buttonColor='#3498db' title="Text a Tip" icon='call' onPress={() => this.handleFloatingButtonPress("Text a Tip")}>
+            <Icon name="textsms" style={styles.actionButtonIcon} color={'white'} />
           </ActionButton.Item>
-          <ActionButton.Item buttonColor='#1abc9c' title="24 Hour Hotline" onPress={() => this.handleFloatingButtonPress("Call the 24 Hour Hotline")}>
-            <Icon name="call" style={styles.actionButtonIcon} />
+          <ActionButton.Item textStyle={{fontSize: 14}} buttonColor='#1abc9c' title="24 Hour Hotline" onPress={() => this.handleFloatingButtonPress("Call the 24 Hour Hotline")}>
+            <Icon name="call" style={styles.actionButtonIcon} color={'white'} />
           </ActionButton.Item>
         </ActionButton>
           </View >
