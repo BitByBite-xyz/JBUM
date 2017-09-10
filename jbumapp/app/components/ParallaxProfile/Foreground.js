@@ -95,8 +95,8 @@ export default class Header extends Component {
           </View>
           <View style={styles.info2}>
             <Text style={styles.text3}>Questions</Text>
-            <Text style={styles.text3}>Answered  </Text>
-            <Text style={styles.text3}>Karma   </Text>
+            <Text style={styles.text3}>Answered   </Text>
+            <Text style={styles.text3}>Growth   </Text>
         </View>
           <View style={styles.levelView}>
             <Text style={styles.text}>Level </Text>

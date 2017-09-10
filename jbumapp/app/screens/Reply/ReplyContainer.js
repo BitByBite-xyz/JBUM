@@ -24,9 +24,7 @@ class ReplyContainer extends Component {
     const { postContent } = navigation.state.params;
     const body = this.state;
 
-    console.log(body.body);
-
-    if (body.body.length > 0) {
+    if (this.validateReplySubmission()) {
       Meteor.call('Posts.reply', postContent._id, body.body, (err) => {
         if (err) {
           console.log("reply err "+err.details);
@@ -42,15 +40,32 @@ class ReplyContainer extends Component {
         }
       });
     }
+  }
+
+  validateReplySubmission = () => {
+    const {body} = this.state;
+
+    if (body.length > 0) {
+      if (!body.replace(/\s/g, '').length) {
+        Alert.alert(
+          'Oops',
+          'Please reply to the question before tapping submit'
+        );
+        return false;
+      }
+      else {
+        return true;
+      }
+    }
     else {
       Alert.alert(
-        'Oops!',
+        'Oops',
         'Please reply to the question before tapping submit'
       );
+      return false;
     }
-
-
   }
+
   render() {
     return (
       <Reply

@@ -7,6 +7,7 @@ import Meteor, { createContainer } from 'react-native-meteor';
 import Accordion from 'react-native-collapsible/Accordion';
 
 import styles from './styles'
+import Prompt from '../../components/Prompt'
 import {AutoGrowingTextInput} from 'react-native-autogrow-textinput';
 
 const SECTIONS = [
@@ -28,6 +29,8 @@ class Ask extends Component {
       post_visibility:[],
       post_categories:[],
       error: null,
+      promptVisible: false,
+      otherCategory: 'Other'
     };
   }
 
@@ -42,10 +45,13 @@ class Ask extends Component {
   }
 
   postButton = () => {
-    const {title, body,post_visibility, post_categories} = (this.state);
+    const {title, body,post_visibility, post_categories,otherCategory} = (this.state);
     const { scrollToPage } = this.props;
 
     if (this.validatePostSubmission()) {
+      if (otherCategory !== 'Other') {
+        post_categories.push(otherCategory)
+      }
       const params = {
         title:title,
         body: body,
@@ -77,7 +83,7 @@ class Ask extends Component {
   }
 
   validatePostSubmission = () => {
-    const {title, body,post_visibility, post_categories} = this.state;
+    const {title, body,post_visibility, post_categories, otherCategory} = this.state;
 
     if (!title.replace(/\s/g, '').length) {
       Alert.alert(
@@ -109,10 +115,7 @@ class Ask extends Component {
       return false;
     }
 
-
-
-
-    if (title.length === 0 || body.length === 0 || post_visibility.length === 0 || post_categories.length === 0){
+    if (title.length === 0 || body.length === 0 || post_visibility.length === 0 || (post_categories.length === 0 && otherCategory === 'Other')){
       Alert.alert(
         'Oops',
         'You forgot to fill everything out!'
@@ -136,7 +139,6 @@ class Ask extends Component {
       })
     }
     console.log(post_visibility);
-
   }
 
   updateCategory = (catOption) => {
@@ -166,7 +168,7 @@ class Ask extends Component {
   }
 
   renderContent = (section) => {
-    const { post_visibility, post_categories} = this.state;
+    const { post_visibility, post_categories, otherCategory} = this.state;
 
     if (section.title.includes('Reciever')) {
       return (
@@ -290,12 +292,17 @@ class Ask extends Component {
             style={{backgroundColor: 'white', paddingLeft: 15, paddingTop: 10, paddingBottom: 3}}
             textStyle={{color: '#A4A7A6', fontSize: 16}}
             checkedColor={'#24BEE4'}
-            title='Other'
+            title={otherCategory}
             checkedIcon='dot-circle-o'
             uncheckedIcon='circle-o'
-            checked={post_categories.indexOf('Other') !== -1}
+            checked={otherCategory !== 'Other'}
             onPress={() => {
-              this.updateCategory('Other');
+              if (otherCategory === 'Other') {
+                this.setState({promptVisible: true})
+              }
+              else {
+                this.setState({otherCategory: 'Other'})
+              }
             }}
           />
         </View>
@@ -315,7 +322,10 @@ class Ask extends Component {
     const body = this.state.body;
 
     return (
-      <ScrollView style={styles.backdrop}>
+      <ScrollView
+        //contentContainerStyle={{backgroundColor: '#57C2D7'}}
+        style={styles.backdrop}
+      >
         <View style={{height: 50, backgroundColor: '#57C2D7', alignItems: 'center', justifyContent: 'center'}}>
           <Text style={{fontSize: 24, fontFamily: 'Avenir', fontWeight: '500', color: 'white'}}>Ask a Question</Text>
         </View>
@@ -376,6 +386,19 @@ class Ask extends Component {
             title='Submit Question'
             textStyle={{color:'#BBB', fontFamily: 'Avenir', fontSize: 22, fontWeight: '500'}}
             onPress={() => this.postButton()}/>
+          <Prompt
+            title="Type in your Question's Category"
+            placeholder="New category who dis"
+            visible={ this.state.promptVisible }
+            onCancel={ () => this.setState({
+              promptVisible: false,
+              otherCategory: 'Other'
+            }) }
+            onSubmit={ (value) => this.setState({
+              promptVisible: false,
+              otherCategory: value
+            }) }
+          />
         </View>
       </View>
       </View>

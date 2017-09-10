@@ -6,7 +6,8 @@ import {
   Image,
   TouchableOpacity,
   Animated,
-  Alert
+  Alert,
+  ScrollView
 } from 'react-native';
 import moment from 'moment';
 import { Icon, Divider, Badge } from 'react-native-elements'
@@ -197,7 +198,12 @@ class Panel extends PureComponent {
             />
           );
       });
-      return items;
+      return (
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+          {items}
+        </ScrollView>
+
+      );
     }
   }
 
