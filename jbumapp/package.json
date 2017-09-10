@@ -27,6 +27,7 @@
     "react-native-dropdownalert": "^2.10.0",
     "react-native-elements": "git+https://github.com/connorlarkin1/react-native-elements.git",
     "react-native-fade-in-view": "^1.0.4",
+    "react-native-keyboard-aware-scroll-view": "^0.3.0",
     "react-native-linear-gradient": "^2.2.0",
     "react-native-modal": "^2.5.0",
     "react-native-modal-dropdown": "^0.4.4",
