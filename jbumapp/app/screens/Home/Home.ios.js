@@ -9,7 +9,6 @@ import {
   Animated,
   Alert
 } from 'react-native';
-import DeviceInfo from 'react-native-device-info'
 import { NavigationActions } from 'react-navigation';
 import Swiper from 'react-native-swiper';
 import ActionButton from 'react-native-action-button';
@@ -32,9 +31,8 @@ class Home extends Component {
     super(props);
 
     this.state = {
-      loading: true
+      loading: true,
     };
-    console.log(DeviceInfo.getModel());
   }
   componentDidMount() {
     setTimeout(() => {
@@ -43,7 +41,6 @@ class Home extends Component {
         this.rightArrow.transitionTo({opacity: 0});
         this.upArrow.transitionTo({opacity: 0});
       }
-
     }, 2000);
   }
 
@@ -97,6 +94,7 @@ class Home extends Component {
         onIndexChanged={this.onIndexChanged}
         onScrollBeginDrag={this.onScrollBeginDrag}
         onTouchEnd={this.onTouchEnd}
+        style={{backgroundColor:'#F3F3F3'}}
         ref={(c) => this.pages = c}
       >
         <Ask

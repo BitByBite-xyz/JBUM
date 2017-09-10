@@ -4,7 +4,7 @@ import { colors } from '../../config/styles';
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#4CB4C9'
+    backgroundColor: '#57C2D7'
   },
   main: {
     fontSize: 20,
