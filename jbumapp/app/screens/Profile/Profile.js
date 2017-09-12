@@ -38,15 +38,39 @@ class ProfileContainer extends Component {
 	}
 
 	renderFooter = () => {
-		const { postsReady } = this.props;
+		const { postsReady, user_posts, responded_posts } = this.props;
+		const { selectedIndex } = this.state;
 
-		if (postsReady) return (
-			<View
-				style={{
-					paddingVertical: '100%',
-					backgroundColor:'#F3F3F3',
-				}}>
-				</View>);
+
+		if (postsReady && user_posts){
+			if (selectedIndex === 0 && user_posts.length > 3) {
+				return (
+					<View
+						style={{
+							paddingVertical: '20%',
+							backgroundColor:'#F3F3F3',
+						}}>
+						</View>);
+			}
+			if (selectedIndex === 1 && responded_posts.length > 3) {
+				return (
+					<View
+						style={{
+							paddingVertical: '20%',
+							backgroundColor:'#F3F3F3',
+						}}>
+						</View>);
+			}
+			else {
+				return (
+					<View
+						style={{
+							paddingVertical: '60%',
+							backgroundColor:'#F3F3F3',
+						}}>
+						</View>);
+			}
+		}
 
 		return (
 			<View

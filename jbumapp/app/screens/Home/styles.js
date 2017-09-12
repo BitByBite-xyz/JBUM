@@ -19,4 +19,27 @@ export default StyleSheet.create({
   actionButtonIcon: {
     height: 22,
   },
+  quoteText: {
+    marginTop: '2%',
+    marginLeft: '10%',
+    fontFamily: 'Avenir',
+    fontSize: 18,
+    fontWeight: '500',
+    marginRight: 35
+  },
+  authorText: {
+    marginTop: '2%',
+    marginLeft: '10%',
+    fontFamily: 'Avenir',
+    fontSize: 18,
+    fontWeight: '500',
+    marginRight: 35
+  },
+  welcomeText: {
+    marginTop: '-102%',
+    marginLeft: '10%',
+    fontFamily: 'Avenir',
+    fontSize: 45,
+    fontWeight: '700'
+  }
 });

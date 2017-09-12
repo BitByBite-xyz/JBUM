@@ -125,7 +125,7 @@ class Answer extends Component {
   };
 
   render() {
-    const { posts,loading,navigation,inboxCount } = this.props;
+    const { posts,loading,navigation,inboxCount,toInbox } = this.props;
     return (
       <SwipeHiddenHeader header={()=>
           <View style={styles.header}>
@@ -137,7 +137,8 @@ class Answer extends Component {
               <Badge
                 containerStyle={{ backgroundColor: '#00abff', height: 32, width: 32}}
                 value={inboxCount}
-                onPress={() => this.props.navigation.navigate('Inbox')}
+                //onPress={() => this.props.navigation.navigate('Inbox')}
+                onPress={toInbox}
                 textStyle={{ color: 'white', fontFamily: 'Avenir', fontWeight: '500', fontSize: 15}}
               />
             </View>

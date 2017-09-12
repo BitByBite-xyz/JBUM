@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { Alert, Linking } from 'react-native'
 import Meteor, { createContainer } from 'react-native-meteor';
 
 import { NavigationActions } from 'react-navigation';
@@ -35,12 +36,23 @@ class SettingsContainer extends Component {
     this.setState({switchValue: value});
   }
 
+  handleAccountPress(){
+    const username = this.props.user.username;
+    Alert.alert('Your Anonomized Username: ' + username,
+                "Your username will only be used for logging in. It will not be displayed anywhere");
+  }
+
+  handleReportProblemPress(){
+    Linking.openURL('mailto:contact@bitbybite.co?subject=Reportig a problem with JBUM &body=your problem here')
+  }
+
   render() {
     return (
       <Settings
         onValueChange={this.onValueChange.bind(this)}
         signOut={this.signOut.bind(this)}
-        user={Meteor.user()}
+        handleAccountPress={this.handleAccountPress.bind(this)}
+        handleReportProblemPress={this.handleReportProblemPress.bind(this)}
         {...this.state}
       />
     );
@@ -48,7 +60,6 @@ class SettingsContainer extends Component {
 }
 
 const ConnectedSettings = createContainer((params) => {
-
   return {
     user: Meteor.user(),
   };

@@ -45,7 +45,7 @@ export default StyleSheet.create({
       paddingRight: 10,
       marginTop: 13,
       backgroundColor: '#F3F3F3',
-      height: '191%'
+      height: '300%'
   },
   views: {
       paddingTop: 7,
@@ -70,7 +70,6 @@ export default StyleSheet.create({
       textAlign: 'center',
       fontSize: 24,
       fontFamily: 'Avenir-Book'
-
   },
   smallText: {
       height: 150,
@@ -82,7 +81,7 @@ export default StyleSheet.create({
 
   },
   lineDivider: {
-    width: 320,
+    width: '100%',
     borderTopColor: '#DBD9D9',
     borderTopWidth: .5,
     paddingLeft: 10,

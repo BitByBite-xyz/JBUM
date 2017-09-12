@@ -25,8 +25,10 @@ class AskHeader extends React.PureComponent {
               <View style={styles.views}>
                 <Text style={styles.questionBox}>Have a question?</Text>
               </View>
+
               <View style={styles.button}>
                 <View style={styles.lineDivider} />
+
                 <Text style={styles.fakeButton}>Ask Question</Text>
               </View>
             </View>

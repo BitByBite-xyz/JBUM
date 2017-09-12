@@ -22,7 +22,6 @@ const SECTIONS = [
 class Ask extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       title: '',
       body: '',
@@ -41,6 +40,8 @@ class Ask extends Component {
       post_visibility:[],
       post_categories:[],
       error: null,
+      promptVisible: false,
+      otherCategory: 'Other'
     });
   }
 
@@ -69,8 +70,6 @@ class Ask extends Component {
         } else {
           console.log("Post added");
           this.resetFields();
-          console.log(title);
-
           if (scrollToPage) {
             scrollToPage();
           }
@@ -99,7 +98,6 @@ class Ask extends Component {
       );
       return false;
     }
-
     if (title.length > 300) {
       Alert.alert(
         'Oops',
@@ -114,7 +112,6 @@ class Ask extends Component {
       );
       return false;
     }
-
     if (title.length === 0 || body.length === 0 || post_visibility.length === 0 || (post_categories.length === 0 && otherCategory === 'Other')){
       Alert.alert(
         'Oops',
@@ -325,6 +322,7 @@ class Ask extends Component {
       <ScrollView
         //contentContainerStyle={{backgroundColor: '#57C2D7'}}
         style={styles.backdrop}
+        keyboardShouldPersistTaps={'always'}
       >
         <View style={{height: 50, backgroundColor: '#57C2D7', alignItems: 'center', justifyContent: 'center'}}>
           <Text style={{fontSize: 24, fontFamily: 'Avenir', fontWeight: '500', color: 'white'}}>Ask a Question</Text>

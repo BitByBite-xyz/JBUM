@@ -8,12 +8,9 @@ import * as Progress from 'react-native-progress';
 
 
 export default class Header extends Component {
-    constructor(props) {
-      super(props);
-    }
-
-
-
+  constructor(props) {
+    super(props);
+  }
 
   render() {
     const { QuestionNumber, AnsweredNumber, Karma, Level,Name } = this.props;
@@ -69,11 +66,11 @@ export default class Header extends Component {
       },
     };
     return (
-      <View style={styles.container}>
+      <View style={{flex:1}}>
 
-        <View style={{justifyContent: 'space-around',marginLeft: '85%',marginTop:10}}>
+        <View style={{marginLeft: '87%', marginTop:10}}>
           <Icon
-            style={{justifyContent: 'flex-start'}}
+          //  style={{justifyContent: 'flex-start'}}
             name='more-horiz'
             large
             onPress={() => this.props.navigation.navigate('Settings')}
@@ -95,8 +92,8 @@ export default class Header extends Component {
           </View>
           <View style={styles.info2}>
             <Text style={styles.text3}>Questions</Text>
-            <Text style={styles.text3}>Answered   </Text>
-            <Text style={styles.text3}>Growth   </Text>
+            <Text style={styles.text3}>   Answered  </Text>
+            <Text style={styles.text3}>My Growth </Text>
         </View>
           <View style={styles.levelView}>
             <Text style={styles.text}>Level </Text>

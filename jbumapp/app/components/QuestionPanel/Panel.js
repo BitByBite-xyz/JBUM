@@ -247,14 +247,6 @@ class Panel extends PureComponent {
 
         <View style={styles.lineDivider} />
         <View style={styles.bottom}>
-
-          {/*<TouchableOpacity style={styles.imgs} onPress={() => this.onLikePress()}>
-            <Image
-              source={liked ? images.heartFilled : images.heartUnfilled}
-              style={styles.heartFilled}
-            />
-            <Text style={styles.counters}>{' '+likes} loved</Text>
-          </TouchableOpacity>*/}
           <TouchableOpacity onPress={this._showModal} style={styles.optionsButton}>
           <Icon
             style={styles.elipsisIcon}
@@ -266,7 +258,7 @@ class Panel extends PureComponent {
 
           <TouchableOpacity style={styles.imgs} onPress={() => this.onReplyPress()}>
 
-            <Text style={styles.counters}>{' '+postContent.post_comments.length} Responses </Text>
+            <Text style={styles.counters}>{' '+postContent.post_comments.length} </Text>
             <Icon
               name='chat'
               color={colors.buttonBackground}
@@ -276,11 +268,11 @@ class Panel extends PureComponent {
         </View>
 
         <View style={{flex: 1}}>
-          <Modal style={{alignItems: 'center'}}
+          <Modal style={styles.modal}
                  isVisible={this.state.isModalVisible}
                  animationIn={'slideInDown'}
                  animationOut={'slideOutUp'}
-                 backdropOpacity={.5}
+                 backdropOpacity={.4}
           >
             <View style={styles.popupContainer}>
               <View style={{flexDirection: 'row'}}>

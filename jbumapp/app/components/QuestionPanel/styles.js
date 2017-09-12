@@ -26,18 +26,14 @@ export default StyleSheet.create({
     margin: 7,
     backgroundColor: 'white',
     opacity: 1,
-  //  overflow: 'hidden',
     borderRadius: 9,
   },
   popupContainer: {
     width: '95%',
     marginBottom: 15,
-    backgroundColor: '#ECEDF6',
-    borderRadius: 8,
+    backgroundColor: colors.background,
+    borderRadius: 9,
     shadowColor: '#282C34',
-    shadowOffset: {width: 3, height: 5},
-    shadowOpacity: 5,
-    shadowRadius: 5
   },
   title: {
     flex: 1,
@@ -69,7 +65,6 @@ export default StyleSheet.create({
         marginRight: -5
       },
     }),
-    //marginRight: -25
   },
   button: {
     alignItems: 'center',
@@ -88,7 +83,7 @@ export default StyleSheet.create({
     paddingLeft: 12,
     width: DEVICE_WIDTH,
     paddingRight:29,
-    justifyContent: 'flex-end',
+    justifyContent: 'space-between',
   },
   heartFilled: {
     marginBottom: 4,
@@ -116,7 +111,8 @@ export default StyleSheet.create({
     paddingBottom: 2
   },
   optionsButton: {
-    marginRight: '48%',
+    justifyContent: 'flex-start',
+    marginLeft: '2%',
     marginBottom: '2.5%'
   },
   lineDivider: {
@@ -138,4 +134,7 @@ export default StyleSheet.create({
     marginBottom: 4,
     color: '#BBB'
   },
+  modal: {
+    alignItems: 'center'
+  }
 });

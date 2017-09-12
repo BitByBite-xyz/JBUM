@@ -25,6 +25,8 @@ const Reply = (props) => {
          <KeyboardAwareScrollView
             style={styles.container}
             contentContainerStyle={styles.contentContainerStyle}
+            extraScrollHeight={55}
+            enableOnAndroid
          >
            <View style={styles.backdrop}>
                <View style={styles.topPadding}></View>

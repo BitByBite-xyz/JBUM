@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text, View, Alert, Linking } from 'react-native';
+import { Icon } from 'react-native-elements';
 import Button from '../../components/Button';
 import styles from './styles';
 
@@ -7,8 +8,8 @@ import SettingsList from 'react-native-settings-list';
 //https://github.com/evetstech/react-native-settings-list?files=1#usage
 
 const Settings = (props) => {
-  const { switchValue, signOut, navigation, user } = props;
-  let username = user? user.username : '';
+  const { switchValue, signOut, navigation, handleAccountPress, handleReportProblemPress } = props;
+
 
 
   return (
@@ -28,21 +29,23 @@ const Settings = (props) => {
               <SettingsList.Item
                 titleStyle={{fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
                 title='Account Username'
-                titleInfo={username}
-                hasNavArrow={false}
-                onPress={() => Alert.alert('Route To Notifications Page')}
+                arrowIcon={(<Icon
+                  name='account-circle'
+                  iconStyle={{marginRight:30}}
+                  size={28}/>)}
+                onPress={handleAccountPress}
               />
 
               <SettingsList.Header headerText='SUPPORT' headerStyle={{color:'gray', marginTop:15, marginLeft: 10}}/>
               <SettingsList.Item
                 titleStyle={{fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
-                title='Help Center'
-                onPress={() => Linking.openURL('http://www.justbetweenuandme.com')}
+                title='Tutorial'
+                onPress={() => Alert.alert('Route To Tutorial Video')}
               />
               <SettingsList.Item
                 titleStyle={{fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
                 title='Report a Problem'
-                onPress={() => Linking.openURL("http://www.justbetweenuandme.com")}
+                onPress={handleReportProblemPress}
               />
 
               <SettingsList.Header headerText='ABOUT' headerStyle={{color:'gray', marginTop:15, marginLeft: 10}}/>

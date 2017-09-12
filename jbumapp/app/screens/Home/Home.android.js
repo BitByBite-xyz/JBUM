@@ -89,6 +89,7 @@ class Home extends Component {
         onScrollBeginDrag={this.onScrollBeginDrag}
         onTouchEnd={this.onTouchEnd}
         ref={(c) => this.pages = c}
+        keyboardShouldPersistTaps={'always'}
       >
         <Ask
           navigation={navigation}
@@ -110,9 +111,14 @@ class Home extends Component {
               </Text>
 
               <Text
-                style={{ marginTop: '2%', marginLeft: '10%', fontFamily: 'Avenir', fontSize: 18, fontWeight: '500', marginRight: 35}}
+                style={styles.quoteText}
               >
-                {quotes[quoteIndex].quote} {"\n"}{"\n"} - {quotes[quoteIndex].author}
+                "{quotes[quoteIndex].quote}"
+              </Text>
+              <Text
+                style={styles.authorText}
+              >
+                - {quotes[quoteIndex].author}
               </Text>
 
             </AnimateIn>

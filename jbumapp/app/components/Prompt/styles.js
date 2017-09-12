@@ -3,10 +3,10 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
   dialog: {
     flex: 1,
-    alignItems: 'center'
+    alignItems: 'center',
   },
   dialogOverlay: {
-    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+    backgroundColor: 'rgba(0, 0, 0, 0.4)',
     position: 'absolute',
     top: 0,
     bottom: 0,
@@ -18,12 +18,11 @@ export default StyleSheet.create({
     marginTop: 150,
     width: 300,
     backgroundColor: 'white',
-    borderRadius: 5,
-    borderWidth: 1,
+    borderRadius: 9,
     overflow: 'hidden'
   },
   dialogTitle: {
-    borderBottomWidth: 1,
+    borderBottomWidth: 0,
     paddingVertical: 10,
     paddingHorizontal: 15
   },
@@ -36,7 +35,8 @@ export default StyleSheet.create({
   },
   dialogInput: {
     height: 50,
-    fontSize: 18
+    fontSize: 18,
+    marginLeft: 8
   },
   dialogFooter: {
     borderTopWidth: 1,
