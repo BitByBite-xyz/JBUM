@@ -87,7 +87,15 @@ class Home extends Component {
   handleFloatingButtonPress = (message) => {
     switch (message) {
       case 'textATip':
-        textWithoutEncoding('18448235323', 'HELLO');
+        Alert.alert(
+          'Are you sure you want to Text-A-Tip?',
+          'Pressing OK will open up your messaging app and compose a text to the Text-A-Tip 24/7 hotline. Sending the text will connect you with a live mental health counselor.',
+          [
+            {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+            {text: 'OK', onPress: () => textWithoutEncoding('18448235323', 'HELLO')},
+          ],
+          { cancelable: false }
+        );
         break;
       case '911':
         Alert.alert(
@@ -175,7 +183,7 @@ class Home extends Component {
                 >
                   - {quotes[quoteIndex].author}
                 </Text>
-          
+
 
 
             </AnimateIn>

@@ -192,6 +192,7 @@ class Panel extends PureComponent {
 
           return (
             <Badge
+              key={item}
               containerStyle={{ backgroundColor: colors[index], marginRight: 2} }
               value={item}
               textStyle={{ color: 'white' }}

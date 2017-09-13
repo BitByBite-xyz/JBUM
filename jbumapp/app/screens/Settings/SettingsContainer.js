@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { Alert, Linking } from 'react-native'
+import { Alert, Linking,Clipboard } from 'react-native'
 import Meteor, { createContainer } from 'react-native-meteor';
 
 import { NavigationActions } from 'react-navigation';
@@ -39,11 +39,15 @@ class SettingsContainer extends Component {
   handleAccountPress(){
     const username = this.props.user.username;
     Alert.alert('Your Anonomized Username: ' + username,
-                "Your username will only be used for logging in. It will not be displayed anywhere");
+                'Your username is only used for logging in — it will not display anywhere.',
+                [
+                  {text: 'Ok', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+                  {text: 'Copy', onPress: () => Clipboard.setString('Just Between You And Me Username: '+username)},
+                ],{ cancelable: false });
   }
 
   handleReportProblemPress(){
-    Linking.openURL('mailto:contact@bitbybite.co?subject=Reportig a problem with JBUM &body=your problem here')
+    Linking.openURL('mailto:contact@bitbybite.co?subject=🚧 Reporting a problem with JBUM 🚧&body=🌀 your problem here 🌀')
   }
 
   render() {

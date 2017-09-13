@@ -12,9 +12,10 @@ import FadeInView from 'react-native-fade-in-view';//{/* onFadeComplete={() => a
 import DropdownAlert from 'react-native-dropdownalert'
 import Swipeout from 'react-native-swipeout';
 
+import styles from './styles';
 import QuestionPanel from '../../components/QuestionPanel';
+import InboxPanel from '../../components/InboxPanel';
 import Loading from '../../components/Loading';
-
 import {queryConstructor} from '../../lib/queryHelpers';
 
 class Inbox extends Component {
@@ -33,47 +34,46 @@ class Inbox extends Component {
 
     return (
       <View
-        style={{
-          paddingVertical: 20,
-          borderTopWidth: 1,
-          borderColor: "#CED0CE"
-        }}
+        style={styles.loading}
       >
         <Loading />
       </View>
     );
-  };
+  }
+
+  findMostRecentReplies = () => {
+    const { user_posts } = this.props;
+    let comments = [];
+    
+    if (user_posts) {
+      user_posts.map((item) => {
+        const post = item;
+        item.post_comments.map((item) => {
+          const comment = {
+            commentBody: item.comment_body,
+            createdAt: item.createdAt,
+            post:post
+          };
+          comments.push(comment)
+        })
+      })
+    }
+    comments.sort((a,b) => {
+      return new Date(b.createdAt) - new Date(a.createdAt);
+    })
+    return comments;
+  }
 
   renderRow = (item) => {
     const { navigation } = this.props;
 
-    var swipeoutBtns = [
-      {
-        text: 'Archive',
-        backgroundColor:'#24B2FF',
-        onPress: () => {
-                   this.onArchivePress(item);
-                 },
-      }
-    ]
-
     return (
-      <FadeInView
-          duration={700}
-      >
-        <Swipeout
-          right={swipeoutBtns}
-          backgroundColor='transparent'
-        >
-          <QuestionPanel
-            postContent={item}
-            header={item.post_title}
-            navigation={navigation}
+          <InboxPanel
+            commentBody={item.commentBody}
           />
-        </Swipeout>
-      </FadeInView>
+
     );
-  };
+  }
 
   render() {
     const { user_posts,user_postsReady,navigation } = this.props;
@@ -84,8 +84,8 @@ class Inbox extends Component {
         contentContainerStyle={styles.contentContainerStyle}
       >
         <FlatList
-          data={user_posts}
-          keyExtractor={(item, index) => item._id}
+          data={this.findMostRecentReplies()}
+          keyExtractor={(item, index) => item.commentBody}
           renderItem={({item}) => this.renderRow(item)}
               ListFooterComponent={this.renderFooter}
               onEndReachedThreshold={50}
@@ -95,17 +95,6 @@ class Inbox extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  contentContainerStyle: {
-    paddingTop: 7,
-    paddingBottom: 20,
-  },
-  container: {
-    flex: 1,
-    backgroundColor: '#F3F3F3'
-  },
-});
 
 export default createContainer(() => {
   const handle = Meteor.subscribe('Posts.pub.list');
