@@ -11,8 +11,8 @@ export default class MyComponent extends Component {
   render() {
     const { commentBody, createdAt, post } = this.props;
     return (
-      <View style={styles.container}>
-        <Text>{commentBody}</Text>
+      <View style={styles.questionPanelContainer}>
+        <Text style={styles.title}>{commentBody}</Text>
       </View>
     );
   }

@@ -7,8 +7,8 @@ export default StyleSheet.create({
     borderColor: "#CED0CE"
   },
   contentContainerStyle: {
-    paddingTop: 7,
     paddingBottom: 20,
+    backgroundColor: '#F3F3F3'
   },
   container: {
     flex: 1,

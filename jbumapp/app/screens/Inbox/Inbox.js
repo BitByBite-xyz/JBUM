@@ -44,7 +44,7 @@ class Inbox extends Component {
   findMostRecentReplies = () => {
     const { user_posts } = this.props;
     let comments = [];
-    
+
     if (user_posts) {
       user_posts.map((item) => {
         const post = item;
@@ -83,14 +83,20 @@ class Inbox extends Component {
         style={styles.container}
         contentContainerStyle={styles.contentContainerStyle}
       >
-        <FlatList
-          data={this.findMostRecentReplies()}
-          keyExtractor={(item, index) => item.commentBody}
-          renderItem={({item}) => this.renderRow(item)}
-              ListFooterComponent={this.renderFooter}
-              onEndReachedThreshold={50}
-              removeClippedSubviews={false}
-            />
+        <View style={{backgroundColor: '#5CC2D6', paddingTop: -10, borderBottomLeftRadius: 12, borderBottomRightRadius: 12, alignItems: 'center'}}>
+          <Text style={{fontSize: 23, fontFamily: 'Avenir', color: 'white', fontWeight: '500', marginBottom: 9, marginTop: 2}}>Inbox</Text>
+          <View style={{borderRadius: 10, overflow: 'hidden', backgroundColor: '#F3F3F3'}}>
+            </View>
+
+            </View>
+            <FlatList
+              data={this.findMostRecentReplies()}
+              keyExtractor={(item, index) => item.commentBody}
+              renderItem={({item}) => this.renderRow(item)}
+                  ListFooterComponent={this.renderFooter}
+                  onEndReachedThreshold={50}
+                  removeClippedSubviews={false}
+                />
       </ScrollView>
     );
   }
