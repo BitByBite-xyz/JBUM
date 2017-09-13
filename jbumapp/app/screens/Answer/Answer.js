@@ -18,6 +18,7 @@ import { NavigationActions } from 'react-navigation';
 
 import SwipeHiddenHeader from '../../components/SwipeHiddenHeader';
 import QuestionPanel from '../../components/QuestionPanel';
+import AlertPanel from '../../components/AlertPanel';
 import Loading from '../../components/Loading';
 import AskHeader from '../../components/AskHeader';
 import Notifications from '../../components/Notifications';
@@ -107,11 +108,17 @@ class Answer extends Component {
   );
 
   renderFooter = () => {
-    const { loading } = this.props;
+    const { loading,posts } = this.props;
 
-    if (!loading) {
+    if (loading) {
       return null;
     }
+    if (posts.length === 0) {
+      return (<AlertPanel
+								contentText={'No questions to display. Ask Something!'} />
+							)
+    }
+
 
     return (
       <View
@@ -125,7 +132,7 @@ class Answer extends Component {
   };
 
   render() {
-    const { posts,loading,navigation,inboxCount,toInbox } = this.props;
+    const { posts,loading,navigation,inboxPosts,toInbox } = this.props;
     return (
       <SwipeHiddenHeader header={()=>
           <View style={styles.header}>
@@ -136,7 +143,7 @@ class Answer extends Component {
             <View style={styles.headerRight}>
               <Badge
                 containerStyle={{ backgroundColor: '#00abff', height: 32, width: 32}}
-                value={inboxCount}
+                value={inboxPosts}
                 //onPress={() => this.props.navigation.navigate('Inbox')}
                 onPress={toInbox}
                 textStyle={{ color: 'white', fontFamily: 'Avenir', fontWeight: '500', fontSize: 15}}
@@ -200,7 +207,6 @@ export default createContainer(() => {
 
 
   return {
-    posts: Meteor.collection('posts').find(answerParameters.find, answerParameters.sort),
-    inboxCount: Meteor.collection('posts').find(inboxParameters.find).length,
+    posts: Meteor.collection('posts').find(answerParameters.find, answerParameters.sort)
   };
 }, Answer);

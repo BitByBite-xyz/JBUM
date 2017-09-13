@@ -4039,9 +4039,9 @@ react-native-autogrow-textinput@^4.1.0:
   dependencies:
     prop-types "^15.5.10"
 
-"react-native-camera@git+https://github.com/lwansbrough/react-native-camera.git":
+"react-native-camera@~0.10.0 ":
   version "0.10.0"
-  resolved "git+https://github.com/lwansbrough/react-native-camera.git#161c56809508a06fa320bbe96144c8c612da3187"
+  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-0.10.0.tgz#5d973c9a8aab95f68aede395ba310eae0c3cecdd"
   dependencies:
     prop-types "^15.5.10"
 
@@ -4077,16 +4077,16 @@ react-native-dropdownalert@^2.10.0:
   dependencies:
     prop-types "^15.5.10"
 
-"react-native-elements@git+https://github.com/connorlarkin1/react-native-elements.git":
+react-native-elements@~0.16.0:
   version "0.16.0"
-  resolved "git+https://github.com/connorlarkin1/react-native-elements.git#2628f415bc87080fa84931fcc06aa3d725471fe3"
+  resolved "https://registry.yarnpkg.com/react-native-elements/-/react-native-elements-0.16.0.tgz#933a567d850d2f8ef605fcfb9ab95dfaf27393ce"
   dependencies:
     lodash.isempty "^4.4.0"
     lodash.times "^4.3.2"
     opencollective "^1.0.3"
     prop-types "^15.5.8"
     react-native-side-menu "^1.0.2"
-    react-native-tab-navigator "git+https://github.com/alphasp/react-native-tab-navigator.git#476a6463934c7bb684e8d94d1b9cdf43dc058ec6"
+    react-native-tab-navigator "^0.3.3"
 
 react-native-fade-in-view@^1.0.4:
   version "1.0.4"
@@ -4187,9 +4187,9 @@ react-native-side-menu@^1.0.2:
   dependencies:
     prop-types "^15.5.10"
 
-"react-native-spinkit@git+https://github.com/maxs15/react-native-spinkit.git":
+react-native-spinkit@~1.1.1:
   version "1.1.1"
-  resolved "git+https://github.com/maxs15/react-native-spinkit.git#5c08bdb546cc6d54769b5f19e9a129f857c75be6"
+  resolved "https://registry.yarnpkg.com/react-native-spinkit/-/react-native-spinkit-1.1.1.tgz#3ae512f3978bc750b7c02639911e1710750d8539"
   dependencies:
     prop-types "^15.5.8"
 
@@ -4214,15 +4214,22 @@ react-native-swiper-animated@^1.2.5:
   dependencies:
     react-timer-mixin "^0.13.3"
 
-"react-native-swiper@git+https://github.com/leecade/react-native-swiper.git":
-  version "1.5.11"
-  resolved "git+https://github.com/leecade/react-native-swiper.git#a8e052ce209fadb8a44ecb7c6f86eb1625b97f91"
+react-native-swiper@~1.5.12:
+  version "1.5.12"
+  resolved "https://registry.yarnpkg.com/react-native-swiper/-/react-native-swiper-1.5.12.tgz#fe040e19d936304013f1671dd83f7e25ee3c4d83"
   dependencies:
     prop-types "^15.5.10"
 
-react-native-tab-navigator@0.3.3, "react-native-tab-navigator@git+https://github.com/alphasp/react-native-tab-navigator.git#476a6463934c7bb684e8d94d1b9cdf43dc058ec6":
+react-native-tab-navigator@0.3.3:
   version "0.3.3"
   resolved "git+https://github.com/alphasp/react-native-tab-navigator.git#476a6463934c7bb684e8d94d1b9cdf43dc058ec6"
+  dependencies:
+    immutable "^3.8.1"
+    prop-types "^15.5.10"
+
+react-native-tab-navigator@^0.3.3:
+  version "0.3.4"
+  resolved "https://registry.yarnpkg.com/react-native-tab-navigator/-/react-native-tab-navigator-0.3.4.tgz#54a18f1ad06a09d4a0de81ff00416bc1b760c960"
   dependencies:
     immutable "^3.8.1"
     prop-types "^15.5.10"

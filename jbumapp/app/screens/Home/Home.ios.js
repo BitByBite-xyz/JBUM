@@ -36,6 +36,7 @@ class Home extends Component {
 
     this.state = {
       loading: true,
+      inboxPosts: 0
     };
   }
   componentDidMount() {
@@ -47,6 +48,9 @@ class Home extends Component {
         this.upArrow.transitionTo({opacity: 0});
       }
     }, 2500);
+  }
+  updateInboxPosts(item){
+    //this.setState({inboxPosts:item});
   }
 
   onScrollBeginDrag = () => {
@@ -157,7 +161,9 @@ class Home extends Component {
           ref={(c) => this.horizontalPage = c}
         >
           <Inbox
-            navigation={navigation}/>
+            navigation={navigation}
+            updateInboxPosts={this.updateInboxPosts.bind(this)}
+          />
           <View style={{ flex: 1, backgroundColor: 'transparent' }} effect='slide' >
             <Image
               source={images.homeUnderlay}
@@ -226,6 +232,7 @@ class Home extends Component {
         <Answer
           toInbox={this.toInbox.bind(this)}
           navigation={navigation}
+          inboxPosts={this.state.inboxPosts}
           toAskPage={this.toAskPage.bind(this)}/>
       </Swiper>
     );

@@ -5,7 +5,8 @@ import {
   View,
   ScrollView,
   StatusBar,
-  FlatList
+  FlatList,
+  AsyncStorage
 } from 'react-native';
 import Meteor, { createContainer } from 'react-native-meteor';
 import FadeInView from 'react-native-fade-in-view';//{/* onFadeComplete={() => alert('Ready') */}
@@ -14,6 +15,7 @@ import Swipeout from 'react-native-swipeout';
 
 import styles from './styles';
 import QuestionPanel from '../../components/QuestionPanel';
+import AlertPanel from '../../components/AlertPanel';
 import InboxPanel from '../../components/InboxPanel';
 import Loading from '../../components/Loading';
 import {queryConstructor} from '../../lib/queryHelpers';
@@ -23,15 +25,26 @@ class Inbox extends Component {
     super(props);
   }
 
-  onArchivePress(item) {
-    console.log(item);
 
-    Meteor.call('Posts.archive', item._id);
+  onArchivePress(item) {
+
+
+
   }
 
   renderFooter = () => {
-    if (this.props.user_postsReady) return null;
+    if (this.props.user_posts.length ===0) {
+      return (
+        <View
+          style={styles.loading}
+        >
+          <AlertPanel
+            contentText={'You don\'t have any replies!'} />
+        </View>
+      )
 
+    }
+    if (this.props.user_postsReady) return null;
     return (
       <View
         style={styles.loading}
@@ -42,7 +55,7 @@ class Inbox extends Component {
   }
 
   findMostRecentReplies = () => {
-    const { user_posts } = this.props;
+    const { user_posts,updateInboxPosts } = this.props;
     let comments = [];
 
     if (user_posts) {
@@ -51,6 +64,7 @@ class Inbox extends Component {
         item.post_comments.map((item) => {
           const comment = {
             commentBody: item.comment_body,
+            commentId: item.comment_id,
             createdAt: item.createdAt,
             post:post
           };
@@ -70,8 +84,12 @@ class Inbox extends Component {
     return (
           <InboxPanel
             commentBody={item.commentBody}
+            createdAt={item.createdAt}
+            post={item.post}
+            commentId={item.commentId}
+            navigation={this.props.navigation}
+            onArchivePress={this.onArchivePress.bind(this)}
           />
-
     );
   }
 

@@ -15,46 +15,21 @@ export default StyleSheet.create({
     opacity: 1,
     borderRadius: 9,
   },
-  lineDivider: {
-    width: DEVICE_WIDTH-30,
-    marginLeft: 7,
-    borderBottomColor: '#DBD9D9',
-    borderTopWidth: .3,
-  },
   title: {
     flex: 1,
     padding: 10,
     color: '#2a2f43',
     fontFamily: 'Avenir',
-    fontSize: 16,
+    fontSize: 22,
     color: '#AAAAAA',
     fontWeight: '500'
   },
   bottom: {
-    flexDirection: 'row',
+    alignItems:'center',
     flex: 1,
     paddingLeft: 10,
     width: DEVICE_WIDTH-15,
     paddingRight:20,
     justifyContent: 'space-between',
   },
-  timeText: {
-    color: '#BBB',
-    fontFamily: 'Avenir',
-    fontSize: 16,
-  },
-  created: {
-    fontSize: 12,
-    marginBottom: 2,
-    color: '#BBB'
-  },
-  myDescription: {
-    paddingBottom: 10,
-    paddingLeft: 10,
-    paddingRight: 10,
-    color: '#AAAAAA',
-    fontSize: 15,
-    fontFamily: 'Avenir'
-  },
-
 });
