@@ -101,12 +101,9 @@ class Inbox extends Component {
         style={styles.container}
         contentContainerStyle={styles.contentContainerStyle}
       >
-        <View style={{backgroundColor: '#5CC2D6', paddingTop: -10, borderBottomLeftRadius: 12, borderBottomRightRadius: 12, alignItems: 'center'}}>
-          <Text style={{fontSize: 23, fontFamily: 'Avenir', color: 'white', fontWeight: '500', marginBottom: 9, marginTop: 2}}>Inbox</Text>
-          <View style={{borderRadius: 10, overflow: 'hidden', backgroundColor: '#F3F3F3'}}>
-            </View>
-
-            </View>
+        <View style={{backgroundColor: '#5CC2D6', alignItems: 'center'}}>
+          <Text style={{fontSize: 23, fontFamily: 'Avenir', color: 'white', fontWeight: '500', marginBottom: 9, marginTop: 10}}>Inbox</Text>
+          <View style={{borderTopLeftRadius: 12, borderTopRightRadius: 12,overflow: 'hidden', backgroundColor: '#F3F3F3'}}>
             <FlatList
               data={this.findMostRecentReplies()}
               keyExtractor={(item, index) => item.commentBody}
@@ -115,6 +112,8 @@ class Inbox extends Component {
                   onEndReachedThreshold={50}
                   removeClippedSubviews={false}
                 />
+              </View>
+              </View>
       </ScrollView>
     );
   }

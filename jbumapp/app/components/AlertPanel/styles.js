@@ -11,7 +11,7 @@ export default StyleSheet.create({
   questionPanelContainer: {
     flexDirection: 'column',
     margin: 7,
-    backgroundColor: 'white',
+    //backgroundColor: 'white',
     opacity: 1,
     borderRadius: 9,
   },

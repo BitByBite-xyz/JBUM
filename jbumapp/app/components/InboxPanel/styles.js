@@ -11,6 +11,7 @@ export default StyleSheet.create({
   questionPanelContainer: {
     flexDirection: 'column',
     margin: 7,
+    marginTop: 11,
     backgroundColor: 'white',
     opacity: 1,
     borderRadius: 9,
@@ -23,7 +24,9 @@ export default StyleSheet.create({
   },
   title: {
     flex: 1,
-    padding: 10,
+    marginTop: 10,
+    marginBottom: 10,
+    marginLeft: 12,
     color: '#2a2f43',
     fontFamily: 'Avenir',
     fontSize: 16,
@@ -33,7 +36,7 @@ export default StyleSheet.create({
   bottom: {
     flexDirection: 'row',
     flex: 1,
-    paddingLeft: 10,
+    paddingLeft: 3,
     width: DEVICE_WIDTH-15,
     paddingRight:20,
     justifyContent: 'space-between',
@@ -50,10 +53,12 @@ export default StyleSheet.create({
   },
   myDescription: {
     paddingBottom: 10,
-    paddingLeft: 10,
+    paddingLeft: 5,
     paddingRight: 10,
     color: '#AAAAAA',
-    fontSize: 15,
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#5CC2D6',
     fontFamily: 'Avenir'
   },
 

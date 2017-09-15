@@ -2,9 +2,7 @@ import { StyleSheet, Dimensions } from 'react-native';
 
 export default StyleSheet.create({
   loading: {
-    paddingVertical: 20,
-    borderTopWidth: 1,
-    borderColor: "#CED0CE"
+    marginTop: 10,
   },
   contentContainerStyle: {
     paddingBottom: 20,
