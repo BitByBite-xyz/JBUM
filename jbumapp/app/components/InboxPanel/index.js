@@ -18,23 +18,23 @@ export default class InboxPanel extends Component {
   render() {
     const { commentBody, createdAt, post, onArchivePress,commentId } = this.props;
     return (
-      <TouchableOpacity onPress={this.handleOnTouch} style={styles.container} activeOpacity={0}>
       <View style={styles.questionPanelContainer}>
         <View style={styles.bottom}>
           <Text style={styles.title}>{commentBody}</Text>
           <View style={{marginRight:-12, marginTop: 8}}>
             <Icon
               name='clear'
-              color='#517fa4'
+              color='#D4D4D4'
               containerStyle={styles.buttonImage}
               onPress={() => onArchivePress(commentId)}
             />
           </View>
 
         </View>
-        <View style={{ marginTop: -7, marginLeft: 17, marginBottom: 2}}>
+        <View style={{ marginTop: -6, marginLeft: 12, marginBottom: 2}}>
           <Text style={[styles.timeText, styles.created]}>{' '+moment(createdAt).fromNow()}</Text>
         </View>
+        <TouchableOpacity onPress={this.handleOnTouch}  activeOpacity={0.65}>
         <View style={{flexDirection: 'row', marginLeft: 10}}>
           <Text style={styles.myDescription}>Original Post{/*: {post.post_title}*/}</Text>
           <Icon
@@ -44,8 +44,8 @@ export default class InboxPanel extends Component {
             color='#5CC2D6'
           />
         </View>
+        </TouchableOpacity>
       </View>
-      </TouchableOpacity>
     );
   }
 }
