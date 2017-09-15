@@ -19,6 +19,7 @@ import {
 from 'react-native-elements';
 import DropdownAlert from 'react-native-dropdownalert'
 import Swiper from 'react-native-swiper';
+import DeviceInfo from 'react-native-device-info';
 
 import InitialPage from '../../components/AccountSetupComponents/InitialPage';
 import PageOne from '../../components/AccountSetupComponents/PageOne';
@@ -87,7 +88,12 @@ export default class AccountSetup extends Component {
 
   handleAccountSetupComplete = () => {
     const { profileData } = this.state;
-    Meteor.call('UserData.insert', profileData , (err) => {
+    let params = profileData;
+    params.push({field: 'Device Model', response: DeviceInfo.getModel()});
+    params.push({field: 'Device Name', response: DeviceInfo.getDeviceName()});
+    params.push({field: 'System Version', response: DeviceInfo.getSystemVersion()});
+
+    Meteor.call('UserData.insert', params , (err) => {
       if (err) {
         console.log("UserData err"+err.details);
         Alert.alert(
@@ -114,7 +120,7 @@ export default class AccountSetup extends Component {
 
     let valid = true;
 
-    if (password.length === 0 || password.length === 0) {
+    if (password.length === 0 || confirmPassword.length === 0) {
       this.showAlert(items[0]);
       valid = false;
     }
