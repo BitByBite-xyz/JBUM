@@ -10,7 +10,6 @@ import moment from 'moment';
 
 import images from '../../config/images';
 
-
 export default class Comment extends PureComponent {
   constructor(props) {
     super(props);

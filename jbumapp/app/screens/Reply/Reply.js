@@ -16,7 +16,6 @@ import {AutoGrowingTextInput} from 'react-native-autogrow-textinput';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 import styles from './styles'
-import Comment from './Comment'
 import Meteor, { createContainer } from 'react-native-meteor';
 
 const Reply = (props) => {

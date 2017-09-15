@@ -1,14 +1,27 @@
 import React, { Component } from 'react';
 import {
+  Text,
+  View,
+  ScrollView,
+  TextInput,
+  TouchableOpacity,
+  FlatList,
+  Keyboard,
+  LayoutAnimation,
+  KeyboardAvoidingView,
   Alert
 } from 'react-native';
 
+import { Button, Icon } from 'react-native-elements'
 import _ from 'lodash';
-
+import moment from 'moment';
+import {AutoGrowingTextInput} from 'react-native-autogrow-textinput';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { NavigationActions } from 'react-navigation';
 import Meteor, {createContainer} from 'react-native-meteor';
 
-import Reply from './Reply'
+import Comment from '../../components/Comment'
+import styles from './styles'
 
 class ReplyContainer extends Component {
   constructor(props) {
@@ -19,30 +32,8 @@ class ReplyContainer extends Component {
     };
   }
 
-  replyButton(){
-    const { navigation, replyButton } = this.props;
-    const { postContent } = navigation.state.params;
-    const body = this.state;
-
-    if (this.validateReplySubmission()) {
-      Meteor.call('Posts.reply', postContent._id, body.body, (err) => {
-        if (err) {
-          console.log("reply err "+err.details);
-          Alert.alert(
-            'Oops! Screenshot this and send to support!',
-            'Server error: \n\n'+err.details
-          );
-          return;
-        } else {
-          console.log("reply added!");
-
-          this.props.navigation.goBack();
-        }
-      });
-    }
-  }
-
-  validateReplySubmission = () => {
+  replyButton = () => {
+    const post_id = _.get(this.props, 'navigation.state.params.postContent._id', {});
     const {body} = this.state;
 
     if (body.length > 0) {
@@ -51,10 +42,22 @@ class ReplyContainer extends Component {
           'Oops',
           'Please reply to the question before tapping submit'
         );
-        return false;
       }
       else {
-        return true;
+        Meteor.call('Posts.reply', post_id, body, (err) => {
+          if (err) {
+            console.log("reply err "+err.details);
+            Alert.alert(
+              'Oops! Screenshot this and send to support!',
+              'Server error: \n\n'+err.details
+            );
+            return;
+          } else {
+            console.log("reply added!");
+
+            this.props.navigation.goBack();
+          }
+        });
       }
     }
     else {
@@ -62,19 +65,71 @@ class ReplyContainer extends Component {
         'Oops',
         'Please reply to the question before tapping submit'
       );
-      return false;
     }
   }
 
+  validateReplySubmission = () => {
+    const {body} = this.state;
+
+
+  }
+
   render() {
+    const { body,post } = this.props;
+
     return (
-      <Reply
-        replyButton={this.replyButton.bind(this)}
-        navigation={this.props.navigation}
-        updateState={this.setState.bind(this)}
-        post={this.props.post}
-        {...this.state}
-      />
+        <KeyboardAwareScrollView
+           style={styles.container}
+           contentContainerStyle={styles.contentContainerStyle}
+           extraScrollHeight={55}
+        >
+          <View style={styles.backdrop}>
+              <View style={styles.topPadding}></View>
+              <View style={styles.topBox}>
+                  <View style={styles.questionTitleContainer}>
+                      <Text style={styles.questionTitleText}>{post.post_title}</Text>
+                      <View style={styles.lineDivider} />
+                  </View>
+                  <Text style={styles.questionText}>{post.post_body}</Text>
+                  <Text style={[styles.text, styles.created]}>{moment(post.createdAt).fromNow()}</Text>
+              </View>
+              <View style={styles.views}>
+                 {post.user_id === Meteor.userId() ? post.post_comments.map((comment) => (
+                   <Comment
+                     key={comment.comment_id}
+                     postComment={comment}
+                   />
+                 )):null}
+               </View>
+           <View style={styles.bottomWrapper}>
+              <View style={styles.bottomBox}>
+                  <View style={styles.bottom}>
+                      <View style={styles.views}>
+                          <AutoGrowingTextInput
+                              style={styles.largeText}
+                              placeholder='Reply to this question'
+                              returnKeyType="done"
+                              placeholderTextColor='#DBD9D9'
+                              underlineColorAndroid='transparent'
+                              onChangeText={(body) => this.setState({body:body})}
+                              blurOnSubmit={true}
+                              multiline={true}
+                              minHeight={60}
+                              maxHeight={200}
+                              autoCorrect={true}
+                          />
+                      </View>
+                   <View style={styles.buttonView}>
+                      <View style={styles.lineDivider}/>
+                       <TouchableOpacity onPress={this.replyButton}>
+                         <Text style={styles.button}>Submit Reply</Text>
+                       </TouchableOpacity>
+                      </View>
+                  </View>
+              </View>
+          </View>
+       </View>
+     </KeyboardAwareScrollView>
     );
   }
 };
