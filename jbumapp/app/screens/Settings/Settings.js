@@ -47,6 +47,18 @@ class Settings extends Component {
                 ],{ cancelable: false });
   }
 
+  handleDeleteAccount = () => {
+    const username = Meteor.user().username;
+    Alert.alert('Delete Account',
+                'Are you sure you want to detete your account. This can not be undone.',
+                [
+                  {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+                  {text: 'YES', onPress: () => {
+                    this.signOut();
+                  }},
+                ],{ cancelable: false });
+  }
+
   handleReportProblemPress(){
     Linking.openURL('mailto:contact@bitbybite.co?subject=🚧 Reporting a problem with JBUM 🚧&body=🌀 your problem here 🌀')
   }
@@ -190,7 +202,7 @@ class Settings extends Component {
                 <SettingsList.Item
                   title='Delete Account'
                   titleStyle={{color:'#020C7E', fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
-                  onPress={() => Alert.alert('Route To Display Page')}
+                  onPress={this.handleDeleteAccount}
                 />
                 <SettingsList.Item
                   title='Log Out'
