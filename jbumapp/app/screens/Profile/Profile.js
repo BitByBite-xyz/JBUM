@@ -14,6 +14,7 @@ import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import { ButtonGroup } from 'react-native-elements'
 
 import Loading from '../../components/Loading';
+import AlertPanel from '../../components/AlertPanel';
 import Foreground, {Background} from '../../components/ParallaxProfile';
 import QuestionPanel from '../../components/QuestionPanel';
 
@@ -37,10 +38,28 @@ class ProfileContainer extends Component {
 	  this.setState({selectedIndex})
 	}
 
-	renderFooter = () => {
+	renderHeader = () => {
 		const { postsReady, user_posts, responded_posts } = this.props;
 		const { selectedIndex } = this.state;
 
+		if (selectedIndex === 0 && user_posts.length === 0) {
+			return (<AlertPanel
+								contentText={'You haven\'t posted yet!'} />
+							)
+		}
+		else if (selectedIndex === 1 && responded_posts.length === 0) {
+			return (<AlertPanel
+								contentText={'You haven\'t replied yet!'} />
+							)
+		}
+		else {
+			return null;
+		}
+	}
+
+	renderFooter = () => {
+		const { postsReady, user_posts, responded_posts } = this.props;
+		const { selectedIndex } = this.state;
 
 		if (postsReady && user_posts){
 			if (selectedIndex === 0 && user_posts.length > 3) {
@@ -71,7 +90,6 @@ class ProfileContainer extends Component {
 						</View>);
 			}
 		}
-
 		return (
 			<View
 				style={{
@@ -152,6 +170,7 @@ class ProfileContainer extends Component {
 										navigation={navigation}
 									/>}
 									ListFooterComponent={this.renderFooter}
+									ListHeaderComponent={this.renderHeader}
 									onEndReachedThreshold={50}
 									removeClippedSubviews={false}
 						/> :
@@ -166,6 +185,7 @@ class ProfileContainer extends Component {
 										navigation={navigation}
 									/>}
 									ListFooterComponent={this.renderFooter}
+									ListHeaderComponent={this.renderHeader}
 									onEndReachedThreshold={50}
 									removeClippedSubviews={false}
 					/>}

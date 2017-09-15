@@ -36,6 +36,7 @@ class Home extends Component {
 
     this.state = {
       loading: true,
+      inboxPosts: 0
     };
   }
   componentDidMount() {
@@ -47,6 +48,9 @@ class Home extends Component {
         this.upArrow.transitionTo({opacity: 0});
       }
     }, 2500);
+  }
+  updateInboxPosts(item){
+    //this.setState({inboxPosts:item});
   }
 
   onScrollBeginDrag = () => {
@@ -87,7 +91,15 @@ class Home extends Component {
   handleFloatingButtonPress = (message) => {
     switch (message) {
       case 'textATip':
-        textWithoutEncoding('18448235323', 'HELLO');
+        Alert.alert(
+          'Are you sure you want to Text-A-Tip?',
+          'Pressing OK will open up your messaging app and compose a text to the Text-A-Tip 24/7 hotline. Sending the text will connect you with a live mental health counselor.',
+          [
+            {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+            {text: 'OK', onPress: () => textWithoutEncoding('18448235323', 'HELLO')},
+          ],
+          { cancelable: false }
+        );
         break;
       case '911':
         Alert.alert(
@@ -149,7 +161,9 @@ class Home extends Component {
           ref={(c) => this.horizontalPage = c}
         >
           <Inbox
-            navigation={navigation}/>
+            navigation={navigation}
+            updateInboxPosts={this.updateInboxPosts.bind(this)}
+          />
           <View style={{ flex: 1, backgroundColor: 'transparent' }} effect='slide' >
             <Image
               source={images.homeUnderlay}
@@ -175,7 +189,7 @@ class Home extends Component {
                 >
                   - {quotes[quoteIndex].author}
                 </Text>
-          
+
 
 
             </AnimateIn>
@@ -218,6 +232,7 @@ class Home extends Component {
         <Answer
           toInbox={this.toInbox.bind(this)}
           navigation={navigation}
+          inboxPosts={this.state.inboxPosts}
           toAskPage={this.toAskPage.bind(this)}/>
       </Swiper>
     );
