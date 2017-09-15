@@ -11,6 +11,7 @@ export default StyleSheet.create({
   questionPanelContainer: {
     flexDirection: 'column',
     margin: 7,
+    marginTop: 11,
     backgroundColor: 'white',
     opacity: 1,
     borderRadius: 9,
@@ -53,7 +54,9 @@ export default StyleSheet.create({
     paddingLeft: 10,
     paddingRight: 10,
     color: '#AAAAAA',
-    fontSize: 15,
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#5CC2D6',
     fontFamily: 'Avenir'
   },
 
