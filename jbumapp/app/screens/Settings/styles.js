@@ -18,7 +18,7 @@ export default StyleSheet.create({
   popupContainer: {
     width: '95%',
     marginBottom: 15,
-    backgroundColor: '#9DD6EB',
+    backgroundColor: 'white',
     borderRadius: 9,
     shadowColor: '#282C34',
   },
@@ -33,9 +33,9 @@ export default StyleSheet.create({
   },
   popupTitle: {
     fontFamily: 'Arial',
-    fontSize: 24,
+    fontSize: 30,
     fontWeight: 'bold',
-    color: 'white',
+    color: '#212A30',
   },
   popupSubTitles: {
     fontFamily: 'Avenir',
