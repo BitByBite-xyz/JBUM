@@ -2,5 +2,6 @@
 
 import './seedz';
 import './register-api';
+import './apn-setup';
 import './accounts';
 //db.dropDatabase()

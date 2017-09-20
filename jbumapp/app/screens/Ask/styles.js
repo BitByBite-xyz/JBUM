@@ -40,6 +40,9 @@ export default StyleSheet.create({
       borderTopLeftRadius: 10,
       borderTopRightRadius: 10,
   },
+  receiverQuestion: {
+    flexDirection: 'row',
+  },
   bottomBox: {
       paddingLeft: 10,
       paddingRight: 10,

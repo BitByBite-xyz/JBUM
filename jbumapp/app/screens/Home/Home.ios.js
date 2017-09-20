@@ -8,13 +8,15 @@ import {
   Keyboard,
   Animated,
   Alert,
-  Linking
+  Linking,
+  NetInfo
 } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import Swiper from 'react-native-swiper';
 import ActionButton from 'react-native-action-button';
 import { Icon } from 'react-native-elements'
 import * as Animatable from 'react-native-animatable';
+import { connect } from 'react-redux';
 
 import Ask from '../Ask';
 import Answer from '../Answer';
@@ -28,6 +30,7 @@ import {textWithoutEncoding} from '../../components/Communications';
 
 import images from '../../config/images';
 import {quotes} from '../../config/styles';
+import { changeNetworkStatus } from '../../actions/network'
 
 
 class Home extends Component {
@@ -40,6 +43,10 @@ class Home extends Component {
     };
   }
   componentDidMount() {
+    NetInfo.fetch().done((reach) => {
+      this.handleNetworkChange(reach);
+    });
+    NetInfo.addEventListener('change', this.handleNetworkChange);
     setTimeout(() => {
       if (this.downArrow) {
         this.downArrow.transitionTo({opacity: 0});
@@ -48,6 +55,15 @@ class Home extends Component {
         this.upArrow.transitionTo({opacity: 0});
       }
     }, 2500);
+  }
+  componentWillUnmount(){
+    NetInfo.removeEventListener('change', this.handleNetworkChange);
+  }
+
+  handleNetworkChange = (info) => {
+    console.log(info);
+
+    this.props.dispatch(changeNetworkStatus(info));
   }
   updateInboxPosts(item){
     //this.setState({inboxPosts:item});
@@ -239,4 +255,9 @@ class Home extends Component {
   }
 };
 
-export default Home;
+const mapStateToProps = (state) => {
+  return {
+  };
+};
+
+export default connect(mapStateToProps)(Home);

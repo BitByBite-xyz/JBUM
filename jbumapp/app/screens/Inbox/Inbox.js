@@ -89,7 +89,8 @@ class Inbox extends Component {
       user_posts.map((item) => {
         const post = item;
         item.post_comments.map((item) => {
-          if (archivedReplies[item.comment_id] !== 'archived') {
+          if (archivedReplies[item.comment_id] !== 'archived' &&
+              item.user_id !== Meteor.userId()) {
             const comment = {
               commentBody: item.comment_body,
               commentId: item.comment_id,
@@ -145,7 +146,7 @@ class Inbox extends Component {
             { archivedReplies && data.length > 0?
               <FlatList
                 data={data}
-                keyExtractor={(item, index) => item.commentBody}
+                keyExtractor={(item, index) => item.commentId}
                 renderItem={({item}) => this.renderRow(item)}
                 ListFooterComponent={this.renderFooter}
                 onEndReachedThreshold={50}

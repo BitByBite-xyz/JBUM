@@ -87,6 +87,8 @@ Meteor.methods({
       throw new Meteor.Error('not-authorized');
     }
 
+    const post = Posts.findOne({_id: postId});
+
     Posts.update({ _id: postId }, {
       $push: {
         post_comments: {
@@ -97,6 +99,18 @@ Meteor.methods({
         }
       },
     });
+
+    if (this.userId !== post.user_id) {
+      console.log('fiieinvienvi');
+      const params = {
+        sendToUserId: post.user_id,
+        alert: 'Someone has replied to one of your posts!'
+      }
+
+      Meteor.call('notifications.send.APNMsg', params, err => {
+        if (err) { alert(`notifications.send.APNMsg: ${err.reason}`); }
+      });
+    }
   },
   'Posts.archive' (postId) {
     if (!Meteor.userId() || !Posts.findOne(postId) || Posts.findOne(postId).user_id !== Meteor.userId()) {

@@ -36,6 +36,7 @@
     "react-native-parallax-scroll-view": "git+https://github.com/fungilation/react-native-parallax-scroll-view.git",
     "react-native-picker": "git+https://github.com/Root-App/react-native-picker.git",
     "react-native-progress": "git+https://github.com/oblador/react-native-progress.git",
+    "react-native-push-notification": "^3.0.1",
     "react-native-settings-list": "git+https://github.com/evetstech/react-native-settings-list.git",
     "react-native-spinkit": "git+https://github.com/maxs15/react-native-spinkit.git",
     "react-native-swipeout": "git+https://github.com/dancormier/react-native-swipeout.git",

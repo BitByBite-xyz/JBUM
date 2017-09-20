@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, TextInput, Image, TouchableOpacity,Picker,Alert,ScrollView } from 'react-native';
-import { Button,CheckBox } from 'react-native-elements'
+import { Icon, Button,CheckBox } from 'react-native-elements'
 import update from 'react-addons-update';
 
 import Meteor, { createContainer } from 'react-native-meteor';
@@ -12,7 +12,7 @@ import {AutoGrowingTextInput} from 'react-native-autogrow-textinput';
 
 const SECTIONS = [
   {
-    title: ' Choose Reciever ',
+    title: ' Choose Receiver ',
   },
   {
     title: ' Choose Category ',
@@ -157,6 +157,13 @@ class Ask extends Component {
   }
 
   renderHeader = (section) => {
+    if (section.title.includes('Receiver')){
+      return (
+        <View style={styles.bottom}>
+          <Text style={styles.headerText}>{section.title}</Text>
+        </View>
+      );
+    }
     return (
       <View style={styles.bottom}>
         <Text style={styles.headerText}>{section.title}</Text>
@@ -167,7 +174,7 @@ class Ask extends Component {
   renderContent = (section) => {
     const { post_visibility, post_categories, otherCategory} = this.state;
 
-    if (section.title.includes('Reciever')) {
+    if (section.title.includes('Receiver')) {
       return (
         <View style={styles.content}>
           <CheckBox

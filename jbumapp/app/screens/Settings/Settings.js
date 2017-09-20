@@ -12,6 +12,8 @@ import SettingsList from 'react-native-settings-list';
 
 import { NavigationActions } from 'react-navigation';
 
+import {email} from '../../components/Communications';
+
 class Settings extends Component {
   constructor(props) {
     super(props);
@@ -25,6 +27,9 @@ class Settings extends Component {
   }
 
   signOut = () => {
+    Meteor.call('notifications.remove.pushToken', err => {
+      if (err) { alert(`notifications.rm.pushToken: ${err.reason}`); }
+    });
     Meteor.logout(() => {
       const resetAction = NavigationActions.reset({
         index: 0,
@@ -60,7 +65,21 @@ class Settings extends Component {
   }
 
   handleReportProblemPress(){
-    Linking.openURL('mailto:contact@bitbybite.co?subject=🚧 Reporting a problem with JBUM 🚧&body=🌀 your problem here 🌀')
+    email('contact@bitbybite.co',
+          'connor.larkin1@gmail.com', null,
+          '🚧 Reporting a problem with JBUM 🚧',
+          '🌀 your problem here 🌀')
+  //  Linking.openURL('mailto:contact@bitbybite.co?subject=🚧 Reporting a problem with JBUM 🚧&body=🌀 your problem here 🌀')
+  }
+
+  handleNotificationPress = () => {
+    Linking.canOpenURL('app-settings:').then(supported => {
+      if (!supported) {
+        console.log('Can\'t handle settings url');
+      } else {
+        return Linking.openURL('app-settings:');
+      }
+    }).catch(err => console.error('An error occurred', err));
   }
 
   handleChangePass = () => {
@@ -147,15 +166,6 @@ class Settings extends Component {
                 <SettingsList.Header headerStyle={{marginTop:0}}/>
                 <SettingsList.Item
                   titleStyle={{fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
-                  hasSwitch={true}
-                  switchState={switchValue}
-                  switchOnValueChange={this.onValueChange}
-                  hasNavArrow={false}
-                  title='Notifications'
-                />
-                <SettingsList.Header headerStyle={{marginTop:10}}/>
-                <SettingsList.Item
-                  titleStyle={{fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
                   title='Account Username'
                   arrowIcon={(<Icon
                     name='account-circle'
@@ -163,7 +173,12 @@ class Settings extends Component {
                     size={28}/>)}
                   onPress={this.handleAccountPress}
                 />
-
+                <SettingsList.Header headerStyle={{marginTop:10}}/>
+                <SettingsList.Item
+                  titleStyle={{fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
+                  title='Notification Settings'
+                  onPress={this.handleNotificationPress}
+                />
                 <SettingsList.Header headerText='SUPPORT' headerStyle={{color:'gray', marginTop:15, marginLeft: 10}}/>
                 <SettingsList.Item
                   titleStyle={{fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
@@ -207,7 +222,7 @@ class Settings extends Component {
                 <SettingsList.Item
                   title='Log Out'
                   titleStyle={{color:'#020C7E', fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
-                  onPress={() => this.signOut}
+                  onPress={this.signOut}
                 />
 
               </SettingsList>

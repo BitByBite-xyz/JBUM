@@ -22,11 +22,9 @@ import Wallpaper from '../../components/Wallpaper';
 
 import styles from './styles';
 
-import Login from './Login';
-
 const B = (props) => <Text style={styles.textBold}>{props.children}</Text>
 
-class LoginContainer extends Component {
+class Login extends Component {
   constructor(props) {
     super(props);
 
@@ -196,4 +194,4 @@ class LoginContainer extends Component {
   }
 }
 
-export default LoginContainer;
+export default Login;

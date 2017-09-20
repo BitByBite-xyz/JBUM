@@ -121,7 +121,7 @@ import BarcodeScanner from '../components/BarcodeScanner';
  	}
 );
 
-export const Tabs = TabNavigator({
+export const ResponderTabs = TabNavigator({
 	HomeStack: {
 		screen: HomeStack,
 		navigationOptions: {
@@ -177,6 +177,11 @@ export default StackNavigator({
 				gesturesEnabled: false,
 		}},
 		WelcomeStack: { screen: WelcomeStack,
+		 	navigationOptions: {
+				header: null,
+				gesturesEnabled: false,
+			}},
+		ResponderTabs: { screen: ResponderTabs,
 		 	navigationOptions: {
 				header: null,
 				gesturesEnabled: false,

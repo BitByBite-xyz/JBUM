@@ -24,8 +24,6 @@ class Panel extends PureComponent {
     const { navigation, header,postContent } = this.props;
 
     this.state = {
-      //liked: (postContent.post_likes) ? postContent.post_likes.includes(Meteor.userId()) : false,
-      //likes: (postContent.post_likes) ? postContent.post_likes.length : 0,
       comments: postContent.post_comments.length,
       post_categories: postContent.post_categories,
       isModalVisible: false,
@@ -40,14 +38,8 @@ class Panel extends PureComponent {
     this.toggle = this.toggle.bind(this);
   }
 
-  onMorePress() {
-    const { navigation } = this.props;
-
-  }
-
   onReportPress = () => {
     const { postContent } = this.props;
-    console.log("jejife");
 
     Meteor.call('Posts.report', postContent._id, (err) => {
       if (err) {
@@ -328,7 +320,6 @@ class Panel extends PureComponent {
         </View>
       </View>
     );
-
   }
 }
 
