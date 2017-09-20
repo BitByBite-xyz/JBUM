@@ -51,7 +51,7 @@ Meteor.methods({
         $set: { pushToDevices: [] },
     });
   },
-  'notifications.send.APNMsg'({sendToUserId, alert}) {
+  'notifications.send.APNMsg'({sendToUserId, alert, postId}) {
     const user = Meteor.users.findOne(sendToUserId);
     if (user) {
       user.pushToDevices.forEach(device => {
@@ -59,7 +59,7 @@ Meteor.methods({
 
         agent.createMessage()
           .set({
-            extra: 123,
+            postId: postId,
           })
           .device(token)
           .alert(alert)

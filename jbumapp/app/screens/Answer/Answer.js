@@ -126,7 +126,7 @@ class Answer extends Component {
           paddingVertical: 20,
         }}
       >
-        <Loading />
+        
       </View>
     );
   };

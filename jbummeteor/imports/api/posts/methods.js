@@ -104,7 +104,8 @@ Meteor.methods({
       console.log('fiieinvienvi');
       const params = {
         sendToUserId: post.user_id,
-        alert: 'Someone has replied to one of your posts!'
+        alert: 'Someone has replied to one of your posts!',
+        postId: postId
       }
 
       Meteor.call('notifications.send.APNMsg', params, err => {

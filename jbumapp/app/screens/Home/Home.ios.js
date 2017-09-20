@@ -9,14 +9,17 @@ import {
   Animated,
   Alert,
   Linking,
-  NetInfo
+  NetInfo,
+  DeviceEventEmitter
 } from 'react-native';
+import { Meteor } from 'react-native-meteor';
 import { NavigationActions } from 'react-navigation';
 import Swiper from 'react-native-swiper';
 import ActionButton from 'react-native-action-button';
 import { Icon } from 'react-native-elements'
 import * as Animatable from 'react-native-animatable';
 import { connect } from 'react-redux';
+import PushNotification from 'react-native-push-notification';
 
 import Ask from '../Ask';
 import Answer from '../Answer';
@@ -31,6 +34,7 @@ import {textWithoutEncoding} from '../../components/Communications';
 import images from '../../config/images';
 import {quotes} from '../../config/styles';
 import { changeNetworkStatus } from '../../actions/network'
+import { changeNotificationStatus } from '../../actions/notification';
 
 
 class Home extends Component {
@@ -46,6 +50,7 @@ class Home extends Component {
     NetInfo.fetch().done((reach) => {
       this.handleNetworkChange(reach);
     });
+    this.props.dispatch(changeNotificationStatus('info'));
     NetInfo.addEventListener('change', this.handleNetworkChange);
     setTimeout(() => {
       if (this.downArrow) {
@@ -55,14 +60,55 @@ class Home extends Component {
         this.upArrow.transitionTo({opacity: 0});
       }
     }, 2500);
+
+    this.setUpNotifications();
   }
+  setUpNotifications = () => {
+    if (Meteor && !Meteor.user()) {
+      return;
+    }
+    PushNotification.configure({
+      // (optional) Called when Token is generated (iOS and Android)
+      onRegister(data) {
+        Meteor.call('notifications.set.pushToken', data, err => {
+          if (err) { alert(`notifications.set.pushToken: ${err.reason}`); }
+        });
+      },
+      // (required) Called when a remote or local notification is opened or received
+      onNotification(notification) {
+        console.log(notification);
+        //alert(notification.message);
+      },
+      // IOS ONLY (optional): default: all - Permissions to register.
+      permissions: {
+        alert: true,
+        badge: true,
+        sound: true,
+      },
+      // Should the initial notification be popped automatically
+      // default: true
+      popInitialNotification: true,
+      /**
+        * IOS ONLY: (optional) default: true
+        * - Specified if permissions will requested or not,
+        * - if not, you must call PushNotificationsHandler.requestPermissions() later
+        */
+      requestPermissions: true,
+    });
+    PushNotification.localNotificationSchedule({
+      message: "My Notification Message", // (required)
+      date: new Date(Date.now() + (3 * 1000)) // in 60 secs
+    });
+  }
+  handleNotif = () => {
+    this.props.dispatch(changeNotificationStatus(notification.message));
+  }
+
   componentWillUnmount(){
     NetInfo.removeEventListener('change', this.handleNetworkChange);
   }
 
   handleNetworkChange = (info) => {
-    console.log(info);
-
     this.props.dispatch(changeNetworkStatus(info));
   }
   updateInboxPosts(item){
@@ -257,6 +303,8 @@ class Home extends Component {
 
 const mapStateToProps = (state) => {
   return {
+    shouldHandleNotification: state.shouldHandleNotification,
+    notificationData: state.notificationData,
   };
 };
 
