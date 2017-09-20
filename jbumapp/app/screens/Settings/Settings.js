@@ -118,39 +118,40 @@ class Settings extends Component {
     return(
       <KeyboardAvoidingView
         behavior="padding"
-        style={{marginLeft:10,marginRight:10,marginBottom:10}}
+        style={{marginLeft: 10, marginRight: 10, marginBottom:10}}
       >
+        <View style={{width: '85%', marginLeft: '5%'}}>
         <Jiro
-          labelStyle={{fontSize: 18, color: 'white'}}
+          labelStyle={{fontSize: 18, color: '#3E5D6C'}}
           label={'Current Password'}
           secureTextEntry={true}
-          borderColor={'#4AD9B9'}
+          borderColor={'#C4E8FC'}
           inputStyle={{ color: 'white' }}
           onChangeText={(text) => { this.setState({oldPass: text}) }}
         />
         <Jiro
-          labelStyle={{fontSize: 18, color: 'white'}}
+          labelStyle={{fontSize: 18, color: '#3E5D6C'}}
           label={'New Password'}
           secureTextEntry={true}
-          borderColor={'#4AD9B9'}
+          borderColor={'#C4E8FC'}
           inputStyle={{ color: 'white' }}
           onChangeText={(text) => { this.setState({newPass: text}) }}
         />
         <Jiro
-          labelStyle={{fontSize: 18, color: 'white'}}
+          labelStyle={{fontSize: 18, color: '#3E5D6C'}}
           label={'Confirm Password'}
           secureTextEntry={true}
-          borderColor={'#4AD9B9'}
+          borderColor={'#C4E8FC'}
           inputStyle={{ color: 'white' }}
           onChangeText={(text) => { this.setState({confirmPass: text}) }}
         />
-        <View style={{marginTop: 20,marginBottom:20}}>
+        </View>
+        <View style={{marginTop: 20, marginBottom: 12}}>
           <Button
-            iconRight
-            backgroundColor={'#4AD9B9'}
+            buttonStyle={{borderRadius: 8}}
+            backgroundColor={'#E4F2F2'}
             onPress={this.handleChangePass}
-            icon={{name: 'vpn-key'}}
-            textStyle={{fontSize: 18, color: 'white'}}
+            textStyle={{fontSize: 22, color: '#36454F', fontWeight: '600'}}
             title='Change Password' />
         </View>
       </KeyboardAvoidingView>
@@ -242,14 +243,13 @@ class Settings extends Component {
                       style={{marginLeft: '90%',marginTop: 10}}
                     />
                     </TouchableOpacity>
-                    <View style={{alignItems:'center',marginBottom:10}}>
+                    <View style={{alignItems: 'center'}}>
                       <Text style={styles.popupTitle}>Change Password</Text>
                     </View>
 
                     {this.renderChangePass()}
 
                   </View>
-
 
                 </View>
               </Modal>
