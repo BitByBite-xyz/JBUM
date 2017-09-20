@@ -50,7 +50,6 @@ class Home extends Component {
     NetInfo.fetch().done((reach) => {
       this.handleNetworkChange(reach);
     });
-    this.props.dispatch(changeNotificationStatus('info'));
     NetInfo.addEventListener('change', this.handleNetworkChange);
     setTimeout(() => {
       if (this.downArrow) {
@@ -60,48 +59,6 @@ class Home extends Component {
         this.upArrow.transitionTo({opacity: 0});
       }
     }, 2500);
-
-    this.setUpNotifications();
-  }
-  setUpNotifications = () => {
-    if (Meteor && !Meteor.user()) {
-      return;
-    }
-    PushNotification.configure({
-      // (optional) Called when Token is generated (iOS and Android)
-      onRegister(data) {
-        Meteor.call('notifications.set.pushToken', data, err => {
-          if (err) { alert(`notifications.set.pushToken: ${err.reason}`); }
-        });
-      },
-      // (required) Called when a remote or local notification is opened or received
-      onNotification(notification) {
-        console.log(notification);
-        //alert(notification.message);
-      },
-      // IOS ONLY (optional): default: all - Permissions to register.
-      permissions: {
-        alert: true,
-        badge: true,
-        sound: true,
-      },
-      // Should the initial notification be popped automatically
-      // default: true
-      popInitialNotification: true,
-      /**
-        * IOS ONLY: (optional) default: true
-        * - Specified if permissions will requested or not,
-        * - if not, you must call PushNotificationsHandler.requestPermissions() later
-        */
-      requestPermissions: true,
-    });
-    PushNotification.localNotificationSchedule({
-      message: "My Notification Message", // (required)
-      date: new Date(Date.now() + (3 * 1000)) // in 60 secs
-    });
-  }
-  handleNotif = () => {
-    this.props.dispatch(changeNotificationStatus(notification.message));
   }
 
   componentWillUnmount(){
@@ -121,20 +78,15 @@ class Home extends Component {
     this.leftArrow.transitionTo({opacity: 0});
     this.upArrow.transitionTo({opacity: 0});
   }
-
   toInbox(){
-    //this.props.navigation.navigate('Inbox');
-
     this.pages.scrollBy(-1,true);
     setTimeout(() => {
       this.horizontalPage.scrollBy(-1,true);
     }, 300);
-
   }
   toAskPage(){
     this.pages.scrollBy(-2,true)
   }
-
   scrollToPage = () => {
     console.log('hey');
     this.pages.scrollBy(1,true)
@@ -145,7 +97,6 @@ class Home extends Component {
     this.leftArrow.transitionTo({opacity: 0.5});
     this.upArrow.transitionTo({opacity: 0.5});
   }
-
   onIndexChanged = () => {
     Keyboard.dismiss();
   }
