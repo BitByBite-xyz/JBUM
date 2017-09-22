@@ -1,29 +1,20 @@
-import {CHANGE_NOTIFICATION_STATUS} from '../actions/notification';
+import {CHANGE_NOTIFICATION_NUMBER} from '../actions/notification';
+import _ from 'lodash';
 
 const initialState = {
-  shouldHandleNotification: false,
-  notificationData: null
+  numberOfNotificatons: 0,
 };
-
-const shouldHandle = (status) => {
-  if (status) {
-    return true;
-  }
-  return false;
-}
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case CHANGE_NOTIFICATION_STATUS:
+    case CHANGE_NOTIFICATION_NUMBER:
       return {
         ...state,
-        shouldHandleNotification: shouldHandle(action.status),
-        notificationData: action.status,
+        numberOfNotificatons: action.number,
       }
       break;
     default:
       return state;
-
   }
   return state;
 }

@@ -33,9 +33,7 @@ import {textWithoutEncoding} from '../../components/Communications';
 
 import images from '../../config/images';
 import {quotes} from '../../config/styles';
-import { changeNetworkStatus } from '../../actions/network'
-import { changeNotificationStatus } from '../../actions/notification';
-
+import { changeNetworkStatus } from '../../actions/network';
 
 class Home extends Component {
   constructor(props) {
@@ -59,6 +57,7 @@ class Home extends Component {
         this.upArrow.transitionTo({opacity: 0});
       }
     }, 2500);
+
   }
 
   componentWillUnmount(){
@@ -66,10 +65,9 @@ class Home extends Component {
   }
 
   handleNetworkChange = (info) => {
-    this.props.dispatch(changeNetworkStatus(info));
+    this.props.navigation.dispatch(changeNetworkStatus(info))
   }
   updateInboxPosts(item){
-    //this.setState({inboxPosts:item});
   }
 
   onScrollBeginDrag = () => {
@@ -88,7 +86,6 @@ class Home extends Component {
     this.pages.scrollBy(-2,true)
   }
   scrollToPage = () => {
-    console.log('hey');
     this.pages.scrollBy(1,true)
   }
   onTouchEnd = () => {
@@ -139,9 +136,9 @@ class Home extends Component {
   }
 
   render() {
-    const { navigation } = this.props;
+    const { navigation, numberOfNotificatons } = this.props;
     const quoteIndex = Math.floor(quotes.length * Math.random());
-
+    const num = (this.props.numberOfNotificatons)?this.state.numberOfNotificatons:0;
     return (
       <Swiper
         horizontal={false}
@@ -176,6 +173,7 @@ class Home extends Component {
           <Inbox
             navigation={navigation}
             updateInboxPosts={this.updateInboxPosts.bind(this)}
+            {...this.props}
           />
           <View style={{ flex: 1, backgroundColor: 'transparent' }} effect='slide' >
             <Image
@@ -240,23 +238,19 @@ class Home extends Component {
         </Animatable.View>
           </View >
           <Profile
-            navigation={navigation}/>
+            navigation={navigation}
+          />
         </Swiper>
         <Answer
           toInbox={this.toInbox.bind(this)}
           navigation={navigation}
           inboxPosts={this.state.inboxPosts}
-          toAskPage={this.toAskPage.bind(this)}/>
+          toAskPage={this.toAskPage.bind(this)}
+          {...this.props}
+        />
       </Swiper>
     );
   }
 };
 
-const mapStateToProps = (state) => {
-  return {
-    shouldHandleNotification: state.shouldHandleNotification,
-    notificationData: state.notificationData,
-  };
-};
-
-export default connect(mapStateToProps)(Home);
+export default Home;

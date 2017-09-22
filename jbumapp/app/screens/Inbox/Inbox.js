@@ -19,16 +19,22 @@ import AlertPanel from '../../components/AlertPanel';
 import InboxPanel from '../../components/InboxPanel';
 import Loading from '../../components/Loading';
 import {queryConstructor} from '../../lib/queryHelpers';
+import { changeNotificationNumber } from '../../actions/notification';
 
 const ARCHIVED_KEY = 'Archived'
 class Inbox extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      archivedReplies: null
+      archivedReplies: null,
+      numberOfNotificatons:0,
+      data:{}
     }
   }
   componentDidMount(){
+    const { numberOfNotificatons } = this.state;
+
+
     //AsyncStorage.clear();
     AsyncStorage.getItem(ARCHIVED_KEY).then((archivedObj)=>{
       let archived = JSON.parse(archivedObj);
@@ -37,6 +43,35 @@ class Inbox extends Component {
     }).catch((err) => {
       this.setState({archivedReplies: {}});
     })
+  }
+
+  componentDidUpdate(prevProps, prevState){
+    this.changeNotificationNum()
+  }
+
+  changeNotificationNum = () => {
+    const {archivedReplies, numOfReplies, numberOfNotificatons} = this.state;
+    const { user_posts,updateInboxPosts } = this.props;
+    let comments = [];
+
+    if (user_posts && archivedReplies) {
+      user_posts.map((item) => {
+        const post = item;
+        item.post_comments.map((item) => {
+          if (archivedReplies[item.comment_id] !== 'archived' &&
+              item.user_id !== Meteor.userId()) {
+            const comment = {
+              commentBody: item.comment_body,
+              commentId: item.comment_id,
+              createdAt: item.createdAt,
+              post:post
+            };
+            comments.push(comment)
+          }
+        })
+      })
+    }
+    this.props.navigation.dispatch(changeNotificationNumber(comments.length))
   }
 
 
@@ -81,7 +116,7 @@ class Inbox extends Component {
   }
 
   findMostRecentReplies = () => {
-    const {archivedReplies, numOfReplies} = this.state;
+    const {archivedReplies, numOfReplies, numberOfNotificatons} = this.state;
     const { user_posts,updateInboxPosts } = this.props;
     let comments = [];
 

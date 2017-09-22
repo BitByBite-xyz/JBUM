@@ -15,6 +15,7 @@ import DropdownAlert from 'react-native-dropdownalert'
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import { Badge } from 'react-native-elements'
 import { NavigationActions } from 'react-navigation';
+import { connect } from 'react-redux';
 
 import SwipeHiddenHeader from '../../components/SwipeHiddenHeader';
 import QuestionPanel from '../../components/QuestionPanel';
@@ -24,7 +25,6 @@ import AskHeader from '../../components/AskHeader';
 import Notifications from '../../components/Notifications';
 
 import {queryConstructor} from '../../lib/queryHelpers';
-
 import styles from './styles';
 
 class Answer extends Component {
@@ -126,13 +126,13 @@ class Answer extends Component {
           paddingVertical: 20,
         }}
       >
-        
+
       </View>
     );
   };
 
   render() {
-    const { posts,loading,navigation,inboxPosts,toInbox } = this.props;
+    const { posts,loading,navigation,inboxPosts,toInbox,numberOfNotificatons } = this.props;
     return (
       <SwipeHiddenHeader header={()=>
           <View style={styles.header}>
@@ -143,7 +143,7 @@ class Answer extends Component {
             <View style={styles.headerRight}>
               <Badge
                 containerStyle={{ backgroundColor: '#00abff', height: 32, width: 32}}
-                value={inboxPosts}
+                value={numberOfNotificatons}
                 //onPress={() => this.props.navigation.navigate('Inbox')}
                 onPress={toInbox}
                 textStyle={{ color: 'white', fontFamily: 'Avenir', fontWeight: '500', fontSize: 15}}
@@ -188,9 +188,13 @@ class Answer extends Component {
   }
 };
 
+const mapStateToProps = ( state, ownProps ) => {
+    return {
+        numberOfNotificatons: state.notification.numberOfNotificatons
+    }
+}
+
 export default createContainer(() => {
-
-
   var answerTerms = {
     viewName: 'answerPosts',
     limit:50
@@ -209,4 +213,4 @@ export default createContainer(() => {
   return {
     posts: Meteor.collection('posts').find(answerParameters.find, answerParameters.sort)
   };
-}, Answer);
+}, connect(mapStateToProps)(Answer));

@@ -19,18 +19,20 @@ Meteor.connect(settings.METEOR_URL);
 console.disableYellowBox = true; //comment out to get yelled at
 //console.ignoredYellowBox = ['Panel'] //comment out to get yelled at
 
-const App = ({dispatch, nav}) => (
+const App = ({dispatch, nav,numberOfNotificatons}) => (
   <Navigator
     navigation={addNavigationHelpers({
       dispatch,
       state: nav,
+      numberOfNotificatons:numberOfNotificatons
     })}
   />
 );
 
 const mapStateToProps = state => ({
   nav: state.nav,
-  isLoggedIn: Meteor.user()
+  isLoggedIn: Meteor.user(),
+  connected:state.connected
 });
 
 const AppWithNavigation = connect(mapStateToProps)(App);
@@ -53,7 +55,7 @@ const RNApp = (props) => {
 
       // (required) Called when a remote or local notification is opened or received
       onNotification(notification) {
-        console.log(notification);
+        alert(notification.postId);
       //  alert(`onNotification ${React.Platform.OS}`);
       },
 
@@ -76,9 +78,10 @@ const RNApp = (props) => {
       requestPermissions: true,
     });
   }
-
-
-
+  /*PushNotification.localNotificationSchedule({
+  message: "My Notification Message", // (required)
+  date: new Date(Date.now() + ( * 1000)) // in 60 secs
+});*/
   return <Provider store={store}>
             <AppWithNavigation/>
           </Provider>
