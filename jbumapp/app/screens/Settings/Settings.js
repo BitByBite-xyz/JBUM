@@ -27,6 +27,8 @@ class Settings extends Component {
   }
 
   signOut = () => {
+    const username = Meteor.user().username;
+    Alert.alert(username + ' you are logged out'),
     Meteor.call('notifications.remove.pushToken', err => {
       if (err) { alert(`notifications.rm.pushToken: ${err.reason}`); }
     });
