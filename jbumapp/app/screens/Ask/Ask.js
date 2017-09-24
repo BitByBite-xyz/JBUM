@@ -351,6 +351,7 @@ class Ask extends Component {
                   maxLength={300}
                   blurOnSubmit={true}
                   value={title}
+                  maxLength={20}
                 />
                   <View style={styles.lineDivider} />
             </View>
