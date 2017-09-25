@@ -10,7 +10,8 @@ import {
   Alert,
   Linking,
   NetInfo,
-  DeviceEventEmitter
+  DeviceEventEmitter,
+  AsyncStorage
 } from 'react-native';
 import { Meteor } from 'react-native-meteor';
 import { NavigationActions } from 'react-navigation';
@@ -57,15 +58,40 @@ class Home extends Component {
         this.upArrow.transitionTo({opacity: 0});
       }
     }, 2500);
+    const key = 'shouldHandleNotif';
 
+    setTimeout(() => {
+      AsyncStorage.getItem(key).then((obj)=>{
+        let notifData = JSON.parse(obj);
+        alert("fromehome "+obj);
+        if (notifData !== null) {
+          this.handleRecievedNotification(notifData);
+        }
+        else {
+          AsyncStorage.removeItem(key);
+        }
+      }).catch((err) => {
+        console.log(err);
+      })
+    }, 500);
   }
-
   componentWillUnmount(){
     NetInfo.removeEventListener('change', this.handleNetworkChange);
   }
-
   handleNetworkChange = (info) => {
     this.props.navigation.dispatch(changeNetworkStatus(info))
+  }
+  handleRecievedNotification = (notifData) => {
+    const { navigation } = this.props;
+    const key = 'shouldHandleNotif';
+
+    if (notifData.data.postId) {
+      const fucc = {
+        _id: notifData.data.postId
+      }
+      navigation.navigate("Reply",{ postContent: fucc });
+    }
+    AsyncStorage.removeItem(key);
   }
   updateInboxPosts(item){
   }

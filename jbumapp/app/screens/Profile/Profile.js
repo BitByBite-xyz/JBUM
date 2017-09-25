@@ -102,8 +102,7 @@ class ProfileContainer extends Component {
 		if (responded_posts.length===0) return 0;
 		const userId = Meteor.userId();
 		let count = 0;
-		console.log(responded_posts);
-
+		
 		responded_posts.map((post) => {
 			post.post_comments.map((comment) => {
 				if (comment.user_id === userId) {
@@ -191,7 +190,7 @@ class ProfileContainer extends Component {
 							data={responded_posts}
 							initialNumToRender={5}
 							keyExtractor={(item, index) => item._id}
-							renderItem={({item}) => 
+							renderItem={({item}) =>
 								<QuestionPanel
 									postContent={item}
 									header={item.post_title}
