@@ -62,6 +62,7 @@ class Home extends Component {
         this.upArrow.transitionTo({opacity: 0});
       }
     }, 2500);
+    const key = 'shouldHandleNotif';
 
     setTimeout(() => {
       this.handleCheckForNotif();
