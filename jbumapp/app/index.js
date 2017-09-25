@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform } from 'react-native';
+import { Platform,AsyncStorage } from 'react-native';
 import Meteor, { createContainer } from 'react-native-meteor';
 import PushNotification from 'react-native-push-notification';
 import Navigator from './config/router';
@@ -55,21 +55,22 @@ const RNApp = (props) => {
 
       // (required) Called when a remote or local notification is opened or received
       onNotification(notification) {
-        alert(notification.postId);
-      //  alert(`onNotification ${React.Platform.OS}`);
+        const key = 'shouldHandleNotif';
+        if (!notification.foreground && notification.userInteraction) {
+          AsyncStorage.setItem(key, JSON.stringify(notification)).catch((err) => {
+            console.log(err);
+          })
+        }
       },
-
       // IOS ONLY (optional): default: all - Permissions to register.
       permissions: {
         alert: true,
         badge: true,
         sound: true,
       },
-
       // Should the initial notification be popped automatically
       // default: true
       popInitialNotification: true,
-
       /**
         * IOS ONLY: (optional) default: true
         * - Specified if permissions will requested or not,
@@ -80,7 +81,7 @@ const RNApp = (props) => {
   }
   /*PushNotification.localNotificationSchedule({
   message: "My Notification Message", // (required)
-  date: new Date(Date.now() + ( * 1000)) // in 60 secs
+  date: new Date(Date.now() + (4 * 1000)) // in 60 secs
 });*/
   return <Provider store={store}>
             <AppWithNavigation/>

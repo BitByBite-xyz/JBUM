@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, TextInput, Image, TouchableOpacity,Picker,Alert,ScrollView } from 'react-native';
+import { Text, View, TextInput, Image, TouchableOpacity,Picker,Alert,ScrollView, Keyboard } from 'react-native';
 import { Icon, Button,CheckBox } from 'react-native-elements'
 import update from 'react-addons-update';
 
@@ -135,14 +135,11 @@ class Ask extends Component {
         post_visibility: update(this.state.post_visibility, {$splice: [[index, 1]]})
       })
     }
-    console.log(post_visibility);
   }
 
   updateCategory = (catOption) => {
     const { post_categories } = this.state;
     const index = post_categories.indexOf(catOption);
-    console.log(index);
-
 
     if (index === -1) {
       const newArray = [ ...post_categories, catOption];
@@ -153,7 +150,6 @@ class Ask extends Component {
         post_categories: update(this.state.post_categories, {$splice: [[index, 1]]})
       })
     }
-    console.log(post_categories);
   }
 
   renderHeader = (section) => {
@@ -377,6 +373,7 @@ class Ask extends Component {
                 renderHeader={this.renderHeader}
                 renderContent={this.renderContent}
                 touchableProps={{activeOpacity:1}}
+                onChange={Keyboard.dismiss()}
               />
             </View>
           </View>

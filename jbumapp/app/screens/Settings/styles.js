@@ -18,6 +18,7 @@ export default StyleSheet.create({
   popupContainer: {
     width: '95%',
     marginBottom: 15,
+    marginLeft:"3%",
     backgroundColor: 'white',
     borderRadius: 9,
     shadowColor: '#282C34',

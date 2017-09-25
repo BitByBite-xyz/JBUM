@@ -64,6 +64,15 @@ class Responder extends Component {
     });
   };
 
+  renderComments = () => {
+    const { modalContent } = this.state;
+    if (modalContent) {
+      return modalContent.post_comments.map((item) => (
+                <div> {item.comment_body} </div>
+              ));
+    }
+  }
+
   renderModalContent = () => {
     const { modalContent, response } = this.state;
 
@@ -71,6 +80,9 @@ class Responder extends Component {
       <div>
         <div  style={{marginLeft: '4%'}}>
           {modalContent.post_body}
+        </div>
+        <div  style={{marginLeft: '4%'}}>
+          {this.renderComments()}
         </div>
         <TextField
           hintText="Your response"

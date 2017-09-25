@@ -65,11 +65,7 @@ class Settings extends Component {
   }
 
   handleReportProblemPress(){
-    email('contact@bitbybite.co',
-          'connor.larkin1@gmail.com', null,
-          '🚧 Reporting a problem with JBUM 🚧',
-          '🌀 your problem here 🌀')
-  //  Linking.openURL('mailto:contact@bitbybite.co?subject=🚧 Reporting a problem with JBUM 🚧&body=🌀 your problem here 🌀')
+    Linking.openURL('mailto:contact@bitbybite.co?subject=🚧 Reporting a problem with JBUM 🚧&body=🌀 your problem here 🌀')
   }
 
   handleNotificationPress = () => {
@@ -118,9 +114,9 @@ class Settings extends Component {
     return(
       <KeyboardAvoidingView
         behavior="padding"
-        style={{marginLeft: 10, marginRight: 10, marginBottom:10}}
+        style={{marginLeft: "8%", marginRight: "8%", marginBottom:2,marginTop:2}}
       >
-        <View style={{width: '85%', marginLeft: '5%'}}>
+        <View style={{width: '85%', marginLeft: '7%'}}>
         <Jiro
           labelStyle={{fontSize: 18, color: '#3E5D6C'}}
           label={'Current Password'}

@@ -142,7 +142,7 @@ class Answer extends Component {
             <View style={{paddingRight:10}}>{/*//i hate this*/}
             <View style={styles.headerRight}>
               <Badge
-                containerStyle={{ backgroundColor: '#00abff', height: 32, width: 32}}
+                containerStyle={{ backgroundColor: '#00abff'}}
                 value={numberOfNotificatons}
                 //onPress={() => this.props.navigation.navigate('Inbox')}
                 onPress={toInbox}

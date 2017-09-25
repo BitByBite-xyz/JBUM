@@ -10,7 +10,9 @@ import {
   Alert,
   Linking,
   NetInfo,
-  DeviceEventEmitter
+  DeviceEventEmitter,
+  AsyncStorage,
+  AppState
 } from 'react-native';
 import { Meteor } from 'react-native-meteor';
 import { NavigationActions } from 'react-navigation';
@@ -41,7 +43,8 @@ class Home extends Component {
 
     this.state = {
       loading: true,
-      inboxPosts: 0
+      inboxPosts: 0,
+      appState: AppState.currentState
     };
   }
   componentDidMount() {
@@ -49,6 +52,8 @@ class Home extends Component {
       this.handleNetworkChange(reach);
     });
     NetInfo.addEventListener('change', this.handleNetworkChange);
+    AppState.addEventListener('change', this.handleAppStateChange);
+
     setTimeout(() => {
       if (this.downArrow) {
         this.downArrow.transitionTo({opacity: 0});
@@ -58,14 +63,50 @@ class Home extends Component {
       }
     }, 2500);
 
+    setTimeout(() => {
+      this.handleCheckForNotif();
+    }, 250);
   }
-
   componentWillUnmount(){
+    AppState.removeEventListener('change', this._handleAppStateChange);
     NetInfo.removeEventListener('change', this.handleNetworkChange);
   }
-
+  handleAppStateChange = (nextAppState) => {
+    if (this.state.appState.match(/inactive|background/) && nextAppState === 'active') {
+      this.handleCheckForNotif();
+    }
+    else {
+      this.setState({appState: nextAppState});
+    }
+  }
   handleNetworkChange = (info) => {
     this.props.navigation.dispatch(changeNetworkStatus(info))
+  }
+  handleCheckForNotif = () => {
+    const key = 'shouldHandleNotif';
+    AsyncStorage.getItem(key).then((obj)=>{
+      let notifData = JSON.parse(obj);
+      if (notifData !== null) {
+        this.handleRecievedNotification(notifData);
+      }
+      else {
+        AsyncStorage.removeItem(key);
+      }
+    }).catch((err) => {
+      console.log(err);
+    })
+  }
+  handleRecievedNotification = (notifData) => {
+    const { navigation } = this.props;
+    const key = 'shouldHandleNotif';
+
+    if (notifData.data.postId) {
+      const fucc = {
+        _id: notifData.data.postId
+      }
+      navigation.navigate("Reply",{ postContent: fucc });
+    }
+    AsyncStorage.removeItem(key);
   }
   updateInboxPosts(item){
   }
