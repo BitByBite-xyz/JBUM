@@ -2,8 +2,10 @@ import React, { Component, PropTypes } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Switch, Route } from 'react-router-dom';
 import { createContainer } from 'meteor/react-meteor-data';
-
+import TextField from 'material-ui/TextField';
 import { Link } from 'react-router-dom';
+import Paper from 'material-ui/Paper';
+import RaisedButton from 'material-ui/RaisedButton';
 
 //Screen components
 import StatsCard from '../components/StatsCard';
@@ -18,20 +20,36 @@ class Dashboard extends Component {
 
   countReplies(){
     const { posts } = this.props;
-
+    let count = 0;
     if (!posts) {
       return;
 
     }
-    let count = 0;
-
     _.each(posts, function (post) {
       count = count + post.post_comments.length;
     });
     return count;
   }
+  handleNotif = () => {
+    const token = this.refs.tokenField.getValue();
+    const message = this.refs.messageField.getValue()
+    const params = {
+      sendToUserId:token,
+      alert:message,
+      postId:12
+    }
+    Meteor.call('notifications.send.APNMsg',params, (err) => {
+      if (err) {
+        console.log("notif err"+err.details);
+        return;
+      } else {
+        console.log("notified");
+        }
+      });
+  }
   render() {
     const { posts, users } = this.props;
+
     return (
       <div>
         <StatsCard
@@ -49,7 +67,18 @@ class Dashboard extends Component {
           cardDiscriptor={'Replies'}
           cardStyle={{height: 100, width: 5, backgroundColor: 'green'}}
         />
-        {/*<SendPost />*/}
+        <Paper zDepth={1} style={{borderRadius: 5, paddingLeft: 20, paddingRight: 20, paddingTop: 10, paddingBottom: 10, width: 300, height:300}}>
+          <TextField
+            floatingLabelText="token"
+            ref="tokenField"
+          /><br />
+          <TextField
+            floatingLabelText="message"
+            ref="messageField"
+          />
+          <br />
+          <RaisedButton label="Send" onClick={this.handleNotif}/>
+        </Paper>
       </div>
     );
   }
