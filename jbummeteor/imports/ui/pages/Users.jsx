@@ -44,8 +44,7 @@ class Users extends Component {
     if (users) {
       return (users.map((user) => {
         const userRoles = Roles.getRolesForUser(user._id, 'default-group');
-
-        const displayRole = userRoles.length === 0 ? 'student' : userRoles.join(", ");;
+        const displayRole = userRoles.length === 0 ? 'student' : userRoles.join(", ");
 
         return (
           <TableRow key={user._id} selectable={false}>
@@ -76,14 +75,6 @@ class Users extends Component {
               </TableRow>
             </TableHeader>
             <TableBody displayRowCheckbox={false}>
-
-              {/*<TableRow>
-                <TableRowColumn style={{paddingLeft: 70}}>{user.id.toString()}</TableRowColumn>
-                <TableRowColumn style={{paddingLeft: 60}}>{user.name.toString()}</TableRowColumn>
-                <TableRowColumn style={{paddingLeft: 57}}>{user.posts.toString()}</TableRowColumn>
-                <TableRowColumn style={{paddingLeft: 51}}>{user.replies.toString()}</TableRowColumn>
-                <TableRowColumn><Link to={linkTo}><FlatButton label="Check Profile"/></Link></TableRowColumn>
-              </TableRow>*/}
               {this.renderUserList()}
             </TableBody>
           </Table>
@@ -101,6 +92,5 @@ export default createContainer(() => {
   //  flaggedPosts: Posts.find( { $where: "this.post_flags.length > 0" }).fetch(),
     posts: Posts.find({}).fetch(),
     users: Meteor.users.find({}, {sort: {roles: {$gt:1}}}).fetch()
-
   }
 }, Users);

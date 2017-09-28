@@ -6,9 +6,40 @@ import LinearProgress from 'material-ui/LinearProgress';
 import { Link } from 'react-router-dom';
 import StatsCard from '../components/StatsCard';
 import { createContainer } from 'meteor/react-meteor-data';
+import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 import { Posts } from '../../api/posts/posts';
-
+import moment from 'moment';
 import UserPost from '../components/UserPost';
+import Divider from 'material-ui/Divider';
+
+const ReplyCard = (post, replies) => (
+  <div className="col-sm-4 flaggedPostContainer" style={{marginBottom: 15}}>
+  <Card style={{width:430}}>
+    <CardHeader
+      title={'Original Post: ' + post.post_title}
+      subtitle={post.post_body}
+      actAsExpander={true}
+      showExpandableButton={true}
+    />
+    <CardActions>
+      <FlatButton label="Action1" />
+      <FlatButton label="Action2" />
+    </CardActions>
+    <CardText expandable={true} initiallyExpanded={true}>
+      {replies.map((item) => {
+        return (
+        <div style={{marginBottom:10}}>
+          {item.comment_body}
+          <div style={{marginBottom:10}}>
+            {"Created: "+moment(item.createdAt).fromNow()}
+          </div>
+          <Divider style={{width: '98%', marginTop: 10, marginLeft: '0.5%'}}/>
+        </div>)
+      })}
+    </CardText>
+  </Card>
+</div>
+);
 
 class UserProfile extends Component {
   constructor(props){
@@ -83,7 +114,28 @@ class UserProfile extends Component {
       );
     }
   }
+  renderUsersReplies = () => {
+    const { usersReplies } = this.props;
+    let returner = [];
+    console.log(usersReplies);
 
+    if (usersReplies.length > 0) {
+      let replies = [];
+      usersReplies.map((post) => {
+        post.post_comments.map((item) => {
+          replies.push(item);
+        })
+        replies.sort((a,b)=> (Date.parse(a.createdAt) < Date.parse(b.createdAt)))
+        returner.push(ReplyCard(post,replies))
+      });
+      return returner;
+    } else {
+      return (
+        <p style={{fontSize: 20, marginLeft: 15}}>This user currently hasn't replied</p>
+      );
+    }
+
+  }
   render() {
     return (
       <div>
@@ -143,23 +195,26 @@ class UserProfile extends Component {
                 {this.renderUsersPosts()}
               </div>
             </Paper>
+            <Paper className="col-sm-12 row-no-padding">
+              <div style={{backgroundColor: '#E8E8E8'}}><p style={{color: '#8B8B8B', paddingTop: 8, marginLeft: '4%', paddingBottom: 5, fontSize: 32}}>Replies</p></div>
+              <div style={{paddingLeft: 15, paddingRight: 15, marginTop: 18, marginBottom: 18}}>
+                {this.renderUsersReplies()}
+              </div>
+            </Paper>
           </div>
       </div>
     );
   }
 }
 
-
-
 export default createContainer(({ match }) => {
   const handle = Meteor.subscribe('Posts.pub.list');
   const handlee = Meteor.subscribe('userList')
   const userID = match.params.id;
   return {
-  //  flaggedPosts: Posts.find( { $where: "this.post_flags.length > 0" }).fetch(),
     usersPosts: Posts.find({user_id: userID}).fetch(),
+    usersReplies: Posts.find({'post_comments.user_id': userID}).fetch(),
     posts: Posts.find({}).fetch(),
     users: Meteor.users.find({}).fetch()
-
   }
 }, UserProfile);

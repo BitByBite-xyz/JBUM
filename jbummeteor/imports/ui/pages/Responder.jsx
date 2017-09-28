@@ -39,9 +39,10 @@ class Responder extends Component {
   handleRespond = () => {
     const { modalContent, response } = this.state;
     const reply = this.refs.replyField.getValue();
-
-    console.log(modalContent);
-
+    if (reply.length < 2) {
+      alert('Response too short!');
+      return;
+    }
     Meteor.call('Posts.reply', modalContent._id, reply, (err) => {
       if (err) {
         console.log("reply err "+err.details);
@@ -55,7 +56,6 @@ class Responder extends Component {
         });
       }
     });
-
   };
 
   handleTouchTap = () => {
@@ -67,10 +67,15 @@ class Responder extends Component {
   renderComments = () => {
     const { modalContent } = this.state;
     if (modalContent) {
+      if (!modalContent.post_comments.length) return 'No replies to display';
       return modalContent.post_comments.map((item) => (
-                <div> {item.comment_body} </div>
+                <div style={{paddingBottom:5}}> • {this.findUsername(item.user_id)}: {item.comment_body} </div>
               ));
     }
+  }
+
+  findUsername(id){
+    return this.props.userData.find((user) => (user._id === id)).username;
   }
 
   renderModalContent = () => {
@@ -80,9 +85,12 @@ class Responder extends Component {
       <div>
         <div  style={{marginLeft: '4%'}}>
           {modalContent.post_body}
+          <div style={{marginBottom: 5}}/>
         </div>
         <div  style={{marginLeft: '4%'}}>
-          {this.renderComments()}
+          <font size='5'>Replies</font>
+          <div style={{marginBottom: 10}}/>
+          {!this.renderComments()? 'Nothing to display' :this.renderComments() }
         </div>
         <TextField
           hintText="Your response"
@@ -110,6 +118,7 @@ class Responder extends Component {
       )))
     }
   }
+
   render() {
     const {  postsReady } = this.props;
     const { modalContent, postContent,response } = this.state;
@@ -154,7 +163,10 @@ class Responder extends Component {
 
 export default createContainer(() => {
   const handle = Meteor.subscribe('Posts.pub.list');
+  const userHandle = Meteor.subscribe('userList');
+
   return {
+    userData: Meteor.users.find({}).fetch(),
     responderPost: Posts.find({$or: [{post_visibility: 'Professional'}, {post_visibility: 'Adult'}]}).fetch(),
     postsReady: handle.ready()
   }
