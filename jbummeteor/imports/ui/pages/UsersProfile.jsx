@@ -14,7 +14,7 @@ import Divider from 'material-ui/Divider';
 
 const ReplyCard = (post, replies) => (
   <div className="col-sm-4 flaggedPostContainer" style={{marginBottom: 15}}>
-  <Card style={{width:430}}>
+  <Card>
     <CardHeader
       title={'Original Post: ' + post.post_title}
       subtitle={post.post_body}
@@ -123,10 +123,14 @@ class UserProfile extends Component {
       let replies = [];
       usersReplies.map((post) => {
         post.post_comments.map((item) => {
+          if (item.user_id === this.props.match.params.id) {
+
+          }
           replies.push(item);
         })
         replies.sort((a,b)=> (Date.parse(a.createdAt) < Date.parse(b.createdAt)))
         returner.push(ReplyCard(post,replies))
+        replies = [];
       });
       return returner;
     } else {

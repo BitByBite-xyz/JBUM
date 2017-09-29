@@ -17,6 +17,7 @@ import images from '../../config/images';
 import { colors } from '../../config/styles';
 import styles from './styles.js';
 import Modal from 'react-native-modal';
+import { NavigationActions } from 'react-navigation'
 
 class Panel extends PureComponent {
   constructor(props) {
@@ -74,39 +75,11 @@ class Panel extends PureComponent {
       }
     });
   }
-
-  onLikePress() {
-    const { postContent } = this.props;
-
-    this.setState({ liked: !this.state.liked });
-    if (this.state.liked) {
-      this.setState({ likes: this.state.likes = this.state.likes - 1 });
-
-      Meteor.call('Posts.unlike', postContent._id , (err) => {
-        if (err) {
-          console.log("Like err:"+err.details);
-          return;
-        } else {
-          console.log("like removed. Sad!");
-        }
-      });
-    }
-    else {
-      this.setState({ likes: this.state.likes = this.state.likes + 1 });
-      console.log(postContent._id);
-
-      Meteor.call('Posts.like', postContent._id , (err) => {
-        if (err) {
-          console.log("Like err:"+err.details);
-          return;
-        } else {
-          console.log("Like added");
-        }
-      });
-    }
-  }
-  onReplyPress(){
+  onReplyPress = () => {
     const { header, navigation, postContent } = this.props;
+    const p = postContent;
+
+
 
     let title = header;
 

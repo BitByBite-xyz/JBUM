@@ -6,6 +6,8 @@ import TextField from 'material-ui/TextField';
 import { Link } from 'react-router-dom';
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
+import DropDownMenu from 'material-ui/DropDownMenu';
+import MenuItem from 'material-ui/MenuItem';
 
 //Screen components
 import StatsCard from '../components/StatsCard';
@@ -16,7 +18,10 @@ import { Posts } from '../../api/posts/posts';
 class Dashboard extends Component {
   constructor(props){
     super(props);
+    this.state = {value: 1};
   }
+
+  handleChange = (event, index, value) => this.setState({value});
 
   countReplies(){
     const { posts } = this.props;
@@ -31,10 +36,9 @@ class Dashboard extends Component {
     return count;
   }
   handleNotif = () => {
-    const token = this.refs.tokenField.getValue();
     const message = this.refs.messageField.getValue()
     const params = {
-      sendToUserId:token,
+      sendToUserId:this.state.value,
       alert:message,
       postId:12
     }
@@ -47,6 +51,24 @@ class Dashboard extends Component {
         }
       });
   }
+
+  renderMenuItem = () => {
+    const { users } = this.props;
+    const it = [];
+    users.map((item) => {
+      if (item.pushToDevices) {
+        it.push({username: item.username, id: item._id});
+      }
+    })
+    return (
+      <DropDownMenu value={this.state.value} onChange={this.handleChange}>
+        {it.map((item) => (
+          <MenuItem value={item.id} primaryText={item.username} />
+        ))}
+        </DropDownMenu>
+    )
+  }
+
   render() {
     const { posts, users } = this.props;
 
@@ -68,10 +90,8 @@ class Dashboard extends Component {
           cardStyle={{height: 100, width: 5, backgroundColor: 'green'}}
         />
         <Paper zDepth={1} style={{borderRadius: 5, paddingLeft: 20, paddingRight: 20, paddingTop: 10, paddingBottom: 10, width: 300, height:300}}>
-          <TextField
-            floatingLabelText="token"
-            ref="tokenField"
-          /><br />
+          {this.renderMenuItem()}
+          <br />
           <TextField
             floatingLabelText="message"
             ref="messageField"

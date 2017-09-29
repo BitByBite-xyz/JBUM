@@ -11,9 +11,11 @@ import {
 
 import { NavigationActions } from 'react-navigation';
 import Swiper from 'react-native-swiper';
+import Meteor, {createContainer} from 'react-native-meteor';
 
 import { Icon } from 'react-native-elements'
 import * as Animatable from 'react-native-animatable';
+import { connect } from 'react-redux';
 
 import Ask from '../Ask';
 import Answer from '../Answer';
@@ -24,7 +26,13 @@ import {AnimateIn} from '../../components/Animations';
 
 import images from '../../config/images';
 import {quotes} from '../../config/styles';
-
+const getMeteorData = () => {
+      return {
+        connected: Meteor.status().connected,
+        user: Meteor.user(),
+        loggingIn: Meteor.loggingIn(),
+      }
+    };
 
 class Home extends Component {
   constructor(props) {
@@ -35,6 +43,11 @@ class Home extends Component {
     };
   }
   componentDidMount() {
+    if (!this.props.user) {
+      this.props.navigation.navigate('WelcomeStack')
+    }
+
+
     setTimeout(() => {
       if (this.downArrow) {
         this.downArrow.transitionTo({opacity: 0});
@@ -77,25 +90,6 @@ class Home extends Component {
     const quoteIndex = Math.floor(quotes.length * Math.random());
 
     return (
-      <Swiper
-        horizontal={false}
-        indicatorPosition={'none'}
-        showsButtons={false}
-        showsPagination={false}
-        index={1}
-        loop={false}
-        bounces={true}
-        onIndexChanged={this.onIndexChanged}
-        onScrollBeginDrag={this.onScrollBeginDrag}
-        onTouchEnd={this.onTouchEnd}
-        ref={(c) => this.pages = c}
-        keyboardShouldPersistTaps={'always'}
-      >
-        <Ask
-          navigation={navigation}
-          scrollToPage={this.scrollToPage}
-        />
-
           <View style={{ flex: 1, backgroundColor: 'transparent' }} effect='slide' >
             <Image
               source={images.homeUnderlay}
@@ -137,15 +131,12 @@ class Home extends Component {
                 name='keyboard-arrow-right' />
             </Animatable.View>
           </View >
-
-          <Answer
-            navigation={navigation}
-            toAskPage={this.toAskPage.bind(this)}/>
-          <Profile
-            navigation={navigation}/>
-      </Swiper>
     );
   }
 };
 
-export default Home;
+export default createContainer(params=>{
+  return {
+      user: Meteor.user()
+  };
+}, Home)

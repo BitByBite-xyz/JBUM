@@ -80,7 +80,7 @@ class Login extends Component {
       <Wallpaper>
         <KeyboardAvoidingView
           style={styles.container}
-          behavior="padding"
+          //behavior="padding"
         >
           <FadeInView
             duration={700}
