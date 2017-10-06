@@ -124,9 +124,8 @@ class UserProfile extends Component {
       usersReplies.map((post) => {
         post.post_comments.map((item) => {
           if (item.user_id === this.props.match.params.id) {
-
+            replies.push(item);
           }
-          replies.push(item);
         })
         replies.sort((a,b)=> (Date.parse(a.createdAt) < Date.parse(b.createdAt)))
         returner.push(ReplyCard(post,replies))

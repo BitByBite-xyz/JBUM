@@ -66,7 +66,6 @@ export default class AccountSetup extends Component {
   }
 
   onSlideChangeHandle = (index, total) => {
-    console.log(index);
     if (this.state.currentIndex < index) {
       this.swiper.scrollBy(0);
       this.showAlert(this.state.items[1]);
@@ -74,8 +73,6 @@ export default class AccountSetup extends Component {
     else if (this.state.slideComplete){
       this.state.slideComplete = false;
     }
-
-    console.log(index, total);
   }
 
   handlePageComplete = () => {

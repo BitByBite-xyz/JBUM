@@ -33,17 +33,11 @@ export default class PageOne extends Component {
       hasValidData:false
     };
 
-    //Seeding Age options
-    //S
-
-
     if (ageOptions.length === 0) {
       for (i = 8; i < 25; i++) {
         ageOptions.push(""+i);
       }
     }
-
-
   }
 
   validateData = () => {
@@ -55,9 +49,7 @@ export default class PageOne extends Component {
         !this.state.hasValidData) {
           this.state.hasValidData = true;
           this.props.handlePageComplete();
-
     }
-
   }
 
   //Age
@@ -227,28 +219,28 @@ export default class PageOne extends Component {
     return(
       <View>
         <View style={{alignItems: 'center', marginTop: '10%'}}><Text style={styles.pageTitle}>Basic Info</Text></View>
-        <View style={{marginTop: '25%'}}>
+        <View style={{marginTop: '29%'}}>
             <View>
               <TouchableHighlight onPress={this.onPressAge} underlayColor={'transparent'}>
                 <Text style={styles.text}>{displayAge}</Text>
               </TouchableHighlight>
             </View>
-            <View style={{marginTop: '17%'}}>
+            <View style={{marginTop: '13%'}}>
               <TouchableHighlight onPress={this.onPressGender} underlayColor={'transparent'}>
                 <Text style={styles.text}>{displayGender}</Text>
               </TouchableHighlight>
             </View>
-            <View style={{marginTop: '17%'}}>
+            <View style={{marginTop: '13%'}}>
             <TouchableHighlight onPress={this.onPressSexuality} underlayColor={'transparent'}>
               <Text style={styles.text}>{displaySexuality}</Text>
             </TouchableHighlight>
             </View>
-            <View style={{marginTop: '17%'}}>
+            <View style={{marginTop: '13%'}}>
               <TouchableHighlight onPress={this.onPressEthnicity} underlayColor={'transparent'}>
                 <Text style={styles.text}>{displayEthnicity}</Text>
               </TouchableHighlight>
             </View>
-            <View style={{marginTop: '17%'}}>
+            <View style={{marginTop: '13%'}}>
               <TouchableHighlight onPress={this.onPressGeneration} underlayColor={'transparent'}>
                 <Text style={styles.text}>{displayGeneration}</Text>
               </TouchableHighlight>
@@ -268,7 +260,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: '#fff',
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: 'bold',
   },
   pageTitle: {

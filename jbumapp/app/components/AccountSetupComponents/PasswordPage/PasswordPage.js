@@ -31,8 +31,8 @@ export default class PasswordPage extends Component {
       <KeyboardAvoidingView
         behavior="padding"
       >
-        <View style={{alignItems: 'center', marginTop: '35%'}}><Text style={styles.pageTitle}>Account Password</Text></View>
-        <View style={{marginTop: '25%'}}>
+        <View style={{alignItems: 'center', marginTop: '25%'}}><Text style={styles.pageTitle}>Account Password</Text></View>
+        <View style={{marginTop: '15%'}}>
           <Jiro
             style={{marginBottom: '4%'}}
             labelStyle={{fontSize: 22, color: 'white'}}
@@ -50,7 +50,7 @@ export default class PasswordPage extends Component {
             inputStyle={{ color: 'white' }}
             onChangeText={(text) => { this.setState({confirmPassword: text}) }}
           />
-          <View style={{marginTop: 50}}>
+          <View style={{marginTop: 100}}>
             <Button
               large
               iconRight

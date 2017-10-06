@@ -17,11 +17,12 @@ export default class InitialPage extends Component {
     const { handleAccountSetupComplete, loginData } = this.props;
     return(
       <View>
-        <View style={{alignItems: 'center', marginTop: '55%'}}><Text style={styles.pageTitle}>Congratulations!</Text></View>
+        <View style={{alignItems: 'center', marginTop: '25%'}}><Text style={styles.pageTitle}>Congratulations!</Text></View>
         <View style={{marginTop: '17%'}}>
-            <Text style={styles.text}>You have officially completed the account setup process. Please use and enjoy JBUM safely.
-                   {'\n'} {'\n'}Your randomized username: {loginData.username}</Text>
-            <View style={{marginTop: '17%'}}>
+            <Text style={styles.text}>You have officially completed the account setup process. Please use and enjoy JBUM safely.</Text>
+            <View style={{marginTop: 40}}/>
+            <Text style={styles.usernameText}>Your randomized username: {loginData.username}</Text>
+            <View style={{marginTop: 100}}>
               <Button
                 backgroundColor={'#4AD9B9'}
                 onPress={handleAccountSetupComplete}
@@ -45,7 +46,12 @@ const styles = StyleSheet.create({
   },
   text: {
     color: '#fff',
-    fontSize: 22,
+    fontSize: 20,
+    fontWeight: '600',
+  },
+  usernameText: {
+    color: '#fff',
+    fontSize: 17,
     fontWeight: '600',
   },
   pageTitle: {

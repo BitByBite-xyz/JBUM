@@ -32,7 +32,7 @@ export default class InitialPage extends Component {
           onPress={handleAbandonSetup}
           textStyle={{fontSize: 16, color: 'white', fontWeight: '500', padding: 0}}
           title='Cancel' />*/}
-        <View style={{alignItems: 'center', marginTop: '45%'}}><Text style={styles.pageTitle}>Account Setup</Text></View>
+        <View style={{alignItems: 'center', marginTop: '35%'}}><Text style={styles.pageTitle}>Account Setup</Text></View>
         <View style={{marginTop: '17%'}}>
             <Text style={styles.text}>All of the following information you enter will be completely anonymous and will help personalize your experience.{'\n'}{'\n'}Please do your best to fill out the these questions.</Text>
         </View>
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: '#fff',
-    fontSize: 22,
+    fontSize: 18,
     fontWeight: '600',
   },
   pageTitle: {

@@ -20,7 +20,6 @@ export default class AppContainer extends Component {
     }
   }
 
-
   logout(e){
     e.preventDefault();
     Meteor.logout( (err) => {

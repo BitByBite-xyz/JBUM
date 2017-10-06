@@ -26,7 +26,12 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
       </activity>
+      <meta-data
+          android:name="io.fabric.ApiKey"
+          android:value="941591105ad45724bff7e9d716eb1fe1d69d0ad1"
+      />
       <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
     </application>
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

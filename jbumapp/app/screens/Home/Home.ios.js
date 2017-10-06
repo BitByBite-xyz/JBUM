@@ -36,6 +36,7 @@ import {textWithoutEncoding} from '../../components/Communications';
 import images from '../../config/images';
 import {quotes} from '../../config/styles';
 import { changeNetworkStatus } from '../../actions/network';
+import { getInitialQuote } from '../../actions/quote';
 
 class Home extends Component {
   constructor(props) {
@@ -43,9 +44,11 @@ class Home extends Component {
 
     this.state = {
       loading: true,
-      inboxPosts: 0,
       appState: AppState.currentState
     };
+  }
+  componentWillMount(){
+    this.props.navigation.dispatch(getInitialQuote());
   }
   componentDidMount() {
     NetInfo.fetch().done((reach) => {
@@ -108,8 +111,6 @@ class Home extends Component {
       navigation.navigate("Reply",{ postContent: fucc });
     }
     AsyncStorage.removeItem(key);
-  }
-  updateInboxPosts(item){
   }
 
   onScrollBeginDrag = () => {
@@ -178,9 +179,9 @@ class Home extends Component {
   }
 
   render() {
-    const { navigation, numberOfNotificatons } = this.props;
+    const { navigation, numberOfNotificatons,quote } = this.props;
     const quoteIndex = Math.floor(quotes.length * Math.random());
-    const num = (this.props.numberOfNotificatons)?this.state.numberOfNotificatons:0;
+    
     return (
       <Swiper
         horizontal={false}
@@ -214,7 +215,6 @@ class Home extends Component {
         >
           <Inbox
             navigation={navigation}
-            updateInboxPosts={this.updateInboxPosts.bind(this)}
             {...this.props}
           />
           <View style={{ flex: 1, backgroundColor: 'transparent' }} effect='slide' >
@@ -235,16 +235,13 @@ class Home extends Component {
                 <Text
                   style={styles.quoteText}
                 >
-                  "{quotes[quoteIndex].quote}"
+                  "{quote === null? "":quote.quote}"
                 </Text>
                 <Text
                   style={styles.authorText}
                 >
-                  - {quotes[quoteIndex].author}
+                  - {quote === null? "":quote.author}
                 </Text>
-
-
-
             </AnimateIn>
 
             <Animatable.View ref={(c) => this.downArrow = c} delay={750} animation="slideInUp" style={{position: 'absolute', marginLeft: '35%', marginTop: '170%'}}>
@@ -286,7 +283,6 @@ class Home extends Component {
         <Answer
           toInbox={this.toInbox.bind(this)}
           navigation={navigation}
-          inboxPosts={this.state.inboxPosts}
           toAskPage={this.toAskPage.bind(this)}
           {...this.props}
         />
@@ -295,4 +291,13 @@ class Home extends Component {
   }
 };
 
-export default Home;
+const mapStateToProps = ( state, ownProps ) => {
+  if (state.quote ===  null) {
+    return {quote:'',author:''}
+  }
+  return {
+      quote: state.quote.quote
+  }
+}
+
+export default connect(mapStateToProps)(Home);
