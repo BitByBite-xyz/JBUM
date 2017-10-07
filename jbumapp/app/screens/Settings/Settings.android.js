@@ -35,7 +35,7 @@ class Settings extends Component {
         index: 0,
         key: null,
         actions: [
-          NavigationActions.navigate({ routeName: 'WelcomeStack' }),
+          NavigationActions.navigate({ routeName: 'HomeStack' }),
         ],
       });
       this.props.navigation.dispatch(resetAction);

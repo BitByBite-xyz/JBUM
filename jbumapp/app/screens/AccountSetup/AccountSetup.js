@@ -92,10 +92,10 @@ export default class AccountSetup extends Component {
 
     Meteor.call('UserData.insert', params , (err) => {
       if (err) {
-        console.log("UserData err"+err.details);
+        console.log("UserData err"+err.reason);
         Alert.alert(
           'Oops! Screenshot this and send to support!',
-          'Server error: \n\n'+err.details
+          'Server error: \n\n'+err.reason
         );
         return;
       }
