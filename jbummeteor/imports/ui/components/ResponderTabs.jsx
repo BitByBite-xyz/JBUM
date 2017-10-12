@@ -24,7 +24,7 @@ const ResponderTabs = ({push, match}) => (
     />
     <Tab
       icon={<FontIcon className="material-icons">favorite</FontIcon>}
-      label="Favorites"
+      label="Saved"
       onActive={()=> push('/responder/fav')}
     />
   </Tabs>

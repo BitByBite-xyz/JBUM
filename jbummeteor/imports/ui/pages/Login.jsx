@@ -24,6 +24,7 @@ class Login extends Component {
     super(props);
     this.state = {
       open: false,
+      error: ''
     };
     this.state = this.getMeteorData();
     this.loginUser = this.loginUser.bind(this);
@@ -126,8 +127,8 @@ class Login extends Component {
               </Paper>
             </center>
             <Snackbar
-              open={this.state.open}
-              message={error}
+              open={this.state.open?this.state.open:false}
+              message={error?error:''}
               autoHideDuration={4000}
               onRequestClose={this.handleRequestClose}
             />

@@ -25,6 +25,35 @@ Meteor.methods({
 
     Meteor.users.update(this.userId, {$set: obj });
   },
+  'responder.archive' ({postId}) {
+    // Make sure the user is logged in before inserting userdata
+    if (!Meteor.userId()) {
+      throw new Meteor.Error('not-authorized');
+    }
+
+    Meteor.users.update(this.userId, {
+      $addToSet: { archived: postId },
+    });
+  },
+  'responder.favorite' ({postId}) {
+    // Make sure the user is logged in before inserting userdata
+    if (!Meteor.userId()) {
+      throw new Meteor.Error('not-authorized');
+    }
+    console.log(Meteor.users.findOne({_id: this.userId}).favorites)
+    if (Meteor.users.findOne({_id: this.userId}).favorites){
+      if (Meteor.users.findOne({_id: this.userId}).favorites.indexOf(postId)!==-1){
+        Meteor.users.update(this.userId, {
+          $pull: { favorites: postId },
+        });
+        return;
+      }
+    }
+
+    Meteor.users.update(this.userId, {
+      $addToSet: { favorites: postId },
+    });
+  },
   'notifications.set.pushToken'({token, os}) {
     check(arguments[0], {
       token: String,

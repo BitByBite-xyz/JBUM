@@ -76,6 +76,24 @@ class Responder extends Component {
     });
   };
 
+  handleFavorite = (postContent) => {
+    const params = {
+      postId: postContent._id
+    }
+    Meteor.call('responder.favorite',params);
+    //Meteor.users.update(this.userId, {$set: obj });
+    console.log(Meteor.user())
+  }
+
+  handleArchive = (postContent) => {
+    const params = {
+      postId: postContent._id
+    }
+    Meteor.call('responder.archive',params);
+    //Meteor.users.update(this.userId, {$set: obj });
+    console.log(Meteor.user())
+  }
+
   handleTouchTap = () => {
     this.setState({
       snackbarOpen: true,
@@ -123,6 +141,21 @@ class Responder extends Component {
     )
   }
 
+  getFav = () => {
+    const { posts} = this.props; 
+    const fav = Meteor.user().favorites;
+    const arr = [];
+    if (fav){
+      posts.map((post=>{
+        if (fav.indexOf(post._id) !== -1){
+          arr.push(post);
+        }
+      }))
+    }
+    return arr;
+    
+  }
+
   renderPosts = () => {
     const { responderPosts, posts, adultPosts } = this.props;    
     const { pathname } = this.props.history.location;
@@ -136,6 +169,9 @@ class Responder extends Component {
       case '/responder/adult':
         return this.renderPostsHelper(adultPosts);
         break;
+      case '/responder/fav':
+        return this.renderPostsHelper(this.getFav());
+        break;
       default:
         return <div>yikes</div>
         break;
@@ -143,15 +179,20 @@ class Responder extends Component {
   }
 
   renderPostsHelper = (posts) => {
+    const archived = Meteor.user().archived;
     if (posts) {
       return (
-        posts.map((post) => (
-        <ProperPost
-          key={post._id}
-          postContent={post}
-          handleOpen={this.handleOpen}
-        />
-      )))
+        posts.map((post) => {
+          if (archived && archived.indexOf(post._id) !== -1) return null;
+          return (<ProperPost
+            key={post._id}
+            postContent={post}
+            handleArchive={this.handleArchive}
+            handleOpen={this.handleOpen}
+            handleFavorite={this.handleFavorite}
+        />)
+        }
+      ))
     }
   }
 
