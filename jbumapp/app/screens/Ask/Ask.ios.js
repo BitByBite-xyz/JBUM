@@ -373,7 +373,7 @@ class Ask extends Component {
                 renderHeader={this.renderHeader}
                 renderContent={this.renderContent}
                 touchableProps={{activeOpacity:1}}
-                onChange={Keyboard.dismiss()}
+                onChange={Keyboard.dismiss}
               />
             </View>
           </View>

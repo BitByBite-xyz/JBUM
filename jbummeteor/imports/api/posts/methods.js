@@ -33,6 +33,14 @@ Meteor.methods({
       post_visibility:post_visibility,
       post_flags: post_flags
     });
+
+    const params = {
+      to:'connor.larkin1@gmail.com',
+      from: '',
+      subject: 'Post Added',
+      text: JSON.stringify({title, body, post_visibility, post_categories})
+    };
+    Meteor.call('sendEmail',params);
   },
   'Posts.remove' (postId) {
     check(postId, String);

@@ -1,7 +1,8 @@
 {
   "galaxy.meteor.com": {
      "env": {
-       "MONGO_URL": "mongodb://user:fbs-3Lt-p8e-HmD@ds031607.mlab.com:31607/jbum-dev-db"
+       "MONGO_URL": "mongodb://user:fbs-3Lt-p8e-HmD@ds031607.mlab.com:31607/jbum-dev-db",
+       "MAIL_URL": "smtps://postmaster%40sandboxba8663caf3c24a2a890097aa5324e4ba.mailgun.org:feca3506c50415b91c3b1bd7d67c87e2@smtp.mailgun.org:465"
      }
    }
 }
