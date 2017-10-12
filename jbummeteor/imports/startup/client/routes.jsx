@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 // containers
 import AppContainer from '../../ui/containers/AppContainer.jsx'

@@ -34,7 +34,10 @@ export default class AppContainer extends Component {
   render(){
     return (
       <div>
-        <MainContainer />
+        <MainContainer 
+          pathname={this.props.location.pathname}
+          push={this.props.history.push.bind(this)}
+        />
       </div>
     );
   }

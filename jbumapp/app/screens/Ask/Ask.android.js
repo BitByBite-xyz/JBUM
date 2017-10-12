@@ -325,32 +325,32 @@ class Ask extends Component {
     const {title, body} = this.state;
 
     return (
-      <View>
-
-      <View style={{height: 50, backgroundColor: '#57C2D7', alignItems: 'center', justifyContent: 'center'}}>
-        <Text style={{fontSize: 24, fontFamily: 'Avenir', fontWeight: '500', color: 'white'}}>Ask a Question</Text>
-      </View>
+      <ScrollView
+        //contentContainerStyle={{backgroundColor: '#57C2D7'}}
+        style={styles.backdrop}
+        keyboardShouldPersistTaps={'always'}
+      >
+        <View style={{height: 50, backgroundColor: '#57C2D7', alignItems: 'center', justifyContent: 'center'}}>
+          <Text style={{fontSize: 24, fontFamily: 'Avenir', fontWeight: '500', color: 'white'}}>Ask a Question</Text>
+        </View>
       <View style={styles.backdrop}>
         <View style={{borderTopLeftRadius: 15, borderTopRightRadius: 15, overflow: 'hidden', backgroundColor: '#F3F3F3'}}>
         <View style={styles.bottomBox}>
           <View style={styles.bottom}>
             <View style={styles.views}>
-              <TextInput
-                ref={(c) => this._textInput = c}
-                onSubmitEditing={this._onSubmitEditing.bind(this)}
+              <AutoGrowingTextInput
                   style={styles.largeText}
-
                   placeholder='Your Question&#39;s Title'
-                  returnKeyType='go'
+                  returnKeyType='done'
                   underlineColorAndroid='transparent'
-                  onChangeText={(title) => this.setState({ title: title })}
+                  onChangeText={(title) => this.setState({ title })}
                   autoCorrect={true}
                   placeholderTextColor={'#c9c9c9'}
                   minHeight={45}
                   maxLength={300}
-                  blurOnSubmit={false}
+                 /// blurOnSubmit={true}
+                  onSubmitEditing={()=> Keyboard.dismiss()}
                   value={title}
-                  onBlur={(e) => alert(e.nativeEvent.text)}
                 />
                   <View style={styles.lineDivider} />
             </View>
@@ -360,15 +360,13 @@ class Ask extends Component {
                   placeholder='Tell us your question...'
                   returnKeyType='done'
                   underlineColorAndroid='transparent'
-                  onChangeText={(body) => this.setState({ body: body })}
-                  blurOnSubmit={false}
+                  onChangeText={(body) => this.setState({ body })}
+                  multiline={true}
+                  blurOnSubmit={true}
                   placeholderTextColor={'#c9c9c9'}
                   autoCorrect={true}
                   value={body}
                   minHeight={75}
-                  multiline
-                  blurOnSubmit
-                  //onSubmitEditing={({ nativeEvent }) => {this.setState({ result: nativeEvent.text })}}
                 />
               </View>
           </View>
@@ -379,11 +377,11 @@ class Ask extends Component {
                 renderHeader={this.renderHeader}
                 renderContent={this.renderContent}
                 touchableProps={{activeOpacity:1}}
-                onChange={() => this.dismissIt()}
+                onChange={() => Keyboard.dismiss()}
               />
             </View>
           </View>
-          <View style={{marginBottom:'47%'}}/>
+          <View style={{marginBottom:20}}/>
           <Button
             borderRadius={25}
             containerViewStyle={{marginTop:10, paddingBottom: 20}}
@@ -410,10 +408,7 @@ class Ask extends Component {
         </View>
       </View>
       </View>
-      </View>
-      </View>
-        </View>
-
+    </ScrollView>
     );
   }
 }

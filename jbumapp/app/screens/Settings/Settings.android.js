@@ -38,7 +38,7 @@ class Settings extends Component {
           NavigationActions.navigate({ routeName: 'HomeStack' }),
         ],
       });
-      this.props.navigation.dispatch(resetAction);
+      this.props.navigation.navigate('Welcome');
     });
   };
 

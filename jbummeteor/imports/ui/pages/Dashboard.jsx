@@ -54,7 +54,7 @@ class Dashboard extends Component {
 
   renderMenuItem = () => {
     const { users } = this.props;
-    const it = [];
+    let it = [];
     users.map((item) => {
       if (item.pushToDevices) {
         it.push({username: item.username, id: item._id});
@@ -69,9 +69,8 @@ class Dashboard extends Component {
     )
   }
 
-  render() {
+  renderStats = () => {
     const { posts, users } = this.props;
-
     return (
       <div>
         <StatsCard
@@ -89,7 +88,14 @@ class Dashboard extends Component {
           cardDiscriptor={'Replies'}
           cardStyle={{height: 100, width: 5, backgroundColor: 'green'}}
         />
-        <Paper zDepth={1} style={{borderRadius: 5, paddingLeft: 20, paddingRight: 20, paddingTop: 10, paddingBottom: 10, width: 300, height:300}}>
+      </div>
+    )
+  }
+
+  renderNotificationTrolling = () => {
+    return (
+      <div style={{marginLeft:15,paddingTop:100}}>
+        <Paper zDepth={1} style={{borderRadius: 5, paddingLeft: 20, paddingRight: 20, paddingTop: 10, paddingBottom: 10, width: 300, height:200}}>
           {this.renderMenuItem()}
           <br />
           <TextField
@@ -97,8 +103,19 @@ class Dashboard extends Component {
             ref="messageField"
           />
           <br />
-          <RaisedButton label="Send" onClick={this.handleNotif}/>
+          <RaisedButton label="Send" fullWidth={true} onClick={this.handleNotif}/>
         </Paper>
+      </div>
+    )
+  }
+
+  render() {
+    const { posts, users } = this.props;
+
+    return (
+      <div>
+        {this.renderStats()}
+        {this.renderNotificationTrolling()}
       </div>
     );
   }

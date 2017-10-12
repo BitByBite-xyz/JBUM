@@ -3,6 +3,8 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Switch, Route } from 'react-router-dom';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Link } from 'react-router-dom';
+import { Grid, Row, Col } from 'react-flexbox-grid';
+
 import { Posts } from '../../api/posts/posts';
 
 import Dialog from 'material-ui/Dialog';
@@ -10,9 +12,25 @@ import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import Snackbar from 'material-ui/Snackbar';
+import Badge from 'material-ui/Badge';
 
 //Screen components
 import ResponseQuestion from '../components/ResponseQuestion';
+import AllPosts from '../components/AllPosts';
+import ProperPost from '../components/ProperPost';
+
+const styles = {
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+  },
+  gridList: {
+    width: 500,
+    height: 450,
+    overflowY: 'auto',
+  },
+};
 
 class Responder extends Component {
   constructor(props){
@@ -105,18 +123,47 @@ class Responder extends Component {
     )
   }
 
-  renderResponderPosts = () => {
-    const { responderPost } = this.props;
+  renderPosts = () => {
+    const { responderPosts, posts, adultPosts } = this.props;    
+    const { pathname } = this.props.history.location;
+    switch (pathname) {
+      case '/responder':
+        return this.renderPostsHelper(responderPosts);
+        break;
+      case '/responder/all':
+        return this.renderPostsHelper(posts);
+        break;
+      case '/responder/adult':
+        return this.renderPostsHelper(adultPosts);
+        break;
+      default:
+        return <div>yikes</div>
+        break;
+    }
+  }
 
-    if (responderPost) {
-      return (responderPost.map((post) => (
-        <ResponseQuestion
+  renderPostsHelper = (posts) => {
+    if (posts) {
+      return (
+        posts.map((post) => (
+        <ProperPost
           key={post._id}
           postContent={post}
-          onClick={this.handleOpen}
+          handleOpen={this.handleOpen}
         />
       )))
     }
+  }
+
+  renderGrid = () => {
+    return (
+      <div style={{
+        display: 'flex',
+        flexDirection: 'row wrap',
+      }}>
+        {this.renderPosts()}
+      </div>
+    );
   }
 
   render() {
@@ -138,7 +185,7 @@ class Responder extends Component {
     ];
 
     return (
-      <div>
+      <div style={{paddingBottom: '50%'}}>
         <Dialog
           titleStyle={{marginLeft: '3.8%'}}
           title={modalContent.post_title}
@@ -149,7 +196,7 @@ class Responder extends Component {
           {this.renderModalContent()}
         </Dialog>
         {postsReady ?
-          this.renderResponderPosts(): null}
+          this.renderGrid(): null}
           <Snackbar
             open={this.state.snackbarOpen}
             message="Post Response Sent!"
@@ -167,7 +214,9 @@ export default createContainer(() => {
 
   return {
     userData: Meteor.users.find({}).fetch(),
-    responderPost: Posts.find({$or: [{post_visibility: 'Professional'}, {post_visibility: 'Adult'}]}).fetch(),
+    responderPosts: Posts.find({$or: [{post_visibility: 'Professional'}, {post_visibility: 'Adult'}]}).fetch(),
+    adultPosts: Posts.find({$or: [{post_visibility: 'Adult'}]}).fetch(),
+    posts: Posts.find({}),
     postsReady: handle.ready()
   }
 }, Responder);

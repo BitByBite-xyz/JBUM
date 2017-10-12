@@ -19,7 +19,7 @@ body {
 }
 
 .container {
-    max-width: 600px;
+    max-width: 1000px;
     margin: 0 auto;
     min-height: 100%;
     background: white;
@@ -153,8 +153,18 @@ header .hide-completed {
 }
 .flaggedPostContainer {
   margin-right: 0px !important;
+  margin-left: 5px !important;
 }
 .footer {
   margin-top: 20px;
   border-top: 1px solid #E8E8E8;
+}
+.dashboard-tabs > div{
+    background-color: #42A5F5!important;
+}
+.dashboard-tabs > div:nth-child(2) > div{
+    background-color: #ddd !important;
+}
+.notifications {
+    margin-top: 20px;
 }

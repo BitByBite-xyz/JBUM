@@ -31,14 +31,7 @@ class Settings extends Component {
       if (err) { alert(`notifications.rm.pushToken: ${err.reason}`); }
     });
     Meteor.logout(() => {
-      const resetAction = NavigationActions.reset({
-        index: 0,
-        key: null,
-        actions: [
-          NavigationActions.navigate({ routeName: 'WelcomeStack' }),
-        ],
-      });
-      this.props.navigation.dispatch(resetAction);
+      this.props.navigation.navigate('WelcomeStack');
     });
   };
 
@@ -65,7 +58,8 @@ class Settings extends Component {
   }
 
   handleReportProblemPress(){
-    Linking.openURL('mailto:contact@bitbybite.co?subject=🚧 Reporting a problem with JBUM 🚧&body=🌀 your problem here 🌀')
+    email('contact@bitbybite.co','connor.larkin1@gmail.com','🚧 Reporting a problem with JBUM 🚧','🌀 your problem here 🌀');
+  //  Linking.openURL('mailto:contact@bitbybite.co?subject=🚧 Reporting a problem with JBUM 🚧&body=🌀 your problem here 🌀')
   }
 
   handleNotificationPress = () => {
