@@ -157,10 +157,7 @@ class Responder extends Component {
 
   renderGrid = () => {
     return (
-      <div style={{
-        display: 'flex',
-        flexDirection: 'row wrap',
-      }}>
+      <div className='col-sm-12'>
         {this.renderPosts()}
       </div>
     );

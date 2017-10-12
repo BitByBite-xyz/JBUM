@@ -168,3 +168,6 @@ header .hide-completed {
 .notifications {
     margin-top: 20px;
 }
+.help {
+    max-height:10
+}
