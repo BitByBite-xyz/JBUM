@@ -161,7 +161,7 @@ class Responder extends Component {
     const { pathname } = this.props.history.location;
     switch (pathname) {
       case '/responder':
-        return this.renderPostsHelper(responderPosts);
+        return this.renderPostsHelper(responderPosts.sort((a,b)=> (new Date(b.createdAt) - new Date(a.createdAt))));
         break;
       case '/responder/all':
         return this.renderPostsHelper(posts);
@@ -198,7 +198,7 @@ class Responder extends Component {
 
   renderGrid = () => {
     return (
-      <div className='col-sm-12'>
+      <div>
         {this.renderPosts()}
       </div>
     );
@@ -223,7 +223,7 @@ class Responder extends Component {
     ];
 
     return (
-      <div style={{paddingBottom: '50%'}}>
+      <div class="col-sm-12" style={{paddingBottom: '50%',display: 'flex'}}>
         <Dialog
           titleStyle={{marginLeft: '3.8%'}}
           title={modalContent.post_title}
@@ -252,9 +252,9 @@ export default createContainer(() => {
 
   return {
     userData: Meteor.users.find({}).fetch(),
-    responderPosts: Posts.find({$or: [{post_visibility: 'Professional'}, {post_visibility: 'Adult'}]}).fetch(),
-    adultPosts: Posts.find({$or: [{post_visibility: 'Adult'}]}).fetch(),
-    posts: Posts.find({}),
+    responderPosts: Posts.find({$or: [{post_visibility: 'Professional'}, {post_visibility: 'Adult'}]},{sort:{createdAt: -1}}).fetch(),
+    adultPosts: Posts.find({$or: [{post_visibility: 'Adult'}]},{sort:{createdAt: -1}}).fetch(),
+    posts: Posts.find({},{sort:{createdAt: -1}}),
     postsReady: handle.ready()
   }
 }, Responder);

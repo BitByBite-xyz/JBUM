@@ -64,8 +64,9 @@ class Settings extends Component {
                 ],{ cancelable: false });
   }
 
-  handleReportProblemPress(){
-    Linking.openURL('mailto:contact@bitbybite.co?subject=🚧 Reporting a problem with JBUM 🚧&body=🌀 your problem here 🌀')
+  handleReportProblemPress = () => {
+    email('contact@bitbybite.co','connor.larkin1@gmail.com','','🚧 Reporting a problem with JBUM 🚧','🌀 your problem here 🌀');
+    Linking.openURL('mailto:contact@bitbybite.co?subject=🚧 Reporting a problem with JBUM 🚧&body=🌀 your problem here 🌀');
   }
 
   handleNotificationPress = () => {

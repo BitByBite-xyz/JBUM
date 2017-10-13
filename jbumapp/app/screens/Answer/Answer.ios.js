@@ -28,7 +28,13 @@ import Notifications from '../../components/Notifications';
 
 import {queryConstructor} from '../../lib/queryHelpers';
 import styles from './styles';
-
+const calcHeight = (qty) => {
+  if (qty < 11) {
+    return qty*45;
+  }
+  console.log(qty)
+  return '70%';
+}
 class Answer extends Component {
   constructor(props) {
     super(props);
@@ -83,13 +89,11 @@ class Answer extends Component {
       const { posts } = this.props;
       posts.map((post)=> {
         post.post_categories.map((cat)=> {
-          console.log(cat)
           if (diffCategories.indexOf(cat) === -1){
             diffCategories.push(cat);
           }
         });
       });
-      console.log(diffCategories)
       this.setState({options: diffCategories});
     }, 700);    
   }
@@ -193,7 +197,11 @@ class Answer extends Component {
       <SwipeHiddenHeader header={()=>
           <View style={styles.header}>
            <View style={styles.leftContainer}> 
-            <ModalDropdown onSelect={(index,value)=>this.onSort(index,value)} dropdownTextStyle={styles.sortText} ref={(ref) => this.modal = ref} options={options}>
+            <ModalDropdown onSelect={(index,value)=>this.onSort(index,value)} 
+                           dropdownTextStyle={styles.sortText} ref={(ref) => this.modal = ref} 
+                           options={options}
+                           dropdownStyle={{height:calcHeight(options.length)}}
+            >
             <Icon
               name='sort'
               color='#517fa4'
