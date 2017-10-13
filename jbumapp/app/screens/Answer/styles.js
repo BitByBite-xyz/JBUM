@@ -61,11 +61,22 @@ export default StyleSheet.create({
       flexDirection: 'row',
       justifyContent: 'flex-end',
       alignItems: 'center',
-      paddingRight: '1000',
+    //  paddingRight: '1000',
       backgroundColor: 'red',
+    },
+    leftContainer: {
+      flex: 1,
+    //  flexDirection: 'row',
+   //   justifyContent: 'flex-start',
+      alignItems: 'flex-start',
+      marginLeft: 12
+
+     // paddingLeft: 1000,
+      //backgroundColor: 'red',
     },
     centerContainer: {
       flex: 1,
+      marginLeft:'-75%',
       justifyContent:'center'
     },
     headerText:{
@@ -75,5 +86,11 @@ export default StyleSheet.create({
       fontFamily: 'Avenir',
       textAlign:'center',
       marginLeft: '10%'
+    },
+    sortText:{
+      color: 'black',
+      fontSize: 15,
+      fontWeight: '300',
+      fontFamily: 'Avenir',
     },
 });

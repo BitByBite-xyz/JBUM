@@ -30,7 +30,7 @@
     "react-native-keyboard-aware-scroll-view": "^0.3.0",
     "react-native-linear-gradient": "^2.2.0",
     "react-native-modal": "^2.5.0",
-    "react-native-modal-dropdown": "^0.4.4",
+    "react-native-modal-dropdown": "^0.5.0",
     "react-native-pages": "^0.5.4",
     "react-native-panel": "^1.0.3",
     "react-native-parallax-scroll-view": "git+https://github.com/fungilation/react-native-parallax-scroll-view.git",

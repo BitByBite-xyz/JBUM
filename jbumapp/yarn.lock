@@ -4138,9 +4138,9 @@ react-native-meteor@^1.1.0:
     underscore "^1.8.3"
     wolfy87-eventemitter "^4.3.0"
 
-react-native-modal-dropdown@^0.4.4:
-  version "0.4.4"
-  resolved "https://registry.yarnpkg.com/react-native-modal-dropdown/-/react-native-modal-dropdown-0.4.4.tgz#1164f3844b3847391fc3a0d0133189e6629d02c2"
+react-native-modal-dropdown@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/react-native-modal-dropdown/-/react-native-modal-dropdown-0.5.0.tgz#f6c4cd4d077792e56902b43b14d83959f5f40f46"
 
 react-native-modal@^2.5.0:
   version "2.5.0"

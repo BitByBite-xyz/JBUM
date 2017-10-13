@@ -7,15 +7,17 @@ import {
   StatusBar,
   FlatList,
   Animated,
-  Alert
+  Alert,
+  Modal
 } from 'react-native';
 import Meteor, { createContainer } from 'react-native-meteor';
 import FadeInView from 'react-native-fade-in-view';//{/* onFadeComplete={() => alert('Ready') */}
 import DropdownAlert from 'react-native-dropdownalert'
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
-import { Badge } from 'react-native-elements'
+import { Badge,Icon } from 'react-native-elements'
 import { NavigationActions } from 'react-navigation';
 import { connect } from 'react-redux';
+import ModalDropdown from 'react-native-modal-dropdown';
 
 import SwipeHiddenHeader from '../../components/SwipeHiddenHeader';
 import QuestionPanel from '../../components/QuestionPanel';
@@ -28,19 +30,14 @@ import {queryConstructor} from '../../lib/queryHelpers';
 import styles from './styles';
 
 class Answer extends Component {
-  /*static navigationOptions = {
-    headerRight: ({ navigation }) => <Notifications navigation={navigation} />,
-  };*/
-  static navigationOptions = ({ navigation }) => {
-        const { params = {} } = navigation.state;
-        return {
-            headerRight: <Button title="S" onPress={() => null} />
-        };
-  };
   constructor(props) {
     super(props);
     this.state= {
-      scrollY: new Animated.Value(0)
+      scrollY: new Animated.Value(0),
+      sortValue:'',
+      sortIndex:'0',
+      modalVisible: false,
+      options: ['Default','⏳⏳⏳', '💬💬💬']
     };
 
     this.mounted = false;
@@ -65,6 +62,7 @@ class Answer extends Component {
 
   componentDidMount(){
     const { navigation } = this.props;
+    const diffCategories = this.state.options;
     if (Meteor.userId()) { //this is cancer
       if (Meteor.user().profile) {
         if (!Meteor.user().profile.isAccountSetupComplete) {
@@ -80,9 +78,29 @@ class Answer extends Component {
         navigation.navigate('AccountSetup');
       }
     }
+
+    setTimeout(() => {
+      const { posts } = this.props;
+      posts.map((post)=> {
+        post.post_categories.map((cat)=> {
+          console.log(cat)
+          if (diffCategories.indexOf(cat) === -1){
+            diffCategories.push(cat);
+          }
+        });
+      });
+      console.log(diffCategories)
+      this.setState({options: diffCategories});
+    }, 700);    
+  }
+
+  showModal(){
+    this.setState({modalVisible: true})
+    this.forceUpdate()
   }
 
   onAskPress = () => {
+    //this.modal.show();
     this.props.toAskPage();
     //this.props.navigation.navigate('Ask');
     //this.dropdown.alertWithType('error', 'Error','dd')
@@ -131,13 +149,60 @@ class Answer extends Component {
     );
   };
 
+  getData = () => {
+    const { posts } = this.props;
+    const { sortIndex, sortValue, options } = this.state;
+    const returner = [];
+
+    switch (sortIndex) {
+      case '0':
+        return posts.sort( (a,b) => {
+          return a.post_comments.length - b.post_comments.length;
+        });
+        break;
+      case '1':
+        return posts.sort( (a,b) => {
+          return new Date(b.createdAt) - new Date(a.createdAt);
+        });
+        break;
+      case '2':
+        return posts.sort( (a,b) => {
+          return b.post_comments.length - a.post_comments.length;
+        });
+        break;
+      default:
+        posts.map((post)=> {
+          if (post.post_categories.indexOf(sortValue) !== -1){
+            returner.push(post);
+          }
+        });
+        return returner;
+        break;
+    }
+  }
+
+  onSort = (index,value) => {
+    this.setState({sortIndex: index, sortValue: value});
+  }
+
+
   render() {
     const { posts,loading,navigation,inboxPosts,toInbox,numberOfNotificatons } = this.props;
+    const { modalVisible, options } = this.state;
     return (
       <SwipeHiddenHeader header={()=>
           <View style={styles.header}>
+           <View style={styles.leftContainer}> 
+            <ModalDropdown onSelect={(index,value)=>this.onSort(index,value)} dropdownTextStyle={styles.sortText} ref={(ref) => this.modal = ref} options={options}>
+            <Icon
+              name='sort'
+              color='#517fa4'
+              onPress={()=> this.modal.show()}
+            />
+            </ModalDropdown>
+            </View>
             <View style={styles.centerContainer}>
-              <Text style={styles.headerText}>Just Between U and Me</Text>
+              <Text style={styles.headerText}>Answer</Text>
             </View>
             <View style={{paddingRight:10}}>{/*//i hate this*/}
             <View style={styles.headerRight}>
@@ -157,32 +222,41 @@ class Answer extends Component {
         <StatusBar
           barStyle="light-content"
         />
-
         {loading ?
           <Loading /> :
           <FlatList
-            data={posts}
+            data={this.getData()}
             keyExtractor={(item, index) => item._id}
             extraData={this.state}
             initialNumToRender={5}
             renderItem={({item}) => (
-
               <QuestionPanel
                 postContent={item}
                 header={item.post_title}
                 navigation={this.props.navigation}
-              />)}
+              />)
+            }
             ListFooterComponent={this.renderFooter}
             onEndReachedThreshold={0.5}
             removeClippedSubviews={false}
             ListHeaderComponent={this.renderHeader}
           />}
-          <DropdownAlert
-            ref={(ref) => this.dropdown = ref}
-            onClose={(data) => this.onClose(data)}
-          />
-
-
+        <Modal
+          animationType="slide"
+          transparent={false}
+          visible={modalVisible}
+          onRequestClose={() => {alert("Modal has been closed.")}}
+        >
+        <View style={{marginTop: 22}}>
+          <View>
+            <Text>Hello World!</Text>
+          </View>
+          </View>
+        </Modal>
+        <DropdownAlert
+          ref={(ref) => this.dropdown = ref}
+          onClose={(data) => this.onClose(data)}
+        />
       </SwipeHiddenHeader>
     );
   }
@@ -195,11 +269,11 @@ const mapStateToProps = ( state, ownProps ) => {
 }
 
 export default createContainer(() => {
-  var answerTerms = {
+  const answerTerms = {
     viewName: 'answerPosts',
     limit:50
   }
-  var inboxTerms = {
+  const inboxTerms = {
     viewName: 'inboxPosts',
     limit:50
   }
@@ -208,7 +282,6 @@ export default createContainer(() => {
 
   var answerParameters = queryConstructor(answerTerms);
   var inboxParameters = queryConstructor(inboxTerms);
-
 
   return {
     posts: Meteor.collection('posts').find(answerParameters.find, answerParameters.sort)

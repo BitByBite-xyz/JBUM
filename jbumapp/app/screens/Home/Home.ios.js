@@ -12,7 +12,8 @@ import {
   NetInfo,
   DeviceEventEmitter,
   AsyncStorage,
-  AppState
+  AppState,
+  ImageBackground
 } from 'react-native';
 import { Meteor } from 'react-native-meteor';
 import { NavigationActions } from 'react-navigation';
@@ -218,15 +219,15 @@ class Home extends Component {
             {...this.props}
           />
           <View style={{ flex: 1, backgroundColor: 'transparent' }} effect='slide' >
-            <Image
+            <ImageBackground
               source={images.homeUnderlay}
               style={{width: '100%', height: '100%', position: 'absolute'}}
-            />
-            <Image
+            >
+            {/*<Image
               source={images.homeBackground}
               style={{width: '100%', height: '85.5%'}}
-            />
-            <AnimateIn>
+            />*/}
+              
 
                 <Text style={styles.welcomeText}>
                   Welcome,
@@ -242,7 +243,7 @@ class Home extends Component {
                 >
                   - {quote === null? "":quote.author}
                 </Text>
-            </AnimateIn>
+
 
             <Animatable.View ref={(c) => this.downArrow = c} delay={750} animation="slideInUp" style={{position: 'absolute', marginLeft: '35%', marginTop: '170%'}}>
               <Icon
@@ -262,7 +263,7 @@ class Home extends Component {
                 name='keyboard-arrow-left' />
             </Animatable.View>
 
-        <Animatable.View animation="slideInUp" style={{marginTop: '-4%'}}>
+        <Animatable.View animation="slideInUp" style={{marginTop: '53%'}}>
           <ActionButton buttonColor="#F1606E">
             <ActionButton.Item textStyle={{fontSize: 14}} buttonColor='#9b59b6' title="Call 911" onPress={() => this.handleFloatingButtonPress('911')}>
               <Icon name="call" style={styles.actionButtonIcon} color={'white'} />
@@ -275,6 +276,7 @@ class Home extends Component {
             </ActionButton.Item>
           </ActionButton>
         </Animatable.View>
+        </ImageBackground>
           </View >
           <Profile
             navigation={navigation}
