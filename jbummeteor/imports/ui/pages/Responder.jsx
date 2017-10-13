@@ -198,7 +198,7 @@ class Responder extends Component {
 
   renderGrid = () => {
     return (
-      <div className='col-sm-12'>
+      <div>
         {this.renderPosts()}
       </div>
     );
@@ -223,7 +223,7 @@ class Responder extends Component {
     ];
 
     return (
-      <div style={{paddingBottom: '50%'}}>
+      <div class="col-sm-12" style={{paddingBottom: '50%',display: 'flex'}}>
         <Dialog
           titleStyle={{marginLeft: '3.8%'}}
           title={modalContent.post_title}

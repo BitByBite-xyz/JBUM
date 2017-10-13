@@ -18,7 +18,7 @@ const ChartPanel = (props) => {
     const color =  "#"+((1<<24)*Math.random()|0).toString(16);
 
     return (
-        <div className="col-sm-6" style={{marginTop: 10}}>
+        <div className="col-sm-6" style={{marginLeft:30,marginTop: 10, width: 450,height:300}}>
             <Paper zDepth={1}>
                 <div style={{display: 'flex', flexDirection: 'row'}}>
                     <div style={{height: 266, width: 5, backgroundColor: color}}/>

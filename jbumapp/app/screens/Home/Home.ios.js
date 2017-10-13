@@ -263,7 +263,7 @@ class Home extends Component {
                 name='keyboard-arrow-left' />
             </Animatable.View>
 
-        <Animatable.View animation="slideInUp" style={{marginTop: '53%'}}>
+        <Animatable.View animation="slideInUp" style={{marginTop: '60%'}}>
           <ActionButton buttonColor="#F1606E">
             <ActionButton.Item textStyle={{fontSize: 14}} buttonColor='#9b59b6' title="Call 911" onPress={() => this.handleFloatingButtonPress('911')}>
               <Icon name="call" style={styles.actionButtonIcon} color={'white'} />
