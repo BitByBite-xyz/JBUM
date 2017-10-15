@@ -27,12 +27,19 @@ class Settings extends Component {
   }
 
   signOut = () => {
-    Meteor.call('notifications.remove.pushToken', err => {
-      if (err) { alert(`notifications.rm.pushToken: ${err.reason}`); }
-    });
-    Meteor.logout(() => {
-      this.props.navigation.navigate('WelcomeStack');
-    });
+    Alert.alert('You are about to log out!',
+    'Make sure that you write down your username if you want to be able to log back in.',
+    [
+      {text: 'Ok', onPress: () => {
+        Meteor.call('notifications.remove.pushToken', err => {
+          if (err) { alert(`notifications.rm.pushToken: ${err.reason}`); }
+        });
+        Meteor.logout(() => {
+          this.props.navigation.navigate('WelcomeStack');
+        });
+      }},
+      {text: 'Cancel', onPress: () => (null)},
+    ],{ cancelable: false });
   };
 
   handleAccountPress(){
@@ -58,8 +65,9 @@ class Settings extends Component {
   }
 
   handleReportProblemPress = () => {
-    email('contact@bitbybite.co','connor.larkin1@gmail.com','🚧 Reporting a problem with JBUM 🚧','🌀 your problem here 🌀');
-  //  Linking.openURL('mailto:contact@bitbybite.co?subject=🚧 Reporting a problem with JBUM 🚧&body=🌀 your problem here 🌀')
+    console.log('f')
+    email('contact@bitbybite.co','connor.larkin1@gmail.com','','🚧 Reporting a problem with JBUM 🚧','🌀 your problem here 🌀');
+    Linking.openURL('mailto:contact@bitbybite.co?subject=🚧 Reporting a problem with JBUM 🚧&body=🌀 your problem here 🌀')
   }
 
   handleNotificationPress = () => {
@@ -236,14 +244,10 @@ class Settings extends Component {
                     <View style={{alignItems: 'center'}}>
                       <Text style={styles.popupTitle}>Change Password</Text>
                     </View>
-
                     {this.renderChangePass()}
-
                   </View>
-
                 </View>
               </Modal>
-
             </View>
           </View>
     );

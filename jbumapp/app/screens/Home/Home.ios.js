@@ -18,7 +18,6 @@ import {
 import { Meteor } from 'react-native-meteor';
 import { NavigationActions } from 'react-navigation';
 import Swiper from 'react-native-swiper';
-import ActionButton from 'react-native-action-button';
 import { Icon } from 'react-native-elements'
 import * as Animatable from 'react-native-animatable';
 import { connect } from 'react-redux';
@@ -33,24 +32,26 @@ import Inbox from '../Inbox';
 
 import {AnimateIn} from '../../components/Animations';
 import {textWithoutEncoding} from '../../components/Communications';
+import ActionButton from '../../components/ActionButton';
 
 import images from '../../config/images';
-import {quotes} from '../../config/styles';
+import {quotes, DEVICE_WIDTH} from '../../config/styles';
 import { changeNetworkStatus } from '../../actions/network';
 import { getInitialQuote } from '../../actions/quote';
 
 class Home extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       loading: true,
       appState: AppState.currentState
     };
   }
+
   componentWillMount(){
     this.props.navigation.dispatch(getInitialQuote());
   }
+
   componentDidMount() {
     NetInfo.fetch().done((reach) => {
       this.handleNetworkChange(reach);
@@ -72,10 +73,12 @@ class Home extends Component {
       this.handleCheckForNotif();
     }, 250);
   }
+
   componentWillUnmount(){
     AppState.removeEventListener('change', this._handleAppStateChange);
     NetInfo.removeEventListener('change', this.handleNetworkChange);
   }
+
   handleAppStateChange = (nextAppState) => {
     if (this.state.appState.match(/inactive|background/) && nextAppState === 'active') {
       this.handleCheckForNotif();
@@ -84,9 +87,11 @@ class Home extends Component {
       this.setState({appState: nextAppState});
     }
   }
+
   handleNetworkChange = (info) => {
     this.props.navigation.dispatch(changeNetworkStatus(info))
   }
+
   handleCheckForNotif = () => {
     const key = 'shouldHandleNotif';
     AsyncStorage.getItem(key).then((obj)=>{
@@ -101,6 +106,7 @@ class Home extends Component {
       console.log(err);
     })
   }
+
   handleRecievedNotification = (notifData) => {
     const { navigation } = this.props;
     const key = 'shouldHandleNotif';
@@ -114,18 +120,20 @@ class Home extends Component {
     AsyncStorage.removeItem(key);
   }
 
-  onScrollBeginDrag = () => {
+  onScrollBeginDrag = () => {    
     this.downArrow.transitionTo({opacity: 0});
     this.rightArrow.transitionTo({opacity: 0});
     this.leftArrow.transitionTo({opacity: 0});
     this.upArrow.transitionTo({opacity: 0});
   }
+  
   toInbox(){
     this.pages.scrollBy(-1,true);
     setTimeout(() => {
       this.horizontalPage.scrollBy(-1,true);
     }, 300);
   }
+
   toAskPage(){
     this.pages.scrollBy(-2,true)
   }
@@ -227,23 +235,27 @@ class Home extends Component {
               source={images.homeBackground}
               style={{width: '100%', height: '85.5%'}}
             />*/}
-              
-
-                <Text style={styles.welcomeText}>
-                  Welcome,
-                </Text>
-
-                <Text
-                  style={styles.quoteText}
-                >
-                  "{quote === null? "":quote.quote}"
-                </Text>
-                <Text
-                  style={styles.authorText}
-                >
-                  - {quote === null? "":quote.author}
-                </Text>
-
+              <View style={{flex:1}}>
+                <View style={{marginTop: '50%', marginLeft: '7%',backgroundColor: 'transparent', width: '90%', overflow: 'hidden'}}>
+                  <View style={{ borderRadius: 10, overflow: 'hidden'}}>
+                    <Text style={styles.welcomeText}>
+                      Welcome!
+                    </Text>
+                  </View>
+                    <View style={{marginTop: 15, borderRadius: 10,overflow: 'hidden'}}>
+                      <Text
+                        style={styles.quoteText}
+                      >
+                        "{quote === null? "":quote.quote}"
+                      </Text>
+                      <Text
+                        style={styles.authorText}
+                      >
+                        - {quote === null? "":quote.author}
+                      </Text>
+                    </View>
+                  </View>
+              </View>
 
             <Animatable.View ref={(c) => this.downArrow = c} delay={750} animation="slideInUp" style={{position: 'absolute', marginLeft: '35%', marginTop: '170%'}}>
               <Icon
@@ -263,8 +275,8 @@ class Home extends Component {
                 name='keyboard-arrow-left' />
             </Animatable.View>
 
-        <Animatable.View animation="slideInUp" style={{marginTop: '60%'}}>
-          <ActionButton buttonColor="#F1606E">
+        <Animatable.View animation="slideInUp" style={{flex:1,position: 'absolute', right: 37, bottom: 100}}>
+          <ActionButton ref={(c) => this.but = c} degrees={136} icon={<Icon name="call" style={styles.actionButtonIcon} color={'white'} />} fixNativeFeedbackRadius={true} buttonColor="#F1606E">
             <ActionButton.Item textStyle={{fontSize: 14}} buttonColor='#9b59b6' title="Call 911" onPress={() => this.handleFloatingButtonPress('911')}>
               <Icon name="call" style={styles.actionButtonIcon} color={'white'} />
             </ActionButton.Item>

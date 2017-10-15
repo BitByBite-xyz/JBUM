@@ -34,11 +34,7 @@ const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#913D88', '#F7CA18'
 const ProperPost = ({handleOpen, postContent,handleArchive,handleFavorite}) => {
   let i = -1;
   return (
-<<<<<<< HEAD
-    <div  className="col-sm-2" style={{margin:20,overflow:'scroll', minHeight: 100,minWidth:350}}>
-=======
-    <div  className="col-sm-2" style={{margin:20,overflow:'scroll', height:400,minWidth:350}}>
->>>>>>> 490bc9ed37c870263a8a47a98abe16961b3dbed3
+    <div  className="col-sm-2" style={{margin:20,overflow:'scroll', minHeight: 100,minWidth:370}}>
       <Card style={{width:350}}>
         <CardHeader
           title={postContent.post_title}
@@ -46,11 +42,7 @@ const ProperPost = ({handleOpen, postContent,handleArchive,handleFavorite}) => {
           actAsExpander={true}
           showExpandableButton={true}
        />
-<<<<<<< HEAD
         <div style={{marginLeft:10,display: 'flex',overflow:'scroll'}}>
-=======
-        <div style={{marginLeft:10,display: 'flex'}}>
->>>>>>> 490bc9ed37c870263a8a47a98abe16961b3dbed3
           {postContent.post_categories.map((cat) => {
             i++;
             return (

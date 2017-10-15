@@ -1,4 +1,5 @@
 import { StyleSheet, Dimensions } from 'react-native';
+import { DEVICE_WIDTH } from '../../config/styles';
 
 export default StyleSheet.create({
   container: {
@@ -20,25 +21,21 @@ export default StyleSheet.create({
     height: 22,
   },
   quoteText: {
-    marginTop: '49%',
-    marginLeft: '10%',
     fontFamily: 'Avenir',
     fontSize: 18,
     fontWeight: '400',
     marginRight: 35,
-    textAlign:'auto'
+    textAlign:'auto',
+    zIndex: 1000
   },
   authorText: {
     marginTop: '2%',
-    marginLeft: '10%',
     fontFamily: 'Avenir',
     fontSize: 18,
     fontWeight: '300',
     marginRight: 35
   },
   welcomeText: {
-    top:165,
-    marginLeft: '10%',
     fontFamily: 'Avenir',
     fontSize: 45,
     fontWeight:'bold'

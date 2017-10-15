@@ -101,7 +101,7 @@ class Home extends Component {
             />
             <AnimateIn>
               <Text style={{ marginTop: '-93%', marginLeft: '10%', fontFamily: 'Avenir', fontSize: 45, fontWeight: '700'}}>
-                Welcome,
+                Welcome!
               </Text>
 
               <Text

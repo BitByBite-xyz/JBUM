@@ -11,8 +11,8 @@ import Picker from 'react-native-picker';
 const ageOptions = [];
 const genderOptions = ['Male', 'Female', 'Transgender', 'Gender Fluid', 'Other'];
 const sexualityOptions = ['Heterosexual', 'Homosexual', 'Bisexual', 'Asexual', 'Pansexual', 'Other']
-const genOptions = ['Yes', 'No'];
-const ethOptions = ['Caucasian', 'Black or African American', 'Hispanic and or Latino', 'Asian', 'Pacific Islander', 'American Indian', 'Don\'t Know'];
+const genOptions = ['Yes', 'No', 'I Don\’t Know'];
+const ethOptions = ['Caucasian', 'Black or African American', 'Hispanic and or Latino', 'Asian', 'Pacific Islander', 'American Indian', 'Other'];
 
 export default class PageOne extends Component {
   constructor(props) {
@@ -214,7 +214,7 @@ export default class PageOne extends Component {
     const displayGender = this.state.showGender ? 'Your Gender: ' + this.state.selectedGender : 'Please Select Your Gender';
     const displaySexuality = this.state.showSexuality ? 'Your Sexuality: ' + this.state.selectedSexuality : 'Please Select Your Sexuality';
     const displayEthnicity = this.state.showEthnicity ? 'Ethnicicty: ' + this.state.selectedEthnicity : 'Select Ethnicicty';
-    const displayGeneration = this.state.showGeneration ? 'Parents Born in the US: ' + this.state.selectedGeneration : 'Was one or both of your parent(s)/guardian(s) born in the United States?';
+    const displayGeneration = this.state.showGeneration ? 'Parent(s)/Guardian(s) Born in the US: ' + this.state.selectedGeneration : 'Was one or both of your parent(s)/guardian(s) born in the United States?';
 
     return(
       <View>

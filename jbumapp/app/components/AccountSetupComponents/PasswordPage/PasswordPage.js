@@ -12,6 +12,8 @@ import { Jiro } from 'react-native-textinput-effects';
 import { Button } from 'react-native-elements'
 import { Accounts } from 'react-native-meteor';
 
+import Loading from '../../Loading';
+
 export default class PasswordPage extends Component {
   constructor() {
     super();
@@ -19,12 +21,13 @@ export default class PasswordPage extends Component {
     this.state = {
       password : '',
       confirmPassword: '',
+      isLoading:false
     };
 
   }
 
   render() {
-    const {password, confirmPassword} = this.state;
+    const {password, confirmPassword, isLoading} = this.state;
     const { validateInput } = this.props;
     return(
 
@@ -32,7 +35,7 @@ export default class PasswordPage extends Component {
         behavior="padding"
       >
         <View style={{alignItems: 'center', marginTop: '25%'}}><Text style={styles.pageTitle}>Account Password</Text></View>
-        <View style={{marginTop: '15%'}}>
+        <View style={{marginTop: '15%'}}> 
           <Jiro
             style={{marginBottom: '4%'}}
             labelStyle={{fontSize: 22, color: 'white'}}
@@ -50,16 +53,23 @@ export default class PasswordPage extends Component {
             inputStyle={{ color: 'white' }}
             onChangeText={(text) => { this.setState({confirmPassword: text}) }}
           />
+          {isLoading ? <View style={{marginTop: 110}}> 
+                         <Loading /> 
+                      </View> :
           <View style={{marginTop: 100}}>
             <Button
               large
               iconRight
               backgroundColor={'#4AD9B9'}
-              onPress={() => validateInput(password, confirmPassword)}
+              onPress={() => {
+                this.setState({isLoading:true});
+                validateInput(password, confirmPassword);
+              }}
               icon={{name: 'account-circle'}}
               textStyle={{fontSize: 22, color: 'white'}}
               title='Choose Password' />
           </View>
+          }
         </View>
       </KeyboardAvoidingView>
     );
