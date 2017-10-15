@@ -9,7 +9,7 @@ Check out [this article](https://medium.com/@spencer_carli/organizing-a-react-na
 - [Install Meteor](https://www.meteor.com/install)
 - [Install React Native](https://facebook.github.io/react-native/docs/getting-started.html#content)
 - Clone this repo
-- From the `jbumapp` directory run `npm install`
+- From the `jbumapp` directory run `yarn`
 
 ## Running on iOS Simulator
 
@@ -21,9 +21,9 @@ _Note_: You must be on a Mac for this.
 
 ## Running on iOS Device
 
-- Be sure your Meteor app is running: In the ```MeteorApp``` directory, type ```meteor```
+- Be sure your Meteor app is running: In the ```jbummeteor``` directory, type ```meteor```
 - Get the IP address of your machine (you can run `ipconfig getifaddr en1` to do so)
-- In `RNApp/app/config/settings.js` change `localhost` to your machine's IP address
+- In `jbumapp/app/config/settings.js` change `localhost` to your machine's IP address
 - Plug your device into your computer (make sure it's on the same network)
 - Open the project in Xcode
 - Select your device in Xcode and press "Build and run"
