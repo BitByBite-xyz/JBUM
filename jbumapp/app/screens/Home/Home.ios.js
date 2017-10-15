@@ -275,7 +275,7 @@ class Home extends Component {
                 name='keyboard-arrow-left' />
             </Animatable.View>
 
-        <Animatable.View animation="slideInUp" style={{flex:1,position: 'absolute', right: 37, bottom: 100}}>
+        <Animatable.View animation="slideInUp" style={{flex:1,position: 'absolute', right: 55, bottom: 110}}>
           <ActionButton ref={(c) => this.but = c} degrees={136} icon={<Icon name="call" style={styles.actionButtonIcon} color={'white'} />} fixNativeFeedbackRadius={true} buttonColor="#F1606E">
             <ActionButton.Item textStyle={{fontSize: 14}} buttonColor='#9b59b6' title="Call 911" onPress={() => this.handleFloatingButtonPress('911')}>
               <Icon name="call" style={styles.actionButtonIcon} color={'white'} />
@@ -283,7 +283,7 @@ class Home extends Component {
             <ActionButton.Item textStyle={{fontSize: 14}} buttonColor='#3498db' title="Text a Tip" icon='call' onPress={() => this.handleFloatingButtonPress("textATip")}>
               <Icon name="textsms" style={styles.actionButtonIcon} color={'white'} />
             </ActionButton.Item>
-            <ActionButton.Item textStyle={{fontSize: 14}} buttonColor='#1abc9c' title="24 Hour Suicide Lifeline" onPress={() => this.handleFloatingButtonPress("lifeline")}>
+            <ActionButton.Item textStyle={{fontSize: 14}} buttonColor='#1abc9c' title="Suicide Hotline" onPress={() => this.handleFloatingButtonPress("lifeline")}>
               <Icon name="call" style={styles.actionButtonIcon} color={'white'} />
             </ActionButton.Item>
           </ActionButton>

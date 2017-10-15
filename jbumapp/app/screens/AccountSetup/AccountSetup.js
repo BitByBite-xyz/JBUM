@@ -38,7 +38,6 @@ export default class AccountSetup extends Component {
       {key: 0, backgroundColor: MAIN_WARN_COLOR, type: 'info', title: 'Info', message: 'Complete this slide before moving on!'},
       {key: 1, backgroundColor: MAIN_WARN_COLOR, type: 'warn', title: 'Warning', message: 'Complete this slide before moving on!'},
     ]
-
     this.state = {
       currentIndex: 0,
       items: items,
@@ -80,6 +79,7 @@ export default class AccountSetup extends Component {
   }
 
   handleAddData = (field, response) => {
+    console.log(field,response,this.state.profileData)
     this.state.profileData.push({field:field, response:response.toString()});
   }
 
@@ -152,7 +152,7 @@ export default class AccountSetup extends Component {
   }
 
   dismissAlert = () => {
-    this.dropdown.onClose()
+    this.dropdown.onClose();
   }
 
   showAlert = (item) => { //for DropdownAlert
