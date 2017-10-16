@@ -9,18 +9,18 @@ const ResponderTabs = ({push, match}) => (
   <Tabs className="dashboard-tabs" inkBarStyle={{background: 'blue'}}>
     <Tab
       icon={<FontIcon className="material-icons">feedback</FontIcon>}
-      label="Responder"
+      label="Professional"
       onActive={()=> push('/responder')}
-    />
-    <Tab
-      icon={<AllIcon/>}
-      label="All"
-      onActive={()=> push('/responder/all')}
     />
     <Tab
       icon={<AdultIcon/>}
       label="Adult"
       onActive={()=> push('/responder/adult')}
+    />
+    <Tab
+      icon={<AllIcon/>}
+      label="All"
+      onActive={()=> push('/responder/all')}
     />
     <Tab
       icon={<FontIcon className="material-icons">favorite</FontIcon>}

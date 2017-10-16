@@ -26,6 +26,7 @@ import Notifications from '../../components/Notifications';
 
 import {queryConstructor} from '../../lib/queryHelpers';
 import styles from './styles';
+import { getInitialQuote } from '../../actions/quote';
 
 class Answer extends Component {
   /*static navigationOptions = {
@@ -49,6 +50,7 @@ class Answer extends Component {
   }
 
   componentWillMount() {
+    this.props.navigation.dispatch(getInitialQuote());
     this.mounted = true;
     //this.props.navigation.navigate('Inbox')
   }

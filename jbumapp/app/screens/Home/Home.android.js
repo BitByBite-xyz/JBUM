@@ -86,7 +86,7 @@ class Home extends Component {
   }
 
   render() {
-    const { navigation } = this.props;
+    const { navigation, quote } = this.props;
     const quoteIndex = Math.floor(quotes.length * Math.random());
 
     return (
@@ -107,12 +107,12 @@ class Home extends Component {
               <Text
                 style={styles.quoteText}
               >
-                "{quotes[quoteIndex].quote}"
+                "{quote === null? "":quote.quote}"
               </Text>
               <Text
                 style={styles.authorText}
               >
-                - {quotes[quoteIndex].author}
+                - {quote === null? "":quote.author}
               </Text>
 
             </AnimateIn>
@@ -135,8 +135,19 @@ class Home extends Component {
   }
 };
 
+const mapStateToProps = ( state, ownProps ) => {
+  if (state.quote ===  null) {
+    return {quote:'',author:''}
+  }
+  return {
+      quote: state.quote.quote
+  }
+}
+
+const ConnectedHome = connect(mapStateToProps)(Home);
+
 export default createContainer(params=>{
   return {
       user: Meteor.user()
   };
-}, Home)
+}, ConnectedHome)
