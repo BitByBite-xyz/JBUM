@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import { browserHistory } from 'react-router'
-
 import { Meteor } from 'meteor/meteor';
 import Snackbar from 'material-ui/Snackbar';
 import RaisedButton from 'material-ui/RaisedButton';

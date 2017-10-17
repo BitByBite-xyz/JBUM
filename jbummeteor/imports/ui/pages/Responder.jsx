@@ -66,7 +66,6 @@ class Responder extends Component {
         console.log("reply err "+err.details);
         return;
       } else {
-
         console.log("reply added!");
         this.handleClose();
         this.setState({
@@ -77,15 +76,15 @@ class Responder extends Component {
   };
 
   handleFavorite = (postContent) => {
+   this.handleClose()
     const params = {
       postId: postContent._id
     }
     Meteor.call('responder.favorite',params);
-    //Meteor.users.update(this.userId, {$set: obj });
-    console.log(Meteor.user())
   }
 
   handleArchive = (postContent) => {
+    this.handleClose();
     const params = {
       postId: postContent._id
     }
@@ -118,7 +117,7 @@ class Responder extends Component {
     const { modalContent, response } = this.state;
 
     return (
-      <div>
+      <div className='whom' style={{minHeight: 200, overflow: 'scroll'}}>
         <div  style={{marginLeft: '4%'}}>
           {modalContent.post_body}
           <div style={{marginBottom: 5}}/>
@@ -150,10 +149,9 @@ class Responder extends Component {
         if (fav.indexOf(post._id) !== -1){
           arr.push(post);
         }
-      }))
+      }));
     }
     return arr;
-    
   }
 
   renderPosts = () => {
@@ -185,12 +183,12 @@ class Responder extends Component {
         posts.map((post) => {
           if (archived && archived.indexOf(post._id) !== -1) return null;
           return (<ProperPost
-            key={post._id}
-            postContent={post}
-            handleArchive={this.handleArchive}
-            handleOpen={this.handleOpen}
-            handleFavorite={this.handleFavorite}
-        />)
+                      key={post._id}
+                      postContent={post}
+                      handleArchive={this.handleArchive}
+                      handleOpen={this.handleOpen}
+                      handleFavorite={this.handleFavorite}
+                  />)
         }
       ))
     }
@@ -230,6 +228,7 @@ class Responder extends Component {
           actions={actions}
           modal={true}
           open={this.state.open}
+          autoScrollBodyContent={true}
         >
           {this.renderModalContent()}
         </Dialog>

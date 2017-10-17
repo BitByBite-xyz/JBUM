@@ -168,6 +168,6 @@ header .hide-completed {
 .notifications {
     margin-top: 20px;
 }
-.help {
-    
+.whom {
+    overflow: scroll
 }

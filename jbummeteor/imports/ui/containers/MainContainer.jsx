@@ -25,7 +25,7 @@ const MainContainer = (props) => {
               <MuiThemeProvider>
                 <div className="col-sm-12 row-no-padding" style={{backgroundColor: '#EFEFEF'}}>
                   <Header />
-                  {props.pathname.includes('responder')?<ResponderTabs push={props.push}/>:null}
+                  {props.pathname.includes('responder')?<ResponderTabs pathname={props.pathname} push={props.push}/>:null}
                   {/*<div className="col-sm-3 row-no-padding">
                     <SubHeader />
                   </div>*/}
