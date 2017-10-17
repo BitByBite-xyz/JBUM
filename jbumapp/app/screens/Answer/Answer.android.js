@@ -86,20 +86,6 @@ class Answer extends Component {
   // action means how the alert was dismissed. returns: automatic, programmatic, tap, pan or cancel
   }
 
-  renderHeader = () => (
-    <View
-      style={{
-        marginTop: 5.55,
-      }}
-    >
-      <AskHeader
-        onAskPress={this.onAskPress}
-        {...this.state}
-      />
-    </View>
-
-  );
-
   renderFooter = () => {
     const { loading,posts } = this.props;
 
@@ -173,7 +159,6 @@ class Answer extends Component {
             ListFooterComponent={this.renderFooter}
             onEndReachedThreshold={0.5}
             removeClippedSubviews={false}
-            ListHeaderComponent={this.renderHeader}
           />}
           <DropdownAlert
             ref={(ref) => this.dropdown = ref}

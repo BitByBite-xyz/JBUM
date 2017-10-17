@@ -20,7 +20,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import { NavigationActions } from 'react-navigation';
 import Meteor, {createContainer} from 'react-native-meteor';
 
-import Comment from '../../components/Comment'
+import {Comment} from '../../components/Comment'
 import styles from './styles'
 
 class Reply extends Component {
@@ -29,6 +29,7 @@ class Reply extends Component {
 
     this.state = {
       body: '',
+      isOwnPost: Meteor.userId() === this.props.post.user_id
     };
   }
   componentDidMount(){
@@ -77,6 +78,7 @@ class Reply extends Component {
   }
 
   render() {
+    const { isOwnPost } = this.state;    
     const { body,post } = this.props;
 
     return (
@@ -102,8 +104,13 @@ class Reply extends Component {
                      key={comment.comment_id}
                      postComment={comment}
                    />
-                 )):null}
+                 )):
+                 <Comment
+                      key={''}
+                      postComment={{comment_body:'Nothing to display'}}
+                    />}
                </View>
+               {isOwnPost? null:
            <View style={styles.bottomWrapper}>
               <View style={styles.bottomBox}>
                   <View style={styles.bottom}>
@@ -131,6 +138,7 @@ class Reply extends Component {
                   </View>
               </View>
           </View>
+          }
        </View>
      </KeyboardAwareScrollView>
     );

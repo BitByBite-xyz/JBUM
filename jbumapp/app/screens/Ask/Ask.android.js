@@ -213,84 +213,26 @@ class Ask extends Component {
       );
     }
     if (section.title.includes('Category')) {
+      const data = ['Relationships (family, friends, etc.)','Success (school, sports, work)','Identity (religion, discrimination, body image)','Abuse (physical, emotional, psychological)','Health Issues (mental, physical, emotional)','Substances (medications, drugs, alcohol, etc.)']
       return (
         <View style={styles.content}>
-          <CheckBox
-            style={{backgroundColor: 'white', paddingLeft: 15, paddingTop: 5}}
-            textStyle={{color: '#A4A7A6', fontSize: 16}}
-            checkedColor={'#24BEE4'}
-            title='Friends'
-            checkedIcon='dot-circle-o'
-            uncheckedIcon='circle-o'
-            checked={post_categories.indexOf('Friends') !== -1}
-            onPress={() => {
-              this.updateCategory('Friends');
-            }}
-          />
-          <CheckBox
-            style={{backgroundColor: 'white', paddingLeft: 15, paddingTop: 10}}
-            textStyle={{color: '#A4A7A6', fontSize: 16}}
-            checkedColor={'#24BEE4'}
-            title='Family'
-            checkedIcon='dot-circle-o'
-            uncheckedIcon='circle-o'
-            checked={post_categories.indexOf('Family') !== -1}
-            onPress={() => {
-              this.updateCategory('Family');
-            }}
-          />
+          {data.map( (cat) => (
+            <CheckBox
+              style={{backgroundColor: 'white', paddingLeft: 15, paddingTop: 10, paddingBottom: 3}}
+              textStyle={styles.optionsText}
+              checkedColor={'#24BEE4'}
+              title={cat}
+              checkedIcon='dot-circle-o'
+              uncheckedIcon='circle-o'
+              checked={post_categories.indexOf(cat) !== -1}
+              onPress={() => {
+                this.updateCategory(cat);
+              }}
+            />
+          ))}
           <CheckBox
             style={{backgroundColor: 'white', paddingLeft: 15, paddingTop: 10, paddingBottom: 3}}
-            textStyle={{color: '#A4A7A6', fontSize: 16}}
-            checkedColor={'#24BEE4'}
-            title='Relationships'
-            checkedIcon='dot-circle-o'
-            uncheckedIcon='circle-o'
-            checked={post_categories.indexOf('Relationships') !== -1}
-            onPress={() => {
-              this.updateCategory('Relationships');
-            }}
-          />
-          <CheckBox
-            style={{backgroundColor: 'white', paddingLeft: 15, paddingTop: 10, paddingBottom: 3}}
-            textStyle={{color: '#A4A7A6', fontSize: 16}}
-            checkedColor={'#24BEE4'}
-            title='Bullying'
-            checkedIcon='dot-circle-o'
-            uncheckedIcon='circle-o'
-            checked={post_categories.indexOf('Bullying') !== -1}
-            onPress={() => {
-              this.updateCategory('Bullying');
-            }}
-          />
-          <CheckBox
-            style={{backgroundColor: 'white', paddingLeft: 15, paddingTop: 10, paddingBottom: 3}}
-            textStyle={{color: '#A4A7A6', fontSize: 16}}
-            checkedColor={'#24BEE4'}
-            title='Drugs'
-            checkedIcon='dot-circle-o'
-            uncheckedIcon='circle-o'
-            checked={post_categories.indexOf('Drugs') !== -1}
-            onPress={() => {
-              this.updateCategory('Drugs');
-            }}
-          />
-          <CheckBox
-            style={{backgroundColor: 'white', paddingLeft: 15, paddingTop: 10, paddingBottom: 3}}
-            textStyle={{color: '#A4A7A6', fontSize: 16}}
-            checkedColor={'#24BEE4'}
-            title='Sexuality'
-            checkedIcon='dot-circle-o'
-            uncheckedIcon='circle-o'
-            checked={this.state.checked}
-            checked={post_categories.indexOf('Sexuality') !== -1}
-            onPress={() => {
-              this.updateCategory('Sexuality');
-            }}
-          />
-          <CheckBox
-            style={{backgroundColor: 'white', paddingLeft: 15, paddingTop: 10, paddingBottom: 3}}
-            textStyle={{color: '#A4A7A6', fontSize: 16}}
+            textStyle={styles.optionsText}
             checkedColor={'#24BEE4'}
             title={otherCategory}
             checkedIcon='dot-circle-o'
@@ -307,7 +249,6 @@ class Ask extends Component {
           />
         </View>
       );
-
     }
 
     return (
@@ -337,6 +278,17 @@ class Ask extends Component {
         <View style={{borderTopLeftRadius: 15, borderTopRightRadius: 15, overflow: 'hidden', backgroundColor: '#F3F3F3'}}>
         <View style={styles.bottomBox}>
           <View style={styles.bottom}>
+            <View style={{padding: 10, backgroundColor: 'white', borderTopRightRadius: 10, borderTopLeftRadius: 10}}>
+              <View style={{backgroundColor:'#F3F3F3', borderRadius: 10}}>
+                <Accordion
+                  sections={[{title: ' Choose Category '}]}
+                  renderHeader={this.renderHeader}
+                  renderContent={this.renderContent}
+                  touchableProps={{activeOpacity:1}}
+                  onChange={Keyboard.dismiss}
+                />
+              </View>
+            </View>
             <View style={styles.views}>
               <AutoGrowingTextInput
                   style={styles.largeText}
@@ -346,9 +298,7 @@ class Ask extends Component {
                   onChangeText={(title) => this.setState({ title })}
                   autoCorrect={true}
                   placeholderTextColor={'#c9c9c9'}
-                  minHeight={45}
-                  maxLength={300}
-                 /// blurOnSubmit={true}
+                  minHeight={75}
                   onSubmitEditing={()=> Keyboard.dismiss()}
                   value={title}
                 />
@@ -373,7 +323,7 @@ class Ask extends Component {
           <View style={{padding: 10, backgroundColor: 'white', borderBottomRightRadius: 10, borderBottomLeftRadius: 10}}>
             <View style={{backgroundColor:'#F3F3F3', borderRadius: 10}}>
               <Accordion
-                sections={SECTIONS}
+                sections={[{title: ' Choose Receiver '}]}
                 renderHeader={this.renderHeader}
                 renderContent={this.renderContent}
                 touchableProps={{activeOpacity:1}}

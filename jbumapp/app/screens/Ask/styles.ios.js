@@ -130,5 +130,8 @@ export default StyleSheet.create({
     paddingLeft: 10,
     color: '#B8BAB9',
     fontWeight: '600',
+  },
+  optionsText:{
+    color: '#A4A7A6', fontSize: 13
   }
 });

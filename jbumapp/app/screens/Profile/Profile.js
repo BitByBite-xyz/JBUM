@@ -117,8 +117,8 @@ class ProfileContainer extends Component {
 		const { user_posts,responded_posts,postsReady,navigation } = this.props;
 		const { answeredNumber } = this.state;
 		const PARALLAX_HEADER_HEIGHT = 170;
-		const buttons = ['My Posts', 'Replied Posts'];
-  	const { selectedIndex } = this.state;
+		const buttons = ['My Questions', 'My Answers'];
+  		const { selectedIndex } = this.state;
 		const questionNumber = user_posts.length;
 		const karma = Math.floor((questionNumber + this.calculateRespondedPosts())*1.5);
 		const userId = Meteor.userId();

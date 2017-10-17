@@ -47,12 +47,12 @@ export default StyleSheet.create({
   bottomBox: {
       paddingLeft: 10,
       paddingRight: 10,
-      marginTop: 13,
+      marginTop: 5,
       backgroundColor: '#F3F3F3',
       //height: 200
   },
   views: {
-      paddingTop: 7,
+      //paddingTop: 4,
       paddingLeft: 12,
       paddingRight: 12,
       //Also padding-bottom can be added too
