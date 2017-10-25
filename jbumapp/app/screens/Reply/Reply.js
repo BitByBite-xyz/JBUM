@@ -38,7 +38,6 @@ class Reply extends Component {
     setTimeout(() => {
       this.scroll.scrollToEnd();
     }, 500);
-
   }
 
   replyButton = () => {
@@ -107,7 +106,7 @@ class Reply extends Component {
                  )):
                  <Comment
                       key={''}
-                      postComment={{comment_body:'Nothing to display'}}
+                      postComment={{comment_body:'Replies hidden'}}
                     />}
                </View>
                {isOwnPost? null:

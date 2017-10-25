@@ -11,7 +11,6 @@ import {
 import Meteor, { createContainer } from 'react-native-meteor';
 import FadeInView from 'react-native-fade-in-view';//{/* onFadeComplete={() => alert('Ready') */}
 import DropdownAlert from 'react-native-dropdownalert'
-import Swipeout from 'react-native-swipeout';
 
 import styles from './styles';
 import QuestionPanel from '../../components/QuestionPanel';

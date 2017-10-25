@@ -44,15 +44,11 @@ class Responder extends Component {
     };
   }
 
-  handleOpen = (postContent) => {
-    this.setState({open: true,
-                   modalContent: postContent,
-                   snackbarOpen: false });
-  };
+  handleRequestClose = () => this.setState({snackbarOpen:false});
 
-  handleClose = () => {
-    this.setState({open: false, snackbarOpen: false});
-  };
+  handleOpen = (postContent) => this.setState({open: true,modalContent: postContent,snackbarOpen: false });
+  
+  handleClose = () => this.setState({open: false});
 
   handleRespond = () => {
     const { modalContent, response } = this.state;
@@ -235,7 +231,7 @@ class Responder extends Component {
         {postsReady ?
           this.renderGrid(): null}
           <Snackbar
-            open={this.state.snackbarOpen}
+            open={this.state.snackbarOpen?this.state.snackbarOpen:false}
             message="Post Response Sent!"
             autoHideDuration={4000}
             onRequestClose={this.handleRequestClose}
@@ -253,7 +249,7 @@ export default createContainer(() => {
     userData: Meteor.users.find({}).fetch(),
     responderPosts: Posts.find({$or: [{post_visibility: 'Professional'}, {post_visibility: 'Adult'}]},{sort:{createdAt: -1}}).fetch(),
     adultPosts: Posts.find({$or: [{post_visibility: 'Adult'}]},{sort:{createdAt: -1}}).fetch(),
-    posts: Posts.find({},{sort:{createdAt: -1}}),
+    posts: Posts.find({},{sort:{createdAt: -1}}).fetch(),
     postsReady: handle.ready()
   }
 }, Responder);

@@ -204,7 +204,7 @@ class Panel extends PureComponent {
                 {postContent.post_body}
               </Text>
               <View style={styles.questionPanelContainer}>
-                <Text style={[styles.timeText, styles.created]}>{' '+moment(postContent.createdAt).fromNow()}</Text>
+                <Text style={[styles.timeText, styles.created]}>{' '+moment(postContent.createdAt).format('llll')}</Text>
                 <View style={{flexDirection:'row'}}>{this.renderCategoryBadges()}</View>
               </View>
             </View>

@@ -57,7 +57,7 @@ export default class PageOne extends Component {
     const selectedAge = this.state;
     const {handleAddData} = this.props;
     Picker.init({
-        pickerTitleText: 'Select Age',
+        pickerTitleText: 'Age',
         pickerConfirmBtnText: 'Confirm',
         pickerCancelBtnText: 'Cancel',
         pickerData: ageOptions,
@@ -125,6 +125,7 @@ export default class PageOne extends Component {
         pickerCancelBtnText: 'Cancel',
         pickerData: sexualityOptions,
         selectedValue: [],
+        wheelFlex: [2, 1, 1, 2, 1, 1],
         onPickerConfirm: data => {
           this.setState(previousState => {
             return { selectedSexuality: data, showSexuality: true };
@@ -188,6 +189,7 @@ export default class PageOne extends Component {
         pickerConfirmBtnText: 'Confirm',
         pickerCancelBtnText: 'Cancel',
         pickerData: genOptions,
+       // pickerFontSize: 12,
         selectedValue: [],
         onPickerConfirm: data => {
           this.setState(previousState => {
@@ -217,7 +219,7 @@ export default class PageOne extends Component {
     const displayGeneration = this.state.showGeneration ? 'Parent(s)/Guardian(s) Born in the US: ' + this.state.selectedGeneration : 'Was one or both of your parent(s)/guardian(s) born in the United States?';
 
     return(
-      <View>
+      <View style={{flex:1}}>
         <View style={{alignItems: 'center', marginTop: '10%'}}><Text style={styles.pageTitle}>Basic Info</Text></View>
         <View style={{marginTop: '29%'}}>
             <View>

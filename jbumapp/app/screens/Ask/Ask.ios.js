@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Text, View, TextInput, Image, TouchableOpacity,Picker,Alert,ScrollView, Keyboard } from 'react-native';
 import { Icon, Button,CheckBox } from 'react-native-elements'
 import update from 'react-addons-update';
-
 import Meteor, { createContainer } from 'react-native-meteor';
 import Accordion from 'react-native-collapsible/Accordion';
 import {AutoGrowingTextInput} from 'react-native-autogrow-textinput';
@@ -22,7 +21,8 @@ class Ask extends Component {
       post_categories:[],
       error: null,
       promptVisible: false,
-      otherCategory: 'Other'
+      otherCategory: 'Other',
+      sections: [ {title: '1️⃣ Choose Category '}, {title: '2️⃣ Ask Question '}, {title: '3️⃣ Choose Receiver '}]
     };
   }
 
@@ -127,7 +127,7 @@ class Ask extends Component {
       this.setState({
         post_visibility: update(this.state.post_visibility, {$splice: [[index, 1]]})
       })
-    }
+    }   
   }
 
   updateCategory = (catOption) => {
@@ -146,10 +146,22 @@ class Ask extends Component {
   }
 
   renderHeader = (section) => {
+    if (!section.title) return;
     if (section.title.includes('Receiver')){
       return (
-        <View style={styles.bottom}>
-          <Text style={styles.headerText}>{section.title}</Text>
+        <View style={{backgroundColor: 'white',}}>
+          <View style={{flexDirection: 'row'}}>
+            <Text style={styles.headerText}>{section.title}</Text> 
+            <View style={{marginTop: 6, marginLeft: 15}}>
+              <Icon
+                name='help'
+                onPress={() => alert("This will connect you with ..")}
+                size={22}
+                underlayColor={'white'}
+                color={'grey'}
+              />
+            </View>
+          </View>
         </View>
       );
     }
@@ -163,9 +175,10 @@ class Ask extends Component {
   renderContent = (section) => {
     const { post_visibility, post_categories, otherCategory} = this.state;
 
+    if (!section.title) return;
     if (section.title.includes('Receiver')) {
       return (
-        <View style={styles.content}>
+        <View style={{}}>
           <CheckBox
             style={{backgroundColor: 'white', paddingLeft: 15, paddingTop: 5, paddingBottom: 5}}
             textStyle={{color: '#A4A7A6', fontSize: 16}}
@@ -197,6 +210,7 @@ class Ask extends Component {
             title='Professional'
             checkedIcon='dot-circle-o'
             uncheckedIcon='circle-o'
+            checkedColor='red'
             checked={post_visibility.indexOf('Professional') !== -1}
             onPress={() => {
               this.updateResponder('Professional');
@@ -242,46 +256,13 @@ class Ask extends Component {
           />
         </View>
       );
-
     }
-
-    return (
-      <View style={styles.content}>
-        <Text>{section.content}</Text>
-      </View>
-    );
-  }
-
-  render() {
-    const title = this.state.title;
-    const body = this.state.body;
-
-    return (
-      <ScrollView
-        //contentContainerStyle={{backgroundColor: '#57C2D7'}}
-        style={styles.backdrop}
-        keyboardShouldPersistTaps={'always'}
-      >
-        <View style={{height: 50, backgroundColor: '#57C2D7', alignItems: 'center', justifyContent: 'center'}}>
-          <Text style={{fontSize: 24, fontFamily: 'Avenir', fontWeight: '500', color: 'white'}}>Ask a Question</Text>
-        </View>
-      <View style={styles.backdrop}>
-        <View style={{borderTopLeftRadius: 15, borderTopRightRadius: 15, overflow: 'hidden', backgroundColor: '#F3F3F3'}}>
-        
-        <View style={styles.bottomBox}>
-          <View style={styles.bottom}>
-          <View style={{padding: 10, backgroundColor: 'white', borderTopRightRadius: 10, borderTopLeftRadius: 10}}>
-            <View style={{backgroundColor:'#F3F3F3', borderRadius: 10}}>
-              <Accordion
-                sections={[{title: ' Choose Category '}]}
-                renderHeader={this.renderHeader}
-                renderContent={this.renderContent}
-                touchableProps={{activeOpacity:1}}
-                onChange={Keyboard.dismiss}
-              />
-            </View>
-          </View>
-            <View style={styles.views}>
+    if (section.title.includes('Ask')) {
+      const title = this.state.title;
+      const body = this.state.body;
+      return (
+        <View style={{ backgroundColor: 'white'}}>
+        <View style={styles.views}>
               <AutoGrowingTextInput
                   style={styles.largeText}
                   placeholder='Your Question&#39;s Title'
@@ -312,16 +293,57 @@ class Ask extends Component {
                   minHeight={75}
                 />
               </View>
-          </View>
-          <View style={{padding: 10, backgroundColor: 'white', borderBottomRightRadius: 10, borderBottomLeftRadius: 10}}>
-            <View style={{backgroundColor:'#F3F3F3', borderRadius: 10}}>
-              <Accordion
-                sections={[{title: ' Choose Receiver '}]}
-                renderHeader={this.renderHeader}
-                renderContent={this.renderContent}
-                touchableProps={{activeOpacity:1}}
-                onChange={Keyboard.dismiss}
-              />
+              </View>
+       
+      );
+    }
+
+    return (
+      <View style={styles.content}>
+        <Text>{section.content}</Text>
+      </View>
+    );
+  }
+
+  onAccordianChange = () => {
+    const {title, body,post_visibility, post_categories, otherCategory} = this.state;
+    Keyboard.dismiss;
+
+
+    this.setState({sections: [ {title: post_categories.length === 0 ? '1️⃣ Choose Category ': '✅ Choose Category '}, 
+                                {title: !title.replace(/\s/g, '').length || !body.replace(/\s/g, '').length ?  '2️⃣ Ask Question ': '✅ Ask Question '},
+                                {title: post_visibility.length === 0 ? '3️⃣ Choose Receiver ': '✅ Choose Receiver '}]});
+  }
+
+  render() {
+    const title = this.state.title;
+    const body = this.state.body;
+
+    return (
+      <ScrollView
+        //contentContainerStyle={{backgroundColor: '#57C2D7'}}
+        style={styles.backdrop}
+        keyboardShouldPersistTaps={'always'}
+      >
+      <View style={{height: 50, backgroundColor: '#57C2D7', alignItems: 'center', justifyContent: 'center'}}>
+        <Text style={{fontSize: 24, fontFamily: 'Avenir', fontWeight: '500', color: 'white'}}>Ask a Question</Text>
+      </View>
+      <View style={styles.backdrop}>
+        <View style={{borderTopLeftRadius: 15, borderTopRightRadius: 15, overflow: 'hidden', backgroundColor: '#F3F3F3'}}>
+          <View style={styles.bottomBox}>
+            <View style={styles.bottom}>
+            <View style={{padding: 10, backgroundColor: 'white', borderTopRightRadius: 10, borderTopLeftRadius: 10, borderBottomLeftRadius: 10, borderBottomRightRadius: 10}}>
+              <View style={{backgroundColor:'#F3F3F3', overflow: 'hidden'}}>
+                <Accordion
+                  sections={this.state.sections}
+                  renderHeader={this.renderHeader}
+                  renderContent={this.renderContent}
+                  touchableProps={{activeOpacity:1}}
+                  initiallyActiveSection={0}
+                  onChange={this.onAccordianChange}
+                  initiallyActiveSection={0}
+                />
+              </View>
             </View>
           </View>
 

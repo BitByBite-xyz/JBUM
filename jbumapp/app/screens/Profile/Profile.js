@@ -144,7 +144,7 @@ class ProfileContainer extends Component {
 					backgroundColor={'#57C2D7'}
 					style={{ flex: 1, backgroundColor: '#F3F3F3', overflow: 'hidden' }}
 					parallaxHeaderHeight={PARALLAX_HEADER_HEIGHT}
-					stickyHeaderHeight={50}
+					stickyHeaderHeight={0}
 					onScroll={this.props.onScroll}
 					contentBackgroundColor='transparent'
 					renderStickyHeader={() => stickyHeader}

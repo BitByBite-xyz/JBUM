@@ -66,7 +66,7 @@ const ProperPost = ({handleOpen, postContent,handleArchive,handleFavorite}) => {
           <div style={{display: 'inline'}}>
             {postContent.post_comments.map((comment)=> {
               return (
-                <div>
+                <div key={comment.comment_id}>
                   <Link to={'/usersprofile/'+comment.user_id}>
                     {comment.user_id}💭: {comment.comment_body}
                   </Link>

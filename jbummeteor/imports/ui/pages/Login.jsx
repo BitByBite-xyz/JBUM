@@ -106,9 +106,8 @@ class Login extends Component {
      //console.log(username + ' ' + password);
   }
 
-  doTheThing = () =>{
-    this.props.history.push('/');
-  }
+  doTheThing = () => this.props.history.push('/responder');
+
 
   render() {
     const { error } = this.state;
@@ -116,7 +115,7 @@ class Login extends Component {
     return(
       <form onSubmit={ this.loginUser}>
         <MuiThemeProvider>
-          <div className="row">
+          <div >
             <center>
               <Paper zDepth={2} style={style}>
                 <h4 style={{marginTop: 55, marginBottom: 50, color: '#919799'}}>JBUM Admin</h4>

@@ -54,6 +54,7 @@ export default StyleSheet.create({
       paddingTop: 7,
       paddingLeft: 12,
       paddingRight: 12,
+      borderBottomRightRadius:10
       //Also padding-bottom can be added too
       // This can be changed to add a divider between the boxes; change to E5E5E5
 

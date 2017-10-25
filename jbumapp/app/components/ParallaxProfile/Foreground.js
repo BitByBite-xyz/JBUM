@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { Icon, Divider } from 'react-native-elements'
 
 const header = 'It is Foreground Component';
@@ -10,6 +10,12 @@ import * as Progress from 'react-native-progress';
 export default class Header extends Component {
   constructor(props) {
     super(props);
+  }
+
+  gotoSettings = () => {
+    const { navigate } = this.props.navigation;
+    alert('hi')
+    navigate('Settings')
   }
 
   render() {
@@ -67,10 +73,9 @@ export default class Header extends Component {
     };
     return (
       <View style={{flex:1}}>
-
-        <View style={{marginLeft: '87%', marginTop:10}}>
+       
+       <View style={{marginLeft: '87%', marginTop:15}}>
           <Icon
-          //  style={{justifyContent: 'flex-start'}}
             name='more-horiz'
             large
             onPress={() => this.props.navigation.navigate('Settings')}
@@ -79,9 +84,7 @@ export default class Header extends Component {
             color={'white'}
           />
 
-        </View>
-
-
+    </View>
 
 
 
