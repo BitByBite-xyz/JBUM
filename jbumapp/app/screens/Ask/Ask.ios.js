@@ -34,7 +34,8 @@ class Ask extends Component {
       post_categories:[],
       error: null,
       promptVisible: false,
-      otherCategory: 'Other'
+      otherCategory: 'Other',
+      sections: [ {title: '1️⃣ Choose Category '}, {title: '2️⃣ Ask Question '}, {title: '3️⃣ Choose Receiver '}]
     });
   }
 
