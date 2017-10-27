@@ -77,7 +77,7 @@ class Reply extends Component {
   }
 
   render() {
-    const { isOwnPost } = this.state;    
+    const { isOwnPost } = this.state;
     const { body,post } = this.props;
 
     return (
@@ -118,7 +118,7 @@ class Reply extends Component {
                               style={styles.largeText}
                               placeholder='Reply to this question'
                               returnKeyType="done"
-                              placeholderTextColor='#DBD9D9'
+                              placeholderTextColor='#b2b2b2'
                               underlineColorAndroid='transparent'
                               onChangeText={(body) => this.setState({body:body})}
                               blurOnSubmit={true}
