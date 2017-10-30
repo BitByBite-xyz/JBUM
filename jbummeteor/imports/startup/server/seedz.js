@@ -6,7 +6,7 @@ import { Fake } from 'meteor/anti:fake';
 
 
 import { Posts } from '../../api/posts/posts';
-
+/*
 Meteor.startup(() => {
   if (Meteor.users.find().count() === 0) {
 
@@ -65,3 +65,4 @@ Meteor.startup(() => {
     }
   }
 });
+*/

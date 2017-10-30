@@ -90,6 +90,7 @@ class BarcodeScanner extends Component {
           onBarCodeRead={handleButtonPressOnce}
           aspect={Camera.constants.Aspect.fill}>
           <Button
+            testID="somethingelse"
             iconRight
             icon={{name: 'crop-free'}}
             onPress={() => this.handleButtonPress()}

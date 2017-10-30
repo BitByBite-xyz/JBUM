@@ -100,6 +100,7 @@ class Login extends Component {
                 source={images.usernameImg}
                 placeholder="Username"
                 onChangeText={(username) => this.setState({username: username })}
+                testID="username-textfield"
               />
               <GenericTextInput
                 source={images.passwordImg}
@@ -109,6 +110,7 @@ class Login extends Component {
                 returnKeyType='next'
                 borderTop
                 blurOnSubmit={true}
+                testID="password-textfield"
               />
               {confirmPasswordVisible ?
                 <GenericTextInput
@@ -138,13 +140,13 @@ class Login extends Component {
                 title='LOGIN'
                 icon={{name: 'add-circle-outline'}}
                 backgroundColor={'transparent'}
-
                 borderRadius={20}
                 onPress={() => this.handleSignIn()}
                 fontFamily= 'Avenir'
                 fontSize={15}
                 fontWeight='500'
                 iconRight={true}
+                testID="login-button"
               />
             </View>
 

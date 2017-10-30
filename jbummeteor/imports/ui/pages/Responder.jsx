@@ -174,7 +174,7 @@ class Responder extends Component {
 
   renderPostsHelper = (posts) => {
     const archived = Meteor.user().archived;
-    if (posts) {
+    if (posts && posts.length > 0) {
       return (
         posts.map((post) => {
           if (archived && archived.indexOf(post._id) !== -1) return null;
@@ -187,6 +187,11 @@ class Responder extends Component {
                   />)
         }
       ))
+    }
+    else {
+      return (
+        <center style={{margin: 200}}><h1>No posts to display</h1></center>
+      );
     }
   }
 

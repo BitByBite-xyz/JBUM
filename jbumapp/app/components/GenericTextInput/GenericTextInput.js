@@ -13,6 +13,7 @@ const GenericTextInput = (props) => {
         autoCorrect={false}
         placeholderTextColor='white'
         underlineColorAndroid='transparent'
+        testID={props.testID}
         {...props}
       />
     </View>

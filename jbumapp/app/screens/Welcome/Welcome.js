@@ -68,6 +68,7 @@ export default class Welcome extends Component {
                   fontWeight='bold'
                   iconRight={true}
                   opacity={0.1}
+                  testID="login"
                 />
               </Animatable.View>
               <Animatable.View animation='fadeInUp' duration={1000}>

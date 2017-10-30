@@ -54,7 +54,9 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = ""
+      disableMainThreadChecker = "YES"
+      language = "en"
+      region = "US"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
@@ -66,6 +68,21 @@
                BlueprintName = "jbumappTests"
                ReferencedContainer = "container:jbumapp.xcodeproj">
             </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "8738AC381FA6BB5F00EE26D3"
+               BuildableName = "jbumappUITests.xctest"
+               BlueprintName = "jbumappUITests"
+               ReferencedContainer = "container:jbumapp.xcodeproj">
+            </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "jbumappUITests/testExample2()">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>

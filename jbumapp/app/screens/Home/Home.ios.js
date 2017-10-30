@@ -206,6 +206,7 @@ class Home extends Component {
         style={{backgroundColor:'#F3F3F3'}}
         ref={(c) => this.pages = c}
         keyboardShouldPersistTaps={'always'}
+        testID="home-screen"
       >
         <Ask
           navigation={navigation}
