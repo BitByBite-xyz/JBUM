@@ -55,3 +55,6 @@ ios/fastlane/screenshots/
 #more!
 jsconfig.json
 .vscode/
+
+#pods!! make sure to run pod install to make the thing work!
+ios/Pods/
