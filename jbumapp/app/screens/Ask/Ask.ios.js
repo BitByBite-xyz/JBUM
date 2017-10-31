@@ -128,7 +128,7 @@ class Ask extends Component {
       this.setState({
         post_visibility: update(this.state.post_visibility, {$splice: [[index, 1]]})
       })
-    }   
+    }
   }
 
   updateCategory = (catOption) => {
@@ -152,7 +152,7 @@ class Ask extends Component {
       return (
         <View style={{backgroundColor: 'white',}}>
           <View style={{flexDirection: 'row'}}>
-            <Text style={styles.headerText}>{section.title}</Text> 
+            <Text style={styles.headerText}>{section.title}</Text>
             <View style={{marginTop: 6, marginLeft: 15}}>
               <Icon
                 name='help'
@@ -271,7 +271,7 @@ class Ask extends Component {
                   underlineColorAndroid='transparent'
                   onChangeText={(title) => this.setState({ title })}
                   autoCorrect={true}
-                  placeholderTextColor={'#c9c9c9'}
+                  placeholderTextColor={'#bababa'}
                   minHeight={45}
                   maxLength={300}
                   blurOnSubmit={true}
@@ -288,14 +288,14 @@ class Ask extends Component {
                   onChangeText={(body) => this.setState({ body })}
                   multiline={true}
                   blurOnSubmit={true}
-                  placeholderTextColor={'#c9c9c9'}
+                  placeholderTextColor={'#bababa'}
                   autoCorrect={true}
                   value={body}
                   minHeight={75}
                 />
               </View>
               </View>
-       
+
       );
     }
 
@@ -311,7 +311,7 @@ class Ask extends Component {
     Keyboard.dismiss;
 
 
-    this.setState({sections: [ {title: post_categories.length === 0 ? '1️⃣ Choose Category ': '✅ Choose Category '}, 
+    this.setState({sections: [ {title: post_categories.length === 0 ? '1️⃣ Choose Category ': '✅ Choose Category '},
                                 {title: !title.replace(/\s/g, '').length || !body.replace(/\s/g, '').length ?  '2️⃣ Ask Question ': '✅ Ask Question '},
                                 {title: post_visibility.length === 0 ? '3️⃣ Choose Receiver ': '✅ Choose Receiver '}]});
   }
