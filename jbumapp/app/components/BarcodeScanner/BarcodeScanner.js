@@ -72,11 +72,8 @@ class BarcodeScanner extends Component {
   }
 
   handleButtonPress = () => {
-    this.state.barcodeData = '2wGQQTyWQgFgYg62N';
-    this.handleCreateAccount();
+    alert("This has been emailed to you if you are in the closed beta. If you havent recieved one please contact phoebe@daywaneti.com");
   }
-
-
 
   render() {
     var handleButtonPressOnce = _.once(this.onBarCodeRead.bind(this));

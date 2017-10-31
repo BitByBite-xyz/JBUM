@@ -29,50 +29,60 @@ class jbumappUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testDevLogin() {
+    func testGoToAnswer() {
       doLogin()
       
       let app = XCUIApplication()
       
       sleep(2)
-      
-      //XCUIApplication().alerts["“JBUM” Would Like to Send You Notifications"].buttons["Allow"].tap()
-
-     /* DispatchQueue.main.async {
-        // add UI related changes here
-        app.otherElements["home-screen"].swipeUp()
-        sleep(2)
-        snapshot("0Something")
-      }
-
-      
-      */
+    
       app.otherElements["home-screen"].swipeUp()
       sleep(2)
-      snapshot("0Something")
-      /*
-      
-      app.otherElements["username-textfield"].tap()
-      app.textFields["username-textfield"].typeText("dev")
-      app.otherElements["password-textfield"].tap()
+      snapshot("AnswerScreen")
+    }
+  
+  func testGoToAsk() {
+    doLogin()
+    
+    let app = XCUIApplication()
+    
+    sleep(2)
+    
+    app.otherElements["home-screen"].swipeDown()
+    sleep(2)
+    snapshot("AskScreen")
+  }
+  func testGoToProfile() {
+    doLogin()
+    
+    let app = XCUIApplication()
+    
+    sleep(2)
+    
+    app.otherElements["home-screen"].swipeLeft()
+    sleep(2)
+    snapshot("ProfileScreen")
+  }
+  func testGoToInbox() {
+    doLogin()
+    
+    let app = XCUIApplication()
+    
+    sleep(2)
+    
+    app.otherElements["home-screen"].swipeRight()
+    sleep(2)
+    snapshot("InboxScreen")
+  }
+  func testGoToHome() {
+    doLogin()
+    
+    let app = XCUIApplication()
+    
+    sleep(2)
 
-      app.textFields["password-textfield"].tap()
-      app.textFields["password-textfield"].typeText("dev")
-      print(app.textFields)
-      app.otherElements["login-button"].tap()
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-       snapshot("0Something")*/
-    }
-  
-    func testExample2() {
-      let app = XCUIApplication()
-      //app.otherElements["home-screen"].swipeLeft()
-      // Use recording to get started writing UI tests.
-      // Use XCTAssert and related functions to verify your tests produce the correct results.
-      snapshot("0Something")
-    }
-  
+    snapshot("HomeScreen")
+  }
   func doLogin(){
     let app = XCUIApplication()
     if (app.otherElements["login"].exists){

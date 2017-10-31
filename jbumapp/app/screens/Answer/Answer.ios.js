@@ -27,6 +27,7 @@ import AskHeader from '../../components/AskHeader';
 import Notifications from '../../components/Notifications';
 
 import {queryConstructor} from '../../lib/queryHelpers';
+import {DEVICE_WIDTH} from '../../config/styles';
 import styles from './styles';
 const calcHeight = (qty) => {
   if (qty < 11) {
@@ -181,6 +182,7 @@ class Answer extends Component {
     const { modalVisible, options } = this.state;
     return (
       <SwipeHiddenHeader header={()=>
+        <View>
           <View style={styles.header}>
            <View style={styles.leftContainer}> 
             <ModalDropdown onSelect={(index,value)=>this.onSort(index,value)} 
@@ -195,9 +197,7 @@ class Answer extends Component {
             />
             </ModalDropdown>
             </View>
-            <View style={styles.centerContainer}>
-              <Text style={styles.headerText}>Answer</Text>
-            </View>
+            <Text style={styles.headerText}>Answer</Text>
             <View style={{paddingRight:10}}>{/*//i hate this*/}
             <View style={styles.headerRight}>
               <Badge
@@ -209,7 +209,10 @@ class Answer extends Component {
               />
             </View>
             </View>
-          </View>}
+
+          </View>
+        </View>
+        }
           style={{backgroundColor: '#F3F3F3'}}
           startHiddenHeaderOffset={230}
       >

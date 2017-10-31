@@ -89,6 +89,7 @@ buildscript {
 
 
 apply from: "../../node_modules/react-native/react.gradle"
+apply from: "../../node_modules/react-native-code-push/android/codepush.gradle"
 
 /**
  * Set this to true to create two separate APKs instead of one:
@@ -157,6 +158,10 @@ repositories {
 }
 
 dependencies {
+    compile project(':react-native-code-push')
+    compile(project(':react-native-firebase')) {
+        transitive = false
+    }
     compile project(':react-native-push-notification')
     compile project(':react-native-device-info')
     compile project(':react-native-blur')

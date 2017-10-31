@@ -21,7 +21,9 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>21</string>
+	<string>22</string>
+	<key>CodePushDeploymentKey</key>
+	<string>8PJz68_lBpWg8NSjTzumbyDSSbtf63bb83f8-5409-4344-8138-d71383ab74b3</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSRequiresIPhoneOS</key>

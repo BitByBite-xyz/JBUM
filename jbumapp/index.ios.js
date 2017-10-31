@@ -1,7 +1,21 @@
 import { AppRegistry } from 'react-native';
 import App from './app/index';
+import firebase from 'react-native-firebase';
 
 AppRegistry.registerComponent('jbumapp', () => App); //regesters /app/index.js
+
+firebase.analytics().setAnalyticsCollectionEnabled(false);
+firebase.analytics().logEvent('add_to_cart', {
+  id: '123',
+  value: 100
+});
+
+firebase.crash().setCrashCollectionEnabled(true);
+
+firebase.perf().setPerformanceCollectionEnabled(true);
+
+const trace = firebase.perf().newTrace('authentication');
+trace.start();
 
 /*
   If RNApp gets finnickey try these scripts!

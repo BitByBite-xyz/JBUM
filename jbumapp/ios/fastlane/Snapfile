@@ -1,6 +1,9 @@
 devices([
   "iPhone 6",
-  "iPad Air 2"
+  "iPhone 6 Plus",
+  "iPhone 5s",
+  "iPad Air 2",
+  "iPad Pro (12.9-inch)"
 ])
 
 ios_version(

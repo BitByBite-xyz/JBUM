@@ -3,7 +3,7 @@ import { Platform,AsyncStorage } from 'react-native';
 import Meteor, { createContainer } from 'react-native-meteor';
 import PushNotification from 'react-native-push-notification';
 import Navigator from './config/router';
-
+import codePush from "react-native-code-push";
 
 import settings from './config/settings';
 import Loading from './components/Loading';
@@ -88,12 +88,17 @@ const RNApp = (props) => {
           </Provider>
 };
 
+const MyApp = createContainer(() => {
+              return {
+                status: Meteor.status(),
+                user: Meteor.user(),
+                loggingIn: Meteor.loggingIn(),
+              };
+            }, RNApp);
 
+const codePushOptions = {
+  checkFrequency: codePush.CheckFrequency.ON_APP_RESUME,
+  installMode: codePush.InstallMode.ON_NEXT_RESUME,
+};
 
-export default createContainer(() => {
-  return {
-    status: Meteor.status(),
-    user: Meteor.user(),
-    loggingIn: Meteor.loggingIn(),
-  };
-}, RNApp);
+export default codePush(codePushOptions)(MyApp);
