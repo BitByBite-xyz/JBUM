@@ -29,9 +29,6 @@ import styles from './styles';
 import { getInitialQuote } from '../../actions/quote';
 
 class Answer extends Component {
-  /*static navigationOptions = {
-    headerRight: ({ navigation }) => <Notifications navigation={navigation} />,
-  };*/
   static navigationOptions = ({ navigation }) => {
         const { params = {} } = navigation.state;
         return {
@@ -45,14 +42,12 @@ class Answer extends Component {
     };
 
     this.mounted = false;
-    //this.props.navigation.navigate('Ask');
     const { posts } = this.props;
   }
 
   componentWillMount() {
     this.props.navigation.dispatch(getInitialQuote());
     this.mounted = true;
-    //this.props.navigation.navigate('Inbox')
   }
 
   componentDidMount(){
@@ -77,8 +72,6 @@ class Answer extends Component {
   onAskPress = () => {
     const { navigate } = this.props.navigation;
     navigate('Ask')
-    //this.props.navigation.navigate('Ask');
-    //this.dropdown.alertWithType('error', 'Error','dd')
   }
 
   onClose(data) {//for DropdownAlert
@@ -128,7 +121,6 @@ class Answer extends Component {
               <Badge
                 containerStyle={{ backgroundColor: '#00abff'}}
                 value={numberOfNotificatons}
-                //onPress={() => this.props.navigation.navigate('Inbox')}
                 onPress={this.toInbox}
                 textStyle={{ color: 'white', fontFamily: 'Avenir', fontWeight: '500', fontSize: 15}}
               />

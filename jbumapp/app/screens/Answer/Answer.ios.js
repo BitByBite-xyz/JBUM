@@ -48,7 +48,6 @@ class Answer extends Component {
     };
 
     this.mounted = false;
-    //this.props.navigation.navigate('Ask');
     const { posts } = this.props;
   }
 
@@ -112,8 +111,6 @@ class Answer extends Component {
   }
 
   onClose(data) {//for DropdownAlert
-  // data = {type, title, message, action}
-  // action means how the alert was dismissed. returns: automatic, programmatic, tap, pan or cancel
   }
 
   renderFooter = () => {
@@ -203,7 +200,6 @@ class Answer extends Component {
               <Badge
                 containerStyle={{ backgroundColor: '#00abff'}}
                 value={numberOfNotificatons}
-                //onPress={() => this.props.navigation.navigate('Inbox')}
                 onPress={toInbox}
                 textStyle={{ color: 'white', fontFamily: 'Avenir', fontWeight: '500', fontSize: 15}}
               />

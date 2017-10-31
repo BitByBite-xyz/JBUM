@@ -165,7 +165,6 @@ export default class AccountSetup extends Component {
   }
 
   onClose = (data) => {
-//    this.dropdown.onClose()
   }
 
   render() {

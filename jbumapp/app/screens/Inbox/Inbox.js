@@ -32,8 +32,6 @@ class Inbox extends Component {
   }
   componentDidMount(){
     const { numberOfNotificatons } = this.state;
-
-
     //AsyncStorage.clear();
     AsyncStorage.getItem(ARCHIVED_KEY).then((archivedObj)=>{
       let archived = JSON.parse(archivedObj);
@@ -188,7 +186,6 @@ class Inbox extends Component {
                 <AlertPanel
                   contentText={'You don\'t have any replies!'} />
             }
-
               </View>
               </View>
       </ScrollView>

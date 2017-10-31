@@ -322,7 +322,6 @@ class Ask extends Component {
 
     return (
       <ScrollView
-        //contentContainerStyle={{backgroundColor: '#57C2D7'}}
         style={styles.backdrop}
         keyboardShouldPersistTaps={'always'}
       >
@@ -352,7 +351,6 @@ class Ask extends Component {
             borderRadius={25}
             containerViewStyle={{marginTop:10, paddingBottom: 20}}
             backgroundColor={'white'}
-            //disabled={title.length !== 0 && body.length !== 0}
             icon={{name: 'send', color: '#BBB', size: 20}}
             iconRight
             title='Submit Question'

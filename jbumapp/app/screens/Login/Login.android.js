@@ -80,7 +80,6 @@ class Login extends Component {
       <Wallpaper>
         <KeyboardAvoidingView
           style={styles.container}
-          //behavior="padding"
         >
           <FadeInView
             duration={700}
@@ -137,7 +136,6 @@ class Login extends Component {
                 title='LOGIN'
                 icon={{name: 'add-circle-outline'}}
                 backgroundColor={'transparent'}
-
                 borderRadius={20}
                 onPress={() => this.handleSignIn()}
                 fontFamily= 'Avenir'
@@ -176,7 +174,6 @@ class Login extends Component {
             duration={5000}
             style={styles.buttons}
           >
-
             <View style={styles.contactUsContainer}>
               <Text style={styles.contactUsText}>Don't have us at your school?</Text>
               <View style={width=2}/>

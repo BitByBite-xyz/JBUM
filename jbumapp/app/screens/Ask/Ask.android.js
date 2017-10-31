@@ -267,7 +267,6 @@ class Ask extends Component {
 
     return (
       <ScrollView
-        //contentContainerStyle={{backgroundColor: '#57C2D7'}}
         style={styles.backdrop}
         keyboardShouldPersistTaps={'always'}
       >

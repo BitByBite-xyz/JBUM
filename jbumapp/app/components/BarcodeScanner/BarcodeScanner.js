@@ -65,7 +65,6 @@ class BarcodeScanner extends Component {
             'Server error: \n\n'+err.details
           );
         }
-        //Alert.alert('Login data:', 'username: ' + loginData.username+ '\npassword: ' +loginData.password);
         this.props.navigation.navigate('AccountSetup', { loginData: loginData })
       });
     }
@@ -107,8 +106,6 @@ class BarcodeScanner extends Component {
 
   onBarCodeRead = (data) => {
     if (data.data !== null){
-      //Alert.alert("Barcode Saw dis: ", data.data);
-      //console.log("Barcode: " + data);
       this.state.barcodeData = data.data;
       this.handleCreateAccount()
     }
