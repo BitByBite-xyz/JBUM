@@ -35,7 +35,7 @@ import {textWithoutEncoding} from '../../components/Communications';
 import ActionButton from '../../components/ActionButton';
 
 import images from '../../config/images';
-import {quotes, DEVICE_WIDTH} from '../../config/styles';
+import {quotes, DEVICE_WIDTH, IS_X} from '../../config/styles';
 import { changeNetworkStatus } from '../../actions/network';
 import { getInitialQuote } from '../../actions/quote';
 
@@ -237,7 +237,7 @@ class Home extends Component {
               style={{width: '100%', height: '85.5%'}}
             />*/}
               <View style={{flex:1}}>
-                <View style={{marginTop: '50%', marginLeft: '7%',backgroundColor: 'transparent', width: '90%', overflow: 'hidden'}}>
+                <View style={{marginTop: IS_X?'65%':'50%', marginLeft: '7%',backgroundColor: 'transparent', width: '90%', overflow: 'hidden'}}>
                   <View style={{ borderRadius: 10, overflow: 'hidden'}}>
                     <Text style={styles.welcomeText}>
                       Welcome!
@@ -258,12 +258,12 @@ class Home extends Component {
                   </View>
               </View>
 
-            <Animatable.View ref={(c) => this.downArrow = c} delay={750} animation="slideInUp" style={{position: 'absolute', marginLeft: '35%', marginTop: '170%'}}>
+            <Animatable.View ref={(c) => this.downArrow = c} delay={750} animation="slideInUp" style={{position: 'absolute', marginLeft: '35%', marginTop: IS_X?'207%':'170%'}}>
               <Icon
                 iconStyle={{color: 'white'}}
                 name='keyboard-arrow-down' />
             </Animatable.View>
-            <Animatable.View ref={(c) => this.upArrow = c} delay={750} animation="slideInDown" style={{position: 'absolute', marginLeft: '35%', marginTop: '2%'}}>
+            <Animatable.View ref={(c) => this.upArrow = c} delay={750} animation="slideInDown" style={{position: 'absolute', marginLeft: '35%', marginTop: IS_X?'8%':'2%'}}>
               <Icon
                 name='keyboard-arrow-up' />
             </Animatable.View>

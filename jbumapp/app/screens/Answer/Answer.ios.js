@@ -27,7 +27,7 @@ import AskHeader from '../../components/AskHeader';
 import Notifications from '../../components/Notifications';
 
 import {queryConstructor} from '../../lib/queryHelpers';
-import {DEVICE_WIDTH} from '../../config/styles';
+import {DEVICE_WIDTH, IS_X } from '../../config/styles';
 import styles from './styles';
 const calcHeight = (qty) => {
   if (qty < 11) {
@@ -175,6 +175,7 @@ class Answer extends Component {
 
 
   render() {
+    console.log(IS_X)
     const { posts,loading,navigation,inboxPosts,toInbox,numberOfNotificatons } = this.props;
     const { modalVisible, options } = this.state;
     return (
@@ -182,11 +183,11 @@ class Answer extends Component {
         <View>
           <View style={styles.header}>
            <View style={styles.leftContainer}> 
-            <ModalDropdown onSelect={(index,value)=>this.onSort(index,value)} 
-                           dropdownTextStyle={styles.sortText} ref={(ref) => this.modal = ref} 
-                           options={options}
-                           dropdownStyle={{height:calcHeight(options.length)}}
-            >
+              <ModalDropdown onSelect={(index,value)=>this.onSort(index,value)} 
+                            dropdownTextStyle={styles.sortText} ref={(ref) => this.modal = ref} 
+                            options={options}
+                            dropdownStyle={{height:calcHeight(options.length)}}
+              >
             <Icon
               name='sort'
               color='#517fa4'
@@ -195,15 +196,13 @@ class Answer extends Component {
             </ModalDropdown>
             </View>
             <Text style={styles.headerText}>Answer</Text>
-            <View style={{paddingRight:10}}>{/*//i hate this*/}
-            <View style={styles.headerRight}>
+            <View style={styles.rightContainer}>
               <Badge
                 containerStyle={{ backgroundColor: '#00abff'}}
                 value={numberOfNotificatons}
                 onPress={toInbox}
                 textStyle={{ color: 'white', fontFamily: 'Avenir', fontWeight: '500', fontSize: 15}}
               />
-            </View>
             </View>
 
           </View>

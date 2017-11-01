@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { colors } from '../../config/styles';
-import {DEVICE_WIDTH} from '../../config/styles';
+import {DEVICE_WIDTH, IS_X} from '../../config/styles';
 
 export default StyleSheet.create({
   contentContainerStyle: {
@@ -49,7 +49,7 @@ export default StyleSheet.create({
       borderRadius: 25
     },
     header:{
-      height: 50,
+      height: IS_X ? 70 : 50,
       backgroundColor: 'white',
       flexDirection: 'row',
       justifyContent: 'space-between',
@@ -58,28 +58,28 @@ export default StyleSheet.create({
       borderBottomColor: '#d1d1d1'
     },
     rightContainer: {
-      flex: 1,
-      flexDirection: 'row',
-      justifyContent: 'flex-end',
-      alignItems: 'center',
-      backgroundColor: 'red',
+      marginTop: IS_X?-37:0,
+      marginRight: IS_X? 33: 10,
     },
     leftContainer: {
       flex: 1,
       alignItems: 'flex-start',
-      marginLeft: 12
+      marginTop: IS_X?-33:0,
+      marginLeft: IS_X? 33: 12,
+
     },
     centerContainer: {
       flex: 1,
       justifyContent:'center'
     },
     headerText:{
+      paddingTop: IS_X ? 25 : 0,
       color: 'black',
       fontSize: 18,
       fontWeight: '500',
       fontFamily: 'Avenir',
       textAlign:'center',
-      marginRight: (DEVICE_WIDTH/2)-73
+      marginRight: IS_X? (DEVICE_WIDTH/2)-96 : (DEVICE_WIDTH/2)-73
     },
     sortText:{
       color: 'black',

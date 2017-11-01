@@ -19,6 +19,7 @@ import InboxPanel from '../../components/InboxPanel';
 import Loading from '../../components/Loading';
 import {queryConstructor} from '../../lib/queryHelpers';
 import { changeNotificationNumber } from '../../actions/notification';
+import { IS_X } from '../../config/styles';
 
 const ARCHIVED_KEY = 'Archived'
 class Inbox extends Component {
@@ -172,7 +173,8 @@ class Inbox extends Component {
         style={styles.container}
         contentContainerStyle={styles.contentContainerStyle}
       >
-        <View style={{backgroundColor: '#5CC2D6', alignItems: 'center'}}>
+        <View style={{height: 1000, backgroundColor: '#5CC2D6', alignItems: 'center'}}>
+          <View style={{margin: IS_X ? 15:0}}/>
           <Text style={{fontSize: 23, fontFamily: 'Avenir', color: 'white', fontWeight: '500', marginBottom: 9, marginTop: 10}}>Inbox</Text>
           <View style={{borderTopLeftRadius: 12, borderTopRightRadius: 12,overflow: 'hidden', backgroundColor: '#F3F3F3'}}>
             { archivedReplies && data.length > 0?

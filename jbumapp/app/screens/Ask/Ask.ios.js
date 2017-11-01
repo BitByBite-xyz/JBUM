@@ -8,6 +8,7 @@ import {AutoGrowingTextInput} from 'react-native-autogrow-textinput';
 
 import Prompt from '../../components/Prompt'
 import ActionButton from '../../components/ActionButton';
+import { IS_X } from '../../config/styles';
 
 import styles from './styles'
 
@@ -146,6 +147,12 @@ class Ask extends Component {
     }
   }
 
+  onHelpPress = () => {
+    Alert.alert('Information about recievers',
+    'Student: Any questions not answered within 24 hours will be passed on to an adult to ensure that your questions are addressed.  All responses expressed by your peers are their opinion and do not reflect/represent the beliefs of JBUM.\n'+
+    'Adult: Responses by adults are not designed to supercede that of your parents, but are designed to give a different point of view for your consideration.  All responses expressed by adults are their opinion and do not reflect/represent the beliefs of JBUM.')
+  }
+
   renderHeader = (section) => {
     if (!section.title) return;
     if (section.title.includes('Receiver')){
@@ -156,7 +163,7 @@ class Ask extends Component {
             <View style={{marginTop: 6, marginLeft: 15}}>
               <Icon
                 name='help'
-                onPress={() => alert("This will connect you with ..")}
+                onPress={this.onHelpPress}
                 size={22}
                 underlayColor={'white'}
                 color={'grey'}
@@ -310,7 +317,6 @@ class Ask extends Component {
     const {title, body,post_visibility, post_categories, otherCategory} = this.state;
     Keyboard.dismiss;
 
-
     this.setState({sections: [ {title: post_categories.length === 0 ? '1️⃣ Choose Category ': '✅ Choose Category '},
                                 {title: !title.replace(/\s/g, '').length || !body.replace(/\s/g, '').length ?  '2️⃣ Ask Question ': '✅ Ask Question '},
                                 {title: post_visibility.length === 0 ? '3️⃣ Choose Receiver ': '✅ Choose Receiver '}]});
@@ -325,8 +331,8 @@ class Ask extends Component {
         style={styles.backdrop}
         keyboardShouldPersistTaps={'always'}
       >
-      <View style={{height: 50, backgroundColor: '#57C2D7', alignItems: 'center', justifyContent: 'center'}}>
-        <Text style={{fontSize: 24, fontFamily: 'Avenir', fontWeight: '500', color: 'white'}}>Ask a Question</Text>
+      <View style={{height: IS_X? 70:50, backgroundColor: '#57C2D7', alignItems: 'center', justifyContent: 'center'}}>
+        <Text style={{marginTop: IS_X ? 27:0, fontSize: 24, fontFamily: 'Avenir', fontWeight: '500', color: 'white'}}>Ask a Question</Text>
       </View>
       <View style={styles.backdrop}>
         <View style={{borderTopLeftRadius: 15, borderTopRightRadius: 15, overflow: 'hidden', backgroundColor: '#F3F3F3'}}>

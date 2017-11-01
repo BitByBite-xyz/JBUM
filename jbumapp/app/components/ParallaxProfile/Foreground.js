@@ -6,6 +6,8 @@ import { Icon, Divider } from 'react-native-elements'
 const header = 'It is Foreground Component';
 import * as Progress from 'react-native-progress';
 
+import {IS_X} from '../../config/styles';
+
 
 export default class Header extends Component {
   constructor(props) {
@@ -74,7 +76,7 @@ export default class Header extends Component {
     return (
       <View style={{flex:1}}>
        
-       <View style={{marginLeft: '87%', marginTop:15}}>
+       <View style={{marginLeft: IS_X ? '74%': '85%', marginTop: IS_X? 5: 15}}>
           <Icon
             name='more-horiz'
             large
