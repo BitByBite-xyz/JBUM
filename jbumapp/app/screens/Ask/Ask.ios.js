@@ -149,8 +149,9 @@ class Ask extends Component {
 
   onHelpPress = () => {
     Alert.alert('Information about recievers',
-    'Student: Any questions not answered within 24 hours will be passed on to an adult to ensure that your questions are addressed.  All responses expressed by your peers are their opinion and do not reflect/represent the beliefs of JBUM.\n'+
-    'Adult: Responses by adults are not designed to supercede that of your parents, but are designed to give a different point of view for your consideration.  All responses expressed by adults are their opinion and do not reflect/represent the beliefs of JBUM.')
+    'Student: Any questions not answered within 24 hours will be passed on to an adult to ensure that your questions are addressed.  All responses expressed by your peers are their opinion and do not reflect/represent the beliefs of JBUM.\n\n'+
+    'Adult: Responses by adults are not designed to supercede that of your parents, but are designed to give a different point of view for your consideration.  All responses expressed by adults are their opinion and do not reflect/represent the beliefs of JBUM.\n\n'+
+    'Professonal: Responses by professionals are not designed to supercede that of your current therapist but are designed to give a different point of view.  All responses expressed by professionals are their opinion, based on their expertise and do not reflect/represent the beliefs of JBUM.\n')
   }
 
   renderHeader = (section) => {
@@ -208,7 +209,19 @@ class Ask extends Component {
             uncheckedIcon='circle-o'
             checked={post_visibility.indexOf('Adult') !== -1}
             onPress={() => {
-              this.updateResponder('Adult');
+              const checked = post_visibility.indexOf('Adult') !== -1;
+              if (!checked){
+                Alert.alert(
+                  'Adult Responder Selected',
+                  'All adults are pre-screened and approved by JBUM. Questions will be answered within 24 hours of posting your question.',
+                  [
+                    {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+                    {text: 'OK', onPress: () => this.updateResponder('Adult')},
+                  ],
+                  { cancelable: false }
+                );
+              }
+              else this.updateResponder('Adult');
             }}
           />
           <CheckBox
@@ -221,7 +234,19 @@ class Ask extends Component {
             checkedColor='red'
             checked={post_visibility.indexOf('Professional') !== -1}
             onPress={() => {
-              this.updateResponder('Professional');
+              const checked = post_visibility.indexOf('Professional') !== -1;
+              if (!checked){
+                Alert.alert(
+                  'Professional Responder Selected',
+                  'A licensed therapist will be in contact within 24 hours of posting your question.',
+                  [
+                    {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+                    {text: 'OK', onPress: () => this.updateResponder('Professional')},
+                  ],
+                  { cancelable: false }
+                );
+              }
+              else this.updateResponder('Professional');
             }}
           />
         </View>

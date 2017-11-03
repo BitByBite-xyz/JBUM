@@ -4,7 +4,7 @@ import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 import { Posts } from './posts';
 import { check } from 'meteor/check';
 import { Random } from 'meteor/random';
-
+import { handlePost } from '../responderLogic/methods';
 var Filter = require('bad-words'),
 filter = new Filter({ placeHolder: '🤲'});
 filter.removeWords("gay", "gayboy", "gaygirl","gays","gayz", "queer","queers","queerz","qweers","qweerz","qweir","h4x0r");
@@ -33,14 +33,7 @@ Meteor.methods({
       post_visibility:post_visibility,
       post_flags: post_flags
     });
-
-    const params = {
-      to:'connor.larkin1@gmail.com',
-      from: '',
-      subject: 'Post Added',
-      text: JSON.stringify({title, body, post_visibility, post_categories})
-    };
-    Meteor.call('sendEmail',params);
+    handlePost({title, body, post_visibility, post_categories});
   },
   'Posts.remove' (postId) {
     check(postId, String);
