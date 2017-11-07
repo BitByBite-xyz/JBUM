@@ -40,6 +40,7 @@ export default class Welcome extends Component {
   }
 
   handleOpenURL = (event) => { 
+    if (Meteor.userId()) return;
     if (this.state.hasOpenedURL) return;
     const { navigation } = this.props;
     const url = event.url;
