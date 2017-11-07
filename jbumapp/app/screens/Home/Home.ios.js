@@ -53,6 +53,7 @@ class Home extends Component {
   }
 
   componentDidMount() {
+    Linking.addEventListener('url', this.handleOpenURL);
     NetInfo.fetch().done((reach) => {
       this.handleNetworkChange(reach);
     });
@@ -77,6 +78,19 @@ class Home extends Component {
   componentWillUnmount(){
     AppState.removeEventListener('change', this._handleAppStateChange);
     NetInfo.removeEventListener('change', this.handleNetworkChange);
+    Linking.removeEventListener('url', this.handleOpenURL);
+  }
+
+  handleOpenURL = (event) => { 
+    const { navigation } = this.props;
+    const url = event.url;
+
+    const route = url.replace(/.*?:\/\//g, '');
+   // const id = route.match(/\/([^\/]+)\/?$/)[1];
+    const routeName = route.split('/')[0];
+    alert(url)
+
+    navigation.navigate('AccountSetup');
   }
 
   handleAppStateChange = (nextAppState) => {
@@ -276,7 +290,6 @@ class Home extends Component {
                 name='keyboard-arrow-left' />
             </Animatable.View>
 
-        <Animatable.View animation="slideInUp" style={{flex:1,position: 'absolute', right: 55, bottom: 110}}>
           <ActionButton ref={(c) => this.but = c} degrees={136} icon={<Icon name="call" style={styles.actionButtonIcon} color={'white'} />} fixNativeFeedbackRadius={true} buttonColor="#F1606E">
             <ActionButton.Item textStyle={{fontSize: 14}} buttonColor='#9b59b6' title="Call 911" onPress={() => this.handleFloatingButtonPress('911')}>
               <Icon name="call" style={styles.actionButtonIcon} color={'white'} />
@@ -288,7 +301,6 @@ class Home extends Component {
               <Icon name="call" style={styles.actionButtonIcon} color={'white'} />
             </ActionButton.Item>
           </ActionButton>
-        </Animatable.View>
         </ImageBackground>
           </View >
           <Profile

@@ -60,10 +60,6 @@ export default class ActionButton extends Component {
     }
   }
 
-  closeHer(){
-    this.setState({active:false})
-  }
-
   //////////////////////
   // STYLESHEET GETTERS
   //////////////////////

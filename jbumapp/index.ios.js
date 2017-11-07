@@ -4,7 +4,7 @@ import firebase from 'react-native-firebase';
 
 AppRegistry.registerComponent('jbumapp', () => App); //regesters /app/index.js
 
-firebase.analytics().setAnalyticsCollectionEnabled(false);
+firebase.analytics().setAnalyticsCollectionEnabled(true);
 firebase.analytics().logEvent('add_to_cart', {
   id: '123',
   value: 100

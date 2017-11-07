@@ -88,7 +88,7 @@ class Login extends Component {
             style={styles.header}
           >
             <Text style={styles.text}>
-                  Just Between <B>You </B>and <B>Me</B>
+                  Just Between <B>U</B> and <B>Me</B>
             </Text>
           </FadeInView>
 

@@ -62,8 +62,8 @@ class Answer extends Component {
       });
       this.props.navigation.dispatch(resetAction);
     }
+
     this.mounted = true;
-    //this.props.navigation.navigate('Inbox')
   }
 
   componentDidMount(){
@@ -104,10 +104,7 @@ class Answer extends Component {
   }
 
   onAskPress = () => {
-    //this.modal.show();
     this.props.toAskPage();
-    //this.props.navigation.navigate('Ask');
-    //this.dropdown.alertWithType('error', 'Error','dd')
   }
 
   onClose(data) {//for DropdownAlert

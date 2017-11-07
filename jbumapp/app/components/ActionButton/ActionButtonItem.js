@@ -98,7 +98,7 @@ export default class ActionButtonItem extends Component {
           borderRadius: this.props.size / 2
         }
       : {
-          paddingHorizontal: this.props.offsetX-40,
+          paddingHorizontal: this.props.offsetX,
           height: size + SHADOW_SPACE + spacing
         };
     return (
@@ -106,13 +106,7 @@ export default class ActionButtonItem extends Component {
         pointerEvents="box-none"
         style={[animatedViewStyle, parentStyle]}
       >
-        <View
-          style={{
-            width: this.props.size-25,
-            height: this.props.size,
-            borderRadius: size / 2
-          }}
-        >
+        <View>
           <Touchable
             background={touchableBackground(
               this.props.nativeFeedbackRippleColor,
@@ -185,11 +179,10 @@ export default class ActionButtonItem extends Component {
           this.props.nativeFeedbackRippleColor,
           this.props.fixNativeFeedbackRadius
         )}
-        style={{marginRight:-100}}
         activeOpacity={this.props.activeOpacity || DEFAULT_ACTIVE_OPACITY}
         onPress={this.props.onPress}
       >
-        <View style={[textStyles, {flex:1, marginRight: -40}]}>
+        <View style={textStyles}>
           {title}
         </View>
       </TextTouchable>

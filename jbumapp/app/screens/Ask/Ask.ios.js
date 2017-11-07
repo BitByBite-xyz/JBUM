@@ -5,6 +5,7 @@ import update from 'react-addons-update';
 import Meteor, { createContainer } from 'react-native-meteor';
 import Accordion from 'react-native-collapsible/Accordion';
 import {AutoGrowingTextInput} from 'react-native-autogrow-textinput';
+import { NavigationActions } from 'react-navigation';
 
 import Prompt from '../../components/Prompt'
 import ActionButton from '../../components/ActionButton';
@@ -26,7 +27,7 @@ class Ask extends Component {
       sections: [ {title: '1️⃣ Choose Category '}, {title: '2️⃣ Ask Question '}, {title: '3️⃣ Choose Receiver '}]
     };
   }
-
+  
   resetFields = () => {
     this.setState( {
       title: '',
@@ -149,9 +150,9 @@ class Ask extends Component {
 
   onHelpPress = () => {
     Alert.alert('Information about recievers',
-    'Student: Any questions not answered within 24 hours will be passed on to an adult to ensure that your questions are addressed.  All responses expressed by your peers are their opinion and do not reflect/represent the beliefs of JBUM.\n\n'+
-    'Adult: Responses by adults are not designed to supercede that of your parents, but are designed to give a different point of view for your consideration.  All responses expressed by adults are their opinion and do not reflect/represent the beliefs of JBUM.\n\n'+
-    'Professonal: Responses by professionals are not designed to supercede that of your current therapist but are designed to give a different point of view.  All responses expressed by professionals are their opinion, based on their expertise and do not reflect/represent the beliefs of JBUM.\n')
+    'Student: Any questions not answered within 24 hours will be passed on to an adult to ensure that your questions are addressed.\n'+
+    'Adult: Responses by adults are not designed to supercede that of your parents, but are designed to give a different point of view for your consideration.\n'+
+    'Professonal: Responses by professionals are not designed to supercede that of your current therapist but are designed to give a different point of view.\n\nAll responses expressed by responders are their opinion, based on their expertise and do not reflect/represent the beliefs of JBUM.\n')
   }
 
   renderHeader = (section) => {
