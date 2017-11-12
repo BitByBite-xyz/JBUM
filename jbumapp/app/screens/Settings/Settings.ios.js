@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
+import { Text, View, Alert, Linking,Clipboard,TouchableOpacity,KeyboardAvoidingView,AsyncStorage } from 'react-native';
+
 import Meteor, { Accounts,createContainer } from 'react-native-meteor';
-import { Text, View, Alert, Linking,Clipboard,TouchableOpacity,KeyboardAvoidingView } from 'react-native';
 import { Button } from 'react-native-elements'
 import styles from './styles';
 import { colors } from '../../config/styles';
 import Modal from 'react-native-modal';
 import { Icon, Divider, Badge } from 'react-native-elements'
 import { Jiro } from 'react-native-textinput-effects';
-
 import SettingsList from 'react-native-settings-list';
-
 import { NavigationActions } from 'react-navigation';
 
 import {email} from '../../components/Communications';
 
+const AUTH_KEY = 'isdatauthneededtho';
 class Settings extends Component {
   constructor(props) {
     super(props);
@@ -22,8 +22,23 @@ class Settings extends Component {
       isModalVisible:false,
       oldPass: '',
       newPass : '',
-      confirmPass: ''
+      confirmPass: '',
+      isAuthReq: false
     };
+    this.handleAuthSwitchChange = this.handleAuthSwitchChange.bind(this);
+  }
+
+  componentWillMount(){
+    AsyncStorage.getItem(AUTH_KEY).then((auth)=>{
+      if (auth === 'true'){
+        this.setState({isAuthReq:true})
+      }
+      else{
+        this.setState({isAuthReq:false})
+      }
+    }).catch((err) => {
+      this.setState({isAuthReq:false})
+    })
   }
 
   signOut = () => {
@@ -156,6 +171,12 @@ class Settings extends Component {
     );
   }
 
+  handleAuthSwitchChange = () => {
+    const value = this.state.isAuthReq ? 'false':'true';
+    AsyncStorage.setItem(AUTH_KEY, value)
+    this.setState({isAuthReq:!this.state.isAuthReq}) 
+  }
+
   render() {
     const { switchValue } = this.state;
     return (
@@ -165,7 +186,7 @@ class Settings extends Component {
                 <SettingsList.Header headerStyle={{marginTop:0}}/>
                 <SettingsList.Item
                   titleStyle={{fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
-                  title='Account Username'
+                  title='🤫 Account Username'
                   arrowIcon={(<Icon
                     name='account-circle'
                     iconStyle={{marginRight:30}}
@@ -175,51 +196,60 @@ class Settings extends Component {
                 <SettingsList.Header headerStyle={{marginTop:10}}/>
                 <SettingsList.Item
                   titleStyle={{fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
-                  title='Notification Settings'
+                  hasNavArrow={false}
+                  title='🔐 Secure this app'
+                  hasSwitch={true}
+                  switchOnValueChange={this.handleAuthSwitchChange}
+                  switchState={this.state.isAuthReq}
+                />
+                <SettingsList.Header headerStyle={{marginTop:10}}/>
+                <SettingsList.Item
+                  titleStyle={{fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
+                  title='🔔 Notification Settings'
                   onPress={this.handleNotificationPress}
                 />
                 <SettingsList.Header headerText='SUPPORT' headerStyle={{color:'gray', marginTop:15, marginLeft: 10}}/>
                 <SettingsList.Item
                   titleStyle={{fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
-                  title='Tutorial'
+                  title='🗺 Tutorial'
                   onPress={() => Alert.alert('Route To Tutorial Video')}
                 />
                 <SettingsList.Item
                   titleStyle={{fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
-                  title='Report a Problem'
+                  title='🚧 Report a Problem'
                   onPress={this.handleReportProblemPress}
                 />
 
                 <SettingsList.Header headerText='ABOUT' headerStyle={{color:'gray', marginTop:15, marginLeft: 10}}/>
                 <SettingsList.Item
                   titleStyle={{fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
-                  title='Terms of Service'
+                  title='📄 Terms of Service'
                   onPress={() => Linking.openURL('https://help.instagram.com/155833707900388/?helpref=hc_fnav')}
                 />
                 <SettingsList.Item
                   titleStyle={{fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
-                  title='Guidelines'
+                  title='📖 Guidelines'
                   onPress={() => Linking.openURL('https://help.instagram.com/155833707900388/?helpref=hc_fnav')}
                 />
                 <SettingsList.Item
                   titleStyle={{fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
-                  title='JBUM Website'
+                  title='🕸 JBUM Website'
                   onPress={() => Linking.openURL('http://www.justbetweenuandme.com')}
                 />
 
                 <SettingsList.Header headerStyle={{marginTop:10}}/>
                 <SettingsList.Item
-                  title='Change Password'
+                  title='🔏 Change Password'
                   titleStyle={{color:'#020C7E', fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
                   onPress={() => this.setState({isModalVisible:true})}
                 />
                 <SettingsList.Item
-                  title='Delete Account'
+                  title='🚨 Delete Account'
                   titleStyle={{color:'#020C7E', fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
                   onPress={this.handleDeleteAccount}
                 />
                 <SettingsList.Item
-                  title='Log Out'
+                  title='🎈 Log Out'
                   titleStyle={{color:'#020C7E', fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
                   onPress={this.signOut}
                 />

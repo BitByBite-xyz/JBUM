@@ -22,6 +22,7 @@ import { Icon } from 'react-native-elements'
 import * as Animatable from 'react-native-animatable';
 import { connect } from 'react-redux';
 import PushNotification from 'react-native-push-notification';
+import TouchID from "react-native-touch-id";
 
 import Ask from '../Ask';
 import Answer from '../Answer';
@@ -38,6 +39,8 @@ import images from '../../config/images';
 import {quotes, DEVICE_WIDTH, IS_X} from '../../config/styles';
 import { changeNetworkStatus } from '../../actions/network';
 import { getInitialQuote } from '../../actions/quote';
+const ACNTSETUP_KEY = 'setupcomplete'
+const AUTH_KEY = 'isdatauthneededtho';
 
 class Home extends Component {
   constructor(props) {
@@ -48,12 +51,49 @@ class Home extends Component {
     };
   }
 
-  componentWillMount(){
+  componentWillMount(){  
+    AsyncStorage.getItem('reactnativemeteor_usertoken').then((key)=>{
+      if (!key){
+        this.props.navigation.navigate('WelcomeStack');
+      }
+      else{
+        AsyncStorage.getItem(ACNTSETUP_KEY).then((key)=>{
+          if (!key){
+            this.props.navigation.navigate('AccountSetup');
+          }
+          else{
+            AsyncStorage.getItem(AUTH_KEY)
+              .then((auth)=>{
+                if(auth && auth === 'true'){
+                  TouchID.isSupported()
+                  .then(supported => {
+                    TouchID.authenticate('JBUM is locked.')
+                      .then(success => {
+                      })
+                      .catch(error => {
+                        this.props.navigation.navigate('WelcomeStack');
+                      });
+                  })
+                  .catch(error => {
+                    console.log('touchidnotsupported')
+                  });
+                }
+              })
+              .catch((err) => {
+              })
+          }
+        }).catch((err) => {
+         alert('oops')
+        })
+      }
+    }).catch((err) => {
+     alert('oops')
+    })
+   
     this.props.navigation.dispatch(getInitialQuote());
   }
 
   componentDidMount() {
-    Linking.addEventListener('url', this.handleOpenURL);
     NetInfo.fetch().done((reach) => {
       this.handleNetworkChange(reach);
     });
@@ -73,24 +113,13 @@ class Home extends Component {
     setTimeout(() => {
       this.handleCheckForNotif();
     }, 250);
+
+    
   }
 
   componentWillUnmount(){
     AppState.removeEventListener('change', this._handleAppStateChange);
     NetInfo.removeEventListener('change', this.handleNetworkChange);
-    Linking.removeEventListener('url', this.handleOpenURL);
-  }
-
-  handleOpenURL = (event) => { 
-    const { navigation } = this.props;
-    const url = event.url;
-
-    const route = url.replace(/.*?:\/\//g, '');
-   // const id = route.match(/\/([^\/]+)\/?$/)[1];
-    const routeName = route.split('/')[0];
-    alert(url)
-
-    navigation.navigate('AccountSetup');
   }
 
   handleAppStateChange = (nextAppState) => {

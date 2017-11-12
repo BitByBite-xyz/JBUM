@@ -19,7 +19,6 @@ import Ask from '../screens/Ask';
 import Settings from '../screens/Settings';
 import Welcome from '../screens/Welcome';
 import Inbox from '../screens/Inbox';
-import BetaScreen from '../screens/BetaScreen';
 
 import Notifications from '../components/Notifications';
 import BarcodeScanner from '../components/BarcodeScanner';
@@ -171,45 +170,41 @@ export const ProfileStack = StackNavigator({
 		headerMode: 'none',
 		mode:'modal'
 });
+
 export default StackNavigator({
-		HomeStack: { screen: HomeStack,
-		 	navigationOptions: {
-				header: null,
-				gesturesEnabled: false,
-		}},
-		WelcomeStack: { screen: WelcomeStack,
-		 	navigationOptions: {
-				header: null,
-				gesturesEnabled: false,
-		}},
-		BetaScreen: { screen: BetaScreen,
-			navigationOptions: {
-				header: null,
-				gesturesEnabled: false,
-		}},
-		ResponderTabs: { screen: ResponderTabs,
-		 	navigationOptions: {
-				header: null,
-				gesturesEnabled: false,
-		}},
-		BarcodeScanner: { screen: BarcodeScanner,
-			navigationOptions: {
-				headerStyle: {
-					 color: null,
-					 backgroundColor: null,
-					 height: 0.00001,
-				 },
-			}
-		},
+	HomeStack: { screen: HomeStack,
+		navigationOptions: {
+			header: null,
+			gesturesEnabled: false,
+	}},
+	WelcomeStack: { screen: WelcomeStack,
+		navigationOptions: {
+			header: null,
+			gesturesEnabled: false,
+	}},
+	ResponderTabs: { screen: ResponderTabs,
+		navigationOptions: {
+			header: null,
+			gesturesEnabled: false,
+	}},
+	BarcodeScanner: { screen: BarcodeScanner,
+		navigationOptions: {
+			headerStyle: {
+					color: null,
+					backgroundColor: null,
+					height: 0.00001,
+				},
+		}
+	},
 	},{
-    	navigationOptions: {
-	      tabBarVisible: false,
-				mode:'modal'
-    	}
+	navigationOptions: {
+		tabBarVisible: false,
+			mode:'modal'
+	}
 	});
 	const styles =  StyleSheet.create({
-		 inboxCircle: {
-			width: 28,
-			height: 28
-		}
+		inboxCircle: {
+		width: 28,
+		height: 28
+	}
 })

@@ -8,7 +8,8 @@ import {
   FlatList,
   Animated,
   Alert,
-  Modal
+  Modal,
+  AsyncStorage
 } from 'react-native';
 import Meteor, { createContainer } from 'react-native-meteor';
 import FadeInView from 'react-native-fade-in-view';//{/* onFadeComplete={() => alert('Ready') */}
@@ -52,23 +53,15 @@ class Answer extends Component {
   }
 
   componentWillMount() {
-    if (!Meteor.userId()) {
-      const resetAction = NavigationActions.reset({
-        index: 0,
-        key: null,
-        actions: [
-          NavigationActions.navigate({ routeName: 'WelcomeStack' }),
-        ],
-      });
-      this.props.navigation.dispatch(resetAction);
-    }
 
     this.mounted = true;
   }
 
   componentDidMount(){
-    const { navigation } = this.props;
+    const { navigation, user } = this.props;
     const diffCategories = this.state.options;
+    var value = this;
+  
     if (Meteor.userId()) { //this is cancer
       if (Meteor.user().profile) {
         if (!Meteor.user().profile.isAccountSetupComplete) {
@@ -272,6 +265,7 @@ export default createContainer(() => {
   var inboxParameters = queryConstructor(inboxTerms);
 
   return {
-    posts: Meteor.collection('posts').find(answerParameters.find, answerParameters.sort)
+    posts: Meteor.collection('posts').find(answerParameters.find, answerParameters.sort),
+    user: Meteor.user()
   };
 }, connect(mapStateToProps)(Answer));
