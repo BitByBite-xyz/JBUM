@@ -8,9 +8,11 @@
     TouchableOpacity,
     Alert,
     StyleSheet,
+    AsyncStorage
 }
 from 'react-native';
-import Meteor, { Accounts } from 'react-native-meteor';
+
+import Meteor, { Accounts,createContainer } from 'react-native-meteor';
 import {
 	Button,
 	Icon,
@@ -28,10 +30,10 @@ import PageTwo from '../../components/AccountSetupComponents/PageTwo';
 import PageFour from '../../components/AccountSetupComponents/PageFour';
 import PasswordPage from '../../components/AccountSetupComponents/PasswordPage';
 
-// Colors
 const MAIN_WARN_COLOR = '#FF9A1E'
+const ACNTSETUP_KEY = 'setupcomplete'
 
-export default class AccountSetup extends Component {
+class AccountSetup extends Component {
   constructor() {
     super();
     const items = [
@@ -61,7 +63,12 @@ export default class AccountSetup extends Component {
   }
 
   componentDidMount() {
-    const { navigation } = this.props;
+    const { navigation, user } = this.props;
+    if (user && user.profile.isAccountSetupComplete) {
+      AsyncStorage.setItem(ACNTSETUP_KEY, 'true').then(()=> {
+        this.props.navigation.navigate('HomeStack', {overrideToAccountSetup:true});
+      })
+    }
   }
 
   onSlideChangeHandle = (index, total) => {
@@ -101,7 +108,7 @@ export default class AccountSetup extends Component {
       }
       else {
         console.log("UserData added");
-        this.props.navigation.navigate('HomeStack', {overrideToAccountSetup:true});
+        AsyncStorage.setItem(ACNTSETUP_KEY, 'true').then(() => this.props.navigation.navigate('HomeStack', {overrideToAccountSetup:true}))
       }
     });
   }
@@ -146,7 +153,6 @@ export default class AccountSetup extends Component {
 
   handleAbandonSetup = () => {
     Meteor.logout(() => {
-
       this.props.navigation.navigate('WelcomeStack');
     });
   }
@@ -216,6 +222,13 @@ export default class AccountSetup extends Component {
         );
       }
 };
+
+export default createContainer(() => {
+
+  return {
+    user: Meteor.user()
+  };
+}, AccountSetup);
 
 const styles = StyleSheet.create({
   slide: {

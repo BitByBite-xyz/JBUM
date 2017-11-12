@@ -68,7 +68,7 @@ class Login extends Component {
           Alert.alert('Error Logging in',err.reason)
         }
         else {
-          this.props.navigation.navigate('HomeStack');
+          this.props.navigation.navigate('HomeStack', {overrideBiometric:true});
         }
       });
     }

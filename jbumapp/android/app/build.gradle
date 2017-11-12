@@ -158,6 +158,9 @@ repositories {
 }
 
 dependencies {
+    compile(project(':react-native-firebase')) {
+        transitive = false
+    }
     compile project(':react-native-code-push')
     compile(project(':react-native-firebase')) {
         transitive = false
