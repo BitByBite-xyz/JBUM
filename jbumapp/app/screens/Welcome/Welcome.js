@@ -4,7 +4,8 @@ import {
   Text,
   StyleSheet,
   Linking,
-  Alert
+  Alert,
+  AsyncStorage
 } from 'react-native';
 import Meteor, { Accounts } from 'react-native-meteor';
 import { Button } from 'react-native-elements';
@@ -16,6 +17,7 @@ import {email} from '../../components/Communications';
 import images from '../../config/images';
 
 const B = (props) => <Text style={styles.textBold}>{props.children}</Text>
+const URL_KEY = 'thisisfun';
 
 export default class Welcome extends Component {
   constructor(props) {
@@ -33,6 +35,17 @@ export default class Welcome extends Component {
   }
 
   componentDidMount() {
+    setTimeout(() => {
+      AsyncStorage.getItem(URL_KEY).then((url)=>{
+        if (url && url !== 'done' && !this.state.hasOpenedURL) {
+          this.handleOpenURL({url:url});
+          AsyncStorage.setItem(URL_KEY, 'done');
+        }
+      }).catch((err) => {
+        console.log(err);
+      })
+    }, 700);
+    
   }
 
   componentDidUnmount(){

@@ -4379,6 +4379,10 @@ react-native-collapsible@^0.9.0:
   dependencies:
     prop-types "^15.5.10"
 
+react-native-confetti@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/react-native-confetti/-/react-native-confetti-0.0.6.tgz#a505e4e5a23bcb2cf554ba51362dfaf3ac17a100"
+
 react-native-device-info@^0.11.0:
   version "0.11.0"
   resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-0.11.0.tgz#e96dd0e3f8a7d7e3022c1f441f51fa912fdc7444"

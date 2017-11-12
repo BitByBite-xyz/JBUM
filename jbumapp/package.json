@@ -24,6 +24,7 @@
     "react-native-camera": "git+https://github.com/lwansbrough/react-native-camera.git",
     "react-native-code-push": "https://github.com/Microsoft/react-native-code-push.git",
     "react-native-collapsible": "^0.9.0",
+    "react-native-confetti": "^0.0.6",
     "react-native-device-info": "^0.11.0",
     "react-native-dropdownalert": "^2.10.0",
     "react-native-elements": "0.16.0",

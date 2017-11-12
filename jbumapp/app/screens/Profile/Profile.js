@@ -80,7 +80,7 @@ class ProfileContainer extends Component {
 				return (
 					<View
 						style={{
-							paddingVertical: '60%',
+							paddingVertical: '70%',
 							backgroundColor:'#F3F3F3',
 						}}>
 						</View>);

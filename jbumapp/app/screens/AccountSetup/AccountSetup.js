@@ -42,28 +42,18 @@ class AccountSetup extends Component {
     ]
     this.state = {
       currentIndex: 0,
+      swiperIndex:0,
       items: items,
       profileData: []
     };
 
-    if (Meteor.userId() && Meteor.user().profile) {
-      const data = {
-        username: Meteor.user().username,
-        temporaryPass: Meteor.user().profile.temporaryPass
-      };
-      this.state.loginData = data;
-    }
-    else {
-      const data = {
-        username: '',
-        temporaryPass: ''
-      };
-      this.state.loginData = data;;
-    };
+    let data = null;
   }
 
   componentDidMount() {
     const { navigation, user } = this.props;
+    let data = null;
+
     if (user && user.profile.isAccountSetupComplete) {
       AsyncStorage.setItem(ACNTSETUP_KEY, 'true').then(()=> {
         this.props.navigation.navigate('HomeStack', {overrideToAccountSetup:true});
@@ -82,13 +72,16 @@ class AccountSetup extends Component {
   }
 
   handlePageComplete = () => {
-    this.state.currentIndex = this.state.currentIndex+1;
+    if (this.swiper){
+      this.swiper.scrollBy(1)
+      this.setState({currentIndex: ++this.state.currentIndex});
+    }
+    else {
+      this.setState({currentIndex: ++this.state.currentIndex});
+    }
   }
-
-  handleAddData = (field, response) => {
-    console.log(field,response,this.state.profileData)
-    this.state.profileData.push({field:field, response:response.toString()});
-  }
+  
+  handleAddData = (field, response) => this.state.profileData.push({field:field, response:response.toString()});
 
   handleAccountSetupComplete = () => {
     const { profileData } = this.state;
@@ -102,26 +95,24 @@ class AccountSetup extends Component {
         console.log("UserData err"+err.reason);
         Alert.alert(
           'Oops! Screenshot this and send to support!',
-          'Server error: \n\n'+err.reason
+          'UserData err: \n\n'+err.reason
         );
         return;
       }
       else {
         console.log("UserData added");
-        AsyncStorage.setItem(ACNTSETUP_KEY, 'true').then(() => this.props.navigation.navigate('HomeStack', {overrideToAccountSetup:true}))
+        AsyncStorage.setItem(ACNTSETUP_KEY, 'true')
       }
     });
   }
 
   validateInput = (password, confirmPassword) => {
-    const { loginData } = this.state;
+    const { user } = this.props;
     const MAIN_WARN_COLOR = '#FF9A1E'
-
     const items = [
       {key: 0, backgroundColor: MAIN_WARN_COLOR, type: 'info', title: 'Info', message: 'Complete this slide before moving on!'},
       {key: 1, backgroundColor: MAIN_WARN_COLOR, type: 'warn', title: 'Warning', message: 'Passwords do not match!'},
     ]
-
     let valid = true;
 
     if (password.length === 0 || confirmPassword.length === 0) {
@@ -134,19 +125,20 @@ class AccountSetup extends Component {
       valid = false;
     }
 
-    if (valid) {
-      this.handlePageComplete();
-      console.log(loginData);
-      Accounts.changePassword(loginData.temporaryPass, password, (err) => {
+    if (valid) {      
+      Accounts.changePassword(user.profile.temporaryPass, password, (err) => {
         if (err) {
-          console.log("change err"+err.details);
+          console.log("change err"+err.reason);
           Alert.alert(
             'Oops! Screenshot this and send to support!',
-            'Server error: \n\n'+err.details
+            'Change Password Err: \n\n'+err.reason
           );
           return;
         }
-        this.swiper.scrollBy(1);
+        else{
+          this.handleAccountSetupComplete();
+          this.handlePageComplete();
+        }
       });
     }
   }
@@ -174,7 +166,7 @@ class AccountSetup extends Component {
   }
 
   render() {
-    const { loginData, profileData } = this.state;
+    const { profileData } = this.state;
     return(
           <View style={{flex:1}}>
             <Swiper dotColor='#bbddff'
@@ -182,12 +174,11 @@ class AccountSetup extends Component {
                       leftTextColor='#1E90FF'
                       rightTextColor='#1E90FF'
                       loop={false}
-                      index={this.state.currentIndex}
+                      index={this.state.swiperIndex}
                       onIndexChanged={this.onSlideChangeHandle}
                       ref={(s: React.Element<Swiper>) => this.swiper = s}>
               <View style={[styles.slide, { backgroundColor: '#54C6DB' }]}>
                 <InitialPage
-                  loginData={loginData}
                   handleAbandonSetup={this.handleAbandonSetup}
                   handlePageComplete={this.handlePageComplete}/>
               </View>
@@ -209,8 +200,9 @@ class AccountSetup extends Component {
               </View>
               <View style={[styles.slide, { backgroundColor: '#E1A3DC' }]}>
                 <PageFour
-                  loginData={loginData}
-                  handleAccountSetupComplete={this.handleAccountSetupComplete}
+                  user={this.props.user}
+                  handleAccountSetupComplete={()=>this.props.navigation.navigate('HomeStack', {overrideToAccountSetup:true})}
+                  currentIndex={this.state.currentIndex}
                 />
               </View>
             </Swiper>

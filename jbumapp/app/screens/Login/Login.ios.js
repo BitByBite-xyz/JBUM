@@ -6,7 +6,7 @@ meteor stuff and app logic w RN stuff
  */
 
 import React, { Component } from 'react';
-import { Text, View, Image, StyleSheet, StatusBar, Linking, KeyboardAvoidingView,LayoutAnimation, Alert } from 'react-native';
+import { Text, View, Image, StyleSheet, StatusBar, Linking, KeyboardAvoidingView,LayoutAnimation, Alert, ActivityIndicator } from 'react-native';
 import Meteor, { Accounts } from 'react-native-meteor';
 
 import KeyboardSpacer from 'react-native-keyboard-spacer';
@@ -36,6 +36,7 @@ class Login extends Component {
       confirmPassword: '',
       confirmPasswordVisible: false,
       error: null,
+      isLoading:false
     };
   }
   componentWillMount() {
@@ -43,8 +44,6 @@ class Login extends Component {
   }
   componentWillUnmount() {
     this.mounted = false;
-  }
-  componentDidMount() {
   }
 
   validInput() {
@@ -59,13 +58,14 @@ class Login extends Component {
   }
 
   handleSignIn() {
-    console.log(this.dropdown);
+    this.setState({isLoading:true})
     let isa = this.validInput();
     if (isa) {
       const { username, password } = this.state;
       Meteor.loginWithPassword(username, password, (err) => {
         if (err) {
           Alert.alert('Error Logging in',err.reason)
+          this.setState({isLoading:false})
         }
         else {
           this.props.navigation.navigate('HomeStack', {overrideBiometric:true});
@@ -75,7 +75,7 @@ class Login extends Component {
   }
 
   render() {
-    const { signIn, error, confirmPasswordVisible } = this.state;
+    const { signIn, error, confirmPasswordVisible, isLoading } = this.state;
 
     return (
       <Wallpaper>
@@ -135,21 +135,22 @@ class Login extends Component {
             duration={1500}
             style={styles.buttons}
           >
-            <View style={styles.buttons}>
-              <Button
-                title='LOGIN'
-                icon={{name: 'add-circle-outline'}}
-                backgroundColor={'transparent'}
-                borderRadius={20}
-                onPress={() => this.handleSignIn()}
-                fontFamily= 'Avenir'
-                fontSize={15}
-                fontWeight='500'
-                iconRight={true}
-                testID="login-button"
-              />
-            </View>
-
+              {isLoading ? <ActivityIndicator size={'large'}/>:
+                <View style={styles.buttons}>
+                  <Button
+                    title='LOGIN'
+                    icon={{name: 'add-circle-outline'}}
+                    backgroundColor={'transparent'}
+                    borderRadius={20}
+                    onPress={() => this.handleSignIn()}
+                    fontFamily= 'Avenir'
+                    fontSize={15}
+                    fontWeight='500'
+                    iconRight={true}
+                    testID="login-button"
+                  />
+                </View>
+              }
           </FadeInView>
         </KeyboardAvoidingView>
 

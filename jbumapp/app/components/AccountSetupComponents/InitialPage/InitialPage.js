@@ -9,21 +9,20 @@ import {
 
 import Picker from 'react-native-picker';
 import { Button } from 'react-native-elements'
+import Confetti from 'react-native-confetti';
 
 import {DEVICE_WIDTH} from '../../../config/styles';
 
 const isSmallDisplay = DEVICE_WIDTH <= 320;
 
 export default class InitialPage extends Component {
-  constructor(props) {
-    super(props);
-    const { handlePageComplete } = props;
-
+  componentDidMount() {
+    const { handlePageComplete } = this.props;
     handlePageComplete();
   }
 
   render() {
-    const { loginData, handleAbandonSetup } = this.props;
+    const { handleAbandonSetup } = this.props;
 
     return(
       <View>

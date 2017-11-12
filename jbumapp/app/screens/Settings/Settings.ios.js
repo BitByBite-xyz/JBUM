@@ -14,6 +14,8 @@ import { NavigationActions } from 'react-navigation';
 import {email} from '../../components/Communications';
 
 const AUTH_KEY = 'isdatauthneededtho';
+const ACNTSETUP_KEY = 'setupcomplete'
+
 class Settings extends Component {
   constructor(props) {
     super(props);
@@ -50,6 +52,7 @@ class Settings extends Component {
           if (err) { alert(`notifications.rm.pushToken: ${err.reason}`); }
         });
         Meteor.logout(() => {
+          AsyncStorage.setItem(ACNTSETUP_KEY, 'false')
           this.props.navigation.navigate('WelcomeStack');
         });
       }},

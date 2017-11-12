@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform,AsyncStorage } from 'react-native';
+import { Platform,AsyncStorage, Linking } from 'react-native';
 import Meteor, { createContainer } from 'react-native-meteor';
 import PushNotification from 'react-native-push-notification';
 import Navigator from './config/router';
@@ -17,8 +17,7 @@ import {addNavigationHelpers} from 'react-navigation';
 Meteor.connect(settings.METEOR_URL);
 
 console.disableYellowBox = true; //comment out to get yelled at
-//console.ignoredYellowBox = ['Panel'] //comment out to get yelled at
-
+const URL_KEY = 'thisisfun';
 const App = ({dispatch, nav,numberOfNotificatons}) => (
   <Navigator
     navigation={addNavigationHelpers({
@@ -36,24 +35,29 @@ const mapStateToProps = state => ({
 });
 
 const AppWithNavigation = connect(mapStateToProps)(App);
-
+let hasOpenedURL = false;
 const RNApp = (props) => {
   const { status, user, loggingIn } = props;
-
   /*if (status.connected === false || loggingIn) {
     return <Loading />;
   }*/
 
+  Linking.getInitialURL().then((url) => {
+    if (url && !hasOpenedURL) {
+      AsyncStorage.setItem(URL_KEY, url)
+      hasOpenedURL = true;
+    }
+  }).catch(err => console.error('An error occurred', err));
+
   if (user) {
     PushNotification.configure({
-      // (optional) Called when Token is generated (iOS and Android)
       onRegister(data) {
-        Meteor.call('notifications.set.pushToken', data, err => {
-          if (err) { alert(`notifications.set.pushToken: ${err.reason}`); }
-        });
+        setTimeout(() => {
+          Meteor.call('notifications.set.pushToken', data, err => {
+            if (err) { console.log('notif error' + err.reason) }
+          });
+        }, 500);
       },
-
-      // (required) Called when a remote or local notification is opened or received
       onNotification(notification) {
         const key = 'shouldHandleNotif';
         if (!notification.foreground && notification.userInteraction) {
@@ -62,27 +66,15 @@ const RNApp = (props) => {
           })
         }
       },
-      // IOS ONLY (optional): default: all - Permissions to register.
       permissions: {
         alert: true,
         badge: true,
         sound: true,
       },
-      // Should the initial notification be popped automatically
-      // default: true
       popInitialNotification: true,
-      /**
-        * IOS ONLY: (optional) default: true
-        * - Specified if permissions will requested or not,
-        * - if not, you must call PushNotificationsHandler.requestPermissions() later
-        */
       requestPermissions: true,
     });
   }
-  /*PushNotification.localNotificationSchedule({
-  message: "My Notification Message", // (required)
-  date: new Date(Date.now() + (4 * 1000)) // in 60 secs
-});*/
   return <Provider store={store}>
             <AppWithNavigation/>
           </Provider>
