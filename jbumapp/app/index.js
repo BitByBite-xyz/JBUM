@@ -40,9 +40,9 @@ const AppWithNavigation = connect(mapStateToProps)(App);
 const RNApp = (props) => {
   const { status, user, loggingIn } = props;
 
-  if (status.connected === false || loggingIn) {
+  /*if (status.connected === false || loggingIn) {
     return <Loading />;
-  }
+  }*/
 
   if (user) {
     PushNotification.configure({

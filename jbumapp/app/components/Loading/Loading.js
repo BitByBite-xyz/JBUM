@@ -14,61 +14,6 @@ class Loading extends Component {
       loginData:null
     }
   }
-  componentWillMount() {
-    Linking.addEventListener('url', this.handleOpenURL);
-  }
-  componentDidUnmount(){
-    Linking.removeEventListener('url', this.handleOpenURL);    
-  }
-
-  handleOpenURL = (event) => { 
-    if (this.state.hasOpenedURL) return;
-    const { navigation } = this.props;
-    const url = event.url;
-
-    const linkData = url.replace(/.*?:\/\//g, '');
-    alert(url.replace(/.*?:\/\//g, ''))
-    this.setState({hasOpenedURL:true});
-    this.handleCreateAccount(linkData);
-  }
-
-  handleCreateAccount = (linkData) => {
-    if (linkData !== null && !Meteor.userId()) {
-      Meteor.call('createUserAccount', linkData, (err, response) => {
-        if (err) {
-          console.log("err: "+err.reason);
-          Alert.alert(
-            'Oops! Invite link didn\'t work','',
-            [
-              {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-              {text: 'Help', onPress: () => email('contact@bitbybite.co','connor.larkin1@gmail.com','','I Need Help creating my JBUM account','🌀 your problem here 🌀')},
-            ],
-            { cancelable: false }
-          );
-          return;
-        } else {
-          this.state.loginData = response;
-          this.handleLogin();
-        }
-      });
-    }
-  }
-
-  handleLogin = () => {
-    if(this.state.loginData !== null && !Meteor.userId()){
-      const { loginData } = this.state;
-      console.log(loginData);
-      Meteor.loginWithPassword(loginData.username, loginData.password, (err) => {
-        if (err) {
-          Alert.alert(
-            'Oops! Screenshot this and send to support!',
-            'Server error: \n\n'+err.details
-          );
-        }
-        this.props.navigation.navigate('AccountSetup', { loginData: loginData })
-      });
-    }
-  }
 
   render() {
     const types = ['Bounce', 'Pulse', 'ThreeBounce']
