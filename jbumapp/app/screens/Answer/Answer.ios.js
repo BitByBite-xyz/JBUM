@@ -45,7 +45,7 @@ class Answer extends Component {
       sortValue:'',
       sortIndex:'0',
       modalVisible: false,
-      options: ['Default','⏳⏳⏳', '💬💬💬']
+      options: ['Default','⏳⏳⏳', '💬💬💬','Relationships (family, friends, etc.)','Success (school, sports, work)','Identity (religion, discrimination, body image)','Abuse (physical, emotional, psychological)','Health Issues (mental, physical, emotional)','Substances (medications, drugs, alcohol, etc.)']
     };
 
     this.mounted = false;

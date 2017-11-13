@@ -17,6 +17,7 @@ import AlertPanel from '../../components/AlertPanel';
 import InboxPanel from '../../components/InboxPanel';
 import Loading from '../../components/Loading';
 import FadeInView from '../../components/FadeInView';
+import SwipeHiddenHeader from '../../components/SwipeHiddenHeader';
 
 import {queryConstructor} from '../../lib/queryHelpers';
 import { changeNotificationNumber } from '../../actions/notification';
@@ -34,7 +35,6 @@ class Inbox extends Component {
   }
   componentDidMount(){
     const { numberOfNotificatons } = this.state;
-    //AsyncStorage.clear();
     AsyncStorage.getItem(ARCHIVED_KEY).then((archivedObj)=>{
       let archived = JSON.parse(archivedObj);
       archived = (archived)? archived:{};
@@ -82,7 +82,6 @@ class Inbox extends Component {
       AsyncStorage.getItem(ARCHIVED_KEY).then((archivedObj)=>{
         let archived = JSON.parse(archivedObj);
         archived = (archived)? archived:{};
-
         this.setState({archivedReplies: archived});
       }).catch((err) => {
         console.log(err);
@@ -102,7 +101,7 @@ class Inbox extends Component {
       )
     }
     if (this.props.user_postsReady) {
-      return null;
+      return <View style={{height:'10000%'}}/>;
     }
 
     return (
@@ -144,6 +143,7 @@ class Inbox extends Component {
   }
 
   renderRow = (item) => {
+    if (!item) return;
     const { navigation } = this.props;
 
     return (
@@ -170,28 +170,30 @@ class Inbox extends Component {
     const { user_posts,user_postsReady,navigation } = this.props;
     const data = this.findMostRecentReplies();
     return (
-      <View
-        style={styles.container}
-        contentContainerStyle={styles.contentContainerStyle}
-      >
-        <View style={{height: 1000, backgroundColor: '#5CC2D6', alignItems: 'center'}}>
-          <View style={{margin: IS_X ? 15:0}}/>
-          <Text style={{fontSize: 23, fontFamily: 'Avenir', color: 'white', fontWeight: '500', marginBottom: 9, marginTop: 10}}>Inbox</Text>
-          <View style={{borderTopLeftRadius: 12, borderTopRightRadius: 12,overflow: 'hidden', backgroundColor: '#F3F3F3'}}>
-            { archivedReplies && data.length > 0?
-              <FlatList
-                data={data}
-                keyExtractor={(item, index) => item.commentId}
-                renderItem={({item}) => this.renderRow(item)}
-                ListFooterComponent={this.renderFooter}
-                onEndReachedThreshold={50}
-                removeClippedSubviews={false}/>:
-                <AlertPanel
-                  contentText={'You don\'t have any replies!'} />
-            }
-              </View>
-              </View>
-      </View>
+      <SwipeHiddenHeader header={()=>
+        <View style={{height: IS_X ? 70 : 50, backgroundColor: '#5CC2D6', alignItems: 'center', borderBottomLeftRadius: 12, borderBottomRightRadius: 12}}>
+        <View style={{margin: IS_X ? 12:0}}/>
+        <Text style={{fontSize: 23, fontFamily: 'Avenir', color: 'white', fontWeight: '500', marginBottom: 9, marginTop: 10}}>Inbox</Text>
+        <View style={{borderBottomLeftRadius: 12, borderTopRightRadius: 12,overflow: 'hidden', backgroundColor: '#F3F3F3'}}/>
+        </View>
+      }
+          style={{backgroundColor: '#F3F3F3'}}
+          startHiddenHeaderOffset={230}
+      >  
+      { archivedReplies && data.length > 0?
+        <FlatList
+          onPanResponderTerminationRequest={false}
+          data={data}
+          keyExtractor={(item, index) => item.commentId}
+          renderItem={({item}) => this.renderRow(item)}
+          ListFooterComponent={this.renderFooter}
+          removeClippedSubviews={false}
+          initialNumToRender={100}
+          style={{ flexGrow: 1}}/> :
+          <AlertPanel
+            contentText={'You don\'t have any replies!'} />
+      }
+      </SwipeHiddenHeader>
     );
   }
 }
