@@ -1,4 +1,3 @@
 <resources>
-    <string moduleConfig="true" name="reactNativeCodePush_androidDeploymentKey">WMogXV10wfuKA5aAKF-1YNL0E4A263bb83f8-5409-4344-8138-d71383ab74b3</string>
     <string name="app_name">jbumapp</string>
 </resources>

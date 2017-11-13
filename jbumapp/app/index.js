@@ -3,7 +3,6 @@ import { Platform,AsyncStorage, Linking } from 'react-native';
 import Meteor, { createContainer } from 'react-native-meteor';
 import PushNotification from 'react-native-push-notification';
 import Navigator from './config/router';
-import codePush from "react-native-code-push";
 import ReactNativeHaptic from 'react-native-haptic';
 
 import settings from './config/settings';
@@ -13,7 +12,6 @@ import store from './config/store';
 
 import {Provider, connect} from 'react-redux';
 import {addNavigationHelpers} from 'react-navigation';
-//ReactNativeHaptic.generate('notification')
 
 Meteor.connect(settings.METEOR_URL);
 
@@ -37,6 +35,7 @@ const mapStateToProps = state => ({
 
 const AppWithNavigation = connect(mapStateToProps)(App);
 let hasOpenedURL = false;
+
 const RNApp = (props) => {
   const { status, user, loggingIn } = props;
   /*if (status.connected === false || loggingIn) {
@@ -82,18 +81,26 @@ const RNApp = (props) => {
           </Provider>
 };
 
-const MyApp = createContainer(() => {
+/*const MyApp = createContainer(() => {
               return {
                 status: Meteor.status(),
                 user: Meteor.user(),
                 loggingIn: Meteor.loggingIn(),
               };
             }, RNApp);
-/*
+
 const codePushOptions = {
   checkFrequency: codePush.CheckFrequency.ON_APP_RESUME,
   installMode: codePush.InstallMode.ON_NEXT_RESUME,
 }; code push donnt work w da rn 50.1 doe 
 
-export default codePush(codePushOptions)(MyApp);*/
-export default MyApp;
+export default codePush(codePushOptions)(MyApp);
+export default MyApp; */
+
+export default createContainer(() => {
+  return {
+    status: Meteor.status(),
+    user: Meteor.user(),
+    loggingIn: Meteor.loggingIn(),
+  };
+}, RNApp);

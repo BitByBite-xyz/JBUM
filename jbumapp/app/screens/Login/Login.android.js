@@ -9,7 +9,6 @@ import React, { Component } from 'react';
 import { Text, View, Image, StyleSheet, StatusBar, Linking, KeyboardAvoidingView,LayoutAnimation, Alert } from 'react-native';
 import Meteor, { Accounts } from 'react-native-meteor';
 
-import KeyboardSpacer from 'react-native-keyboard-spacer';
 import { Button, Icon } from 'react-native-elements'
 import { SocialIcon } from 'react-native-elements';
 
@@ -124,7 +123,6 @@ class Login extends Component {
 
           <View style={styles.error}>
             <Text style={styles.errorText}>{error}</Text>
-            <KeyboardSpacer />
           </View>
 
           <FadeInView
