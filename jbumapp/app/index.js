@@ -89,10 +89,11 @@ const MyApp = createContainer(() => {
                 loggingIn: Meteor.loggingIn(),
               };
             }, RNApp);
-
+/*
 const codePushOptions = {
   checkFrequency: codePush.CheckFrequency.ON_APP_RESUME,
   installMode: codePush.InstallMode.ON_NEXT_RESUME,
-};
+}; code push donnt work w da rn 50.1 doe 
 
-export default codePush(codePushOptions)(MyApp);
+export default codePush(codePushOptions)(MyApp);*/
+export default MyApp;

@@ -1699,7 +1699,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#JSON_FILE=\"${SRCROOT}/ServiceAccount.json\"\n#GOOGLE_APP_ID=1:893689394956:ios:2411c9f5528997c6\n\n#defaults write com.google.SymbolUpload version -integer 1\n\n#JSON=$(cat \"${JSON_FILE}\")\n#/usr/bin/plutil -replace \"app_${GOOGLE_APP_ID//:/_}\" -json \"${JSON}\" \"$HOME/Library/Preferences/com.google.SymbolUpload.plist\"\n#\"${PODS_ROOT}\"/FirebaseCrash/upload-sym";
+			shellScript = "JSON_FILE=\"${SRCROOT}/ServiceAccount.json\"\nGOOGLE_APP_ID=1:893689394956:ios:2411c9f5528997c6\n\n#defaults write com.google.SymbolUpload version -integer 1\n\"${PODS_ROOT}\"/FirebaseCrash/upload-sym JSON_FILE";
 		};
 		A924313FC0143392F42E374C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
