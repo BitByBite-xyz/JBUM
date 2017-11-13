@@ -15,7 +15,6 @@ import {
 import { Button, Icon } from 'react-native-elements'
 import _ from 'lodash';
 import moment from 'moment';
-import {AutoGrowingTextInput} from 'react-native-autogrow-textinput';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { NavigationActions } from 'react-navigation';
 import Meteor, {createContainer} from 'react-native-meteor';

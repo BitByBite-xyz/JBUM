@@ -8,7 +8,6 @@ import Accordion from 'react-native-collapsible/Accordion';
 
 import styles from './styles'
 import Prompt from '../../components/Prompt'
-import {AutoGrowingTextInput} from 'react-native-autogrow-textinput';
 
 const SECTIONS = [
   {
@@ -289,7 +288,7 @@ class Ask extends Component {
               </View>
             </View>
             <View style={styles.views}>
-              <AutoGrowingTextInput
+              <TextInput
                   style={styles.largeText}
                   placeholder='Your Question&#39;s Title'
                   returnKeyType='done'
@@ -300,11 +299,12 @@ class Ask extends Component {
                   minHeight={75}
                   onSubmitEditing={()=> Keyboard.dismiss()}
                   value={title}
+                  autoGrow={true}
                 />
                   <View style={styles.lineDivider} />
             </View>
             <View style={styles.views}>
-              <AutoGrowingTextInput
+              <TextInput
                   style={styles.smallText}
                   placeholder='Tell us your question...'
                   returnKeyType='done'
@@ -316,6 +316,7 @@ class Ask extends Component {
                   autoCorrect={true}
                   value={body}
                   minHeight={75}
+                  autoGrow={true}
                 />
               </View>
           </View>

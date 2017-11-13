@@ -9,7 +9,6 @@ import {
   AsyncStorage
 } from 'react-native';
 import Meteor, { createContainer } from 'react-native-meteor';
-import FadeInView from 'react-native-fade-in-view';//{/* onFadeComplete={() => alert('Ready') */}
 import DropdownAlert from 'react-native-dropdownalert'
 
 import styles from './styles';
@@ -17,6 +16,8 @@ import QuestionPanel from '../../components/QuestionPanel';
 import AlertPanel from '../../components/AlertPanel';
 import InboxPanel from '../../components/InboxPanel';
 import Loading from '../../components/Loading';
+import FadeInView from '../../components/FadeInView';
+
 import {queryConstructor} from '../../lib/queryHelpers';
 import { changeNotificationNumber } from '../../actions/notification';
 import { IS_X } from '../../config/styles';

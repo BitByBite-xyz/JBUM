@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component} from 'react';
 import {
   Modal,
   Platform,
@@ -10,28 +10,6 @@ import {
 import styles from './styles';
 
 export default class Prompt extends Component {
-  static propTypes = {
-    title: PropTypes.string.isRequired,
-    visible: PropTypes.bool,
-    defaultValue: PropTypes.string,
-    placeholder: PropTypes.string,
-    onCancel: PropTypes.func.isRequired,
-    cancelText: PropTypes.string,
-    onSubmit: PropTypes.func.isRequired,
-    submitText: PropTypes.string,
-    onChangeText: PropTypes.func.isRequired,
-    borderColor: PropTypes.string,
-    promptStyle: PropTypes.object,
-    titleStyle: PropTypes.object,
-    buttonStyle: PropTypes.object,
-    buttonTextStyle: PropTypes.object,
-    submitButtonStyle: PropTypes.object,
-    submitButtonTextStyle: PropTypes.object,
-    cancelButtonStyle: PropTypes.object,
-    cancelButtonTextStyle: PropTypes.object,
-    inputStyle: PropTypes.object,
-    textInputProps: PropTypes.object,
-  };
 
   static defaultProps = {
     visible: false,

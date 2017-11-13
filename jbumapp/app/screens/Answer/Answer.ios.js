@@ -12,7 +12,6 @@ import {
   AsyncStorage
 } from 'react-native';
 import Meteor, { createContainer } from 'react-native-meteor';
-import FadeInView from 'react-native-fade-in-view';//{/* onFadeComplete={() => alert('Ready') */}
 import DropdownAlert from 'react-native-dropdownalert'
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import { Badge,Icon } from 'react-native-elements'
@@ -27,6 +26,7 @@ import AlertPanel from '../../components/AlertPanel';
 import Loading from '../../components/Loading';
 import AskHeader from '../../components/AskHeader';
 import Notifications from '../../components/Notifications';
+import FadeInView from '../../components/FadeInView';
 
 import {queryConstructor} from '../../lib/queryHelpers';
 import {DEVICE_WIDTH, IS_X } from '../../config/styles';

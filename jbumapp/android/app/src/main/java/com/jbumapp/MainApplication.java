@@ -59,6 +59,11 @@ public class MainApplication extends Application implements ReactApplication {
             new RNSpinkitPackage()
       );
     }
+
+    @Override
+    protected String getJSMainModuleName() {
+      return "index";
+    }
   };
 
   @Override

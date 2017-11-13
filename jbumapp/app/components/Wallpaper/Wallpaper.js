@@ -15,7 +15,7 @@ export default class Wallpaper extends Component {
 		const img = this.props.img ? this.props.img : images.wallpaper;
 		return (
 
-			<Image style={{
+			<ImageBackground style={{
 				flex: 1,
 				resizeMode: 'cover',
 				height: null,
@@ -23,11 +23,7 @@ export default class Wallpaper extends Component {
 				backgroundColor: (this.props.gray ? 'rgba(52, 52, 52, 1)' : null) // needs to be fixed with gray overlay
 			}} source={img}>
 				{this.props.children}
-			</Image>
+			</ImageBackground>
 		);
-
-
-
-
 	}
 }

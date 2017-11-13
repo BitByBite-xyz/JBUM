@@ -1,4 +1,4 @@
-import React, { PureComponent, PropTypes } from 'react';
+import React, { PureComponent } from 'react';
 import { View, ScrollView, LayoutAnimation } from 'react-native'
 import styles from './style'
 
@@ -6,16 +6,6 @@ class SwipeHiddenHeader extends PureComponent {
   static defaultProps = {
     scrollViewProps: {}
   };
-
-  static propTypes = {
-    header: PropTypes.func.isRequired,
-    scrollViewProps: PropTypes.object,
-    renderScrollComponent: PropTypes.func,
-    startHiddenHeaderOffset: PropTypes.number,
-    style: PropTypes.object,
-    headerWrapStyle: PropTypes.object,
-  };
-
   constructor(props) {
     super(props);
     this.state = {

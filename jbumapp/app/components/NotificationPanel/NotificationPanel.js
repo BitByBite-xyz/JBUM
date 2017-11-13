@@ -10,10 +10,11 @@ import {
 import moment from 'moment';
 import { Icon, Divider } from 'react-native-elements'
 import Meteor, { createContainer } from 'react-native-meteor';
-import FadeInView from 'react-native-fade-in-view';//{/* onFadeComplete={() => alert('Ready') */}
 
 import images from '../../config/images';
 import { colors } from '../../config/styles';
+import FadeInView from '../FadeInView';//{/* onFadeComplete={() => alert('Ready') */}
+
 import styles from './styles.js';
 
 class NotificationPanel extends React.PureComponent {

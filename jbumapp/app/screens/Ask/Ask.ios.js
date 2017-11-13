@@ -4,7 +4,6 @@ import { Icon, Button,CheckBox } from 'react-native-elements'
 import update from 'react-addons-update';
 import Meteor, { createContainer } from 'react-native-meteor';
 import Accordion from 'react-native-collapsible/Accordion';
-import {AutoGrowingTextInput} from 'react-native-autogrow-textinput';
 import { NavigationActions } from 'react-navigation';
 import ReactNativeHaptic from 'react-native-haptic';
 
@@ -28,7 +27,7 @@ class Ask extends Component {
       sections: [ {title: '1️⃣ Choose Category '}, {title: '2️⃣ Ask Question '}, {title: '3️⃣ Choose Receiver '}]
     };
   }
-  
+
   resetFields = () => {
     this.setState( {
       title: '',
@@ -46,7 +45,7 @@ class Ask extends Component {
     const {title, body,post_visibility, post_categories,otherCategory} = (this.state);
     const { scrollToPage } = this.props;
     ReactNativeHaptic.generate('selection')
-    
+
     if (this.validatePostSubmission()) {
       if (otherCategory !== 'Other') {
         post_categories.push(otherCategory)
@@ -304,7 +303,7 @@ class Ask extends Component {
       return (
         <View style={{ backgroundColor: 'white'}}>
         <View style={styles.views}>
-              <AutoGrowingTextInput
+              <TextInput
                   style={styles.largeText}
                   placeholder='Your Question&#39;s Title'
                   returnKeyType='done'
@@ -316,11 +315,12 @@ class Ask extends Component {
                   maxLength={300}
                   blurOnSubmit={true}
                   value={title}
+                  autoGrow={true}
                 />
                   <View style={styles.lineDivider} />
             </View>
             <View style={styles.views}>
-              <AutoGrowingTextInput
+              <TextInput
                   style={styles.smallText}
                   placeholder='Tell us your question...'
                   returnKeyType='done'
@@ -332,6 +332,7 @@ class Ask extends Component {
                   autoCorrect={true}
                   value={body}
                   minHeight={75}
+                  autoGrow={true}
                 />
               </View>
               </View>
@@ -416,10 +417,5 @@ class Ask extends Component {
     );
   }
 }
-Ask.propTypes = {
-  navigator: React.PropTypes.object,
-  title: React.PropTypes.string,
-  body: React.PropTypes.string
-};
 
 export default Ask;

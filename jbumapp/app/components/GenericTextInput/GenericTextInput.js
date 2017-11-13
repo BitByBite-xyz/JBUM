@@ -20,9 +20,4 @@ const GenericTextInput = (props) => {
   );
 };
 
-GenericTextInput.propTypes = {
-  borderTop: React.PropTypes.bool,
-  source: React.PropTypes.number,
-};
-
 export default GenericTextInput;

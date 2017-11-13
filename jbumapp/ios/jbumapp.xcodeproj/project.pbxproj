@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -29,7 +28,6 @@
 		3625A648B76640C7A00DD99A /* libRNSpinkit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E74BE98BC3484F34B700BA33 /* libRNSpinkit.a */; };
 		43BE456C4F5945F18C3F0259 /* libBVLinearGradient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0B63C34F31C4AC6BDAF164A /* libBVLinearGradient.a */; };
 		44339424C0284A0DA4AE0D3E /* libRCTVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CCFB9A583E894953887ACF83 /* libRCTVideo.a */; };
-		4E60CEFA5E8B42D7A3CD9951 /* libAutoGrowTextInput.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FCE5E5A6FB94B74B24C360E /* libAutoGrowTextInput.a */; };
 		57B75E320E5A41518835E4A3 /* libRNFirebase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DD6039574CB4F6E9E75F289 /* libRNFirebase.a */; };
 		5D784797DAC5414BA581FB44 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCDAD3704DCE4CAAB1F2C1D7 /* Feather.ttf */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
@@ -276,13 +274,6 @@
 			remoteGlobalIDString = 64D1BD361EEFE88700F3F219;
 			remoteInfo = "RNBlur-tvOS";
 		};
-		876273EC1F6DEF8F005CEC90 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8C9D677446834B5AB2FCBAB4 /* AutoGrowTextInput.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D81C36501CDB667F00777FB9;
-			remoteInfo = AutoGrowTextInput;
-		};
 		8762741A1F6DF438005CEC90 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 876274151F6DF438005CEC90 /* RCTPushNotification.xcodeproj */;
@@ -472,7 +463,6 @@
 		1DD70A5192E144E68F1043B3 /* libRCTActionSheet.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTActionSheet.a; sourceTree = "<group>"; };
 		1E517CAB5EA84DEBBA05287A /* libRNBlur.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNBlur.a; sourceTree = "<group>"; };
 		1F90979D4CBF41C1942DBD18 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
-		1FCE5E5A6FB94B74B24C360E /* libAutoGrowTextInput.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libAutoGrowTextInput.a; sourceTree = "<group>"; };
 		276F0F803DD34F33AB4A80D6 /* libz.tbd */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		2B1B70038A9A4A3AAC5E407D /* CodePush.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = CodePush.xcodeproj; path = "../node_modules/react-native-code-push/ios/CodePush.xcodeproj"; sourceTree = "<group>"; };
 		2DD6039574CB4F6E9E75F289 /* libRNFirebase.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNFirebase.a; sourceTree = "<group>"; };
@@ -499,7 +489,6 @@
 		876274151F6DF438005CEC90 /* RCTPushNotification.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTPushNotification.xcodeproj; path = "../node_modules/react-native/Libraries/PushNotificationIOS/RCTPushNotification.xcodeproj"; sourceTree = "<group>"; };
 		87B828071FA56CFB007EF630 /* LaunchScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchScreen.png; sourceTree = "<group>"; };
 		87EE806A1FB936A000054299 /* ReactNativeHaptic.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeHaptic.xcodeproj; path = "../node_modules/react-native-haptic/ios/ReactNativeHaptic.xcodeproj"; sourceTree = "<group>"; };
-		8C9D677446834B5AB2FCBAB4 /* AutoGrowTextInput.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = AutoGrowTextInput.xcodeproj; path = "../node_modules/react-native-autogrow-textinput/ios/AutoGrowTextInput.xcodeproj"; sourceTree = "<group>"; };
 		8F34F5B2F02D497BAC2ED386 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		95F6BD7637154E6EB2666F7C /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
 		9BF6563160AD47AB911B7B55 /* libRCTBEEPickerManager.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTBEEPickerManager.a; sourceTree = "<group>"; };
@@ -549,7 +538,6 @@
 				73FC7AD21F9445E6BF2FE774 /* libRCTBEEPickerManager.a in Frameworks */,
 				C252AE6299A44A5BA26A1D21 /* libRNBlur.a in Frameworks */,
 				A6948A75B55A41408CC0B7FC /* libRNDeviceInfo.a in Frameworks */,
-				4E60CEFA5E8B42D7A3CD9951 /* libAutoGrowTextInput.a in Frameworks */,
 				57B75E320E5A41518835E4A3 /* libRNFirebase.a in Frameworks */,
 				F423628C7975F1DBE3F4C812 /* libPods-jbumapp.a in Frameworks */,
 				12ACB29C186249FDA98EEBD8 /* libCodePush.a in Frameworks */,
@@ -736,7 +724,6 @@
 				EC51066868254F0798C905D9 /* RCTBEEPickerManager.xcodeproj */,
 				82C4F8CBDCE74FFCABA8971E /* RNBlur.xcodeproj */,
 				D9B714D6CAF24A9C90F424A8 /* RNDeviceInfo.xcodeproj */,
-				8C9D677446834B5AB2FCBAB4 /* AutoGrowTextInput.xcodeproj */,
 				B9A9863EE68C4CD58D3D340D /* RNFirebase.xcodeproj */,
 				2B1B70038A9A4A3AAC5E407D /* CodePush.xcodeproj */,
 				61FEDD30C75D4833940375BB /* TouchID.xcodeproj */,
@@ -826,14 +813,6 @@
 			children = (
 				876008681F4417D200FC250B /* libRNBlur.a */,
 				8760086A1F4417D200FC250B /* libRNBlur.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		876273E91F6DEF8F005CEC90 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				876273ED1F6DEF8F005CEC90 /* libAutoGrowTextInput.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1064,10 +1043,6 @@
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
 			projectReferences = (
-				{
-					ProductGroup = 876273E91F6DEF8F005CEC90 /* Products */;
-					ProjectRef = 8C9D677446834B5AB2FCBAB4 /* AutoGrowTextInput.xcodeproj */;
-				},
 				{
 					ProductGroup = 87A049DA1F1F1EA9007C3ACC /* Products */;
 					ProjectRef = C4EC16D8D1924758BED69E6D /* ButtonExplorer.xcodeproj */;
@@ -1386,13 +1361,6 @@
 			fileType = archive.ar;
 			path = libRNBlur.a;
 			remoteRef = 876008691F4417D200FC250B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		876273ED1F6DEF8F005CEC90 /* libAutoGrowTextInput.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libAutoGrowTextInput.a;
-			remoteRef = 876273EC1F6DEF8F005CEC90 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		8762741B1F6DF438005CEC90 /* libRCTPushNotification.a */ = {
@@ -1779,7 +1747,6 @@
 					"$(SRCROOT)/../node_modules/react-native-picker/ios/RCTBEEPickerManager",
 					"$(SRCROOT)/../node_modules/react-native-blur/ios",
 					"$(SRCROOT)/../node_modules/react-native-device-info/RNDeviceInfo",
-					"$(SRCROOT)/../node_modules/react-native-autogrow-textinput/ios",
 					"$(SRCROOT)/../node_modules/react-native/Libraries/PushNotificationIOS",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 					"$(SRCROOT)/../node_modules/react-native-code-push/ios/CodePush/**",
@@ -1804,9 +1771,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/jbum-react-native\"",
-					"\"$(SRCROOT)/jbumapp\"",
-					"\"$(SRCROOT)/jbumapp\"",
-					"\"$(SRCROOT)/jbumapp\"",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1842,7 +1806,6 @@
 					"$(SRCROOT)/../node_modules/react-native-picker/ios/RCTBEEPickerManager",
 					"$(SRCROOT)/../node_modules/react-native-blur/ios",
 					"$(SRCROOT)/../node_modules/react-native-device-info/RNDeviceInfo",
-					"$(SRCROOT)/../node_modules/react-native-autogrow-textinput/ios",
 					"$(SRCROOT)/../node_modules/react-native/Libraries/PushNotificationIOS",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 					"$(SRCROOT)/../node_modules/react-native-code-push/ios/CodePush/**",
@@ -1856,9 +1819,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/jbum-react-native\"",
-					"\"$(SRCROOT)/jbumapp\"",
-					"\"$(SRCROOT)/jbumapp\"",
-					"\"$(SRCROOT)/jbumapp\"",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",

@@ -1,4 +1,4 @@
-import React, { PureComponent, PropTypes } from 'react';
+import React, { PureComponent } from 'react';
 import {
   StyleSheet,
   Text,
@@ -12,7 +12,7 @@ import {
 import moment from 'moment';
 import { Icon, Divider, Badge } from 'react-native-elements'
 import Meteor, { createContainer } from 'react-native-meteor';
-import FadeInView from 'react-native-fade-in-view';//{/* onFadeComplete={() => alert('Ready') */}
+import FadeInView from '../FadeInView';//{/* onFadeComplete={() => alert('Ready') */}
 import images from '../../config/images';
 import { colors } from '../../config/styles';
 import styles from './styles.js';
@@ -300,17 +300,5 @@ class Panel extends PureComponent {
     );
   }
 }
-
-Panel.propTypes = {
-  header: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.func,
-  ]),
-  style: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.number,
-  ]),
-  onPress: PropTypes.func,
-};
 
 export default Panel;

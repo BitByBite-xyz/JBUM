@@ -10,11 +10,11 @@ import {
 import Meteor, { Accounts } from 'react-native-meteor';
 import { Button } from 'react-native-elements';
 import * as Animatable from 'react-native-animatable';
-import FadeInView from 'react-native-fade-in-view';
 import ReactNativeHaptic from 'react-native-haptic';
 
 import Wallpaper from '../../components/Wallpaper';
 import {email} from '../../components/Communications';
+import FadeInView from '../../components/FadeInView';
 import images from '../../config/images';
 
 const B = (props) => <Text style={styles.textBold}>{props.children}</Text>

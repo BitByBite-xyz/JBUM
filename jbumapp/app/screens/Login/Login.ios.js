@@ -12,7 +12,6 @@ import Meteor, { Accounts } from 'react-native-meteor';
 import KeyboardSpacer from 'react-native-keyboard-spacer';
 import { Button, Icon } from 'react-native-elements'
 import { SocialIcon } from 'react-native-elements';
-import FadeInView from 'react-native-fade-in-view';//{/* onFadeComplete={() => alert('Ready') */}
 import { NavigationActions } from 'react-navigation';
 import ReactNativeHaptic from 'react-native-haptic';
 
@@ -21,6 +20,7 @@ import images from '../../config/images';
 
 import GenericTextInput, { InputWrapper } from '../../components/GenericTextInput';
 import Wallpaper from '../../components/Wallpaper';
+import FadeInView from '../../components/FadeInView';
 
 import styles from './styles';
 

@@ -9,7 +9,6 @@ import {
 	StatusBar
 } from 'react-native';
 import Meteor, { createContainer } from 'react-native-meteor';
-import FadeInView from 'react-native-fade-in-view';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import { ButtonGroup } from 'react-native-elements'
 import ReactNativeHaptic from 'react-native-haptic';
@@ -18,6 +17,7 @@ import Loading from '../../components/Loading';
 import AlertPanel from '../../components/AlertPanel';
 import Foreground, {Background} from '../../components/ParallaxProfile';
 import QuestionPanel from '../../components/QuestionPanel';
+import FadeInView from '../../components/FadeInView';
 
 import DEVICE_HEIGHT from '../../config/styles';
 import styles from './styles';
