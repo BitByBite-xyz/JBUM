@@ -18,6 +18,7 @@ import { colors } from '../../config/styles';
 import styles from './styles.js';
 import Modal from 'react-native-modal';
 import { NavigationActions } from 'react-navigation'
+import ReactNativeHaptic from 'react-native-haptic';
 
 class Panel extends PureComponent {
   constructor(props) {
@@ -41,6 +42,7 @@ class Panel extends PureComponent {
 
   onReportPress = () => {
     const { postContent } = this.props;
+    ReactNativeHaptic.generate('impact')
 
     Meteor.call('Posts.report', postContent._id, (err) => {
       if (err) {
@@ -59,7 +61,7 @@ class Panel extends PureComponent {
 
   onDeletePress = () => {
     const { postContent } = this.props;
-    console.log("jejife");
+    ReactNativeHaptic.generate('impact')
 
     Meteor.call('Posts.remove', postContent._id, (err) => {
       if (err) {
@@ -78,11 +80,9 @@ class Panel extends PureComponent {
   onReplyPress = () => {
     const { header, navigation, postContent } = this.props;
     const p = postContent;
-
-
-
     let title = header;
 
+    ReactNativeHaptic.generate('selection')
     if (navigation) {
       navigation.navigate("Reply",{ postContent: postContent });
     }
@@ -100,10 +100,9 @@ class Panel extends PureComponent {
     const initialValue = expanded ? maxHeight + minHeight : minHeight;
     const finalValue = expanded ? minHeight : maxHeight + minHeight;
 
+    ReactNativeHaptic.generate('selection')
     this.setState({ expanded: !expanded });
-
     animation.setValue(initialValue);
-
     Animated.spring(animation, { toValue: finalValue }).start();
 
     if (onPress) onPress();
@@ -173,9 +172,15 @@ class Panel extends PureComponent {
     }
   }
 
-  _showModal = () => this.setState({ isModalVisible: true })
+  _showModal = () => {
+    ReactNativeHaptic.generate('selection')
+    this.setState({ isModalVisible: true })
+  }
 
-  _hideModal = () => this.setState({ isModalVisible: false })
+  _hideModal = () => {
+    ReactNativeHaptic.generate('selection')
+    this.setState({ isModalVisible: false })
+  }
 
   render() {
     const { children, style, header,postContent } = this.props;

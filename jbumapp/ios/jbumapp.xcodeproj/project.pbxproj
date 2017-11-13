@@ -43,6 +43,7 @@
 		8738AC441FA6BBA800EE26D3 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8738AC431FA6BBA800EE26D3 /* SnapshotHelper.swift */; };
 		8762741E1F6DF497005CEC90 /* libRCTPushNotification.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8762741B1F6DF438005CEC90 /* libRCTPushNotification.a */; };
 		87B828081FA56CFB007EF630 /* LaunchScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 87B828071FA56CFB007EF630 /* LaunchScreen.png */; };
+		87EE80701FB936C900054299 /* libReactNativeHaptic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87EE806F1FB936A000054299 /* libReactNativeHaptic.a */; };
 		8FD5A071D72B4872B8093541 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BED2D2E0F7C4419EA2B09663 /* Foundation.ttf */; };
 		A53CBB67A9844D609ACE52EB /* libRCTCamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A483F89A2096459BACC442BC /* libRCTCamera.a */; };
 		A6948A75B55A41408CC0B7FC /* libRNDeviceInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B87FBE61A9B48B095E5269A /* libRNDeviceInfo.a */; };
@@ -436,6 +437,13 @@
 			remoteGlobalIDString = 4107012F1ACB723B00C6AA39;
 			remoteInfo = RCTCamera;
 		};
+		87EE806E1FB936A000054299 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 87EE806A1FB936A000054299 /* ReactNativeHaptic.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = ReactNativeHaptic;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -490,6 +498,7 @@
 		876274141F6DF2EC005CEC90 /* jbumapp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = jbumapp.entitlements; path = jbumapp/jbumapp.entitlements; sourceTree = "<group>"; };
 		876274151F6DF438005CEC90 /* RCTPushNotification.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTPushNotification.xcodeproj; path = "../node_modules/react-native/Libraries/PushNotificationIOS/RCTPushNotification.xcodeproj"; sourceTree = "<group>"; };
 		87B828071FA56CFB007EF630 /* LaunchScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchScreen.png; sourceTree = "<group>"; };
+		87EE806A1FB936A000054299 /* ReactNativeHaptic.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeHaptic.xcodeproj; path = "../node_modules/react-native-haptic/ios/ReactNativeHaptic.xcodeproj"; sourceTree = "<group>"; };
 		8C9D677446834B5AB2FCBAB4 /* AutoGrowTextInput.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = AutoGrowTextInput.xcodeproj; path = "../node_modules/react-native-autogrow-textinput/ios/AutoGrowTextInput.xcodeproj"; sourceTree = "<group>"; };
 		8F34F5B2F02D497BAC2ED386 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		95F6BD7637154E6EB2666F7C /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
@@ -519,6 +528,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87EE80701FB936C900054299 /* libReactNativeHaptic.a in Frameworks */,
 				8762741E1F6DF497005CEC90 /* libRCTPushNotification.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
@@ -705,6 +715,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				87EE806A1FB936A000054299 /* ReactNativeHaptic.xcodeproj */,
 				876274151F6DF438005CEC90 /* RCTPushNotification.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
@@ -907,6 +918,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		87EE806B1FB936A000054299 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				87EE806F1FB936A000054299 /* libReactNativeHaptic.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		87EEA99F1F720CC1005FCF6B /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -1015,7 +1034,7 @@
 				TargetAttributes = {
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = 24MA2Z46AJ;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1028,7 +1047,7 @@
 					8738AC381FA6BB5F00EE26D3 = {
 						CreatedOnToolsVersion = 9.0.1;
 						DevelopmentTeam = 24MA2Z46AJ;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 				};
@@ -1120,6 +1139,10 @@
 				{
 					ProductGroup = 146834001AC3E56700842450 /* Products */;
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+				},
+				{
+					ProductGroup = 87EE806B1FB936A000054299 /* Products */;
+					ProjectRef = 87EE806A1FB936A000054299 /* ReactNativeHaptic.xcodeproj */;
 				},
 				{
 					ProductGroup = 876008441F4417D200FC250B /* Products */;
@@ -1519,6 +1542,13 @@
 			remoteRef = 87DF739E1F26F661009861A9 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		87EE806F1FB936A000054299 /* libReactNativeHaptic.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libReactNativeHaptic.a;
+			remoteRef = 87EE806E1FB936A000054299 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -1734,8 +1764,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = jbumapp/jbumapp.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 24MA2Z46AJ;
@@ -1785,8 +1815,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.connorlarkin.jbumapp;
 				PRODUCT_NAME = jbumapp;
-				PROVISIONING_PROFILE = "d1849475-aa28-4b6b-878d-4f7ea61baa96";
-				PROVISIONING_PROFILE_SPECIFIER = JBUM;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1798,8 +1828,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = jbumapp/jbumapp.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 24MA2Z46AJ;
 				HEADER_SEARCH_PATHS = (
@@ -1837,8 +1867,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.connorlarkin.jbumapp;
 				PRODUCT_NAME = jbumapp;
-				PROVISIONING_PROFILE = "d1849475-aa28-4b6b-878d-4f7ea61baa96";
-				PROVISIONING_PROFILE_SPECIFIER = JBUM;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1944,17 +1974,17 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 24MA2Z46AJ;
+				DEVELOPMENT_TEAM = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = jbumappUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = bbb.jbumappUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ad627ed1-440a-4817-b9b0-6f096c0cc903";
-				PROVISIONING_PROFILE_SPECIFIER = jbumuitests;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
@@ -1980,18 +2010,18 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 24MA2Z46AJ;
+				DEVELOPMENT_TEAM = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = jbumappUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = bbb.jbumappUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ad627ed1-440a-4817-b9b0-6f096c0cc903";
-				PROVISIONING_PROFILE_SPECIFIER = jbumuitests;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -19,6 +19,7 @@ import { Badge,Icon } from 'react-native-elements'
 import { NavigationActions } from 'react-navigation';
 import { connect } from 'react-redux';
 import ModalDropdown from 'react-native-modal-dropdown';
+import ReactNativeHaptic from 'react-native-haptic';
 
 import SwipeHiddenHeader from '../../components/SwipeHiddenHeader';
 import QuestionPanel from '../../components/QuestionPanel';
@@ -34,7 +35,6 @@ const calcHeight = (qty) => {
   if (qty < 11) {
     return qty*45;
   }
-  console.log(qty)
   return '70%';
 }
 class Answer extends Component {
@@ -165,7 +165,6 @@ class Answer extends Component {
 
 
   render() {
-    console.log(IS_X)
     const { posts,loading,navigation,inboxPosts,toInbox,numberOfNotificatons } = this.props;
     const { modalVisible, options } = this.state;
     return (
@@ -173,7 +172,7 @@ class Answer extends Component {
         <View>
           <View style={styles.header}>
            <View style={styles.leftContainer}> 
-              <ModalDropdown onSelect={(index,value)=>this.onSort(index,value)} 
+              <ModalDropdown onSelect={(index,value)=> {ReactNativeHaptic.generate('selection');this.onSort(index,value)}} 
                             dropdownTextStyle={styles.sortText} ref={(ref) => this.modal = ref} 
                             options={options}
                             dropdownStyle={{height:calcHeight(options.length)}}
@@ -181,7 +180,7 @@ class Answer extends Component {
             <Icon
               name='sort'
               color='#517fa4'
-              onPress={()=> this.modal.show()}
+              onPress={()=> {ReactNativeHaptic.generate('selection');this.modal.show()}}
             />
             </ModalDropdown>
             </View>

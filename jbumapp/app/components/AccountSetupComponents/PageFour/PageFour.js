@@ -16,6 +16,9 @@ const colors = ['#B565C6','#D63E87','#00B796', '#00D2F1', '#FEBE00', '#FF5656'];
 export default class InitialPage extends Component {
     constructor(props) {
       super(props);
+      this.state = {
+        paused:true
+      }
   }
   componentWillUnmount (){
       if (this._confettiView)
@@ -31,6 +34,7 @@ export default class InitialPage extends Component {
   handleThatTho = () => {
     const { handleAccountSetupComplete } = this.props;
     this.player.presentFullscreenPlayer();
+    this.setState({paused:false})
     handleAccountSetupComplete()
   }
 
@@ -62,12 +66,13 @@ export default class InitialPage extends Component {
           rate={1.0}                              // 0 is paused, 1 is normal.
           volume={1.0}                            // 0 is muted, 1 is normal.
           muted={false}                           // Mutes the audio entirely.
-          paused={false}                          // Pauses playback entirely.
+          paused={this.state.paused}                          // Pauses playback entirely.
           resizeMode="cover"                      // Fill the whole screen at aspect ratio.*
           playInBackground={false}                // Audio continues to play when app entering background.
           playWhenInactive={false}                // [iOS] Video continues to play when control or notification center are shown.
           ignoreSilentSwitch={"ignore"}           // [iOS] ignore | obey - When 'ignore', audio will still play with the iOS hard silent switch set to silent. When 'obey', audio will toggle with the switch. When not specified, will inherit audio settings as usual.
           progressUpdateInterval={250.0}          // [iOS] Interval to fire onProgress (default to ~250ms)
+          onEnd={()=> this.setState({paused:true})}
          />
         </View>
       </View>

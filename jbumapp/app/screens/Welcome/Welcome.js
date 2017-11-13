@@ -11,6 +11,7 @@ import Meteor, { Accounts } from 'react-native-meteor';
 import { Button } from 'react-native-elements';
 import * as Animatable from 'react-native-animatable';
 import FadeInView from 'react-native-fade-in-view';
+import ReactNativeHaptic from 'react-native-haptic';
 
 import Wallpaper from '../../components/Wallpaper';
 import {email} from '../../components/Communications';
@@ -53,6 +54,7 @@ export default class Welcome extends Component {
   }
 
   handleOpenURL = (event) => { 
+    ReactNativeHaptic.generate('selection')
     if (this.state.hasOpenedURL) return;
     const { navigation } = this.props;
     const url = event.url;
@@ -111,6 +113,7 @@ export default class Welcome extends Component {
   }
 
   toLogin = () => {
+    ReactNativeHaptic.generate('selection')
     this.props.navigation.navigate('Login');
   }
 

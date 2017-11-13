@@ -7,12 +7,14 @@ import {
 } from 'react-native';
 import moment from 'moment';
 import { Icon, Divider, Badge } from 'react-native-elements'
+import ReactNativeHaptic from 'react-native-haptic';
 
 import styles from './styles';
 
 export default class InboxPanel extends Component {
   handleOnTouch = () => {
     const { navigation } = this.props;
+    ReactNativeHaptic.generate('selection')
     navigation.navigate("Reply",{ postContent: this.props.post, commentSelected: this.props.commentId });
   }
   render() {
@@ -26,7 +28,7 @@ export default class InboxPanel extends Component {
               name='clear'
               color='#D4D4D4'
               containerStyle={styles.buttonImage}
-              onPress={() => onArchivePress(commentId)}
+              onPress={() => {onArchivePress(commentId);ReactNativeHaptic.generate('selection')}}
             />
           </View>
 

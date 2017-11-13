@@ -23,6 +23,7 @@ import * as Animatable from 'react-native-animatable';
 import { connect } from 'react-redux';
 import PushNotification from 'react-native-push-notification';
 import TouchID from "react-native-touch-id";
+import ReactNativeHaptic from 'react-native-haptic';
 
 import Ask from '../Ask';
 import Answer from '../Answer';
@@ -171,6 +172,7 @@ class Home extends Component {
   }
   
   toInbox(){
+    ReactNativeHaptic.generate('selection')
     this.pages.scrollBy(-1,true);
     setTimeout(() => {
       this.horizontalPage.scrollBy(-1,true);
@@ -178,9 +180,11 @@ class Home extends Component {
   }
 
   toAskPage(){
+    ReactNativeHaptic.generate('selection')
     this.pages.scrollBy(-2,true)
   }
   scrollToPage = () => {
+    ReactNativeHaptic.generate('selection')
     this.pages.scrollBy(1,true)
   }
   onTouchEnd = () => {
@@ -194,6 +198,7 @@ class Home extends Component {
   }
 
   handleFloatingButtonPress = (message) => {
+    ReactNativeHaptic.generate('selection')
     switch (message) {
       case 'textATip':
         Alert.alert(
@@ -319,7 +324,7 @@ class Home extends Component {
                 name='keyboard-arrow-left' />
             </Animatable.View>
 
-          <ActionButton ref={(c) => this.but = c} degrees={136} icon={<Icon name="call" style={styles.actionButtonIcon} color={'white'} />} fixNativeFeedbackRadius={true} buttonColor="#F1606E">
+          <ActionButton ref={(c) => this.but = c} onPress={()=>ReactNativeHaptic.generate('selection')} degrees={136} icon={<Icon name="call" style={styles.actionButtonIcon} color={'white'} />} fixNativeFeedbackRadius={true} buttonColor="#F1606E">
             <ActionButton.Item textStyle={{fontSize: 14}} buttonColor='#9b59b6' title="Call 911" onPress={() => this.handleFloatingButtonPress('911')}>
               <Icon name="call" style={styles.actionButtonIcon} color={'white'} />
             </ActionButton.Item>

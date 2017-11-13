@@ -27,7 +27,8 @@ class Settings extends Component {
       oldPass: '',
       newPass : '',
       confirmPass: '',
-      isAuthReq: false
+      isAuthReq: false,
+      videoPaused:true
     };
     this.handleAuthSwitchChange = this.handleAuthSwitchChange.bind(this);
   }
@@ -184,11 +185,11 @@ class Settings extends Component {
 
   handleTut = () => {
     this.player.presentFullscreenPlayer();
-    this.player.seek(0);
+    this.setState({videoPaused:false})
   }
 
   render() {
-    const { switchValue } = this.state;
+    const { switchValue, videoPaused } = this.state;
     return (
       <View style={{backgroundColor:'#EFEFF4',flex:1}}>
             <View style={{backgroundColor:'#f7f7f7',flex:1}}>
@@ -296,13 +297,14 @@ class Settings extends Component {
               rate={1.0}                              // 0 is paused, 1 is normal.
               volume={1.0}                            // 0 is muted, 1 is normal.
               muted={false}                           // Mutes the audio entirely.
-              paused={false}                          // Pauses playback entirely.
+              paused={videoPaused}                          // Pauses playback entirely.
               resizeMode="cover"                      // Fill the whole screen at aspect ratio.*
               repeat={true}                           // Repeat forever.
               playInBackground={false}                // Audio continues to play when app entering background.
               playWhenInactive={false}                // [iOS] Video continues to play when control or notification center are shown.
               ignoreSilentSwitch={"ignore"}           // [iOS] ignore | obey - When 'ignore', audio will still play with the iOS hard silent switch set to silent. When 'obey', audio will toggle with the switch. When not specified, will inherit audio settings as usual.
               progressUpdateInterval={250.0}          // [iOS] Interval to fire onProgress (default to ~250ms)
+              onEnd={()=> this.setState({videoPaused:true})}
             />
           </View>
     );

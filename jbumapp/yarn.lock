@@ -4435,6 +4435,10 @@ react-native-firebase@^3.0.5:
     bows "^1.6.0"
     prop-types "^15.6.0"
 
+react-native-haptic@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/react-native-haptic/-/react-native-haptic-1.0.5.tgz#91fff9233a0eb0a4e420a00c2bf5cf29610946ed"
+
 react-native-keyboard-aware-scroll-view@^0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/react-native-keyboard-aware-scroll-view/-/react-native-keyboard-aware-scroll-view-0.3.0.tgz#b9d7b0d5b47d2bb4285fe50a3d274b10a3b5e1a7"

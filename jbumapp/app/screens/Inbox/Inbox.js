@@ -169,7 +169,7 @@ class Inbox extends Component {
     const { user_posts,user_postsReady,navigation } = this.props;
     const data = this.findMostRecentReplies();
     return (
-      <ScrollView
+      <View
         style={styles.container}
         contentContainerStyle={styles.contentContainerStyle}
       >
@@ -190,7 +190,7 @@ class Inbox extends Component {
             }
               </View>
               </View>
-      </ScrollView>
+      </View>
     );
   }
 }

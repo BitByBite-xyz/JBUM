@@ -6,6 +6,7 @@ import Meteor, { createContainer } from 'react-native-meteor';
 import Accordion from 'react-native-collapsible/Accordion';
 import {AutoGrowingTextInput} from 'react-native-autogrow-textinput';
 import { NavigationActions } from 'react-navigation';
+import ReactNativeHaptic from 'react-native-haptic';
 
 import Prompt from '../../components/Prompt'
 import ActionButton from '../../components/ActionButton';
@@ -44,7 +45,8 @@ class Ask extends Component {
   postButton = () => {
     const {title, body,post_visibility, post_categories,otherCategory} = (this.state);
     const { scrollToPage } = this.props;
-
+    ReactNativeHaptic.generate('selection')
+    
     if (this.validatePostSubmission()) {
       if (otherCategory !== 'Other') {
         post_categories.push(otherCategory)
@@ -119,6 +121,7 @@ class Ask extends Component {
   }
 
   updateResponder = (visOption) => {
+    ReactNativeHaptic.generate('selection')
     const { post_visibility } = this.state;
     const index = post_visibility.indexOf(visOption);
 
@@ -134,6 +137,7 @@ class Ask extends Component {
   }
 
   updateCategory = (catOption) => {
+    ReactNativeHaptic.generate('selection')
     const { post_categories } = this.state;
     const index = post_categories.indexOf(catOption);
 
@@ -149,6 +153,7 @@ class Ask extends Component {
   }
 
   onHelpPress = () => {
+    ReactNativeHaptic.generate('selection')
     Alert.alert('Information about recievers',
     'Student: Any questions not answered within 24 hours will be passed on to an adult to ensure that your questions are addressed.\n'+
     'Adult: Responses by adults are not designed to supercede that of your parents, but are designed to give a different point of view for your consideration.\n'+
@@ -343,6 +348,7 @@ class Ask extends Component {
 
   onAccordianChange = () => {
     const {title, body,post_visibility, post_categories, otherCategory} = this.state;
+    ReactNativeHaptic.generate('selection')
     Keyboard.dismiss;
 
     this.setState({sections: [ {title: post_categories.length === 0 ? '1️⃣ Choose Category ': '✅ Choose Category '},

@@ -27,9 +27,10 @@ class Reply extends Component {
   constructor(props) {
     super(props);
 
+    const post_id = _.get(this.props, 'navigation.state.params.postContent.user_id', {});
     this.state = {
       body: '',
-      isOwnPost: Meteor.userId() === this.props.post.user_id
+      isOwnPost: this.props.userId === post_id
     };
   }
   componentDidMount(){
@@ -78,7 +79,8 @@ class Reply extends Component {
 
   render() {
     const { isOwnPost } = this.state;
-    const { body,post } = this.props;
+    const { body, origPost } = this.props;
+    const post = (origPost) ? origPost: {user_id:'',post_title:'',post_body:'',post_comments:[]};
 
     return (
         <KeyboardAwareScrollView
@@ -149,6 +151,7 @@ export default createContainer((params) => {
   const post_id = _.get(params, 'navigation.state.params.postContent._id', {});
 
   return {
-    post: Meteor.collection('posts').findOne(post_id)
+    origPost: Meteor.collection('posts').findOne(post_id),
+    userId: Meteor.user()._id
   };
 }, Reply);

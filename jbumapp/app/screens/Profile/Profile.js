@@ -12,6 +12,7 @@ import Meteor, { createContainer } from 'react-native-meteor';
 import FadeInView from 'react-native-fade-in-view';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import { ButtonGroup } from 'react-native-elements'
+import ReactNativeHaptic from 'react-native-haptic';
 
 import Loading from '../../components/Loading';
 import AlertPanel from '../../components/AlertPanel';
@@ -27,21 +28,22 @@ const background = (
 	<Background source={images.profileBannerImg} />
 );
 class ProfileContainer extends Component {
-  constructor(props) {
-    super(props);
+	constructor(props) {
+		super(props);
 		this.state = {
-		  selectedIndex: 0,
+			selectedIndex: 0,
 			answeredNumber: 0
 		}
 		this.updateIndex = this.updateIndex.bind(this)
-  }
+	}
 
 	compontWillRecieveProps(){
 		this.calculateRespondedPosts();
 	}
 
 	updateIndex (selectedIndex) {
-	  this.setState({selectedIndex})
+		ReactNativeHaptic.generate('selection')
+		this.setState({selectedIndex})
 	}
 
 	renderHeader = () => {
@@ -221,7 +223,7 @@ export default createContainer(() => {
 
   return {
     user_posts: Meteor.collection('posts').find({ user_id: Meteor.userId() }, { sort: { createdAt: -1 } }),
-		responded_posts: Meteor.collection('posts').find(repliedParameters.find, repliedParameters.sort),
-		postsReady: handle.ready(),
+	responded_posts: Meteor.collection('posts').find(repliedParameters.find, repliedParameters.sort),
+	postsReady: handle.ready(),
 	};
 }, ProfileContainer);

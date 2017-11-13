@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { Icon, Divider } from 'react-native-elements'
+import ReactNativeHaptic from 'react-native-haptic';
 
 const header = 'It is Foreground Component';
 import * as Progress from 'react-native-progress';
@@ -16,7 +17,6 @@ export default class Header extends Component {
 
   gotoSettings = () => {
     const { navigate } = this.props.navigation;
-    alert('hi')
     navigate('Settings')
   }
 
@@ -80,7 +80,7 @@ export default class Header extends Component {
           <Icon
             name='more-horiz'
             large
-            onPress={() => this.props.navigation.navigate('Settings')}
+            onPress={() => {ReactNativeHaptic.generate('selection');this.props.navigation.navigate('Settings')}}
             size={28}
             underlayColor={'transparent'}
             color={'white'}

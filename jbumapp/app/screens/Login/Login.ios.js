@@ -14,6 +14,7 @@ import { Button, Icon } from 'react-native-elements'
 import { SocialIcon } from 'react-native-elements';
 import FadeInView from 'react-native-fade-in-view';//{/* onFadeComplete={() => alert('Ready') */}
 import { NavigationActions } from 'react-navigation';
+import ReactNativeHaptic from 'react-native-haptic';
 
 import { colors } from '../../config/styles';
 import images from '../../config/images';
@@ -58,6 +59,7 @@ class Login extends Component {
   }
 
   handleSignIn() {
+    ReactNativeHaptic.generate('selection')
     this.setState({isLoading:true})
     let isa = this.validInput();
     if (isa) {
