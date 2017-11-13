@@ -44,7 +44,8 @@ class AccountSetup extends Component {
       currentIndex: 0,
       swiperIndex:0,
       items: items,
-      profileData: []
+      profileData: [],
+      isLoading:false
     };
 
     let data = null;
@@ -107,6 +108,7 @@ class AccountSetup extends Component {
   }
 
   validateInput = (password, confirmPassword) => {
+    this.setState({isLoading:true});
     const { user } = this.props;
     const MAIN_WARN_COLOR = '#FF9A1E'
     const items = [
@@ -133,13 +135,17 @@ class AccountSetup extends Component {
             'Oops! Screenshot this and send to support!',
             'Change Password Err: \n\n'+err.reason
           );
-          return;
+          return false;
         }
         else{
           this.handleAccountSetupComplete();
           this.handlePageComplete();
         }
+        this.setState({isLoading:false});
       });
+    }
+    else{
+      this.setState({isLoading:false});
     }
   }
 
@@ -166,7 +172,7 @@ class AccountSetup extends Component {
   }
 
   render() {
-    const { profileData } = this.state;
+    const { profileData, isLoading } = this.state;
     return(
           <View style={{flex:1}}>
             <Swiper dotColor='#bbddff'
@@ -196,6 +202,7 @@ class AccountSetup extends Component {
                 <PasswordPage
                   validateInput={this.validateInput}
                   handlePageComplete={this.handlePageComplete}
+                  isLoading={isLoading}
                 />
               </View>
               <View style={[styles.slide, { backgroundColor: '#E1A3DC' }]}>

@@ -212,12 +212,13 @@ class Ask extends Component {
             onPress={() => {
               const checked = post_visibility.indexOf('Adult') !== -1;
               if (!checked){
+                this.updateResponder('Adult')
                 Alert.alert(
                   'Adult Responder Selected',
                   'All adults are pre-screened and approved by JBUM. Questions will be answered within 24 hours of posting your question.',
                   [
-                    {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-                    {text: 'OK', onPress: () => this.updateResponder('Adult')},
+                    {text: 'Cancel', onPress: () => this.updateResponder('Adult'), style: 'cancel'},
+                    {text: 'OK', onPress: () => null},
                   ],
                   { cancelable: false }
                 );
@@ -237,12 +238,13 @@ class Ask extends Component {
             onPress={() => {
               const checked = post_visibility.indexOf('Professional') !== -1;
               if (!checked){
+                this.updateResponder('Professional')
                 Alert.alert(
                   'Professional Responder Selected',
                   'A licensed therapist will be in contact within 24 hours of posting your question.',
                   [
-                    {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-                    {text: 'OK', onPress: () => this.updateResponder('Professional')},
+                    {text: 'Cancel', onPress: () => this.updateResponder('Professional'), style: 'cancel'},
+                    {text: 'OK', onPress: () => null},
                   ],
                   { cancelable: false }
                 );

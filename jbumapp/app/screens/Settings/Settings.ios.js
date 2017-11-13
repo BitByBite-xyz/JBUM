@@ -10,7 +10,9 @@ import { Icon, Divider, Badge } from 'react-native-elements'
 import { Jiro } from 'react-native-textinput-effects';
 import SettingsList from 'react-native-settings-list';
 import { NavigationActions } from 'react-navigation';
+import Video from 'react-native-video';
 
+import vid from '../../images/jbumapp.mov'
 import {email} from '../../components/Communications';
 
 const AUTH_KEY = 'isdatauthneededtho';
@@ -180,6 +182,11 @@ class Settings extends Component {
     this.setState({isAuthReq:!this.state.isAuthReq}) 
   }
 
+  handleTut = () => {
+    this.player.presentFullscreenPlayer();
+    this.player.seek(0);
+  }
+
   render() {
     const { switchValue } = this.state;
     return (
@@ -215,7 +222,7 @@ class Settings extends Component {
                 <SettingsList.Item
                   titleStyle={{fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
                   title='🗺 Tutorial'
-                  onPress={() => Alert.alert('Route To Tutorial Video')}
+                  onPress={this.handleTut}
                 />
                 <SettingsList.Item
                   titleStyle={{fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
@@ -282,6 +289,21 @@ class Settings extends Component {
                 </View>
               </Modal>
             </View>
+            <Video source={vid}   // Can be a URL or a local file.
+              ref={(ref) => {
+                this.player = ref
+              }}                                      // Store reference
+              rate={1.0}                              // 0 is paused, 1 is normal.
+              volume={1.0}                            // 0 is muted, 1 is normal.
+              muted={false}                           // Mutes the audio entirely.
+              paused={false}                          // Pauses playback entirely.
+              resizeMode="cover"                      // Fill the whole screen at aspect ratio.*
+              repeat={true}                           // Repeat forever.
+              playInBackground={false}                // Audio continues to play when app entering background.
+              playWhenInactive={false}                // [iOS] Video continues to play when control or notification center are shown.
+              ignoreSilentSwitch={"ignore"}           // [iOS] ignore | obey - When 'ignore', audio will still play with the iOS hard silent switch set to silent. When 'obey', audio will toggle with the switch. When not specified, will inherit audio settings as usual.
+              progressUpdateInterval={250.0}          // [iOS] Interval to fire onProgress (default to ~250ms)
+            />
           </View>
     );
   }

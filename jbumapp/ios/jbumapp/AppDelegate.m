@@ -15,6 +15,8 @@
 #import <React/RCTPushNotificationManager.h>
 #import <React/RCTLinkingManager.h>
 
+#import <AVFoundation/AVFoundation.h>
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
@@ -54,6 +56,7 @@
   UIViewController *rootViewController = [UIViewController new];
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
+  [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient error:nil];  // allow background audio
   [self.window makeKeyAndVisible];
   [FIRApp configure];
   return YES;

@@ -23,12 +23,11 @@ export default class PasswordPage extends Component {
       confirmPassword: '',
       isLoading:false
     };
-
   }
 
   render() {
-    const {password, confirmPassword, isLoading} = this.state;
-    const { validateInput } = this.props;
+    const {password, confirmPassword } = this.state;
+    const { validateInput, isLoading } = this.props;
     return(
 
       <KeyboardAvoidingView
@@ -62,7 +61,6 @@ export default class PasswordPage extends Component {
               iconRight
               backgroundColor={'#4AD9B9'}
               onPress={() => {
-                this.setState({isLoading:true});
                 validateInput(password, confirmPassword);
               }}
               icon={{name: 'account-circle'}}

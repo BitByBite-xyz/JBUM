@@ -56,9 +56,7 @@ export default class Welcome extends Component {
     if (this.state.hasOpenedURL) return;
     const { navigation } = this.props;
     const url = event.url;
-
     const linkData = url.replace(/.*?:\/\//g, '');
-    alert(url.replace(/.*?:\/\//g, ''))
     this.setState({hasOpenedURL:true});
     this.handleCreateAccount(linkData);
   }

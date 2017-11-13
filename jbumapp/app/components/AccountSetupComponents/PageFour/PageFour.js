@@ -8,7 +8,9 @@ import {
 import { Button } from 'react-native-elements'
 import Meteor from 'react-native-meteor';
 import Confetti from 'react-native-confetti';
+import Video from 'react-native-video';
 
+import vid from '../../../images/jbumapp.mov'
 const colors = ['#B565C6','#D63E87','#00B796', '#00D2F1', '#FEBE00', '#FF5656'];
 
 export default class InitialPage extends Component {
@@ -24,6 +26,12 @@ export default class InitialPage extends Component {
     if (nextProps.currentIndex === 4){
       this._confettiView.startConfetti()
     }
+  }
+
+  handleThatTho = () => {
+    const { handleAccountSetupComplete } = this.props;
+    this.player.presentFullscreenPlayer();
+    handleAccountSetupComplete()
   }
 
   render() {
@@ -42,11 +50,25 @@ export default class InitialPage extends Component {
         <View style={{marginTop: 100}}>
           <Button
             backgroundColor={'#4AD9B9'}
-            onPress={handleAccountSetupComplete}
+            onPress={this.handleThatTho}
             icon={{name: 'directions-walk'}}
             textStyle={{fontSize: 22, color: 'white'}}
-            title='Get Started' />
+            title='View Tutorial & Get Started' />
         </View>
+        <Video source={vid}   // Can be a URL or a local file.
+          ref={(ref) => {
+            this.player = ref
+          }}                                      // Store reference
+          rate={1.0}                              // 0 is paused, 1 is normal.
+          volume={1.0}                            // 0 is muted, 1 is normal.
+          muted={false}                           // Mutes the audio entirely.
+          paused={false}                          // Pauses playback entirely.
+          resizeMode="cover"                      // Fill the whole screen at aspect ratio.*
+          playInBackground={false}                // Audio continues to play when app entering background.
+          playWhenInactive={false}                // [iOS] Video continues to play when control or notification center are shown.
+          ignoreSilentSwitch={"ignore"}           // [iOS] ignore | obey - When 'ignore', audio will still play with the iOS hard silent switch set to silent. When 'obey', audio will toggle with the switch. When not specified, will inherit audio settings as usual.
+          progressUpdateInterval={250.0}          // [iOS] Interval to fire onProgress (default to ~250ms)
+         />
         </View>
       </View>
     );
