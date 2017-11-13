@@ -362,10 +362,5 @@ class Ask extends Component {
     );
   }
 }
-Ask.propTypes = {
-  navigator: React.PropTypes.object,
-  title: React.PropTypes.string,
-  body: React.PropTypes.string
-};
 
 export default Ask;

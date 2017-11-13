@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Animated } from 'react-native';
 
-import PropTypes from 'prop-types';
-
 class AnimateIn extends Component {
   render() {
     return (
@@ -11,10 +9,6 @@ class AnimateIn extends Component {
       </Animated.View>
     );
   }
-}
-
-AnimateIn.propTypes = {
-  children: PropTypes.any,
 }
 
 export default AnimateIn;
