@@ -115,7 +115,7 @@ class Reply extends Component {
               <View style={styles.bottomBox}>
                   <View style={styles.bottom}>
                       <View style={styles.views}>
-                          <AutoGrowingTextInput
+                          <TextInput
                               style={styles.largeText}
                               placeholder='Reply to this question'
                               returnKeyType="done"
@@ -127,6 +127,7 @@ class Reply extends Component {
                               minHeight={60}
                               maxHeight={200}
                               autoCorrect={true}
+                              autoGrow={true}
                           />
                       </View>
                    <View style={styles.buttonView}>

@@ -101,6 +101,7 @@ export default class Welcome extends Component {
   }
 
   toCreateAccount = () => {
+    ReactNativeHaptic.generate('selection');
     Alert.alert(
       'Please navigate to your email application and tap the invite link we sent you','',
       [
@@ -113,7 +114,7 @@ export default class Welcome extends Component {
   }
 
   toLogin = () => {
-    ReactNativeHaptic.generate('selection')
+    ReactNativeHaptic.generate('selection');
     this.props.navigation.navigate('Login');
   }
 

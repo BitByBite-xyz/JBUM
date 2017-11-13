@@ -51,7 +51,7 @@
 	<key>NSCameraUsageDescription</key>
 	<string>For QR Code Scan</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string/>
+	<string></string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Entypo.ttf</string>
@@ -77,6 +77,8 @@
 		<string>armv7</string>
 	</array>
 	<key>UIRequiresFullScreen</key>
+	<true/>
+	<key>UIStatusBarHidden</key>
 	<true/>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>

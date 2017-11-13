@@ -4,6 +4,7 @@ import Meteor, { createContainer } from 'react-native-meteor';
 import PushNotification from 'react-native-push-notification';
 import Navigator from './config/router';
 import codePush from "react-native-code-push";
+import ReactNativeHaptic from 'react-native-haptic';
 
 import settings from './config/settings';
 import Loading from './components/Loading';
@@ -12,7 +13,7 @@ import store from './config/store';
 
 import {Provider, connect} from 'react-redux';
 import {addNavigationHelpers} from 'react-navigation';
-
+//ReactNativeHaptic.generate('notification')
 
 Meteor.connect(settings.METEOR_URL);
 
@@ -59,6 +60,7 @@ const RNApp = (props) => {
         }, 500);
       },
       onNotification(notification) {
+        ReactNativeHaptic.generate('notification');
         const key = 'shouldHandleNotif';
         if (!notification.foreground && notification.userInteraction) {
           AsyncStorage.setItem(key, JSON.stringify(notification)).catch((err) => {

@@ -53,6 +53,7 @@ class Login extends Component {
     if (username.length === 0 || password.length === 0) {
       Alert.alert('Incomplete Data!','Please fill in the login and password fields')
       valid = false;
+      this.setState({isLoading:false})
     }
 
     return valid;
