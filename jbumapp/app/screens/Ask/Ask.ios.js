@@ -10,6 +10,7 @@ import ReactNativeHaptic from 'react-native-haptic';
 
 import Prompt from '../../components/Prompt'
 import ActionButton from '../../components/ActionButton';
+import Loading from '../../components/Loading';
 import { IS_X } from '../../config/styles';
 
 import styles from './styles'
@@ -25,7 +26,8 @@ class Ask extends Component {
       error: null,
       promptVisible: false,
       otherCategory: 'Other',
-      sections: [ {title: '1️⃣ Choose Category '}, {title: '2️⃣ Ask Question '}, {title: '3️⃣ Choose Receiver '}]
+      sections: [ {title: '1️⃣ Choose Category '}, {title: '2️⃣ Ask Question '}, {title: '3️⃣ Choose Receiver '}],
+      isLoading:false
     };
   }
   
@@ -45,7 +47,9 @@ class Ask extends Component {
   postButton = () => {
     const {title, body,post_visibility, post_categories,otherCategory} = (this.state);
     const { scrollToPage } = this.props;
-    ReactNativeHaptic.generate('selection')
+
+    this.setState({isLoading:true});
+    ReactNativeHaptic.generate('selection');
     
     if (this.validatePostSubmission()) {
       if (otherCategory !== 'Other') {
@@ -64,6 +68,7 @@ class Ask extends Component {
             'Oops! Screenshot this and send to support!',
             'Server error: \n\n'+err.details
           );
+          this.setState({isLoading:false});
           return;
         } else {
           console.log("Post added");
@@ -74,9 +79,11 @@ class Ask extends Component {
           else {
             this.props.navigation.goBack();
           }
+          this.setState({isLoading:false});
         }
       });
     }
+    else this.setState({isLoading:false})
   }
 
   validatePostSubmission = () => {
@@ -357,8 +364,7 @@ class Ask extends Component {
   }
 
   render() {
-    const title = this.state.title;
-    const body = this.state.body;
+    const { title, body, isLoading} = this.state;
 
     return (
       <ScrollView
@@ -387,15 +393,17 @@ class Ask extends Component {
             </View>
           </View>
 
-          <Button
-            borderRadius={25}
-            containerViewStyle={{marginTop:10, paddingBottom: 20}}
-            backgroundColor={'white'}
-            icon={{name: 'send', color: '#BBB', size: 20}}
-            iconRight
-            title='Submit Question'
-            textStyle={{color:'#BBB', fontFamily: 'Avenir', fontSize: 22, fontWeight: '500'}}
-            onPress={() => this.postButton()}/>
+          {isLoading ? <Loading/>:
+            <Button
+              borderRadius={25}
+              containerViewStyle={{marginTop:10, paddingBottom: 20}}
+              backgroundColor={'white'}
+              icon={{name: 'send', color: '#BBB', size: 20}}
+              iconRight
+              title='Submit Question'
+              textStyle={{color:'#BBB', fontFamily: 'Avenir', fontSize: 22, fontWeight: '500'}}
+              onPress={() => this.postButton()}/>
+          }
           <Prompt
             title="Type in your Question's Category"
             placeholder="Your new category"

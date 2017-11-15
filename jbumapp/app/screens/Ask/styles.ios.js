@@ -37,8 +37,7 @@ export default StyleSheet.create({
   },
   bottom: {
       backgroundColor: 'white',
-      borderTopLeftRadius: 10,
-      borderTopRightRadius: 10,
+      borderRadius: 10
   },
   receiverQuestion: {
     flexDirection: 'row',
@@ -48,7 +47,7 @@ export default StyleSheet.create({
       paddingRight: 10,
       marginTop: 13,
       backgroundColor: '#F3F3F3',
-      height: '300%'
+      height: '400%'
   },
   views: {
       paddingTop: 7,
