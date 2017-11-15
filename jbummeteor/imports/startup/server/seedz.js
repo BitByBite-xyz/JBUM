@@ -6,7 +6,7 @@ import { Fake } from 'meteor/anti:fake';
 
 
 import { Posts } from '../../api/posts/posts';
-/*
+
 Meteor.startup(() => {
   if (Meteor.users.find().count() === 0) {
 
@@ -16,8 +16,8 @@ Meteor.startup(() => {
     var users = [
       {username:"user",password:'user',roles:[]},
       {username:"responder",password:"responder",roles:['responder']},
-      {username:"admin",password:"admin",roles:['responder','admin']},
-      {username:"dev",password:"dev",roles:['admin']}
+      {username:"admin",password:"admin123",roles:['responder','admin']},
+      {username:"dev",password:"dev123",roles:['admin']}
     ];
 
     //giving roles of ['responder','admin']
@@ -39,7 +39,7 @@ Meteor.startup(() => {
     });
   }
   
-  if (Posts.find().count() === 0) {
+  /*if (Posts.find().count() === 0) {
     console.log('Seeding Posts DB...');
 
     let comments = [];
@@ -63,6 +63,6 @@ Meteor.startup(() => {
         post_flags: []
       });
     }
-  }
+  }*/
 });
-*/
+

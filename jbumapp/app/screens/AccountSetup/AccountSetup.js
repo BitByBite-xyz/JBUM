@@ -56,7 +56,7 @@ class AccountSetup extends Component {
     const { navigation, user } = this.props;
     let data = null;
 
-    if (user && user.profile.isAccountSetupComplete) {
+    if (user && user.profile && user.profile.isAccountSetupComplete) {
       AsyncStorage.setItem(ACNTSETUP_KEY, 'true').then(()=> {
         this.props.navigation.navigate('HomeStack', {overrideToAccountSetup:true});
       })

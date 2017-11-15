@@ -60,6 +60,7 @@ class Home extends Component {
       }
       else{
         AsyncStorage.getItem(ACNTSETUP_KEY).then((key)=>{
+       
           if (!key || key === 'false'){
             this.props.navigation.navigate('AccountSetup');
           }

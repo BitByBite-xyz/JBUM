@@ -8,7 +8,7 @@ devices([
 ])
 
 ios_version(
-  "11.0.1"
+  "11.1.0"
 )
 
 languages([
@@ -27,7 +27,7 @@ clear_previous_screenshots true # remove the '#' to clear all previously generat
 
 # Choose which project/workspace to use
 # project "./Project.xcodeproj"
-workspace "./Project.xcworkspace"
+workspace "./jbumapp.xcworkspace"
 
 # Arguments to pass to the app on launch. See https://github.com/fastlane/fastlane/tree/master/snapshot#launch-arguments
 # launch_arguments(["-favColor red","--number_of_retries 3"])

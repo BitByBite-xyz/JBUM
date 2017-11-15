@@ -164,7 +164,7 @@ class Ask extends Component {
     Alert.alert('Information about recievers',
     'Student: Any questions not answered within 24 hours will be passed on to an adult to ensure that your questions are addressed.\n'+
     'Adult: Responses by adults are not designed to supercede that of your parents, but are designed to give a different point of view for your consideration.\n'+
-    'Professonal: Responses by professionals are not designed to supercede that of your current therapist but are designed to give a different point of view.\n\nAll responses expressed by responders are their opinion, based on their expertise and do not reflect/represent the beliefs of JBUM.\n')
+    'Professional: Responses by professionals are not designed to supercede that of your current therapist but are designed to give a different point of view.\n\nAll responses expressed by responders are their opinion, based on their expertise and do not reflect/represent the beliefs of JBUM.\n')
   }
 
   renderHeader = (section) => {

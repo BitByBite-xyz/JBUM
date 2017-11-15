@@ -127,6 +127,10 @@ class Settings extends Component {
             'We were unable to change the password. Error: \n\n'+err.reason
           );
         }
+        else {
+          Alert.alert('Your password has been changed.')
+          this.setState({isModalVisible:false})
+        }
       });
     }
   }

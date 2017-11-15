@@ -68,7 +68,7 @@ class jbumappUITests: XCTestCase {
     
     let app = XCUIApplication()
     
-    sleep(2)
+    sleep(3)
     
     app.otherElements["home-screen"].swipeRight()
     sleep(2)
@@ -85,12 +85,13 @@ class jbumappUITests: XCTestCase {
   }
   func doLogin(){
     let app = XCUIApplication()
+    sleep(3)
     if (app.otherElements["login"].exists){
       app.otherElements["login"].tap()
       
       self.tapElementAndWaitForKeyboardToAppear(element: app/*@START_MENU_TOKEN@*/.otherElements["username-textfield"]/*[[".otherElements",".otherElements[\"Just Between You and Me Username Password LOGIN     Don't have us at your school?  Contact us\"]",".images",".otherElements[\"Just Between You and Me Username Password LOGIN \"]",".otherElements.matching(identifier: \"Username Password\")",".otherElements.matching(identifier: \"Username\").otherElements[\"username-textfield\"]",".otherElements[\"username-textfield\"]"],[[[-1,6],[-1,5],[-1,4,5],[-1,3,4],[-1,2,3],[-1,1,2],[-1,0,1]],[[-1,6],[-1,5],[-1,4,5],[-1,3,4],[-1,2,3],[-1,1,2]],[[-1,6],[-1,5],[-1,4,5],[-1,3,4],[-1,2,3]],[[-1,6],[-1,5],[-1,4,5],[-1,3,4]],[[-1,6],[-1,5],[-1,4,5]],[[-1,6],[-1,5]]],[0]]@END_MENU_TOKEN@*/)
       app.otherElements["username-textfield"].exists ? app/*@START_MENU_TOKEN@*/.otherElements["username-textfield"]/*[[".otherElements",".otherElements[\"Just Between You and Me Username Password LOGIN     Don't have us at your school?  Contact us\"]",".images",".otherElements[\"Just Between You and Me Username Password LOGIN \"]",".otherElements.matching(identifier: \"Username Password\")",".otherElements.matching(identifier: \"Username\").otherElements[\"username-textfield\"]",".otherElements[\"username-textfield\"]"],[[[-1,6],[-1,5],[-1,4,5],[-1,3,4],[-1,2,3],[-1,1,2],[-1,0,1]],[[-1,6],[-1,5],[-1,4,5],[-1,3,4],[-1,2,3],[-1,1,2]],[[-1,6],[-1,5],[-1,4,5],[-1,3,4],[-1,2,3]],[[-1,6],[-1,5],[-1,4,5],[-1,3,4]],[[-1,6],[-1,5],[-1,4,5]],[[-1,6],[-1,5]]],[0]]@END_MENU_TOKEN@*/.doubleTap():nil
-      UIPasteboard.general.string = "dev"
+      UIPasteboard.general.string = "user"
       app.menuItems.element(boundBy: 0).tap()
       
       self.tapElementAndWaitForKeyboardToAppear(element: app.otherElements["password-textfield"])
@@ -98,6 +99,7 @@ class jbumappUITests: XCTestCase {
       app.menuItems.element(boundBy: 0).tap()
       
       app.otherElements["login-button"].tap()
+      sleep(3)
     }
   }
 }
