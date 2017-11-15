@@ -33,7 +33,7 @@ import BarcodeScanner from '../components/BarcodeScanner';
 	 Reply: { screen: Reply,
 		 navigationOptions: {
 			 title: 'Reply',
-			headerStyle: {
+			/*headerStyle: {
 				 borderBottomWidth: 0.5,
 				 borderBottomColor: '#d1d1d1',
 				 backgroundColor: 'white',
@@ -48,7 +48,7 @@ import BarcodeScanner from '../components/BarcodeScanner';
 				 fontWeight: '600',
 				 marginRight: 10,
 				 paddingTop: 2
-				},
+				},*/
 		 },},
 		 Profile: {
  			screen: Profile,

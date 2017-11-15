@@ -86,8 +86,6 @@ class Settings extends Component {
   }
 
   handleReportProblemPress = () => {
-    console.log('f')
-    email('contact@bitbybite.co','connor.larkin1@gmail.com','','🚧 Reporting a problem with JBUM 🚧','🌀 your problem here 🌀');
     Linking.openURL('mailto:contact@bitbybite.co?subject=🚧 Reporting a problem with JBUM 🚧&body=🌀 your problem here 🌀')
   }
 
@@ -197,7 +195,7 @@ class Settings extends Component {
                 <SettingsList.Header headerStyle={{marginTop:0}}/>
                 <SettingsList.Item
                   titleStyle={{fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
-                  title='🤫 Account Username'
+                  title='Account Username'
                   arrowIcon={(<Icon
                     name='account-circle'
                     iconStyle={{marginRight:30}}
@@ -234,13 +232,13 @@ class Settings extends Component {
                 <SettingsList.Header headerText='ABOUT' headerStyle={{color:'gray', marginTop:15, marginLeft: 10}}/>
                 <SettingsList.Item
                   titleStyle={{fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
-                  title='📄 Terms of Service'
-                  onPress={() => Linking.openURL('https://help.instagram.com/155833707900388/?helpref=hc_fnav')}
+                  title='📄 Terms of Use'
+                  onPress={() => Linking.openURL('https://docs.google.com/document/d/1I0PTcRVgiBOMASPNA9Jg4ctze6IvBb9xfRQ3mQVhODE/edit?usp=sharing')}
                 />
                 <SettingsList.Item
                   titleStyle={{fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
                   title='📖 Guidelines'
-                  onPress={() => Linking.openURL('https://help.instagram.com/155833707900388/?helpref=hc_fnav')}
+                  onPress={() => Linking.openURL('https://docs.google.com/document/d/1f1_9jKKEsQsQFvB-HsAToxruxnsidAiN1hY62bqp19M/edit?usp=sharing')}
                 />
                 <SettingsList.Item
                   titleStyle={{fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}

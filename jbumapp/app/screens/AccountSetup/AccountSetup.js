@@ -8,7 +8,8 @@
     TouchableOpacity,
     Alert,
     StyleSheet,
-    AsyncStorage
+    AsyncStorage,
+    NetInfo
 }
 from 'react-native';
 
@@ -127,6 +128,14 @@ class AccountSetup extends Component {
       valid = false;
     }
 
+    NetInfo.fetch().done((reach) => {
+      if (reach.toLowerCase() === 'none'){
+        alert('No network detected! please connect to the internet to complete account setup.');
+        this.setState({isLoading:false});
+        return;
+      }
+    });
+
     if (valid) {      
       Accounts.changePassword(user.profile.temporaryPass, password, (err) => {
         if (err) {
@@ -135,6 +144,7 @@ class AccountSetup extends Component {
             'Oops! Screenshot this and send to support!',
             'Change Password Err: \n\n'+err.reason
           );
+          this.setState({isLoading:false});
           return false;
         }
         else{

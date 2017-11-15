@@ -1,8 +1,8 @@
-import {responders} from '../../../private/responders.json';
+//import {responders} from '../../../private/responders.json';
 SSR.compileTemplate('htmlEmail', Assets.getText('html-email.html'));
-const responderData = JSON.parse(responders);
+//const responderData = JSON.parse(responders);
 
-console.log(responderData)
+//console.log(responderData)
 export const handlePost = ({title, body, post_visibility, post_categories}) => {
     Meteor.call('sendEmail',{to:'connor.larkin1@gmail.com',from: '',subject: 'Post Added',text: JSON.stringify({title, body, post_visibility, post_categories}),html: SSR.render('htmlEmail', emailData)});
 

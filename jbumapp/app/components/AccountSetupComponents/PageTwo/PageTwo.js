@@ -8,28 +8,36 @@ import {
 
 import Picker from 'react-native-picker';
 
-const parOptions = ['Live with both parents', 'Live with one parent', 'Live with relatives'];
-const sibOptions = ['Only child', 'Have half/step siblings', 'Have brothers/sisters'];
-const sibOrderOptions = ['Oldest', 'Middle Child', 'Youngest', 'No Siblings'];
+const livingArrangementOptions = ['One household', 'Two households', 'No Household', 'Other'];
+const adultOptions = ['One parent', 'Two parents', 'Three Parents', 'Four Parents', 'Relatives', 'Other'];
+const kidOptions = ['Only child', 'Siblings', 'Step-siblings', 'Half-siblings', 'Adopted siblings', 'Mix'];
+const sibOrderOptions = ['Only child','First born female', 'First born male', 'Middle child', 'Youngest female', 'Youngest male'];
+const religionOptions = ['Atheist', 'Buddhist', 'Catholic', 'Protestant','Hindu', 'Jewish', 'Protestant', 'Other Spirituality',' Still searching'];
 
 export default class PageTwo extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      slectedParentals: '',
-      selectedSiblings: '',
+      selectedLivingArrangement: '',
+      selectedAdults:'',
+      selectedKids: '',
       selectedSiblingOrder: '',
-      showFamily: false,
-      showSiblings: false,
+      selectedReligion: '',
+      showLivingArrangement: false,
+      showAdults: false,
+      showKids: false,
       showSibOrder: false,
+      showReligion:false,
       hasValidData:false
     };
   }
   validateData = () => {
-    if (this.state.showFamily &&
-        this.state.showSiblings &&
+    if (this.state.showLivingArrangement &&
+        this.state.showAdults &&
+        this.state.showKids &&
         this.state.showSibOrder &&
+        this.state.showReligion &&
         !this.state.hasValidData) {
           this.state.hasValidData = true;
           this.props.handlePageComplete();
@@ -37,22 +45,22 @@ export default class PageTwo extends Component {
     }
 
   }
-  //Family
+  //Living Arrangement
   onPressFamily = () => {
-    const selectedFamily = this.state;
+    const selectedLivingArrangement = this.state;
     const {handleAddData} = this.props;
 
     Picker.init({
-        pickerTitleText: 'Select Family',
+        pickerTitleText: 'Select Living Arrangement',
         pickerConfirmBtnText: 'Confirm',
         pickerCancelBtnText: 'Cancel',
-        pickerData: parOptions,
+        pickerData: livingArrangementOptions,
         selectedValue: [],
         onPickerConfirm: data => {
           this.setState(previousState => {
-            return { selectedFamily: data, showFamily: true };
+            return { selectedLivingArrangement: data, showLivingArrangement: true };
           });
-          handleAddData('Family',data);
+          handleAddData('Living Arrangement',data);
           this.validateData();
         },
         onPickerCancel: data => {
@@ -61,33 +69,28 @@ export default class PageTwo extends Component {
         },
         onPickerSelect: data => {
           this.setState(previousState => {
-            return { selectedFamily: data, showFamily: true };
+            return { selectedLivingArrangement: data, showLivingArrangement: true };
           });
         }
     });
     Picker.show();
   }
-  //Siblings
-  onPressSiblings = () => {
-    const selectedSiblings = this.state;
+  //Adults
+  onPressAdults = () => {
+    const selectedAdults = this.state;
     const {handleAddData} = this.props;
 
     Picker.init({
-        pickerTitleText: 'Select Siblings',
+        pickerTitleText: 'Select Adults',
         pickerConfirmBtnText: 'Confirm',
         pickerCancelBtnText: 'Cancel',
-        pickerData: sibOptions,
+        pickerData: adultOptions,
         selectedValue: [],
         onPickerConfirm: data => {
           this.setState(previousState => {
-            console.log(data === ['Only child']);
-            if (data === ['Only child']) {
-              return {selectedSiblings: data, showSiblings: true,
-                      selectedSibOrder: 'No Siblings', showSibOrder: true }
-            }
-            return { selectedSiblings: data, showSiblings: true };
+            return { selectedAdults: data, showAdults: true };
           });
-          handleAddData('Siblings',data);
+          handleAddData('Adults',data);
           this.validateData();
         },
         onPickerCancel: data => {
@@ -96,7 +99,37 @@ export default class PageTwo extends Component {
         },
         onPickerSelect: data => {
           this.setState(previousState => {
-            return { selectedSiblings: data, showSiblings: true };
+            return { selectedAdults: data, showAdults: true };
+          });
+        }
+    });
+    Picker.show();
+  }
+  //Kids
+  onPressKids = () => {
+    const selectedKids = this.state;
+    const {handleAddData} = this.props;
+
+    Picker.init({
+        pickerTitleText: 'Select Kids',
+        pickerConfirmBtnText: 'Confirm',
+        pickerCancelBtnText: 'Cancel',
+        pickerData: kidOptions,
+        selectedValue: [],
+        onPickerConfirm: data => {
+          this.setState(previousState => {
+            return { selectedKids: data, showKids: true };
+          });
+          handleAddData('Kids',data);
+          this.validateData();
+        },
+        onPickerCancel: data => {
+            console.log(data);
+            Picker.hide();
+        },
+        onPickerSelect: data => {
+          this.setState(previousState => {
+            return { selectedKids: data, showKids: true };
           });
         }
     });
@@ -132,29 +165,72 @@ export default class PageTwo extends Component {
     });
     Picker.show();
   }
+  //Religion
+  onPressReligion = () => {
+    const selectedReligion = this.state;
+    const {handleAddData} = this.props;
+
+    Picker.init({
+        pickerTitleText: 'Select Religion',
+        pickerConfirmBtnText: 'Confirm',
+        pickerCancelBtnText: 'Cancel',
+        pickerData: religionOptions,
+        selectedValue: [],
+        onPickerConfirm: data => {
+          this.setState(previousState => {
+            return { selectedReligion: data, showReligion: true };
+          });
+          handleAddData('Religion',data);
+          this.validateData();
+        },
+        onPickerCancel: data => {
+            console.log(data);
+            Picker.hide();
+        },
+        onPickerSelect: data => {
+          this.setState(previousState => {
+            return { selectedReligion: data, showReligion: true };
+          });
+        }
+    });
+    Picker.show();
+  }
 
   render() {
-    const displayFamily = this.state.showFamily ? 'Family: ' + this.state.selectedFamily : 'Select Family';
-    const displaySiblings = this.state.showSiblings ? 'Siblings: ' + this.state.selectedSiblings : 'Select Siblings';
+    const displayFamily = this.state.showLivingArrangement ? 'Living Arrangement: ' + this.state.selectedLivingArrangement : 'Select Your Living Arrangement';
+    const displayAdults = this.state.showAdults ? 'Adults: ' + this.state.selectedAdults : 'Select Adults';
+    const displayKids = this.state.showKids ? 'Kids: ' + this.state.selectedKids : 'Select Kids';
     const displaySibOrder = this.state.showSibOrder ? 'Birth Order: ' + this.state.selectedSibOrder : 'Select Birth Order';
+    const displayReligion = this.state.showReligion ? 'Religion: ' + this.state.selectedReligion : 'Select Religion';
+    
     return(
           <View>
             <View style={{alignItems: 'center', marginTop: '10%'}}><Text style={styles.pageTitle}>Relationships</Text></View>
-            <View style={{marginTop: '35%'}}>
+            <View style={{marginTop: '15%'}}>
                 <View>
                   <TouchableHighlight onPress={this.onPressFamily} underlayColor={'transparent'}>
                     <Text style={styles.text}>{displayFamily}</Text>
                   </TouchableHighlight>
                 </View>
                 <View style={{marginTop: '17%'}}>
-                  <TouchableHighlight onPress={this.onPressSiblings} underlayColor={'transparent'}>
-                    <Text style={styles.text}>{displaySiblings}</Text>
+                  <TouchableHighlight onPress={this.onPressAdults} underlayColor={'transparent'}>
+                    <Text style={styles.text}>{displayAdults}</Text>
                   </TouchableHighlight>
                 </View>
                 <View style={{marginTop: '17%'}}>
-                <TouchableHighlight onPress={this.onPressSibOrder} underlayColor={'transparent'}>
-                  <Text style={styles.text}>{displaySibOrder}</Text>
-                </TouchableHighlight>
+                  <TouchableHighlight onPress={this.onPressKids} underlayColor={'transparent'}>
+                    <Text style={styles.text}>{displayKids}</Text>
+                  </TouchableHighlight>
+                </View>
+                <View style={{marginTop: '17%'}}>
+                  <TouchableHighlight onPress={this.onPressSibOrder} underlayColor={'transparent'}>
+                    <Text style={styles.text}>{displaySibOrder}</Text>
+                  </TouchableHighlight>
+                </View>
+                <View style={{marginTop: '17%'}}>
+                  <TouchableHighlight onPress={this.onPressReligion} underlayColor={'transparent'}>
+                    <Text style={styles.text}>{displayReligion}</Text>
+                  </TouchableHighlight>
                 </View>
             </View>
           </View>

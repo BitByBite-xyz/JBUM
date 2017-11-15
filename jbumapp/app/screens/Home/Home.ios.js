@@ -52,7 +52,8 @@ class Home extends Component {
     };
   }
 
-  componentWillMount(){  
+  componentWillMount(){
+    if (!this.props.connected)
     AsyncStorage.getItem('reactnativemeteor_usertoken').then((key)=>{
       if (!key){
         this.props.navigation.navigate('WelcomeStack');
@@ -134,6 +135,10 @@ class Home extends Component {
 
   handleNetworkChange = (info) => {
     this.props.navigation.dispatch(changeNetworkStatus(info))
+    if (info === 'none') {
+      alert('Please connect to the internet to use this app!')
+      this.props.navigation.navigate('WelcomeStack')
+    }
   }
 
   handleCheckForNotif = () => {
@@ -216,7 +221,7 @@ class Home extends Component {
           'Are you sure you want to call 911?','',
           [
             {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-            {text: 'CALL', onPress: () => Linking.openURL('tel:18475659827')},
+            {text: 'CALL', onPress: () => Linking.openURL('tel:911')},
           ],
           { cancelable: false }
         );
@@ -226,7 +231,7 @@ class Home extends Component {
           'Are you sure you want to call the National Suicide Prevention Lifeline?','',
           [
             {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-            {text: 'CALL', onPress: () => Linking.openURL('tel:18475659827')},
+            {text: 'CALL', onPress: () => Linking.openURL('tel:18002738255')},
           ],
           { cancelable: false }
         );
@@ -357,7 +362,7 @@ const mapStateToProps = ( state, ownProps ) => {
     return {quote:'',author:''}
   }
   return {
-      quote: state.quote.quote
+      quote: state.quote.quote,
   }
 }
 

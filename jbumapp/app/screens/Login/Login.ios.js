@@ -6,7 +6,7 @@ meteor stuff and app logic w RN stuff
  */
 
 import React, { Component } from 'react';
-import { Text, View, Image, StyleSheet, StatusBar, Linking, KeyboardAvoidingView,LayoutAnimation, Alert, ActivityIndicator } from 'react-native';
+import { Text, View, Image, StyleSheet, StatusBar, Linking, KeyboardAvoidingView,LayoutAnimation, Alert, ActivityIndicator, NetInfo } from 'react-native';
 import Meteor, { Accounts } from 'react-native-meteor';
 
 import KeyboardSpacer from 'react-native-keyboard-spacer';
@@ -53,6 +53,7 @@ class Login extends Component {
     if (username.length === 0 || password.length === 0) {
       Alert.alert('Incomplete Data!','Please fill in the login and password fields')
       valid = false;
+      this.setState({isLoading:false})
     }
 
     return valid;
@@ -62,6 +63,15 @@ class Login extends Component {
     ReactNativeHaptic.generate('selection')
     this.setState({isLoading:true})
     let isa = this.validInput();
+
+    NetInfo.fetch().done((reach) => {
+      if (reach.toLowerCase() === 'none'){
+        alert('No network detected! please connect to the internet to complete account setup.');
+        this.setState({isLoading:false});
+        return;
+      }
+    });
+
     if (isa) {
       const { username, password } = this.state;
       Meteor.loginWithPassword(username, password, (err) => {
@@ -165,14 +175,22 @@ class Login extends Component {
               <SocialIcon
                 type='twitter'
                 raised={false}
+                onPress={()=> {
+                  let url = 'https://twitter.com/JBUMapp';
+                  if(Linking.canOpenURL(url)) {
+                    Linking.openURL(url);
+                  }
+                }}
               />
               <SocialIcon
                 type='facebook'
                 raised={false}
-              />
-              <SocialIcon
-                raised={false}
-                type='instagram'
+                onPress={()=> {
+                  let url = 'https://www.facebook.com/JBUMapp/';
+                  if(Linking.canOpenURL(url)) {
+                    Linking.openURL(url);
+                  }
+                }}
               />
 
             </View>
@@ -184,7 +202,7 @@ class Login extends Component {
           >
 
             <View style={styles.contactUsContainer}>
-              <Text style={styles.contactUsText}>Don't have us at your school?</Text>
+              <Text style={styles.contactUsText}>Don't have a login?</Text>
               <View style={width=2}/>
               <Text style={styles.contactUsText2} onPress={()=> {
                 let url = 'http://www.bitbybite.co';

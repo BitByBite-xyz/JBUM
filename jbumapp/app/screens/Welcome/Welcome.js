@@ -5,7 +5,9 @@ import {
   StyleSheet,
   Linking,
   Alert,
-  AsyncStorage
+  AsyncStorage,
+  NetInfo,
+  ActivityIndicator
 } from 'react-native';
 import Meteor, { Accounts } from 'react-native-meteor';
 import { Button } from 'react-native-elements';
@@ -16,6 +18,8 @@ import ReactNativeHaptic from 'react-native-haptic';
 import Wallpaper from '../../components/Wallpaper';
 import {email} from '../../components/Communications';
 import images from '../../config/images';
+
+import { changeNetworkStatus } from '../../actions/network';
 
 const B = (props) => <Text style={styles.textBold}>{props.children}</Text>
 const URL_KEY = 'thisisfun';
@@ -36,6 +40,8 @@ export default class Welcome extends Component {
   }
 
   componentDidMount() {
+    NetInfo.addEventListener('change', this.handleNetworkChange);
+
     setTimeout(() => {
       AsyncStorage.getItem(URL_KEY).then((url)=>{
         if (url && url !== 'done' && !this.state.hasOpenedURL) {
@@ -50,10 +56,24 @@ export default class Welcome extends Component {
   }
 
   componentDidUnmount(){
-    Linking.removeEventListener('url', this.handleOpenURL);    
+    Linking.removeEventListener('url', this.handleOpenURL); 
+    NetInfo.removeEventListener('change', this.handleNetworkChange);    
   }
 
-  handleOpenURL = (event) => { 
+  handleNetworkChange = (info) => {
+    this.props.navigation.dispatch(changeNetworkStatus(info))
+    if (info !== 'none' && Meteor.userId()) {
+      this.props.navigation.navigate('Home')
+    }
+  }
+
+  handleOpenURL = (event) => {
+    NetInfo.fetch().done((reach) => {
+      if (reach.toLowerCase() === 'none'){
+        alert('No network detected! please connect to the internet to create an account!');
+        return;
+      }
+    }); 
     ReactNativeHaptic.generate('selection')
     if (this.state.hasOpenedURL) return;
     const { navigation } = this.props;
@@ -105,11 +125,10 @@ export default class Welcome extends Component {
       'Please navigate to your email application and tap the invite link we sent you','',
       [
         {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-        {text: 'Help', onPress: () => email('contact@bitbybite.co','connor.larkin1@gmail.com','','I Need Help creating my JBUM account','🌀 your problem here 🌀')},
+        {text: 'Help', onPress: () => Linking.openURL('mailto:contact@bitbybite.co?subject=🚧 Reporting a problem with JBUM 🚧&body=🌀 your problem here 🌀')},
       ],
       { cancelable: false }
     );
-    //this.props.navigation.navigate('BarcodeScanner');
   }
 
   toLogin = () => {
@@ -131,40 +150,46 @@ export default class Welcome extends Component {
               </Text>
             </FadeInView>
 
-          <FadeInView duration={2000}>
-            <View style={styles.container}>
-              <Animatable.View animation='fadeInDown' duration={1000}>
-                <Button
-                  title='Login'
-                  large
-                  borderRadius={20}
-                  icon={{name: 'account-circle',buttonStyle: styles.buttons}}
-                  backgroundColor={'transparent'}
-                  onPress={this.toLogin}
-                  fontFamily= 'Avenir'
-                  fontSize={25}
-                  fontWeight='bold'
-                  iconRight={true}
-                  opacity={0.1}
-                  testID="login"
-                />
-              </Animatable.View>
-              <Animatable.View animation='fadeInUp' duration={1000}>
-                <Button
-                  title='Create Account'
-                  large
-                  borderRadius={20}
-                  icon={{name: 'add',buttonStyle: styles.buttons}}
-                  backgroundColor={'transparent'}
-                  onPress={this.toCreateAccount}
-                  fontFamily= 'Avenir'
-                  fontSize={25}
-                  fontWeight='bold'
-                  iconRight={true}
-                />
-              </Animatable.View>
+          {!this.state.hasOpenedURL ? 
+            <FadeInView duration={2000}>
+              <View style={styles.container}>
+                <Animatable.View animation='fadeInDown' duration={1000}>
+                  <Button
+                    title='Login'
+                    large
+                    borderRadius={20}
+                    icon={{name: 'account-circle',buttonStyle: styles.buttons}}
+                    backgroundColor={'transparent'}
+                    onPress={this.toLogin}
+                    fontFamily= 'Avenir'
+                    fontSize={25}
+                    fontWeight='bold'
+                    iconRight={true}
+                    opacity={0.1}
+                    testID="login"
+                  />
+                </Animatable.View>
+                <Animatable.View animation='fadeInUp' duration={1000}>
+                  <Button
+                    title='Create Account'
+                    large
+                    borderRadius={20}
+                    icon={{name: 'add',buttonStyle: styles.buttons}}
+                    backgroundColor={'transparent'}
+                    onPress={this.toCreateAccount}
+                    fontFamily= 'Avenir'
+                    fontSize={25}
+                    fontWeight='bold'
+                    iconRight={true}
+                  />
+                </Animatable.View>
+              </View>
+            </FadeInView>
+            : 
+            <View style={{marginTop:'20%'}}>
+              <ActivityIndicator size={'large'}/>
             </View>
-          </FadeInView>
+          }
         </View>
 
       </Wallpaper>

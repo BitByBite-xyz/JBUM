@@ -38,9 +38,6 @@ const AppWithNavigation = connect(mapStateToProps)(App);
 let hasOpenedURL = false;
 const RNApp = (props) => {
   const { status, user, loggingIn } = props;
-  /*if (status.connected === false || loggingIn) {
-    return <Loading />;
-  }*/
 
   Linking.getInitialURL().then((url) => {
     if (url && !hasOpenedURL) {

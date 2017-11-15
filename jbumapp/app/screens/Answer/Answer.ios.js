@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
@@ -12,7 +12,6 @@ import {
   AsyncStorage
 } from 'react-native';
 import Meteor, { createContainer } from 'react-native-meteor';
-import FadeInView from 'react-native-fade-in-view';//{/* onFadeComplete={() => alert('Ready') */}
 import DropdownAlert from 'react-native-dropdownalert'
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import { Badge,Icon } from 'react-native-elements'
@@ -27,6 +26,7 @@ import AlertPanel from '../../components/AlertPanel';
 import Loading from '../../components/Loading';
 import AskHeader from '../../components/AskHeader';
 import Notifications from '../../components/Notifications';
+import FadeInView from '../../components/FadeInView';
 
 import {queryConstructor} from '../../lib/queryHelpers';
 import {DEVICE_WIDTH, IS_X } from '../../config/styles';
@@ -45,7 +45,7 @@ class Answer extends Component {
       sortValue:'',
       sortIndex:'0',
       modalVisible: false,
-      options: ['Default','⏳⏳⏳', '💬💬💬']
+      options: ['Default','⏳⏳⏳', '💬💬💬','Relationships (family, friends, etc.)','Success (school, sports, work)','Identity (religion, discrimination, body image)','Abuse (physical, emotional, psychological)','Health Issues (mental, physical, emotional)','Substances (medications, drugs, alcohol, etc.)']
     };
 
     this.mounted = false;
@@ -107,7 +107,7 @@ class Answer extends Component {
     const { loading,posts } = this.props;
 
     if (loading) {
-      return null;
+      return <Loading/>;
     }
     if (posts.length === 0) {
       return (<AlertPanel
@@ -265,6 +265,7 @@ export default createContainer(() => {
 
   return {
     posts: Meteor.collection('posts').find(answerParameters.find, answerParameters.sort),
-    user: Meteor.user()
+    user: Meteor.user(),
+    loading:loading
   };
 }, connect(mapStateToProps)(Answer));

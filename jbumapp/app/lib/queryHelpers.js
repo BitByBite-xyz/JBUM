@@ -5,7 +5,7 @@ views = {};
 // client & server
 views.answerPosts = function (terms) {
   return {
-    find: {post_flags: [], post_visibility: { "$in" : ["Student"]} },
+    find: {post_flags: [], post_visibility: { "$in" : ["Student"]}, $where: "this.post_comments.length <= 5"  },
     sort: {sort: {post_comments: 1,createdAt:-1}, limit: terms.limit}
   };
 }

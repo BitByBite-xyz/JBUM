@@ -13,7 +13,6 @@
 		00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302DC1ABCB9D200DB3ED1 /* libRCTNetwork.a */; };
 		00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
 		0175D9067610465AA31B4A45 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F90979D4CBF41C1942DBD18 /* Zocial.ttf */; };
-		12ACB29C186249FDA98EEBD8 /* libCodePush.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F414C9CA9274CE7B1FC0A17 /* libCodePush.a */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
 		139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
 		139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139FDEF41B06529B00C62182 /* libRCTWebSocket.a */; };
@@ -44,6 +43,7 @@
 		8762741E1F6DF497005CEC90 /* libRCTPushNotification.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8762741B1F6DF438005CEC90 /* libRCTPushNotification.a */; };
 		87B828081FA56CFB007EF630 /* LaunchScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 87B828071FA56CFB007EF630 /* LaunchScreen.png */; };
 		87EE80701FB936C900054299 /* libReactNativeHaptic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87EE806F1FB936A000054299 /* libReactNativeHaptic.a */; };
+		87FF05B81FBBEA0C0025CA3B /* libCodePush.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 876724201FA7F53B003C65B1 /* libCodePush.a */; };
 		8FD5A071D72B4872B8093541 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BED2D2E0F7C4419EA2B09663 /* Foundation.ttf */; };
 		A53CBB67A9844D609ACE52EB /* libRCTCamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A483F89A2096459BACC442BC /* libRCTCamera.a */; };
 		A6948A75B55A41408CC0B7FC /* libRNDeviceInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B87FBE61A9B48B095E5269A /* libRNDeviceInfo.a */; };
@@ -456,6 +456,7 @@
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* jbumappTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = jbumappTests.m; sourceTree = "<group>"; };
 		04A3F3EC42A540C6A41BE1BE /* RNSpinkit.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNSpinkit.xcodeproj; path = "../node_modules/react-native-spinkit/ios/RNSpinkit.xcodeproj"; sourceTree = "<group>"; };
+		0A517661E2BB471AEE6F09E7 /* Pods-jbumappUITests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jbumappUITests.staging.xcconfig"; path = "Pods/Target Support Files/Pods-jbumappUITests/Pods-jbumappUITests.staging.xcconfig"; sourceTree = "<group>"; };
 		10FA26E516CB47CFB253A962 /* libTouchID.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libTouchID.a; sourceTree = "<group>"; };
 		12A27FA434F626D9937926E6 /* Pods-jbumapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jbumapp.release.xcconfig"; path = "Pods/Target Support Files/Pods-jbumapp/Pods-jbumapp.release.xcconfig"; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
@@ -497,6 +498,7 @@
 		8738AC431FA6BBA800EE26D3 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		876274141F6DF2EC005CEC90 /* jbumapp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = jbumapp.entitlements; path = jbumapp/jbumapp.entitlements; sourceTree = "<group>"; };
 		876274151F6DF438005CEC90 /* RCTPushNotification.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTPushNotification.xcodeproj; path = "../node_modules/react-native/Libraries/PushNotificationIOS/RCTPushNotification.xcodeproj"; sourceTree = "<group>"; };
+		878819701FBBEDA100864D12 /* libPods-jbumappUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPods-jbumappUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		87B828071FA56CFB007EF630 /* LaunchScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchScreen.png; sourceTree = "<group>"; };
 		87EE806A1FB936A000054299 /* ReactNativeHaptic.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeHaptic.xcodeproj; path = "../node_modules/react-native-haptic/ios/ReactNativeHaptic.xcodeproj"; sourceTree = "<group>"; };
 		8C9D677446834B5AB2FCBAB4 /* AutoGrowTextInput.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = AutoGrowTextInput.xcodeproj; path = "../node_modules/react-native-autogrow-textinput/ios/AutoGrowTextInput.xcodeproj"; sourceTree = "<group>"; };
@@ -512,6 +514,7 @@
 		C8B4FE85F91140C7B08D4B18 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		CCFB9A583E894953887ACF83 /* libRCTVideo.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTVideo.a; sourceTree = "<group>"; };
 		D9B714D6CAF24A9C90F424A8 /* RNDeviceInfo.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNDeviceInfo.xcodeproj; path = "../node_modules/react-native-device-info/RNDeviceInfo.xcodeproj"; sourceTree = "<group>"; };
+		E0FA2F5282AB649B3035E463 /* Pods-jbumapp.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jbumapp.staging.xcconfig"; path = "Pods/Target Support Files/Pods-jbumapp/Pods-jbumapp.staging.xcconfig"; sourceTree = "<group>"; };
 		E1637F74715A9FCEEA175E29 /* libPods-jbumappUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-jbumappUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E285C21EC3544CBD8524628F /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		E557DB8A6A0B4C0C93843763 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
@@ -528,6 +531,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87FF05B81FBBEA0C0025CA3B /* libCodePush.a in Frameworks */,
 				87EE80701FB936C900054299 /* libReactNativeHaptic.a in Frameworks */,
 				8762741E1F6DF497005CEC90 /* libRCTPushNotification.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
@@ -552,7 +556,6 @@
 				4E60CEFA5E8B42D7A3CD9951 /* libAutoGrowTextInput.a in Frameworks */,
 				57B75E320E5A41518835E4A3 /* libRNFirebase.a in Frameworks */,
 				F423628C7975F1DBE3F4C812 /* libPods-jbumapp.a in Frameworks */,
-				12ACB29C186249FDA98EEBD8 /* libCodePush.a in Frameworks */,
 				E98631328739418B9D430E48 /* libz.tbd in Frameworks */,
 				A926DFC0CFD84772828B0F9C /* libTouchID.a in Frameworks */,
 				44339424C0284A0DA4AE0D3E /* libRCTVideo.a in Frameworks */,
@@ -687,6 +690,7 @@
 		59300319FD6E40F8BD28520C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				878819701FBBEDA100864D12 /* libPods-jbumappUITests.a */,
 				B5148DBF8B629CB6A544B4DF /* libPods-jbumapp.a */,
 				E1637F74715A9FCEEA175E29 /* libPods-jbumappUITests.a */,
 				276F0F803DD34F33AB4A80D6 /* libz.tbd */,
@@ -953,6 +957,8 @@
 				12A27FA434F626D9937926E6 /* Pods-jbumapp.release.xcconfig */,
 				6AB7C033FFF7F06ABE417EB4 /* Pods-jbumappUITests.debug.xcconfig */,
 				5CFB5BC7C03EDAC63FEBAA4F /* Pods-jbumappUITests.release.xcconfig */,
+				E0FA2F5282AB649B3035E463 /* Pods-jbumapp.staging.xcconfig */,
+				0A517661E2BB471AEE6F09E7 /* Pods-jbumappUITests.staging.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1034,7 +1040,7 @@
 				TargetAttributes = {
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = 24MA2Z46AJ;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1656,7 +1662,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#JSON_FILE=\"${SRCROOT}/ServiceAccount.json\"\n#GOOGLE_APP_ID=1:893689394956:ios:2411c9f5528997c6\n\n#defaults write com.google.SymbolUpload version -integer 1\n\n#JSON=$(cat \"${JSON_FILE}\")\n#/usr/bin/plutil -replace \"app_${GOOGLE_APP_ID//:/_}\" -json \"${JSON}\" \"$HOME/Library/Preferences/com.google.SymbolUpload.plist\"\n#\"${PODS_ROOT}\"/FirebaseCrash/upload-sym";
+			shellScript = "#JSON_FILE=\"${SRCROOT}/ServiceAccount.json\"\nGOOGLE_APP_ID=1:893689394956:ios:2411c9f5528997c6\n\n#defaults write com.google.SymbolUpload version -integer 1\n\n#JSON=$(cat \"${JSON_FILE}\")\n#/usr/bin/plutil -replace \"app_${GOOGLE_APP_ID//:/_}\" -json \"${JSON}\" \"$HOME/Library/Preferences/com.google.SymbolUpload.plist\"\n#\"${PODS_ROOT}\"/FirebaseCrash/upload-sym \"/Users/connorlarkin/dev/JBUM/jbumapp/ios/ServiceAccount.json\"";
 		};
 		A924313FC0143392F42E374C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1764,8 +1770,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = jbumapp/jbumapp.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 24MA2Z46AJ;
@@ -1803,7 +1809,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/jbum-react-native\"",
 					"\"$(SRCROOT)/jbumapp\"",
 					"\"$(SRCROOT)/jbumapp\"",
 					"\"$(SRCROOT)/jbumapp\"",
@@ -1815,8 +1820,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.connorlarkin.jbumapp;
 				PRODUCT_NAME = jbumapp;
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "bee37088-bd2d-4dc8-830e-fb59c09f9e95";
+				PROVISIONING_PROFILE_SPECIFIER = JBUM;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1828,8 +1833,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = jbumapp/jbumapp.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 24MA2Z46AJ;
 				HEADER_SEARCH_PATHS = (
@@ -1855,7 +1860,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/jbum-react-native\"",
 					"\"$(SRCROOT)/jbumapp\"",
 					"\"$(SRCROOT)/jbumapp\"",
 					"\"$(SRCROOT)/jbumapp\"",
@@ -1867,8 +1871,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.connorlarkin.jbumapp;
 				PRODUCT_NAME = jbumapp;
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "bee37088-bd2d-4dc8-830e-fb59c09f9e95";
+				PROVISIONING_PROFILE_SPECIFIER = JBUM;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1893,6 +1897,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODEPUSH_KEY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1938,6 +1943,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODEPUSH_KEY = "";
+				"CODEPUSH_KEY[arch=*]" = "8PJz68_lBpWg8NSjTzumbyDSSbtf63bb83f8-5409-4344-8138-d71383ab74b3";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -2029,6 +2036,137 @@
 			};
 			name = Release;
 		};
+		874937291FBBE07600311E2C /* Staging */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODEPUSH_KEY = "";
+				"CODEPUSH_KEY[arch=*]" = "SN98EmI99IFmzEDlXYgIF11PtLQB63bb83f8-5409-4344-8138-d71383ab74b3";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/Release$(EFFECTIVE_PLATFORM_NAME)";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_MAP_FILE_PATH = "build/jbumapp.build/Release-iphoneos/.build/-LinkMap--$(CURRENT_ARCH).txt";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Staging;
+		};
+		8749372A1FBBE07600311E2C /* Staging */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E0FA2F5282AB649B3035E463 /* Pods-jbumapp.staging.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = jbumapp/jbumapp.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CONFIGURATION_TEMP_DIR = "$(PROJECT_TEMP_DIR)/Release-iphoneos";
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 24MA2Z46AJ;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-button-component/button-explorer/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-spinkit/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
+					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-picker/ios/RCTBEEPickerManager",
+					"$(SRCROOT)/../node_modules/react-native-blur/ios",
+					"$(SRCROOT)/../node_modules/react-native-device-info/RNDeviceInfo",
+					"$(SRCROOT)/../node_modules/react-native-autogrow-textinput/ios",
+					"$(SRCROOT)/../node_modules/react-native/Libraries/PushNotificationIOS",
+					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
+					"$(SRCROOT)/../node_modules/react-native-code-push/ios/CodePush/**",
+					"$(SRCROOT)/../node_modules/react-native-touch-id",
+					"$(SRCROOT)/../node_modules/react-native-video/ios",
+				);
+				"HEADER_SEARCH_PATHS[arch=*]" = "$(REACT_HEADERS_PATH)";
+				INFOPLIST_FILE = jbumapp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/jbumapp\"",
+					"\"$(SRCROOT)/jbumapp\"",
+					"\"$(SRCROOT)/jbumapp\"",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PODS_CONFIGURATION_BUILD_DIR = "$PODS_BUILD_DIR/Release$(EFFECTIVE_PLATFORM_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.connorlarkin.jbumapp;
+				PRODUCT_NAME = jbumapp;
+				PROVISIONING_PROFILE = "bee37088-bd2d-4dc8-830e-fb59c09f9e95";
+				PROVISIONING_PROFILE_SPECIFIER = JBUM;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Staging;
+		};
+		8749372B1FBBE07600311E2C /* Staging */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0A517661E2BB471AEE6F09E7 /* Pods-jbumappUITests.staging.xcconfig */;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = jbumappUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = bbb.jbumappUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = jbumapp;
+			};
+			name = Staging;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -2037,6 +2175,7 @@
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
 				13B07F951A680F5B00A75B9A /* Release */,
+				8749372A1FBBE07600311E2C /* Staging */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2046,6 +2185,7 @@
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
 				83CBBA211A601CBA00E9B192 /* Release */,
+				874937291FBBE07600311E2C /* Staging */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2055,6 +2195,7 @@
 			buildConfigurations = (
 				8738AC411FA6BB5F00EE26D3 /* Debug */,
 				8738AC421FA6BB5F00EE26D3 /* Release */,
+				8749372B1FBBE07600311E2C /* Staging */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

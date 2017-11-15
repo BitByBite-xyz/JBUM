@@ -11,8 +11,8 @@ import Picker from 'react-native-picker';
 const ageOptions = [];
 const genderOptions = ['Male', 'Female', 'Transgender', 'Gender Fluid', 'Other'];
 const sexualityOptions = ['Heterosexual', 'Homosexual', 'Bisexual', 'Asexual', 'Pansexual', 'Other']
-const genOptions = ['Yes', 'No', 'I Don\’t Know'];
-const ethOptions = ['Caucasian', 'Black or African American', 'Hispanic and or Latino', 'Asian', 'Pacific Islander', 'American Indian', 'Other'];
+const genOptions = ['Same as primary', 'African', 'European', 'Central Asian, Far East Asian', 'Hispanic/Latino/Spanish', 'Indian Subcontinent',' Middle-Eastern', 'Native American', 'North Asian', 'Oceania', 'Pacific Islander/Hawaiian', 'Southeast Asian', 'West Asian'];
+const ethOptions = ['African', 'Asian', 'American', 'European', 'Hispanic/Latino/Spanish',' Middle-Eastern', 'Native American', 'Oceania', 'Pacific Islander/Hawaiian'];
 
 export default class PageOne extends Component {
   constructor(props) {
@@ -195,7 +195,7 @@ export default class PageOne extends Component {
           this.setState(previousState => {
             return { selectedGeneration: data, showGeneration: true };
           });
-          handleAddData('Generation',data);
+          handleAddData('Secondary Ethnicicty',data);
           this.validateData();
         },
         onPickerCancel: data => {
@@ -212,11 +212,11 @@ export default class PageOne extends Component {
   }
 
   render() {
-    const displayAge = this.state.showAge ? 'Your Age: ' + this.state.selectedAge : 'Please Select Your Age';
-    const displayGender = this.state.showGender ? 'Your Gender: ' + this.state.selectedGender : 'Please Select Your Gender';
-    const displaySexuality = this.state.showSexuality ? 'Your Sexuality: ' + this.state.selectedSexuality : 'Please Select Your Sexuality';
-    const displayEthnicity = this.state.showEthnicity ? 'Ethnicicty: ' + this.state.selectedEthnicity : 'Select Ethnicicty';
-    const displayGeneration = this.state.showGeneration ? 'Parent(s)/Guardian(s) Born in the US: ' + this.state.selectedGeneration : 'Was one or both of your parent(s)/guardian(s) born in the United States?';
+    const displayAge = this.state.showAge ? 'Your Age: ' + this.state.selectedAge : 'Select Your Age';
+    const displayGender = this.state.showGender ? 'Your  Gender Identity: ' + this.state.selectedGender : 'Select Your Gender Identity';
+    const displaySexuality = this.state.showSexuality ? 'Your Sexual Orientation: ' + this.state.selectedSexuality : 'Select Your Sexual Orientation';
+    const displayEthnicity = this.state.showEthnicity ? 'Primary Ethnic Identity: ' + this.state.selectedEthnicity : 'Select Your Primary Ethnic Identity';
+    const displayGeneration = this.state.showGeneration ? 'Secondary Ethnic Identity: ' + this.state.selectedGeneration : 'Select Your Secondary Ethnic Identity';
 
     return(
       <View style={{flex:1}}>
