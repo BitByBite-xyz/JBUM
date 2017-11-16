@@ -8,12 +8,14 @@ import MainContainer from '../../ui/containers/MainContainer.jsx'
 
 // pages
 import LoginPage from '../../ui/pages/Login.jsx'
+import BetaPage from '../../ui/pages/Beta.jsx'
 
 export const renderRoutes = () => (
   <Router>
     <div>
       <Route  path="/" component={AppContainer}/>
       <Route exact path="/login" component={LoginPage}/>
+      <Route exact path="/beta" component={BetaPage}/>
     </div>
   </Router>
 );

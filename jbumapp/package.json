@@ -66,7 +66,7 @@
     "eslint-plugin-react": "^7.3.0",
     "jest": "19.0.2",
     "react-native-keyboard-spacer": "0.3.0",
-    "react-native-meteor": "^1.1.0",
+    "react-native-meteor": "1.2.0",
     "react-native-tab-navigator": "0.3.3",
     "react-test-renderer": "16.0.0-alpha.6"
   },

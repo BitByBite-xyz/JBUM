@@ -28,17 +28,17 @@ class Settings extends Component {
 
   signOut = () => {
     Meteor.call('notifications.remove.pushToken', err => {
-      if (err) { alert(`notifications.rm.pushToken: ${err.reason}`); }
-    });
-    Meteor.logout(() => {
-      const resetAction = NavigationActions.reset({
-        index: 0,
-        key: null,
-        actions: [
-          NavigationActions.navigate({ routeName: 'HomeStack' }),
-        ],
+      if (err) { console.log(`notifications.rm.pushToken: ${err.reason}`); }
+      Meteor.logout(() => {
+        const resetAction = NavigationActions.reset({
+          index: 0,
+          key: null,
+          actions: [
+            NavigationActions.navigate({ routeName: 'HomeStack' }),
+          ],
+        });
+        this.props.navigation.navigate('Welcome');
       });
-      this.props.navigation.navigate('Welcome');
     });
   };
 

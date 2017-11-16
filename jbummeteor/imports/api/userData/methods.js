@@ -73,12 +73,10 @@ Meteor.methods({
     });
   },
   'notifications.remove.pushToken'() {
-
     const userId = this.userId;
     if (!userId) {
-      throw new Meteor.Error(SET_PUSH_TOKEN, 'Must be logged in remove push notification token.');
+      return;
     }
-
     Meteor.users.update(userId, {
         $set: { pushToDevices: [] },
     });

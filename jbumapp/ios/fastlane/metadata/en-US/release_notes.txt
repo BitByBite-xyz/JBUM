@@ -1,1 +1,4 @@
+• Fixes some bugs preventing account setup 
+• Adds some minor UI improvements 
 
+Thanks for using JBUM!

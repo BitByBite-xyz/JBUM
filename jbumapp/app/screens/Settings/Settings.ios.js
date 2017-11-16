@@ -52,11 +52,11 @@ class Settings extends Component {
     [
       {text: 'Ok', onPress: () => {
         Meteor.call('notifications.remove.pushToken', err => {
-          if (err) { alert(`notifications.rm.pushToken: ${err.reason}`); }
-        });
-        Meteor.logout(() => {
-          AsyncStorage.setItem(ACNTSETUP_KEY, 'false')
-          this.props.navigation.navigate('WelcomeStack');
+          if (err) { console.log(`notifications.rm.pushToken: ${err.reason}`); }
+          Meteor.logout(() => {
+            AsyncStorage.setItem(ACNTSETUP_KEY, 'false')
+            this.props.navigation.navigate('WelcomeStack');
+          });
         });
       }},
       {text: 'Cancel', onPress: () => (null)},

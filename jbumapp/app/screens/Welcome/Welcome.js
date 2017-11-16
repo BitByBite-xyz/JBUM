@@ -9,11 +9,12 @@ import {
   NetInfo,
   ActivityIndicator
 } from 'react-native';
-import Meteor, { Accounts } from 'react-native-meteor';
+import Meteor, { Accounts, createContainer } from 'react-native-meteor';
 import { Button } from 'react-native-elements';
 import * as Animatable from 'react-native-animatable';
 import FadeInView from 'react-native-fade-in-view';
 import ReactNativeHaptic from 'react-native-haptic';
+import _ from 'lodash';
 
 import Wallpaper from '../../components/Wallpaper';
 import {email} from '../../components/Communications';
@@ -24,13 +25,14 @@ import { changeNetworkStatus } from '../../actions/network';
 const B = (props) => <Text style={styles.textBold}>{props.children}</Text>
 const URL_KEY = 'thisisfun';
 
-export default class Welcome extends Component {
+class Welcome extends Component {
   constructor(props) {
     super(props);
     this.state = {
       hasOpenedURL:false,
       loggingIn: false,
-      loginData:null
+      loginData:null,
+      isCreatingAccount:false
     }
     this.mounted = false;
   }
@@ -61,9 +63,11 @@ export default class Welcome extends Component {
   }
 
   handleNetworkChange = (info) => {
+    const { user } = this.props;
     this.props.navigation.dispatch(changeNetworkStatus(info))
-    if (info !== 'none' && Meteor.userId()) {
-      this.props.navigation.navigate('Home')
+
+    if (info !== 'none' && user) {
+      this.props.navigation.navigate('HomeStack')
     }
   }
 
@@ -76,56 +80,75 @@ export default class Welcome extends Component {
     }); 
     ReactNativeHaptic.generate('selection')
     if (this.state.hasOpenedURL) return;
-    const { navigation } = this.props;
+
     const url = event.url;
     const linkData = url.replace(/.*?:\/\//g, '');
     this.setState({hasOpenedURL:true});
-    this.handleCreateAccount(linkData);
+    var handleCreateAccountOnce = _.once(this.handleCreateAccount.bind(this));
+
+    setTimeout(() => {
+      handleCreateAccountOnce(linkData);
+    }, 500);
   }
 
   handleCreateAccount = (linkData) => {
-    if (linkData !== null && !Meteor.userId()) {
-      Meteor.call('createUserAccount', linkData, (err, response) => {
-        if (err) {
-          console.log("err: "+err.reason);
-          Alert.alert(
-            'Oops! Invite link didn\'t work','',
-            [
-              {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-              {text: 'Help', onPress: () => email('contact@bitbybite.co','connor.larkin1@gmail.com','','I Need Help creating my JBUM account','🌀 your problem here 🌀')},
-            ],
-            { cancelable: false }
-          );
-          return;
-        } else {
-          this.state.loginData = response;
-          this.handleLogin();
-        }
-      });
-    }
+    if (this.state.isCreatingAccount) return;
+
+    const { user } = this.props;
+    if (linkData !== null ) this.handleLogin();
+    if (user) this.props.navigation.navigate('HomeStack')
+    this.setState({isCreatingAccount:true})
+  
+    Meteor.call('createUserAccount', linkData, (err, response) => {
+      if (err) {
+        console.log("err: "+err.reason);
+        Alert.alert(
+          'Oops! Invite link didn\'t work','',
+          [
+            {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+            {text: 'Help', onPress: () => Linking.openURL('mailto:contact@bitbybite.co?subject=🚧 Reporting a problem with JBUM 🚧&body=🌀 your problem here 🌀')},
+          ],
+          { cancelable: false }
+        );
+        this.setState({hasOpenedURL:false});
+        return;
+      } else if (response && typeof(response) != 'undefined'){
+        this.handleLogin(response);
+      }
+      else {
+        this.setState({hasOpenedURL:false});
+      }
+    });
   }
-  handleLogin = () => {
-    if(this.state.loginData !== null && !Meteor.userId()){
-      const { loginData } = this.state;
-      console.log(loginData);
-      Meteor.loginWithPassword(loginData.username, loginData.password, (err) => {
-        if (err) {
-          Alert.alert(
-            'Oops! Screenshot this and send to support!',
-            'Server error: \n\n'+err.details
-          );
-        }
-        this.props.navigation.navigate('AccountSetup', { loginData: loginData })
-      });
+
+  handleLogin = (response) => {
+    if (!response) {
+      this.setState({hasOpenedURL:false});
+      return;
     }
+
+    Meteor.loginWithPassword(response.username, response.password, (err) => {
+      if (err) {
+        Alert.alert(
+          'Oops! Screenshot this and send to support!',
+          'Server error: \n\n'+err.details
+        );
+        this.setState({hasOpenedURL:false});
+      }
+      else {
+        this.props.navigation.navigate('AccountSetup', { loginData: response });
+        this.setState({hasOpenedURL:false});
+      }
+    });
+    
   }
 
   toCreateAccount = () => {
     Alert.alert(
-      'Please navigate to your email application and tap the invite link we sent you','',
+      'Please navigate our site to create an account!','Currently we are in a closed beta. If you wish to be included email contact@bitbybite.co.',
       [
         {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-        {text: 'Help', onPress: () => Linking.openURL('mailto:contact@bitbybite.co?subject=🚧 Reporting a problem with JBUM 🚧&body=🌀 your problem here 🌀')},
+        {text: 'Go There', onPress: () => Linking.openURL('https://jbum.meteorapp.com/beta')},
       ],
       { cancelable: false }
     );
@@ -196,6 +219,12 @@ export default class Welcome extends Component {
     );
   }
 }
+
+export default WelcomeContainer = createContainer((props) => {
+  return {
+    user: Meteor.user()
+  }
+}, Welcome);
 
 const styles = StyleSheet.create({
   container: {
