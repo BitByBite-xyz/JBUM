@@ -15,7 +15,7 @@ Check out [this article](https://medium.com/@spencer_carli/organizing-a-react-na
 
 _Note_: You must be on a Mac for this.
 
-### Installing required software (complete this in order)
+### Installing required software (do these in order)
 
 - [Homebrew](https://brew.sh)
 
