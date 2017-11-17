@@ -15,9 +15,30 @@ Check out [this article](https://medium.com/@spencer_carli/organizing-a-react-na
 
 _Note_: You must be on a Mac for this.
 
-- Be sure your Meteor app is running: In the ```jbummeteor``` directory, type ```meteor```
+### Installing required software (complete this in order)
 
-- From the `jbumapp` directory run `react-native run-ios`
+- [Homebrew](https://brew.sh)
+
+- Yarn: run `brew install yarn` in terminal
+
+- React Native: run  `npm install -g create-react-native-app`
+
+- CocoaPods: run `sudo gem install cocoapods`
+
+- [Xcode](https://developer.apple.com/xcode/) install from mac app store and run (if it asks you to install command line tools select yes)
+
+### Getting it up and running 
+
+
+- Download the source code for this app by pressing the green 'clone or download' button in the top right of this page
+
+- Navigate to the `jbumapp` directory by opening a terminal window and typing `cd ` (include the space) and dragging the `jbumapp` folder from the folder you just downloaded (will look like this `JBUM-822dd6d0db1aa7ac3f7e1e0c726cf9220bd5ecd7-2)`.
+
+- type `yarn; cd ios; pod install; cd ..` and press enter
+
+- Run `react-native run-ios`
+
+- Wait for the simulator to launch with the app (might take 4-5 minutes)
 
 ## Running on iOS Device
 
