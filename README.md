@@ -32,7 +32,7 @@ _Note_: You must be on a Mac for this.
 
 - Download the source code for this app by pressing the green 'clone or download' button in the top right of this page
 
-- Navigate to the `jbumapp` directory by opening a terminal window and typing `cd ` (include the space) and dragging the `jbumapp` folder from the folder you just downloaded (will look like this `JBUM-822dd6d0db1aa7ac3f7e1e0c726cf9220bd5ecd7-2)`.
+- Navigate to the `jbumapp` directory by opening a terminal window and typing `cd ` (include the space) and dragging the `jbumapp` folder from the folder you just downloaded (will look like this `JBUM-822dd6d0db1aa7ac3f7e1e0c726cf9220bd5ecd7-2`).
 
 - type `yarn; cd ios; pod install; cd ..` and press enter
 
