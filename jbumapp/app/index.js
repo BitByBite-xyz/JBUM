@@ -5,6 +5,7 @@ import PushNotification from 'react-native-push-notification';
 import Navigator from './config/router';
 import codePush from "react-native-code-push";
 
+//import './config/ReactotronConfig';
 import settings from './config/settings';
 import Loading from './components/Loading';
 

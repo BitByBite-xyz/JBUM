@@ -30,8 +30,9 @@ class Stepper extends Component {
             return;
         }
         else {
-            setTimeout(function () { window.location = "https://itunes.apple.com/us/app/just-between-u-and-me/id1302879583?mt=8"; }, 25);
-            window.location = "jbum://2wGQQTyWQgFgYg62N";
+           // setTimeout(function () { window.location = "https://itunes.apple.com/us/app/just-between-u-and-me/id1302879583?mt=8"; }, 25);
+           alert('Check back soon to create an account!')
+            //window.location = "jbum://2wGQQTyWQgFgYg62N";
         }       
     }
 
@@ -56,6 +57,7 @@ class Stepper extends Component {
                         hintText="Your email"
                         onChange={(e, newVal) => this.setState({email:newVal})}
                     />
+                    <br />
                     <br />
                     <RaisedButton buttonStyle={{backgroundColor: "#1abc9c"}} onClick={this.handleCreateAccount} label="Create Account" />
                 </div>)

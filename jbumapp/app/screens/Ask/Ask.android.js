@@ -2,22 +2,17 @@ import React, { Component } from 'react';
 import { Text, View, TextInput, Image, TouchableOpacity,Picker,Alert,ScrollView, Keyboard } from 'react-native';
 import { Icon, Button,CheckBox } from 'react-native-elements'
 import update from 'react-addons-update';
-
 import Meteor, { createContainer } from 'react-native-meteor';
 import Accordion from 'react-native-collapsible/Accordion';
+import {AutoGrowingTextInput} from 'react-native-autogrow-textinput';
+import { NavigationActions } from 'react-navigation';
+
+import Prompt from '../../components/Prompt'
+import ActionButton from '../../components/ActionButton';
+import Loading from '../../components/Loading';
+import { IS_X } from '../../config/styles';
 
 import styles from './styles'
-import Prompt from '../../components/Prompt'
-import {AutoGrowingTextInput} from 'react-native-autogrow-textinput';
-
-const SECTIONS = [
-  {
-    title: ' Choose Receiver ',
-  },
-  {
-    title: ' Choose Category ',
-  }
-];
 
 class Ask extends Component {
   constructor(props) {
@@ -29,10 +24,12 @@ class Ask extends Component {
       post_categories:[],
       error: null,
       promptVisible: false,
-      otherCategory: 'Other'
+      otherCategory: 'Other',
+      sections: [ {title: 'Choose Category '}, {title: 'Ask Question '}, {title: 'Choose Receiver '}],
+      isLoading:false
     };
   }
-
+  
   resetFields = () => {
     this.setState( {
       title: '',
@@ -41,7 +38,8 @@ class Ask extends Component {
       post_categories:[],
       error: null,
       promptVisible: false,
-      otherCategory: 'Other'
+      otherCategory: 'Other',
+      sections: [ {title: 'Choose Category '}, {title: 'Ask Question '}, {title: 'Choose Receiver '}]
     });
   }
 
@@ -49,6 +47,8 @@ class Ask extends Component {
     const {title, body,post_visibility, post_categories,otherCategory} = (this.state);
     const { scrollToPage } = this.props;
 
+    this.setState({isLoading:true});
+    
     if (this.validatePostSubmission()) {
       if (otherCategory !== 'Other') {
         post_categories.push(otherCategory)
@@ -66,6 +66,7 @@ class Ask extends Component {
             'Oops! Screenshot this and send to support!',
             'Server error: \n\n'+err.details
           );
+          this.setState({isLoading:false});
           return;
         } else {
           console.log("Post added");
@@ -76,9 +77,11 @@ class Ask extends Component {
           else {
             this.props.navigation.goBack();
           }
+          this.setState({isLoading:false});
         }
       });
     }
+    else this.setState({isLoading:false})
   }
 
   validatePostSubmission = () => {
@@ -152,16 +155,35 @@ class Ask extends Component {
     }
   }
 
+  onHelpPress = () => {
+    Alert.alert('Information about recievers',
+    'Student: Any questions not answered within 24 hours will be passed on to an adult to ensure that your questions are addressed.\n'+
+    'Adult: Responses by adults are not designed to supercede that of your parents, but are designed to give a different point of view for your consideration.\n'+
+    'Professional: Responses by professionals are not designed to supercede that of your current therapist but are designed to give a different point of view.\n\nAll responses expressed by responders are their opinion, based on their expertise and do not reflect/represent the beliefs of JBUM.\n')
+  }
+
   renderHeader = (section) => {
+    if (!section.title) return;
     if (section.title.includes('Receiver')){
       return (
-        <View style={styles.bottom}>
-          <Text style={styles.headerText}>{section.title}</Text>
+        <View style={{backgroundColor: 'white'}}>
+          <View style={{flexDirection: 'row'}}>
+            <Text style={styles.headerText}>{section.title}</Text>
+            <View style={{marginTop: 6, marginLeft: 15}}>
+              <Icon
+                name='help'
+                onPress={this.onHelpPress}
+                size={22}
+                underlayColor={'white'}
+                color={'grey'}
+              />
+            </View>
+          </View>
         </View>
       );
     }
     return (
-      <View style={styles.bottom}>
+      <View style={{backgroundColor: 'white'}}>
         <Text style={styles.headerText}>{section.title}</Text>
       </View>
     );
@@ -170,9 +192,10 @@ class Ask extends Component {
   renderContent = (section) => {
     const { post_visibility, post_categories, otherCategory} = this.state;
 
+    if (!section.title) return;
     if (section.title.includes('Receiver')) {
       return (
-        <View style={styles.content}>
+        <View style={{}}>
           <CheckBox
             style={{backgroundColor: 'white', paddingLeft: 15, paddingTop: 5, paddingBottom: 5}}
             textStyle={{color: '#A4A7A6', fontSize: 16}}
@@ -194,7 +217,20 @@ class Ask extends Component {
             uncheckedIcon='circle-o'
             checked={post_visibility.indexOf('Adult') !== -1}
             onPress={() => {
-              this.updateResponder('Adult');
+              const checked = post_visibility.indexOf('Adult') !== -1;
+              if (!checked){
+                this.updateResponder('Adult')
+                Alert.alert(
+                  'Adult Responder Selected',
+                  'All adults are pre-screened and approved by JBUM. Questions will be answered within 24 hours of posting your question.',
+                  [
+                    {text: 'Cancel', onPress: () => this.updateResponder('Adult'), style: 'cancel'},
+                    {text: 'OK', onPress: () => null},
+                  ],
+                  { cancelable: false }
+                );
+              }
+              else this.updateResponder('Adult');
             }}
           />
           <CheckBox
@@ -204,9 +240,23 @@ class Ask extends Component {
             title='Professional'
             checkedIcon='dot-circle-o'
             uncheckedIcon='circle-o'
+            checkedColor='red'
             checked={post_visibility.indexOf('Professional') !== -1}
             onPress={() => {
-              this.updateResponder('Professional');
+              const checked = post_visibility.indexOf('Professional') !== -1;
+              if (!checked){
+                this.updateResponder('Professional')
+                Alert.alert(
+                  'Professional Responder Selected',
+                  'A licensed therapist will be in contact within 24 hours of posting your question.',
+                  [
+                    {text: 'Cancel', onPress: () => this.updateResponder('Professional'), style: 'cancel'},
+                    {text: 'OK', onPress: () => null},
+                  ],
+                  { cancelable: false }
+                );
+              }
+              else this.updateResponder('Professional');
             }}
           />
         </View>
@@ -250,6 +300,46 @@ class Ask extends Component {
         </View>
       );
     }
+    if (section.title.includes('Ask')) {
+      const title = this.state.title;
+      const body = this.state.body;
+      return (
+        <View style={{ backgroundColor: 'white'}}>
+        <View style={styles.views}>
+              <TextInput
+                  style={styles.largeText}
+                  placeholder='Your Question&#39;s Title'
+                  returnKeyType='done'
+                  underlineColorAndroid='transparent'
+                  onChangeText={(title) => this.setState({ title })}
+                  autoCorrect={true}
+                  placeholderTextColor={'#bababa'}
+                  minHeight={45}
+                  maxLength={300}
+                  blurOnSubmit={true}
+                  value={title}
+                />
+                  <View style={styles.lineDivider} />
+            </View>
+            <View style={styles.views}>
+              <TextInput
+                  style={styles.smallText}
+                  placeholder='Tell us your question...'
+                  returnKeyType='done'
+                  underlineColorAndroid='transparent'
+                  onChangeText={(body) => this.setState({ body })}
+                  multiline={true}
+                  blurOnSubmit={true}
+                  placeholderTextColor={'#bababa'}
+                  autoCorrect={true}
+                  value={body}
+                  minHeight={75}
+                />
+              </View>
+              </View>
+
+      );
+    }
 
     return (
       <View style={styles.content}>
@@ -258,92 +348,59 @@ class Ask extends Component {
     );
   }
 
-  _onSubmitEditing(){
-    this._textInput.blur();
+  onAccordianChange = () => {
+    const {title, body,post_visibility, post_categories, otherCategory} = this.state;
+    Keyboard.dismiss;
+
+    this.setState({sections: [ {title: post_categories.length === 0 ? 'Choose Category ': '✅ Choose Category '},
+                                {title: !title.replace(/\s/g, '').length || !body.replace(/\s/g, '').length ?  'Ask Question ': '✅ Ask Question '},
+                                {title: post_visibility.length === 0 ? 'Choose Receiver ': '✅ Choose Receiver '}]});
   }
 
   render() {
-    const {title, body} = this.state;
+    const { title, body, isLoading} = this.state;
 
     return (
       <ScrollView
         style={styles.backdrop}
         keyboardShouldPersistTaps={'always'}
       >
-        <View style={{height: 50, backgroundColor: '#57C2D7', alignItems: 'center', justifyContent: 'center'}}>
-          <Text style={{fontSize: 24, fontFamily: 'Avenir', fontWeight: '500', color: 'white'}}>Ask a Question</Text>
-        </View>
+      <View style={{height: IS_X? 70:50, backgroundColor: '#57C2D7', alignItems: 'center', justifyContent: 'center'}}>
+        <Text style={{marginTop: IS_X ? 27:0, fontSize: 24, fontFamily: 'Avenir', fontWeight: '500', color: 'white'}}>Ask a Question</Text>
+      </View>
       <View style={styles.backdrop}>
         <View style={{borderTopLeftRadius: 15, borderTopRightRadius: 15, overflow: 'hidden', backgroundColor: '#F3F3F3'}}>
-        <View style={styles.bottomBox}>
-          <View style={styles.bottom}>
-            <View style={{padding: 10, backgroundColor: 'white', borderTopRightRadius: 10, borderTopLeftRadius: 10}}>
-              <View style={{backgroundColor:'#F3F3F3', borderRadius: 10}}>
+          <View style={styles.bottomBox}>
+            <View style={styles.bottom}>
+            <View style={{padding: 10, backgroundColor: 'white', borderTopRightRadius: 10, borderTopLeftRadius: 10, borderBottomLeftRadius: 10, borderBottomRightRadius: 10}}>
+              <View style={{backgroundColor:'#F3F3F3', overflow: 'hidden'}}>
                 <Accordion
-                  sections={[{title: ' Choose Category '}]}
+                  sections={this.state.sections}
                   renderHeader={this.renderHeader}
                   renderContent={this.renderContent}
                   touchableProps={{activeOpacity:1}}
-                  onChange={Keyboard.dismiss}
+                  initiallyActiveSection={0}
+                  onChange={this.onAccordianChange}
+                  initiallyActiveSection={0}
                 />
               </View>
             </View>
-            <View style={styles.views}>
-              <AutoGrowingTextInput
-                  style={styles.largeText}
-                  placeholder='Your Question&#39;s Title'
-                  returnKeyType='done'
-                  underlineColorAndroid='transparent'
-                  onChangeText={(title) => this.setState({ title })}
-                  autoCorrect={true}
-                  placeholderTextColor={'#c9c9c9'}
-                  minHeight={75}
-                  onSubmitEditing={()=> Keyboard.dismiss()}
-                  value={title}
-                />
-                  <View style={styles.lineDivider} />
-            </View>
-            <View style={styles.views}>
-              <AutoGrowingTextInput
-                  style={styles.smallText}
-                  placeholder='Tell us your question...'
-                  returnKeyType='done'
-                  underlineColorAndroid='transparent'
-                  onChangeText={(body) => this.setState({ body })}
-                  multiline={true}
-                  blurOnSubmit={true}
-                  placeholderTextColor={'#c9c9c9'}
-                  autoCorrect={true}
-                  value={body}
-                  minHeight={75}
-                />
-              </View>
           </View>
-          <View style={{padding: 10, backgroundColor: 'white', borderBottomRightRadius: 10, borderBottomLeftRadius: 10}}>
-            <View style={{backgroundColor:'#F3F3F3', borderRadius: 10}}>
-              <Accordion
-                sections={[{title: ' Choose Receiver '}]}
-                renderHeader={this.renderHeader}
-                renderContent={this.renderContent}
-                touchableProps={{activeOpacity:1}}
-                onChange={() => Keyboard.dismiss()}
-              />
-            </View>
-          </View>
-          <View style={{marginBottom:20}}/>
-          <Button
-            borderRadius={25}
-            containerViewStyle={{marginTop:10, paddingBottom: 20}}
-            backgroundColor={'white'}
-            //disabled={title.length !== 0 && body.length !== 0}
-            icon={{name: 'send', color: '#BBB', size: 20}}
-            iconRight
-            title='Submit Question'
-            textStyle={{color:'#BBB', fontFamily: 'Avenir', fontSize: 22, fontWeight: '500'}}
-            onPress={() => this.postButton()}/>
+
+          {isLoading ? <Loading/>:
+            <Button
+              borderRadius={25}
+              containerViewStyle={{marginTop:10, paddingBottom: 20}}
+              backgroundColor={'white'}
+              icon={{name: 'send', color: '#BBB', size: 20}}
+              iconRight
+              title='Submit Question'
+              textStyle={{color:'#BBB', fontFamily: 'Avenir', fontSize: 22, fontWeight: '500'}}
+              onPress={() => this.postButton()}/>
+          }
           <Prompt
             title="Type in your Question's Category"
-            placeholder="New category who dis"
+            placeholder="Your new category"
             visible={ this.state.promptVisible }
             onCancel={ () => this.setState({
               promptVisible: false,

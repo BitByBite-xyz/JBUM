@@ -3,7 +3,8 @@ import {
   View,
   Text,
   StyleSheet,
-  TouchableOpacity
+  TouchableOpacity,
+  Platform
 } from 'react-native';
 import moment from 'moment';
 import { Icon, Divider, Badge } from 'react-native-elements'
@@ -16,7 +17,12 @@ export default class AlertPanel extends Component {
   render() {
     const { contentText } = this.props;
     return (
-      <TouchableOpacity onPress={()=> ReactNativeHaptic.generate('selection')} style={styles.container}>
+      <TouchableOpacity onPress={()=> {
+          if (Platform.OS === 'ios')
+            ReactNativeHaptic.generate('selection')
+        }}
+        style={styles.container}
+      >
       <View style={styles.questionPanelContainer}>
         <View style={styles.bottom}>
           <Text style={styles.title}>{contentText}</Text>

@@ -121,7 +121,7 @@ class Home extends Component {
   }
 
   componentWillUnmount(){
-    AppState.removeEventListener('change', this._handleAppStateChange);
+    AppState.removeEventListener('change', this.handleAppStateChange);
     NetInfo.removeEventListener('change', this.handleNetworkChange);
   }
 
@@ -243,7 +243,6 @@ class Home extends Component {
 
   render() {
     const { navigation, numberOfNotificatons,quote } = this.props;
-    const quoteIndex = Math.floor(quotes.length * Math.random());
     
     return (
       <Swiper

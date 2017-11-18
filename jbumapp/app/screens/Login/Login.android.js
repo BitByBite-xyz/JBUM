@@ -154,17 +154,25 @@ class Login extends Component {
           >
             <View style={styles.buttons}>
 
-              <SocialIcon
+            <SocialIcon
                 type='twitter'
                 raised={false}
+                onPress={()=> {
+                  let url = 'https://twitter.com/JBUMapp';
+                  if(Linking.canOpenURL(url)) {
+                    Linking.openURL(url);
+                  }
+                }}
               />
               <SocialIcon
                 type='facebook'
                 raised={false}
-              />
-              <SocialIcon
-                raised={false}
-                type='instagram'
+                onPress={()=> {
+                  let url = 'https://www.facebook.com/JBUMapp/';
+                  if(Linking.canOpenURL(url)) {
+                    Linking.openURL(url);
+                  }
+                }}
               />
 
             </View>

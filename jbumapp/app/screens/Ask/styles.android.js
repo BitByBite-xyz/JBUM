@@ -38,8 +38,7 @@ export default StyleSheet.create({
   },
   bottom: {
       backgroundColor: 'white',
-      borderTopLeftRadius: 10,
-      borderTopRightRadius: 10,
+      borderRadius: 10
   },
   receiverQuestion: {
     flexDirection: 'row',

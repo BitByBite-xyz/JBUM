@@ -1,18 +1,22 @@
 import React, { Component } from 'react';
+import { Text, View, Alert, Linking,Clipboard,TouchableOpacity,KeyboardAvoidingView,AsyncStorage } from 'react-native';
+
 import Meteor, { Accounts,createContainer } from 'react-native-meteor';
-import { Text, View, Alert, Linking,Clipboard,TouchableOpacity,KeyboardAvoidingView } from 'react-native';
 import { Button } from 'react-native-elements'
 import styles from './styles';
 import { colors } from '../../config/styles';
 import Modal from 'react-native-modal';
 import { Icon, Divider, Badge } from 'react-native-elements'
 import { Jiro } from 'react-native-textinput-effects';
-
 import SettingsList from 'react-native-settings-list';
-
 import { NavigationActions } from 'react-navigation';
+import Video from 'react-native-video';
 
+import vid from '../../images/jbumapp.mov'
 import {email} from '../../components/Communications';
+
+const AUTH_KEY = 'isdatauthneededtho';
+const ACNTSETUP_KEY = 'setupcomplete'
 
 class Settings extends Component {
   constructor(props) {
@@ -22,24 +26,41 @@ class Settings extends Component {
       isModalVisible:false,
       oldPass: '',
       newPass : '',
-      confirmPass: ''
+      confirmPass: '',
+      isAuthReq: false,
+      videoPaused:true
     };
+    this.handleAuthSwitchChange = this.handleAuthSwitchChange.bind(this);
+  }
+
+  componentWillMount(){
+    AsyncStorage.getItem(AUTH_KEY).then((auth)=>{
+      if (auth === 'true'){
+        this.setState({isAuthReq:true})
+      }
+      else{
+        this.setState({isAuthReq:false})
+      }
+    }).catch((err) => {
+      this.setState({isAuthReq:false})
+    })
   }
 
   signOut = () => {
-    Meteor.call('notifications.remove.pushToken', err => {
-      if (err) { console.log(`notifications.rm.pushToken: ${err.reason}`); }
-      Meteor.logout(() => {
-        const resetAction = NavigationActions.reset({
-          index: 0,
-          key: null,
-          actions: [
-            NavigationActions.navigate({ routeName: 'HomeStack' }),
-          ],
+    Alert.alert('You are about to log out!',
+    'Make sure that you write down your username if you want to be able to log back in.',
+    [
+      {text: 'Ok', onPress: () => {
+        Meteor.call('notifications.remove.pushToken', err => {
+          if (err) { console.log(`notifications.rm.pushToken: ${err.reason}`); }
+          Meteor.logout(() => {
+            AsyncStorage.setItem(ACNTSETUP_KEY, 'false')
+            this.props.navigation.navigate('WelcomeStack');
+          });
         });
-        this.props.navigation.navigate('Welcome');
-      });
-    });
+      }},
+      {text: 'Cancel', onPress: () => (null)},
+    ],{ cancelable: false });
   };
 
   handleAccountPress(){
@@ -65,8 +86,7 @@ class Settings extends Component {
   }
 
   handleReportProblemPress = () => {
-    email('contact@bitbybite.co','connor.larkin1@gmail.com','','🚧 Reporting a problem with JBUM 🚧','🌀 your problem here 🌀');
-    Linking.openURL('mailto:contact@bitbybite.co?subject=🚧 Reporting a problem with JBUM 🚧&body=🌀 your problem here 🌀');
+    Linking.openURL('mailto:contact@bitbybite.co?subject=🚧 Reporting a problem with JBUM 🚧&body=🌀 your problem here 🌀')
   }
 
   handleNotificationPress = () => {
@@ -106,6 +126,10 @@ class Settings extends Component {
             'Oops!',
             'We were unable to change the password. Error: \n\n'+err.reason
           );
+        }
+        else {
+          Alert.alert('Your password has been changed.')
+          this.setState({isModalVisible:false})
         }
       });
     }
@@ -155,8 +179,19 @@ class Settings extends Component {
     );
   }
 
+  handleAuthSwitchChange = () => {
+    const value = this.state.isAuthReq ? 'false':'true';
+    AsyncStorage.setItem(AUTH_KEY, value)
+    this.setState({isAuthReq:!this.state.isAuthReq}) 
+  }
+
+  handleTut = () => {
+    this.player.presentFullscreenPlayer();
+    this.setState({videoPaused:false})
+  }
+
   render() {
-    const { switchValue } = this.state;
+    const { switchValue, videoPaused } = this.state;
     return (
       <View style={{backgroundColor:'#EFEFF4',flex:1}}>
             <View style={{backgroundColor:'#f7f7f7',flex:1}}>
@@ -172,53 +207,48 @@ class Settings extends Component {
                   onPress={this.handleAccountPress}
                 />
                 <SettingsList.Header headerStyle={{marginTop:10}}/>
-                <SettingsList.Item
-                  titleStyle={{fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
-                  title='Notification Settings'
-                  onPress={this.handleNotificationPress}
-                />
                 <SettingsList.Header headerText='SUPPORT' headerStyle={{color:'gray', marginTop:15, marginLeft: 10}}/>
                 <SettingsList.Item
                   titleStyle={{fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
                   title='Tutorial'
-                  onPress={() => Alert.alert('Route To Tutorial Video')}
+                  onPress={this.handleTut}
                 />
                 <SettingsList.Item
                   titleStyle={{fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
-                  title='Report a Problem'
+                  title='🚧 Report a Problem'
                   onPress={this.handleReportProblemPress}
                 />
 
                 <SettingsList.Header headerText='ABOUT' headerStyle={{color:'gray', marginTop:15, marginLeft: 10}}/>
                 <SettingsList.Item
                   titleStyle={{fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
-                  title='Terms of Service'
-                  onPress={() => Linking.openURL('https://help.instagram.com/155833707900388/?helpref=hc_fnav')}
+                  title='📄 Terms of Use'
+                  onPress={() => Linking.openURL('https://docs.google.com/document/d/1I0PTcRVgiBOMASPNA9Jg4ctze6IvBb9xfRQ3mQVhODE/edit?usp=sharing')}
                 />
                 <SettingsList.Item
                   titleStyle={{fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
-                  title='Guidelines'
-                  onPress={() => Linking.openURL('https://help.instagram.com/155833707900388/?helpref=hc_fnav')}
+                  title='📖 Guidelines'
+                  onPress={() => Linking.openURL('https://docs.google.com/document/d/1f1_9jKKEsQsQFvB-HsAToxruxnsidAiN1hY62bqp19M/edit?usp=sharing')}
                 />
                 <SettingsList.Item
                   titleStyle={{fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
-                  title='JBUM Website'
+                  title='🕸 JBUM Website'
                   onPress={() => Linking.openURL('http://www.justbetweenuandme.com')}
                 />
 
                 <SettingsList.Header headerStyle={{marginTop:10}}/>
                 <SettingsList.Item
-                  title='Change Password'
+                  title='🔏 Change Password'
                   titleStyle={{color:'#020C7E', fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
                   onPress={() => this.setState({isModalVisible:true})}
                 />
                 <SettingsList.Item
-                  title='Delete Account'
+                  title='🚨 Delete Account'
                   titleStyle={{color:'#020C7E', fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
                   onPress={this.handleDeleteAccount}
                 />
                 <SettingsList.Item
-                  title='Log Out'
+                  title='🎈 Log Out'
                   titleStyle={{color:'#020C7E', fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
                   onPress={this.signOut}
                 />
@@ -243,15 +273,23 @@ class Settings extends Component {
                     <View style={{alignItems: 'center'}}>
                       <Text style={styles.popupTitle}>Change Password</Text>
                     </View>
-
                     {this.renderChangePass()}
-
                   </View>
-
                 </View>
               </Modal>
-
             </View>
+            <Video source={vid}
+              ref={(ref) => {
+                this.player = ref
+              }} 
+              rate={1.0}                   // 0 is paused, 1 is normal.
+              volume={1.0}                 // 0 is muted, 1 is normal.
+              muted={false}                // Mutes the audio entirely.
+              paused={videoPaused}           // Pauses playback entirely.
+              resizeMode="cover"           // Fill the whole screen at aspect ratio.
+              style={styles.backgroundVideo} 
+              onEnd={()=> this.setState({videoPaused:true})}
+            />
           </View>
     );
   }

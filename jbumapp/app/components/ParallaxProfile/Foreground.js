@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Platform } from 'react-native';
 import { Icon, Divider } from 'react-native-elements'
 import ReactNativeHaptic from 'react-native-haptic';
 
@@ -80,7 +80,10 @@ export default class Header extends Component {
           <Icon
             name='more-horiz'
             large
-            onPress={() => {ReactNativeHaptic.generate('selection');this.props.navigation.navigate('Settings')}}
+            onPress={() => {
+              if (Platform.OS === 'ios')
+                ReactNativeHaptic.generate('selection');this.props.navigation.navigate('Settings')
+            }}
             size={28}
             underlayColor={'transparent'}
             color={'white'}

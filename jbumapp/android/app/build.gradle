@@ -162,13 +162,7 @@ dependencies {
     compile(project(':react-native-firebase')) {
         transitive = false
     }
-    compile(project(':react-native-firebase')) {
-        transitive = false
-    }
     compile project(':react-native-code-push')
-    compile(project(':react-native-firebase')) {
-        transitive = false
-    }
     compile project(':react-native-push-notification')
     compile project(':react-native-device-info')
     compile project(':react-native-blur')
