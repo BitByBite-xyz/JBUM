@@ -1,36 +1,39 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-  <meta name="viewport" content="width=device-width" />
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <title>HTML email!</title>
-  <link href="styles.css" media="all" rel="stylesheet" type="text/css" />
-</head>
+  <head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>HTML email!</title>
+    <link href="styles.css" media="all" rel="stylesheet" type="text/css" />
+  </head>
 
-<body itemscope itemtype="http://schema.org/EmailMessage">
-  <table>
-    <tr>
-      <td></td>
-      <td width="600">
-        <table width="100%" style="border: 1px solid #eee;">
-          <tr>
-            <th style="text-align: left; padding: 10px; border-bottom: 1px solid #eee; border-right: 1px solid #eee;">Title</th>
-            <td style="text-align: left; padding: 10px; border-bottom: 1px solid #eee;">{{title}}</td>
-          </tr>
-          <tr>
-            <th style="text-align: left; padding: 10px; border-bottom: 1px solid #eee; border-right: 1px solid #eee;">Post Body</th>
-            <td style="text-align: left; padding: 10px; border-bottom: 1px solid #eee;">{{body}}</td>
-          </tr>
-          <tr>
-            <th style="text-align: left; padding: 10px; border-right: 1px solid #eee;">Post Visibility</th>
-            <td style="text-align: left; padding: 10px;">{{visibility}}</td>
-          </tr>
-          <tr>
-            <th style="text-align: left; padding: 10px; border-right: 1px solid #eee;">Post Categories</th>
-            <td style="text-align: left; padding: 10px;">{{categories}}</td>
-          </tr>
-        </table>
-      </td>
-    </tr>
-  </table>
-</body>
+  <body itemscope itemtype="http://schema.org/EmailMessage">
+    <table>
+      <tr>
+        <td></td>
+        <td width="600">
+          <table width="100%" style="border: 1px solid #eee;">
+            <tr>
+              <th style="text-align: left; padding: 10px; border-bottom: 1px solid #eee; border-right: 1px solid #eee;">Title</th>
+              <td style="text-align: left; padding: 10px; border-bottom: 1px solid #eee;">{{title}}</td>
+            </tr>
+            <tr>
+              <th style="text-align: left; padding: 10px; border-bottom: 1px solid #eee; border-right: 1px solid #eee;">Post Body</th>
+              <td style="text-align: left; padding: 10px; border-bottom: 1px solid #eee;">{{body}}</td>
+            </tr>
+            <tr>
+              <th style="text-align: left; padding: 10px; border-right: 1px solid #eee;">Post Visibility</th>
+              <td style="text-align: left; padding: 10px;">{{visibility}}</td>
+            </tr>
+            <tr>
+              <th style="text-align: left; padding: 10px; border-right: 1px solid #eee;">Post Categories</th>
+              <td style="text-align: left; padding: 10px;">{{categories}}</td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <br/>
+    <br/>
+    <a href="https://jbum.meteorapp.com/responder">Respond to this question here.</a>
+  </body>
 </html>

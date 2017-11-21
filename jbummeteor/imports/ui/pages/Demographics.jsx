@@ -61,10 +61,10 @@ class Survey extends Component {
     let genderData = null;
     let sexualityData = null;
     let ethnicityData = null;
-    let generationData = null;
-    let citizenshipData = null;
-    let familyData = null;
-    let siblingsData = null;
+    let secondaryEthnicictyData = null;
+    let livingArrangementData = null;
+    let adultsData = null;
+    let kidsData = null;
     let birthOrderData = null;
     const { surveyData } = this.state;;
 
@@ -73,10 +73,10 @@ class Survey extends Component {
       genderData = this.harvestData(surveyData['Gender']);
       sexualityData = this.harvestData(surveyData['Sexuality']);
       ethnicityData = this.harvestData(surveyData['Ethnicicty']);
-      generationData = this.harvestData(surveyData['Generation']);
-      citizenshipData = this.harvestData(surveyData['Citizenship']);
-      familyData = this.harvestData(surveyData['Family']);
-      siblingsData = this.harvestData(surveyData['Siblings']);
+      secondaryEthnicictyData = this.harvestData(surveyData['Secondary Ethnicicty']);
+      livingArrangementData = this.harvestData(surveyData['Living Arrangement']);
+      adultsData = this.harvestData(surveyData['Adults']);
+      kidsData = this.harvestData(surveyData['Kids']);
       birthOrderData = this.harvestData(surveyData['Birth Order']);
     }
       return (
@@ -98,20 +98,20 @@ class Survey extends Component {
               data={ethnicityData ? ethnicityData: [{name: '', value: 400}]}
             />
             <ChartPanel
-              graphName="Parents from US"
-              data={generationData ? generationData: [{name: '', value: 400}]}
+              graphName="2nd Ethnicicty"
+              data={secondaryEthnicictyData ? secondaryEthnicictyData: [{name: '', value: 400}]}
             />
             <ChartPanel
-              graphName="Citizenship"
-              data={citizenshipData ? citizenshipData: [{name: '', value: 400}]}
+              graphName="Living"
+              data={livingArrangementData ? livingArrangementData: [{name: '', value: 400}]}
             />
             <ChartPanel
               graphName="Family"
-              data={familyData ? familyData: [{name: '', value: 400}]}
+              data={adultsData ? adultsData: [{name: '', value: 400}]}
             />
             <ChartPanel
-              graphName="Siblings"
-              data={siblingsData ? siblingsData: [{name: '', value: 400}]}
+              graphName="Kids"
+              data={kidsData ? kidsData: [{name: '', value: 400}]}
             />
             <ChartPanel
               graphName="Birth Order"

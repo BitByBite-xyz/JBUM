@@ -1,29 +1,33 @@
 SSR.compileTemplate('htmlEmail', Assets.getText('html-email.html'));
 
-const professionals = ['8475659827@txt.att.net', 'connor.larkin1@gmail.com'];
-const adults = ['8475659827@txt.att.net'];
+//prodution shit
+const professionals = ['debbieax@aol.com'];
+const adults = ['justbu.jm@gmail.com','phoebe@daywaneti.com'];
+
+//debug
+//const professionals = ['8475659827@txt.att.net', 'connor.larkin1@gmail.com'];
+//const adults = ['8475659827@txt.att.net'];
 
 export const handlePost = ({title, body, post_visibility, post_categories}) => {
+  const cats = post_categories.map((c) => ' '+c).toString();
+  const vis = post_visibility.map((v) => ' '+v).toString();
   var emailData = {
     title: title,
     body: body,
-    visibility: JSON.stringify(post_visibility),
-    categories: JSON.stringify(post_categories),
+    visibility: vis,
+    categories: cats,
   };
-
-  //Meteor.call('sendEmail',{to:'connor.larkin1@gmail.com',from: '',subject: 'Post Added',text: JSON.stringify({title, body, post_visibility, post_categories}),html: SSR.render('htmlEmail', emailData)});
   const params = {
-    from: '',
+    from: 'JBUM',
     subject: 'Post Added',
-    text: JSON.stringify({title, body, post_visibility, post_categories}),
+    text: `Title:\n${title}\nPost Body:\n${body}\nPost Visibility:\n${vis}\nPost Categories:\n${cats}`,
     html: SSR.render('htmlEmail', emailData),
   };
-
-  console.log('post includes prof'+post_visibility.includes('Professional'))
 
   if (post_visibility.includes('Professional')){
     professionals.map( (pro) => {
       params.to = pro;
+      params.subject = '💬  Question asked to a professional on JBUM 💬'
       Meteor.call('sendEmail',params);
     })
   }
@@ -31,6 +35,7 @@ export const handlePost = ({title, body, post_visibility, post_categories}) => {
   if (post_visibility.includes('Adult')){
     adults.map( (adult) => {
       params.to = adult;
+      params.subject = '💬  Question asked to an adult on JBUM 💬'
       Meteor.call('sendEmail',params);
     })
   }

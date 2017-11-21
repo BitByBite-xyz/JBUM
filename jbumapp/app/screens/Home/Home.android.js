@@ -110,8 +110,6 @@ class Home extends Component {
   }
 
   handleFloatingButtonPress = (message) => {
-    this.props.navigation.dispatch(getInitialQuote());
-    alert(this.props.quote)
     switch (message) {
       case 'textATip':
         Alert.alert(

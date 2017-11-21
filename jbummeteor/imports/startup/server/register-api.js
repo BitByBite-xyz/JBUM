@@ -7,6 +7,6 @@ import '../../api/adminPanel/methods';
 
 import '../../api/adminPanel/server/publications';
 import '../../api/posts/server/publications';
-
+import '../../api/accountCreation/server/publications';
 
 //import '../../api/activity/server/publications';

@@ -9,11 +9,11 @@ import RaisedButton from 'material-ui/RaisedButton';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
 
-//Screen components
 import StatsCard from '../components/StatsCard';
 import SendPost from '../components/SendPost';
 
 import { Posts } from '../../api/posts/posts';
+import { BetaEmails } from '../../api/accountCreation/betaEmails';
 
 class Dashboard extends Component {
   constructor(props){
@@ -22,6 +22,23 @@ class Dashboard extends Component {
   }
 
   handleChange = (event, index, value) => this.setState({value});
+
+  handleAddBetaEmail = () => {
+    const email = this.refs.betaEmailField.getValue();
+    var re = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    if (!re.test(email)) {
+        alert('Please put in a valid email!')
+        return;
+    }
+    Meteor.call('addBetaEmail', email, (err) => {
+      if (err){
+          alert('Cannot add email.\n'+err)
+      }
+      else {
+        alert(email+' added!');
+      }
+    });       
+  }
 
   countReplies(){
     const { posts } = this.props;
@@ -35,6 +52,7 @@ class Dashboard extends Component {
     });
     return count;
   }
+
   handleNotif = () => {
     const message = this.refs.messageField.getValue()
     const params = {
@@ -70,7 +88,7 @@ class Dashboard extends Component {
   }
 
   renderStats = () => {
-    const { posts, users } = this.props;
+    const { posts, users, emails } = this.props;
     return (
       <div>
         <StatsCard
@@ -109,6 +127,22 @@ class Dashboard extends Component {
     )
   }
 
+  renderAddEmail = () => {
+    return (
+      <div style={{marginLeft:15,paddingTop:100}}>
+        <Paper zDepth={1} style={{borderRadius: 5, paddingLeft: 20, paddingRight: 20, paddingTop: 10, paddingBottom: 10, width: 300, height:200}}>
+          <br />
+          <TextField
+            floatingLabelText="Add Email to JBUM Beta"
+            ref="betaEmailField"
+          />
+          <br />
+          <RaisedButton label="Add Beta Email" fullWidth={true} onClick={this.handleAddBetaEmail}/>
+        </Paper>
+      </div>
+    )
+  }
+
   render() {
     const { posts, users } = this.props;
 
@@ -116,6 +150,7 @@ class Dashboard extends Component {
       <div>
         {this.renderStats()}
         {this.renderNotificationTrolling()}
+        {this.renderAddEmail()}
       </div>
     );
   }
@@ -123,10 +158,12 @@ class Dashboard extends Component {
 
 export default createContainer(() => {
   const handle = Meteor.subscribe('Posts.pub.list');
+  const handles = Meteor.subscribe('BetaEmails.pub.list');
   const handlee = Meteor.subscribe('userList')
   return {
   //  flaggedPosts: Posts.find( { $where: "this.post_flags.length > 0" }).fetch(),
     posts: Posts.find({}).fetch(),
-    users: Meteor.users.find({}).fetch()
+    users: Meteor.users.find({}).fetch(),
+    betaEmails: BetaEmails.find({}).fetch()
   }
 }, Dashboard);

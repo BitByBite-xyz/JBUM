@@ -31,6 +31,23 @@ subprojects {
             android {
                 compileSdkVersion 25
                 buildToolsVersion '25.0.0'
+                aaptOptions {
+                    cruncherEnabled = false
+                }
+                buildTypes {
+                    debug {
+                        buildConfigField "String", "CODEPUSH_KEY", '""'
+                
+                    }
+
+                    releaseStaging {
+                        buildConfigField "String", "CODEPUSH_KEY", '"3LrGfuC5zMqPuoq3uYteFFFGcKZK63bb83f8-5409-4344-8138-d71383ab74b3"'
+                    }
+
+                    release {
+                        buildConfigField "String", "CODEPUSH_KEY", '"WMogXV10wfuKA5aAKF-1YNL0E4A263bb83f8-5409-4344-8138-d71383ab74b3"'
+                    }
+                }
             }
         }
     }
