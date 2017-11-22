@@ -27,6 +27,7 @@ project.xcworkspace
 build/
 android/app/src/main/res/
 android/app/src/main/assets/
+android/app/app-release.apk
 .idea
 .gradle
 local.properties

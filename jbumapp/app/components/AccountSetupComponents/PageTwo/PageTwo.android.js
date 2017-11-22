@@ -39,7 +39,7 @@ export default class PageTwo extends Component {
         this.state.showSibOrder &&
         this.state.showReligion &&
         !this.state.hasValidData) {
-          this.state.hasValidData = true;
+          this.setState({hasValidData:true});
           this.props.handlePageComplete();
 
     }
@@ -68,9 +68,6 @@ export default class PageTwo extends Component {
             Picker.hide();
         },
         onPickerSelect: data => {
-          this.setState(previousState => {
-            return { selectedLivingArrangement: data, showLivingArrangement: true };
-          });
         }
     });
     Picker.show();
@@ -98,9 +95,6 @@ export default class PageTwo extends Component {
             Picker.hide();
         },
         onPickerSelect: data => {
-          this.setState(previousState => {
-            return { selectedAdults: data, showAdults: true };
-          });
         }
     });
     Picker.show();
@@ -128,9 +122,6 @@ export default class PageTwo extends Component {
             Picker.hide();
         },
         onPickerSelect: data => {
-          this.setState(previousState => {
-            return { selectedKids: data, showKids: true };
-          });
         }
     });
     Picker.show();
@@ -158,9 +149,7 @@ export default class PageTwo extends Component {
             Picker.hide();
         },
         onPickerSelect: data => {
-          this.setState(previousState => {
-            return { selectedSibOrder: data, showSibOrder: true };
-          });
+
         }
     });
     Picker.show();
@@ -188,9 +177,6 @@ export default class PageTwo extends Component {
             Picker.hide();
         },
         onPickerSelect: data => {
-          this.setState(previousState => {
-            return { selectedReligion: data, showReligion: true };
-          });
         }
     });
     Picker.show();

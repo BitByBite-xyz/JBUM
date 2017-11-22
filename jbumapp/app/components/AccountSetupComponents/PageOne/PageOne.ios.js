@@ -47,14 +47,14 @@ export default class PageOne extends Component {
         this.state.showEthnicity &&
         this.state.showGeneration &&
         !this.state.hasValidData) {
-          this.state.hasValidData = true;
+          this.setState({hasValidData:true});
           this.props.handlePageComplete();
     }
   }
 
   //Age
   onPressAge = () => {
-    const selectedAge = this.state;
+    const { selectedAge } = this.state;
     const {handleAddData} = this.props;
     Picker.init({
         pickerTitleText: 'Age',
@@ -64,20 +64,21 @@ export default class PageOne extends Component {
         onPickerConfirm: data => {
           this.setState(previousState => {
             return { selectedAge: data, showAge: true };
+          }, () => {
+            handleAddData('Age',data);
+            this.validateData();
           });
-          handleAddData('Age',data);
-          this.validateData();
         },
         onPickerCancel: data => {
           this.setState(previousState => {
             return { selectedAge: '', showAge: false };
+          }, () => {
+            handleAddData('Age',data);
+            this.validateData();
           });
           Picker.hide();
         },
         onPickerSelect: data => {
-          this.setState(previousState => {
-            return { selectedAge: data, showAge: true };
-          });
         }
     });
     Picker.show();
@@ -96,9 +97,10 @@ export default class PageOne extends Component {
         onPickerConfirm: data => {
           this.setState(previousState => {
             return { selectedGender: data, showGender: true };
+          }, () => {
+            handleAddData('Gender',data);
+            this.validateData();
           });
-          handleAddData('Gender',data);
-          this.validateData();
         },
         onPickerCancel: data => {
           this.setState(previousState => {
@@ -107,9 +109,6 @@ export default class PageOne extends Component {
           Picker.hide();
         },
         onPickerSelect: data => {
-          this.setState(previousState => {
-            return { selectedGender: data, showGender: true };
-          });
         }
     });
     Picker.show();
@@ -129,9 +128,10 @@ export default class PageOne extends Component {
         onPickerConfirm: data => {
           this.setState(previousState => {
             return { selectedSexuality: data, showSexuality: true };
+          }, () => {
+            handleAddData('Sexuality',data);
+            this.validateData();
           });
-          handleAddData('Sexuality',data);
-          this.validateData();
         },
         onPickerCancel: data => {
           this.setState(previousState => {
@@ -140,9 +140,6 @@ export default class PageOne extends Component {
           Picker.hide();
         },
         onPickerSelect: data => {
-          this.setState(previousState => {
-            return { selectedSexuality: data, showSexuality: true };
-          });
         }
     });
     Picker.show();
@@ -163,18 +160,16 @@ export default class PageOne extends Component {
         onPickerConfirm: data => {
           this.setState(previousState => {
             return { selectedEthnicity: data, showEthnicity: true };
+          }, () => {
+            handleAddData('Ethnicicty',data);
+            this.validateData();
           });
-          handleAddData('Ethnicicty',data);
-          this.validateData();
         },
         onPickerCancel: data => {
             console.log(data);
             Picker.hide();
         },
         onPickerSelect: data => {
-          this.setState(previousState => {
-            return { selectedEthnicity: data, showEthnicity: true };
-          });
         }
     });
     Picker.show();
@@ -194,18 +189,16 @@ export default class PageOne extends Component {
         onPickerConfirm: data => {
           this.setState(previousState => {
             return { selectedGeneration: data, showGeneration: true };
+          }, () => {
+            handleAddData('Secondary Ethnicicty',data);
+            this.validateData();
           });
-          handleAddData('Secondary Ethnicicty',data);
-          this.validateData();
         },
         onPickerCancel: data => {
             console.log(data);
             Picker.hide();
         },
         onPickerSelect: data => {
-          this.setState(previousState => {
-            return { selectedGeneration: data, showGeneration: true };
-          });
         }
     });
     Picker.show();

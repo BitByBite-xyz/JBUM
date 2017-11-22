@@ -17,7 +17,6 @@ const religionOptions = ['Atheist', 'Buddhist', 'Catholic', 'Protestant','Hindu'
 export default class PageTwo extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       selectedLivingArrangement: '',
       selectedAdults:'',
@@ -39,16 +38,14 @@ export default class PageTwo extends Component {
         this.state.showSibOrder &&
         this.state.showReligion &&
         !this.state.hasValidData) {
-          this.state.hasValidData = true;
+          this.setState({hasValidData:true});
           this.props.handlePageComplete();
-
     }
-
   }
   //Living Arrangement
   onPressFamily = () => {
-    const selectedLivingArrangement = this.state;
-    const {handleAddData} = this.props;
+    const { selectedLivingArrangement } = this.state;
+    const { handleAddData } = this.props;
 
     Picker.init({
         pickerTitleText: 'Select Living Arrangement',
@@ -59,26 +56,27 @@ export default class PageTwo extends Component {
         onPickerConfirm: data => {
           this.setState(previousState => {
             return { selectedLivingArrangement: data, showLivingArrangement: true };
+          }, () => {
+            handleAddData('Living Arrangement',data);
+            this.validateData();
           });
-          handleAddData('Living Arrangement',data);
-          this.validateData();
         },
         onPickerCancel: data => {
-            console.log(data);
-            Picker.hide();
+          this.setState(previousState => {
+            return { selectedLivingArrangement: '', showLivingArrangement: false };
+          });
+          Picker.hide();
         },
         onPickerSelect: data => {
-          this.setState(previousState => {
-            return { selectedLivingArrangement: data, showLivingArrangement: true };
-          });
+
         }
     });
     Picker.show();
   }
   //Adults
   onPressAdults = () => {
-    const selectedAdults = this.state;
-    const {handleAddData} = this.props;
+    const { selectedAdults } = this.state;
+    const { handleAddData } = this.props;
 
     Picker.init({
         pickerTitleText: 'Select Adults',
@@ -89,26 +87,27 @@ export default class PageTwo extends Component {
         onPickerConfirm: data => {
           this.setState(previousState => {
             return { selectedAdults: data, showAdults: true };
+          }, () => {
+            handleAddData('Adults',data);
+            this.validateData();
           });
-          handleAddData('Adults',data);
-          this.validateData();
         },
         onPickerCancel: data => {
-            console.log(data);
-            Picker.hide();
+          this.setState(previousState => {
+            return { selectedAdults: data, showAdults: false };
+          });
+          Picker.hide();
         },
         onPickerSelect: data => {
-          this.setState(previousState => {
-            return { selectedAdults: data, showAdults: true };
-          });
+
         }
     });
     Picker.show();
   }
   //Kids
   onPressKids = () => {
-    const selectedKids = this.state;
-    const {handleAddData} = this.props;
+    const { selectedKids } = this.state;
+    const { handleAddData } = this.props;
 
     Picker.init({
         pickerTitleText: 'Select Kids',
@@ -124,20 +123,20 @@ export default class PageTwo extends Component {
           this.validateData();
         },
         onPickerCancel: data => {
-            console.log(data);
-            Picker.hide();
+          this.setState(previousState => {
+            return { selectedAdults: '', showAdults: false };
+          });
+          Picker.hide();
         },
         onPickerSelect: data => {
-          this.setState(previousState => {
-            return { selectedKids: data, showKids: true };
-          });
+
         }
     });
     Picker.show();
   }
   //Birth Order
   onPressSibOrder = () => {
-    const selectedSibOrder = this.state;
+    const { selectedSibOrder } = this.state;
     const {handleAddData} = this.props;
 
     Picker.init({
@@ -149,26 +148,27 @@ export default class PageTwo extends Component {
         onPickerConfirm: data => {
           this.setState(previousState => {
             return { selectedSibOrder: data, showSibOrder: true };
+          }, () => {
+            handleAddData('Birth Order',data);
+            this.validateData();
           });
-          handleAddData('Birth Order',data);
-          this.validateData();
         },
         onPickerCancel: data => {
-            console.log(data);
-            Picker.hide();
+          this.setState(previousState => {
+            return { selectedSibOrder: '', showSibOrder: false };
+          });
+          Picker.hide();
         },
         onPickerSelect: data => {
-          this.setState(previousState => {
-            return { selectedSibOrder: data, showSibOrder: true };
-          });
+
         }
     });
     Picker.show();
   }
   //Religion
   onPressReligion = () => {
-    const selectedReligion = this.state;
-    const {handleAddData} = this.props;
+    const { selectedReligion } = this.state;
+    const { handleAddData } = this.props;
 
     Picker.init({
         pickerTitleText: 'Select Religion',
@@ -179,18 +179,18 @@ export default class PageTwo extends Component {
         onPickerConfirm: data => {
           this.setState(previousState => {
             return { selectedReligion: data, showReligion: true };
+          }, () => {
+            handleAddData('Religion',data);
+            this.validateData();
           });
-          handleAddData('Religion',data);
-          this.validateData();
         },
         onPickerCancel: data => {
-            console.log(data);
-            Picker.hide();
+          this.setState(previousState => {
+            return { selectedSibOrder: '', showSibOrder: false };
+          });
+          Picker.hide();
         },
         onPickerSelect: data => {
-          this.setState(previousState => {
-            return { selectedReligion: data, showReligion: true };
-          });
         }
     });
     Picker.show();

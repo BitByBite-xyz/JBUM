@@ -3,7 +3,8 @@ import {
   Text,
   View,
   StyleSheet,
-  TouchableHighlight
+  TouchableHighlight,
+  Platform
 } from 'react-native';
 import { Button } from 'react-native-elements'
 import Meteor from 'react-native-meteor';

@@ -28,7 +28,7 @@ class Settings extends Component {
       newPass : '',
       confirmPass: '',
       isAuthReq: false,
-      videoPaused:true
+      videoPaused:true,
     };
     this.handleAuthSwitchChange = this.handleAuthSwitchChange.bind(this);
   }
@@ -64,8 +64,8 @@ class Settings extends Component {
   };
 
   handleAccountPress(){
-    const username = Meteor.user().username;
-    Alert.alert('Your Anonomized Username: ' + username,
+    const username = Meteor.user() ? Meteor.user().username:'err';
+    Alert.alert('Your Anonomized Username: '+ username,
                 'Your username is only used for logging in — it will not display anywhere.',
                 [
                   {text: 'Ok', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
@@ -74,7 +74,6 @@ class Settings extends Component {
   }
 
   handleDeleteAccount = () => {
-    const username = Meteor.user().username;
     Alert.alert('Delete Account',
                 'Are you sure you want to detete your account. This can not be undone.',
                 [

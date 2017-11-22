@@ -136,7 +136,11 @@ class AccountSetup extends Component {
       }
     });
 
-    if (valid) {      
+    if (valid) {
+      if (!user.profile || !user.profile.temporaryPass){
+        this.handleAccountSetupComplete();
+        this.handlePageComplete();
+      }
       Accounts.changePassword(user.profile.temporaryPass, password, (err) => {
         if (err) {
           console.log("change err"+err.reason);

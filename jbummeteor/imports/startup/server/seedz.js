@@ -4,7 +4,6 @@ import { Accounts } from 'meteor/accounts-base';
 import { Random } from 'meteor/random';
 import { Fake } from 'meteor/anti:fake';
 
-
 import { Posts } from '../../api/posts/posts';
 import { BetaEmails } from '../../api/accountCreation/betaEmails';
 
