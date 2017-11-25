@@ -53,11 +53,11 @@ export default class InitialPage extends Component {
           <Confetti ref={(node) => this._confettiView = node} colors={colors} confettiCount={200}/> 
         </View>
         <View style={{alignItems: 'center', marginTop: '15%'}}><Text style={styles.pageTitle}>Congratulations!</Text></View>
-        <View style={{marginTop: '10%'}}>
-        <Text style={styles.text}>You have officially completed the account setup process. Please use and enjoy JBUM safely.</Text>
+        <View style={{marginTop: Dimensions.get('window').height < 570 ? '10%':'40%'}}>
+          <Text style={styles.text}>You have officially completed the account setup process. Please use and enjoy JBUM safely.</Text>
         <View style={{marginTop: 40}}/>
         <Text style={styles.usernameText}>Your randomized username: {user? user.username:''}</Text>
-        <View style={{marginTop: '10%'}}>
+        <View style={{marginTop: Dimensions.get('window').height < 570 ? '20%':'50%'}}>
           {hasViewed ? 
               <Button
                 backgroundColor={'#EC407A'}

@@ -2086,11 +2086,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = jbumapp/jbumapp.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CONFIGURATION_TEMP_DIR = "$(PROJECT_TEMP_DIR)/Release-iphoneos";
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 24MA2Z46AJ;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-button-component/button-explorer/ios/**",
@@ -2126,8 +2126,8 @@
 				PODS_CONFIGURATION_BUILD_DIR = "$PODS_BUILD_DIR/Release$(EFFECTIVE_PLATFORM_NAME)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.connorlarkin.jbumapp;
 				PRODUCT_NAME = jbumapp;
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "bee37088-bd2d-4dc8-830e-fb59c09f9e95";
+				PROVISIONING_PROFILE_SPECIFIER = JBUM;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};

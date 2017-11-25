@@ -215,7 +215,7 @@ export default class PageOne extends Component {
     return(
       <View style={{flex:1}}>
         <View style={{alignItems: 'center', marginTop: '10%'}}><Text style={styles.pageTitle}>Basic Info</Text></View>
-        <View style={{marginTop: Dimensions.get('window').height > 275 ? '15%':15}}>
+        <View style={{marginTop: Dimensions.get('window').height < 570 ? '15%':'35%'}}>
             <View>
               <TouchableHighlight onPress={this.onPressAge} underlayColor={'transparent'}>
                 <Text style={styles.text}>{displayAge}</Text>

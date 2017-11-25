@@ -5,7 +5,8 @@ import {
   StyleSheet,
   TouchableHighlight,
   Alert,
-  KeyboardAvoidingView
+  KeyboardAvoidingView, 
+  Dimensions
 } from 'react-native';
 
 import { Jiro } from 'react-native-textinput-effects';
@@ -34,7 +35,7 @@ export default class PasswordPage extends Component {
         behavior="padding"
       >
         <View style={{alignItems: 'center', marginTop: '15%'}}><Text style={styles.pageTitle}>Account Password</Text></View>
-        <View style={{marginTop: '15%'}}> 
+        <View style={{marginTop: Dimensions.get('window').height < 570 ? '15%':'35%'}}> 
           <Jiro
             style={{marginBottom: '4%'}}
             labelStyle={{fontSize: 22, color: 'white'}}
@@ -55,7 +56,7 @@ export default class PasswordPage extends Component {
           {isLoading ? <View style={{marginTop: 110}}> 
                          <Loading /> 
                       </View> :
-          <View style={{marginTop: 100}}>
+          <View style={{marginTop: Dimensions.get('window').height < 570 ? '15%':'40%'}}>
             <Button
               large
               iconRight

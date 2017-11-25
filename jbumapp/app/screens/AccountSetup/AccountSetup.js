@@ -43,7 +43,7 @@ class AccountSetup extends Component {
       {key: 1, backgroundColor: MAIN_WARN_COLOR, type: 'warn', title: 'Warning', message: 'Complete this slide before moving on!'},
     ]
     this.state = {
-      currentIndex: 5,
+      currentIndex: 0,
       swiperIndex:0,
       items: items,
       profileData: [],

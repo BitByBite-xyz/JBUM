@@ -206,7 +206,7 @@ export default class PageTwo extends Component {
     return(
           <View>
             <View style={{alignItems: 'center', marginTop: '10%'}}><Text style={styles.pageTitle}>Relationships</Text></View>
-            <View style={{marginTop: Dimensions.get('window').height > 275 ? '15%':15}}>
+            <View style={{marginTop: Dimensions.get('window').height < 570 ? '15%':'35%'}}>
                 <View>
                   <TouchableHighlight onPress={this.onPressFamily} underlayColor={'transparent'}>
                     <Text style={styles.text}>{displayFamily}</Text>
