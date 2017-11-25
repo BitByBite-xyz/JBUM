@@ -3,7 +3,8 @@ import {
   Text,
   View,
   StyleSheet,
-  TouchableHighlight
+  TouchableHighlight,
+  Dimensions
 } from 'react-native';
 
 import Picker from 'react-native-picker';
@@ -233,12 +234,12 @@ export default class PageTwo extends Component {
     },
     text: {
       color: '#fff',
-      fontSize: 24,
+      fontSize: 20,
       fontWeight: 'bold',
     },
     pageTitle: {
       color: '#fff',
-      fontSize: 47,
+      fontSize: Dimensions.get('window').height < 275 ? 47: 34,
       fontWeight: 'bold',
     },
     });

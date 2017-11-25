@@ -12,7 +12,6 @@
     NetInfo
 }
 from 'react-native';
-
 import Meteor, { Accounts,createContainer } from 'react-native-meteor';
 import {
 	Button,
@@ -20,6 +19,7 @@ import {
   Header
 }
 from 'react-native-elements';
+import Video from 'react-native-video';
 import DropdownAlert from 'react-native-dropdownalert'
 import Swiper from 'react-native-swiper';
 import DeviceInfo from 'react-native-device-info';
@@ -30,6 +30,7 @@ import PageTwo from '../../components/AccountSetupComponents/PageTwo';
 //import PageThree from '../../components/AccountSetupComponents/PageThree';
 import PageFour from '../../components/AccountSetupComponents/PageFour';
 import PasswordPage from '../../components/AccountSetupComponents/PasswordPage';
+import vid from '../../images/jbumapp.mov'
 
 const MAIN_WARN_COLOR = '#FF9A1E'
 const ACNTSETUP_KEY = 'setupcomplete'
@@ -42,11 +43,12 @@ class AccountSetup extends Component {
       {key: 1, backgroundColor: MAIN_WARN_COLOR, type: 'warn', title: 'Warning', message: 'Complete this slide before moving on!'},
     ]
     this.state = {
-      currentIndex: 0,
+      currentIndex: 5,
       swiperIndex:0,
       items: items,
       profileData: [],
-      isLoading:false
+      isLoading:false,
+      paused: true,
     };
 
     let data = null;
@@ -110,7 +112,7 @@ class AccountSetup extends Component {
 
   validateInput = (password, confirmPassword) => {
     this.setState({isLoading:true});
-    const { user } = this.props;
+    const user = Meteor.user();
     const MAIN_WARN_COLOR = '#FF9A1E'
     const items = [
       {key: 0, backgroundColor: MAIN_WARN_COLOR, type: 'info', title: 'Info', message: 'Complete this slide before moving on!'},
@@ -137,7 +139,7 @@ class AccountSetup extends Component {
     });
 
     if (valid) {
-      if (!user.profile || !user.profile.temporaryPass){
+      if (user && !user.profile || !user.profile.temporaryPass){
         this.handleAccountSetupComplete();
         this.handlePageComplete();
       }
@@ -185,6 +187,15 @@ class AccountSetup extends Component {
   onClose = (data) => {
   }
 
+  handleShowVidAndContinue = () => {
+    this.setState({paused:false}, () => {
+      this.player.presentFullscreenPlayer();
+      /*setTimeout(() => {
+        this.props.navigation.navigate('HomeStack', {overrideToAccountSetup:true})      
+      }, 500);*/
+    })
+  }
+
   render() {
     const { profileData, isLoading } = this.state;
     return(
@@ -222,11 +233,30 @@ class AccountSetup extends Component {
               <View style={[styles.slide, { backgroundColor: '#E1A3DC' }]}>
                 <PageFour
                   user={this.props.user}
-                  handleAccountSetupComplete={()=>this.props.navigation.navigate('HomeStack', {overrideToAccountSetup:true})}
+                  handleShowVidAndContinue={this.handleShowVidAndContinue}
+                  goToHome={() => {
+                    this.setState({paused:true});
+                    this.props.navigation.navigate('HomeStack', {overrideToAccountSetup:true})
+                  }}
                   currentIndex={this.state.currentIndex}
                 />
               </View>
             </Swiper>
+            <Video source={vid}   // Can be a URL or a local file.
+              ref={(ref) => {
+                this.player = ref
+              }}                                      // Store reference
+              rate={1.0}                              // 0 is paused, 1 is normal.
+              volume={1.0}                            // 0 is muted, 1 is normal.
+              muted={false}                           // Mutes the audio entirely.
+              paused={this.state.paused}                          // Pauses playback entirely.
+              resizeMode="cover"                      // Fill the whole screen at aspect ratio.*
+              playInBackground={false}                // Audio continues to play when app entering background.
+              playWhenInactive={false}                // [iOS] Video continues to play when control or notification center are shown.
+              ignoreSilentSwitch={"ignore"}           // [iOS] ignore | obey - When 'ignore', audio will still play with the iOS hard silent switch set to silent. When 'obey', audio will toggle with the switch. When not specified, will inherit audio settings as usual.
+              progressUpdateInterval={250.0}          // [iOS] Interval to fire onProgress (default to ~250ms)
+              onEnd={()=> this.setState({paused:true} )}
+            />
             <DropdownAlert
               ref={(ref) => this.dropdown = ref}
               onClose={(data) => this.onClose(data)}

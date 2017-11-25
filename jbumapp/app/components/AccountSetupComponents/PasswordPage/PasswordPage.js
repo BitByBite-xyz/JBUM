@@ -33,7 +33,7 @@ export default class PasswordPage extends Component {
       <KeyboardAvoidingView
         behavior="padding"
       >
-        <View style={{alignItems: 'center', marginTop: '25%'}}><Text style={styles.pageTitle}>Account Password</Text></View>
+        <View style={{alignItems: 'center', marginTop: '15%'}}><Text style={styles.pageTitle}>Account Password</Text></View>
         <View style={{marginTop: '15%'}}> 
           <Jiro
             style={{marginBottom: '4%'}}

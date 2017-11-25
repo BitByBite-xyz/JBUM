@@ -3,9 +3,9 @@ import {
   Text,
   View,
   StyleSheet,
-  TouchableHighlight
+  TouchableHighlight,
+  Dimensions
 } from 'react-native';
-
 import Picker from 'react-native-picker';
 
 const livingArrangementOptions = ['One household', 'Two households', 'No Household', 'Other'];
@@ -206,7 +206,7 @@ export default class PageTwo extends Component {
     return(
           <View>
             <View style={{alignItems: 'center', marginTop: '10%'}}><Text style={styles.pageTitle}>Relationships</Text></View>
-            <View style={{marginTop: '15%'}}>
+            <View style={{marginTop: Dimensions.get('window').height > 275 ? '15%':15}}>
                 <View>
                   <TouchableHighlight onPress={this.onPressFamily} underlayColor={'transparent'}>
                     <Text style={styles.text}>{displayFamily}</Text>
@@ -247,12 +247,12 @@ export default class PageTwo extends Component {
     },
     text: {
       color: '#fff',
-      fontSize: 24,
+      fontSize: 20,
       fontWeight: 'bold',
     },
     pageTitle: {
       color: '#fff',
-      fontSize: 47,
+      fontSize: Dimensions.get('window').height < 570 ? 34: 40,
       fontWeight: 'bold',
     },
     });

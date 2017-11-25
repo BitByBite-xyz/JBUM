@@ -3,7 +3,8 @@ import {
   Text,
   View,
   StyleSheet,
-  TouchableHighlight
+  TouchableHighlight,
+  Dimensions
 } from 'react-native';
 
 import Picker from 'react-native-picker';
@@ -214,7 +215,7 @@ export default class PageOne extends Component {
     return(
       <View style={{flex:1}}>
         <View style={{alignItems: 'center', marginTop: '10%'}}><Text style={styles.pageTitle}>Basic Info</Text></View>
-        <View style={{marginTop: '29%'}}>
+        <View style={{marginTop: Dimensions.get('window').height > 275 ? '15%':15}}>
             <View>
               <TouchableHighlight onPress={this.onPressAge} underlayColor={'transparent'}>
                 <Text style={styles.text}>{displayAge}</Text>
@@ -260,7 +261,7 @@ const styles = StyleSheet.create({
   },
   pageTitle: {
     color: '#fff',
-    fontSize: 40,
+    fontSize: Dimensions.get('window').height < 570 ? 34: 40,
     fontWeight: 'bold',
   },
 });

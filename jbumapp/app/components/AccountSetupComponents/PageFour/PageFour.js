@@ -4,7 +4,8 @@ import {
   View,
   StyleSheet,
   TouchableHighlight,
-  Platform
+  Platform,
+  Dimensions
 } from 'react-native';
 import { Button } from 'react-native-elements'
 import Meteor from 'react-native-meteor';
@@ -18,7 +19,9 @@ export default class InitialPage extends Component {
     constructor(props) {
       super(props);
       this.state = {
-        paused:true
+        paused:true,
+        hasViewed: false
+
       }
   }
   componentWillUnmount (){
@@ -33,48 +36,43 @@ export default class InitialPage extends Component {
   }
 
   handleThatTho = () => {
-    const { handleAccountSetupComplete } = this.props;
-    this.player.presentFullscreenPlayer();
-    this.setState({paused:false})
-    handleAccountSetupComplete()
+    const { handleShowVidAndContinue } = this.props;
+    //this.player.presentFullscreenPlayer();
+    handleShowVidAndContinue()
+    this.setState({hasViewed:true})
   }
 
   render() {
-    const { handleAccountSetupComplete, user, currentIndex } = this.props;
+    const { hasViewed } = this.state;    
+    const { handleAccountSetupComplete, user, currentIndex, goToHome } = this.props;
+    //alert(Dimensions.get('window').height)
     
     return(
       <View>
         <View style={{zIndex:1}}>
           <Confetti ref={(node) => this._confettiView = node} colors={colors} confettiCount={200}/> 
         </View>
-        <View style={{alignItems: 'center', marginTop: '25%'}}><Text style={styles.pageTitle}>Congratulations!</Text></View>
-        <View style={{marginTop: '17%'}}>
+        <View style={{alignItems: 'center', marginTop: '15%'}}><Text style={styles.pageTitle}>Congratulations!</Text></View>
+        <View style={{marginTop: '10%'}}>
         <Text style={styles.text}>You have officially completed the account setup process. Please use and enjoy JBUM safely.</Text>
         <View style={{marginTop: 40}}/>
         <Text style={styles.usernameText}>Your randomized username: {user? user.username:''}</Text>
-        <View style={{marginTop: 100}}>
-          <Button
-            backgroundColor={'#4AD9B9'}
-            onPress={this.handleThatTho}
-            icon={{name: 'directions-walk'}}
-            textStyle={{fontSize: 22, color: 'white'}}
-            title='View Tutorial & Get Started' />
+        <View style={{marginTop: '10%'}}>
+          {hasViewed ? 
+              <Button
+                backgroundColor={'#EC407A'}
+                onPress={() => goToHome()}
+                icon={{name: 'directions-walk'}}
+                textStyle={{fontSize: Dimensions.get('window').height < 570 ? 14: 22, color: 'white'}}
+                title='Get Started' /> :
+              <Button
+                backgroundColor={'#4AD9B9'}
+                onPress={this.handleThatTho}
+                icon={{name: 'ondemand-video'}}
+                textStyle={{fontSize: Dimensions.get('window').height < 570 ? 14: 22, color: 'white'}}
+                title='View Tutorial' />
+          }
         </View>
-        <Video source={vid}   // Can be a URL or a local file.
-          ref={(ref) => {
-            this.player = ref
-          }}                                      // Store reference
-          rate={1.0}                              // 0 is paused, 1 is normal.
-          volume={1.0}                            // 0 is muted, 1 is normal.
-          muted={false}                           // Mutes the audio entirely.
-          paused={this.state.paused}                          // Pauses playback entirely.
-          resizeMode="cover"                      // Fill the whole screen at aspect ratio.*
-          playInBackground={false}                // Audio continues to play when app entering background.
-          playWhenInactive={false}                // [iOS] Video continues to play when control or notification center are shown.
-          ignoreSilentSwitch={"ignore"}           // [iOS] ignore | obey - When 'ignore', audio will still play with the iOS hard silent switch set to silent. When 'obey', audio will toggle with the switch. When not specified, will inherit audio settings as usual.
-          progressUpdateInterval={250.0}          // [iOS] Interval to fire onProgress (default to ~250ms)
-          onEnd={()=> this.setState({paused:true})}
-         />
         </View>
       </View>
     );
@@ -101,7 +99,7 @@ const styles = StyleSheet.create({
   },
   pageTitle: {
     color: '#fff',
-    fontSize: 37,
+    fontSize: Dimensions.get('window').height < 570 ? 30: 34,
     fontWeight: 'bold',
   },
 });
