@@ -60,17 +60,19 @@ export default class InitialPage extends Component {
         <View style={{marginTop: Dimensions.get('window').height < 570 ? '20%':'50%'}}>
           {hasViewed ? 
               <Button
-                backgroundColor={'#EC407A'}
+                backgroundColor={'#6A1B9A'}
                 onPress={() => goToHome()}
                 icon={{name: 'directions-walk'}}
                 textStyle={{fontSize: Dimensions.get('window').height < 570 ? 14: 22, color: 'white'}}
-                title='Get Started' /> :
+                title='Get Started'
+                buttonStyle={{borderRadius:9}} /> :
               <Button
-                backgroundColor={'#4AD9B9'}
+                backgroundColor={'#f44336'}
                 onPress={this.handleThatTho}
                 icon={{name: 'ondemand-video'}}
                 textStyle={{fontSize: Dimensions.get('window').height < 570 ? 14: 22, color: 'white'}}
-                title='View Tutorial' />
+                title='View Tutorial'
+                buttonStyle={{borderRadius:9}} />
           }
         </View>
         </View>

@@ -30,6 +30,8 @@ import PageTwo from '../../components/AccountSetupComponents/PageTwo';
 //import PageThree from '../../components/AccountSetupComponents/PageThree';
 import PageFour from '../../components/AccountSetupComponents/PageFour';
 import PasswordPage from '../../components/AccountSetupComponents/PasswordPage';
+import TermsPage from '../../components/AccountSetupComponents/TermsPage';
+
 import vid from '../../images/jbumapp.mov'
 
 const MAIN_WARN_COLOR = '#FF9A1E'
@@ -223,6 +225,11 @@ class AccountSetup extends Component {
                   handleAddData={this.handleAddData}
                   handlePageComplete={this.handlePageComplete}/>
               </View>
+              <View style={[styles.slide, { backgroundColor: '#7E57C2' }]}>
+                <TermsPage
+                  handlePageComplete={this.handlePageComplete}
+                />
+              </View>
               <View style={[styles.slide, { backgroundColor: '#46C87F' }]}>
                 <PasswordPage
                   validateInput={this.validateInput}
@@ -230,13 +237,13 @@ class AccountSetup extends Component {
                   isLoading={isLoading}
                 />
               </View>
-              <View style={[styles.slide, { backgroundColor: '#E1A3DC' }]}>
+              <View style={[styles.slide, { backgroundColor: '#e57373' }]}>
                 <PageFour
                   user={this.props.user}
                   handleShowVidAndContinue={this.handleShowVidAndContinue}
                   goToHome={() => {
-                    this.setState({paused:true});
                     this.props.navigation.navigate('HomeStack', {overrideToAccountSetup:true})
+                    this.setState({paused:true});
                   }}
                   currentIndex={this.state.currentIndex}
                 />

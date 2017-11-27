@@ -241,16 +241,19 @@ class Settings extends Component {
                   title='🔏 Change Password'
                   titleStyle={{color:'#020C7E', fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
                   onPress={() => this.setState({isModalVisible:true})}
+                  hasNavArrow={false}
                 />
                 <SettingsList.Item
                   title='🚨 Delete Account'
                   titleStyle={{color:'#020C7E', fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
                   onPress={this.handleDeleteAccount}
+                  hasNavArrow={false}
                 />
                 <SettingsList.Item
                   title='🎈 Log Out'
                   titleStyle={{color:'#020C7E', fontFamily: 'Avenir', fontSize: 17, fontWeight: '400'}}
                   onPress={this.signOut}
+                  hasNavArrow={false}
                 />
 
               </SettingsList>

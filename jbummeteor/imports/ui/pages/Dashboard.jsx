@@ -24,7 +24,7 @@ class Dashboard extends Component {
   handleChange = (event, index, value) => this.setState({value});
 
   handleAddBetaEmail = () => {
-    const email = this.refs.betaEmailField.getValue();
+    const email = this.refs.betaEmailField.getValue().toLowerCase();
     var re = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
     if (!re.test(email)) {
         alert('Please put in a valid email!')

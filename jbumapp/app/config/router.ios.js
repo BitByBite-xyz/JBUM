@@ -19,6 +19,7 @@ import Ask from '../screens/Ask';
 import Settings from '../screens/Settings';
 import Welcome from '../screens/Welcome';
 import Inbox from '../screens/Inbox';
+import BetaWebview from '../screens/BetaWebview';
 
 import Notifications from '../components/Notifications';
 import BarcodeScanner from '../components/BarcodeScanner';
@@ -105,8 +106,15 @@ import BarcodeScanner from '../components/BarcodeScanner';
 	}},{mode:'modal'});
 
  export const WelcomeStack = StackNavigator({
- 	Welcome: {screen: Welcome,},
-	Login: { screen: Login },
+ 	Welcome: {screen: Welcome,
+		navigationOptions: {
+			header: null
+		}}, 
+	Login: { screen: Login ,
+		navigationOptions: {
+			header: null
+		}},
+	BetaWebview: { screen: BetaWebview },
  	BarcodeScanner: { screen: BarcodeScanner,
 	 navigationOptions: {
 		headerStyle: {
@@ -114,11 +122,15 @@ import BarcodeScanner from '../components/BarcodeScanner';
 		backgroundColor: null,
 		height: 20,
 	},}},
- 	AccountSetup: { screen: AccountSetup },},
- 	{
+ 	AccountSetup: { screen: AccountSetup,
+		navigationOptions: {
+			header: null
+		}}, 
+	},
+ 	/*{
  		headerMode: 'none',
  		mode:'modal'
- 	}
+ 	}*/
 );
 
 export const ResponderTabs = TabNavigator({

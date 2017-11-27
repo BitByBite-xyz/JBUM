@@ -66,6 +66,8 @@ class Survey extends Component {
     let adultsData = null;
     let kidsData = null;
     let birthOrderData = null;
+    let systemVersionData = null; 
+    let deviceModelData = null; 
     const { surveyData } = this.state;;
 
     if (surveyData) {
@@ -78,6 +80,8 @@ class Survey extends Component {
       adultsData = this.harvestData(surveyData['Adults']);
       kidsData = this.harvestData(surveyData['Kids']);
       birthOrderData = this.harvestData(surveyData['Birth Order']);
+      systemVersionData = this.harvestData(surveyData['System Version']);
+      deviceModelData = this.harvestData(surveyData['Device Model']);
     }
       return (
           <div>
@@ -116,6 +120,14 @@ class Survey extends Component {
             <ChartPanel
               graphName="Birth Order"
               data={birthOrderData ? birthOrderData: [{name: '', value: 400}]}
+            />
+            <ChartPanel
+              graphName="System Version"
+              data={systemVersionData ? systemVersionData: [{name: '', value: 400}]}
+            />
+            <ChartPanel
+              graphName="Device Model"
+              data={deviceModelData ? deviceModelData: [{name: '', value: 400}]}
             />
             {this.props.userDataReady ? this.doAccountSetup() : null}
         </div>

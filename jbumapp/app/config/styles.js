@@ -90,7 +90,7 @@ export const quotes = [
     author: 'Joseph Goldstein'
   },
   {
-    quote: 'The best to find out whether you\'re on the right path? Stop looking at the path.',
+    quote: 'The best way to find out whether you\'re on the right path? Stop looking at the path.',
     author: 'Marcus Buckingham'
   },
   {

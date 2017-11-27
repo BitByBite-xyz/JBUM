@@ -66,7 +66,8 @@ export default class PasswordPage extends Component {
               }}
               icon={{name: 'account-circle'}}
               textStyle={{fontSize: 22, color: 'white'}}
-              title='Continue' />
+              title='Continue'
+              buttonStyle={{borderRadius:9}} />
           </View>
           }
         </View>

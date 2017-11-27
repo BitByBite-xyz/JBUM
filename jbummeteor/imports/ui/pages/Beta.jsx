@@ -21,11 +21,13 @@ const style = {
 class Stepper extends Component {
     constructor(props){
         super(props);
+        console.log(this.props.navState.origRoute.indexOf('installed'))
     }
     state = {
-        index:0,
+        index: this.props.navState.origRoute.indexOf('installed') > 0 ? 1 : 0,
         email:''
     }
+
 
     handleCreateAccount = () => {
         const { email } = this.state;
@@ -36,19 +38,19 @@ class Stepper extends Component {
             return;
         }
 
-        Meteor.call('canCreateAccount', email, (err) => {
+        Meteor.call('canCreateAccount', email.toLowerCase(), (err) => {
             if (err){
-                if( confirm( `Cannot create account.\n${err}.\n\nDo you want to email our support?`)){
+                if(confirm( `Cannot create account.\n${err}.\n\nDo you want to email our support?`)){
                     window.location = 'mailto:contact@bitbybite.co?subject=⚠️ Cannot Create Account ⚠️'
                 }
             }
             else {
                 window.location = "jbum://2wGQQTyWQgFgYg62N";
-                setTimeout( () => {
-                    if( confirm( 'You do not seem to have JBUM installed, do you want to go download it now?')){
+                /*setTimeout( () => {
+                    if(confirm( 'You do not seem to have JBUM installed, do you want to go download it now?')){
                         window.location = 'https://itunes.apple.com/us/app/just-between-u-and-me/id1302879583?mt=8'
                     }
-                }, 300); 
+                }, 700); */
             }
         });      
     }
@@ -92,6 +94,7 @@ class Beta extends Component {
                 <center >
                     <Paper style={style} zDepth={1}>
                         <Stepper 
+                            navState={this.props.history.location.state}
                             emails={this.props.emails}
                         />
                     </Paper>

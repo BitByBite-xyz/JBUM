@@ -258,6 +258,7 @@ class Panel extends PureComponent {
               </View>
 
               <View style={{flexDirection: 'row', justifyContent: 'center', marginTop: '5%'}}>
+                { !isUsersPost ? 
                 <View style={{marginRight: '16%'}}>
                   <TouchableOpacity onPress={() => this.onReportPress()}>
                   <Icon
@@ -267,7 +268,8 @@ class Panel extends PureComponent {
                   />
                   </TouchableOpacity>
                   <Text style={styles.popupSubTitles}>Report</Text>
-                </View>
+                </View> : null
+                }
 
                 { isUsersPost ?
                   <View>
@@ -281,17 +283,6 @@ class Panel extends PureComponent {
                     <Text style={styles.popupSubTitles}>Delete</Text>
                   </View> : null
                 }
-
-                <View style={{marginLeft: '16%'}}>
-                  <TouchableOpacity>
-                  <Icon
-                    name='announcement'
-                    color={'#ECC21B'}
-                    size={35}
-                  />
-                  </TouchableOpacity>
-                  <Text style={styles.popupSubTitles}>Urgent</Text>
-                </View>
               </View>
             </View>
           </Modal>

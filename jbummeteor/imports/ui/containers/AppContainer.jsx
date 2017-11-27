@@ -15,8 +15,9 @@ export default class AppContainer extends Component {
   }
 
   componentWillMount(){
-    if (this.props.history.location.pathname === '/beta'){
-      this.props.history.push('/beta');
+    const name = this.props.history.location.pathname;
+    if (this.props.history.location.pathname.indexOf('beta')){
+      this.props.history.push('/beta', { origRoute: name });
     }
     else if (!this.state.isAuthenticated) {
       this.props.history.push('/login');

@@ -44,6 +44,7 @@ Meteor.methods({
   },
   'addBetaEmail' (email) {
     check(email, String);
+    email = email.toLowerCase();
     const user = BetaEmails.findOne({email_address: email});
     
     if (user) throw new Meteor.Error('Email already added!');

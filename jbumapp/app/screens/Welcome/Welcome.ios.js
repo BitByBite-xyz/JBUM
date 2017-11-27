@@ -32,7 +32,7 @@ class Welcome extends Component {
       hasOpenedURL:false,
       loggingIn: false,
       loginData:null,
-      isCreatingAccount:false
+      isCreatingAccount:false,
     }
     this.mounted = false;
   }
@@ -47,8 +47,9 @@ class Welcome extends Component {
     setTimeout(() => {
       AsyncStorage.getItem(URL_KEY).then((url)=>{
         if (url && url !== 'done' && !this.state.hasOpenedURL) {
-          this.handleOpenURL({url:url});
-          AsyncStorage.setItem(URL_KEY, 'done');
+          AsyncStorage.setItem(URL_KEY, 'done').then(()=> {
+            this.handleOpenURL({url:url});
+          });
         }
       }).catch((err) => {
         console.log(err);
@@ -144,14 +145,15 @@ class Welcome extends Component {
   }
 
   toCreateAccount = () => {
-    Alert.alert(
-      'Please navigate our site to create an account!','Currently we are in a closed beta. If you wish to be included email contact@bitbybite.co.',
+    this.props.navigation.navigate('BetaWebview')
+    /*Alert.alert(
+      'Please navigate our site to create an account!','If you wish to be included email contact@bitbybite.co.',
       [
         {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-        {text: 'Go There', onPress: () => Linking.openURL('https://jbum.meteorapp.com/beta')},
+        {text: 'Go There', onPress: () => this.props.navigation.navigate('BetaWebview')},
       ],
       { cancelable: false }
-    );
+    );*/
   }
 
   toLogin = () => {
